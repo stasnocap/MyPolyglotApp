@@ -1,0 +1,35 @@
+@using PolyglotWeb.Models.ViewModels
+
+@model LessonViewModel
+
+<div class="lesson">
+    <div>
+        Урок @Model.Id
+    </div>
+    <div>
+        @Model.Phrase.First(x=>x.Key == Model.NumberOfRandomPhrase).Value
+    </div>
+    <div>
+        Переведите предложение
+    </div>
+    <div class="buttons">
+        <div class="button">
+            I
+        </div>
+        <div class="button">
+            You
+        </div>
+        <div class="button">
+            We
+        </div>
+        <div class="button">
+            They
+        </div>
+        <div class="button">
+            He
+        </div>
+        <div class="button">
+            She
+        </div>
+    </div>
+</div>

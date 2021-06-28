@@ -1,0 +1,62 @@
+﻿a {
+    color: inherit;
+    text-decoration: inherit;
+}
+
+body {
+    font-size: 40px;
+    font-family: Courier New;
+    background-color:#D3EDEF;
+}
+
+.button:hover {
+    cursor: pointer;
+    background-color: #9CACBD;
+}
+
+ul.lessons li {
+    height: 100px;
+    border-bottom: 1px solid;
+    font-size: 40px;
+    font-family: Courier New;
+    display: flex;
+}
+
+ul.lessons .rating {
+    padding: 20px;
+    margin: 15px;
+    border: 1px solid;
+    border-radius: 50%;
+    font-size: 30px;;
+}
+
+ul.lessons .lesson-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+ul.lessons .lesson-description {
+    font-size: 25px;
+}
+
+.lesson > div:not(.buttons) {
+    height: 100px;
+    border-bottom: 1px solid;
+    display: flex;
+    align-items: center;
+    padding-left: 30px;
+}
+
+.lesson .buttons {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.lesson .buttons div {
+    flex: 50%;
+    height: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

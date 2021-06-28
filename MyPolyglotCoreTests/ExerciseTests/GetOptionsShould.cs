@@ -53,7 +53,7 @@ namespace MyPolyglotCore.Tests.ExerciseTests
         [InlineData(typeof(Noun))]
         [InlineData(typeof(Verb))]
         [InlineData(typeof(Adjective))]
-        public void AddRandomFiveRandomWordsWithRightAnswer(Type type)
+        public void AddRandomFiveWordsWithRightAnswer(Type type)
         {
             var exercise = new Exercise(new Vocabulary());
             var textOfWord = "no matter";

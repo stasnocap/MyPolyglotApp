@@ -1,8 +1,8 @@
 using System;
 using System.Collections.Generic;
-using PolyglotWeb.Models.ViewModels;
+using MyPolyglotWeb.Models.ViewModels;
 
-namespace PolyglotWeb.Presentation
+namespace MyPolyglotWeb.Presentation
 {
     public class HomePresentation
     {

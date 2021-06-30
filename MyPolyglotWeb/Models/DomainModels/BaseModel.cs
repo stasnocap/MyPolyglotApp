@@ -1,4 +1,4 @@
-namespace PolyglotWeb.Models.DomainModels
+namespace MyPolyglotWeb.Models.DomainModels
 {
     public class BaseModel
     {

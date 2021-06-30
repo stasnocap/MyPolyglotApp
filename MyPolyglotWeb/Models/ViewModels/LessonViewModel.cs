@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace PolyglotWeb.Models.ViewModels
+namespace MyPolyglotWeb.Models.ViewModels
 {
     public class LessonViewModel
     {

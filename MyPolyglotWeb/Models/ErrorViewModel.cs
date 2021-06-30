@@ -1,6 +1,6 @@
 using System;
 
-namespace MyPolyglotWeb.Models
+namespace MyMyPolyglotWeb.Models
 {
     public class ErrorViewModel
     {

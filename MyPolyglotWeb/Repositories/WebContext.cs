@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
-using PolyglotWeb.Models.DomainModels;
+using MyPolyglotWeb.Models.DomainModels;
 
-namespace PolyglotWeb.Repositories
+namespace MyPolyglotWeb.Repositories
 {
     public class WebContext : DbContext
     {

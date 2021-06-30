@@ -11,12 +11,12 @@ namespace MyPolyglotCore
         public List<Word> RightAnswer { get; set; } = new List<Word>();
         public string Sentence { get; set; }
 
-        public Vocabulary Vocabulary { get; }
+        private Vocabulary _vocabulary { get; }
         private readonly Random _random = new Random();
 
         public Exercise(Vocabulary vocabulary)
         {
-            Vocabulary = vocabulary;
+            _vocabulary = vocabulary;
         }
 
         public IEnumerable<string> GetOptions()
@@ -27,22 +27,22 @@ namespace MyPolyglotCore
                 switch (word)
                 {
                     case SubjectPronoun s:
-                        options.AddRange(Vocabulary.SubjectPronouns);
+                        options.AddRange(_vocabulary.SubjectPronouns);
                         break;
                     case ObjectPronoun o:
-                        options.AddRange(Vocabulary.ObjectPronouns);
+                        options.AddRange(_vocabulary.ObjectPronouns);
                         break;
                     case PossessiveAdjective p:
-                        options.AddRange(Vocabulary.PossessiveAdjectives);
+                        options.AddRange(_vocabulary.PossessiveAdjectives);
                         break;
                     case PossessivePronoun p:
-                        options.AddRange(Vocabulary.PossessivePronouns);
+                        options.AddRange(_vocabulary.PossessivePronouns);
                         break;
                     case ReflexivePronoun r:
-                        options.AddRange(Vocabulary.ReflexivePronouns);
+                        options.AddRange(_vocabulary.ReflexivePronouns);
                         break;
                     case Determiner d:
-                        options.AddRange(Vocabulary.Determiners);
+                        options.AddRange(_vocabulary.Determiners);
                         break;
                     case Adjective a:
                         options.AddRange(GetRandomWordsFromVocabularyWithRightWord(word));
@@ -62,7 +62,7 @@ namespace MyPolyglotCore
 
         private IEnumerable<string> GetRandomWordsFromVocabularyWithRightWord(Word word)
         {
-            var vocabulary = Vocabulary.GetVocabulary(word);
+            var vocabulary = _vocabulary.GetVocabulary(word);
             return vocabulary
                 .OrderBy(x => _random.Next())
                 .Take(5)

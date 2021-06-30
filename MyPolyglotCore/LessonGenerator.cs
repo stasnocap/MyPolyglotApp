@@ -10,18 +10,20 @@ namespace MyPolyglotCore
         private readonly Random _random = new Random();
         private readonly Vocabulary _vocabulary = new Vocabulary();
 
-        public Lesson Generate()
+        public const byte NumberOfExerciseInLesson = 10;
+
+        public Lesson GenerateFirstLesson()
         {
             var lesson = new Lesson();
             var exercises = new List<Exercise>();
 
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < NumberOfExerciseInLesson; i++)
             {
                 var exercise = new Exercise(_vocabulary);
                 var structure = new List<Word>() { new SubjectPronoun(), new Verb() };
                 foreach (var word in structure)
                 {
-                    var vocabulary = exercise.Vocabulary.GetVocabulary(word);
+                    var vocabulary = _vocabulary.GetVocabulary(word);
                     word.Text = vocabulary[_random.Next(vocabulary.Length)];
                     exercise.RightAnswer.Add(word);
                     exercise.Sentence += word.Text + " ";

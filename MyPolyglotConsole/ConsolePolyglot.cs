@@ -15,7 +15,7 @@ namespace MyPolyglotConsole
             }
 
             var generator = new LessonGenerator();
-            var lesson = generator.Generate();
+            var lesson = generator.GenerateFirstLesson();
 
             foreach (var exercise in lesson.Exercises)
             {

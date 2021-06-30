@@ -1,6 +1,5 @@
 using System;
 using System.Linq;
-using MyPolyglot;
 using MyPolyglotCore.Words;
 using MyPolyglotCore.Words.Pronouns;
 using Xunit;

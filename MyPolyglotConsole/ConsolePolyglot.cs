@@ -1,4 +1,5 @@
 using System;
+using MyPolyglotCore;
 
 namespace MyPolyglot
 {
@@ -13,7 +14,8 @@ namespace MyPolyglot
                 Exercises();
             }
 
-            var generator = new LessonGenerator();
+            var vocabulary = new Vocabulary();
+            var generator = new LessonGenerator(vocabulary);
             var lesson = generator.Generate();
 
             foreach (var exercise in lesson.Exercises)

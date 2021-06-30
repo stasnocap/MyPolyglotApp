@@ -3,9 +3,9 @@ using MyPolyglotCore;
 using MyPolyglotCore.Words;
 using MyPolyglotCore.Words.Pronouns;
 
-namespace PolyglotWeb.VocabularyStuff
+namespace MyPolyglotCore
 {
-    public class Vocabulary : IVocabulary
+    public class Vocabulary
     {
         #region Pronouns
         public string[] SubjectPronouns => new string[] { "i", "you", "he", "she", "it", "we", "they" };
@@ -25,7 +25,6 @@ namespace PolyglotWeb.VocabularyStuff
             new Verb() { Text = "awake", PastTense = "awoke", PastParticle =  "awoken" },
         };
 
-        //TODO: move it somewhere or not ?
         public string[] GetVocabulary(Word word)
         {
             var vocabulary = word switch

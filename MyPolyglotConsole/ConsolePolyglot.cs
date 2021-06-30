@@ -14,8 +14,7 @@ namespace MyPolyglotConsole
                 Exercises();
             }
 
-            var vocabulary = new Vocabulary();
-            var generator = new LessonGenerator(vocabulary);
+            var generator = new LessonGenerator();
             var lesson = generator.Generate();
 
             foreach (var exercise in lesson.Exercises)

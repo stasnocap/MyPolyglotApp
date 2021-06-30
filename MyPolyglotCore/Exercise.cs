@@ -11,10 +11,10 @@ namespace MyPolyglotCore
         public List<Word> RightAnswer { get; set; } = new List<Word>();
         public string Sentence { get; set; }
 
-        public IVocabulary Vocabulary { get; }
+        public Vocabulary Vocabulary { get; }
         private readonly Random _random = new Random();
 
-        public Exercise(IVocabulary vocabulary)
+        public Exercise(Vocabulary vocabulary)
         {
             Vocabulary = vocabulary;
         }

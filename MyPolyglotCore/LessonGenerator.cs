@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using MyPolyglotCore;
 using MyPolyglotCore.Words;
 using MyPolyglotCore.Words.Pronouns;
 
@@ -9,12 +8,7 @@ namespace MyPolyglotCore
     public class LessonGenerator
     {
         private readonly Random _random = new Random();
-        private readonly IVocabulary _vocabulary;
-
-        public LessonGenerator(IVocabulary vocabulary)
-        {
-            _vocabulary = vocabulary;
-        }
+        private readonly Vocabulary _vocabulary = new Vocabulary();
 
         public Lesson Generate()
         {

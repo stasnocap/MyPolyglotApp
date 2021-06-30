@@ -1,7 +1,7 @@
 using System;
 using MyPolyglotCore;
 
-namespace MyPolyglot
+namespace MyPolyglotConsole
 {
     public class ConsolePolyglot
     {

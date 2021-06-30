@@ -1,4 +1,4 @@
-﻿namespace MyPolyglot
+﻿namespace MyPolyglotConsole
 {
     class Program
     {

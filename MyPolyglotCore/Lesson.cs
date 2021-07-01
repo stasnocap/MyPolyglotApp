@@ -5,6 +5,6 @@ namespace MyPolyglotCore
     public class Lesson
     {
         public long Id { get; set; }
-        public IEnumerable<Exercise> Exercises { get; set; }
+        public List<Exercise> Exercises { get; set; }
     }
 }

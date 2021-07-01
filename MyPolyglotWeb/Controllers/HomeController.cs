@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-using PolyglotWeb.Models.ViewModels;
-using PolyglotWeb.Presentation;
+﻿using Microsoft.AspNetCore.Mvc;
+using MyPolyglotWeb.Presentation;
 
-namespace PolyglotWeb.Controllers
+namespace MyPolyglotWeb.Controllers
 {
     public class HomeController : Controller
     {

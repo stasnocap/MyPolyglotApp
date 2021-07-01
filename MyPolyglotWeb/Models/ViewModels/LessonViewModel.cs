@@ -1,11 +1,12 @@
 using System.Collections.Generic;
-using MyPolyglotCore;
 
 namespace MyPolyglotWeb.Models.ViewModels
 {
     public class LessonViewModel
     {
         public long Id { get; set; }
-        public Lesson Lesson { get; set; }
+        public Dictionary<int, string> Phrase { get; set; }
+        public Dictionary<int, string> RightAnswer { get; set; }
+        public int NumberOfRandomPhrase { get; set; }
     }
 }

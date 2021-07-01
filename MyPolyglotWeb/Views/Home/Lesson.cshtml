@@ -1,16 +1,13 @@
 @using MyPolyglotWeb.Models.ViewModels
 
 @model LessonViewModel
-@{
-    var random = new Random();
-}
 
 <div class="lesson">
     <div>
         Урок @Model.Id
     </div>
     <div>
-        @Model.Lesson.Exercises[random.Next(Model.Lesson.Exercises.Count)].Sentence
+        @Model.Phrase.First(x=>x.Key == Model.NumberOfRandomPhrase).Value
     </div>
     <div>
         Переведите предложение

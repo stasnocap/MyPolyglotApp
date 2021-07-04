@@ -20,7 +20,7 @@ namespace MyPolyglotConsole
             foreach (var exercise in lesson.Exercises)
             {
                 Console.Clear();
-                Console.WriteLine(exercise.Sentence);
+                Console.WriteLine(exercise.RusPhrase);
                 Console.WriteLine("Options:");
                 foreach (var option in exercise.GetOptions())
                 {

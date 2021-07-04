@@ -3,10 +3,18 @@
     text-decoration: inherit;
 }
 
-body {
+body, select, input {
     font-size: 40px;
     font-family: Courier New;
-    background-color:#D3EDEF;
+    background-color: #D3EDEF;
+}
+
+input[type=text] {
+    width: 1000px;
+}
+
+select, input[type=submit] {
+    width: 100%;
 }
 
 .button:hover {
@@ -27,7 +35,7 @@ ul.lessons .rating {
     margin: 15px;
     border: 1px solid;
     border-radius: 50%;
-    font-size: 30px;;
+    font-size: 30px;
 }
 
 ul.lessons .lesson-info {
@@ -53,10 +61,14 @@ ul.lessons .lesson-description {
     flex-wrap: wrap;
 }
 
-.lesson .buttons div {
-    flex: 50%;
-    height: 70px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    .lesson .buttons div {
+        flex: 50%;
+        height: 70px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+.add div {
+    margin: 5px; 
 }

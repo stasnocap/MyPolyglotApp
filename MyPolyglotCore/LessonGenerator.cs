@@ -25,7 +25,7 @@ namespace MyPolyglotCore
                 {
                     var vocabulary = _vocabulary.GetVocabulary(word);
                     word.Text = vocabulary[_random.Next(vocabulary.Length)];
-                    exercise.EngTranslation.Add(word);
+                    exercise.EngPhrase.Add(word);
                     exercise.RusPhrase += word.Text + " ";
                 }
                 exercises.Add(exercise);

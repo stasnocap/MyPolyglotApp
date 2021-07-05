@@ -10,7 +10,7 @@ body, select, input {
 }
 
     input[type=text] {
-        width: 1000px;
+        width: 948px;
     }
 
     select, input[type=submit] {
@@ -54,6 +54,7 @@ ul.lessons {
 
 .lesson {
     width: 100%;
+    margin-right: 5px;
 }
 
 .lesson > div:not(.buttons) {

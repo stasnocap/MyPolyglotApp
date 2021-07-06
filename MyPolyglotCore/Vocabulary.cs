@@ -1,4 +1,7 @@
 using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using MyPolyglotCore;
 using MyPolyglotCore.Words;
 using MyPolyglotCore.Words.Pronouns;
@@ -8,7 +11,18 @@ namespace MyPolyglotCore
     public class Vocabulary
     {
         #region Pronouns
-        public string[] SubjectPronouns => new string[] { "i", "you", "he", "she", "it", "we", "they" };
+
+        public SubjectPronoun[] SubjectPronouns => new SubjectPronoun[]
+        {
+            new SubjectPronoun() {Text = "i"},
+            new SubjectPronoun() {Text = "you"},
+            new SubjectPronoun() {Text = "he"},
+            new SubjectPronoun() {Text = "she"},
+            new SubjectPronoun() {Text = "it"},
+            new SubjectPronoun() {Text = "we"},
+            new SubjectPronoun() {Text = "they"}
+        };
+
         public string[] ObjectPronouns => new string[] { "me", "you", "him", "her", "it", "us", "you", "them" };
         public string[] PossessiveAdjectives => new string[] { "my", "your", "his", "her", "its", "our", "their" };
         public string[] PossessivePronouns => new string[] { "mine", "yours", "his", "hers", "ours", "theirs" };
@@ -25,11 +39,11 @@ namespace MyPolyglotCore
             new Verb() { Text = "awake", PastTense = "awoke", PastParticle =  "awoken" },
         };
 
-        public string[] GetVocabulary(Word word)
+        public IEnumerable<string> GetVocabulary(Word word)
         {
             var vocabulary = word switch
             {
-                SubjectPronoun s => SubjectPronouns,
+                SubjectPronoun s => SubjectPronouns.Select(x => x.Text),
                 ObjectPronoun o => ObjectPronouns,
                 PossessiveAdjective p => PossessiveAdjectives,
                 PossessivePronoun p => PossessivePronouns,

@@ -4,22 +4,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
 using MyPolyglotCore.Words;
+using MyPolyglotCore.Words.Pronouns;
 
 namespace MyPolyglotCore
 {
     public class Recognizer
     {
         private Vocabulary _vocabulary;
-        private List<string[]> _checkedVocabularies;
 
         public Recognizer()
         {
             _vocabulary = new Vocabulary();
-
-            _checkedVocabularies = new List<string[]>()
-            {
-                _vocabulary.SubjectPronouns.Select(x=>x.Text).ToArray()
-            };
         }
 
         public IEnumerable<string> Split(string engPhrase)
@@ -31,12 +26,18 @@ namespace MyPolyglotCore
         public void Recognize(string[] words)
         {
             var convertedWords = new List<Word>();
+            var checkedVocabularies = new List<string[]>()
+            {
+                _vocabulary.SubjectPronouns.Select(x=>x.Text).ToArray()
+            };
+
             foreach (var word in words)
             {
-                foreach (var vocabulary in _checkedVocabularies)
+                foreach (var vocabulary in checkedVocabularies)
                 {
                     if (Array.Exists(vocabulary, x => x == word))
                     {
+                        
                     }
                 }
             }

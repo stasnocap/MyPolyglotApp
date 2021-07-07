@@ -15,9 +15,6 @@ namespace MyPolyglotWeb.Controllers
         [HttpPost]
         public IActionResult Add(AddViewModel viewModel)
         {
-            var recognizer = new Recognizer();
-            var words = recognizer.Split(viewModel.EngPhrase);
-
             return View();
         }
     }

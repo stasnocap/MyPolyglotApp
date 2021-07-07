@@ -27,7 +27,7 @@ namespace MyPolyglotCore
                 switch (word)
                 {
                     case SubjectPronoun s:
-                        options.AddRange(_vocabulary.SubjectPronouns.Select(x => x.Text));
+                        options.AddRange(_vocabulary.SubjectPronouns);
                         break;
                     case ObjectPronoun o:
                         options.AddRange(_vocabulary.ObjectPronouns);

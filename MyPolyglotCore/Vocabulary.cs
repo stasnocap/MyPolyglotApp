@@ -123,7 +123,7 @@ namespace MyPolyglotCore
         {
             dynamic vocabulary = word switch
             {
-                SubjectPronoun s => SubjectPronouns.Select(x => x.Text),
+                SubjectPronoun s => SubjectPronouns,
                 ObjectPronoun o => ObjectPronouns,
                 PossessiveAdjective p => PossessiveAdjectives,
                 PossessivePronoun p => PossessivePronouns,

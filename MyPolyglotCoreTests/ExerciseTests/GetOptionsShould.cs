@@ -68,7 +68,7 @@ namespace MyPolyglotCore.Tests.ExerciseTests
 
             var options = exercise.GetOptions();
 
-            Assert.Contains(textOfWord, options);
+            Assert.Contains(textOfWord, options.Select(x => x.Text));
             Assert.True(options.Count() == 6);
         }
     }

@@ -24,7 +24,7 @@ namespace MyPolyglotCore
                 foreach (var word in structure)
                 {
                     var vocabulary = _vocabulary.GetVocabulary(word);
-                    word.Text = vocabulary[_random.Next(vocabulary.Length)];
+                    word.Text = vocabulary[_random.Next(vocabulary.Count)].Text;
                     exercise.RightAnswer.Add(word);
                     exercise.Sentence += word.Text + " ";
                 }

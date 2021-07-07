@@ -13,8 +13,7 @@ namespace MyPolyglotWeb.Presentation
             var lesson = generator.GenerateFirstLesson();
             return new LessonViewModel()
             {
-                Id = id,
-                Lesson = lesson
+                Id = id
             };
         }
 

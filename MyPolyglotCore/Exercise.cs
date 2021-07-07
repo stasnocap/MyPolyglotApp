@@ -8,8 +8,8 @@ namespace MyPolyglotCore
 {
     public class Exercise
     {
-        public List<Word> RightAnswer { get; set; } = new List<Word>();
-        public string Sentence { get; set; }
+        public string RusPhrase { get; set; }
+        public List<Word> EngPhrase { get; set; } = new List<Word>();
 
         private Vocabulary _vocabulary { get; }
         private readonly Random _random = new Random();
@@ -22,7 +22,7 @@ namespace MyPolyglotCore
         public IEnumerable<string> GetOptions()
         {
             var options = new List<string>();
-            foreach (var word in RightAnswer)
+            foreach (var word in EngPhrase)
             {
                 switch (word)
                 {

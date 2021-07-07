@@ -37,7 +37,7 @@ namespace MyPolyglotCore.Tests.ExerciseTests
                 _ => throw new NotSupportedException()
             };
 
-            exercise.RightAnswer.Add(word);
+            exercise.EngPhrase.Add(word);
 
             var options = exercise.GetOptions();
 
@@ -64,7 +64,7 @@ namespace MyPolyglotCore.Tests.ExerciseTests
                 _ => throw new NotSupportedException()
             };
             word.Text = textOfWord;
-            exercise.RightAnswer.Add(word);
+            exercise.EngPhrase.Add(word);
 
             var options = exercise.GetOptions();
 

@@ -1,5 +1,12 @@
 ﻿<ul class="lessons">
-    <a href="@Url.Action("Lesson", "Home")?id=1">
+    <a href="@Url.Action("Add", "Admin")">
+        <div class="button">
+            Добавить упражнения
+        </div>
+    </a>
+    @for (int i = 0; i < 32; i++)
+    {
+        <a href="@Url.Action("Lesson", "Home")?id=1">
         <li class="button">
             <div class=" rating">
                 0.0
@@ -13,5 +20,6 @@
                 </div>
             </div>
         </li>
-    </a>
+        </a>
+    }
 </ul>

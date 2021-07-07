@@ -3,41 +3,58 @@
     text-decoration: inherit;
 }
 
-body {
+body, select, input {
     font-size: 40px;
     font-family: Courier New;
-    background-color:#D3EDEF;
+    background-color: #D3EDEF;
 }
+
+    input[type=text] {
+        width: 948px;
+    }
+
+    select, input[type=submit] {
+        width: 100%;
+    }
 
 .button:hover {
     cursor: pointer;
     background-color: #9CACBD;
 }
 
-ul.lessons li {
-    height: 100px;
-    border-bottom: 1px solid;
-    font-size: 40px;
-    font-family: Courier New;
-    display: flex;
+ul.lessons {
+    width: 100%;
 }
 
-ul.lessons .rating {
-    padding: 20px;
-    margin: 15px;
-    border: 1px solid;
-    border-radius: 50%;
-    font-size: 30px;;
-}
+    ul.lessons li {
+        height: 100px;
+        border-bottom: 1px solid;
+        font-size: 40px;
+        font-family: Courier New;
+        display: flex;
+    }
 
-ul.lessons .lesson-info {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-}
+    ul.lessons .rating {
+        padding: 20px;
+        margin: 15px;
+        border: 1px solid;
+        border-radius: 50%;
+        font-size: 30px;
+    }
 
-ul.lessons .lesson-description {
-    font-size: 25px;
+    ul.lessons .lesson-info {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+    }
+
+    ul.lessons .lesson-description {
+        font-size: 25px;
+    }
+
+.lesson {
+    width: 100%;
+    margin-right: 5px;
 }
 
 .lesson > div:not(.buttons) {
@@ -53,10 +70,31 @@ ul.lessons .lesson-description {
     flex-wrap: wrap;
 }
 
-.lesson .buttons div {
-    flex: 50%;
-    height: 70px;
+    .lesson .buttons div {
+        flex: 50%;
+        height: 70px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+
+.add div {
+    margin: 5px;
+}
+
+.container {
     display: flex;
-    justify-content: center;
+}
+
+.navigation {
+    height: 100%;
+    padding: 0 73px 0 0;
+}
+
+.navigation span {
+    height: 100vh;
+    display: flex;
     align-items: center;
+    position: fixed;
 }

@@ -21,7 +21,7 @@ namespace MyPolyglotCore
 
         public IEnumerable<Word> GetOptions()
         {
-            var options = new List<string>();
+            var options = new List<Word>();
             foreach (var word in EngPhrase)
             {
                 switch (word)

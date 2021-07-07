@@ -13,14 +13,9 @@ namespace MyPolyglotWeb.Presentation
             var lesson = generator.GenerateFirstLesson();
             return new LessonViewModel()
             {
-                Id = id
+                Id = id,
+                Lesson = lesson
             };
-        }
-
-        private int GetRandomPhrase(int maxValue)
-        {
-            var random = new Random();
-            return random.Next(maxValue);
         }
     }
 }

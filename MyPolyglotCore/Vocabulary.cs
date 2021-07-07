@@ -70,19 +70,58 @@ namespace MyPolyglotCore
 
         #endregion
 
-        public IReadOnlyList<Determiner> Determiners => new List<string> { "the", "a", "an" };
-        public List<string> Adjectives => new List<string> { "other", "new", "ood", "igh", "old", "eat", "big", "can", "all", "large", "national", "young", "different", "black", "long", "little", "important", "political", "bad", "white", "real", "best", "right", "social", "only", "public", "sure", "low", "early", "able", "human", "local", "late", "hard", "major", "better", "economic", "strong", "possible", "whole", "free", "military", "true", "federal", "international", "full", "special", "easy", "clear", "recent", "certain", "personal", "open", "red", "difficult", "available", "likely", "short", "single", "medical", "current", "wrong", "private", "past", "foreign", "fine", "common", "poor", "natural", "significant", "similar", "hot", "dead", "central", "happy", "serious", "ready", "simple", "left", "physical", "general", "environmental", "financial", "blue", "democratic", "dark", "various", "entire", "close", "legal", "religious", "cold", "final", "main", "green", "nice", "huge", "popular", "traditional", "cultural" };
-        public List<string> Nouns => new List<string> { "man", "mountain", "state", "ocean", "country", "building", "cat", "airline" };
-        public List<string> Verbs => new List<string> { "be", "have", "do", "say", "get", "make", "go", "know", "take", "see", "come", "think", "look", "want", "give", "use", "find", "tell", "ask", "work", "seem", "feel", "try", "leave", "call", };
-        public Verb[] IrregularVerbs => new Verb[]{
+        public IReadOnlyList<Determiner> Determiners = new List<Determiner>
+        {
+            new Determiner() { Text = "the" },
+            new Determiner() { Text = "a" },
+            new Determiner() { Text = "an" }
+        };
+
+        public IReadOnlyList<Adjective> Adjectives => new List<Adjective>
+        {
+            new Adjective() { Text = "other" },
+            new Adjective() { Text = "new" },
+            new Adjective() { Text = "old" },
+            new Adjective() { Text = "eat" },
+            new Adjective() { Text = "big" },
+            new Adjective() { Text = "large" }
+        };
+
+        public IReadOnlyList<Noun> Nouns = new List<Noun>
+        {
+            new Noun() { Text = "man" },
+            new Noun() { Text = "mountain" },
+            new Noun() { Text = "state" },
+            new Noun() { Text = "ocean" },
+            new Noun() { Text = "country" },
+            new Noun() { Text = "building" },
+            new Noun() { Text = "cat" },
+            new Noun() { Text = "airline" }
+        };
+
+        public IReadOnlyList<Verb> Verbs = new List<Verb>
+        {
+            new Verb() { Text = "be" },
+            new Verb() { Text = "have" },
+            new Verb() { Text = "do" },
+            new Verb() { Text = "say" },
+            new Verb() { Text = "get" },
+            new Verb() { Text = "make" },
+            new Verb() { Text = "go" },
+            new Verb() { Text = "know" },
+            new Verb() { Text = "take" },
+            new Verb() { Text = "see" },
+        };
+
+        public IReadOnlyList<Verb> IrregularVerbs => new List<Verb>{
             new Verb() { Text = "abide", PastTense = "abode", PastParticle =  "abode" },
             new Verb() { Text = "arise", PastTense = "arose", PastParticle =  "arise" },
             new Verb() { Text = "awake", PastTense = "awoke", PastParticle =  "awoken" },
         };
 
-        public List<string> GetVocabulary(Word word)
+        public IReadOnlyList<Word> GetVocabulary(Word word)
         {
-            var vocabulary = word switch
+            dynamic vocabulary = word switch
             {
                 SubjectPronoun s => SubjectPronouns,
                 ObjectPronoun o => ObjectPronouns,

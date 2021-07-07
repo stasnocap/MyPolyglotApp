@@ -19,9 +19,9 @@ namespace MyPolyglotCore
             _vocabulary = vocabulary;
         }
 
-        public IEnumerable<string> GetOptions()
+        public IEnumerable<Word> GetOptions()
         {
-            var options = new List<string>();
+            var options = new List<Word>();
             foreach (var word in EngPhrase)
             {
                 switch (word)
@@ -60,13 +60,13 @@ namespace MyPolyglotCore
             return options;
         }
 
-        private IEnumerable<string> GetRandomWordsFromVocabularyWithRightWord(Word word)
+        private IEnumerable<Word> GetRandomWordsFromVocabularyWithRightWord(Word word)
         {
             var vocabulary = _vocabulary.GetVocabulary(word);
             return vocabulary
                 .OrderBy(x => _random.Next())
                 .Take(5)
-                .Concat(new[] { word.Text })
+                .Append(word)
                 .OrderBy(x => Guid.NewGuid());
         }
     }

@@ -17,11 +17,5 @@ namespace MyPolyglotWeb.Presentation
                 Lesson = lesson
             };
         }
-
-        private int GetRandomPhrase(int maxValue)
-        {
-            var random = new Random();
-            return random.Next(maxValue);
-        }
     }
 }

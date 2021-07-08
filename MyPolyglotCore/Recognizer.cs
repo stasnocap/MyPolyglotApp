@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Security.Cryptography.X509Certificates;
 using System.Text.RegularExpressions;
 using MyPolyglotCore.Words;
-using MyPolyglotCore.Words.Pronouns;
 
 namespace MyPolyglotCore
 {
@@ -20,16 +16,20 @@ namespace MyPolyglotCore
 
         public IEnumerable<Word> Recognize(string engPhrase)
         {
-            var words = Regex.Split(engPhrase.ToLower(), "\\W+")
-                .Where(x => x.Length > 0); // remove words with "" value
+            var wordTexts = Regex.Split(engPhrase.ToLower(), "\\W+");
 
+            // vocabularies that will have been checked for the existence of word
             var checkedVocabularies = new List<Word>();
             checkedVocabularies.AddRange(_vocabulary.SubjectPronouns);
+            checkedVocabularies.AddRange(_vocabulary.ObjectPronouns);
+            checkedVocabularies.AddRange(_vocabulary.PossessiveAdjectives);
+            checkedVocabularies.AddRange(_vocabulary.PossessivePronouns);
+            checkedVocabularies.AddRange(_vocabulary.ReflexivePronouns);
+            checkedVocabularies.AddRange(_vocabulary.Determiners);
 
-            var convertedWords = words.Select(word => checkedVocabularies
-                    .Find(x => x.Text == word));
-
-            return convertedWords;
+            return wordTexts
+                .Select(word => checkedVocabularies.FirstOrDefault(x => x.Text == word))
+                .Where(x => x != null);
         }
     }
 }

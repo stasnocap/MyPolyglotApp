@@ -26,12 +26,8 @@ namespace MyPolyglotCore
         public IReadOnlyList<ObjectPronoun> ObjectPronouns = new List<ObjectPronoun>
         {
             new ObjectPronoun() { Text = "me" },
-            new ObjectPronoun() { Text = "you" },
             new ObjectPronoun() { Text = "him" },
-            new ObjectPronoun() { Text = "her" },
-            new ObjectPronoun() { Text = "it" },
             new ObjectPronoun() { Text = "us" },
-            new ObjectPronoun() { Text = "you" },
             new ObjectPronoun() { Text = "them" }
         };
 
@@ -50,7 +46,6 @@ namespace MyPolyglotCore
         {
             new PossessivePronoun() { Text = "mine" },
             new PossessivePronoun() { Text = "yours" },
-            new PossessivePronoun() { Text = "his" },
             new PossessivePronoun() { Text = "hers" },
             new PossessivePronoun() { Text = "ours" },
             new PossessivePronoun() { Text = "theirs" }
@@ -113,7 +108,7 @@ namespace MyPolyglotCore
             new Verb() { Text = "see" },
         };
 
-        public IReadOnlyList<Verb> IrregularVerbs => new List<Verb>{
+        public IReadOnlyList<Verb> IrregularVerbs = new List<Verb>{
             new Verb() { Text = "abide", PastTense = "abode", PastParticle =  "abode" },
             new Verb() { Text = "arise", PastTense = "arose", PastParticle =  "arise" },
             new Verb() { Text = "awake", PastTense = "awoke", PastParticle =  "awoken" },

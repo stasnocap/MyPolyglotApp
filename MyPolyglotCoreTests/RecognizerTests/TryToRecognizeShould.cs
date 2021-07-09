@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Linq;
 using MyPolyglotCore;
 using MyPolyglotCore.Words;
 using MyPolyglotCore.Words.Pronouns;
@@ -7,7 +6,7 @@ using Xunit;
 
 namespace MyPolyglotCoreTests.RecognizerTests
 {
-    public class RecognizeShould
+    public class TryToRecognizeShould
     {
         [Theory]
         [InlineData(typeof(SubjectPronoun))]
@@ -31,14 +30,16 @@ namespace MyPolyglotCoreTests.RecognizerTests
 
             var vocabulary = new Vocabulary().GetVocabulary(word);
 
-            var randomWordFromVocabulary = vocabulary[new Random().Next(vocabulary.Count)].Text;
+            var randomWordFromVocabulary = vocabulary[new Random().Next(vocabulary.Count)];
 
             var engPhrase =
                 $",,.1 s,t! tr , starst nsetnrsit!ta stra {randomWordFromVocabulary}, 2 arstar";
 
-            var words = new Recognizer().Recognize(engPhrase);
+            var recognizer = new Recognizer(engPhrase);
 
-            Assert.Contains(randomWordFromVocabulary, words.Select(x => x.Text));
+            recognizer.TryToRecognize();
+
+            Assert.Contains(randomWordFromVocabulary, recognizer.RecognizedWords);
         }
 
     }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using MyPolyglotCore;
 using MyPolyglotCore.Words;
 using MyPolyglotCore.Words.Pronouns;
@@ -69,6 +70,34 @@ namespace MyPolyglotCoreTests.RecognizerTests
             }
 
             Assert.DoesNotContain(randomWordFromVocabulary, recognizer.UnrecognizedWords);
+        }
+
+        [Theory]
+        [InlineData(typeof(SubjectPronoun))]
+        [InlineData(typeof(ObjectPronoun))]
+        [InlineData(typeof(PossessiveAdjective))]
+        [InlineData(typeof(PossessivePronoun))]
+        [InlineData(typeof(ReflexivePronoun))]
+        [InlineData(typeof(Determiner))]
+        [InlineData(typeof(Verb))]
+        public void DoesNotContainNullOrEmptyStrings(Type type)
+        {
+            var randomWordFromVocabulary = GetRandomWordFromVocabulary(type);
+
+            var engPhrase =
+                $",,.1 s,t! tr , starst nsetnrsit!ta stra {randomWordFromVocabulary.Text}, 2 arstar";
+
+            var recognizer = new Recognizer(engPhrase, _vocabulary);
+
+            recognizer.TryToRecognize();
+
+            var words = recognizer.RecognizedWords.Concat(recognizer.UnrecognizedWords);
+
+            foreach (var word in words)
+            {
+                Assert.NotNull(word);
+                Assert.False(string.IsNullOrEmpty(word.Text));
+            }
         }
 
         private Word GetRandomWordFromVocabulary(Type typeOfVocabulary)

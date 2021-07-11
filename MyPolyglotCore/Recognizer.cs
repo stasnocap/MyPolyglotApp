@@ -13,27 +13,18 @@ namespace MyPolyglotCore
 
         private Vocabulary _vocabulary;
 
-        public Recognizer(string engPhrase)
+        public Recognizer(string engPhrase, Vocabulary vocabulary)
         {
             EngPhrase = engPhrase;
-            _vocabulary = new Vocabulary();
+            _vocabulary = vocabulary;
         }
 
         public void TryToRecognize()
         {
             var words = SplitToWords();
 
-            // vocabularies that will have been checked for the existence of word
-            var checkedVocabularies = new List<Word>();
-            checkedVocabularies.AddRange(_vocabulary.SubjectPronouns);
-            checkedVocabularies.AddRange(_vocabulary.ObjectPronouns);
-            checkedVocabularies.AddRange(_vocabulary.PossessiveAdjectives);
-            checkedVocabularies.AddRange(_vocabulary.PossessivePronouns);
-            checkedVocabularies.AddRange(_vocabulary.ReflexivePronouns);
-            checkedVocabularies.AddRange(_vocabulary.Determiners);
-
             RecognizedWords = words
-                .Select(word => checkedVocabularies.FirstOrDefault(x => x == word))
+                .Select(word => _vocabulary.RecognizableVocabularies.FirstOrDefault(x => x.Equals(word)))
                 .Where(x => x != null);
 
             UnrecognizedWords = words.Except(RecognizedWords);

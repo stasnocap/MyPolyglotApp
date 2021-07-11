@@ -19,6 +19,22 @@
             Английский перевод:
             <input type="text" name="EngPhrase" />
         </div>
+        @if (Model?.UnrecognizedWords != null)
+        {
+            <div>
+                Нераспознанные слова:
+                @for (int i = 0; i < Model.UnrecognizedWords.Count; i++)
+                {
+                    <span class="unrecognized-word button">
+                        @Model.UnrecognizedWords[i].Text
+                    </span>
+                    if (i + 1 < Model.UnrecognizedWords.Count)
+                    {
+                        <span>,</span>
+                    }
+                }
+            </div>
+        }
         <div>
             <input type="submit" class="button" value="Добавить" />
         </div>

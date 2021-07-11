@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MyPolyglotCore;
 using MyPolyglotWeb.Models.ViewModels;
+using System.Linq;
 
 namespace MyPolyglotWeb.Controllers
 {
@@ -15,7 +16,13 @@ namespace MyPolyglotWeb.Controllers
         [HttpPost]
         public IActionResult Add(AddViewModel viewModel)
         {
-            return View();
+            var recognizer = new Recognizer(viewModel.EngPhrase, new Vocabulary());
+
+            recognizer.TryToRecognize();
+
+            viewModel.UnrecognizedWords = recognizer.UnrecognizedWords.ToList();
+
+            return View(viewModel);
         }
     }
 }

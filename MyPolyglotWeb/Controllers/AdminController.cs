@@ -20,7 +20,9 @@ namespace MyPolyglotWeb.Controllers
 
             recognizer.TryToRecognize();
 
-            viewModel.UnrecognizedWords = recognizer.UnrecognizedWords.ToList();
+            viewModel.UnrecognizedWords = recognizer.UnrecognizedWords
+                .Select(x => new UnrecognizedWord() { Text = x.Text })
+                .ToList();
 
             return View(viewModel);
         }

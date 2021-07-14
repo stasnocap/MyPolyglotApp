@@ -2,6 +2,10 @@
 
 @using MyPolyglotCore
 
+@section Scripts {
+    <script src="~/js/Recognize.js"></script>
+} 
+
 <div class="add">
     <form action="/Admin/Add" method="post">
         <div>
@@ -19,21 +23,24 @@
         </div>
         <div>
             Английский перевод:
-            <input type="text" name="EngPhrase" />
+            <input type="text" name="EngPhrase" class="eng-phrase"/>
+        </div>
+        <div>
+            <input type="button" class="recognize button" value="Распознать"/>
         </div>
         @if (Model?.UnrecognizedWords != null)
         {
-    <div>
-        Нераспознанные слова:
-        @for (int i = 0; i < Model.UnrecognizedWords.Count; i++)
-        {
-            <span class="button">
-                @Model.UnrecognizedWords[i].Text
-            </span>
-            @Html.DropDownList($"UnrecognizedWords[{i}].Type", Html.GetEnumSelectList<UnrecognizableType>(),
-                "Тип слова" )
-        }
-    </div>
+            <div>
+                Нераспознанные слова:
+                @for (int i = 0; i < Model.UnrecognizedWords.Count; i++)
+                {
+                    <span class="button">
+                        @Model.UnrecognizedWords[i].Text
+                    </span>
+                    @Html.DropDownList($"UnrecognizedWords[{i}].Type", Html.GetEnumSelectList<UnrecognizableType>(),
+                        "Тип слова")
+                }
+            </div>
         }
         <div>
             <input type="submit" class="button" value="Добавить" />

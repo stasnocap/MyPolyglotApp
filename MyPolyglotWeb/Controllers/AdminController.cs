@@ -16,15 +16,19 @@ namespace MyPolyglotWeb.Controllers
         [HttpPost]
         public IActionResult Add(AddViewModel viewModel)
         {
-            var recognizer = new Recognizer(viewModel.EngPhrase, new Vocabulary());
+            return View(viewModel);
+        }
+
+        public IActionResult Recognize(string engPhrase)
+        {
+            var recognizer = new Recognizer(engPhrase, new Vocabulary());
 
             recognizer.TryToRecognize();
 
-            viewModel.UnrecognizedWords = recognizer.UnrecognizedWords
-                .Select(x => new UnrecognizedWord() { Text = x.Text })
-                .ToList();
+            var unrecognizedWords = recognizer.UnrecognizedWords
+                .Select(x => new UnrecognizedWord() { Text = x.Text });
 
-            return View(viewModel);
+            return Json(unrecognizedWords);
         }
     }
 }

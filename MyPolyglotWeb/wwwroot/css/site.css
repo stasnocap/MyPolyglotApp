@@ -13,7 +13,7 @@ body, select, input {
         width: 948px;
     }
 
-    select, input[type=submit] {
+    select, input[type=submit], input[type=button] {
         width: 100%;
     }
 

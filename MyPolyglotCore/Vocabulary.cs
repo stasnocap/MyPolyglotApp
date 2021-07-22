@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Collections.ObjectModel;
+using System.Linq;
 using MyPolyglotCore;
 using MyPolyglotCore.Words;
 using MyPolyglotCore.Words.Pronouns;
@@ -112,7 +113,21 @@ namespace MyPolyglotCore
             new Verb() { Text = "abide", PastTense = "abode", PastParticle =  "abode" },
             new Verb() { Text = "arise", PastTense = "arose", PastParticle =  "arise" },
             new Verb() { Text = "awake", PastTense = "awoke", PastParticle =  "awoken" },
+
+
+            new Verb() { Text = "beat", PastTense = "beat", PastParticle =  "beaten" },
+            new Verb() { Text = "become", PastTense = "became", PastParticle =  "become" },
         };
+
+        public IReadOnlyList<Word> RecognizableVocabularies => Enumerable.Empty<Word>()
+            .Concat(SubjectPronouns)
+            .Concat(ObjectPronouns)
+            .Concat(PossessiveAdjectives)
+            .Concat(PossessivePronouns)
+            .Concat(ReflexivePronouns)
+            .Concat(Determiners)
+            .Concat(IrregularVerbs)
+            .ToList();
 
         public IReadOnlyList<Word> GetVocabulary(Word word)
         {
@@ -126,7 +141,7 @@ namespace MyPolyglotCore
                 Determiner d => Determiners,
                 Adjective a => Adjectives,
                 Noun n => Nouns,
-                Verb v => Verbs,
+                Verb v => IrregularVerbs,
                 _ => throw new NotSupportedException(),
             };
             return vocabulary;

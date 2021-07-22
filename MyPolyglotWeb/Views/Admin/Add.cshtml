@@ -1,5 +1,16 @@
 @model AddViewModel
 
+@using MyPolyglotCore
+@using MyPolyglotWeb.Extensions
+
+@section Scripts {
+    <script>
+        var unrecognizableTypeEnum = @(Html.EnumToString<UnrecognizableType>());
+    </script>
+    <script src="~/js/recognize.js"></script>
+    <script src="~/js/add.js"></script>
+}
+
 <div class="add">
     <form action="/Admin/Add" method="post">
         <div>
@@ -15,11 +26,16 @@
             Русское предложение:
             <input type="text" name="RusPhrase" />
         </div>
-        <div>
+        <div class="eng-phrase">
             Английский перевод:
             <input type="text" name="EngPhrase" />
         </div>
-        <div>
+        <div class="recognize">
+            <input type="button" class="button" value="Распознать" />
+        </div>
+        <div class="unrecognized">
+        </div>
+        <div class="submit-button">
             <input type="submit" class="button" value="Добавить" />
         </div>
     </form>

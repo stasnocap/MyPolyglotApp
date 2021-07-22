@@ -13,7 +13,7 @@ body, select, input {
         width: 948px;
     }
 
-    select, input[type=submit] {
+    select, input[type=submit], input[type=button] {
         width: 100%;
     }
 
@@ -57,44 +57,68 @@ ul.lessons {
     margin-right: 5px;
 }
 
-.lesson > div:not(.buttons) {
-    height: 100px;
-    border-bottom: 1px solid;
-    display: flex;
-    align-items: center;
-    padding-left: 30px;
-}
-
-.lesson .buttons {
-    display: flex;
-    flex-wrap: wrap;
-}
-
-    .lesson .buttons div {
-        flex: 50%;
-        height: 70px;
+    .lesson > div:not(.buttons) {
+        height: 100px;
+        border-bottom: 1px solid;
         display: flex;
-        justify-content: center;
         align-items: center;
+        padding-left: 30px;
     }
 
+    .lesson .buttons {
+        display: flex;
+        flex-wrap: wrap;
+    }
 
-.add div {
-    margin: 5px;
-}
+        .lesson .buttons div {
+            flex: 50%;
+            height: 70px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
 
 .container {
     display: flex;
 }
 
-.navigation {
+.add div {
+    margin: 5px;
+}
+
+.add .navigation {
     height: 100%;
     padding: 0 73px 0 0;
 }
 
-.navigation span {
-    height: 100vh;
+    .add .navigation span {
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        position: fixed;
+    }
+
+.add .unrecognized {
     display: flex;
-    align-items: center;
-    position: fixed;
+}
+
+    .add .unrecognized div {
+        position: relative;
+    }
+
+    .add .unrecognized .button {
+        user-select: none;
+    }
+
+    .add .unrecognized select {
+        display: none;
+        position: absolute;
+        z-index: 1;
+        width: 238px;
+        left: -90px;
+        bottom: -55px;
+    }
+
+.add .submit-button {
+    margin-top: 55px;
 }

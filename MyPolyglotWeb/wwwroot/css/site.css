@@ -120,5 +120,6 @@ ul.lessons {
     }
 
 .add .submit-button {
+    display: none;
     margin-top: 55px;
 }

@@ -6,6 +6,7 @@
         $.get(url).done(function (unrecognizedArray) {
             saveOnPage(unrecognizedArray, options);
         });
+        $('.add .submit-button').show();
     });
 });
 
@@ -20,9 +21,7 @@ function saveOnPage(unrecognizedArray, options) {
 }
 
 function getUnrecognizableEnumOptions() {
-    let options = '<options>';
-    let defaultOption = '<option disabled selected>Тип слова</option>';
-    options += defaultOption;
+    let options = '<option disabled selected>Тип слова</option>';
     for (option in unrecognizableTypeEnum) {
         options += '<option>' + option + '</option>';
     }

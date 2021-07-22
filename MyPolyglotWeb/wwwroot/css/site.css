@@ -86,12 +86,12 @@ ul.lessons {
     margin: 5px;
 }
 
-.add .navigation {
+.navigation {
     height: 100%;
     padding: 0 73px 0 0;
 }
 
-    .add .navigation span {
+    .navigation span {
         height: 100vh;
         display: flex;
         align-items: center;

@@ -13,7 +13,7 @@ namespace MyPolyglotCore
     {
         #region Pronouns
 
-        public IReadOnlyList<SubjectPronoun> SubjectPronouns = new List<SubjectPronoun>
+        public IReadOnlyCollection<SubjectPronoun> SubjectPronouns = new HashSet<SubjectPronoun>
         {
             new SubjectPronoun(){ Text = "i" },
             new SubjectPronoun(){ Text = "you" },
@@ -24,7 +24,7 @@ namespace MyPolyglotCore
             new SubjectPronoun(){ Text = "they" }
         };
 
-        public IReadOnlyList<ObjectPronoun> ObjectPronouns = new List<ObjectPronoun>
+        public IReadOnlyCollection<ObjectPronoun> ObjectPronouns = new HashSet<ObjectPronoun>
         {
             new ObjectPronoun() { Text = "me" },
             new ObjectPronoun() { Text = "him" },
@@ -32,7 +32,7 @@ namespace MyPolyglotCore
             new ObjectPronoun() { Text = "them" }
         };
 
-        public IReadOnlyList<PossessiveAdjective> PossessiveAdjectives = new List<PossessiveAdjective>
+        public IReadOnlyCollection<PossessiveAdjective> PossessiveAdjectives = new HashSet<PossessiveAdjective>
         {
             new PossessiveAdjective() { Text = "my" },
             new PossessiveAdjective() { Text = "your" },
@@ -43,7 +43,7 @@ namespace MyPolyglotCore
             new PossessiveAdjective() { Text = "their" }
         };
 
-        public IReadOnlyList<PossessivePronoun> PossessivePronouns = new List<PossessivePronoun>
+        public IReadOnlyCollection<PossessivePronoun> PossessivePronouns = new HashSet<PossessivePronoun>
         {
             new PossessivePronoun() { Text = "mine" },
             new PossessivePronoun() { Text = "yours" },
@@ -52,7 +52,7 @@ namespace MyPolyglotCore
             new PossessivePronoun() { Text = "theirs" }
         };
 
-        public IReadOnlyList<ReflexivePronoun> ReflexivePronouns = new List<ReflexivePronoun>
+        public IReadOnlyCollection<ReflexivePronoun> ReflexivePronouns = new HashSet<ReflexivePronoun>
         {
             new ReflexivePronoun() { Text = "myself" },
             new ReflexivePronoun() { Text = "yourself" },
@@ -66,14 +66,14 @@ namespace MyPolyglotCore
 
         #endregion
 
-        public IReadOnlyList<Determiner> Determiners = new List<Determiner>
+        public IReadOnlyCollection<Determiner> Determiners = new HashSet<Determiner>
         {
             new Determiner() { Text = "the" },
             new Determiner() { Text = "a" },
             new Determiner() { Text = "an" }
         };
 
-        public IReadOnlyList<Adjective> Adjectives => new List<Adjective>
+        public IReadOnlyCollection<Adjective> Adjectives => new HashSet<Adjective>
         {
             new Adjective() { Text = "other" },
             new Adjective() { Text = "new" },
@@ -83,7 +83,7 @@ namespace MyPolyglotCore
             new Adjective() { Text = "large" }
         };
 
-        public IReadOnlyList<Noun> Nouns = new List<Noun>
+        public IReadOnlyCollection<Noun> Nouns = new HashSet<Noun>
         {
             new Noun() { Text = "man" },
             new Noun() { Text = "mountain" },
@@ -95,7 +95,7 @@ namespace MyPolyglotCore
             new Noun() { Text = "airline" }
         };
 
-        public IReadOnlyList<Verb> Verbs = new List<Verb>
+        public IReadOnlyCollection<Verb> Verbs = new HashSet<Verb>
         {
             new Verb() { Text = "be" },
             new Verb() { Text = "have" },
@@ -109,7 +109,7 @@ namespace MyPolyglotCore
             new Verb() { Text = "see" },
         };
 
-        public IReadOnlyList<Verb> IrregularVerbs = new List<Verb>{
+        public IReadOnlyCollection<Verb> IrregularVerbs = new HashSet<Verb>{
             new Verb() { Text = "abide", PastTense = "abode", PastParticle =  "abode" },
             new Verb() { Text = "arise", PastTense = "arose", PastParticle =  "arise" },
             new Verb() { Text = "awake", PastTense = "awoke", PastParticle =  "awoken" },
@@ -119,7 +119,7 @@ namespace MyPolyglotCore
             new Verb() { Text = "become", PastTense = "became", PastParticle =  "become" },
         };
 
-        public IReadOnlyList<Word> RecognizableVocabularies => Enumerable.Empty<Word>()
+        public IReadOnlyCollection<Word> RecognizableVocabularies => Enumerable.Empty<Word>()
             .Concat(SubjectPronouns)
             .Concat(ObjectPronouns)
             .Concat(PossessiveAdjectives)
@@ -129,7 +129,7 @@ namespace MyPolyglotCore
             .Concat(IrregularVerbs)
             .ToList();
 
-        public IReadOnlyList<Word> GetVocabulary(Word word)
+        public IReadOnlyCollection<Word> GetVocabulary(Word word)
         {
             dynamic vocabulary = word switch
             {

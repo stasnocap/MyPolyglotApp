@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using MyPolyglotCore.Words;
 using MyPolyglotCore.Words.Pronouns;
 
@@ -24,7 +25,7 @@ namespace MyPolyglotCore
                 foreach (var word in structure)
                 {
                     var vocabulary = _vocabulary.GetVocabulary(word);
-                    word.Text = vocabulary[_random.Next(vocabulary.Count)].Text;
+                    word.Text = vocabulary.ElementAt(_random.Next(vocabulary.Count)).Text;
                     exercise.EngPhrase.Add(word);
                     exercise.RusPhrase += word.Text + " ";
                 }

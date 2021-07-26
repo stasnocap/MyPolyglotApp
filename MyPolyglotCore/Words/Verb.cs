@@ -18,8 +18,6 @@ namespace MyPolyglotCore.Words
         private IReadOnlyCollection<char> _consonants;
         private IReadOnlyCollection<char> _vowels;
 
-        public Verb() { } // remove
-
         public Verb(string text, IReadOnlyCollection<char> consonants, IReadOnlyCollection<char> vowels, bool stressOnTheFinalSyllable = false)
         {
             Text = text;

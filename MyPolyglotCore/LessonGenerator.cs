@@ -21,7 +21,7 @@ namespace MyPolyglotCore
             for (int i = 0; i < NumberOfExerciseInLesson; i++)
             {
                 var exercise = new Exercise(_vocabulary);
-                var structure = new List<Word>() { new SubjectPronoun(), new Verb() };
+                var structure = new List<Word>() { new SubjectPronoun(), new Verb("a", new HashSet<char>(), new HashSet<char>()) };
                 foreach (var word in structure)
                 {
                     var vocabulary = _vocabulary.GetVocabulary(word);

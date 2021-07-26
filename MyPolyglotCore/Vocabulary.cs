@@ -1,9 +1,6 @@
 using System;
 using System.Collections.Generic;
-using System.Collections.Immutable;
-using System.Collections.ObjectModel;
 using System.Linq;
-using MyPolyglotCore;
 using MyPolyglotCore.Words;
 using MyPolyglotCore.Words.Pronouns;
 
@@ -11,9 +8,21 @@ namespace MyPolyglotCore
 {
     public class Vocabulary
     {
+        #region Letters
+        private IReadOnlyCollection<char> _consonants = new HashSet<char>()
+        {
+            'b', 'c', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'm',
+            'n', 'p', 'q', 'r', 's', 't', 'v', 'w', 'x', 'z'
+        };
+        private IReadOnlyCollection<char> _vowels = new HashSet<char>()
+        {
+            'a', 'e', 'i', 'o', 'u', 'y'
+        };
+        #endregion
+
         #region Pronouns
 
-        public IReadOnlyCollection<SubjectPronoun> SubjectPronouns = new HashSet<SubjectPronoun>
+        public IReadOnlyCollection<SubjectPronoun> SubjectPronouns { get; } = new HashSet<SubjectPronoun>
         {
             new SubjectPronoun(){ Text = "i" },
             new SubjectPronoun(){ Text = "you" },
@@ -24,7 +33,7 @@ namespace MyPolyglotCore
             new SubjectPronoun(){ Text = "they" }
         };
 
-        public IReadOnlyCollection<ObjectPronoun> ObjectPronouns = new HashSet<ObjectPronoun>
+        public IReadOnlyCollection<ObjectPronoun> ObjectPronouns { get; } = new HashSet<ObjectPronoun>
         {
             new ObjectPronoun() { Text = "me" },
             new ObjectPronoun() { Text = "him" },
@@ -32,7 +41,7 @@ namespace MyPolyglotCore
             new ObjectPronoun() { Text = "them" }
         };
 
-        public IReadOnlyCollection<PossessiveAdjective> PossessiveAdjectives = new HashSet<PossessiveAdjective>
+        public IReadOnlyCollection<PossessiveAdjective> PossessiveAdjectives { get; } = new HashSet<PossessiveAdjective>
         {
             new PossessiveAdjective() { Text = "my" },
             new PossessiveAdjective() { Text = "your" },
@@ -43,7 +52,7 @@ namespace MyPolyglotCore
             new PossessiveAdjective() { Text = "their" }
         };
 
-        public IReadOnlyCollection<PossessivePronoun> PossessivePronouns = new HashSet<PossessivePronoun>
+        public IReadOnlyCollection<PossessivePronoun> PossessivePronouns { get; } = new HashSet<PossessivePronoun>
         {
             new PossessivePronoun() { Text = "mine" },
             new PossessivePronoun() { Text = "yours" },
@@ -52,7 +61,7 @@ namespace MyPolyglotCore
             new PossessivePronoun() { Text = "theirs" }
         };
 
-        public IReadOnlyCollection<ReflexivePronoun> ReflexivePronouns = new HashSet<ReflexivePronoun>
+        public IReadOnlyCollection<ReflexivePronoun> ReflexivePronouns { get; } = new HashSet<ReflexivePronoun>
         {
             new ReflexivePronoun() { Text = "myself" },
             new ReflexivePronoun() { Text = "yourself" },
@@ -66,14 +75,14 @@ namespace MyPolyglotCore
 
         #endregion
 
-        public IReadOnlyCollection<Determiner> Determiners = new HashSet<Determiner>
+        public IReadOnlyCollection<Determiner> Determiners { get; } = new HashSet<Determiner>
         {
             new Determiner() { Text = "the" },
             new Determiner() { Text = "a" },
             new Determiner() { Text = "an" }
         };
 
-        public IReadOnlyCollection<Adjective> Adjectives => new HashSet<Adjective>
+        public IReadOnlyCollection<Adjective> Adjectives { get; } = new HashSet<Adjective>
         {
             new Adjective() { Text = "other" },
             new Adjective() { Text = "new" },
@@ -83,7 +92,7 @@ namespace MyPolyglotCore
             new Adjective() { Text = "large" }
         };
 
-        public IReadOnlyCollection<Noun> Nouns = new HashSet<Noun>
+        public IReadOnlyCollection<Noun> Nouns { get; } = new HashSet<Noun>
         {
             new Noun() { Text = "man" },
             new Noun() { Text = "mountain" },
@@ -95,29 +104,39 @@ namespace MyPolyglotCore
             new Noun() { Text = "airline" }
         };
 
-        public IReadOnlyCollection<Verb> Verbs = new HashSet<Verb>
+        #region Verbs
+        public IReadOnlyCollection<Verb> Verbs => new HashSet<Verb>
         {
-            new Verb() { Text = "be" },
-            new Verb() { Text = "have" },
-            new Verb() { Text = "do" },
-            new Verb() { Text = "say" },
-            new Verb() { Text = "get" },
-            new Verb() { Text = "make" },
-            new Verb() { Text = "go" },
-            new Verb() { Text = "know" },
-            new Verb() { Text = "take" },
-            new Verb() { Text = "see" },
+            new Verb(_consonants, _vowels) { Text = "be" },
+            new Verb(_consonants, _vowels) { Text = "have" },
+            new Verb(_consonants, _vowels) { Text = "do" },
+            new Verb(_consonants, _vowels) { Text = "say" },
+            new Verb(_consonants, _vowels) { Text = "get" },
+            new Verb(_consonants, _vowels) { Text = "make" },
+            new Verb(_consonants, _vowels) { Text = "go" },
+            new Verb(_consonants, _vowels) { Text = "know" },
+            new Verb(_consonants, _vowels) { Text = "take" },
+            new Verb(_consonants, _vowels) { Text = "see" },
         };
 
-        public IReadOnlyCollection<Verb> IrregularVerbs = new HashSet<Verb>{
-            new Verb() { Text = "abide", PastTense = "abode", PastParticle =  "abode" },
-            new Verb() { Text = "arise", PastTense = "arose", PastParticle =  "arise" },
-            new Verb() { Text = "awake", PastTense = "awoke", PastParticle =  "awoken" },
-
-
-            new Verb() { Text = "beat", PastTense = "beat", PastParticle =  "beaten" },
-            new Verb() { Text = "become", PastTense = "became", PastParticle =  "become" },
+        public IReadOnlyCollection<Verb> IrregularVerbs => new HashSet<Verb>
+        {
+            new Verb(_consonants, _vowels) { Text = "abide", PastForm = "abode", PastParticipleForm =  "abode" },
+            new Verb(_consonants, _vowels) { Text = "arise", PastForm = "arose", PastParticipleForm =  "arise" },
+            new Verb(_consonants, _vowels) { Text = "awake", PastForm = "awoke", PastParticipleForm =  "awoken" },
+            new Verb(_consonants, _vowels) { Text = "be", PastForm = "was", PastParticipleForm =  "been", 
+                AdditionalForms = new HashSet<string>() { "were", "am", "is", "are" }
+            },
+            new Verb(_consonants, _vowels) { Text = "bear", PastForm = "bore", PastParticipleForm =  "born",
+                AdditionalForms = new HashSet<string>() { "borne" },
+            },
+            new Verb(_consonants, _vowels) { Text = "beat", PastForm = "beat", PastParticipleForm =  "beaten" },
+            new Verb(_consonants, _vowels) { Text = "become", PastForm = "became", PastParticipleForm =  "become" },
+            new Verb(_consonants, _vowels) { Text = "beget", PastForm = "begot", PastParticipleForm =  "begotten",
+                AdditionalForms = new HashSet<string>() { "begat" },
+            },
         };
+        #endregion
 
         public IReadOnlyCollection<Word> RecognizableVocabularies => Enumerable.Empty<Word>()
             .Concat(SubjectPronouns)
@@ -127,7 +146,7 @@ namespace MyPolyglotCore
             .Concat(ReflexivePronouns)
             .Concat(Determiners)
             .Concat(IrregularVerbs)
-            .ToList();
+            .ToHashSet();
 
         public IReadOnlyCollection<Word> GetVocabulary(Word word)
         {

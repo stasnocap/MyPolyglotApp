@@ -1,5 +1,4 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -36,25 +35,41 @@ namespace MyPolyglotCore.Words
         {
             var lengthOfText = Text.Length;
             var lastTwoChars = Text.Substring(lengthOfText - 2);
-            var preLastChar = lastTwoChars[0];
-            var lastChar = lastTwoChars[1];
 
-            if (StressOnTheFinalSyllable && _vowels.Contains(preLastChar) && _consonants.Contains(lastChar))
+            if (StressOnTheFinalSyllable && _vowels.Contains(lastTwoChars[0]) && _consonants.Contains(lastTwoChars[1]))
             {
-                return Text + lastChar + IngEnding;
+                return Text + lastTwoChars[1] + IngEnding;
             }
 
-            if (preLastChar == 'i' && lastChar == 'e')
+            if (Text.EndsWith("ie"))
             {
                 return Text.Substring(0, lengthOfText - 2) + 'y' + IngEnding;
             }
 
-            if (lastChar == 'e')
+            if (Text.EndsWith("e"))
             {
                 return Text.Substring(0, lengthOfText - 1) + IngEnding;
             }
 
             return Text + IngEnding;
+        }
+
+        private string GenerateThirdPersonForm()
+        {
+            var endingsTwoChars = new List<string>() { "ch", "s", "sh", "x", "z" };
+
+            endingsTwoChars.ForEach(x => Text.EndsWith(x) );
+
+
+            foreach (var ending in endingsTwoChars)
+            {
+                if (Text.EndsWith(ending))
+                {
+                    return Text + "es";
+                };
+            }
+
+            return null;
         }
     }
 }

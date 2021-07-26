@@ -10,12 +10,10 @@ namespace MyPolyglotCoreTests.RecognizerTests
     public class TryToRecognizeShould
     {
         private Random _random;
-        private Vocabulary _vocabulary;
 
         public TryToRecognizeShould()
         {
             _random = new Random();
-            _vocabulary = new Vocabulary();
         }
 
         [Theory]
@@ -33,7 +31,7 @@ namespace MyPolyglotCoreTests.RecognizerTests
             var engPhrase =
                 $",,.1 s,t! tr , starst nsetnrsit!ta stra {randomWordFromVocabulary.Text}, 2 arstar";
 
-            var recognizer = new Recognizer(engPhrase, _vocabulary);
+            var recognizer = new Recognizer(engPhrase);
 
             recognizer.TryToRecognize();
 
@@ -60,7 +58,7 @@ namespace MyPolyglotCoreTests.RecognizerTests
             var engPhrase =
                 $",,.1 s,t! tr , starst nsetnrsit!ta stra {randomWordFromVocabulary.Text}, 2 arstar";
 
-            var recognizer = new Recognizer(engPhrase, _vocabulary);
+            var recognizer = new Recognizer(engPhrase);
 
             recognizer.TryToRecognize();
 
@@ -87,7 +85,7 @@ namespace MyPolyglotCoreTests.RecognizerTests
             var engPhrase =
                 $",,.1 s,t! tr , starst nsetnrsit!ta stra {randomWordFromVocabulary.Text}, 2 arstar";
 
-            var recognizer = new Recognizer(engPhrase, _vocabulary);
+            var recognizer = new Recognizer(engPhrase);
 
             recognizer.TryToRecognize();
 
@@ -114,7 +112,7 @@ namespace MyPolyglotCoreTests.RecognizerTests
                 _ => throw new NotSupportedException()
             };
 
-            var vocabulary = _vocabulary.GetVocabulary(word);
+            var vocabulary = Vocabulary.GetVocabulary(word);
 
             return vocabulary[_random.Next(vocabulary.Count)];
         }

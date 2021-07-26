@@ -6,24 +6,17 @@ namespace MyPolyglotCore.Words
 {
     public class Verb : Word
     {
-        public string PastForm { get; set; } //2nd form
+        public string PastForm { get; set; } // 2nd form
         public string PastParticipleForm { get; set; } // 3rd form
         public string PresentParticipleForm { get; } // ing
         public string ThirdPersonForm { get; } // s
         public IReadOnlyCollection<string> AdditionalForms { get; set; }
         public bool StressOnTheFinalSyllable { get; set; } = false;
 
-        private const string IngEnding = "ing";
-        private IReadOnlyCollection<char> _consonants;
-        private IReadOnlyCollection<char> _vowels;
-
-        public Verb(string text, IReadOnlyCollection<char> consonants, IReadOnlyCollection<char> vowels, bool stressOnTheFinalSyllable = false)
+        public Verb(string text) : base(text)
         {
-            Text = text;
-            StressOnTheFinalSyllable = stressOnTheFinalSyllable;
-            _consonants = consonants;
-            _vowels = vowels;
             PresentParticipleForm = GeneratePresentParticipleForm();
+            ThirdPersonForm = GenerateThirdPersonForm();
         }
 
         public bool IsIrregularVerb(IEnumerable<Verb> vocabulary)
@@ -36,30 +29,27 @@ namespace MyPolyglotCore.Words
             var lengthOfText = Text.Length;
             var lastTwoChars = Text.Substring(lengthOfText - 2);
 
-            if (StressOnTheFinalSyllable && _vowels.Contains(lastTwoChars[0]) && _consonants.Contains(lastTwoChars[1]))
+            if (StressOnTheFinalSyllable && Vocabulary.Vowels.Contains(lastTwoChars[0]) && Vocabulary.Consonants.Contains(lastTwoChars[1]))
             {
-                return Text + lastTwoChars[1] + IngEnding;
+                return Text + lastTwoChars[1] + Vocabulary.IngEnding;
             }
 
             if (Text.EndsWith("ie"))
             {
-                return Text.Substring(0, lengthOfText - 2) + 'y' + IngEnding;
+                return Text.Substring(0, lengthOfText - 2) + 'y' + Vocabulary.IngEnding;
             }
 
             if (Text.EndsWith("e"))
             {
-                return Text.Substring(0, lengthOfText - 1) + IngEnding;
+                return Text.Substring(0, lengthOfText - 1) + Vocabulary.IngEnding;
             }
 
-            return Text + IngEnding;
+            return Text + Vocabulary.IngEnding;
         }
 
         private string GenerateThirdPersonForm()
         {
-            var endingsTwoChars = new List<string>() { "ch", "s", "sh", "x", "z" };
-
-            endingsTwoChars.ForEach(x => Text.EndsWith(x) );
-
+            var lastTwoChars = Text.Substring(Text.Length - 2);
 
             foreach (var ending in endingsTwoChars)
             {
@@ -69,7 +59,12 @@ namespace MyPolyglotCore.Words
                 };
             }
 
-            return null;
+            if (Vocabulary.Consonants.Contains(lastTwoChars[0]) && lastTwoChars[1] == 'y')
+            {
+                return Text.Substring(0, Text.Length - 2) + "ies";
+            }
+
+            return Text + "s";
         }
     }
 }

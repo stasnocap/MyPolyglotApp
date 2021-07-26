@@ -8,13 +8,6 @@ namespace MyPolyglotCore.Tests.ExerciseTests
 {
     public class GetOptionsShould
     {
-        private Vocabulary _vocabulary;
-
-        public GetOptionsShould()
-        {
-            _vocabulary = new Vocabulary();
-        }
-
         [Theory]
         [InlineData(typeof(SubjectPronoun))]
         [InlineData(typeof(ObjectPronoun))]
@@ -24,7 +17,7 @@ namespace MyPolyglotCore.Tests.ExerciseTests
         [InlineData(typeof(Determiner))]
         public void AddWordsToOptions(Type type)
         {
-            var exercise = new Exercise(_vocabulary);
+            var exercise = new Exercise();
 
             dynamic word = type.Name switch
             {
@@ -41,7 +34,7 @@ namespace MyPolyglotCore.Tests.ExerciseTests
 
             var options = exercise.GetOptions();
 
-            var vocabulary = _vocabulary.GetVocabulary(word);
+            var vocabulary = Vocabulary.GetVocabulary(word);
             foreach (var pronoun in vocabulary)
             {
                 Assert.Contains(pronoun, options);
@@ -54,7 +47,7 @@ namespace MyPolyglotCore.Tests.ExerciseTests
         [InlineData(typeof(Adjective))]
         public void AddRandomFiveWordsWithRightAnswer(Type type)
         {
-            var exercise = new Exercise(new Vocabulary());
+            var exercise = new Exercise();
             var textOfWord = "no matter";
             dynamic word = type.Name switch
             {

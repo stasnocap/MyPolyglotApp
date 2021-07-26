@@ -11,12 +11,9 @@ namespace MyPolyglotCore
         public IEnumerable<Word> RecognizedWords { get; set; }
         public IEnumerable<Word> UnrecognizedWords { get; set; }
 
-        private Vocabulary _vocabulary;
-
-        public Recognizer(string engPhrase, Vocabulary vocabulary)
+        public Recognizer(string engPhrase)
         {
             EngPhrase = engPhrase;
-            _vocabulary = vocabulary;
         }
 
         public void TryToRecognize()
@@ -24,7 +21,7 @@ namespace MyPolyglotCore
             var words = SplitToWords();
 
             RecognizedWords = words
-                .Select(word => _vocabulary.RecognizableVocabularies.FirstOrDefault(x => x.Equals(word)))
+                .Select(word => Vocabulary.RecognizableVocabularies.FirstOrDefault(x => x.Equals(word)))
                 .Where(x => x != null);
 
             UnrecognizedWords = words.Except(RecognizedWords);
@@ -34,7 +31,7 @@ namespace MyPolyglotCore
         {
             return Regex.Split(EngPhrase.ToLower(), "\\W+")
                         .Where(x => !string.IsNullOrEmpty(x))
-                        .Select(x => new Word() { Text = x });
+                        .Select(x => new Word(x));
         }
     }
 }

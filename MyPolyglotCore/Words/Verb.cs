@@ -1,4 +1,4 @@
-using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -11,7 +11,7 @@ namespace MyPolyglotCore.Words
         public string PresentParticipleForm { get; } // ing
         public string ThirdPersonForm { get; } // s
         public IReadOnlyCollection<string> AdditionalForms { get; set; }
-        public bool StressOnTheFinalSyllable { get; set; } 
+        public bool StressOnTheFinalSyllable { get; set; } = false;
 
         private const string IngEnding = "ing";
         private IReadOnlyCollection<char> _consonants;

@@ -1,7 +1,9 @@
 ﻿using MyPolyglotCore;
 using MyPolyglotCore.Words;
+using System;
 using System.Collections.Generic;
 using System.Reflection;
+using System.Text;
 using Xunit;
 
 namespace MyPolyglotCoreTests.VerbTests

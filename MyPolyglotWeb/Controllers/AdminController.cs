@@ -21,7 +21,7 @@ namespace MyPolyglotWeb.Controllers
 
         public IActionResult Recognize(string engPhrase)
         {
-            var recognizer = new Recognizer(engPhrase, new Vocabulary());
+            var recognizer = new Recognizer(engPhrase);
 
             recognizer.TryToRecognize();
 

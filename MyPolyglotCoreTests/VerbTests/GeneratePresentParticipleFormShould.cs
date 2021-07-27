@@ -1,24 +1,10 @@
-﻿using MyPolyglotCore;
-using MyPolyglotCore.Words;
-using System.Collections.Generic;
-using System.Reflection;
+﻿using MyPolyglotCore.Words;
 using Xunit;
 
 namespace MyPolyglotCoreTests.VerbTests
 {
     public class GeneratePresentParticipleFormShould
     {
-        private Vocabulary _vocabulary;
-        private HashSet<char> _consonants;
-        private HashSet<char> _vowels;
-
-        public GeneratePresentParticipleFormShould()
-        {
-            _vocabulary = new Vocabulary();
-            _consonants = typeof(Vocabulary).GetField("_consonants", BindingFlags.NonPublic | BindingFlags.Instance).GetValue(_vocabulary) as HashSet<char>;
-            _vowels = typeof(Vocabulary).GetField("_vowels", BindingFlags.NonPublic | BindingFlags.Instance).GetValue(_vocabulary) as HashSet<char>;
-        }
-
         [Theory]
         [InlineData("hit", "hitting", true)]
         [InlineData("begin", "beginning", true)]
@@ -26,7 +12,7 @@ namespace MyPolyglotCoreTests.VerbTests
         [InlineData("follow", "following", false)]
         public void TransformVowelPlusConsonantToDoubleConsonantPlusIng(string text, string expectedText, bool stressOnTheFinalSyllable)
         {
-            CheckIfVerbGeneratesWithRightWord(text, expectedText, stressOnTheFinalSyllable);
+            CheckCorrectGeneration(text, expectedText, stressOnTheFinalSyllable);
         }
 
         [Theory]
@@ -34,7 +20,7 @@ namespace MyPolyglotCoreTests.VerbTests
         [InlineData("eliminate", "eliminating")]
         public void TransformEToRemoveEPlusIng(string text, string expectedText)
         {
-            CheckIfVerbGeneratesWithRightWord(text, expectedText);
+            CheckCorrectGeneration(text, expectedText);
         }
 
         [Theory]
@@ -42,7 +28,7 @@ namespace MyPolyglotCoreTests.VerbTests
         [InlineData("lie", "lying")]
         public void TransformIEtoYING(string text, string expectedText)
         {
-            CheckIfVerbGeneratesWithRightWord(text, expectedText);
+            CheckCorrectGeneration(text, expectedText);
         }
 
         [Theory]
@@ -50,13 +36,14 @@ namespace MyPolyglotCoreTests.VerbTests
         [InlineData("discover", "discovering")]
         public void JustAddIng(string text, string expectedText)
         {
-            CheckIfVerbGeneratesWithRightWord(text, expectedText);
+            CheckCorrectGeneration(text, expectedText);
         }
 
-        private void CheckIfVerbGeneratesWithRightWord(string text, string expectedText, bool stressOnTheFinalSyllable = false)
+        private void CheckCorrectGeneration(string text, string expectedText, bool stressOnTheFinalSyllable = false)
         {
-            var verb = new Verb(text, _consonants, _vowels, stressOnTheFinalSyllable);
+            var verb = new Verb(text, stressOnTheFinalSyllable);
             Assert.Equal(expectedText, verb.PresentParticipleForm);
         }
+
     }
 }

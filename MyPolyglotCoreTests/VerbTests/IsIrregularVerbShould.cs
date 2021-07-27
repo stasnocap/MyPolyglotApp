@@ -7,21 +7,10 @@ namespace MyPolyglotCore.Tests.VerbTests
 {
     public class IsIrregularVerbShould
     {
-        private Vocabulary _vocabulary;
-        private HashSet<char> _consonants;
-        private HashSet<char> _vowels;
-
-        public IsIrregularVerbShould()
-        {
-            _vocabulary = new Vocabulary();
-            _consonants = typeof(Vocabulary).GetField("_consonants", BindingFlags.NonPublic | BindingFlags.Instance).GetValue(_vocabulary) as HashSet<char>;
-            _vowels = typeof(Vocabulary).GetField("_vowels", BindingFlags.NonPublic | BindingFlags.Instance).GetValue(_vocabulary) as HashSet<char>;
-        }
-
         [Fact]
         public void ReturnTrueIfIrregularVerbExistInVocabulary()
         {
-            var verb = new Verb("abide", _consonants, _vowels) { Text = "abide" };
+            var verb = new Verb("abide"); 
 
             var vocabulary = new List<Verb>();
             vocabulary.Add(verb);
@@ -32,7 +21,7 @@ namespace MyPolyglotCore.Tests.VerbTests
         [Fact]
         public void ReturnFalseIfIrregularVerbDoesNotExistInVocabulary()
         {
-            var verb = new Verb("abide", _consonants, _vowels) { Text = "abide" };
+            var verb = new Verb("abide");
 
             var vocabulary = new List<Verb>();
 

@@ -1,11 +1,9 @@
 ﻿using MyPolyglotCore.Words;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using Xunit;
 
 namespace MyPolyglotCoreTests.VerbTests
 {
+    public class GenerateThirdPersonFormShould
     {
         [Theory]
         [InlineData("watch", "watches")]

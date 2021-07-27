@@ -16,9 +16,6 @@ namespace MyPolyglotCore.Words
         public Verb(string text, bool stressOnTheFinalSyllable = false) : base(text)
         {
             StressOnTheFinalSyllable = stressOnTheFinalSyllable;
-            StressOnTheFinalSyllable = stressOnTheFinalSyllable;
-            _consonants = consonants;
-            _vowels = vowels;
             PresentParticipleForm = GeneratePresentParticipleForm();
             ThirdPersonForm = GenerateThirdPersonForm();
         }
@@ -48,6 +45,9 @@ namespace MyPolyglotCore.Words
                 return Text.Substring(0, lengthOfText - 1) + Vocabulary.IngEnding;
             }
 
+            return Text + Vocabulary.IngEnding;
+        }
+
         private string GenerateThirdPersonForm()
         {
             var lastTwoChars = Text.Substring(Text.Length - 2);
@@ -58,14 +58,11 @@ namespace MyPolyglotCore.Words
                 {
                     return Text + "es";
                 };
-            if (preLastChar == 'i' && lastChar == 'e')
-            {
-                return Text.Substring(0, lengthOfText - 2) + 'y' + IngEnding;
             }
-                return Text.Substring(0, Text.Length - 1) + "ies";
+
             if (Vocabulary.Consonants.Contains(lastTwoChars[0]) && lastTwoChars[1] == 'y')
             {
-                return Text.Substring(0, lengthOfText - 1) + IngEnding;
+                return Text.Substring(0, Text.Length - 1) + "ies";
             }
 
             return Text + "s";

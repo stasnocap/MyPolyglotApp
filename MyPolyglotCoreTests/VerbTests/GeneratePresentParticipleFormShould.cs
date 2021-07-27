@@ -1,9 +1,13 @@
 ﻿using MyPolyglotCore.Words;
+using System;
+using System.Collections.Generic;
+using System.Reflection;
+using System.Text;
 using Xunit;
 
 namespace MyPolyglotCoreTests.VerbTests
 {
-    public class GeneratePresentParticipleFormShould
+    public class GeneratePresentParticipleFormShould : VerbChecker
     {
         [Theory]
         [InlineData("hit", "hitting", true)]

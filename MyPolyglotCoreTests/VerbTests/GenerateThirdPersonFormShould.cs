@@ -6,7 +6,6 @@ using Xunit;
 
 namespace MyPolyglotCoreTests.VerbTests
 {
-    public class GenerateThirdPersonFormShould 
     {
         [Theory]
         [InlineData("watch", "watches")]

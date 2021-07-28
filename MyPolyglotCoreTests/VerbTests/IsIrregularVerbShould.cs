@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Reflection;
 using MyPolyglotCore.Words;
 using Xunit;
 
@@ -9,7 +10,7 @@ namespace MyPolyglotCore.Tests.VerbTests
         [Fact]
         public void ReturnTrueIfIrregularVerbExistInVocabulary()
         {
-            var verb = new Verb() { Text = "abide" };
+            var verb = new Verb("abide"); 
 
             var vocabulary = new List<Verb>();
             vocabulary.Add(verb);
@@ -20,7 +21,7 @@ namespace MyPolyglotCore.Tests.VerbTests
         [Fact]
         public void ReturnFalseIfIrregularVerbDoesNotExistInVocabulary()
         {
-            var verb = new Verb() { Text = "abide" };
+            var verb = new Verb("abide");
 
             var vocabulary = new List<Verb>();
 

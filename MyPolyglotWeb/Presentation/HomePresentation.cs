@@ -9,12 +9,10 @@ namespace MyPolyglotWeb.Presentation
     {
         public LessonViewModel GetLessonViewModel(long id)
         {
-            var generator = new LessonGenerator();
-            var lesson = generator.GenerateFirstLesson();
             return new LessonViewModel()
             {
                 Id = id,
-                Lesson = lesson
+                Lesson = new Lesson()
             };
         }
     }

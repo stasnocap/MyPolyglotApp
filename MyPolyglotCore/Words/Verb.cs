@@ -6,12 +6,104 @@ namespace MyPolyglotCore.Words
 {
     public class Verb : Word
     {
-        public string PastTense { get; set; }
-        public string PastParticle { get; set; }
+        public string PastForm { get; } // 2nd form
+        public string PastParticipleForm { get; } // 3rd form
+        public string PresentParticipleForm { get; } // ing
+        public string ThirdPersonForm { get; } // s
+        public IReadOnlyCollection<string> AdditionalForms { get; set; }
+        public bool StressOnTheFinalSyllable { get; }
+
+        public Verb(string text, string pastForm = null, string pastFarticipleForm = null, bool stressOnTheFinalSyllable = false) : base(text)
+        {
+            StressOnTheFinalSyllable = stressOnTheFinalSyllable;
+            if (string.IsNullOrEmpty(PastForm))
+            {
+                PastForm = GeneratePastForm();
+            }
+            PresentParticipleForm = GeneratePresentParticipleForm();
+            ThirdPersonForm = GenerateThirdPersonForm();
+        }
+
+        public Verb(string text, bool stressOnTheFinalSyllable) : base(text)
+        {
+            StressOnTheFinalSyllable = stressOnTheFinalSyllable;
+            PastForm = GeneratePastForm();
+            PresentParticipleForm = GeneratePresentParticipleForm();
+            ThirdPersonForm = GenerateThirdPersonForm();
+        }
 
         public bool IsIrregularVerb(IEnumerable<Verb> vocabulary)
         {
             return vocabulary.FirstOrDefault(x => x.Text == Text) != null;
+        }
+
+        private string GeneratePastForm()
+        {
+            var lastTwoChars = Text.Substring(Text.Length - 2);
+
+            if (Vocabulary.Vowels.Contains(lastTwoChars[0]) && Vocabulary.Consonants.Contains(lastTwoChars[1]))
+            {
+                return Text + lastTwoChars[1] + Vocabulary.EdEnding;
+            }
+
+            if (Vocabulary.Vowels.Contains(lastTwoChars[0]) && Text.EndsWith('y'))
+            {
+                return Text + Vocabulary.EdEnding;
+            }
+
+            if (Text.EndsWith('y'))
+            {
+                return Text.Substring(0, Text.Length - 1) + "ied";
+            }
+
+            if (Text.EndsWith('e'))
+            {
+                return Text + 'd';
+            }
+
+            return Text + Vocabulary.EdEnding;
+        }
+
+        private string GeneratePresentParticipleForm()
+        {
+            var lastTwoChars = Text.Substring(Text.Length - 2);
+
+            if (StressOnTheFinalSyllable && Vocabulary.Vowels.Contains(lastTwoChars[0]) && Vocabulary.Consonants.Contains(lastTwoChars[1]))
+            {
+                return Text + lastTwoChars[1] + Vocabulary.IngEnding;
+            }
+
+            if (Text.EndsWith("ie"))
+            {
+                return Text.Substring(0, Text.Length - 2) + 'y' + Vocabulary.IngEnding;
+            }
+
+            if (Text.EndsWith('e'))
+            {
+                return Text.Substring(0, Text.Length - 1) + Vocabulary.IngEnding;
+            }
+
+            return Text + Vocabulary.IngEnding;
+        }
+
+        private string GenerateThirdPersonForm()
+        {
+            var lastTwoChars = Text.Substring(Text.Length - 2);
+
+            foreach (var ending in Vocabulary.ThirdPersonESEndings)
+            {
+                if (Text.EndsWith(ending))
+                {
+                    return Text + "es";
+                };
+            }
+
+            if (Vocabulary.Consonants.Contains(lastTwoChars[0]) && lastTwoChars[1] == 'y')
+            {
+                return Text.Substring(0, Text.Length - 1) + "ies";
+            }
+
+            return Text + 's';
         }
     }
 }

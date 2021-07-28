@@ -8,13 +8,6 @@ namespace MyPolyglotCore.Tests.ExerciseTests
 {
     public class GetOptionsShould
     {
-        private Vocabulary _vocabulary;
-
-        public GetOptionsShould()
-        {
-            _vocabulary = new Vocabulary();
-        }
-
         [Theory]
         [InlineData(typeof(SubjectPronoun))]
         [InlineData(typeof(ObjectPronoun))]
@@ -24,16 +17,17 @@ namespace MyPolyglotCore.Tests.ExerciseTests
         [InlineData(typeof(Determiner))]
         public void AddWordsToOptions(Type type)
         {
-            var exercise = new Exercise(_vocabulary);
+            var exercise = new Exercise();
+            var wordText = "no matter";
 
             dynamic word = type.Name switch
             {
-                "SubjectPronoun" => (SubjectPronoun)Activator.CreateInstance(type),
-                "ObjectPronoun" => (ObjectPronoun)Activator.CreateInstance(type),
-                "PossessiveAdjective" => (PossessiveAdjective)Activator.CreateInstance(type),
-                "PossessivePronoun" => (PossessivePronoun)Activator.CreateInstance(type),
-                "ReflexivePronoun" => (ReflexivePronoun)Activator.CreateInstance(type),
-                "Determiner" => (Determiner)Activator.CreateInstance(type),
+                "SubjectPronoun" => (SubjectPronoun)Activator.CreateInstance(type, wordText),
+                "ObjectPronoun" => (ObjectPronoun)Activator.CreateInstance(type, wordText),
+                "PossessiveAdjective" => (PossessiveAdjective)Activator.CreateInstance(type, wordText),
+                "PossessivePronoun" => (PossessivePronoun)Activator.CreateInstance(type, wordText),
+                "ReflexivePronoun" => (ReflexivePronoun)Activator.CreateInstance(type, wordText),
+                "Determiner" => (Determiner)Activator.CreateInstance(type, wordText),
                 _ => throw new NotSupportedException()
             };
 
@@ -41,7 +35,7 @@ namespace MyPolyglotCore.Tests.ExerciseTests
 
             var options = exercise.GetOptions();
 
-            var vocabulary = _vocabulary.GetVocabulary(word);
+            var vocabulary = Vocabulary.GetVocabulary(word.GetType());
             foreach (var pronoun in vocabulary)
             {
                 Assert.Contains(pronoun, options);
@@ -54,16 +48,15 @@ namespace MyPolyglotCore.Tests.ExerciseTests
         [InlineData(typeof(Adjective))]
         public void AddRandomFiveWordsWithRightAnswer(Type type)
         {
-            var exercise = new Exercise(new Vocabulary());
+            var exercise = new Exercise();
             var textOfWord = "no matter";
             dynamic word = type.Name switch
             {
-                "Noun" => (Noun)Activator.CreateInstance(type),
-                "Verb" => (Verb)Activator.CreateInstance(type),
-                "Adjective" => (Adjective)Activator.CreateInstance(type),
+                "Noun" => (Noun)Activator.CreateInstance(type, textOfWord),
+                "Verb" => (Verb)Activator.CreateInstance(type, textOfWord, false),
+                "Adjective" => (Adjective)Activator.CreateInstance(type, textOfWord),
                 _ => throw new NotSupportedException()
             };
-            word.Text = textOfWord;
             exercise.EngPhrase.Add(word);
 
             var options = exercise.GetOptions();

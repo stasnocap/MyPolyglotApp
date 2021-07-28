@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using MyPolyglotCore;
 using MyPolyglotCore.Words;
@@ -10,12 +11,10 @@ namespace MyPolyglotCoreTests.RecognizerTests
     public class TryToRecognizeShould
     {
         private Random _random;
-        private Vocabulary _vocabulary;
 
         public TryToRecognizeShould()
         {
             _random = new Random();
-            _vocabulary = new Vocabulary();
         }
 
         [Theory]
@@ -33,7 +32,7 @@ namespace MyPolyglotCoreTests.RecognizerTests
             var engPhrase =
                 $",,.1 s,t! tr , starst nsetnrsit!ta stra {randomWordFromVocabulary.Text}, 2 arstar";
 
-            var recognizer = new Recognizer(engPhrase, _vocabulary);
+            var recognizer = new Recognizer(engPhrase);
 
             recognizer.TryToRecognize();
 
@@ -60,7 +59,7 @@ namespace MyPolyglotCoreTests.RecognizerTests
             var engPhrase =
                 $",,.1 s,t! tr , starst nsetnrsit!ta stra {randomWordFromVocabulary.Text}, 2 arstar";
 
-            var recognizer = new Recognizer(engPhrase, _vocabulary);
+            var recognizer = new Recognizer(engPhrase);
 
             recognizer.TryToRecognize();
 
@@ -87,7 +86,7 @@ namespace MyPolyglotCoreTests.RecognizerTests
             var engPhrase =
                 $",,.1 s,t! tr , starst nsetnrsit!ta stra {randomWordFromVocabulary.Text}, 2 arstar";
 
-            var recognizer = new Recognizer(engPhrase, _vocabulary);
+            var recognizer = new Recognizer(engPhrase);
 
             recognizer.TryToRecognize();
 
@@ -102,21 +101,9 @@ namespace MyPolyglotCoreTests.RecognizerTests
 
         private Word GetRandomWordFromVocabulary(Type typeOfVocabulary)
         {
-            dynamic word = typeOfVocabulary.Name switch
-            {
-                "SubjectPronoun" => (SubjectPronoun) Activator.CreateInstance(typeOfVocabulary),
-                "ObjectPronoun" => (ObjectPronoun) Activator.CreateInstance(typeOfVocabulary),
-                "PossessiveAdjective" => (PossessiveAdjective) Activator.CreateInstance(typeOfVocabulary),
-                "PossessivePronoun" => (PossessivePronoun) Activator.CreateInstance(typeOfVocabulary),
-                "ReflexivePronoun" => (ReflexivePronoun) Activator.CreateInstance(typeOfVocabulary),
-                "Determiner" => (Determiner) Activator.CreateInstance(typeOfVocabulary),
-                "Verb" => (Verb) Activator.CreateInstance(typeOfVocabulary),
-                _ => throw new NotSupportedException()
-            };
+            var vocabulary = Vocabulary.GetVocabulary(typeOfVocabulary);
 
-            var vocabulary = _vocabulary.GetVocabulary(word);
-
-            return vocabulary[_random.Next(vocabulary.Count)];
+            return vocabulary.ToList()[_random.Next(vocabulary.Count)];
         }
     }
 }

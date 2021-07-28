@@ -65,5 +65,28 @@ namespace MyPolyglotCore.Tests.ExerciseTests
             Assert.Contains(textOfWord, options);
             Assert.True(options.Count() == 6);
         }
+
+        [Fact]
+        public void OptionsForVerbConsistsFromAllFormsOfVerb()
+        {
+            var verb = new Verb("play");
+            var exercise = new Exercise("no matter", new List<Word> { verb });
+
+            var verbForms = new List<string>()
+            {
+                verb.Text,
+                verb.PastForm,
+                verb.PastParticipleForm,
+                verb.PresentParticipleForm,
+                verb.ThirdPersonForm,
+            };
+
+            var options = exercise.GetOptions();
+
+            foreach (var form in verbForms)
+            {
+                Assert.Contains(form, options);
+            }
+        }
     }
 }

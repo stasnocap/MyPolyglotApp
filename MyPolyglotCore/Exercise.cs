@@ -75,18 +75,20 @@ namespace MyPolyglotCore
         {
             var verb = word as Verb;
 
-            var list = new List<string>();
-            list.Add(verb.Text);
-            list.Add(verb.PastForm);
-            list.Add(verb.PastParticipleForm);
-            list.Add(verb.PresentParticipleForm);
-            list.Add(verb.ThirdPersonForm);
+            var verbForms = new List<string>()
+            {
+                verb.Text,
+                verb.PastForm,
+                verb.PastParticipleForm,
+                verb.PresentParticipleForm,
+                verb.ThirdPersonForm,
+            };
             if (verb.AdditionalForms != null)
             {
-                list.AddRange(verb.AdditionalForms);
+                verbForms.AddRange(verb.AdditionalForms);
             }
 
-            return list.OrderBy(x => Guid.NewGuid());
+            return verbForms.OrderBy(x => Guid.NewGuid());
         }
     }
 }

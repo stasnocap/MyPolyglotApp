@@ -9,34 +9,40 @@ namespace MyPolyglotCore
     public class Exercise
     {
         public string RusPhrase { get; set; }
-        public List<Word> EngPhrase { get; set; } = new List<Word>();
+        public IEnumerable<Word> EngPhrase { get; set; } = new List<Word>();
 
         private readonly Random _random = new Random();
 
-        public IEnumerable<Word> GetOptions()
+        public Exercise(string rusPhrase, IEnumerable<Word> engPhrase)
         {
-            var options = new List<Word>();
+            RusPhrase = rusPhrase;
+            EngPhrase = engPhrase;
+        }
+
+        public IEnumerable<string> GetOptions()
+        {
+            var options = new List<string>();
             foreach (var word in EngPhrase)
             {
                 switch (word)
                 {
                     case SubjectPronoun s:
-                        options.AddRange(Vocabulary.SubjectPronouns);
+                        options.AddRange(Vocabulary.SubjectPronouns.Select(x => x.Text));
                         break;
                     case ObjectPronoun o:
-                        options.AddRange(Vocabulary.ObjectPronouns);
+                        options.AddRange(Vocabulary.ObjectPronouns.Select(x => x.Text));
                         break;
                     case PossessiveAdjective p:
-                        options.AddRange(Vocabulary.PossessiveAdjectives);
+                        options.AddRange(Vocabulary.PossessiveAdjectives.Select(x => x.Text));
                         break;
                     case PossessivePronoun p:
-                        options.AddRange(Vocabulary.PossessivePronouns);
+                        options.AddRange(Vocabulary.PossessivePronouns.Select(x => x.Text));
                         break;
                     case ReflexivePronoun r:
-                        options.AddRange(Vocabulary.ReflexivePronouns);
+                        options.AddRange(Vocabulary.ReflexivePronouns.Select(x => x.Text));
                         break;
                     case Determiner d:
-                        options.AddRange(Vocabulary.Determiners);
+                        options.AddRange(Vocabulary.Determiners.Select(x => x.Text));
                         break;
                     case Adjective a:
                         options.AddRange(GetRandomWordsFromVocabularyWithRightWord(word));
@@ -45,7 +51,7 @@ namespace MyPolyglotCore
                         options.AddRange(GetRandomWordsFromVocabularyWithRightWord(word));
                         break;
                     case Verb v:
-                        options.AddRange(GetRandomWordsFromVocabularyWithRightWord(word));
+                        options.AddRange(GenerateOptionsForVerb(word));
                         break;
                     default:
                         throw new NotSupportedException();
@@ -54,14 +60,33 @@ namespace MyPolyglotCore
             return options;
         }
 
-        private IEnumerable<Word> GetRandomWordsFromVocabularyWithRightWord(Word word)
+        private IEnumerable<string> GetRandomWordsFromVocabularyWithRightWord(Word word)
         {
             var vocabulary = Vocabulary.GetVocabulary(word.GetType());
             return vocabulary
                 .OrderBy(x => _random.Next())
                 .Take(5)
                 .Append(word)
+                .Select(x => x.Text)
                 .OrderBy(x => Guid.NewGuid());
+        }
+
+        private IEnumerable<string> GenerateOptionsForVerb(Word word)
+        {
+            var verb = word as Verb;
+
+            var list = new List<string>();
+            list.Add(verb.Text);
+            list.Add(verb.PastForm);
+            list.Add(verb.PastParticipleForm);
+            list.Add(verb.PresentParticipleForm);
+            list.Add(verb.ThirdPersonForm);
+            if (verb.AdditionalForms != null)
+            {
+                list.AddRange(verb.AdditionalForms);
+            }
+
+            return list.OrderBy(x => Guid.NewGuid());
         }
     }
 }

@@ -24,6 +24,15 @@ namespace MyPolyglotCoreTests.VerbTests
             CheckCorrectGeneration(text, expectedText);
         }
 
+        [Theory]
+        [InlineData("sing", "sings")]
+        [InlineData("give", "gives")]
+        [InlineData("require", "requires")]
+        public void JustAddS(string text, string expectedText)
+        {
+            CheckCorrectGeneration(text, expectedText);
+        }
+
         private void CheckCorrectGeneration(string text, string expectedText)
         {
             var verb = new Verb(text);

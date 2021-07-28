@@ -109,20 +109,15 @@ namespace MyPolyglotCore
 
         public static IReadOnlyCollection<Verb> IrregularVerbs => new HashSet<Verb>
         {
-            new Verb("abide") { PastForm = "abode", PastParticipleForm =  "abode" },
-            new Verb("arise") { PastForm = "arose", PastParticipleForm =  "arise" },
-            new Verb("awake") { PastForm = "awoke", PastParticipleForm =  "awoken" },
-            new Verb("be") { PastForm = "was", PastParticipleForm =  "been",
-                AdditionalForms = new HashSet<string>() { "were", "am", "is", "are" }
-            },
-            new Verb("bear") { PastForm = "bore", PastParticipleForm =  "born",
-                AdditionalForms = new HashSet<string>() { "borne" },
-            },
-            new Verb("beat") { PastForm = "beat", PastParticipleForm =  "beaten" },
-            new Verb("become") { PastForm = "became", PastParticipleForm =  "become" },
-            new Verb("beget") { PastForm = "begot", PastParticipleForm =  "begotten",
-                AdditionalForms = new HashSet<string>() { "begat" },
-            },
+            new Verb("abide", "abode", "abode"),
+            new Verb("arise", "arose", "arise"),
+            new Verb("awake", "awoke", "awoken"),
+            new Verb("awake", "awoke", "awoken"),
+            new Verb("be", "was", "been"),
+            new Verb("bear", "bore", "born"),
+            new Verb("beat", "beat", "beaten"),
+            new Verb("become", "became", "become"),
+            new Verb("beget", "begot", "begotten"),
         };
         #endregion
 
@@ -155,6 +150,7 @@ namespace MyPolyglotCore
         }
 
         public const string IngEnding = "ing";
+        public const string EdEnding = "ed";
         public static IReadOnlyCollection<string> ThirdPersonESEndings { get; } = new HashSet<string>() { "ch", "s", "sh", "x", "z" };
     }
 }

@@ -13,21 +13,20 @@ namespace MyPolyglotCore.Words
         public IReadOnlyCollection<string> AdditionalForms { get; set; }
         public bool StressOnTheFinalSyllable { get; }
 
-        public Verb(string text, string pastForm = null, string pastFarticipleForm = null, bool stressOnTheFinalSyllable = false) : base(text)
+        public Verb(string text, string pastForm, string pastParticipleForm, bool stressOnTheFinalSyllable = false) : base(text)
         {
             StressOnTheFinalSyllable = stressOnTheFinalSyllable;
-            if (string.IsNullOrEmpty(PastForm))
-            {
-                PastForm = GeneratePastForm();
-            }
+            PastForm = pastForm;
+            PastParticipleForm = pastParticipleForm;
             PresentParticipleForm = GeneratePresentParticipleForm();
             ThirdPersonForm = GenerateThirdPersonForm();
         }
 
-        public Verb(string text, bool stressOnTheFinalSyllable) : base(text)
+        public Verb(string text, bool stressOnTheFinalSyllable = false) : base(text)
         {
             StressOnTheFinalSyllable = stressOnTheFinalSyllable;
             PastForm = GeneratePastForm();
+            PastParticipleForm = PastForm;
             PresentParticipleForm = GeneratePresentParticipleForm();
             ThirdPersonForm = GenerateThirdPersonForm();
         }

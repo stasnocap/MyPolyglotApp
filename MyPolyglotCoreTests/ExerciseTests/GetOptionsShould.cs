@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using MyPolyglotCore.Words;
 using MyPolyglotCore.Words.Pronouns;
@@ -17,7 +18,7 @@ namespace MyPolyglotCore.Tests.ExerciseTests
         [InlineData(typeof(Determiner))]
         public void AddWordsToOptions(Type type)
         {
-            var exercise = new Exercise();
+            var exercise = new Exercise("no matter", new List<Word>());
             var wordText = "no matter";
 
             dynamic word = type.Name switch
@@ -31,7 +32,7 @@ namespace MyPolyglotCore.Tests.ExerciseTests
                 _ => throw new NotSupportedException()
             };
 
-            exercise.EngPhrase.Add(word);
+            exercise.EngPhrase.ToList().Add(word);
 
             var options = exercise.GetOptions();
 
@@ -48,7 +49,7 @@ namespace MyPolyglotCore.Tests.ExerciseTests
         [InlineData(typeof(Adjective))]
         public void AddRandomFiveWordsWithRightAnswer(Type type)
         {
-            var exercise = new Exercise();
+            var exercise = new Exercise("no matter", new List<Word>());
             var textOfWord = "no matter";
             dynamic word = type.Name switch
             {
@@ -57,12 +58,35 @@ namespace MyPolyglotCore.Tests.ExerciseTests
                 "Adjective" => (Adjective)Activator.CreateInstance(type, textOfWord),
                 _ => throw new NotSupportedException()
             };
-            exercise.EngPhrase.Add(word);
+            exercise.EngPhrase.ToList().Add(word);
 
             var options = exercise.GetOptions();
 
-            Assert.Contains(textOfWord, options.Select(x => x.Text));
+            Assert.Contains(textOfWord, options);
             Assert.True(options.Count() == 6);
+        }
+
+        [Fact]
+        public void OptionsForVerbConsistsFromAllFormsOfVerb()
+        {
+            var verb = new Verb("play");
+            var exercise = new Exercise("no matter", new List<Word> { verb });
+
+            var verbForms = new List<string>()
+            {
+                verb.Text,
+                verb.PastForm,
+                verb.PastParticipleForm,
+                verb.PresentParticipleForm,
+                verb.ThirdPersonForm,
+            };
+
+            var options = exercise.GetOptions();
+
+            foreach (var form in verbForms)
+            {
+                Assert.Contains(form, options);
+            }
         }
     }
 }

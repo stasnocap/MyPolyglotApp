@@ -34,8 +34,6 @@ namespace MyPolyglotCoreTests.RecognizerTests
 
             var recognizer = new Recognizer(engPhrase);
 
-            recognizer.TryToRecognize();
-
             Assert.Contains(randomWordFromVocabulary, recognizer.RecognizedWords);
 
             foreach (var unrecognizedWord in recognizer.UnrecognizedWords)
@@ -61,8 +59,6 @@ namespace MyPolyglotCoreTests.RecognizerTests
 
             var recognizer = new Recognizer(engPhrase);
 
-            recognizer.TryToRecognize();
-
             foreach (var unrecognizedWord in recognizer.UnrecognizedWords)
             {
                 Assert.Contains(unrecognizedWord, recognizer.UnrecognizedWords);
@@ -87,8 +83,6 @@ namespace MyPolyglotCoreTests.RecognizerTests
                 $",,.1 s,t! tr , starst nsetnrsit!ta stra {randomWordFromVocabulary.Text}, 2 arstar";
 
             var recognizer = new Recognizer(engPhrase);
-
-            recognizer.TryToRecognize();
 
             var words = recognizer.RecognizedWords.Concat(recognizer.UnrecognizedWords);
 

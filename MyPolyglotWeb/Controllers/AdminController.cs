@@ -23,8 +23,6 @@ namespace MyPolyglotWeb.Controllers
         {
             var recognizer = new Recognizer(engPhrase);
 
-            recognizer.TryToRecognize();
-
             var unrecognizedWords = recognizer.UnrecognizedWords
                 .Select(x => new UnrecognizedWord() { Text = x.Text });
 

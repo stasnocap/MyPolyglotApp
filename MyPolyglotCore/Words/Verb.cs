@@ -31,6 +31,29 @@ namespace MyPolyglotCore.Words
             ThirdPersonForm = GenerateThirdPersonForm();
         }
 
+        //public override bool Equals(object obj)
+        //{
+        //    var word = obj as Word;
+
+        //    if (word == null)
+        //    {
+        //        return false;
+        //    }
+
+        //    bool existInAdditionalForms = false;
+        //    if (AdditionalForms != null && AdditionalForms.Where(x => x.Equals(word.Text)).Any())
+        //    {
+        //        existInAdditionalForms = true;
+        //    }
+
+        //    return word.Text.Equals(Text)
+        //        || word.Text.Equals(PastForm)
+        //        || word.Text.Equals(PastParticipleForm)
+        //        || word.Text.Equals(PresentParticipleForm)
+        //        || word.Text.Equals(ThirdPersonForm)
+        //        || existInAdditionalForms;
+        //}
+
         public bool IsIrregularVerb(IEnumerable<Verb> vocabulary)
         {
             return vocabulary.FirstOrDefault(x => x.Text == Text) != null;

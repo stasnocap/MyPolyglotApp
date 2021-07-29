@@ -18,7 +18,6 @@ namespace MyPolyglotCore.Tests.ExerciseTests
         [InlineData(typeof(Determiner))]
         public void AddWordsToOptions(Type type)
         {
-            var exercise = new Exercise("no matter", new List<Word>());
             var wordText = "no matter";
 
             dynamic word = type.Name switch
@@ -32,33 +31,32 @@ namespace MyPolyglotCore.Tests.ExerciseTests
                 _ => throw new NotSupportedException()
             };
 
-            exercise.EngPhrase.ToList().Add(word);
+            var exercise = new Exercise("no matter", Enumerable.Empty<Word>().Concat(new[] { word as Word }));
 
             var options = exercise.GetOptions();
 
-            var vocabulary = Vocabulary.GetVocabulary(word.GetType());
-            foreach (var pronoun in vocabulary)
+            var vocabulary = Vocabulary.GetVocabulary(word.GetType()) as IReadOnlyCollection<Word>;
+            foreach (var wordFromVocabulary in vocabulary)
             {
-                Assert.Contains(pronoun, options);
+                Assert.Contains(wordFromVocabulary.Text, options);
             }
         }
 
         [Theory]
         [InlineData(typeof(Noun))]
-        [InlineData(typeof(Verb))]
         [InlineData(typeof(Adjective))]
         public void AddRandomFiveWordsWithRightAnswer(Type type)
         {
-            var exercise = new Exercise("no matter", new List<Word>());
             var textOfWord = "no matter";
+
             dynamic word = type.Name switch
             {
                 "Noun" => (Noun)Activator.CreateInstance(type, textOfWord),
-                "Verb" => (Verb)Activator.CreateInstance(type, textOfWord, false),
                 "Adjective" => (Adjective)Activator.CreateInstance(type, textOfWord),
                 _ => throw new NotSupportedException()
             };
-            exercise.EngPhrase.ToList().Add(word);
+
+            var exercise = new Exercise("no matter", Enumerable.Empty<Word>().Concat(new[] { word as Word }));
 
             var options = exercise.GetOptions();
 

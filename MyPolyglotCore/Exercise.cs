@@ -8,15 +8,16 @@ namespace MyPolyglotCore
 {
     public class Exercise
     {
-        public string RusPhrase { get; set; }
-        public IEnumerable<Word> EngPhrase { get; set; } = new List<Word>();
+        public string RusPhrase { get; }
+        public IEnumerable<Word> EngPhrase { get; }
 
-        private readonly Random _random = new Random();
+        private readonly Random _random; 
 
         public Exercise(string rusPhrase, IEnumerable<Word> engPhrase)
         {
             RusPhrase = rusPhrase;
             EngPhrase = engPhrase;
+            _random = new Random();
         }
 
         public IEnumerable<string> GetOptions()

@@ -1,6 +1,6 @@
 namespace MyPolyglotWeb.Models.DomainModels.Words.Pronouns
 {
-    public class ReflexivePronounDbModel : WordDbModel
+    public class SubjectPronounDB : WordDB
     {
     }
 }

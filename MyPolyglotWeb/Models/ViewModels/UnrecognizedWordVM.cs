@@ -6,7 +6,7 @@ using MyPolyglotCore;
 
 namespace MyPolyglotWeb.Models.ViewModels
 {
-    public class UnrecognizedWord
+    public class UnrecognizedWordVM
     {
         public string Text { get; set; }
         public UnrecognizableType Type { get; set; }

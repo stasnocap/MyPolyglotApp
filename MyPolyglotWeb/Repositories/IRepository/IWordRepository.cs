@@ -2,7 +2,7 @@
 
 namespace MyPolyglotWeb.Repositories.IRepository
 {
-    public interface IWordRepository : IBaseRepository<WordDbModel>
+    public interface IWordRepository : IBaseRepository<WordDB>
     {
     }
 }

@@ -3,7 +3,7 @@ using MyPolyglotCore;
 
 namespace MyPolyglotWeb.Models.ViewModels
 {
-    public class LessonViewModel
+    public class LessonVM
     {
         public long Id { get; set; }
         public Lesson Lesson { get; set; }

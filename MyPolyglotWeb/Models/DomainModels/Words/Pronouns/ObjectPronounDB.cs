@@ -1,6 +1,6 @@
 namespace MyPolyglotWeb.Models.DomainModels.Words.Pronouns
 {
-    public class SubjectPronounDbModel : WordDbModel
+    public class ObjectPronounDB : WordDB
     {
     }
 }

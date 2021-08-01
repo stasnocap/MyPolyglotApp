@@ -5,11 +5,11 @@ using MyPolyglotCore.Words;
 
 namespace MyPolyglotWeb.Models.ViewModels
 {
-    public class AddExerciseViewModel
+    public class AddExerciseVM
     {
         public string LessonId { get; set; }
         public string RusPhrase { get; set; }
         public string EngPhrase { get; set; }
-        public List<UnrecognizedWord> UnrecognizedWords { get; set; }
+        public List<UnrecognizedWordVM> UnrecognizedWords { get; set; }
     }
 }

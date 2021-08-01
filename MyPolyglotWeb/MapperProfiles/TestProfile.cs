@@ -8,8 +8,7 @@ namespace MyPolyglotWeb.MapperProfiles
     {
         public TestProfile()
         {
-            CreateMap<AddViewModel, LessonDbModel>();
-
+            CreateMap<AddExerciseVM, LessonDB>();
         }
     }
 }

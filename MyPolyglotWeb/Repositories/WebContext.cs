@@ -6,9 +6,9 @@ namespace MyPolyglotWeb.Repositories
 {
     public class WebContext : DbContext
     {
-        public DbSet<LessonDbModel> Lesson { get; set; }
-        public DbSet<ExerciseDbModel> Exercise { get; set; }
-        public DbSet<WordDbModel> Word { get; set; }
+        public DbSet<LessonDB> Lesson { get; set; }
+        public DbSet<ExerciseDB> Exercise { get; set; }
+        public DbSet<WordDB> Word { get; set; }
 
         public WebContext(DbContextOptions dbContext) : base(dbContext) { }
 
@@ -20,12 +20,12 @@ namespace MyPolyglotWeb.Repositories
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<LessonDbModel>()
+            modelBuilder.Entity<LessonDB>()
                 .HasMany(x => x.Exercises)
                 .WithOne(x => x.Lesson)
                 .OnDelete(DeleteBehavior.Cascade);
 
-            modelBuilder.Entity<ExerciseDbModel>()
+            modelBuilder.Entity<ExerciseDB>()
                 .HasMany(x => x.EngPhrase)
                 .WithOne(x => x.Exercise);
 

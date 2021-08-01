@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace MyPolyglotWeb.Repositories.IRepository
 {
-    public interface IBaseRepository<DbModel> where DbModel : BaseDbModel
+    public interface IBaseRepository<DbModel> where DbModel : BaseDB
     {
         int Count();
         DbModel Get(long id);

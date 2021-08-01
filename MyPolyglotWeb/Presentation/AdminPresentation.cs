@@ -19,21 +19,21 @@ namespace MyPolyglotWeb.Presentation
             _mapper = mapper;
         }
 
-        public void AddExercise(AddExerciseViewModel viewModel)
+        public void AddExercise(AddExerciseVM viewModel)
         {
             var recognizer = new Recognizer(viewModel.EngPhrase);
 
-            var dbModel = _mapper.Map<ExerciseDbModel>(viewModel);
+            var dbModel = _mapper.Map<ExerciseDB>(viewModel);
 
         }
 
-        public IEnumerable<UnrecognizedWord> GetUnrecognizedWords(string engPhrase)
+        public IEnumerable<UnrecognizedWordVM> GetUnrecognizedWords(string engPhrase)
         {
             var recognizer = new Recognizer(engPhrase);
             recognizer.Recognize();
 
             var unrecognizedWords = recognizer.UnrecognizedWords
-                .Select(x => new UnrecognizedWord() { Text = x.Text });
+                .Select(x => new UnrecognizedWordVM() { Text = x.Text });
 
             return unrecognizedWords;
         }

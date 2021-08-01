@@ -3,7 +3,7 @@ using MyPolyglotWeb.Repositories.IRepository;
 
 namespace MyPolyglotWeb.Repositories
 {
-    public class LessonRepository : BaseRepository<LessonDbModel>, ILessonRepository
+    public class LessonRepository : BaseRepository<LessonDB>, ILessonRepository
     {
         public LessonRepository(WebContext webContext) : base(webContext) { }
     }

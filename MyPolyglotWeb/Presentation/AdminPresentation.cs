@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using MyPolyglotCore;
+using MyPolyglotWeb.Models.DomainModels;
 using MyPolyglotWeb.Models.ViewModels;
 using MyPolyglotWeb.Repositories.IRepository;
 using System.Collections.Generic;
@@ -18,9 +19,11 @@ namespace MyPolyglotWeb.Presentation
             _mapper = mapper;
         }
 
-        public void AddExercise(AddViewModel viewModel)
+        public void AddExercise(AddExerciseViewModel viewModel)
         {
             var recognizer = new Recognizer(viewModel.EngPhrase);
+
+            var dbModel = _mapper.Map<ExerciseDbModel>(viewModel);
 
         }
 

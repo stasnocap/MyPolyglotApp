@@ -5,7 +5,7 @@ using MyPolyglotCore.Words;
 
 namespace MyPolyglotWeb.Models.ViewModels
 {
-    public class AddViewModel
+    public class AddExerciseViewModel
     {
         public string LessonId { get; set; }
         public string RusPhrase { get; set; }

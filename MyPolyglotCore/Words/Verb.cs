@@ -1,4 +1,4 @@
-using System.Collections;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -62,6 +62,12 @@ namespace MyPolyglotCore.Words
                 || word.Text.Equals(PresentParticipleForm)
                 || word.Text.Equals(ThirdPersonForm)
                 || existInAdditionalForms;
+        }
+
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(Text, PastForm, PastParticipleForm, PresentParticipleForm, 
+                ThirdPersonForm, AdditionalForms, StressOnTheFinalSyllable);
         }
 
         public bool IsIrregularVerb(IEnumerable<Verb> vocabulary)

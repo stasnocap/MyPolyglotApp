@@ -16,20 +16,8 @@ namespace MyPolyglotCore
             EngPhrase = engPhrase;
 
             var words = SplitToWords();
-            //RecognizedWords = words
-            //    .SelectMany(word => Vocabulary.RecognizableVocabularies.Where(x => x.Equals(word)));
-
-            var list = new List<Word>();
-            foreach (var word in words)
-            {
-                if (Vocabulary.RecognizableVocabularies.Contains(word))
-                {
-                    list.Add(word);
-                }
-            }
-            RecognizedWords = list;
-
-            UnrecognizedWords = words.Except(RecognizedWords);
+            RecognizedWords = words.SelectMany(word => Vocabulary.RecognizableVocabularies.Where(x => x.Equals(word)));
+            UnrecognizedWords = words.Where(x => !RecognizedWords.Contains(x));
         }
 
         private IEnumerable<Word> SplitToWords()

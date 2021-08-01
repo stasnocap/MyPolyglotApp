@@ -22,6 +22,16 @@ namespace MyPolyglotCore.Words
             ThirdPersonForm = GenerateThirdPersonForm();
         }
 
+        public Verb(string text, string pastForm, string pastParticipleForm, IReadOnlyCollection<string> additionalForms,bool stressOnTheFinalSyllable = false) : base(text)
+        {
+            StressOnTheFinalSyllable = stressOnTheFinalSyllable;
+            PastForm = pastForm;
+            PastParticipleForm = pastParticipleForm;
+            AdditionalForms = additionalForms;
+            PresentParticipleForm = GeneratePresentParticipleForm();
+            ThirdPersonForm = GenerateThirdPersonForm();
+        }
+
         public Verb(string text, bool stressOnTheFinalSyllable = false) : base(text)
         {
             StressOnTheFinalSyllable = stressOnTheFinalSyllable;

@@ -112,12 +112,12 @@ namespace MyPolyglotCore
             new Verb("abide", "abode", "abode"),
             new Verb("arise", "arose", "arise"),
             new Verb("awake", "awoke", "awoken"),
-            new Verb("awake", "awoke", "awoken"),
-            new Verb("be", "was", "been"),
-            new Verb("bear", "bore", "born"),
+            new Verb("be", "was", "been", new HashSet<string>() { "were", "am", "is", "are" }),
+            new Verb("bear", "bore", "born", new HashSet<string>() { "borne" }),
+            new Verb("beat", "beat", "beaten"),
             new Verb("beat", "beat", "beaten"),
             new Verb("become", "became", "become"),
-            new Verb("beget", "begot", "begotten"),
+            new Verb("beget", "begot", "begotten", new HashSet<string>() { "begat" }),
         };
         #endregion
 

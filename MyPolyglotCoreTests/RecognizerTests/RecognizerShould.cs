@@ -8,11 +8,12 @@ using Xunit;
 
 namespace MyPolyglotCoreTests.RecognizerTests
 {
-    public class TryToRecognizeShould
+
+    public class RecognizerShould
     {
         private Random _random;
 
-        public TryToRecognizeShould()
+        public RecognizerShould()
         {
             _random = new Random();
         }
@@ -98,6 +99,41 @@ namespace MyPolyglotCoreTests.RecognizerTests
             var vocabulary = Vocabulary.GetVocabulary(typeOfVocabulary);
 
             return vocabulary.ToList()[_random.Next(vocabulary.Count)];
+        }
+
+
+        [Theory]
+        [InlineData("PastForm")]
+        [InlineData("PastParticipleForm")]
+        [InlineData("PresentParticipleForm")]
+        [InlineData("ThirdPersonForm")]
+        [InlineData("AdditionalForms")]
+        public void RecognizeVerbNotOnlyByTextButByAllOthersProperties(string propertyName)
+        {
+            foreach (var verb in Vocabulary.IrregularVerbs)
+            {
+                var text = verb.Text;
+                var formOfVerb = verb.GetType().GetProperty(propertyName).GetValue(verb);
+
+                var recognizer = new Recognizer("rastr " + formOfVerb + " strs");
+
+                if (formOfVerb == null)
+                {
+                    return;
+                }
+
+                if (formOfVerb is IEnumerable<string>)
+                {
+                    foreach (var form in formOfVerb as IEnumerable<string>)
+                    {
+                        Assert.Contains(form, recognizer.RecognizedWords.Select(x => x.Text));
+                    }
+                }
+                else
+                {
+                    Assert.Contains(recognizer.RecognizedWords, x => x.Text == text);
+                }
+            }
         }
     }
 }

@@ -8,13 +8,16 @@ namespace MyPolyglotCore
     public class Recognizer
     {
         public string EngPhrase { get; }
-        public IEnumerable<Word> RecognizedWords { get; }
-        public IEnumerable<Word> UnrecognizedWords { get; }
+        public IEnumerable<Word> RecognizedWords { get; private set; }
+        public IEnumerable<Word> UnrecognizedWords { get; private set; }
 
         public Recognizer(string engPhrase)
         {
             EngPhrase = engPhrase;
+        }
 
+        public void Recognize()
+        {
             var words = SplitToWords();
             RecognizedWords = words.SelectMany(word => Vocabulary.RecognizableVocabularies.Where(x => x.Equals(word)));
             UnrecognizedWords = words.Where(x => !RecognizedWords.Contains(x));

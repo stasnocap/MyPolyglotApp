@@ -9,11 +9,11 @@ using Xunit;
 namespace MyPolyglotCoreTests.RecognizerTests
 {
 
-    public class RecognizerShould
+    public class RecognizeShould
     {
         private Random _random;
 
-        public RecognizerShould()
+        public RecognizeShould()
         {
             _random = new Random();
         }
@@ -34,6 +34,7 @@ namespace MyPolyglotCoreTests.RecognizerTests
                 $",,.1 s,t! tr , starst nsetnrsit!ta stra {randomWordFromVocabulary.Text}, 2 arstar";
 
             var recognizer = new Recognizer(engPhrase);
+            recognizer.Recognize();
 
             Assert.Contains(randomWordFromVocabulary, recognizer.RecognizedWords);
 
@@ -59,6 +60,7 @@ namespace MyPolyglotCoreTests.RecognizerTests
                 $",,.1 s,t! tr , starst nsetnrsit!ta stra {randomWordFromVocabulary.Text}, 2 arstar";
 
             var recognizer = new Recognizer(engPhrase);
+            recognizer.Recognize();
 
             foreach (var unrecognizedWord in recognizer.UnrecognizedWords)
             {
@@ -84,6 +86,7 @@ namespace MyPolyglotCoreTests.RecognizerTests
                 $",,.1 s,t! tr , starst nsetnrsit!ta stra {randomWordFromVocabulary.Text}, 2 arstar";
 
             var recognizer = new Recognizer(engPhrase);
+            recognizer.Recognize();
 
             var words = recognizer.RecognizedWords.Concat(recognizer.UnrecognizedWords);
 
@@ -116,6 +119,7 @@ namespace MyPolyglotCoreTests.RecognizerTests
                 var formOfVerb = verb.GetType().GetProperty(propertyName).GetValue(verb);
 
                 var recognizer = new Recognizer("rastr " + formOfVerb + " strs");
+                recognizer.Recognize();
 
                 if (formOfVerb == null)
                 {

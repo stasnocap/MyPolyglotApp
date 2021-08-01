@@ -1,6 +1,6 @@
 namespace MyPolyglotWeb.Models.DomainModels
 {
-    public class BaseModel
+    public abstract class BaseModel
     {
         public long Id { get; set; }
     }

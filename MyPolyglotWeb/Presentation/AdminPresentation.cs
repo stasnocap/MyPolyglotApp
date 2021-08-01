@@ -1,10 +1,12 @@
 ﻿using AutoMapper;
 using MyPolyglotCore;
+using MyPolyglotWeb.Models.DomainModels.Words;
 using MyPolyglotWeb.Models.DomainModels;
 using MyPolyglotWeb.Models.ViewModels;
 using MyPolyglotWeb.Repositories.IRepository;
 using System.Collections.Generic;
 using System.Linq;
+using System;
 
 namespace MyPolyglotWeb.Presentation
 {
@@ -23,8 +25,23 @@ namespace MyPolyglotWeb.Presentation
         {
             var recognizer = new Recognizer(viewModel.EngPhrase);
 
-            var dbModel = _mapper.Map<ExerciseDB>(viewModel);
+            var dbModel = new ExerciseDB();
 
+            dbModel.EngPhrase = viewModel.UnrecognizedWords.Select(x => GetCastedDBWord(x)).ToList();
+
+
+            var a = 1;
+        }
+
+        private WordDB GetCastedDBWord(UnrecognizedWordVM word)
+        {
+            return word.Type switch
+            {
+                UnrecognizableType.Adjective => new AdjectiveDB() { Text = word.Text },
+                UnrecognizableType.Noun => new NounDB() { Text = word.Text },
+                UnrecognizableType.Verb => new VerbDB() { Text = word.Text },
+                _ => throw new NotSupportedException(),
+            };
         }
 
         public IEnumerable<UnrecognizedWordVM> GetUnrecognizedWords(string engPhrase)

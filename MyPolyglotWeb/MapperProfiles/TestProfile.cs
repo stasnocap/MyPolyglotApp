@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using MyPolyglotWeb.Models.DomainModels;
+using MyPolyglotWeb.Models.DomainModels.Words;
 using MyPolyglotWeb.Models.ViewModels;
 
 namespace MyPolyglotWeb.MapperProfiles
@@ -8,7 +9,11 @@ namespace MyPolyglotWeb.MapperProfiles
     {
         public TestProfile()
         {
-            CreateMap<AddExerciseVM, LessonDB>();
+            CreateMap<AddExerciseVM, ExerciseDB>();
+            //.ForMember(nameof(ExerciseDB.EngPhrase), x => x.MapFrom(x => x.EngPhrase));
+
+            CreateMap<UnrecognizedWordVM, WordDB>();
+
         }
     }
 }

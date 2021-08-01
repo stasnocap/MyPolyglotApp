@@ -2,9 +2,9 @@
 
 namespace MyPolyglotWeb.Models.DomainModels
 {
-    public class Lesson : BaseModel
+    public class LessonDbModel : BaseDbModel
     {
         public string LessonName { get; set; }
-        public virtual List<Exercise> Exercises { get; set; }
+        public virtual List<ExerciseDbModel> Exercises { get; set; }
     }
 }

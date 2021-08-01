@@ -1,6 +1,6 @@
 namespace MyPolyglotWeb.Models.DomainModels.Words
 {
-    public class Adjective : Word
+    public class AdjectiveDbModel : WordDbModel
     {
     }
 }

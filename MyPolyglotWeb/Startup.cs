@@ -1,11 +1,15 @@
+using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using MyPolyglotWeb.MapperProfiles;
 using MyPolyglotWeb.Presentation;
 using MyPolyglotWeb.Repositories;
+using MyPolyglotWeb.Repositories.IRepository;
+using System;
 
 namespace MyPolyglotWeb
 {
@@ -25,11 +29,29 @@ namespace MyPolyglotWeb
                  options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.AddControllersWithViews();
             RegisterPresentation(services);
+            RegisterRepository(services);
+            RegisterMapper(services);
+        }
+
+        private void RegisterMapper(IServiceCollection services)
+        {
+            var config = new MapperConfiguration(x => {
+                x.AddProfile<TestProfile>();
+            });
+            services.AddScoped<IMapper>(x => new Mapper(config));
+        }
+
+        private void RegisterRepository(IServiceCollection services)
+        {
+            services.AddScoped<ILessonRepository>(x => new LessonRepository(
+                x.GetService<WebContext>()));
         }
 
         private void RegisterPresentation(IServiceCollection services)
         {
             services.AddScoped(x => new HomePresentation());
+            services.AddScoped(x => new AdminPresentation(
+                x.GetService<ILessonRepository>()));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

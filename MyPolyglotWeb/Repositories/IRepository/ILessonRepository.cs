@@ -2,7 +2,7 @@
 
 namespace MyPolyglotWeb.Repositories.IRepository
 {
-    public interface ILessonRepository : IBaseRepository<Lesson>
+    public interface ILessonRepository : IBaseRepository<LessonDbModel>
     {
     }
 }

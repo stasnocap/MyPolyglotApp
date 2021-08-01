@@ -1,12 +1,20 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MyPolyglotCore;
 using MyPolyglotWeb.Models.ViewModels;
+using MyPolyglotWeb.Presentation;
 using System.Linq;
 
 namespace MyPolyglotWeb.Controllers
 {
     public class AdminController : Controller
     {
+        public AdminPresentation _adminPresentation;
+
+        public AdminController(AdminPresentation adminPresentation)
+        {
+            _adminPresentation = adminPresentation;
+        }
+
         [HttpGet]
         public IActionResult Add()
         {
@@ -16,16 +24,13 @@ namespace MyPolyglotWeb.Controllers
         [HttpPost]
         public IActionResult Add(AddViewModel viewModel)
         {
+            _adminPresentation.Add(viewModel);
             return View(viewModel);
         }
 
         public IActionResult Recognize(string engPhrase)
         {
-            var recognizer = new Recognizer(engPhrase);
-
-            var unrecognizedWords = recognizer.UnrecognizedWords
-                .Select(x => new UnrecognizedWord() { Text = x.Text });
-
+            var unrecognizedWords = _adminPresentation.GetUnrecognizedWords(engPhrase);
             return Json(unrecognizedWords);
         }
     }

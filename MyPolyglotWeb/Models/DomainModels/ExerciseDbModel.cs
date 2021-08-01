@@ -3,10 +3,10 @@ using System.Collections.Generic;
 
 namespace MyPolyglotWeb.Models.DomainModels
 {
-    public class Exercise : BaseModel
+    public class ExerciseDbModel : BaseDbModel
     {
         public string RusPhrase { get; set; }
-        public virtual List<Word> EngPhrase { get; set; }
-        public virtual Lesson Lesson { get; set; }
+        public virtual List<WordDbModel> EngPhrase { get; set; }
+        public virtual LessonDbModel Lesson { get; set; }
     }
 }

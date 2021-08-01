@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace MyPolyglotWeb.Repositories
 {
-    public abstract class BaseRepository<DbModel> : IBaseRepository<DbModel> where DbModel : BaseModel
+    public abstract class BaseRepository<DbModel> : IBaseRepository<DbModel> where DbModel : BaseDbModel
     {
         protected WebContext _webContext;
         protected DbSet<DbModel> _dbSet;

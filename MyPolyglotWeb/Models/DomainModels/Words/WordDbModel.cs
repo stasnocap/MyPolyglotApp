@@ -1,8 +1,8 @@
 namespace MyPolyglotWeb.Models.DomainModels.Words
 {
-    public class Word : BaseModel
+    public class WordDbModel : BaseDbModel
     {
         public string Text { get; set; }
-        public virtual Exercise Exercise { get; set; }
+        public virtual ExerciseDbModel Exercise { get; set; }
     }
 }

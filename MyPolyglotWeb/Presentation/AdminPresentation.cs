@@ -18,7 +18,7 @@ namespace MyPolyglotWeb.Presentation
             _mapper = mapper;
         }
 
-        public void Add(AddViewModel viewModel)
+        public void AddExercise(AddViewModel viewModel)
         {
             var recognizer = new Recognizer(viewModel.EngPhrase);
 

@@ -16,15 +16,15 @@ namespace MyPolyglotWeb.Controllers
         }
 
         [HttpGet]
-        public IActionResult Add()
+        public IActionResult AddExercise()
         {
             return View();
         }
 
         [HttpPost]
-        public IActionResult Add(AddViewModel viewModel)
+        public IActionResult AddExercise(AddViewModel viewModel)
         {
-            _adminPresentation.Add(viewModel);
+            _adminPresentation.AddExercise(viewModel);
             return View(viewModel);
         }
 

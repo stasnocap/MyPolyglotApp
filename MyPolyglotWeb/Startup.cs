@@ -51,7 +51,8 @@ namespace MyPolyglotWeb
         {
             services.AddScoped(x => new HomePresentation());
             services.AddScoped(x => new AdminPresentation(
-                x.GetService<ILessonRepository>()));
+                x.GetService<ILessonRepository>(),
+                x.GetService<IMapper>()));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

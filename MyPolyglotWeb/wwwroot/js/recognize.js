@@ -6,7 +6,7 @@
         $.get(url).done(function (unrecognizedArray) {
             saveOnPage(unrecognizedArray, options);
         });
-        $('.add .submit-button').show();
+        $('.add-exercise .submit-button').show();
     });
 });
 

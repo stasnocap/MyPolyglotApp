@@ -7,6 +7,7 @@ using MyPolyglotWeb.Repositories.IRepository;
 using System.Collections.Generic;
 using System.Linq;
 using System;
+using MyPolyglotCore.Words;
 
 namespace MyPolyglotWeb.Presentation
 {
@@ -25,10 +26,9 @@ namespace MyPolyglotWeb.Presentation
         {
             var recognizer = new Recognizer(viewModel.EngPhrase);
 
-            var dbModel = new ExerciseDB();
+            var dbModel = _mapper.Map<ExerciseDB>(viewModel);
 
             dbModel.EngPhrase = viewModel.UnrecognizedWords.Select(x => GetCastedDBWord(x)).ToList();
-
 
             var a = 1;
         }
@@ -39,7 +39,7 @@ namespace MyPolyglotWeb.Presentation
             {
                 UnrecognizableType.Adjective => new AdjectiveDB() { Text = word.Text },
                 UnrecognizableType.Noun => new NounDB() { Text = word.Text },
-                UnrecognizableType.Verb => new VerbDB() { Text = word.Text },
+                UnrecognizableType.Verb => _mapper.Map<VerbDB>(new Verb(word.Text)),
                 _ => throw new NotSupportedException(),
             };
         }

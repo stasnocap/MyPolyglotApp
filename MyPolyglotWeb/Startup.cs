@@ -9,7 +9,6 @@ using MyPolyglotWeb.MapperProfiles;
 using MyPolyglotWeb.Presentation;
 using MyPolyglotWeb.Repositories;
 using MyPolyglotWeb.Repositories.IRepository;
-using System;
 
 namespace MyPolyglotWeb
 {
@@ -35,8 +34,9 @@ namespace MyPolyglotWeb
 
         private void RegisterMapper(IServiceCollection services)
         {
-            var config = new MapperConfiguration(x => {
-                x.AddProfile<TestProfile>();
+            var config = new MapperConfiguration(x =>
+            {
+                x.AddProfile<WordsProfile>();
             });
             services.AddScoped<IMapper>(x => new Mapper(config));
         }

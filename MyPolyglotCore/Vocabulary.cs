@@ -144,7 +144,7 @@ namespace MyPolyglotCore
                 "Verb" => IrregularVerbs,
                 "Noun" => Nouns,
                 "Adjective" => Adjectives,
-                _ => throw new NotSupportedException(),
+                _ => throw new NotImplementedException(),
             };
             return vocabulary;
         }

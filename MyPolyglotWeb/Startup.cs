@@ -45,13 +45,15 @@ namespace MyPolyglotWeb
         {
             services.AddScoped<ILessonRepository>(x => new LessonRepository(
                 x.GetService<WebContext>()));
+            services.AddScoped<IExerciseRepository>(x => new ExerciseRepository(
+                x.GetService<WebContext>()));
         }
 
         private void RegisterPresentation(IServiceCollection services)
         {
             services.AddScoped(x => new HomePresentation());
             services.AddScoped(x => new AdminPresentation(
-                x.GetService<ILessonRepository>(),
+                x.GetService<IExerciseRepository>(),
                 x.GetService<IMapper>()));
         }
 

@@ -13,34 +13,35 @@ namespace MyPolyglotWeb.Presentation
 {
     public class AdminPresentation
     {
-        public ILessonRepository _lessonRepository;
+        public IExerciseRepository _exerciseRepository;
         public IMapper _mapper;
 
-        public AdminPresentation(ILessonRepository lessonRepository, IMapper mapper)
+        public AdminPresentation(IExerciseRepository exerciseRepository, IMapper mapper)
         {
-            _lessonRepository = lessonRepository;
+            _exerciseRepository = exerciseRepository;
             _mapper = mapper;
         }
 
         public void AddExercise(AddExerciseVM viewModel)
         {
             var recognizer = new Recognizer(viewModel.EngPhrase);
+            recognizer.Recognize();
+
+            viewModel.RecognizedWords = recognizer.RecognizedWords;
 
             var dbModel = _mapper.Map<ExerciseDB>(viewModel);
 
-            dbModel.EngPhrase = viewModel.UnrecognizedWords.Select(x => GetCastedDBWord(x)).ToList();
-
-            var a = 1;
+            _exerciseRepository.Save(dbModel);
         }
 
-        private WordDB GetCastedDBWord(UnrecognizedWordVM word)
+        private WordDB CastCoreWordToDBWord(Word word)
         {
-            return word.Type switch
+            return word.GetType().Name switch
             {
-                UnrecognizableType.Adjective => new AdjectiveDB() { Text = word.Text },
-                UnrecognizableType.Noun => new NounDB() { Text = word.Text },
-                UnrecognizableType.Verb => _mapper.Map<VerbDB>(new Verb(word.Text)),
-                _ => throw new NotSupportedException(),
+                "Adjective" => new AdjectiveDB() { Text = word.Text },
+                "Noun" => new NounDB() { Text = word.Text },
+                "Verb" => _mapper.Map<WordDB>(new Verb(word.Text)),
+                _ => throw new NotImplementedException(),
             };
         }
 

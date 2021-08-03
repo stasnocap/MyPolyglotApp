@@ -10,6 +10,7 @@ namespace MyPolyglotWeb.Models.ViewModels
         public string LessonId { get; set; }
         public string RusPhrase { get; set; }
         public string EngPhrase { get; set; }
-        public List<UnrecognizedWordVM> UnrecognizedWords { get; set; }
+        public IEnumerable<UnrecognizedWordVM> UnrecognizedWords { get; set; }
+        public IEnumerable<Word> RecognizedWords { get; set; }
     }
 }

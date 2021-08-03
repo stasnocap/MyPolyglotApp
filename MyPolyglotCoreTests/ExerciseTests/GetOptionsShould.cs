@@ -28,7 +28,7 @@ namespace MyPolyglotCore.Tests.ExerciseTests
                 "PossessivePronoun" => (PossessivePronoun)Activator.CreateInstance(type, wordText),
                 "ReflexivePronoun" => (ReflexivePronoun)Activator.CreateInstance(type, wordText),
                 "Determiner" => (Determiner)Activator.CreateInstance(type, wordText),
-                _ => throw new NotSupportedException()
+                _ => throw new NotImplementedException()
             };
 
             var exercise = new Exercise("no matter", Enumerable.Empty<Word>().Concat(new[] { word as Word }));
@@ -53,7 +53,7 @@ namespace MyPolyglotCore.Tests.ExerciseTests
             {
                 "Noun" => (Noun)Activator.CreateInstance(type, textOfWord),
                 "Adjective" => (Adjective)Activator.CreateInstance(type, textOfWord),
-                _ => throw new NotSupportedException()
+                _ => throw new NotImplementedException()
             };
 
             var exercise = new Exercise("no matter", Enumerable.Empty<Word>().Concat(new[] { word as Word }));

@@ -6,10 +6,10 @@ namespace MyPolyglotWeb.Models.DomainModels.Words
 {
     public class VerbDB : WordDB
     {
-        public string PastForm { get; }
-        public string PastParticipleForm { get; }
-        public string PresentParticipleForm { get; }
-        public string ThirdPersonForm { get; }
+        public string PastForm { get; set; }
+        public string PastParticipleForm { get; set; }
+        public string PresentParticipleForm { get; set; }
+        public string ThirdPersonForm { get; set; }
         public List<WordDB> AdditionalForms { get; set; }
     }
 }

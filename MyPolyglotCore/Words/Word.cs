@@ -5,6 +5,7 @@ namespace MyPolyglotCore.Words
     public class Word
     {
         public string Text { get; }
+        public int PositionInPhrase { get; }
 
         public Word(string text)
         {

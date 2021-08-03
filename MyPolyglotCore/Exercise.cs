@@ -55,7 +55,7 @@ namespace MyPolyglotCore
                         options.AddRange(GenerateOptionsForVerb(word));
                         break;
                     default:
-                        throw new NotSupportedException();
+                        throw new NotImplementedException();
                 }
             }
             return options;

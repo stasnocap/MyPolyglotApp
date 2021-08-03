@@ -2,8 +2,7 @@
 using MyPolyglotCore;
 using MyPolyglotCore.Words;
 using MyPolyglotWeb.Models.DomainModels;
-using MyPolyglotWeb.Models.DomainModels.Words;
-using MyPolyglotWeb.Models.DomainModels.Words.Pronouns;
+using MyPolyglotWeb.Models.DomainModels.DomainWords;
 using MyPolyglotWeb.Models.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -30,15 +29,9 @@ namespace MyPolyglotWeb.MapperProfiles
         {
             return word.GetType().Name switch
             {
-                "SubjectPronoun" => new SubjectPronounDB() { Text = word.Text },
-                "ObjectPronoun" => new ObjectPronounDB() { Text = word.Text },
-                "PossessiveAdjective" => new PossessiveAdjectiveDB() { Text = word.Text },
-                "PossessivePronoun" => new PossessivePronounDB() { Text = word.Text },
-                "ReflexivePronoun" => new ReflexivePronounDB() { Text = word.Text },
-                "Determiner" => new DeterminerDB() { Text = word.Text },
-                "Adjective" => new AdjectiveDB() { Text = word.Text },
-                "Noun" => new NounDB() { Text = word.Text },
-                "Verb" => Vocabulary.IrregularVerbs.FirstOrDefault(x => x.Equals(word)) != null ? CastVerbToVerbDB(word) : CastVerbToVerbDB(word.Text),
+                nameof(Adjective) => new AdjectiveDB() { Text = word.Text },
+                nameof(Noun) => new NounDB() { Text = word.Text },
+                nameof(Verb) => Vocabulary.IrregularVerbs.FirstOrDefault(x => x.Equals(word)) != null ? CastVerbToVerbDB(word) : CastVerbToVerbDB(word.Text),
                 _ => throw new NotImplementedException(),
             }; 
         }

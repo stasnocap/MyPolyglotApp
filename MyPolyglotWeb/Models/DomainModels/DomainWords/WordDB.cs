@@ -1,4 +1,4 @@
-namespace MyPolyglotWeb.Models.DomainModels.Words
+namespace MyPolyglotWeb.Models.DomainModels.DomainWords
 {
     public class WordDB : BaseDB
     {

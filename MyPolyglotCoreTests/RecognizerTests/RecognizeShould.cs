@@ -106,11 +106,11 @@ namespace MyPolyglotCoreTests.RecognizerTests
 
 
         [Theory]
-        [InlineData("PastForm")]
-        [InlineData("PastParticipleForm")]
-        [InlineData("PresentParticipleForm")]
-        [InlineData("ThirdPersonForm")]
-        [InlineData("AdditionalForms")]
+        [InlineData(nameof(Verb.PastForm))]
+        [InlineData(nameof(Verb.PastParticipleForm))]
+        [InlineData(nameof(Verb.PresentParticipleForm))]
+        [InlineData(nameof(Verb.ThirdPersonForm))]
+        [InlineData(nameof(Verb.AdditionalForms))]
         public void RecognizeVerbNotOnlyByTextButByAllOthersProperties(string propertyName)
         {
             foreach (var verb in Vocabulary.IrregularVerbs)

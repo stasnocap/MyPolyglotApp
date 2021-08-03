@@ -1,25 +1,34 @@
 ﻿using AutoMapper;
 using MyPolyglotCore;
-using MyPolyglotWeb.Models.DomainModels.Words;
+using MyPolyglotWeb.Models.DomainModels.DomainWords;
 using MyPolyglotWeb.Models.DomainModels;
 using MyPolyglotWeb.Models.ViewModels;
 using MyPolyglotWeb.Repositories.IRepository;
 using System.Collections.Generic;
 using System.Linq;
-using System;
-using MyPolyglotCore.Words;
+using MyPolyglotWeb.Repositories.IRepository.IRepositoryWords;
 
 namespace MyPolyglotWeb.Presentation
 {
     public class AdminPresentation
     {
         public IExerciseRepository _exerciseRepository;
+        public IVerbRepository _verbRepository;
+        public INounRepository _nounRepository;
+        public IAdjectiveRepository _adjectiveRepository;
         public IMapper _mapper;
 
-        public AdminPresentation(IExerciseRepository exerciseRepository, IMapper mapper)
+        public AdminPresentation(IMapper mapper,
+            IExerciseRepository exerciseRepository,
+            INounRepository nounRepository,
+            IVerbRepository verbRepository,
+            IAdjectiveRepository adjectiveRepository)
         {
-            _exerciseRepository = exerciseRepository;
             _mapper = mapper;
+            _exerciseRepository = exerciseRepository;
+            _nounRepository = nounRepository;
+            _verbRepository = verbRepository;
+            _adjectiveRepository = adjectiveRepository;
         }
 
         public void AddExercise(AddExerciseVM viewModel)
@@ -29,20 +38,30 @@ namespace MyPolyglotWeb.Presentation
 
             viewModel.RecognizedWords = recognizer.RecognizedWords;
 
-            var dbModel = _mapper.Map<ExerciseDB>(viewModel);
+            var exerciseDB = _mapper.Map<ExerciseDB>(viewModel);
 
-            _exerciseRepository.Save(dbModel);
+            foreach (var word in exerciseDB.EngPhrase)
+            {
+                SaveWord(word);
+            }
         }
 
-        private WordDB CastCoreWordToDBWord(Word word)
+        private void SaveWord(WordDB word)
         {
-            return word.GetType().Name switch
+            switch (word)
             {
-                "Adjective" => new AdjectiveDB() { Text = word.Text },
-                "Noun" => new NounDB() { Text = word.Text },
-                "Verb" => _mapper.Map<WordDB>(new Verb(word.Text)),
-                _ => throw new NotImplementedException(),
-            };
+                case VerbDB v:
+                    _verbRepository.Save(v);
+                    break;
+                case NounDB n:
+                    _nounRepository.Save(n);
+                    break;
+                case AdjectiveDB a:
+                    _adjectiveRepository.Save(a);
+                    break;
+                default:
+                    break;
+            }
         }
 
         public IEnumerable<UnrecognizedWordVM> GetUnrecognizedWords(string engPhrase)

@@ -9,6 +9,8 @@ using MyPolyglotWeb.MapperProfiles;
 using MyPolyglotWeb.Presentation;
 using MyPolyglotWeb.Repositories;
 using MyPolyglotWeb.Repositories.IRepository;
+using MyPolyglotWeb.Repositories.IRepository.IRepositoryWords;
+using MyPolyglotWeb.Repositories.RepositoryWords;
 
 namespace MyPolyglotWeb
 {
@@ -47,14 +49,23 @@ namespace MyPolyglotWeb
                 x.GetService<WebContext>()));
             services.AddScoped<IExerciseRepository>(x => new ExerciseRepository(
                 x.GetService<WebContext>()));
+            services.AddScoped<INounRepository>(x => new NounRepository(
+                x.GetService<WebContext>()));
+            services.AddScoped<IVerbRepository>(x => new VerbRepository(
+                x.GetService<WebContext>()));
+            services.AddScoped<IAdjectiveRepository>(x => new AdjectiveRepository(
+                x.GetService<WebContext>()));
         }
 
         private void RegisterPresentation(IServiceCollection services)
         {
             services.AddScoped(x => new HomePresentation());
             services.AddScoped(x => new AdminPresentation(
+                x.GetService<IMapper>(),
                 x.GetService<IExerciseRepository>(),
-                x.GetService<IMapper>()));
+                x.GetService<INounRepository>(),
+                x.GetService<IVerbRepository>(),
+                x.GetService<IAdjectiveRepository>()));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

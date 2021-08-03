@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace MyPolyglotWeb.Models.DomainModels.Words
+namespace MyPolyglotWeb.Models.DomainModels.DomainWords
 {
     public class VerbDB : WordDB
     {

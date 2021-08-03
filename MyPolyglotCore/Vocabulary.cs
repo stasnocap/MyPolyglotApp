@@ -135,15 +135,15 @@ namespace MyPolyglotCore
         {
             dynamic vocabulary = type.Name switch
             {
-                "SubjectPronoun" => SubjectPronouns,
-                "ObjectPronoun" => ObjectPronouns,
-                "PossessiveAdjective" => PossessiveAdjectives,
-                "PossessivePronoun" => PossessivePronouns,
-                "ReflexivePronoun" => ReflexivePronouns,
-                "Determiner" => Determiners,
-                "Verb" => IrregularVerbs,
-                "Noun" => Nouns,
-                "Adjective" => Adjectives,
+                nameof(SubjectPronoun) => SubjectPronouns,
+                nameof(ObjectPronoun) => ObjectPronouns,
+                nameof(PossessiveAdjective) => PossessiveAdjectives,
+                nameof(PossessivePronoun) => PossessivePronouns,
+                nameof(ReflexivePronoun) => ReflexivePronouns,
+                nameof(Determiner) => Determiners,
+                nameof(Verb) => IrregularVerbs,
+                nameof(Noun) => Nouns,
+                nameof(Adjective) => Adjectives,
                 _ => throw new NotImplementedException(),
             };
             return vocabulary;

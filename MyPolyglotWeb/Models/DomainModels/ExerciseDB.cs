@@ -1,4 +1,4 @@
-using MyPolyglotWeb.Models.DomainModels.Words;
+using MyPolyglotWeb.Models.DomainModels.DomainWords;
 using System.Collections.Generic;
 
 namespace MyPolyglotWeb.Models.DomainModels

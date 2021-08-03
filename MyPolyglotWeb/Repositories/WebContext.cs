@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using MyPolyglotWeb.Models.DomainModels;
-using MyPolyglotWeb.Models.DomainModels.Words;
+using MyPolyglotWeb.Models.DomainModels.DomainWords;
 
 namespace MyPolyglotWeb.Repositories
 {

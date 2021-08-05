@@ -1,32 +1,18 @@
-﻿namespace MyPolyglotCore.Words
+﻿using System.Collections.Generic;
+
+namespace MyPolyglotCore.Words
 {
     public class PrimaryVerb : Verb
     {
-        public SingularOrPlural SingularOrPlural { get; set; }
-        public PositiveOrNegative PositiveOrNegative { get; set; }
+        public IReadOnlyCollection<string> NegativeForms { get; }
+        public IReadOnlyCollection<string> AdditionalForms { get; }
 
-        public PrimaryVerb(string text, string pastForm, string pastParticipleForm, string presentParticipleForm, string thirdPersonForm,
-            PositiveOrNegative positiveOrNegative = PositiveOrNegative.Positive, SingularOrPlural singularOrPlural = SingularOrPlural.Singular)
-            : base(positiveOrNegative == PositiveOrNegative.Positive && !text.Equals("be") 
-                  ? text 
-                  : text + "n't", 
-                  pastForm, 
-                  pastParticipleForm, 
-                  presentParticipleForm, 
-                  thirdPersonForm)
+        public PrimaryVerb(string text, string pastForm, string pastParticipleForm, string presentParticipleForm, 
+            string thirdPersonForm, IReadOnlyCollection<string> additionalForms, IReadOnlyCollection<string> negativeForms)
+            : base(text, pastForm, pastParticipleForm, presentParticipleForm, thirdPersonForm)
         {
+            AdditionalForms = additionalForms;
+            NegativeForms = negativeForms;
         }
-    }
-
-    public enum SingularOrPlural
-    {
-        Singular,
-        Plural
-    }
-
-    public enum PositiveOrNegative
-    {
-        Positive,
-        Negative
     }
 }

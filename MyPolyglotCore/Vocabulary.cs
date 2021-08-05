@@ -119,15 +119,7 @@ namespace MyPolyglotCore
 
         public static IReadOnlyCollection<PrimaryVerb> PrimaryVerbs = new HashSet<PrimaryVerb>
         {
-            new PrimaryVerb("do", "did", "done")
-        };
-
-        public static IReadOnlyCollection<Word> NegativeLesson1 { get; } = new HashSet<Word>
-        {
-            new Word("don't"),
-            new Word("doesn't"),
-            new Word("will not"),
-            new Word("didn't"),
+            //new PrimaryVerb("do", "did", "done")
         };
 
         public static IReadOnlyCollection<Word> RecognizableVocabularies => Enumerable.Empty<Word>()

@@ -1,67 +1,35 @@
 ﻿using AutoMapper;
 using MyPolyglotCore;
-using MyPolyglotWeb.Models.DomainModels.DomainWords;
 using MyPolyglotWeb.Models.DomainModels;
 using MyPolyglotWeb.Models.ViewModels;
 using MyPolyglotWeb.Repositories.IRepository;
 using System.Collections.Generic;
 using System.Linq;
-using MyPolyglotWeb.Repositories.IRepository.IRepositoryWords;
 
 namespace MyPolyglotWeb.Presentation
 {
     public class AdminPresentation
     {
+        public ILessonRepository _lessonRepository;
         public IExerciseRepository _exerciseRepository;
-        public IVerbRepository _verbRepository;
-        public INounRepository _nounRepository;
-        public IAdjectiveRepository _adjectiveRepository;
         public IMapper _mapper;
 
-        public AdminPresentation(IMapper mapper,
-            IExerciseRepository exerciseRepository,
-            INounRepository nounRepository,
-            IVerbRepository verbRepository,
-            IAdjectiveRepository adjectiveRepository)
+        public AdminPresentation(IMapper mapper, ILessonRepository lessonRepository, 
+            IExerciseRepository exerciseRepository)
         {
             _mapper = mapper;
+            _lessonRepository = lessonRepository;
             _exerciseRepository = exerciseRepository;
-            _nounRepository = nounRepository;
-            _verbRepository = verbRepository;
-            _adjectiveRepository = adjectiveRepository;
         }
 
         public void AddExercise(AddExerciseVM viewModel)
         {
-            var recognizer = new Recognizer(viewModel.EngPhrase);
-            recognizer.Recognize();
-
-            viewModel.RecognizedWords = recognizer.RecognizedWords;
-
             var exerciseDB = _mapper.Map<ExerciseDB>(viewModel);
+            exerciseDB.Lesson = _lessonRepository.Get(long.TryParse(viewModel.LessonId, out long result) ? result : -1); 
 
-            foreach (var word in exerciseDB.EngPhrase)
-            {
-                SaveWord(word);
-            }
-        }
+            _exerciseRepository.Save(exerciseDB);
 
-        private void SaveWord(WordDB word)
-        {
-            switch (word)
-            {
-                case VerbDB v:
-                    _verbRepository.Save(v);
-                    break;
-                case NounDB n:
-                    _nounRepository.Save(n);
-                    break;
-                case AdjectiveDB a:
-                    _adjectiveRepository.Save(a);
-                    break;
-                default:
-                    break;
-            }
+            var a = 1;
         }
 
         public IEnumerable<UnrecognizedWordVM> GetUnrecognizedWords(string engPhrase)

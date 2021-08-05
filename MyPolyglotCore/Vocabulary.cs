@@ -20,6 +20,10 @@ namespace MyPolyglotCore
         };
         #endregion
 
+        public static IReadOnlyCollection<string> ThirdPersonESEndings { get; } = new HashSet<string>() { "ch", "s", "sh", "x", "z" };
+        public const string IngEnding = "ing";
+        public const string EdEnding = "ed";
+
         #region Pronouns
 
         public static IReadOnlyCollection<SubjectPronoun> SubjectPronouns { get; } = new HashSet<SubjectPronoun>
@@ -102,24 +106,29 @@ namespace MyPolyglotCore
             new Noun("airline"),
         };
 
-        #region Verbs
-        public static IReadOnlyCollection<Verb> Verbs { get; } = new HashSet<Verb>
-        {
-        };
-
-        public static IReadOnlyCollection<Verb> IrregularVerbs => new HashSet<Verb>
+        public static IReadOnlyCollection<Verb> IrregularVerbs = new HashSet<Verb>
         {
             new Verb("abide", "abode", "abode"),
             new Verb("arise", "arose", "arise"),
             new Verb("awake", "awoke", "awoken"),
-            new Verb("be", "was", "been", new HashSet<string>() { "were", "am", "is", "are" }),
-            new Verb("bear", "bore", "born", new HashSet<string>() { "borne" }),
-            new Verb("beat", "beat", "beaten"),
+            new Verb("bear", "bore", "born"),
             new Verb("beat", "beat", "beaten"),
             new Verb("become", "became", "become"),
-            new Verb("beget", "begot", "begotten", new HashSet<string>() { "begat" }),
+            new Verb("beget", "begot", "begotten"),
         };
-        #endregion
+
+        public static IReadOnlyCollection<PrimaryVerb> PrimaryVerbs = new HashSet<PrimaryVerb>
+        {
+            new PrimaryVerb("do", "did", "done")
+        };
+
+        public static IReadOnlyCollection<Word> NegativeLesson1 { get; } = new HashSet<Word>
+        {
+            new Word("don't"),
+            new Word("doesn't"),
+            new Word("will not"),
+            new Word("didn't"),
+        };
 
         public static IReadOnlyCollection<Word> RecognizableVocabularies => Enumerable.Empty<Word>()
             .Concat(SubjectPronouns)
@@ -148,9 +157,5 @@ namespace MyPolyglotCore
             };
             return vocabulary;
         }
-
-        public const string IngEnding = "ing";
-        public const string EdEnding = "ed";
-        public static IReadOnlyCollection<string> ThirdPersonESEndings { get; } = new HashSet<string>() { "ch", "s", "sh", "x", "z" };
     }
 }

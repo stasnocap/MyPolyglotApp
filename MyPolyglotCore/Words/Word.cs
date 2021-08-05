@@ -1,5 +1,3 @@
-using System;
-
 namespace MyPolyglotCore.Words
 {
     public class Word

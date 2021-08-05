@@ -1,7 +1,7 @@
 ﻿using MyPolyglotWeb.Models.DomainModels;
 using MyPolyglotWeb.Repositories.IRepository;
 
-namespace MyPolyglotWeb.Repositories
+namespace MyPolyglotWeb.Models
 {
     public class ExerciseRepository : BaseRepository<ExerciseDB>, IExerciseRepository
     {

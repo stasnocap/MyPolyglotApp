@@ -1,8 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using MyPolyglotCore;
 using MyPolyglotWeb.Models.ViewModels;
 using MyPolyglotWeb.Presentation;
-using System.Linq;
 
 namespace MyPolyglotWeb.Controllers
 {

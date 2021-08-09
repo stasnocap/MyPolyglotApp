@@ -25,7 +25,7 @@ namespace MyPolyglotCore
 
         private IEnumerable<Word> SplitToWords()
         {
-            return Regex.Split(EngPhrase.ToLower(), "\\W+")
+            return Regex.Split(EngPhrase.ToLower(), "[^a-zA-Z0-9']+")
                         .Where(x => !string.IsNullOrEmpty(x))
                         .Select(x => new Word(x));
         }

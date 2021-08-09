@@ -10,7 +10,6 @@ namespace MyPolyglotCore.Words
         public string PastParticipleForm { get; } // 3rd form
         public string PresentParticipleForm { get; } // ing
         public string ThirdPersonForm { get; } // s
-        public IReadOnlyCollection<string> AdditionalForms { get; set; }
         public bool StressOnTheFinalSyllable { get; }
 
         public Verb(string text, string pastForm, string pastParticipleForm, bool stressOnTheFinalSyllable = false) : base(text)
@@ -18,16 +17,6 @@ namespace MyPolyglotCore.Words
             StressOnTheFinalSyllable = stressOnTheFinalSyllable;
             PastForm = pastForm;
             PastParticipleForm = pastParticipleForm;
-            PresentParticipleForm = GeneratePresentParticipleForm();
-            ThirdPersonForm = GenerateThirdPersonForm();
-        }
-
-        public Verb(string text, string pastForm, string pastParticipleForm, IReadOnlyCollection<string> additionalForms,bool stressOnTheFinalSyllable = false) : base(text)
-        {
-            StressOnTheFinalSyllable = stressOnTheFinalSyllable;
-            PastForm = pastForm;
-            PastParticipleForm = pastParticipleForm;
-            AdditionalForms = additionalForms;
             PresentParticipleForm = GeneratePresentParticipleForm();
             ThirdPersonForm = GenerateThirdPersonForm();
         }
@@ -41,6 +30,15 @@ namespace MyPolyglotCore.Words
             ThirdPersonForm = GenerateThirdPersonForm();
         }
 
+        protected Verb(string text, string pastForm, string pastParticipleForm, string presentParticipleForm, string thirdPersonForm, bool stressOnTheFinalSyllable) : base(text)
+        {
+            StressOnTheFinalSyllable = stressOnTheFinalSyllable;
+            PastForm = pastForm;
+            PastParticipleForm = pastParticipleForm;
+            PresentParticipleForm = presentParticipleForm;
+            ThirdPersonForm = thirdPersonForm;
+        }
+
         public override bool Equals(object obj)
         {
             var word = obj as Word;
@@ -50,24 +48,17 @@ namespace MyPolyglotCore.Words
                 return false;
             }
 
-            bool existInAdditionalForms = false;
-            if (AdditionalForms != null && AdditionalForms.Where(x => x.Equals(word.Text)).Any())
-            {
-                existInAdditionalForms = true;
-            }
-
-            return word.Text.Equals(Text)
-                || word.Text.Equals(PastForm)
-                || word.Text.Equals(PastParticipleForm)
-                || word.Text.Equals(PresentParticipleForm)
-                || word.Text.Equals(ThirdPersonForm)
-                || existInAdditionalForms;
+            return base.Equals(obj)
+                || PastForm == word.Text
+                || PastParticipleForm == word.Text
+                || PresentParticipleForm == word.Text
+                || ThirdPersonForm == word.Text;
         }
 
         public override int GetHashCode()
         {
             return HashCode.Combine(Text, PastForm, PastParticipleForm, PresentParticipleForm, 
-                ThirdPersonForm, AdditionalForms, StressOnTheFinalSyllable);
+                ThirdPersonForm, StressOnTheFinalSyllable);
         }
 
         public bool IsIrregularVerb(IEnumerable<Verb> vocabulary)

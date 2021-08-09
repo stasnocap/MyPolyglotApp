@@ -22,13 +22,13 @@ namespace MyPolyglotCore.Tests.ExerciseTests
 
             dynamic word = type.Name switch
             {
-                "SubjectPronoun" => (SubjectPronoun)Activator.CreateInstance(type, wordText),
-                "ObjectPronoun" => (ObjectPronoun)Activator.CreateInstance(type, wordText),
-                "PossessiveAdjective" => (PossessiveAdjective)Activator.CreateInstance(type, wordText),
-                "PossessivePronoun" => (PossessivePronoun)Activator.CreateInstance(type, wordText),
-                "ReflexivePronoun" => (ReflexivePronoun)Activator.CreateInstance(type, wordText),
-                "Determiner" => (Determiner)Activator.CreateInstance(type, wordText),
-                _ => throw new NotSupportedException()
+                nameof(SubjectPronoun) => (SubjectPronoun)Activator.CreateInstance(type, wordText),
+                nameof(ObjectPronoun) => (ObjectPronoun)Activator.CreateInstance(type, wordText),
+                nameof(PossessiveAdjective) => (PossessiveAdjective)Activator.CreateInstance(type, wordText),
+                nameof(PossessivePronoun) => (PossessivePronoun)Activator.CreateInstance(type, wordText),
+                nameof(ReflexivePronoun) => (ReflexivePronoun)Activator.CreateInstance(type, wordText),
+                nameof(Determiner) => (Determiner)Activator.CreateInstance(type, wordText),
+                _ => throw new NotImplementedException()
             };
 
             var exercise = new Exercise("no matter", Enumerable.Empty<Word>().Concat(new[] { word as Word }));
@@ -51,9 +51,9 @@ namespace MyPolyglotCore.Tests.ExerciseTests
 
             dynamic word = type.Name switch
             {
-                "Noun" => (Noun)Activator.CreateInstance(type, textOfWord),
-                "Adjective" => (Adjective)Activator.CreateInstance(type, textOfWord),
-                _ => throw new NotSupportedException()
+                nameof(Noun) => (Noun)Activator.CreateInstance(type, textOfWord),
+                nameof(Adjective) => (Adjective)Activator.CreateInstance(type, textOfWord),
+                _ => throw new NotImplementedException()
             };
 
             var exercise = new Exercise("no matter", Enumerable.Empty<Word>().Concat(new[] { word as Word }));

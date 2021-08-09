@@ -3,7 +3,7 @@ using MyPolyglotWeb.Models.DomainModels;
 using MyPolyglotWeb.Repositories.IRepository;
 using System.Linq;
 
-namespace MyPolyglotWeb.Repositories
+namespace MyPolyglotWeb.Models
 {
     public abstract class BaseRepository<DbModel> : IBaseRepository<DbModel> where DbModel : BaseDB
     {

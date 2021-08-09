@@ -51,14 +51,24 @@ namespace MyPolyglotCore
                     case Noun n:
                         options.AddRange(GetRandomWordsFromVocabularyWithRightWord(word));
                         break;
+                    case PrimaryVerb p:
+                        options.AddRange(GenerateNegativeOptionsForPrimaryVerb(word));
+                        break;
                     case Verb v:
                         options.AddRange(GenerateOptionsForVerb(word));
                         break;
                     default:
-                        throw new NotSupportedException();
+                        throw new NotImplementedException();
                 }
             }
             return options;
+        }
+
+        private IEnumerable<string> GenerateNegativeOptionsForPrimaryVerb(Word word)
+        {
+            var primaryVerb = word as PrimaryVerb;
+
+            return primaryVerb.NegativeForms.OrderBy(x => Guid.NewGuid());
         }
 
         private IEnumerable<string> GetRandomWordsFromVocabularyWithRightWord(Word word)
@@ -84,10 +94,6 @@ namespace MyPolyglotCore
                 verb.PresentParticipleForm,
                 verb.ThirdPersonForm,
             };
-            if (verb.AdditionalForms != null)
-            {
-                verbForms.AddRange(verb.AdditionalForms);
-            }
 
             return verbForms.OrderBy(x => Guid.NewGuid());
         }

@@ -1,11 +1,11 @@
-@model AddViewModel
+@model AddExerciseVM
 
 @using MyPolyglotCore
 @using MyPolyglotWeb.Extensions
 
 @section Scripts {
     <script>
-        var unrecognizableTypeEnum = @(Html.EnumToString<UnrecognizableType>());
+        var unrecognizableTypeEnum = @(Html.EnumToString<UnrecognizableTypes>());
     </script>
     <script src="~/js/recognize.js"></script>
     <script src="~/js/addExercise.js"></script>

@@ -11,20 +11,23 @@ namespace MyPolyglotWeb.Presentation
     public class AdminPresentation
     {
         public ILessonRepository _lessonRepository;
+        public IExerciseRepository _exerciseRepository;
         public IMapper _mapper;
 
-        public AdminPresentation(ILessonRepository lessonRepository, IMapper mapper)
+        public AdminPresentation(IMapper mapper, ILessonRepository lessonRepository, 
+            IExerciseRepository exerciseRepository)
         {
-            _lessonRepository = lessonRepository;
             _mapper = mapper;
+            _lessonRepository = lessonRepository;
+            _exerciseRepository = exerciseRepository;
         }
 
         public void AddExercise(AddExerciseVM viewModel)
         {
-            var recognizer = new Recognizer(viewModel.EngPhrase);
+            var exerciseDB = _mapper.Map<ExerciseDB>(viewModel);
+            exerciseDB.Lesson = _lessonRepository.Get(long.TryParse(viewModel.LessonId, out long result) ? result : -1); 
 
-            var dbModel = _mapper.Map<ExerciseDB>(viewModel);
-
+            _exerciseRepository.Save(exerciseDB);
         }
 
         public IEnumerable<UnrecognizedWordVM> GetUnrecognizedWords(string engPhrase)

@@ -1,14 +1,13 @@
 using Microsoft.EntityFrameworkCore;
 using MyPolyglotWeb.Models.DomainModels;
-using MyPolyglotWeb.Models.DomainModels.Words;
 
-namespace MyPolyglotWeb.Repositories
+namespace MyPolyglotWeb.Models
 {
     public class WebContext : DbContext
     {
         public DbSet<LessonDB> Lesson { get; set; }
         public DbSet<ExerciseDB> Exercise { get; set; }
-        public DbSet<WordDB> Word { get; set; }
+        public DbSet<UnrecognizedWordDB> UnrecognizedWord { get; set; }
 
         public WebContext(DbContextOptions dbContext) : base(dbContext) { }
 
@@ -26,8 +25,9 @@ namespace MyPolyglotWeb.Repositories
                 .OnDelete(DeleteBehavior.Cascade);
 
             modelBuilder.Entity<ExerciseDB>()
-                .HasMany(x => x.EngPhrase)
-                .WithOne(x => x.Exercise);
+                .HasMany(x => x.UnrecognizedWords)
+                .WithOne(x => x.Exercise)
+                .OnDelete(DeleteBehavior.Cascade);
 
             base.OnModelCreating(modelBuilder);
         }

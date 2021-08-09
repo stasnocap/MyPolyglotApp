@@ -5,11 +5,11 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using MyPolyglotWeb.MapperProfiles;
+using MyPolyglotWeb.Models.DomainModels;
+using MyPolyglotWeb.Models.ViewModels;
 using MyPolyglotWeb.Presentation;
-using MyPolyglotWeb.Repositories;
+using MyPolyglotWeb.Models;
 using MyPolyglotWeb.Repositories.IRepository;
-using System;
 
 namespace MyPolyglotWeb
 {
@@ -35,15 +35,19 @@ namespace MyPolyglotWeb
 
         private void RegisterMapper(IServiceCollection services)
         {
-            var config = new MapperConfiguration(x => {
-                x.AddProfile<TestProfile>();
+            var config = new MapperConfiguration(x =>
+            {
+                x.CreateMap<AddExerciseVM, ExerciseDB>();
+                x.CreateMap<UnrecognizedWordVM, UnrecognizedWordDB>();
             });
-            services.AddScoped<IMapper>(x => new Mapper(config));
+            services.AddScoped(x => config.CreateMapper());
         }
 
         private void RegisterRepository(IServiceCollection services)
         {
             services.AddScoped<ILessonRepository>(x => new LessonRepository(
+                x.GetService<WebContext>()));
+            services.AddScoped<IExerciseRepository>(x => new ExerciseRepository(
                 x.GetService<WebContext>()));
         }
 
@@ -51,8 +55,9 @@ namespace MyPolyglotWeb
         {
             services.AddScoped(x => new HomePresentation());
             services.AddScoped(x => new AdminPresentation(
+                x.GetService<IMapper>(),
                 x.GetService<ILessonRepository>(),
-                x.GetService<IMapper>()));
+                x.GetService<IExerciseRepository>()));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

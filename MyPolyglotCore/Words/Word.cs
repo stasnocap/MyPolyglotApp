@@ -1,5 +1,3 @@
-using System;
-
 namespace MyPolyglotCore.Words
 {
     public class Word
@@ -20,7 +18,7 @@ namespace MyPolyglotCore.Words
                 return false;
             }
 
-            return Text.Equals(word.Text);
+            return word.Text == Text;
         }
 
         public override int GetHashCode()

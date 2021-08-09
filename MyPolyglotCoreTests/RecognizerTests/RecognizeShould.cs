@@ -106,37 +106,20 @@ namespace MyPolyglotCoreTests.RecognizerTests
 
 
         [Theory]
-        [InlineData("PastForm")]
-        [InlineData("PastParticipleForm")]
-        [InlineData("PresentParticipleForm")]
-        [InlineData("ThirdPersonForm")]
-        [InlineData("AdditionalForms")]
+        [InlineData(nameof(Verb.PastForm))]
+        [InlineData(nameof(Verb.PastParticipleForm))]
+        [InlineData(nameof(Verb.PresentParticipleForm))]
+        [InlineData(nameof(Verb.ThirdPersonForm))]
         public void RecognizeVerbNotOnlyByTextButByAllOthersProperties(string propertyName)
         {
             foreach (var verb in Vocabulary.IrregularVerbs)
             {
-                var text = verb.Text;
                 var formOfVerb = verb.GetType().GetProperty(propertyName).GetValue(verb);
 
                 var recognizer = new Recognizer("rastr " + formOfVerb + " strs");
                 recognizer.Recognize();
 
-                if (formOfVerb == null)
-                {
-                    return;
-                }
-
-                if (formOfVerb is IEnumerable<string>)
-                {
-                    foreach (var form in formOfVerb as IEnumerable<string>)
-                    {
-                        Assert.Contains(form, recognizer.RecognizedWords.Select(x => x.Text));
-                    }
-                }
-                else
-                {
-                    Assert.Contains(recognizer.RecognizedWords, x => x.Text == text);
-                }
+                Assert.Contains(recognizer.RecognizedWords, x => x.Text == verb.Text);
             }
         }
     }

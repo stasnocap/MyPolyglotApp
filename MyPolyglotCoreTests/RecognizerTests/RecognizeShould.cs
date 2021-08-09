@@ -122,5 +122,34 @@ namespace MyPolyglotCoreTests.RecognizerTests
                 Assert.Contains(recognizer.RecognizedWords, x => x.Text == verb.Text);
             }
         }
+
+        [Fact]
+        public void RecognizePrimaryVerbByNegativeForms()
+        {
+            foreach (var primaryVerb in Vocabulary.PrimaryVerbs)
+            {
+                var randomWordFromNegativeForms = primaryVerb.NegativeForms.ElementAt(_random.Next(primaryVerb.NegativeForms.Count));
+                var recognizer = new Recognizer("rastr " + randomWordFromNegativeForms + " strs");
+                recognizer.Recognize();
+
+                Assert.Contains(recognizer.RecognizedWords, x => x == primaryVerb);
+            }
+        }
+
+        [Fact]
+        public void RecognizePrimaryVerbByAdditionalForms()
+        {
+            foreach (var primaryVerb in Vocabulary.PrimaryVerbs)
+            {
+                if (primaryVerb.AdditionalForms.Any())
+                {
+                    var randomWordFromAdditionalForms = primaryVerb.AdditionalForms.ElementAt(_random.Next(primaryVerb.AdditionalForms.Count));
+                    var recognizer = new Recognizer("rastr " + randomWordFromAdditionalForms + " strs");
+                    recognizer.Recognize();
+
+                    Assert.Contains(recognizer.RecognizedWords, x => x == primaryVerb);
+                }
+            }
+        }
     }
 }

@@ -125,11 +125,6 @@ namespace MyPolyglotCore
                 new HashSet<string> { "were", "am", "is", "are" })
         };
 
-        public static IReadOnlyCollection<PrimaryVerb> PrimaryVerbs = new HashSet<PrimaryVerb>
-        {
-            //new PrimaryVerb("do", "did", "done")
-        };
-
         public static IReadOnlyCollection<Word> RecognizableVocabularies => Enumerable.Empty<Word>()
             .Concat(SubjectPronouns)
             .Concat(ObjectPronouns)

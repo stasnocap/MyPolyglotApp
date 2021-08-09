@@ -1,4 +1,4 @@
-using System.Collections;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -10,7 +10,6 @@ namespace MyPolyglotCore.Words
         public string PastParticipleForm { get; } // 3rd form
         public string PresentParticipleForm { get; } // ing
         public string ThirdPersonForm { get; } // s
-        public IReadOnlyCollection<string> AdditionalForms { get; set; }
         public bool StressOnTheFinalSyllable { get; }
 
         public Verb(string text, string pastForm, string pastParticipleForm, bool stressOnTheFinalSyllable = false) : base(text)
@@ -29,6 +28,37 @@ namespace MyPolyglotCore.Words
             PastParticipleForm = PastForm;
             PresentParticipleForm = GeneratePresentParticipleForm();
             ThirdPersonForm = GenerateThirdPersonForm();
+        }
+
+        protected Verb(string text, string pastForm, string pastParticipleForm, string presentParticipleForm, string thirdPersonForm, bool stressOnTheFinalSyllable) : base(text)
+        {
+            StressOnTheFinalSyllable = stressOnTheFinalSyllable;
+            PastForm = pastForm;
+            PastParticipleForm = pastParticipleForm;
+            PresentParticipleForm = presentParticipleForm;
+            ThirdPersonForm = thirdPersonForm;
+        }
+
+        public override bool Equals(object obj)
+        {
+            var word = obj as Word;
+
+            if (word == null)
+            {
+                return false;
+            }
+
+            return base.Equals(obj)
+                || PastForm == word.Text
+                || PastParticipleForm == word.Text
+                || PresentParticipleForm == word.Text
+                || ThirdPersonForm == word.Text;
+        }
+
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(Text, PastForm, PastParticipleForm, PresentParticipleForm, 
+                ThirdPersonForm, StressOnTheFinalSyllable);
         }
 
         public bool IsIrregularVerb(IEnumerable<Verb> vocabulary)

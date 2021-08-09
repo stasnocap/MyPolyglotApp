@@ -1,18 +1,18 @@
-@model AddViewModel
+@model AddExerciseVM
 
 @using MyPolyglotCore
 @using MyPolyglotWeb.Extensions
 
 @section Scripts {
     <script>
-        var unrecognizableTypeEnum = @(Html.EnumToString<UnrecognizableType>());
+        var unrecognizableTypeEnum = @(Html.EnumToString<UnrecognizableTypes>());
     </script>
     <script src="~/js/recognize.js"></script>
-    <script src="~/js/add.js"></script>
+    <script src="~/js/addExercise.js"></script>
 }
 
-<div class="add">
-    <form action="/Admin/Add" method="post">
+<div class="add-exercise">
+    <form action="/Admin/AddExercise" method="post">
         <div>
             <select name="LessonId">
                 <option disabled selected>Выберите урок</option>

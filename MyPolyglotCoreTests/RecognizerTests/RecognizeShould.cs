@@ -8,11 +8,12 @@ using Xunit;
 
 namespace MyPolyglotCoreTests.RecognizerTests
 {
-    public class TryToRecognizeShould
+
+    public class RecognizeShould
     {
         private Random _random;
 
-        public TryToRecognizeShould()
+        public RecognizeShould()
         {
             _random = new Random();
         }
@@ -33,8 +34,7 @@ namespace MyPolyglotCoreTests.RecognizerTests
                 $",,.1 s,t! tr , starst nsetnrsit!ta stra {randomWordFromVocabulary.Text}, 2 arstar";
 
             var recognizer = new Recognizer(engPhrase);
-
-            recognizer.TryToRecognize();
+            recognizer.Recognize();
 
             Assert.Contains(randomWordFromVocabulary, recognizer.RecognizedWords);
 
@@ -60,8 +60,7 @@ namespace MyPolyglotCoreTests.RecognizerTests
                 $",,.1 s,t! tr , starst nsetnrsit!ta stra {randomWordFromVocabulary.Text}, 2 arstar";
 
             var recognizer = new Recognizer(engPhrase);
-
-            recognizer.TryToRecognize();
+            recognizer.Recognize();
 
             foreach (var unrecognizedWord in recognizer.UnrecognizedWords)
             {
@@ -87,8 +86,7 @@ namespace MyPolyglotCoreTests.RecognizerTests
                 $",,.1 s,t! tr , starst nsetnrsit!ta stra {randomWordFromVocabulary.Text}, 2 arstar";
 
             var recognizer = new Recognizer(engPhrase);
-
-            recognizer.TryToRecognize();
+            recognizer.Recognize();
 
             var words = recognizer.RecognizedWords.Concat(recognizer.UnrecognizedWords);
 
@@ -104,6 +102,25 @@ namespace MyPolyglotCoreTests.RecognizerTests
             var vocabulary = Vocabulary.GetVocabulary(typeOfVocabulary);
 
             return vocabulary.ToList()[_random.Next(vocabulary.Count)];
+        }
+
+
+        [Theory]
+        [InlineData(nameof(Verb.PastForm))]
+        [InlineData(nameof(Verb.PastParticipleForm))]
+        [InlineData(nameof(Verb.PresentParticipleForm))]
+        [InlineData(nameof(Verb.ThirdPersonForm))]
+        public void RecognizeVerbNotOnlyByTextButByAllOthersProperties(string propertyName)
+        {
+            foreach (var verb in Vocabulary.IrregularVerbs)
+            {
+                var formOfVerb = verb.GetType().GetProperty(propertyName).GetValue(verb);
+
+                var recognizer = new Recognizer("rastr " + formOfVerb + " strs");
+                recognizer.Recognize();
+
+                Assert.Contains(recognizer.RecognizedWords, x => x.Text == verb.Text);
+            }
         }
     }
 }

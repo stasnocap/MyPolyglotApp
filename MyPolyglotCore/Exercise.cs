@@ -8,15 +8,16 @@ namespace MyPolyglotCore
 {
     public class Exercise
     {
-        public string RusPhrase { get; set; }
-        public IEnumerable<Word> EngPhrase { get; set; } = new List<Word>();
+        public string RusPhrase { get; }
+        public IEnumerable<Word> EngPhrase { get; }
 
-        private readonly Random _random = new Random();
+        private readonly Random _random; 
 
         public Exercise(string rusPhrase, IEnumerable<Word> engPhrase)
         {
             RusPhrase = rusPhrase;
             EngPhrase = engPhrase;
+            _random = new Random();
         }
 
         public IEnumerable<string> GetOptions()
@@ -50,14 +51,24 @@ namespace MyPolyglotCore
                     case Noun n:
                         options.AddRange(GetRandomWordsFromVocabularyWithRightWord(word));
                         break;
+                    case PrimaryVerb p:
+                        options.AddRange(GenerateNegativeOptionsForPrimaryVerb(word));
+                        break;
                     case Verb v:
                         options.AddRange(GenerateOptionsForVerb(word));
                         break;
                     default:
-                        throw new NotSupportedException();
+                        throw new NotImplementedException();
                 }
             }
             return options;
+        }
+
+        private IEnumerable<string> GenerateNegativeOptionsForPrimaryVerb(Word word)
+        {
+            var primaryVerb = word as PrimaryVerb;
+
+            return primaryVerb.NegativeForms.OrderBy(x => Guid.NewGuid());
         }
 
         private IEnumerable<string> GetRandomWordsFromVocabularyWithRightWord(Word word)
@@ -83,10 +94,6 @@ namespace MyPolyglotCore
                 verb.PresentParticipleForm,
                 verb.ThirdPersonForm,
             };
-            if (verb.AdditionalForms != null)
-            {
-                verbForms.AddRange(verb.AdditionalForms);
-            }
 
             return verbForms.OrderBy(x => Guid.NewGuid());
         }

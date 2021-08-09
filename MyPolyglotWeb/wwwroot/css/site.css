@@ -82,7 +82,7 @@ ul.lessons {
     display: flex;
 }
 
-.add div {
+.add-exercise div {
     margin: 5px;
 }
 
@@ -98,19 +98,19 @@ ul.lessons {
         position: fixed;
     }
 
-.add .unrecognized {
+.add-exercise .unrecognized {
     display: flex;
 }
 
-    .add .unrecognized div {
+    .add-exercise .unrecognized div {
         position: relative;
     }
 
-    .add .unrecognized .button {
+    .add-exercise .unrecognized .button {
         user-select: none;
     }
 
-    .add .unrecognized select {
+    .add-exercise .unrecognized select {
         display: none;
         position: absolute;
         z-index: 1;
@@ -119,7 +119,7 @@ ul.lessons {
         bottom: -55px;
     }
 
-.add .submit-button {
+.add-exercise .submit-button {
     display: none;
     margin-top: 55px;
 }

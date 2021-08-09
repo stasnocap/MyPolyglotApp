@@ -20,6 +20,10 @@ namespace MyPolyglotCore
         };
         #endregion
 
+        public static IReadOnlyCollection<string> ThirdPersonESEndings { get; } = new HashSet<string>() { "ch", "s", "sh", "x", "z" };
+        public const string IngEnding = "ing";
+        public const string EdEnding = "ed";
+
         #region Pronouns
 
         public static IReadOnlyCollection<SubjectPronoun> SubjectPronouns { get; } = new HashSet<SubjectPronoun>
@@ -102,24 +106,24 @@ namespace MyPolyglotCore
             new Noun("airline"),
         };
 
-        #region Verbs
-        public static IReadOnlyCollection<Verb> Verbs { get; } = new HashSet<Verb>
-        {
-        };
-
-        public static IReadOnlyCollection<Verb> IrregularVerbs => new HashSet<Verb>
+        public static IReadOnlyCollection<Verb> IrregularVerbs = new HashSet<Verb>
         {
             new Verb("abide", "abode", "abode"),
             new Verb("arise", "arose", "arise"),
             new Verb("awake", "awoke", "awoken"),
-            new Verb("awake", "awoke", "awoken"),
-            new Verb("be", "was", "been"),
             new Verb("bear", "bore", "born"),
             new Verb("beat", "beat", "beaten"),
             new Verb("become", "became", "become"),
             new Verb("beget", "begot", "begotten"),
         };
-        #endregion
+
+        public static IReadOnlyCollection<PrimaryVerb> PrimaryVerbs = new HashSet<PrimaryVerb>
+        {
+            new PrimaryVerb("do", "did", "done", "doing", "does", new HashSet<string> { "don't", "didn't", "doesn't"}),
+            new PrimaryVerb("have", "had", "had", "having", "has", new HashSet<string> { "haven't", "hadn't", "hasn't"}),
+            new PrimaryVerb("be", "was", "been", "being", "is", new HashSet<string> { "wasn't", "weren't", "am not", "isn't", "aren't"},
+                new HashSet<string> { "were", "am", "is", "are" })
+        };
 
         public static IReadOnlyCollection<Word> RecognizableVocabularies => Enumerable.Empty<Word>()
             .Concat(SubjectPronouns)
@@ -129,28 +133,25 @@ namespace MyPolyglotCore
             .Concat(ReflexivePronouns)
             .Concat(Determiners)
             .Concat(IrregularVerbs)
+            .Concat(PrimaryVerbs)
             .ToHashSet();
 
         public static IReadOnlyCollection<Word> GetVocabulary(Type type)
         {
             dynamic vocabulary = type.Name switch
             {
-                "SubjectPronoun" => SubjectPronouns,
-                "ObjectPronoun" => ObjectPronouns,
-                "PossessiveAdjective" => PossessiveAdjectives,
-                "PossessivePronoun" => PossessivePronouns,
-                "ReflexivePronoun" => ReflexivePronouns,
-                "Determiner" => Determiners,
-                "Verb" => IrregularVerbs,
-                "Noun" => Nouns,
-                "Adjective" => Adjectives,
-                _ => throw new NotSupportedException(),
+                nameof(SubjectPronoun) => SubjectPronouns,
+                nameof(ObjectPronoun) => ObjectPronouns,
+                nameof(PossessiveAdjective) => PossessiveAdjectives,
+                nameof(PossessivePronoun) => PossessivePronouns,
+                nameof(ReflexivePronoun) => ReflexivePronouns,
+                nameof(Determiner) => Determiners,
+                nameof(Verb) => IrregularVerbs,
+                nameof(Noun) => Nouns,
+                nameof(Adjective) => Adjectives,
+                _ => throw new NotImplementedException(),
             };
             return vocabulary;
         }
-
-        public const string IngEnding = "ing";
-        public const string EdEnding = "ed";
-        public static IReadOnlyCollection<string> ThirdPersonESEndings { get; } = new HashSet<string>() { "ch", "s", "sh", "x", "z" };
     }
 }

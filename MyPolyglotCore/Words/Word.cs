@@ -1,8 +1,6 @@
-using System;
-
 namespace MyPolyglotCore.Words
 {
-    public class Word : IEquatable<Word>
+    public class Word
     {
         public string Text { get; }
 
@@ -11,11 +9,21 @@ namespace MyPolyglotCore.Words
             Text = text;
         }
 
-        public bool Equals(Word other)
+        public override bool Equals(object obj)
         {
-            return Text == other?.Text;
+            var word = obj as Word;
+
+            if (word == null)
+            {
+                return false;
+            }
+
+            return word.Text == Text;
         }
-        public override bool Equals(object obj) => Equals(obj as Word);
-        public override int GetHashCode() => Text.GetHashCode();
+
+        public override int GetHashCode()
+        {
+            return Text.GetHashCode();
+        }
     }
 }

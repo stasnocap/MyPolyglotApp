@@ -7,9 +7,9 @@ namespace MyPolyglotWeb.Presentation
 {
     public class HomePresentation
     {
-        public LessonViewModel GetLessonViewModel(long id)
+        public LessonVM GetLessonViewModel(long id)
         {
-            return new LessonViewModel()
+            return new LessonVM()
             {
                 Id = id,
                 Lesson = new Lesson()

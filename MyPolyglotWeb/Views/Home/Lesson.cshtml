@@ -1,4 +1,4 @@
-@model LessonVM
+@model ExerciseVM
 @{
     var random = new Random();
 }
@@ -8,7 +8,7 @@
         Урок @Model.Id
     </div>
     <div>
-        @Model.Lesson.Exercises[random.Next(Model.Lesson.Exercises.Count)].RusPhrase
+        @Model.RusPhrase
     </div>
     <div>
         Переведите предложение

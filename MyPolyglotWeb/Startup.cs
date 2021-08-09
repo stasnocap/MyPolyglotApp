@@ -10,6 +10,7 @@ using MyPolyglotWeb.Models.ViewModels;
 using MyPolyglotWeb.Presentation;
 using MyPolyglotWeb.Models;
 using MyPolyglotWeb.Repositories.IRepository;
+using System;
 
 namespace MyPolyglotWeb
 {
@@ -39,6 +40,7 @@ namespace MyPolyglotWeb
             {
                 x.CreateMap<AddExerciseVM, ExerciseDB>();
                 x.CreateMap<UnrecognizedWordVM, UnrecognizedWordDB>();
+                x.CreateMap<LessonDB, ExerciseVM>();
             });
             services.AddScoped(x => config.CreateMapper());
         }
@@ -48,12 +50,16 @@ namespace MyPolyglotWeb
             services.AddScoped<ILessonRepository>(x => new LessonRepository(
                 x.GetService<WebContext>()));
             services.AddScoped<IExerciseRepository>(x => new ExerciseRepository(
-                x.GetService<WebContext>()));
+                x.GetService<WebContext>(),
+                x.GetService<Random>()));
         }
 
         private void RegisterPresentation(IServiceCollection services)
         {
-            services.AddScoped(x => new HomePresentation());
+            services.AddScoped(x => new HomePresentation(
+                x.GetService<IMapper>(),
+                x.GetService<ILessonRepository>(),
+                x.GetService<IExerciseRepository>()));
             services.AddScoped(x => new AdminPresentation(
                 x.GetService<IMapper>(),
                 x.GetService<ILessonRepository>(),

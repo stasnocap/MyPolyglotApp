@@ -19,7 +19,7 @@ namespace MyPolyglotWeb.Controllers
 
         public IActionResult Lesson(long id)
         {
-            var viewModel = _homePresentation.GetLessonViewModel(id);
+            var viewModel = _homePresentation.GetExerciseVM(id);
             return View(viewModel);
         }
     }

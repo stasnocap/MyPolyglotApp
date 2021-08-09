@@ -9,7 +9,7 @@ namespace MyPolyglotCore.Words
         public IReadOnlyCollection<string> NegativeForms { get; }
         public IReadOnlyCollection<string> AdditionalForms { get; }
 
-        public PrimaryVerb(string text, string pastForm, string pastParticipleForm, string presentParticipleForm,
+        public PrimaryVerb(string text, string pastForm, string pastParticipleForm, string presentParticipleForm, 
             string thirdPersonForm, IReadOnlyCollection<string> negativeForms)
             : base(text, pastForm, pastParticipleForm, presentParticipleForm, thirdPersonForm, false)
         {

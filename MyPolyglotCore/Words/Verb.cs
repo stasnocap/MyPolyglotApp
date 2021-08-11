@@ -11,6 +11,7 @@ namespace MyPolyglotCore.Words
         public string PresentParticipleForm { get; } // ing
         public string ThirdPersonForm { get; } // s
         public bool StressOnTheFinalSyllable { get; }
+        public bool IsIrregularVerb { get; }
 
         public Verb(string text, string pastForm, string pastParticipleForm, bool stressOnTheFinalSyllable = false) : base(text)
         {
@@ -19,6 +20,7 @@ namespace MyPolyglotCore.Words
             PastParticipleForm = pastParticipleForm;
             PresentParticipleForm = GeneratePresentParticipleForm();
             ThirdPersonForm = GenerateThirdPersonForm();
+            IsIrregularVerb = true;
         }
 
         public Verb(string text, bool stressOnTheFinalSyllable = false) : base(text)
@@ -28,15 +30,17 @@ namespace MyPolyglotCore.Words
             PastParticipleForm = PastForm;
             PresentParticipleForm = GeneratePresentParticipleForm();
             ThirdPersonForm = GenerateThirdPersonForm();
+            IsIrregularVerb = false;
         }
 
-        protected Verb(string text, string pastForm, string pastParticipleForm, string presentParticipleForm, string thirdPersonForm, bool stressOnTheFinalSyllable) : base(text)
+        protected Verb(string text, string pastForm, string pastParticipleForm, string presentParticipleForm, string thirdPersonForm) : base(text)
         {
-            StressOnTheFinalSyllable = stressOnTheFinalSyllable;
             PastForm = pastForm;
             PastParticipleForm = pastParticipleForm;
             PresentParticipleForm = presentParticipleForm;
             ThirdPersonForm = thirdPersonForm;
+            StressOnTheFinalSyllable = false;
+            IsIrregularVerb = false;
         }
 
         public override bool Equals(object obj)
@@ -59,11 +63,6 @@ namespace MyPolyglotCore.Words
         {
             return HashCode.Combine(Text, PastForm, PastParticipleForm, PresentParticipleForm, 
                 ThirdPersonForm, StressOnTheFinalSyllable);
-        }
-
-        public bool IsIrregularVerb(IEnumerable<Verb> vocabulary)
-        {
-            return vocabulary.FirstOrDefault(x => x.Text == Text) != null;
         }
 
         private string GeneratePastForm()

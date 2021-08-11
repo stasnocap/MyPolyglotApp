@@ -1,4 +1,5 @@
-﻿using MyPolyglotWeb.Models.DomainModels;
+﻿using Microsoft.EntityFrameworkCore;
+using MyPolyglotWeb.Models.DomainModels;
 using MyPolyglotWeb.Repositories.IRepository;
 using System;
 using System.Linq;
@@ -16,7 +17,7 @@ namespace MyPolyglotWeb.Models
 
         public ExerciseDB GetRandomExerciseByLessonId(long id)
         {
-            var filteredById = _dbSet.Where(x => x.Lesson.Id == id);
+            var filteredById = _dbSet.Where(x => x.Lesson.Id == id).AsEnumerable();
             return filteredById.ElementAt(_random.Next(filteredById.Count()));
         }
     }

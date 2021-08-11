@@ -11,6 +11,7 @@ using MyPolyglotWeb.Presentation;
 using MyPolyglotWeb.Models;
 using MyPolyglotWeb.Repositories.IRepository;
 using System;
+using MyPolyglotCore.Words;
 
 namespace MyPolyglotWeb
 {
@@ -32,6 +33,7 @@ namespace MyPolyglotWeb
             RegisterPresentation(services);
             RegisterRepository(services);
             RegisterMapper(services);
+            services.AddScoped(x => new Random());
         }
 
         private void RegisterMapper(IServiceCollection services)
@@ -39,10 +41,23 @@ namespace MyPolyglotWeb
             var config = new MapperConfiguration(x =>
             {
                 x.CreateMap<AddExerciseVM, ExerciseDB>();
-                x.CreateMap<UnrecognizedWordVM, UnrecognizedWordDB>();
-                x.CreateMap<LessonDB, ExerciseVM>();
+                x.CreateMap<UnrecognizedWordVM, UnrecognizedWordDB>().ReverseMap();
+                x.CreateMap<UnrecognizedWordDB, Word>()
+                    .ConvertUsing(x => CastUnrecognizedWordDBToWord(x));
+                x.CreateMap<ExerciseDB, ExerciseVM>();
             });
             services.AddScoped(x => config.CreateMapper());
+        }
+
+        private Word CastUnrecognizedWordDBToWord(UnrecognizedWordDB word)
+        {
+            return word.Type switch
+            {
+                MyPolyglotCore.UnrecognizableTypes.Adjective => new Adjective(word.Text),
+                MyPolyglotCore.UnrecognizableTypes.Noun => new Noun(word.Text),
+                MyPolyglotCore.UnrecognizableTypes.Verb => new Verb(word.Text),
+                _ => throw new NotImplementedException()
+            };
         }
 
         private void RegisterRepository(IServiceCollection services)
@@ -58,7 +73,6 @@ namespace MyPolyglotWeb
         {
             services.AddScoped(x => new HomePresentation(
                 x.GetService<IMapper>(),
-                x.GetService<ILessonRepository>(),
                 x.GetService<IExerciseRepository>()));
             services.AddScoped(x => new AdminPresentation(
                 x.GetService<IMapper>(),

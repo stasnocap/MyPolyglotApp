@@ -1,6 +1,10 @@
 @model ExerciseVM
-@{
-    var random = new Random();
+
+@section Scripts {
+    <script>
+        var groupOptions = JSON.parse('@Json.Serialize(@Model.WordsGroups)');
+    </script>
+    <script src="~/js/lesson.js"></script>
 }
 
 <div class="lesson">
@@ -14,23 +18,19 @@
         Переведите предложение
     </div>
     <div class="buttons">
-        <div class="button">
-            I
-        </div>
-        <div class="button">
-            You
-        </div>
-        <div class="button">
-            We
-        </div>
-        <div class="button">
-            They
-        </div>
-        <div class="button">
-            He
-        </div>
-        <div class="button">
-            She
-        </div>
+        @for (int i = 0; i < 2; i++)
+        {
+            <div class="options-group">
+                @foreach (var option in Model.WordsGroups.ElementAt(i).Options)
+                {
+                    <div class="button">
+                        @option
+                    </div>
+                }
+            </div>
+        }
+    </div>
+    <div class="options-back button">
+        ^
     </div>
 </div>

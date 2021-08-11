@@ -1,16 +1,25 @@
 ﻿$(document).ready(function () {
     var nextWordOptionsIndex = 2;
-    $(document).on('click', '.button', function () {
-        var group = $(this).closest('.options-group');
+    var lastGroupLink;
+    var lastGroupData;
+    $(document).on('click', '.options-group .button', function () {
+        let group = $(this).closest('.options-group');
+        lastGroupLink = group;
+        lastGroupData = group.clone();
 
         group.empty();
 
-        if (nextWordOptionsIndex < groupOptions.length) {
-            for (var i = 0; i < groupOptions[nextWordOptionsIndex].options.length; i++) {
-                var button = $('<div>', { class: 'button' }).text(groupOptions[nextWordOptionsIndex].options[i]);
+        if (nextWordOptionsIndex < dataOptions.length) {
+            for (var i = 0; i < dataOptions[nextWordOptionsIndex].options.length; i++) {
+                var button = $('<div>', { class: 'button' }).text(dataOptions[nextWordOptionsIndex].options[i]);
                 group.append(button);
             }
             nextWordOptionsIndex++;
         }
+    });
+
+    $('.options-back.button').click(function () {
+        lastGroupLink.replaceWith(lastGroupData);
+        --nextWordOptionsIndex;
     });
 });

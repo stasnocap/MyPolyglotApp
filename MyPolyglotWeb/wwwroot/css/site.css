@@ -62,6 +62,7 @@ ul.lessons {
     margin-right: 5px;
 }
 
+
     .lesson > div:not(.buttons) {
         height: 100px;
         border-bottom: 1px solid;
@@ -73,7 +74,7 @@ ul.lessons {
     .lesson .buttons {
         display: flex;
         flex-wrap: wrap;
-        height:280px;
+        height: 280px;
     }
 
         .lesson .buttons div {
@@ -84,6 +85,11 @@ ul.lessons {
             align-items: center;
             flex-wrap: wrap;
         }
+
+    .lesson .options-back.button {
+        height: 177px;
+        justify-content: center;
+    }
 
 .container {
     display: flex;

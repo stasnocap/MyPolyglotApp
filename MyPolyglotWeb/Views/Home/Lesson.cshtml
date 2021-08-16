@@ -2,7 +2,7 @@
 
 @section Scripts {
     <script>
-        var optionGroups = JSON.parse('@Json.Serialize(@Model.OptionGroups)');
+        let optionGroups = JSON.parse('@Json.Serialize(@Model.OptionGroups)');
     </script>
     <script src="~/js/lesson.js"></script>
 }
@@ -20,7 +20,7 @@
     <div class="buttons">
         @for (int i = 0; i < 2; i++)
         {
-            <div class="option-group">
+            <div class="option-group" index="@i">
                 @foreach (var option in Model.OptionGroups.ElementAt(i).Options)
                 {
                     <div class="button">

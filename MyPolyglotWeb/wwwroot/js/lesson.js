@@ -1,7 +1,6 @@
 ﻿$(document).ready(function () {
-    let nextOptionGroupIndex = 2;
     let previousLinks = [];
-    let previousOptionGrout = [];
+    let nextOptionGroupIndex = 2;
     $(document).on('click', '.option-group .button', function () {
         let divLink = $(this).closest('.option-group');
         previousLinks.push(divLink);
@@ -15,8 +14,14 @@
     });
 
     $('.options-back.button').click(function () {
+        if (previousLinks.length == 0) {
+            return;
+        }
+        let previousLink = previousLinks.pop();
+        previousLink.empty();
+
+        fillUpOptionGroupWithOptions(previousLink);
         nextOptionGroupIndex--;
-        fillUpOptionGroupWithOptions(previousLinks.pop());
     });
 
     function fillUpOptionGroupWithOptions(link) {
@@ -24,5 +29,6 @@
             let button = $('<div>', { class: 'button' }).text(optionGroups[nextOptionGroupIndex].options[i]);
             link.append(button);
         }
+        link.attr('index', nextOptionGroupIndex);
     }
 });

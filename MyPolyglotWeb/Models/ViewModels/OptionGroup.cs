@@ -2,7 +2,7 @@
 
 namespace MyPolyglotWeb.Models.ViewModels
 {
-    public class OptionsGroup
+    public class OptionGroup
     {
         public IEnumerable<string> Options { get; set; }
     }

@@ -27,7 +27,7 @@ namespace MyPolyglotWeb.Presentation
 
             var exerciseVM = _mapper.Map<ExerciseVM>(exerciseDB);
 
-            exerciseVM.WordsGroups = exercise.Words.Select(x => new OptionsGroup() { Options = exercise.NextOptions() }).ToList();
+            exerciseVM.OptionGroups = exercise.Words.Select(x => new OptionGroup() { Options = exercise.NextOptions() }).ToList();
 
             return exerciseVM;
         }

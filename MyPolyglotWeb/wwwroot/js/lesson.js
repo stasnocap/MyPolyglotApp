@@ -1,25 +1,28 @@
 ﻿$(document).ready(function () {
-    var nextWordOptionsIndex = 2;
-    var lastGroupLink;
-    var lastGroupData;
-    $(document).on('click', '.options-group .button', function () {
-        let group = $(this).closest('.options-group');
-        lastGroupLink = group;
-        lastGroupData = group.clone();
+    let nextOptionGroupIndex = 2;
+    let previousLinks = [];
+    let previousOptionGrout = [];
+    $(document).on('click', '.option-group .button', function () {
+        let divLink = $(this).closest('.option-group');
+        previousLinks.push(divLink);
 
-        group.empty();
+        divLink.empty();
 
-        if (nextWordOptionsIndex < dataOptions.length) {
-            for (var i = 0; i < dataOptions[nextWordOptionsIndex].options.length; i++) {
-                var button = $('<div>', { class: 'button' }).text(dataOptions[nextWordOptionsIndex].options[i]);
-                group.append(button);
-            }
-            nextWordOptionsIndex++;
+        if (nextOptionGroupIndex < optionGroups.length) {
+            fillUpOptionGroupWithOptions(divLink);
+            nextOptionGroupIndex++;
         }
     });
 
     $('.options-back.button').click(function () {
-        lastGroupLink.replaceWith(lastGroupData);
-        --nextWordOptionsIndex;
+        nextOptionGroupIndex--;
+        fillUpOptionGroupWithOptions(previousLinks.pop());
     });
+
+    function fillUpOptionGroupWithOptions(link) {
+        for (let i = 0; i < optionGroups[nextOptionGroupIndex].options.length; i++) {
+            let button = $('<div>', { class: 'button' }).text(optionGroups[nextOptionGroupIndex].options[i]);
+            link.append(button);
+        }
+    }
 });

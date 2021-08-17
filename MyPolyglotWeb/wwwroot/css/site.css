@@ -60,8 +60,12 @@ ul.lessons {
     width: 100%;
     height: 100vh;
     margin-right: 5px;
+    user-select: none;
 }
 
+    .lesson .answer-input {
+        display: none;
+    }
 
     .lesson > div:not(.buttons) {
         height: 100px;
@@ -87,7 +91,7 @@ ul.lessons {
         }
 
     .lesson .options-back.button {
-        height: 177px;
+        height: 178px;
         justify-content: center;
     }
 

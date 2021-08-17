@@ -9,5 +9,6 @@ namespace MyPolyglotWeb.Models.ViewModels
         public string EngPhrase { get; set; }
         public IEnumerable<UnrecognizedWordVM> UnrecognizedWords { get; set; }
         public List<OptionGroup> OptionGroups { get; set; }
+        public string UserAnswer { get; set; }
     }
 }

@@ -17,10 +17,19 @@ namespace MyPolyglotWeb.Controllers
             return View();
         }
 
+        [HttpGet]
         public IActionResult Lesson(long id)
         {
             var viewModel = _homePresentation.GetExerciseVM(id);
             return View(viewModel);
         }
+
+        [HttpPost]
+        public IActionResult Lesson()
+        {
+            return View();
+        }
+
+
     }
 }

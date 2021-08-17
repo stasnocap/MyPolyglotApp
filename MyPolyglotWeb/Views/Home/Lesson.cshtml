@@ -2,7 +2,7 @@
 
 @section Scripts {
     <script>
-        let optionGroups = JSON.parse('@Json.Serialize(@Model.OptionGroups)');
+        let optionsGroupsData = JSON.parse('@Json.Serialize(@Model.OptionGroups)');
     </script>
     <script src="~/js/lesson.js"></script>
 }
@@ -15,12 +15,19 @@
         @Model.RusPhrase
     </div>
     <div>
-        Переведите предложение
+        <form action="/Home/Lesson" method="post">
+            <div class="answer">
+                Переведите предложение
+            </div>
+            <div class="answer-input">
+                <input type="text" name="UserAnswer" value="" />
+            </div>
+        </form>
     </div>
     <div class="buttons">
         @for (int i = 0; i < 2; i++)
         {
-            <div class="option-group" index="@i">
+            <div class="option-group" data-index="@i">
                 @foreach (var option in Model.OptionGroups.ElementAt(i).Options)
                 {
                     <div class="button">

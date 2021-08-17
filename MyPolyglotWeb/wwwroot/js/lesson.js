@@ -1,34 +1,71 @@
 ﻿$(document).ready(function () {
-    let previousLinks = [];
-    let nextOptionGroupIndex = 2;
+    let clickedOptionGroupsHistory = [];
+    let answer = [];
+
     $(document).on('click', '.option-group .button', function () {
-        let divLink = $(this).closest('.option-group');
-        previousLinks.push(divLink);
+        let optionGroupDiv = $(this).closest('.option-group');
+        clickedOptionGroupsHistory.push({
+            optionGroupDiv,
+            index: optionGroupDiv.data('index')
+        })
+        optionGroupDiv.empty();
 
-        divLink.empty();
-
-        if (nextOptionGroupIndex < optionGroups.length) {
-            fillUpOptionGroupWithOptions(divLink);
-            nextOptionGroupIndex++;
+        let nextOptionGroupIndex = GetOptionGroupsMaxDataIndex() + 1;
+        if (nextOptionGroupIndex < optionsGroupsData.length) {
+            fillUpOptionGroupWithOptions({ optionGroupDiv, index: nextOptionGroupIndex });
         }
+
+        answer.push($(this).text());
+        ShowAnswer();
+        SetAnswerToInput();
     });
 
     $('.options-back.button').click(function () {
-        if (previousLinks.length == 0) {
+        if (clickedOptionGroupsHistory.length == 0) {
             return;
         }
-        let previousLink = previousLinks.pop();
-        previousLink.empty();
 
-        fillUpOptionGroupWithOptions(previousLink);
-        nextOptionGroupIndex--;
+        let lastClickedOptionGroup = clickedOptionGroupsHistory.pop();
+        lastClickedOptionGroup.optionGroupDiv.empty();
+
+        fillUpOptionGroupWithOptions(lastClickedOptionGroup);
+
+        answer.pop();
+        ShowAnswer();
     });
 
-    function fillUpOptionGroupWithOptions(link) {
-        for (let i = 0; i < optionGroups[nextOptionGroupIndex].options.length; i++) {
-            let button = $('<div>', { class: 'button' }).text(optionGroups[nextOptionGroupIndex].options[i]);
-            link.append(button);
+    function SetAnswerToInput() {
+        let sentence = $('.answer').text();
+        $('.answer-input input').attr('value', sentence.substring(0, sentence.length - 1) + '.');
+    }
+
+    function ShowAnswer() {
+        let answerDiv = $('.answer');
+        if (answer.length == 0) {
+            answerDiv.text('Переведите предложение');
+            return;
         }
-        link.attr('index', nextOptionGroupIndex);
+
+        let sentence = '';
+        for (var i = 0; i < answer.length; i++) {
+            sentence += answer[i].trim() + ' ';
+        }
+
+        answerDiv.text(sentence.charAt(0).toUpperCase() + sentence.substring(1));
+    }
+
+    function GetOptionGroupsMaxDataIndex() {
+        let indexes = $('.option-group').map(function () {
+            return $(this).data("index");
+        });
+        return Math.max.apply(Math, indexes.toArray());
+    }
+
+    function fillUpOptionGroupWithOptions(clickedOptionGroup) {
+        for (let i = 0; i < optionsGroupsData[clickedOptionGroup.index].options.length; i++) {
+            let button = $('<div>', { class: 'button' }).text(optionsGroupsData[clickedOptionGroup.index].options[i]);
+            clickedOptionGroup.optionGroupDiv.append(button);
+        }
+        clickedOptionGroup.optionGroupDiv.data('index', clickedOptionGroup.index);
     }
 });

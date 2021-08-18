@@ -34,6 +34,8 @@ namespace MyPolyglotWeb.Controllers
                 return RedirectToAction("Lesson", new { id = exerciseVM.LessonId});
             }
 
+            TempData["Feilure"] = "Please, try again!";
+
             return View(exerciseVM);
         }
     }

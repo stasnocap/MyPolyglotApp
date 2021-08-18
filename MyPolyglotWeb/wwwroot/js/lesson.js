@@ -1,23 +1,23 @@
 ﻿$(document).ready(function () {
     let clickedOptionGroupsHistory = [];
     let answer = [];
+    let successAlertIsShown = true;
+    let feilureAlertIsShown = true;
 
     $(document).on('click', '.option-group .button', function () {
-        let optionGroupDiv = $(this).closest('.option-group');
-        clickedOptionGroupsHistory.push({
-            optionGroupDiv,
-            index: optionGroupDiv.attr('index')
-        })
+        hideShownAlert();
+
+        let optionGroupDiv = saveOptionGroupToHistory();
         optionGroupDiv.empty();
 
-        let nextOptionGroupIndex = GetOptionGroupsMaxDataIndex() + 1;
+        let nextOptionGroupIndex = getOptionGroupsMaxDataIndex() + 1;
         if (nextOptionGroupIndex < optionsGroupsData.length) {
             fillUpOptionGroupWithOptions({ optionGroupDiv, index: nextOptionGroupIndex });
         }
 
         answer.push($(this).text());
-        ShowAnswer();
-        SetAnswerToInput();
+        showAnswer();
+        setValueToAnswerInput();
     });
 
     $('.options-back.button').click(function () {
@@ -31,19 +31,39 @@
         fillUpOptionGroupWithOptions(lastClickedOptionGroup);
 
         answer.pop();
-        ShowAnswer();
+        showAnswer();
     });
 
     $('.submit-button span').click(function () {
         $('.lesson form input[type=submit]').click();
     });
 
-    function SetAnswerToInput() {
+    function hideShownAlert() {
+        if (successAlertIsShown) {
+            $('.lesson-number .alert-success').hide();
+            successAlertIsShown = false;
+        }
+        if (feilureAlertIsShown) {
+            $('.lesson-number .alert-feilure').hide();
+            feilureAlertIsShown = false;
+        }
+    }
+
+    function saveOptionGroupToHistory() {
+        let optionGroupDiv = $(this).closest('.option-group');
+        clickedOptionGroupsHistory.push({
+            optionGroupDiv,
+            index: optionGroupDiv.attr('index')
+        })
+        return optionGroupDiv;
+    }
+
+    function setValueToAnswerInput() {
         let sentence = $('.answer').text();
         $('.lesson form input[type=text]').attr('value', sentence.substring(0, sentence.length - 1) + '.');
     }
 
-    function ShowAnswer() {
+    function showAnswer() {
         let answerDiv = $('.answer');
         if (answer.length == 0) {
             answerDiv.text('Переведите предложение');
@@ -58,7 +78,7 @@
         answerDiv.text(sentence.charAt(0).toUpperCase() + sentence.substring(1));
     }
 
-    function GetOptionGroupsMaxDataIndex() {
+    function getOptionGroupsMaxDataIndex() {
         let indexes = $('.option-group').map(function () {
             return $(this).attr('index');
         });

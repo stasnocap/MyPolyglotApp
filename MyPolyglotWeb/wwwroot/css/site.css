@@ -63,6 +63,11 @@ ul.lessons {
     user-select: none;
 }
 
+    .lesson .lesson-number {
+        display: flex;
+        justify-content: space-between;
+    }
+
     .lesson form {
         display: none;
     }
@@ -109,6 +114,9 @@ ul.lessons {
 
 .alert-success {
     color: green;
+}
+.alert-feilure {
+    color: red;
 }
 
 .container {

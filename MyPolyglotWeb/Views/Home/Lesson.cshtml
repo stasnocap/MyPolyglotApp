@@ -13,18 +13,25 @@
         @Html.HiddenFor(x => x.ExerciseId)
         @for (int i = 0; i < Model.OptionGroups.Count; i++)
         {
-            @for (int j = 0; j < Model.OptionGroups[i].Options.Count; j++)
+            @for (int j = 0; j < Model.OptionGroups[i].Options.Count(); j++)
             {
                 @Html.HiddenFor(x => x.OptionGroups[i].Options[j])
             }
         }
-        @Html.HiddenFor(x => x.OptionGroups)
         @Html.HiddenFor(x => x.RusPhrase)
         @Html.TextBoxFor(x => x.UserAnswer)
         <input type="submit" />
     </form>
-    <div>
+    <div class="lesson-number">
         Урок @Model.LessonId
+        @if (TempData["Success"] != null)
+        {
+            <p class="alert-success">@TempData["Success"]</p>
+        }
+        @if (TempData["Feilure"] != null)
+        {
+            <p class="alert-feilure">@TempData["Feilure"]</p>
+        }
     </div>
     <div>
         @Model.RusPhrase
@@ -32,12 +39,6 @@
     <div class="answer">
         Переведите предложение
     </div>
-    @if (TempData["Success"] != null)
-    {
-        <div>
-            <p class="alert-success">@TempData["Success"]</p>
-        </div>
-    }
     <div class="buttons">
         @for (int i = 0; i < 2; i++)
         {

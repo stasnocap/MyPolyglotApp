@@ -4,10 +4,9 @@ namespace MyPolyglotWeb.Models.ViewModels
 {
     public class ExerciseVM
     {
-        public long Id { get; set; }
+        public long LessonId { get; set; }
+        public long ExerciseId { get; set; }
         public string RusPhrase { get; set; }
-        public string EngPhrase { get; set; }
-        public IEnumerable<UnrecognizedWordVM> UnrecognizedWords { get; set; }
         public List<OptionGroup> OptionGroups { get; set; }
         public string UserAnswer { get; set; }
     }

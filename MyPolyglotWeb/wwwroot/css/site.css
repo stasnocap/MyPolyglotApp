@@ -63,7 +63,7 @@ ul.lessons {
     user-select: none;
 }
 
-    .lesson .answer-input {
+    .lesson form {
         display: none;
     }
 
@@ -94,6 +94,22 @@ ul.lessons {
         height: 178px;
         justify-content: center;
     }
+
+.submit-button {
+    height: 100%;
+    padding: 0px 48px 0 0;
+}
+
+    .submit-button span {
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        position: fixed;
+    }
+
+.alert-success {
+    color: green;
+}
 
 .container {
     display: flex;

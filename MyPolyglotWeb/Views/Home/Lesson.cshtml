@@ -8,26 +8,40 @@
 }
 
 <div class="lesson">
+    <form action="/Home/Lesson" method="post">
+        @Html.HiddenFor(x => x.LessonId)
+        @Html.HiddenFor(x => x.ExerciseId)
+        @for (int i = 0; i < Model.OptionGroups.Count; i++)
+        {
+            @for (int j = 0; j < Model.OptionGroups[i].Options.Count; j++)
+            {
+                @Html.HiddenFor(x => x.OptionGroups[i].Options[j])
+            }
+        }
+        @Html.HiddenFor(x => x.OptionGroups)
+        @Html.HiddenFor(x => x.RusPhrase)
+        @Html.TextBoxFor(x => x.UserAnswer)
+        <input type="submit" />
+    </form>
     <div>
-        Урок @Model.Id
+        Урок @Model.LessonId
     </div>
     <div>
         @Model.RusPhrase
     </div>
-    <div>
-        <form action="/Home/Lesson" method="post">
-            <div class="answer">
-                Переведите предложение
-            </div>
-            <div class="answer-input">
-                <input type="text" name="UserAnswer" value="" />
-            </div>
-        </form>
+    <div class="answer">
+        Переведите предложение
     </div>
+    @if (TempData["Success"] != null)
+    {
+        <div>
+            <p class="alert-success">@TempData["Success"]</p>
+        </div>
+    }
     <div class="buttons">
         @for (int i = 0; i < 2; i++)
         {
-            <div class="option-group" data-index="@i">
+            <div class="option-group" index="@i">
                 @foreach (var option in Model.OptionGroups.ElementAt(i).Options)
                 {
                     <div class="button">
@@ -40,4 +54,9 @@
     <div class="options-back button">
         ^
     </div>
+</div>
+<div class="submit-button">
+    <span class="button">
+        GO
+    </span>
 </div>

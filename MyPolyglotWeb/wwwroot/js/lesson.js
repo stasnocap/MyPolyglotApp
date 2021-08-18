@@ -6,7 +6,7 @@
         let optionGroupDiv = $(this).closest('.option-group');
         clickedOptionGroupsHistory.push({
             optionGroupDiv,
-            index: optionGroupDiv.data('index')
+            index: optionGroupDiv.attr('index')
         })
         optionGroupDiv.empty();
 
@@ -34,9 +34,13 @@
         ShowAnswer();
     });
 
+    $('.submit-button span').click(function () {
+        $('.lesson form input[type=submit]').click();
+    });
+
     function SetAnswerToInput() {
         let sentence = $('.answer').text();
-        $('.answer-input input').attr('value', sentence.substring(0, sentence.length - 1) + '.');
+        $('.lesson form input[type=text]').attr('value', sentence.substring(0, sentence.length - 1) + '.');
     }
 
     function ShowAnswer() {
@@ -56,7 +60,7 @@
 
     function GetOptionGroupsMaxDataIndex() {
         let indexes = $('.option-group').map(function () {
-            return $(this).data("index");
+            return $(this).attr('index');
         });
         return Math.max.apply(Math, indexes.toArray());
     }
@@ -66,6 +70,6 @@
             let button = $('<div>', { class: 'button' }).text(optionsGroupsData[clickedOptionGroup.index].options[i]);
             clickedOptionGroup.optionGroupDiv.append(button);
         }
-        clickedOptionGroup.optionGroupDiv.data('index', clickedOptionGroup.index);
+        clickedOptionGroup.optionGroupDiv.attr('index', clickedOptionGroup.index);
     }
 });

@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using AutoMapper;
@@ -27,9 +28,17 @@ namespace MyPolyglotWeb.Presentation
 
             var exerciseVM = _mapper.Map<ExerciseVM>(exerciseDB);
 
-            exerciseVM.OptionGroups = exercise.Words.Select(x => new OptionGroup() { Options = exercise.NextOptions() }).ToList();
+            exerciseVM.OptionGroups = exercise.Words.Select(x => new OptionGroup() { Options = exercise.NextOptions().ToList() }).ToList();
+
+            exerciseVM.LessonId = id;
 
             return exerciseVM;
+        }
+
+        public bool CheckAnswer(long exerciseId, string userAnswer)
+        {
+            var exercise = _exerciseRepository.Get(exerciseId);
+            return exercise.EngPhrase == userAnswer;
         }
     }
 }

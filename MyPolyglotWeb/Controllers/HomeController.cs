@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using MyPolyglotWeb.Models.ViewModels;
 using MyPolyglotWeb.Presentation;
 
 namespace MyPolyglotWeb.Controllers
@@ -25,11 +26,15 @@ namespace MyPolyglotWeb.Controllers
         }
 
         [HttpPost]
-        public IActionResult Lesson()
+        public IActionResult Lesson(ExerciseVM exerciseVM)
         {
-            return View();
+            if (_homePresentation.CheckAnswer(exerciseVM.ExerciseId, exerciseVM.UserAnswer))
+            {
+                TempData["Success"] = "Splendid!";
+                return RedirectToAction("Lesson", new { id = exerciseVM.LessonId});
+            }
+
+            return View(exerciseVM);
         }
-
-
     }
 }

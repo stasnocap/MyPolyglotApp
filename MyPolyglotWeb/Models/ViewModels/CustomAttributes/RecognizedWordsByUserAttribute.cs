@@ -10,7 +10,7 @@ namespace MyPolyglotWeb.Models.ViewModels.CustomAttributes
         public override bool IsValid(object value)
         {
             var unrecognizedWords = value as IEnumerable<UnrecognizedWordVM>;
-            return !unrecognizedWords.Where(x => x.Type == UnrecognizableTypes.Undefined).Any();
+            return !unrecognizedWords?.Where(x => x.Type == UnrecognizableTypes.Undefined).Any() ?? true;
         }
     }
 }

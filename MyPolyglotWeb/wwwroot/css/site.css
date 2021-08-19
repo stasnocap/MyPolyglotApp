@@ -127,7 +127,7 @@ ul.lessons {
     }
 
 .add-exercise .unrecognized {
-    display: flex;
+    display: none;
 }
 
     .add-exercise .unrecognized div {
@@ -146,7 +146,6 @@ ul.lessons {
 
 .add-exercise .submit-button {
     display: none;
-    margin-top: 55px;
 }
 
 .field-validation-error {

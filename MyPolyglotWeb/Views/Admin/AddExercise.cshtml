@@ -37,6 +37,9 @@
             <input type="button" class="button" value="Распознать" />
         </div>
         <div class="unrecognized">
+            <div>
+                @Html.DisplayNameFor(x => x.UnrecognizedWords):
+            </div>
         </div>
         @Html.ValidationMessageFor(x => x.UnrecognizedWords)
         <div class="submit-button">

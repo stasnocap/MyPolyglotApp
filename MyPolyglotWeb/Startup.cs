@@ -10,6 +10,8 @@ using MyPolyglotWeb.Models.ViewModels;
 using MyPolyglotWeb.Presentation;
 using MyPolyglotWeb.Models;
 using MyPolyglotWeb.Repositories.IRepository;
+using System;
+using MyPolyglotCore.Words;
 
 namespace MyPolyglotWeb
 {
@@ -31,6 +33,7 @@ namespace MyPolyglotWeb
             RegisterPresentation(services);
             RegisterRepository(services);
             RegisterMapper(services);
+            services.AddScoped(x => new Random());
         }
 
         private void RegisterMapper(IServiceCollection services)
@@ -38,9 +41,24 @@ namespace MyPolyglotWeb
             var config = new MapperConfiguration(x =>
             {
                 x.CreateMap<AddExerciseVM, ExerciseDB>();
-                x.CreateMap<UnrecognizedWordVM, UnrecognizedWordDB>();
+                x.CreateMap<UnrecognizedWordVM, UnrecognizedWordDB>().ReverseMap();
+                x.CreateMap<UnrecognizedWordDB, Word>()
+                    .ConvertUsing(x => CastUnrecognizedWordDBToWord(x));
+                x.CreateMap<ExerciseDB, ExerciseVM>()
+                    .ForMember(nameof(ExerciseVM.ExerciseId), x => x.MapFrom(x => x.Id));
             });
             services.AddScoped(x => config.CreateMapper());
+        }
+
+        private Word CastUnrecognizedWordDBToWord(UnrecognizedWordDB word)
+        {
+            return word.Type switch
+            {
+                MyPolyglotCore.UnrecognizableTypes.Adjective => new Adjective(word.Text),
+                MyPolyglotCore.UnrecognizableTypes.Noun => new Noun(word.Text),
+                MyPolyglotCore.UnrecognizableTypes.Verb => new Verb(word.Text),
+                _ => throw new NotImplementedException()
+            };
         }
 
         private void RegisterRepository(IServiceCollection services)
@@ -48,12 +66,15 @@ namespace MyPolyglotWeb
             services.AddScoped<ILessonRepository>(x => new LessonRepository(
                 x.GetService<WebContext>()));
             services.AddScoped<IExerciseRepository>(x => new ExerciseRepository(
-                x.GetService<WebContext>()));
+                x.GetService<WebContext>(),
+                x.GetService<Random>()));
         }
 
         private void RegisterPresentation(IServiceCollection services)
         {
-            services.AddScoped(x => new HomePresentation());
+            services.AddScoped(x => new HomePresentation(
+                x.GetService<IMapper>(),
+                x.GetService<IExerciseRepository>()));
             services.AddScoped(x => new AdminPresentation(
                 x.GetService<IMapper>(),
                 x.GetService<ILessonRepository>(),

@@ -23,7 +23,7 @@ namespace MyPolyglotCore
             UnrecognizedWords = words.Where(x => !RecognizedWords.Contains(x));
         }
 
-        private IEnumerable<Word> SplitToWords()
+        public IEnumerable<Word> SplitToWords()
         {
             return Regex.Split(EngPhrase.ToLower(), "[^a-zA-Z0-9']+")
                         .Where(x => !string.IsNullOrEmpty(x))

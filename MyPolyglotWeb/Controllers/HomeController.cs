@@ -28,6 +28,11 @@ namespace MyPolyglotWeb.Controllers
         [HttpPost]
         public IActionResult Lesson(ExerciseVM exerciseVM)
         {
+            if(!ModelState.IsValid)
+            {
+                return View(exerciseVM);
+            }
+
             if (_homePresentation.CheckAnswer(exerciseVM.ExerciseId, exerciseVM.UserAnswer))
             {
                 TempData["Success"] = "Splendid!";

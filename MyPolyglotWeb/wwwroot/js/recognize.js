@@ -1,12 +1,20 @@
 ﻿$(document).ready(function () {
-    $('.recognize input[type=button]').one('click', function () {
-        var engPhrase = $('.eng-phrase input[type=text]').val();
+    $('.recognize input[type=button]').on('click', function () {
+        var engPhrase = $('.eng-phrase input[type=text]').val().trim();
+        if (!engPhrase) {
+            return;
+        }
         var url = `/Admin/Recognize?engPhrase=${engPhrase}`;
-        var options = getUnrecognizableEnumOptions();
+        var submitButton = $('.add-exercise .submit-button')
+
         $.get(url).done(function (unrecognizedArray) {
-            saveOnPage(unrecognizedArray, options);
+            if (unrecognizedArray.length > 0) {
+                submitButton.css('margin-top', '55px');
+                saveOnPage(unrecognizedArray, getUnrecognizableEnumOptions());
+            }
         });
-        $('.add-exercise .submit-button').show();
+
+        submitButton.show();
     });
 });
 
@@ -15,8 +23,7 @@ function saveOnPage(unrecognizedArray, options) {
     for (var i = 0; i < unrecognizedArray.length; i++) {
         $('.unrecognized').append(`<div><span class="button">${unrecognizedArray[i].text}</span>
             <select name=UnrecognizedWords[${i}].Type>${options}</select>
-            <input name="UnrecognizedWords[${i}].Text" type="hidden" value="${unrecognizedArray[i].text}"/>
-            </div>`);
+            <input name="UnrecognizedWords[${i}].Text" type="hidden" value="${unrecognizedArray[i].text}"/></div>`);
     }
 }
 

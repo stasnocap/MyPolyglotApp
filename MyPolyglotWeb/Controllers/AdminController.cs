@@ -22,6 +22,10 @@ namespace MyPolyglotWeb.Controllers
         [HttpPost]
         public IActionResult AddExercise(AddExerciseVM viewModel)
         {
+            if (!ModelState.IsValid)
+            {
+                return View(viewModel);
+            }
             _adminPresentation.AddExercise(viewModel);
             return View(viewModel);
         }

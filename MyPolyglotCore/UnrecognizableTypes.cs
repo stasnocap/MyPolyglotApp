@@ -2,8 +2,9 @@
 {
     public enum UnrecognizableTypes
     {
-        Adjective,
-        Noun,
-        Verb
+        Undefined = 0,
+        Adjective = 1,
+        Noun = 2,
+        Verb = 3
     }
 }

@@ -22,19 +22,23 @@
                 }
             </select>
         </div>
+        @Html.ValidationMessageFor(x => x.LessonId)
         <div>
-            Русское предложение:
+            @Html.DisplayNameFor(x => x.RusPhrase):
             <input type="text" name="RusPhrase" />
         </div>
+        @Html.ValidationMessageFor(x => x.RusPhrase)
         <div class="eng-phrase">
-            Английский перевод:
+            @Html.DisplayNameFor(x => x.EngPhrase):
             <input type="text" name="EngPhrase" />
         </div>
+        @Html.ValidationMessageFor(x => x.EngPhrase)
         <div class="recognize">
             <input type="button" class="button" value="Распознать" />
         </div>
         <div class="unrecognized">
         </div>
+        @Html.ValidationMessageFor(x => x.UnrecognizedWords)
         <div class="submit-button">
             <input type="submit" class="button" value="Добавить" />
         </div>

@@ -23,6 +23,9 @@ function saveOnPage(unrecognizedArray, options) {
 function getUnrecognizableEnumOptions() {
     let options = '<option disabled selected>Тип слова</option>';
     for (option in unrecognizableTypeEnum) {
+        if (option == 'Undefined') {
+            continue;
+        }
         options += '<option>' + option + '</option>';
     }
     return options;

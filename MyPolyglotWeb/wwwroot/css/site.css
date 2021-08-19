@@ -148,3 +148,7 @@ ul.lessons {
     display: none;
     margin-top: 55px;
 }
+
+.field-validation-error {
+    color: orangered;
+}

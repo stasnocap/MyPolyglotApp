@@ -17,10 +17,14 @@ body, select, input {
         width: 100%;
     }
 
-.button:hover {
-    cursor: pointer;
-    background-color: #9CACBD;
+.button {
+    user-select: none;
 }
+
+    .button:hover {
+        cursor: pointer;
+        background-color: #9CACBD;
+    }
 
 ul.lessons {
     width: 100%;
@@ -54,8 +58,20 @@ ul.lessons {
 
 .lesson {
     width: 100%;
+    height: 100vh;
     margin-right: 5px;
+    user-select: none;
+    display: flex;
+    flex-direction: column;
 }
+
+    .lesson .lesson-number {
+        justify-content: space-between;
+    }
+
+    .lesson form {
+        display: none;
+    }
 
     .lesson > div:not(.buttons) {
         height: 100px;
@@ -68,6 +84,7 @@ ul.lessons {
     .lesson .buttons {
         display: flex;
         flex-wrap: wrap;
+        height: 280px;
     }
 
         .lesson .buttons div {
@@ -76,26 +93,36 @@ ul.lessons {
             display: flex;
             justify-content: center;
             align-items: center;
+            flex-wrap: wrap;
         }
+
+.container .lesson .remaining-space {
+    flex: 1 1 auto;
+}
+
+.alert-success {
+    color: green;
+}
+.alert-feilure {
+    color: red;
+}
 
 .container {
     display: flex;
+    flex-direction: column;
 }
 
-.add-exercise div {
-    margin: 5px;
+.home-row {
+    display: flex;
+    justify-content: space-between;
 }
 
-.navigation {
-    height: 100%;
-    padding: 0 73px 0 0;
+.add-exercise {
+    height: 100vh;
 }
 
-    .navigation span {
-        height: 100vh;
-        display: flex;
-        align-items: center;
-        position: fixed;
+    .add-exercise div {
+        margin: 5px;
     }
 
 .add-exercise .unrecognized {
@@ -106,9 +133,6 @@ ul.lessons {
         position: relative;
     }
 
-    .add-exercise .unrecognized .button {
-        user-select: none;
-    }
 
     .add-exercise .unrecognized select {
         display: none;

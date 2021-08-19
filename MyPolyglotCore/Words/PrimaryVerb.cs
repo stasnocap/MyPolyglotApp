@@ -11,7 +11,7 @@ namespace MyPolyglotCore.Words
 
         public PrimaryVerb(string text, string pastForm, string pastParticipleForm, string presentParticipleForm, 
             string thirdPersonForm, IReadOnlyCollection<string> negativeForms)
-            : base(text, pastForm, pastParticipleForm, presentParticipleForm, thirdPersonForm, false)
+            : base(text, pastForm, pastParticipleForm, presentParticipleForm, thirdPersonForm)
         {
             NegativeForms = negativeForms;
             AdditionalForms = new HashSet<string>();
@@ -19,7 +19,7 @@ namespace MyPolyglotCore.Words
 
         public PrimaryVerb(string text, string pastForm, string pastParticipleForm, string presentParticipleForm,
             string thirdPersonForm, IReadOnlyCollection<string> negativeForms, IReadOnlyCollection<string> additionalForms)
-            : base(text, pastForm, pastParticipleForm, presentParticipleForm, thirdPersonForm, false)
+            : base(text, pastForm, pastParticipleForm, presentParticipleForm, thirdPersonForm)
         {
             NegativeForms = negativeForms;
             AdditionalForms = additionalForms;

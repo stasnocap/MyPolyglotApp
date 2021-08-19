@@ -4,19 +4,24 @@
     <title>Polyglot</title>
     <link rel="stylesheet" href="/css/reset.css">
     <link rel="stylesheet" href="/css/site.css">
-    <script src="~/js/jquery-3.6.0.min.js"></script>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
     @RenderSection("Scripts", required: false)
 </head>
 
 <body>
     <div class="container">
-        <a href="javascript:history.back()">
-            <div class="button navigation">
-                <span>
-                    <<<
-                </span>
-            </div>
-        </a>
+        <div class="home-row">
+            <a href="@Url.Action("Index", "Home")">
+                <div class="button">
+                    Polyglot
+                </div>
+            </a>
+            <a href="@Url.Action("AddExercise", "Admin")">
+                <div class="button">
+                    Добавить упражнения
+                </div>
+            </a>
+        </div>
         @RenderBody()
     </div>
 </body>

@@ -1,9 +1,4 @@
 ﻿<ul class="lessons">
-    <a href="@Url.Action("AddExercise", "Admin")">
-        <div class="button">
-            Добавить упражнения
-        </div>
-    </a>
     @for (int i = 0; i < 32; i++)
     {
         <a href="@Url.Action("Lesson", "Home")?id=1">

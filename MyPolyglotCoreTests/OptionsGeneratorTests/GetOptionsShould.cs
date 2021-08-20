@@ -9,22 +9,52 @@ namespace MyPolyglotCore.Tests.OptionsGeneratorTests
 {
     public class GetOptionsShould
     {
-        [Theory]
-        [InlineData(typeof(SubjectPronoun))]
-        [InlineData(typeof(ObjectPronoun))]
-        [InlineData(typeof(PossessiveAdjective))]
-        [InlineData(typeof(PossessivePronoun))]
-        [InlineData(typeof(ReflexivePronoun))]
-        [InlineData(typeof(Determiner))]
-        public void AddWordsToOptions(Type type)
+        [Fact]
+        public void GivenSubjectPronoun_ReturnAllWordsFromSubjectPronounVocabulary()
         {
-            var textOfWord = "no matter";
+            var word = new SubjectPronoun("no matter");
+            CheckIfAllWordsFromVocabularyHadRecieved(word);
+        }
 
-            var word = InstantiateWord(type, textOfWord);
+        [Fact]
+        public void GivenObjectPronoun_ReturnAllWordsFromObjectPronounVocabulary()
+        {
+            var word = new ObjectPronoun("no matter");
+            CheckIfAllWordsFromVocabularyHadRecieved(word);
+        }
 
+        [Fact]
+        public void GivenPossessiveAdjective_ReturnAllWordsFromPossessiveAdjectiveVocabulary()
+        {
+            var word = new PossessiveAdjective("no matter");
+            CheckIfAllWordsFromVocabularyHadRecieved(word);
+        }
+
+        [Fact]
+        public void GivenPossessivePronoun_ReturnAllWordsFromPossessivePronounVocabulary()
+        {
+            var word = new PossessivePronoun("no matter");
+            CheckIfAllWordsFromVocabularyHadRecieved(word);
+        }
+
+        [Fact]
+        public void GivenReflexivePronoun_ReturnAllWordsFromReflexivePronounVocabulary()
+        {
+            var word = new ReflexivePronoun("no matter");
+            CheckIfAllWordsFromVocabularyHadRecieved(word);
+        }
+
+        [Fact]
+        public void GivenDeterminer_ReturnAllWordsFromDeterminerVocabulary()
+        {
+            var word = new Determiner("no matter");
+            CheckIfAllWordsFromVocabularyHadRecieved(word);
+        }
+
+        private void CheckIfAllWordsFromVocabularyHadRecieved(Word word)
+        {
             var optionsGenerator = new OptionsGenerator();
             var options = optionsGenerator.GetOptionsForWord(word);
-
             var vocabulary = Vocabulary.GetVocabulary(word.GetType());
             foreach (var wordFromVocabulary in vocabulary)
             {
@@ -32,36 +62,38 @@ namespace MyPolyglotCore.Tests.OptionsGeneratorTests
             }
         }
 
-        [Theory]
-        [InlineData(typeof(Noun))]
-        [InlineData(typeof(Adjective))]
-        public void AddRandomFiveWordsWithRightAnswer(Type type)
+        [Fact]
+        public void GivenNoun_ReturnFiveWordsFromNounVocabularyWithRightAnswer()
         {
-            var textOfWord = "no matter";
-
-            var word = InstantiateWord(type, textOfWord);
-
-            var optionsGenerator = new OptionsGenerator();
-            var options = optionsGenerator.GetOptionsForWord(word);
-
-            Assert.Contains(textOfWord, options);
-            Assert.True(options.Count() == 6);
+            var word = new Noun("no matter");
+            CheckIfFiveWordsFromVocabularyWithRightWordHadRecieved(word);
         }
 
-        private Word InstantiateWord(Type type, string textOfWord)
+        [Fact]
+        public void GivenAdjective_ReturnFiveWordsFromAdjectiveVocabularyWithRightAnswer()
         {
-            return type.Name switch
+            var word = new Adjective("no matter");
+            CheckIfFiveWordsFromVocabularyWithRightWordHadRecieved(word);
+        }
+
+        private void CheckIfFiveWordsFromVocabularyWithRightWordHadRecieved(Word word)
+        {
+            var optionsGenerator = new OptionsGenerator();
+            var options = optionsGenerator.GetOptionsForWord(word);
+            var vocabulary = Vocabulary.GetVocabulary(word.GetType());
+
+
+            foreach (var option in options)
             {
-                nameof(SubjectPronoun) => new SubjectPronoun(textOfWord),
-                nameof(ObjectPronoun) => new ObjectPronoun(textOfWord),
-                nameof(PossessiveAdjective) => new PossessiveAdjective(textOfWord),
-                nameof(PossessivePronoun) => new PossessivePronoun(textOfWord),
-                nameof(ReflexivePronoun) => new ReflexivePronoun(textOfWord),
-                nameof(Determiner) => new Determiner(textOfWord),
-                nameof(Noun) => new Noun(textOfWord),
-                nameof(Adjective) => new Adjective(textOfWord),
-                _ => throw new NotImplementedException()
-            };
+                if (option == word.Text)
+                {
+                    continue;
+                }
+
+                Assert.Contains(option, vocabulary.Select(x => x.Text));
+            }
+
+            Assert.Contains(word.Text, options);
         }
 
         [Fact]

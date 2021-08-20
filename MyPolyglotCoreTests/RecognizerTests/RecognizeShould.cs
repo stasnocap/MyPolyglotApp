@@ -12,144 +12,193 @@ namespace MyPolyglotCoreTests.RecognizerTests
     public class RecognizeShould
     {
         private Random _random;
+        private List<Verb> _irregularVerbs;
+        private List<Word> _recognizableWords;
+        private List<PrimaryVerb> _primaryVerbs;
 
         public RecognizeShould()
         {
             _random = new Random();
+            _irregularVerbs = Vocabulary.IrregularVerbs.ToList();
+            _recognizableWords = Vocabulary.RecognizableVocabularies.ToList();
+            _primaryVerbs = Vocabulary.PrimaryVerbs.ToList();
         }
 
-        [Theory]
-        [InlineData(typeof(SubjectPronoun))]
-        [InlineData(typeof(ObjectPronoun))]
-        [InlineData(typeof(PossessiveAdjective))]
-        [InlineData(typeof(PossessivePronoun))]
-        [InlineData(typeof(ReflexivePronoun))]
-        [InlineData(typeof(Determiner))]
-        [InlineData(typeof(Verb))]
-        public void FindWordFromVocabularyInPhraseAndAddToRecognizedWords(Type type)
+        [Fact]
+        public void RecognizeSubjectPronounInPhrase()
         {
-            var randomWordFromVocabulary = GetRandomWordFromVocabulary(type);
-
-            var engPhrase =
-                $",,.1 s,t! tr , starst nsetnrsit!ta stra {randomWordFromVocabulary.Text}, 2 arstar";
-
-            var recognizer = new Recognizer(engPhrase);
-            recognizer.Recognize();
-
-            Assert.Contains(randomWordFromVocabulary, recognizer.RecognizedWords);
-
-            foreach (var unrecognizedWord in recognizer.UnrecognizedWords)
-            {
-                Assert.DoesNotContain(unrecognizedWord, recognizer.RecognizedWords);
-            }
+            var randomWordFromVocabulary = GetRandomWordFromVocabulary(typeof(SubjectPronoun));
+            CheckIfGivenWordHadRecognized(randomWordFromVocabulary);
         }
 
-        [Theory]
-        [InlineData(typeof(SubjectPronoun))]
-        [InlineData(typeof(ObjectPronoun))]
-        [InlineData(typeof(PossessiveAdjective))]
-        [InlineData(typeof(PossessivePronoun))]
-        [InlineData(typeof(ReflexivePronoun))]
-        [InlineData(typeof(Determiner))]
-        [InlineData(typeof(Verb))]
-        public void FindWordsNotFromVocabularyInPhraseAndAddToUnRecognizedWords(Type type)
+        [Fact]
+        public void RecognizeObjectPronounInPhrase()
         {
-            var randomWordFromVocabulary = GetRandomWordFromVocabulary(type);
-
-            var engPhrase =
-                $",,.1 s,t! tr , starst nsetnrsit!ta stra {randomWordFromVocabulary.Text}, 2 arstar";
-
-            var recognizer = new Recognizer(engPhrase);
-            recognizer.Recognize();
-
-            foreach (var unrecognizedWord in recognizer.UnrecognizedWords)
-            {
-                Assert.Contains(unrecognizedWord, recognizer.UnrecognizedWords);
-            }
-
-            Assert.DoesNotContain(randomWordFromVocabulary, recognizer.UnrecognizedWords);
+            var randomWordFromVocabulary = GetRandomWordFromVocabulary(typeof(ObjectPronoun));
+            CheckIfGivenWordHadRecognized(randomWordFromVocabulary);
         }
 
-        [Theory]
-        [InlineData(typeof(SubjectPronoun))]
-        [InlineData(typeof(ObjectPronoun))]
-        [InlineData(typeof(PossessiveAdjective))]
-        [InlineData(typeof(PossessivePronoun))]
-        [InlineData(typeof(ReflexivePronoun))]
-        [InlineData(typeof(Determiner))]
-        [InlineData(typeof(Verb))]
-        public void DoesNotContainNullOrEmptyStrings(Type type)
+        [Fact]
+        public void RecognizePossessiveAdjectiveInPhrase()
         {
-            var randomWordFromVocabulary = GetRandomWordFromVocabulary(type);
+            var randomWordFromVocabulary = GetRandomWordFromVocabulary(typeof(PossessiveAdjective));
+            CheckIfGivenWordHadRecognized(randomWordFromVocabulary);
+        }
 
-            var engPhrase =
-                $",,.1 s,t! tr , starst nsetnrsit!ta stra {randomWordFromVocabulary.Text}, 2 arstar";
+        [Fact]
+        public void RecognizePossessivePronounInPhrase()
+        {
+            var randomWordFromVocabulary = GetRandomWordFromVocabulary(typeof(PossessivePronoun));
+            CheckIfGivenWordHadRecognized(randomWordFromVocabulary);
+        }
 
-            var recognizer = new Recognizer(engPhrase);
-            recognizer.Recognize();
+        [Fact]
+        public void RecognizeReflexivePronounInPhrase()
+        {
+            var randomWordFromVocabulary = GetRandomWordFromVocabulary(typeof(ReflexivePronoun));
+            CheckIfGivenWordHadRecognized(randomWordFromVocabulary);
+        }
 
-            var words = recognizer.RecognizedWords.Concat(recognizer.UnrecognizedWords);
+        [Fact]
+        public void RecognizeDeterminerInPhrase()
+        {
+            var randomWordFromVocabulary = GetRandomWordFromVocabulary(typeof(Determiner));
+            CheckIfGivenWordHadRecognized(randomWordFromVocabulary);
+        }
 
-            foreach (var word in words)
-            {
-                Assert.NotNull(word);
-                Assert.False(string.IsNullOrEmpty(word.Text));
-            }
+        [Fact]
+        public void RecognizeVerbInPhrase()
+        {
+            var randomWordFromVocabulary = GetRandomWordFromVocabulary(typeof(Verb));
+            CheckIfGivenWordHadRecognized(randomWordFromVocabulary);
         }
 
         private Word GetRandomWordFromVocabulary(Type typeOfVocabulary)
         {
             var vocabulary = Vocabulary.GetVocabulary(typeOfVocabulary);
-
             return vocabulary.ToList()[_random.Next(vocabulary.Count)];
         }
 
-
-        [Theory]
-        [InlineData(nameof(Verb.PastForm))]
-        [InlineData(nameof(Verb.PastParticipleForm))]
-        [InlineData(nameof(Verb.PresentParticipleForm))]
-        [InlineData(nameof(Verb.ThirdPersonForm))]
-        public void RecognizeVerbNotOnlyByTextButByAllOthersProperties(string propertyName)
+        private void CheckIfGivenWordHadRecognized(Word word)
         {
-            foreach (var verb in Vocabulary.IrregularVerbs)
+            var engPhrase =
+                $",,.1 s,t! tr , starst nsetnrsit!ta stra {word.Text}, 2 arstar";
+
+            var recognizer = new Recognizer(engPhrase);
+            recognizer.Recognize();
+
+            Assert.Collection(recognizer.RecognizedWords, x => Assert.Equal(x, word));
+        }
+
+        [Fact]
+        public void StoreUnrecognizedWords()
+        {
+
+            var engPhrase =
+                $"arst aarst ,{GetRandomRecognizableWord()}, aaarst." +
+                $"aaaarst {GetRandomRecognizableWord()}, aaaaarst " +
+                $"aaaaaarst!ta stra {GetRandomRecognizableWord()}, ";
+            var unrecognizedWords = new List<Word>()
             {
-                var formOfVerb = verb.GetType().GetProperty(propertyName).GetValue(verb);
+                new Word("arst"),
+                new Word("aarst"),
+                new Word("aaarst"),
+                new Word("aaaarst"),
+                new Word("aaaaarst"),
+                new Word("aaaaaarst"),
+                new Word("ta"),
+                new Word("stra"),
+            };
 
-                var recognizer = new Recognizer("rastr " + formOfVerb + " strs");
-                recognizer.Recognize();
+            var recognizer = new Recognizer(engPhrase);
+            recognizer.Recognize();
 
-                Assert.Contains(recognizer.RecognizedWords, x => x.Text == verb.Text);
+            foreach (var unrecognizedWord in unrecognizedWords)
+            {
+                Assert.Contains(unrecognizedWord, recognizer.UnrecognizedWords);
             }
+        }
+
+        private string GetRandomRecognizableWord()
+        {
+            return _recognizableWords[_random.Next(_recognizableWords.Count)].Text;
+        }
+
+        [Fact]
+        public void RecognizeIrregularVerbByPastForm()
+        {
+            var verb = GetRandomIrregularVerb();
+
+            var recognizer = new Recognizer("rastr " + verb.PastForm + " strs");
+
+            recognizer.Recognize();
+
+            Assert.Collection(recognizer.RecognizedWords, x => Assert.Equal(x, verb));
+        }
+
+        [Fact]
+        public void RecognizeIrregularVerbByPastParticleForm()
+        {
+            var verb = GetRandomIrregularVerb();
+
+            var recognizer = new Recognizer("rastr " + verb.PastParticipleForm + " strs");
+
+            recognizer.Recognize();
+
+            Assert.Collection(recognizer.RecognizedWords, x => Assert.Equal(x, verb));
+        }
+
+        [Fact]
+        public void RecognizeIrregularVerbByPresentParticipleForm()
+        {
+            var verb = GetRandomIrregularVerb();
+
+            var recognizer = new Recognizer("rastr " + verb.PresentParticipleForm + " strs");
+
+            recognizer.Recognize();
+
+            Assert.Collection(recognizer.RecognizedWords, x => Assert.Equal(x, verb));
+        }
+
+        [Fact]
+        public void RecognizeIrregularVerbByThirdPersonForm()
+        {
+            var verb = GetRandomIrregularVerb();
+
+            var recognizer = new Recognizer("rastr " + verb.ThirdPersonForm + " strs");
+
+            recognizer.Recognize();
+
+            Assert.Collection(recognizer.RecognizedWords, x => Assert.Equal(x, verb));
+        }
+
+        private Verb GetRandomIrregularVerb()
+        {
+            return _irregularVerbs[_random.Next(_irregularVerbs.Count)];
         }
 
         [Fact]
         public void RecognizePrimaryVerbByNegativeForms()
         {
-            foreach (var primaryVerb in Vocabulary.PrimaryVerbs)
-            {
-                var randomWordFromNegativeForms = primaryVerb.NegativeForms.ElementAt(_random.Next(primaryVerb.NegativeForms.Count));
-                var recognizer = new Recognizer("rastr " + randomWordFromNegativeForms + " strs");
-                recognizer.Recognize();
+            var randomPrimaryVerb = _primaryVerbs[_random.Next(_primaryVerbs.Count)];
 
-                Assert.Contains(recognizer.RecognizedWords, x => x == primaryVerb);
-            }
+            var randomWordFromNegativeForms = randomPrimaryVerb.NegativeForms.ElementAt(_random.Next(randomPrimaryVerb.NegativeForms.Count));
+            var recognizer = new Recognizer("rastr " + randomWordFromNegativeForms + " strs");
+            recognizer.Recognize();
+
+            Assert.Contains(recognizer.RecognizedWords, x => x == randomPrimaryVerb);
         }
 
         [Fact]
         public void RecognizePrimaryVerbByAdditionalForms()
         {
-            foreach (var primaryVerb in Vocabulary.PrimaryVerbs)
-            {
-                if (primaryVerb.AdditionalForms.Any())
-                {
-                    var randomWordFromAdditionalForms = primaryVerb.AdditionalForms.ElementAt(_random.Next(primaryVerb.AdditionalForms.Count));
-                    var recognizer = new Recognizer("rastr " + randomWordFromAdditionalForms + " strs");
-                    recognizer.Recognize();
+            var primaryVerb = _primaryVerbs.Find(x => x.Text == "be");
 
-                    Assert.Contains(recognizer.RecognizedWords, x => x == primaryVerb);
-                }
-            }
+            var randomWordFromAdditionalForms = primaryVerb.AdditionalForms.ElementAt(_random.Next(primaryVerb.AdditionalForms.Count));
+            var recognizer = new Recognizer("rastr " + randomWordFromAdditionalForms + " strs");
+            recognizer.Recognize();
+
+            Assert.Contains(recognizer.RecognizedWords, x => x == primaryVerb);
         }
     }
 }

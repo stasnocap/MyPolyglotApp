@@ -8,7 +8,7 @@ namespace MyPolyglotWeb.Models.ViewModels
     public class AddExerciseVM
     {
         [Required(ErrorMessage = "Вы забыли указать урок!")]
-        public string LessonId { get; set; }
+        public virtual string LessonId { get; set; }
 
         [Required(ErrorMessage = "Вы забыли ввести русскую фразу!")]
         [DisplayName("На русском")]

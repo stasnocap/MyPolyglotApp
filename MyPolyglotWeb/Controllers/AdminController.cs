@@ -20,14 +20,14 @@ namespace MyPolyglotWeb.Controllers
         }
 
         [HttpPost]
-        public IActionResult AddExercise(AddExerciseVM viewModel)
+        public IActionResult AddExercise(AddExerciseVM addExerciseVM)
         {
             if (!ModelState.IsValid)
             {
-                return View(viewModel);
+                return View(addExerciseVM);
             }
-            _adminPresentation.AddExercise(viewModel);
-            return View(viewModel);
+            _adminPresentation.AddExercise(addExerciseVM);
+            return View(addExerciseVM);
         }
 
         public IActionResult Recognize(string engPhrase)

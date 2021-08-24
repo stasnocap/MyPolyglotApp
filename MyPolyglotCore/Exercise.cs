@@ -26,7 +26,7 @@ namespace MyPolyglotCore
         public IEnumerable<string> NextOptions()
         {
             return wordCounter < Words.Count()
-                ? _optionsGenerator.GetOptionsForWord(Words.ElementAt(wordCounter++))
+                ? _optionsGenerator.GetOptions(Words.ElementAt(wordCounter++))
                 : Enumerable.Empty<string>();
         }
 

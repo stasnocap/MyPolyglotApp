@@ -54,7 +54,7 @@ namespace MyPolyglotCore.Tests.OptionsGeneratorTests
         private void CheckIfAllWordsFromVocabularyHadRecieved(Word word)
         {
             var optionsGenerator = new OptionsGenerator();
-            var options = optionsGenerator.GetOptionsForWord(word);
+            var options = optionsGenerator.GetOptions(word);
             var vocabulary = Vocabulary.GetVocabulary(word.GetType());
             foreach (var wordFromVocabulary in vocabulary)
             {
@@ -79,7 +79,7 @@ namespace MyPolyglotCore.Tests.OptionsGeneratorTests
         private void CheckIfFiveWordsFromVocabularyWithRightWordHadRecieved(Word word)
         {
             var optionsGenerator = new OptionsGenerator();
-            var options = optionsGenerator.GetOptionsForWord(word);
+            var options = optionsGenerator.GetOptions(word);
             var vocabulary = Vocabulary.GetVocabulary(word.GetType());
 
 
@@ -111,7 +111,7 @@ namespace MyPolyglotCore.Tests.OptionsGeneratorTests
             };
 
             var optionsGenerator = new OptionsGenerator();
-            var options = optionsGenerator.GetOptionsForWord(randomVerb);
+            var options = optionsGenerator.GetOptions(randomVerb);
 
             foreach (var form in verbForms)
             {
@@ -133,7 +133,7 @@ namespace MyPolyglotCore.Tests.OptionsGeneratorTests
             };
 
             var optionsGenerator = new OptionsGenerator();
-            var options = optionsGenerator.GetOptionsForWord(verb);
+            var options = optionsGenerator.GetOptions(verb);
 
             foreach (var form in verbForms)
             {

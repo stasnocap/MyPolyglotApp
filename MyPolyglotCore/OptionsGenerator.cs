@@ -15,7 +15,7 @@ namespace MyPolyglotCore
             _random = new Random();
         }
 
-        public IEnumerable<string> GetOptionsForWord(Word word)
+        public IEnumerable<string> GetOptions(Word word)
         {
             return word switch
             {

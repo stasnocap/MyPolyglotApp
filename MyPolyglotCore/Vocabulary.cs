@@ -136,9 +136,9 @@ namespace MyPolyglotCore
             .Concat(PrimaryVerbs)
             .ToHashSet();
 
-        public static IReadOnlyCollection<Word> GetVocabulary(Type type)
+        public static IReadOnlyCollection<Word> GetVocabulary(Type typeOfWord)
         {
-            dynamic vocabulary = type.Name switch
+            dynamic vocabulary = typeOfWord.Name switch
             {
                 nameof(SubjectPronoun) => SubjectPronouns,
                 nameof(ObjectPronoun) => ObjectPronouns,

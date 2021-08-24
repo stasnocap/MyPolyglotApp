@@ -144,6 +144,10 @@ ul.lessons {
         bottom: -55px;
     }
 
+    .add-exercise .unrecognized input[type=text] {
+        width: 400px;
+    }
+
 .add-exercise .submit-button {
     display: none;
 }

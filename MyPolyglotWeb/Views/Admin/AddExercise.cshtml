@@ -11,39 +11,45 @@
     <script src="~/js/addExercise.js"></script>
 }
 
-<div class="add-exercise">
-    <form action="/Admin/AddExercise" method="post">
+<form action="/Admin/AddExercise" method="post">
+    <div class="add-exercise">
         <div>
-            <select name="LessonId">
-                <option disabled selected>Выберите урок</option>
-                @for (int i = 1; i <= 32; i++)
-                {
-                    <option value="@i">Урок @i</option>
-                }
-            </select>
-        </div>
-        @Html.ValidationMessageFor(x => x.LessonId)
-        <div>
-            @Html.DisplayNameFor(x => x.RusPhrase):
-            <input type="text" name="RusPhrase" />
-        </div>
-        @Html.ValidationMessageFor(x => x.RusPhrase)
-        <div class="eng-phrase">
-            @Html.DisplayNameFor(x => x.EngPhrase):
-            <input type="text" name="EngPhrase" />
-        </div>
-        @Html.ValidationMessageFor(x => x.EngPhrase)
-        <div class="recognize">
-            <input type="button" class="button" value="Распознать" />
-        </div>
-        <div class="unrecognized">
             <div>
-                @Html.DisplayNameFor(x => x.UnrecognizedWords):
+                <select name="LessonId">
+                    <option disabled selected>Выберите урок</option>
+                    @for (int i = 1; i <= 32; i++)
+                    {
+                        <option value="@i">Урок @i</option>
+                    }
+                </select>
+            </div>
+            @Html.ValidationMessageFor(x => x.LessonId)
+            <div>
+                @Html.DisplayNameFor(x => x.RusPhrase):
+                <input type="text" name="RusPhrase" />
+            </div>
+            @Html.ValidationMessageFor(x => x.RusPhrase)
+            <div class="eng-phrase">
+                @Html.DisplayNameFor(x => x.EngPhrase):
+                <input type="text" name="EngPhrase" />
+            </div>
+            @Html.ValidationMessageFor(x => x.EngPhrase)
+            <div class="recognize">
+                <div class="button">
+                    Распознать
+                </div>
+            </div>
+            <div class="unrecognized">
+                <div>
+                    @Html.DisplayNameFor(x => x.UnrecognizedWords):
+                </div>
+            </div>
+            @Html.ValidationMessageFor(x => x.UnrecognizedWords)
+        </div>
+        <div class="submit-button">
+            <div class="button">
+                Добавить
             </div>
         </div>
-        @Html.ValidationMessageFor(x => x.UnrecognizedWords)
-        <div class="submit-button">
-            <input type="submit" class="button" value="Добавить" />
-        </div>
-    </form>
-</div>
+    </div>
+</form>

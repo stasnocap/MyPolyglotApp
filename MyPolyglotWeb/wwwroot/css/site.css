@@ -6,19 +6,20 @@
 body, select, input {
     font-size: 40px;
     font-family: Courier New;
+}
+
+body {
     background-color: #D3EDEF;
 }
 
-    input[type=text] {
-        width: 948px;
-    }
-
-    select, input[type=submit], input[type=button] {
-        width: 100%;
-    }
+select, input[type=submit], input[type=text] {
+    width: 100%;
+    background-color: antiquewhite;
+}
 
 .button {
     user-select: none;
+    background-color: aliceblue;
 }
 
     .button:hover {
@@ -103,6 +104,7 @@ ul.lessons {
 .alert-success {
     color: green;
 }
+
 .alert-feilure {
     color: red;
 }
@@ -119,6 +121,9 @@ ul.lessons {
 }
 
 .add-exercise {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     height: 100vh;
 }
 
@@ -126,22 +131,26 @@ ul.lessons {
         margin: 5px;
     }
 
-.add-exercise .unrecognized {
-    display: none;
-}
-
-    .add-exercise .unrecognized div {
-        position: relative;
+    .add-exercise .unrecognized {
+        display: none;
+        flex-wrap: wrap;
     }
 
+        .add-exercise .unrecognized div {
+            position: relative;
+        }
 
-    .add-exercise .unrecognized select {
-        display: none;
-        position: absolute;
-        z-index: 1;
-        width: 238px;
-        left: -90px;
-        bottom: -55px;
+            .add-exercise .unrecognized div select {
+                position: absolute;
+                z-index: 1;
+                width: 238px;
+                left: -90px;
+                bottom: -55px;
+                display: none;
+            }
+
+    .add-exercise .unrecognized input[type=text] {
+        width: 400px;
     }
 
 .add-exercise .submit-button {

@@ -22,10 +22,10 @@ namespace MyPolyglotWeb.Presentation
             _exerciseRepository = exerciseRepository;
         }
 
-        public void AddExercise(AddExerciseVM viewModel)
+        public void AddExercise(AddExerciseVM addExerciseVM)
         {
-            var exerciseDB = _mapper.Map<ExerciseDB>(viewModel);
-            exerciseDB.Lesson = _lessonRepository.Get(long.TryParse(viewModel.LessonId, out long result) ? result : -1); 
+            var exerciseDB = _mapper.Map<ExerciseDB>(addExerciseVM);
+            exerciseDB.Lesson = _lessonRepository.Get(long.TryParse(addExerciseVM.LessonId, out long result) ? result : -1); 
 
             _exerciseRepository.Save(exerciseDB);
         }

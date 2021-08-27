@@ -1,5 +1,5 @@
 ﻿<ul class="lessons">
-    @for (int i = 0; i < 32; i++)
+    @for (int i = 0; i < CustomConst.NumberOfLessons; i++)
     {
         <a href="@Url.Action("Lesson", "Home")?id=1">
         <li class="button">

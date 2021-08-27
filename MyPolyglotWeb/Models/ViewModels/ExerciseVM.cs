@@ -6,7 +6,7 @@ namespace MyPolyglotWeb.Models.ViewModels
     public class ExerciseVM
     {
         [Required(ErrorMessage ="Зачем ты пытаешься сломать меня?")]
-        public long LessonId { get; set; }
+        public virtual long LessonId { get; set; }
 
         [Required(ErrorMessage ="Зачем ты пытаешься сломать меня?")]
         public long ExerciseId { get; set; }
@@ -15,7 +15,7 @@ namespace MyPolyglotWeb.Models.ViewModels
         public string RusPhrase { get; set; }
 
         [Required(ErrorMessage ="Зачем ты пытаешься сломать меня?")]
-        public List<OptionGroup> OptionGroups { get; set; }
+        public virtual List<OptionGroup> OptionGroups { get; set; }
 
         [Required(ErrorMessage ="Зачем ты пытаешься сломать меня?")]
         public string UserAnswer { get; set; }

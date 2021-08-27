@@ -32,6 +32,11 @@ namespace MyPolyglotWeb.Controllers
 
         public IActionResult Recognize(string engPhrase)
         {
+            if (string.IsNullOrEmpty(engPhrase))
+            {
+                return null;
+            }
+
             var unrecognizedWords = _adminPresentation.GetUnrecognizedWords(engPhrase);
             return Json(unrecognizedWords);
         }

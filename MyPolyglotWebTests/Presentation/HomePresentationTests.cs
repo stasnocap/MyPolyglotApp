@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
 using Moq;
-using MyPolyglotCore;
 using MyPolyglotCore.Words;
 using MyPolyglotWeb.Models.DomainModels;
 using MyPolyglotWeb.Models.ViewModels;
@@ -24,12 +23,10 @@ namespace MyPolyglotWebTests.Presentation
             _homePresentation = new HomePresentation(_mapperMock.Object, _exerciseRepositoryMock.Object);
         }
 
-        [Theory]
-        [InlineData(1)]
-        [InlineData(5)]
-        [InlineData(60)]
-        public void GetExerciseVM(long lessonId)
+        [Fact]
+        public void GetExerciseVM()
         {
+            var lessonId = 1;
             var exerciseDBMock = new Mock<ExerciseDB>();
 
             exerciseDBMock.Setup(x => x.EngPhrase).Returns("I am cool.");

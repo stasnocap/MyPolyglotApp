@@ -113,7 +113,7 @@ body {
             flex-wrap: wrap;
         }
 
-.container .lesson .remaining-space {
+.lesson .remaining-space {
     flex: 1 1 auto;
 }
 
@@ -123,12 +123,6 @@ body {
 
 .alert-feilure {
     color: red;
-}
-
-
-.home-row {
-    display: flex;
-    justify-content: space-between;
 }
 
 .add-exercise {

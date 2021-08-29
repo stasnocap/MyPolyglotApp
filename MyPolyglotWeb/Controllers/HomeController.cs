@@ -21,7 +21,18 @@ namespace MyPolyglotWeb.Controllers
         [HttpGet]
         public IActionResult Exercise(long lessonId)
         {
+            if (lessonId < 1)
+            {
+                return View(_homePresentation.GetExerciseVM(1));
+            }
+
             var viewModel = _homePresentation.GetExerciseVM(lessonId);
+
+            if (viewModel == null)
+            {
+                return View(_homePresentation.GetExerciseVM(1));
+            } 
+
             return View(viewModel);
         }
 

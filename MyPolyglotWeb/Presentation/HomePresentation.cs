@@ -20,9 +20,9 @@ namespace MyPolyglotWeb.Presentation
             _exerciseRepository = exerciseRepository;
         }
 
-        public ExerciseVM GetExerciseVM(long id)
+        public ExerciseVM GetExerciseVM(long lessonId)
         {
-            var exerciseDB = _exerciseRepository.GetRandomExerciseByLessonId(id);
+            var exerciseDB = _exerciseRepository.GetRandomExerciseByLessonId(lessonId);
 
             var exercise = new Exercise(exerciseDB.EngPhrase, _mapper.Map<IEnumerable<Word>>(exerciseDB.UnrecognizedWords));
 
@@ -30,7 +30,7 @@ namespace MyPolyglotWeb.Presentation
 
             exerciseVM.OptionGroups = exercise.Words.Select(x => new OptionGroup() { Options = exercise.NextOptions().ToList() }).ToList();
 
-            exerciseVM.LessonId = id;
+            exerciseVM.LessonId = lessonId;
 
             return exerciseVM;
         }

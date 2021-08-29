@@ -22,7 +22,7 @@ namespace MyPolyglotWeb.Presentation
 
         public ExerciseVM GetExerciseVM(long lessonId)
         {
-            var exerciseDB = _exerciseRepository.GetRandomExerciseByLessonId(lessonId);
+            var exerciseDB = _exerciseRepository.GetRandomExercise(lessonId);
 
             var exercise = new Exercise(exerciseDB.EngPhrase, _mapper.Map<IEnumerable<Word>>(exerciseDB.UnrecognizedWords));
 

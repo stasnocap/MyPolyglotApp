@@ -15,9 +15,9 @@ namespace MyPolyglotWeb.Models
             _random = random;
         }
 
-        public ExerciseDB GetRandomExerciseByLessonId(long id)
+        public ExerciseDB GetRandomExercise(long lessonId)
         {
-            var filteredById = _dbSet.Where(x => x.Lesson.Id == id).AsEnumerable();
+            var filteredById = _dbSet.Where(x => x.Lesson.Id == lessonId).AsEnumerable();
             return filteredById?.ElementAt(_random.Next(filteredById.Count()));
         }
     }

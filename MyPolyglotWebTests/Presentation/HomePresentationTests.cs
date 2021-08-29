@@ -40,11 +40,11 @@ namespace MyPolyglotWebTests.Presentation
             _mapperMock.Setup(x => x.Map<IEnumerable<Word>>(exerciseDBMock.Object.UnrecognizedWords)).Returns(unrecognizedWords);
             _mapperMock.Setup(x => x.Map<ExerciseVM>(exerciseDBMock.Object)).Returns(exerciseVMMock.Object);
 
-            _exerciseRepositoryMock.Setup(x => x.GetRandomExerciseByLessonId(lessonId)).Returns(exerciseDBMock.Object);
+            _exerciseRepositoryMock.Setup(x => x.GetRandomExercise(lessonId)).Returns(exerciseDBMock.Object);
 
             var exerciseVM = _homePresentation.GetExerciseVM(lessonId);
 
-            _exerciseRepositoryMock.Verify(x => x.GetRandomExerciseByLessonId(lessonId), Times.Once);
+            _exerciseRepositoryMock.Verify(x => x.GetRandomExercise(lessonId), Times.Once);
             _mapperMock.Verify(x => x.Map<IEnumerable<Word>>(exerciseDBMock.Object.UnrecognizedWords), Times.Once);
             _mapperMock.Verify(x => x.Map<ExerciseVM>(exerciseDBMock.Object), Times.Once);
             exerciseVMMock.VerifySet(x => x.OptionGroups = It.IsAny<List<OptionGroup>>(), Times.Once);

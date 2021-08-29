@@ -1,7 +1,8 @@
 ﻿<html>
 
 <head>
-    <title>Polyglot</title>
+    <title>Полиглот</title>
+    <link rel="icon" href="~/icons/logo.svg">
     <link rel="stylesheet" href="/css/reset.css">
     <link rel="stylesheet" href="/css/site.css">
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
@@ -9,19 +10,20 @@
 </head>
 
 <body>
-    <div class="container">
-        <div class="home-row">
-            <a href="@Url.Action("Index", "Home")">
-                <div class="button">
-                    Polyglot
-                </div>
+    <header>
+        <div class="navbar">
+            <a class="navbar__brand" href="@Url.Action("Index", "Home")">
+                <span class="icon-logo"></span>
+                <span>Полиглот</span>
             </a>
-            <a href="@Url.Action("AddExercise", "Admin")">
-                <div class="button">
-                    Добавить упражнения
-                </div>
-            </a>
+            <div class="navbar__auth">
+                <a href="@Url.Action("AddExercise", "Admin")">
+                    <span>Добавить упражнениe</span>
+                </a>
+            </div>
         </div>
+    </header>
+    <div class="content">
         @RenderBody()
     </div>
 </body>

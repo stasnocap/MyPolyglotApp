@@ -1,0 +1,68 @@
+@model ExerciseVM
+
+@section Scripts {
+    <script>
+        let optionsGroupsData = JSON.parse('@Json.Serialize(@Model.OptionGroups)');
+    </script>
+    <script src="~/js/exercise.js"></script>
+}
+
+<div class="exercise">
+    <form action="/Home/Exercise" method="post">
+        @Html.HiddenFor(x => x.LessonId)
+        @Html.HiddenFor(x => x.ExerciseId)
+        @for (int i = 0; i < Model.OptionGroups.Count; i++)
+        {
+            @for (int j = 0; j < Model.OptionGroups[i].Options.Count(); j++)
+            {
+                @Html.HiddenFor(x => x.OptionGroups[i].Options[j])
+            }
+        }
+        @Html.HiddenFor(x => x.RusPhrase)
+        @Html.TextBoxFor(x => x.UserAnswer)
+        <input type="submit" />
+    </form>
+    <div class="exercise__lesson-number previous-options-js">
+        Урок @Model.LessonId
+        <span>
+            @if (TempData["Success"] != null)
+            {
+                <span class="alert-success">@TempData["Success"]</span>
+            }
+            @if (TempData["Feilure"] != null)
+            {
+                <span class="alert-feilure">@TempData["Feilure"]</span>
+            }
+            <span>
+                @Html.ValidationMessageFor(x => x.ExerciseId)
+                @Html.ValidationMessageFor(x => x.LessonId)
+                @Html.ValidationMessageFor(x => x.RusPhrase)
+                @Html.ValidationMessageFor(x => x.OptionGroups)
+                @for (int i = 0; i < Model.OptionGroups.Count; i++)
+                {
+                    @Html.ValidationMessageFor(x => x.OptionGroups[i].Options)
+                }
+                @Html.ValidationMessageFor(x => x.UserAnswer)
+            </span>
+        </span>
+    </div>
+    <div class="exercise__rus-phrase previous-options-js">
+        @Model.RusPhrase
+    </div>
+    <div class="exercise__eng-phrase previous-options-js">
+        Переведите предложение
+    </div>
+    <div class="exercise__answer-options">
+        @for (int i = 0; i < 2; i++)
+        {
+            <div class="option-group" index="@i">
+                @foreach (var option in Model.OptionGroups.ElementAt(i).Options)
+                {
+                    <div>
+                        @option
+                    </div>
+                }
+            </div>
+        }
+    </div>
+</div>

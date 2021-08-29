@@ -1,20 +1,24 @@
-﻿<ul class="lessons">
-    @for (int i = 0; i < CustomConst.NumberOfLessons; i++)
-    {
-        <a href="@Url.Action("Lesson", "Home")?id=1">
-        <li class="button">
-            <div class=" rating">
-                0.0
-            </div>
-            <div class="lesson-info">
-                <div class="lesson-name">
-                    Урок 1
-                </div>
-                <div class="lesson-description">
-                    Базовая форма глагола
-                </div>
-            </div>
-        </li>
-        </a>
-    }
-</ul>
+﻿<div class="lesson-links">
+    <ul>
+        @for (int i = 0; i < 32; i++)
+        {
+            <li>
+                <a href="@Url.Action("Exercise", "Home")?lessonId=1">
+                    <div class="lesson-link">
+                        <span class="lesson-link__rating">
+                            0.0
+                        </span>
+                        <div class="lesson-info">
+                            <div class="lesson-info__name">
+                                Урок 1
+                            </div>
+                            <div class="lesson-info__description">
+                                Базовая форма глагола
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </li>
+        }
+    </ul>
+</div>

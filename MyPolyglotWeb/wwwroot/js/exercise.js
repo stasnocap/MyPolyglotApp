@@ -4,7 +4,7 @@
     let successAlertIsShown = true;
     let feilureAlertIsShown = true;
 
-    $(document).on('click', '.option-group .button', function () {
+    $(document).on('click', '.option-group div', function () {
         hideShownAlert();
         let currentClickedButton = $(this);
 
@@ -23,11 +23,11 @@
         setPickedWordsToAnswerInput();
 
         if (pickedWords.length == optionsGroupsData.length) {
-            $('.lesson form input[type=submit]').click();
+            $('.exercise form input[type=submit]').click();
         }
     });
 
-    $('.previous-options').click(function () {
+    $('.previous-options-js').click(function () {
         if (clickedOptionGroupsHistory.length == 0) {
             return;
         }
@@ -40,11 +40,11 @@
 
     function hideShownAlert() {
         if (successAlertIsShown) {
-            $('.lesson-number .alert-success').hide();
+            $('.exercise__lesson-number .alert-success').hide();
             successAlertIsShown = false;
         }
         if (feilureAlertIsShown) {
-            $('.lesson-number .alert-feilure').hide();
+            $('.exercise__lesson-number .alert-feilure').hide();
             feilureAlertIsShown = false;
         }
     }
@@ -64,12 +64,12 @@
     }
 
     function setPickedWordsToAnswerInput() {
-        let sentence = $('.answer').text();
-        $('.lesson form input[type=text]').attr('value', sentence.substring(0, sentence.length - 1) + '.');
+        let sentence = $('.exercise__eng-phrase').text();
+        $('.exercise form input[type=text]').attr('value', sentence.substring(0, sentence.length - 1) + '.');
     }
 
     function showPickedWords() {
-        let answerDiv = $('.answer');
+        let answerDiv = $('.exercise__eng-phrase');
         if (pickedWords.length == 0) {
             answerDiv.text('Переведите предложение');
             return;
@@ -92,7 +92,7 @@
 
     function fillUpOptionGroupWithOptions(clickedOptionGroup) {
         for (let i = 0; i < optionsGroupsData[clickedOptionGroup.index].options.length; i++) {
-            let button = $('<div>', { class: 'button' }).text(optionsGroupsData[clickedOptionGroup.index].options[i]);
+            let button = $('<div>').text(optionsGroupsData[clickedOptionGroup.index].options[i]);
             clickedOptionGroup.optionGroupDiv.append(button);
         }
         clickedOptionGroup.optionGroupDiv.attr('index', clickedOptionGroup.index);

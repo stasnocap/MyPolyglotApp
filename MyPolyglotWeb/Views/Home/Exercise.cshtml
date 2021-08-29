@@ -8,19 +8,19 @@
 }
 
 <div class="exercise">
-    <form action="/Home/Exercise" method="post">
-        @Html.HiddenFor(x => x.LessonId)
-        @Html.HiddenFor(x => x.ExerciseId)
+    <form asp-controller="Home" asp-action="Exercise" method="post">
+        <input asp-for="LessonId" type="hidden" />
+        <input asp-for="ExerciseId" type="hidden" />
         @for (int i = 0; i < Model.OptionGroups.Count; i++)
         {
             @for (int j = 0; j < Model.OptionGroups[i].Options.Count(); j++)
             {
-                @Html.HiddenFor(x => x.OptionGroups[i].Options[j])
+                <input asp-for="OptionGroups[i].Options[j]" type="hidden" />
             }
         }
-        @Html.HiddenFor(x => x.RusPhrase)
-        @Html.TextBoxFor(x => x.UserAnswer)
-        <input type="submit" />
+        <input asp-for="RusPhrase" type="hidden" />
+        <input asp-for="UserAnswer" type="hidden" />
+        <button type="submit"></button>
     </form>
     <div class="exercise__lesson-number previous-options-js">
         Урок @Model.LessonId
@@ -34,15 +34,15 @@
                 <span class="alert-feilure">@TempData["Feilure"]</span>
             }
             <span>
-                @Html.ValidationMessageFor(x => x.ExerciseId)
-                @Html.ValidationMessageFor(x => x.LessonId)
-                @Html.ValidationMessageFor(x => x.RusPhrase)
-                @Html.ValidationMessageFor(x => x.OptionGroups)
+                <span asp-validation-for="ExerciseId"></span>
+                <span asp-validation-for="LessonId"></span>
+                <span asp-validation-for="RusPhrase"></span>
+                <span asp-validation-for="OptionGroups"></span>
                 @for (int i = 0; i < Model.OptionGroups.Count; i++)
                 {
-                    @Html.ValidationMessageFor(x => x.OptionGroups[i].Options)
+                    <span asp-validation-for="OptionGroups[i].Options"></span>
                 }
-                @Html.ValidationMessageFor(x => x.UserAnswer)
+                <span asp-validation-for="UserAnswer"></span>
             </span>
         </span>
     </div>

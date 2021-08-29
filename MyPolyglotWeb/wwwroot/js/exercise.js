@@ -23,7 +23,7 @@
         setPickedWordsToAnswerInput();
 
         if (pickedWords.length == optionsGroupsData.length) {
-            $('.exercise form input[type=submit]').click();
+            $('.exercise form button[type=submit]').click();
         }
     });
 
@@ -65,7 +65,7 @@
 
     function setPickedWordsToAnswerInput() {
         let sentence = $('.exercise__eng-phrase').text();
-        $('.exercise form input[type=text]').attr('value', sentence.substring(0, sentence.length - 1) + '.');
+        $('.exercise form #UserAnswer').attr('value', sentence.substring(0, sentence.length - 1) + '.');
     }
 
     function showPickedWords() {

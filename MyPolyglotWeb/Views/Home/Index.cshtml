@@ -1,19 +1,19 @@
 ﻿<div class="lesson-links">
     <ul>
-        @for (int i = 0; i < CustomConst.NumberOfLessons; i++)
+        @for (int i = 1; i <= CustomConst.NumberOfLessons; i++)
         {
             <li>
-                <a href="@Url.Action("Exercise", "Home")?lessonId=1">
+                <a href="@Url.Action("Exercise", "Home", new { lessonId = i })">
                     <div class="lesson-link">
                         <span class="lesson-link__rating">
                             0.0
                         </span>
                         <div class="lesson-info">
                             <div class="lesson-info__name">
-                                Урок 1
+                                Урок @i
                             </div>
                             <div class="lesson-info__description">
-                                Базовая форма глагола
+                                @CustomConst.LessonsNames[i - 1]
                             </div>
                         </div>
                     </div>

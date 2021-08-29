@@ -1,3 +1,4 @@
+using MyPolyglotWeb.Constants;
 using MyPolyglotWeb.Models.ViewModels.CustomAttributes;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -8,7 +9,7 @@ namespace MyPolyglotWeb.Models.ViewModels
     public class AddExerciseVM
     {
         [Required(ErrorMessage = "Вы забыли указать урок!")]
-        [Range(1, long.MaxValue, ErrorMessage = "Зачем ты пытаешься сломать меня?")]
+        [Range(1, long.MaxValue, ErrorMessage = CustomConst.UserTriesToBreakMe)]
         public virtual string LessonId { get; set; }
 
         [Required(ErrorMessage = "Вы забыли ввести русскую фразу!")]

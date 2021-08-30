@@ -38,7 +38,7 @@ namespace MyPolyglotWeb.Presentation
         public bool CheckAnswer(long exerciseId, string userAnswer)
         {
             var exercise = _exerciseRepository.Get(exerciseId);
-            return exercise.EngPhrase == userAnswer;
+            return exercise.EngPhrase.SplitToStrings().SequenceEqual(userAnswer.SplitToStrings());
         }
     }
 }

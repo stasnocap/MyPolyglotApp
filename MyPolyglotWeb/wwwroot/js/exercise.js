@@ -65,7 +65,7 @@
 
     function setPickedWordsToAnswerInput() {
         let sentence = $('.exercise__eng-phrase').text();
-        $('.exercise form #UserAnswer').attr('value', sentence.substring(0, sentence.length - 1) + '.');
+        $('.exercise form #UserAnswer').attr('value', sentence.substring(0, sentence.length - 1));
     }
 
     function showPickedWords() {

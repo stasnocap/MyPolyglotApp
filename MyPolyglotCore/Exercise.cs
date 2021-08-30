@@ -33,7 +33,7 @@ namespace MyPolyglotCore
         private IEnumerable<Word> OrderWords(IEnumerable<Word> unrecognizedWords)
         {
             var unOrderedWords = _recognizer.RecognizedWords.Concat(unrecognizedWords);
-            var words = _recognizer.SplitToWords();
+            var words = _recognizer.EngPhrase.SplitToWords();
 
             return words.SelectMany(x => unOrderedWords.Select(y => y.Equals(x) ? y : null)).Where(x => x != null);
         }

@@ -35,7 +35,7 @@ namespace MyPolyglotWeb.Controllers
         public IActionResult Exercise(ExerciseVM exerciseVM)
         {
             if (!ModelState.IsValid)
-            {
+                {
                 return View(exerciseVM);
             }
 

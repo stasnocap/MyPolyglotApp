@@ -14,7 +14,7 @@ namespace MyPolyglotCoreTests.ExerciseTests
             var engPhrase = "Cool is a nice word.";
             var exercise = new Exercise(engPhrase, new List<Word> { new Adjective("cool"), new Adjective("nice"), new Noun("word") });
             var recognizer = new Recognizer(engPhrase);
-            var wordsInOrder = recognizer.SplitToWords();
+            var wordsInOrder = recognizer.EngPhrase.SplitToWords();
 
             var exerciseWordsList = exercise.Words.ToList();
             var wordsInOrderList = wordsInOrder.ToList();

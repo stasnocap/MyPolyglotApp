@@ -18,16 +18,9 @@ namespace MyPolyglotCore
 
         public void Recognize()
         {
-            var words = SplitToWords();
+            var words = EngPhrase.SplitToWords();
             RecognizedWords = words.SelectMany(word => Vocabulary.RecognizableVocabularies.Where(x => x.Equals(word)));
             UnrecognizedWords = words.Where(x => !RecognizedWords.Contains(x));
-        }
-
-        public IEnumerable<Word> SplitToWords()
-        {
-            return Regex.Split(EngPhrase.ToLower(), "[^a-zA-Z0-9']+")
-                        .Where(x => !string.IsNullOrEmpty(x))
-                        .Select(x => new Word(x));
         }
     }
 }

@@ -18,7 +18,7 @@ namespace MyPolyglotCore.Words
                 return false;
             }
 
-            return word.Text == Text;
+            return Text == word.Text;
         }
 
         public override int GetHashCode()

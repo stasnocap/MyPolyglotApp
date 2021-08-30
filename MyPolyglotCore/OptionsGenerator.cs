@@ -27,10 +27,28 @@ namespace MyPolyglotCore
                 Determiner d => Vocabulary.Determiners.Select(x => x.Text),
                 Adjective a => GetRandomWordsFromVocabularyWithRightWord(word),
                 Noun n => GetRandomWordsFromVocabularyWithRightWord(word),
+                ModalVerb m => GetRandomModalVerbs(word),
                 PrimaryVerb pv => GenerateOpitonsForPrimaryVerb(word),
                 Verb v => GenerateOptionsForVerb(word),
                 _ => throw new NotImplementedException(),
             };
+        }
+
+        private IEnumerable<string> GetRandomModalVerbs(Word word)
+        {
+            var modalVerb = word as ModalVerb;
+            var vocabulary = Vocabulary.GetVocabulary(typeof(ModalVerb));
+
+            var modalVerbs = vocabulary
+                .OrderBy(x => _random.Next())
+                .Take(3)
+                .Append(modalVerb) 
+                as IEnumerable<ModalVerb>;
+
+            return modalVerbs
+                .Select(x => x.Text)
+                .Concat(modalVerbs.Select(x => x.NegativeForm))
+                .OrderBy(x => _random.Next());
         }
 
         private IEnumerable<string> GenerateOpitonsForPrimaryVerb(Word word)

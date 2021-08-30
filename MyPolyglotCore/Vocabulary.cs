@@ -106,7 +106,7 @@ namespace MyPolyglotCore
             new Noun("airline"),
         };
 
-        public static IReadOnlyCollection<Verb> IrregularVerbs = new HashSet<Verb>
+        public static IReadOnlyCollection<Verb> IrregularVerbs { get; } = new HashSet<Verb>
         {
             new Verb("abide", "abode", "abode"),
             new Verb("arise", "arose", "arise"),
@@ -117,7 +117,7 @@ namespace MyPolyglotCore
             new Verb("beget", "begot", "begotten"),
         };
 
-        public static IReadOnlyCollection<PrimaryVerb> PrimaryVerbs = new HashSet<PrimaryVerb>
+        public static IReadOnlyCollection<PrimaryVerb> PrimaryVerbs { get; } = new HashSet<PrimaryVerb>
         {
             new PrimaryVerb("do", "did", "done", "doing", "does", new HashSet<string> { "don't", "didn't", "doesn't"}),
             new PrimaryVerb("have", "had", "had", "having", "has", new HashSet<string> { "haven't", "hadn't", "hasn't"}),
@@ -125,7 +125,20 @@ namespace MyPolyglotCore
                 new HashSet<string> { "were", "am", "is", "are" })
         };
 
-        public static IReadOnlyCollection<Word> RecognizableVocabularies => Enumerable.Empty<Word>()
+        public static IReadOnlyCollection<ModalVerb> ModalVerbs { get; } = new HashSet<ModalVerb>
+        {
+            new ModalVerb("can"),
+            new ModalVerb("could"),
+            new ModalVerb("may"),
+            new ModalVerb("might"),
+            new ModalVerb("will"),
+            new ModalVerb("shall"),
+            new ModalVerb("would"),
+            new ModalVerb("should"),
+            new ModalVerb("must"),
+        };
+
+        public static IReadOnlyCollection<Word> RecognizableVocabularies { get; } = Enumerable.Empty<Word>()
             .Concat(SubjectPronouns)
             .Concat(ObjectPronouns)
             .Concat(PossessiveAdjectives)
@@ -134,6 +147,7 @@ namespace MyPolyglotCore
             .Concat(Determiners)
             .Concat(IrregularVerbs)
             .Concat(PrimaryVerbs)
+            .Concat(ModalVerbs)
             .ToHashSet();
 
         public static IReadOnlyCollection<Word> GetVocabulary(Type typeOfWord)
@@ -149,6 +163,7 @@ namespace MyPolyglotCore
                 nameof(Verb) => IrregularVerbs,
                 nameof(Noun) => Nouns,
                 nameof(Adjective) => Adjectives,
+                nameof(ModalVerb) => ModalVerbs,
                 _ => throw new NotImplementedException(),
             };
             return vocabulary;

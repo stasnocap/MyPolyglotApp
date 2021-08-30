@@ -73,6 +73,13 @@ namespace MyPolyglotCoreTests.RecognizerTests
             CheckIfGivenWordHadRecognized(randomWordFromVocabulary);
         }
 
+        [Fact]
+        public void RecognizeModalVerbByAffirmativeForm()
+        {
+            var randomWordFromVocabulary = GetRandomWordFromVocabulary(typeof(ModalVerb));
+            CheckIfGivenWordHadRecognized(randomWordFromVocabulary);
+        }
+
         private Word GetRandomWordFromVocabulary(Type typeOfVocabulary)
         {
             var vocabulary = Vocabulary.GetVocabulary(typeOfVocabulary);
@@ -93,11 +100,11 @@ namespace MyPolyglotCoreTests.RecognizerTests
         [Fact]
         public void StoreUnrecognizedWords()
         {
-
             var engPhrase =
                 $"arst aarst ,{GetRandomRecognizableWord()}, aaarst." +
                 $"aaaarst {GetRandomRecognizableWord()}, aaaaarst " +
                 $"aaaaaarst!ta stra {GetRandomRecognizableWord()}, ";
+
             var unrecognizedWords = new List<Word>()
             {
                 new Word("arst"),
@@ -186,7 +193,7 @@ namespace MyPolyglotCoreTests.RecognizerTests
             var recognizer = new Recognizer("rastr " + randomWordFromNegativeForms + " strs");
             recognizer.Recognize();
 
-            Assert.Contains(recognizer.RecognizedWords, x => x == randomPrimaryVerb);
+            Assert.Collection(recognizer.RecognizedWords, x => Assert.Equal(x, randomPrimaryVerb));
         }
 
         [Fact]
@@ -198,7 +205,18 @@ namespace MyPolyglotCoreTests.RecognizerTests
             var recognizer = new Recognizer("rastr " + randomWordFromAdditionalForms + " strs");
             recognizer.Recognize();
 
-            Assert.Contains(recognizer.RecognizedWords, x => x == primaryVerb);
+            Assert.Collection(recognizer.RecognizedWords, x => Assert.Equal(x, primaryVerb));
+        }
+
+        [Fact]
+        public void RecognizeModalVerbByNegativeForm()
+        {
+            var modalVerb = GetRandomWordFromVocabulary(typeof(ModalVerb)) as ModalVerb;
+
+            var recognizer = new Recognizer("rstrs " + modalVerb.NegativeForm + " rtst");
+            recognizer.Recognize();
+
+            Assert.Collection(recognizer.RecognizedWords, x => Assert.Equal(x, modalVerb));
         }
     }
 }

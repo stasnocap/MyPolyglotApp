@@ -39,15 +39,15 @@ namespace MyPolyglotWeb.Controllers
                 return View(exerciseVM);
             }
 
-            if (_homePresentation.CheckAnswer(exerciseVM.ExerciseId, exerciseVM.UserAnswer))
+            if (!_homePresentation.CheckAnswer(exerciseVM.ExerciseId, exerciseVM.UserAnswer))
             {
-                TempData["Success"] = "Splendid!";
-                return RedirectToAction("Exercise", new { lessonId = exerciseVM.LessonId });
+                TempData["Feilure"] = "Please, try again!";
+                return View(exerciseVM);
             }
 
-            TempData["Feilure"] = "Please, try again!";
+            TempData["Success"] = "Splendid!";
 
-            return View(exerciseVM);
+            return RedirectToAction("Exercise", new { lessonId = exerciseVM.LessonId });
         }
     }
 }

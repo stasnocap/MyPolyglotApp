@@ -35,10 +35,7 @@ namespace MyPolyglotWeb.Presentation
             var recognizer = new Recognizer(engPhrase);
             recognizer.Recognize();
 
-            var unrecognizedWords = recognizer.UnrecognizedWords
-                .Select(x => new UnrecognizedWordVM() { Text = x.Text });
-
-            return unrecognizedWords;
+            return _mapper.Map<IEnumerable<UnrecognizedWordVM>>(recognizer.UnrecognizedWords);
         }
     }
 }

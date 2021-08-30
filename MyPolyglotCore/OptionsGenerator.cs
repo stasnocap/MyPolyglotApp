@@ -19,31 +19,34 @@ namespace MyPolyglotCore
         {
             return word switch
             {
-                SubjectPronoun s => Vocabulary.SubjectPronouns.Select(x => x.Text),
-                ObjectPronoun o => Vocabulary.ObjectPronouns.Select(x => x.Text),
-                PossessiveAdjective pa => Vocabulary.PossessiveAdjectives.Select(x => x.Text),
-                PossessivePronoun pp => Vocabulary.PossessivePronouns.Select(x => x.Text),
-                ReflexivePronoun r => Vocabulary.ReflexivePronouns.Select(x => x.Text),
-                Determiner d => Vocabulary.Determiners.Select(x => x.Text),
-                Adjective a => GetRandomWordsFromVocabularyWithRightWord(word),
-                Noun n => GetRandomWordsFromVocabularyWithRightWord(word),
-                ModalVerb m => GetRandomModalVerbs(word),
-                PrimaryVerb pv => GenerateOpitonsForPrimaryVerb(word),
-                Verb v => GenerateOptionsForVerb(word),
+                SubjectPronoun subjectPronoun => Vocabulary.SubjectPronouns.Select(x => x.Text),
+                ObjectPronoun objectPronoun => Vocabulary.ObjectPronouns.Select(x => x.Text),
+                PossessiveAdjective possessiveAdjective => Vocabulary.PossessiveAdjectives.Select(x => x.Text),
+                PossessivePronoun possessivePronoun => Vocabulary.PossessivePronouns.Select(x => x.Text),
+                ReflexivePronoun reflexivePronoun => Vocabulary.ReflexivePronouns.Select(x => x.Text),
+                Determiner determiner => Vocabulary.Determiners.Select(x => x.Text),
+                Adjective adjective => GetRandomWordsFromVocabularyWithRightWord(word),
+                Noun noun => GetRandomWordsFromVocabularyWithRightWord(word),
+                ModalVerb modalVerb => GetRandomModalVerbs(modalVerb),
+                PrimaryVerb primaryVerb => GenerateOpitonsForPrimaryVerb(primaryVerb),
+                Verb verb => GenerateOptionsForVerb(verb),
                 _ => throw new NotImplementedException(),
             };
         }
 
-        private IEnumerable<string> GetRandomModalVerbs(Word word)
+        private IEnumerable<string> GetRandomModalVerbs(ModalVerb modalVerb)
         {
-            var modalVerb = word as ModalVerb;
-            var vocabulary = Vocabulary.GetVocabulary(typeof(ModalVerb));
+            var vocabulary = Vocabulary.GetVocabulary(typeof(ModalVerb)) as IEnumerable<ModalVerb>;
 
             var modalVerbs = vocabulary
                 .OrderBy(x => _random.Next())
-                .Take(3)
-                .Append(modalVerb) 
-                as IEnumerable<ModalVerb>;
+                .Take(3);
+
+            if (!modalVerbs.Contains(modalVerb))
+            {
+                modalVerbs.ToList().Remove(modalVerbs.First());
+                modalVerbs.Append(modalVerb);
+            }
 
             return modalVerbs
                 .Select(x => x.Text)
@@ -51,9 +54,8 @@ namespace MyPolyglotCore
                 .OrderBy(x => _random.Next());
         }
 
-        private IEnumerable<string> GenerateOpitonsForPrimaryVerb(Word word)
+        private IEnumerable<string> GenerateOpitonsForPrimaryVerb(PrimaryVerb primaryVerb)
         {
-            var primaryVerb = word as PrimaryVerb;
             return primaryVerb.NegativeForms
                     .Concat(primaryVerb.AdditionalForms)
                     .Concat(new string[]
@@ -74,10 +76,8 @@ namespace MyPolyglotCore
                 .OrderBy(x => Guid.NewGuid());
         }
 
-        private IEnumerable<string> GenerateOptionsForVerb(Word word)
+        private IEnumerable<string> GenerateOptionsForVerb(Verb verb)
         {
-            var verb = word as Verb;
-
             return verb.IsIrregularVerb
                 ? new List<string>() { verb.Text, verb.PastForm, verb.PastParticipleForm, verb.PresentParticipleForm, verb.ThirdPersonForm }
                 : new List<string>() { verb.Text, verb.PastForm, verb.PastParticipleForm, verb.ThirdPersonForm };

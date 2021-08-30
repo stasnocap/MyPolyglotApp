@@ -21,17 +21,12 @@ namespace MyPolyglotWeb.Controllers
         [HttpGet]
         public IActionResult Exercise(long lessonId)
         {
-            if (lessonId < 1)
+            if (lessonId < 1 || lessonId > 31)
             {
                 return View(_homePresentation.GetExerciseVM(1));
             }
 
             var viewModel = _homePresentation.GetExerciseVM(lessonId);
-
-            if (viewModel == null)
-            {
-                return View(_homePresentation.GetExerciseVM(1));
-            } 
 
             return View(viewModel);
         }
@@ -39,7 +34,7 @@ namespace MyPolyglotWeb.Controllers
         [HttpPost]
         public IActionResult Exercise(ExerciseVM exerciseVM)
         {
-            if(!ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
                 return View(exerciseVM);
             }
@@ -47,7 +42,7 @@ namespace MyPolyglotWeb.Controllers
             if (_homePresentation.CheckAnswer(exerciseVM.ExerciseId, exerciseVM.UserAnswer))
             {
                 TempData["Success"] = "Splendid!";
-                return RedirectToAction("Exercise", new { lessonId = exerciseVM.LessonId});
+                return RedirectToAction("Exercise", new { lessonId = exerciseVM.LessonId });
             }
 
             TempData["Feilure"] = "Please, try again!";

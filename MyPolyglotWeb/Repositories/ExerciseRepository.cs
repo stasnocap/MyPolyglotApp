@@ -18,7 +18,7 @@ namespace MyPolyglotWeb.Models
         public ExerciseDB GetRandomExercise(long lessonId)
         {
             var filteredById = _dbSet.Where(x => x.Lesson.Id == lessonId).AsEnumerable();
-            return filteredById?.ElementAt(_random.Next(filteredById.Count()));
+            return filteredById.ElementAt(_random.Next(filteredById.Count()));
         }
     }
 }

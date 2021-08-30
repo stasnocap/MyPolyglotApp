@@ -27,17 +27,22 @@ namespace MyPolyglotCore
                 Determiner d => Vocabulary.Determiners.Select(x => x.Text),
                 Adjective a => GetRandomWordsFromVocabularyWithRightWord(word),
                 Noun n => GetRandomWordsFromVocabularyWithRightWord(word),
-                PrimaryVerb pv => GenerateNegativeOptionsForPrimaryVerb(word),
+                PrimaryVerb pv => GenerateOpitonsForPrimaryVerb(word),
                 Verb v => GenerateOptionsForVerb(word),
                 _ => throw new NotImplementedException(),
             };
         }
 
-        private IEnumerable<string> GenerateNegativeOptionsForPrimaryVerb(Word word)
+        private IEnumerable<string> GenerateOpitonsForPrimaryVerb(Word word)
         {
             var primaryVerb = word as PrimaryVerb;
-
-            return primaryVerb.NegativeForms.OrderBy(x => Guid.NewGuid());
+            return primaryVerb.NegativeForms
+                    .Concat(primaryVerb.AdditionalForms)
+                    .Concat(new string[]
+                    {
+                        primaryVerb.Text, primaryVerb.PastForm, primaryVerb.PastParticipleForm,
+                        primaryVerb.PresentParticipleForm, primaryVerb.ThirdPersonForm
+                    });
         }
 
         private IEnumerable<string> GetRandomWordsFromVocabularyWithRightWord(Word word)
@@ -55,11 +60,9 @@ namespace MyPolyglotCore
         {
             var verb = word as Verb;
 
-            var verbForms = verb.IsIrregularVerb
+            return verb.IsIrregularVerb
                 ? new List<string>() { verb.Text, verb.PastForm, verb.PastParticipleForm, verb.PresentParticipleForm, verb.ThirdPersonForm }
                 : new List<string>() { verb.Text, verb.PastForm, verb.PastParticipleForm, verb.ThirdPersonForm };
-
-            return verbForms.OrderBy(x => Guid.NewGuid());
         }
     }
 }

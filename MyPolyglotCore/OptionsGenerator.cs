@@ -40,12 +40,13 @@ namespace MyPolyglotCore
 
             var modalVerbs = vocabulary
                 .OrderBy(x => _random.Next())
-                .Take(3);
+                .Take(3)
+                .ToList();
 
             if (!modalVerbs.Contains(modalVerb))
             {
-                modalVerbs.ToList().Remove(modalVerbs.First());
-                modalVerbs.Append(modalVerb);
+                modalVerbs.Remove(modalVerbs.First());
+                modalVerbs.Add(modalVerb);
             }
 
             return modalVerbs

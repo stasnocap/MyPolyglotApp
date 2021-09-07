@@ -189,7 +189,7 @@ namespace MyPolyglotCoreTests.RecognizerTests
         {
             var randomPrimaryVerb = _primaryVerbs[_random.Next(_primaryVerbs.Count)];
 
-            var randomWordFromNegativeForms = randomPrimaryVerb.NegativeForms.ElementAt(_random.Next(randomPrimaryVerb.NegativeForms.Count));
+            var randomWordFromNegativeForms = randomPrimaryVerb.ShortNegativeForms.ElementAt(_random.Next(randomPrimaryVerb.ShortNegativeForms.Count));
             var recognizer = new Recognizer("rastr " + randomWordFromNegativeForms + " strs");
             recognizer.Recognize();
 

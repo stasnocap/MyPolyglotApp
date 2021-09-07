@@ -25,8 +25,8 @@ namespace MyPolyglotCore
                 PossessivePronoun possessivePronoun => Vocabulary.PossessivePronouns.Select(x => x.Text),
                 ReflexivePronoun reflexivePronoun => Vocabulary.ReflexivePronouns.Select(x => x.Text),
                 Determiner determiner => Vocabulary.Determiners.Select(x => x.Text),
-                Adjective adjective => GetRandomWordsFromVocabularyWithRightWord(word),
-                Noun noun => GetRandomWordsFromVocabularyWithRightWord(word),
+                Adjective adjective => GetRandomWordsFromVocabularyWithRightWord(adjective),
+                Noun noun => GetRandomWordsFromVocabularyWithRightWord(noun),
                 ModalVerb modalVerb => GetRandomModalVerbs(modalVerb),
                 PrimaryVerb primaryVerb => GenerateOpitonsForPrimaryVerb(primaryVerb),
                 Verb verb => GenerateOptionsForVerb(verb),
@@ -57,7 +57,7 @@ namespace MyPolyglotCore
 
         private IEnumerable<string> GenerateOpitonsForPrimaryVerb(PrimaryVerb primaryVerb)
         {
-            return primaryVerb.NegativeForms
+            return primaryVerb.ShortNegativeForms
                     .Concat(primaryVerb.AdditionalForms)
                     .Concat(new string[]
                     {

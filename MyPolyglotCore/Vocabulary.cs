@@ -119,9 +119,15 @@ namespace MyPolyglotCore
 
         public static IReadOnlyCollection<PrimaryVerb> PrimaryVerbs { get; } = new HashSet<PrimaryVerb>
         {
-            new PrimaryVerb("do", "did", "done", "doing", "does", new HashSet<string> { "don't", "didn't", "doesn't"}),
-            new PrimaryVerb("have", "had", "had", "having", "has", new HashSet<string> { "haven't", "hadn't", "hasn't"}),
-            new PrimaryVerb("be", "was", "been", "being", "is", new HashSet<string> { "wasn't", "weren't", "am not", "isn't", "aren't"},
+            new PrimaryVerb("do", "did", "done", "doing", "does", 
+                new HashSet<string> { "don't", "didn't", "doesn't"},
+                new HashSet<string> { "do not", "did not", "does not"}),
+            new PrimaryVerb("have", "had", "had", "having", "has", 
+                new HashSet<string> { "haven't", "hadn't", "hasn't"},
+                new HashSet<string>{ "have not", "had not", "has not"}),
+            new PrimaryVerb("be", "was", "been", "being", "is", 
+                new HashSet<string> { "wasn't", "weren't", "am not", "isn't", "aren't"},
+                new HashSet<string> { "was not", "were not", "am not", "is not", "are not" }, 
                 new HashSet<string> { "were", "am", "is", "are" })
         };
 

@@ -6,22 +6,26 @@ namespace MyPolyglotCore.Words
 {
     public class PrimaryVerb : Verb
     {
-        public IReadOnlyCollection<string> NegativeForms { get; }
-        public IReadOnlyCollection<string> AdditionalForms { get; }
+        public IEnumerable<string> ShortNegativeForms { get; }
+        public IEnumerable<string> FullNegativeForms { get; }
+        public IEnumerable<string> AdditionalForms { get; }
 
         public PrimaryVerb(string text, string pastForm, string pastParticipleForm, string presentParticipleForm, 
-            string thirdPersonForm, IReadOnlyCollection<string> negativeForms)
+            string thirdPersonForm, IEnumerable<string> shortNegativeForms, IEnumerable<string> fullNegativeForms)
             : base(text, pastForm, pastParticipleForm, presentParticipleForm, thirdPersonForm)
         {
-            NegativeForms = negativeForms;
+            ShortNegativeForms = shortNegativeForms;
+            FullNegativeForms = fullNegativeForms;
             AdditionalForms = new HashSet<string>();
         }
 
         public PrimaryVerb(string text, string pastForm, string pastParticipleForm, string presentParticipleForm,
-            string thirdPersonForm, IReadOnlyCollection<string> negativeForms, IReadOnlyCollection<string> additionalForms)
+            string thirdPersonForm, IEnumerable<string> shortNegativeForms, IEnumerable<string> fullNegativeForms,
+            IEnumerable<string> additionalForms)
             : base(text, pastForm, pastParticipleForm, presentParticipleForm, thirdPersonForm)
         {
-            NegativeForms = negativeForms;
+            ShortNegativeForms = shortNegativeForms;
+            FullNegativeForms = fullNegativeForms;
             AdditionalForms = additionalForms;
         }
 
@@ -35,14 +39,15 @@ namespace MyPolyglotCore.Words
             }
 
             return base.Equals(obj) 
-                || NegativeForms.Where(x => word.Text == x).Any() 
+                || ShortNegativeForms.Where(x => word.Text == x).Any() 
+                || FullNegativeForms.Where(x => word.Text == x).Any() 
                 || AdditionalForms.Where(x => word.Text == x).Any();
         }
 
         public override int GetHashCode()
         {
-            return HashCode.Combine(Text, PastForm, PastParticipleForm, PastParticipleForm, ThirdPersonForm, StressOnTheFinalSyllable,
-                NegativeForms, AdditionalForms);
+            return HashCode.Combine(Text, PastForm, PastParticipleForm, ThirdPersonForm, StressOnTheFinalSyllable,
+                ShortNegativeForms, FullNegativeForms, AdditionalForms);
         }
     }
 }

@@ -14,8 +14,7 @@ namespace MyPolyglotCore
 
         public static IEnumerable<string> SplitToStrings(this string engPhrase)
         {
-            return Regex.Split(engPhrase.ToLower(), "[^a-zA-Z0-9']+")
-                        .Where(x => !string.IsNullOrEmpty(x));
+            return Regex.Matches(engPhrase, "[a-zA-Z0-9']+\\snot|[a-zA-Z0-9']+").Select(x => x.Value.ToLower());
         }
     }
 }

@@ -30,5 +30,22 @@ namespace MyPolyglotCoreTests.SplitterHelperTests
                 Assert.False(string.IsNullOrEmpty(word));
             }
         }
+
+        [Fact]
+        public void SplitNegativeFormWithPreviousWordAsSingularWord()
+        {
+            var engPhrase = "I am not cool.";
+            var splittedEngPhrase = new List<string>()
+            {
+                "i", "am not", "cool"
+            };
+
+            var words = engPhrase.SplitToStrings();
+
+            foreach (var word in words)
+            {
+                Assert.Contains(word, splittedEngPhrase);
+            }
+        }
     }
 }

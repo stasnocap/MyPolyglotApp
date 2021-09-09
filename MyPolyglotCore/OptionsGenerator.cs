@@ -15,9 +15,9 @@ namespace MyPolyglotCore
             _random = new Random();
         }
 
-        public IEnumerable<string> GetOptions(Word word)
+        public IEnumerable<string> GetOptions(RecognizedWord word)
         {
-            return word switch
+            return word.RootWordFormVocabulary switch
             {
                 SubjectPronoun subjectPronoun => Vocabulary.SubjectPronouns.Select(x => x.Text),
                 ObjectPronoun objectPronoun => Vocabulary.ObjectPronouns.Select(x => x.Text),

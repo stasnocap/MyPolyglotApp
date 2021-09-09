@@ -189,7 +189,7 @@ namespace MyPolyglotCoreTests.RecognizerTests
         {
             var randomPrimaryVerb = _primaryVerbs[_random.Next(_primaryVerbs.Count)];
 
-            var randomWordFromNegativeForms = randomPrimaryVerb.ShortNegativeForms.ElementAt(_random.Next(randomPrimaryVerb.ShortNegativeForms.Count));
+            var randomWordFromNegativeForms = randomPrimaryVerb.ShortNegativeForms.ElementAt(_random.Next(randomPrimaryVerb.ShortNegativeForms.Count()));
             var recognizer = new Recognizer("rastr " + randomWordFromNegativeForms + " strs");
             recognizer.Recognize();
 
@@ -201,7 +201,7 @@ namespace MyPolyglotCoreTests.RecognizerTests
         {
             var primaryVerb = _primaryVerbs.Find(x => x.Text == "be");
 
-            var randomWordFromAdditionalForms = primaryVerb.AdditionalForms.ElementAt(_random.Next(primaryVerb.AdditionalForms.Count));
+            var randomWordFromAdditionalForms = primaryVerb.AdditionalForms.ElementAt(_random.Next(primaryVerb.AdditionalForms.Count()));
             var recognizer = new Recognizer("rastr " + randomWordFromAdditionalForms + " strs");
             recognizer.Recognize();
 

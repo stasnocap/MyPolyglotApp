@@ -1,13 +1,15 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using MyPolyglotCore.Words;
+using MyPolyglotCore.Words.Pronouns;
 
 namespace MyPolyglotCore
 {
     public class Recognizer
     {
         public string EngPhrase { get; }
-        public IEnumerable<RecognizedWord> RecognizedWords { get; private set; }
+        public IEnumerable<Word> RecognizedWords { get; private set; }
         public IEnumerable<Word> UnrecognizedWords { get; private set; }
 
         public Recognizer(string engPhrase)

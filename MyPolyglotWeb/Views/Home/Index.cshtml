@@ -1,19 +1,22 @@
 ﻿<div class="lesson-links">
     <ul>
-        @for (int i = 1; i <= CustomConst.NumberOfLessons; i++)
+        @{
+            var i = 1;
+        }
+        @foreach (var lessonName in CustomConst.LessonsNames)
         {
             <li>
-                <a href="@Url.Action("Exercise", "Home", new { lessonId = i })">
+                <a href="@Url.Action("Exercise", "Home", new { lessonId = i})">
                     <div class="lesson-link">
                         <span class="lesson-link__rating">
                             0.0
                         </span>
                         <div class="lesson-info">
                             <div class="lesson-info__name">
-                                Урок @i
+                                Урок @(i++)
                             </div>
                             <div class="lesson-info__description">
-                                @CustomConst.LessonsNames[i - 1]
+                                @lessonName
                             </div>
                         </div>
                     </div>

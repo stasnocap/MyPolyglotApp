@@ -4,9 +4,7 @@ namespace MyPolyglotWeb.Constants
 {
     public class CustomConst
     {
-        public const int NumberOfLessons = 31;
-
-        public static List<string> LessonsNames = new List<string>()
+        public static IEnumerable<string> LessonsNames = new string[]
         {
             "Базовая форма глагола",
             "Местоимения. Вопросительные слова",

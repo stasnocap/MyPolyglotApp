@@ -4,31 +4,13 @@ namespace MyPolyglotCore.Words
 {
     public class ModalVerb : Word
     {
-        public string NegativeForm { get; }
+        public string FullNegativeForm { get; }
+        public string ShortNegativeForm { get; }
 
-        public ModalVerb(string text) : base(text)
+        public ModalVerb(string text, string fullNegativeForm, string shortNegativeForm) : base(text)
         {
-            NegativeForm = GenerateNegativeForm();
-        }
-
-        private string GenerateNegativeForm()
-        {
-            if (Text == "may" || Text == "shall")
-            {
-                return Text + " not";
-            }
-
-            if (Text == "will")
-            {
-                return "won't";
-            }
-
-            if (Text.EndsWith('n'))
-            {
-                return Text + "'t";
-            }
-
-            return Text + "n't";
+            FullNegativeForm = fullNegativeForm;
+            ShortNegativeForm = shortNegativeForm;
         }
 
         public override bool Equals(object obj)
@@ -41,12 +23,12 @@ namespace MyPolyglotCore.Words
             }
 
             return base.Equals(word)
-                || NegativeForm == word.Text;
+                || ShortNegativeForm == word.Text;
         }
 
         public override int GetHashCode()
         {
-            return HashCode.Combine(Text, NegativeForm);
+            return HashCode.Combine(Text, ShortNegativeForm);
         }
     }
 }

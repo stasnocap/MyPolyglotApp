@@ -213,7 +213,7 @@ namespace MyPolyglotCoreTests.RecognizerTests
         {
             var modalVerb = GetRandomWordFromVocabulary(typeof(ModalVerb)) as ModalVerb;
 
-            var recognizer = new Recognizer("rstrs " + modalVerb.NegativeForm + " rtst");
+            var recognizer = new Recognizer("rstrs " + modalVerb.ShortNegativeForm + " rtst");
             recognizer.Recognize();
 
             Assert.Collection(recognizer.RecognizedWords, x => Assert.Equal(x, modalVerb));

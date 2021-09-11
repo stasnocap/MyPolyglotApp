@@ -51,7 +51,7 @@ namespace MyPolyglotCore
 
             return modalVerbs
                 .Select(x => x.Text)
-                .Concat(modalVerbs.Select(x => x.NegativeForm))
+                .Concat(modalVerbs.Select(x => x.ShortNegativeForm))
                 .OrderBy(x => _random.Next());
         }
 

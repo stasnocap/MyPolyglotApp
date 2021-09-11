@@ -133,15 +133,15 @@ namespace MyPolyglotCore
 
         public static readonly IEnumerable<ModalVerb> ModalVerbs = new ModalVerb[]
         {
-            new ModalVerb("can"),
-            new ModalVerb("could"),
-            new ModalVerb("may"),
-            new ModalVerb("might"),
-            new ModalVerb("will"),
-            new ModalVerb("shall"),
-            new ModalVerb("would"),
-            new ModalVerb("should"),
-            new ModalVerb("must"),
+            new ModalVerb("can", "cannot", "can't"),
+            new ModalVerb("could", "could not", "couldn't"),
+            new ModalVerb("may", "may not", "may not"),
+            new ModalVerb("might", "might not", "mightn't"),
+            new ModalVerb("will", "will not", "won't"),
+            new ModalVerb("shall", "shall not", "shan't"),
+            new ModalVerb("would", "would not", "wouldn't"),
+            new ModalVerb("should", "should not", "shouldn't"),
+            new ModalVerb("must", "must not", "mustn't"),
         };
 
         public static readonly IEnumerable<Word> RecognizableVocabularies = Enumerable.Empty<Word>()

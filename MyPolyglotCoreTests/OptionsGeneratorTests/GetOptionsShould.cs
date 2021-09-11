@@ -153,7 +153,7 @@ namespace MyPolyglotCore.Tests.OptionsGeneratorTests
             var options = optionsGenerator.GetOptions(randomModalVerb);
 
             Assert.Contains(randomModalVerb.Text, options);
-            Assert.Contains(randomModalVerb.NegativeForm, options);
+            Assert.Contains(randomModalVerb.ShortNegativeForm, options);
         }
 
         [Fact]
@@ -167,7 +167,7 @@ namespace MyPolyglotCore.Tests.OptionsGeneratorTests
 
             var modalVerbsTextsAndNegativeForms = modalVerbVocabulary
                 .Select(x => x.Text)
-                .Concat(modalVerbVocabulary.Select(x => x.NegativeForm));
+                .Concat(modalVerbVocabulary.Select(x => x.ShortNegativeForm));
 
             foreach (var option in options)
             {

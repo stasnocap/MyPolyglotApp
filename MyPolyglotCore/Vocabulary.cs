@@ -157,18 +157,18 @@ namespace MyPolyglotCore
 
         public static IEnumerable<Word> GetVocabulary(Type typeOfWord)
         {
-            dynamic vocabulary = typeOfWord.Name switch
+            dynamic vocabulary = typeOfWord switch
             {
-                nameof(SubjectPronoun) => SubjectPronouns,
-                nameof(ObjectPronoun) => ObjectPronouns,
-                nameof(PossessiveAdjective) => PossessiveAdjectives,
-                nameof(PossessivePronoun) => PossessivePronouns,
-                nameof(ReflexivePronoun) => ReflexivePronouns,
-                nameof(Determiner) => Determiners,
-                nameof(Verb) => IrregularVerbs,
-                nameof(Noun) => Nouns,
-                nameof(Adjective) => Adjectives,
-                nameof(ModalVerb) => ModalVerbs,
+                Type subjectPronoun when subjectPronoun == typeof(SubjectPronoun) => SubjectPronouns,
+                Type objectPronoun when objectPronoun == typeof(ObjectPronoun) => ObjectPronouns,
+                Type possessiveAdjective when possessiveAdjective == typeof(PossessiveAdjective) => PossessiveAdjectives,
+                Type possessivePronoun when possessivePronoun == typeof(PossessivePronoun) => PossessivePronouns,
+                Type reflexivePronoun when reflexivePronoun == typeof(ReflexivePronoun) => ReflexivePronouns,
+                Type determiner when determiner == typeof(Determiner) => Determiners,
+                Type verb when verb == typeof(Verb) => IrregularVerbs,
+                Type noun when noun == typeof(Noun) => Nouns,
+                Type adjective when adjective == typeof(Adjective) => Adjectives,
+                Type modalVerb when modalVerb == typeof(ModalVerb) => ModalVerbs,
                 _ => throw new NotImplementedException(),
             };
             return vocabulary;

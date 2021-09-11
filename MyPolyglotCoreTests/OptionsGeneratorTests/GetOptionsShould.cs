@@ -99,7 +99,7 @@ namespace MyPolyglotCore.Tests.OptionsGeneratorTests
         [Fact]
         public void GenerateOptionsForIrregularVerbs()
         {
-            var randomVerb = Vocabulary.IrregularVerbs.ToList()[new Random().Next(Vocabulary.IrregularVerbs.Count)];
+            var randomVerb = Vocabulary.IrregularVerbs.ToList()[new Random().Next(Vocabulary.IrregularVerbs.Count())];
 
             var verbForms = new List<string>()
             {

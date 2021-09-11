@@ -9,24 +9,24 @@ namespace MyPolyglotCore
     public static class Vocabulary
     {
         #region Letters
-        public static IReadOnlyCollection<char> Consonants { get; } = new HashSet<char>()
+        public static readonly IEnumerable<char> Consonants = new char[]
         {
             'b', 'c', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'm',
             'n', 'p', 'q', 'r', 's', 't', 'v', 'w', 'x', 'z'
         };
-        public static IReadOnlyCollection<char> Vowels { get; } = new HashSet<char>()
+        public static readonly IEnumerable<char> Vowels = new char[]
         {
             'a', 'e', 'i', 'o', 'u', 'y'
         };
         #endregion
 
-        public static IReadOnlyCollection<string> ThirdPersonESEndings { get; } = new HashSet<string>() { "ch", "s", "sh", "x", "z" };
+        public static readonly IEnumerable<string> ThirdPersonESEndings = new string[] { "ch", "s", "sh", "x", "z" };
         public const string IngEnding = "ing";
         public const string EdEnding = "ed";
 
         #region Pronouns
 
-        public static IReadOnlyCollection<SubjectPronoun> SubjectPronouns { get; } = new HashSet<SubjectPronoun>
+        public static readonly IEnumerable<SubjectPronoun> SubjectPronouns = new SubjectPronoun[]
         {
             new SubjectPronoun("i"),
             new SubjectPronoun("you"),
@@ -37,7 +37,7 @@ namespace MyPolyglotCore
             new SubjectPronoun("they"),
         };
 
-        public static IReadOnlyCollection<ObjectPronoun> ObjectPronouns { get; } = new HashSet<ObjectPronoun>
+        public static readonly IEnumerable<ObjectPronoun> ObjectPronouns = new ObjectPronoun[]
         {
             new ObjectPronoun("me"),
             new ObjectPronoun("him"),
@@ -45,7 +45,7 @@ namespace MyPolyglotCore
             new ObjectPronoun("them"),
         };
 
-        public static IReadOnlyCollection<PossessiveAdjective> PossessiveAdjectives { get; } = new HashSet<PossessiveAdjective>
+        public static readonly IEnumerable<PossessiveAdjective> PossessiveAdjectives = new PossessiveAdjective[]
         {
             new PossessiveAdjective("my"),
             new PossessiveAdjective("your"),
@@ -56,7 +56,7 @@ namespace MyPolyglotCore
             new PossessiveAdjective("their"),
         };
 
-        public static IReadOnlyCollection<PossessivePronoun> PossessivePronouns { get; } = new HashSet<PossessivePronoun>
+        public static readonly IEnumerable<PossessivePronoun> PossessivePronouns = new PossessivePronoun[]
         {
             new PossessivePronoun("mine"),
             new PossessivePronoun("hers"),
@@ -64,7 +64,7 @@ namespace MyPolyglotCore
             new PossessivePronoun("theirs"),
         };
 
-        public static IReadOnlyCollection<ReflexivePronoun> ReflexivePronouns { get; } = new HashSet<ReflexivePronoun>
+        public static readonly IEnumerable<ReflexivePronoun> ReflexivePronouns = new ReflexivePronoun[]
         {
             new ReflexivePronoun("myself"),
             new ReflexivePronoun("yourself"),
@@ -78,14 +78,14 @@ namespace MyPolyglotCore
 
         #endregion
 
-        public static IReadOnlyCollection<Determiner> Determiners { get; } = new HashSet<Determiner>
+        public static readonly IEnumerable<Determiner> Determiners = new Determiner[]
         {
             new Determiner("the"),
             new Determiner("a"),
             new Determiner("an"),
         };
 
-        public static IReadOnlyCollection<Adjective> Adjectives { get; } = new HashSet<Adjective>
+        public static readonly IEnumerable<Adjective> Adjectives = new Adjective[]
         {
             new Adjective("other"),
             new Adjective("new"),
@@ -94,7 +94,7 @@ namespace MyPolyglotCore
             new Adjective("large"),
         };
 
-        public static IReadOnlyCollection<Noun> Nouns { get; } = new HashSet<Noun>
+        public static readonly IEnumerable<Noun> Nouns = new Noun[]
         {
             new Noun("man"),
             new Noun("mountain"),
@@ -106,7 +106,7 @@ namespace MyPolyglotCore
             new Noun("airline"),
         };
 
-        public static IReadOnlyCollection<Verb> IrregularVerbs { get; } = new HashSet<Verb>
+        public static readonly IEnumerable<Verb> IrregularVerbs = new Verb[]
         {
             new Verb("abide", "abode", "abode"),
             new Verb("arise", "arose", "arise"),
@@ -117,21 +117,21 @@ namespace MyPolyglotCore
             new Verb("beget", "begot", "begotten"),
         };
 
-        public static IReadOnlyCollection<PrimaryVerb> PrimaryVerbs { get; } = new HashSet<PrimaryVerb>
+        public static readonly IEnumerable<PrimaryVerb> PrimaryVerbs = new PrimaryVerb[]
         {
-            new PrimaryVerb("do", "did", "done", "doing", "does", 
+            new PrimaryVerb("do", "did", "done", "doing", "does",
                 new HashSet<string> { "don't", "didn't", "doesn't"},
                 new HashSet<string> { "do not", "did not", "does not"}),
-            new PrimaryVerb("have", "had", "had", "having", "has", 
+            new PrimaryVerb("have", "had", "had", "having", "has",
                 new HashSet<string> { "haven't", "hadn't", "hasn't"},
                 new HashSet<string>{ "have not", "had not", "has not"}),
-            new PrimaryVerb("be", "was", "been", "being", "is", 
+            new PrimaryVerb("be", "was", "been", "being", "is",
                 new HashSet<string> { "wasn't", "weren't", "am not", "isn't", "aren't"},
-                new HashSet<string> { "was not", "were not", "am not", "is not", "are not" }, 
+                new HashSet<string> { "was not", "were not", "am not", "is not", "are not" },
                 new HashSet<string> { "were", "am", "is", "are" })
         };
 
-        public static IReadOnlyCollection<ModalVerb> ModalVerbs { get; } = new HashSet<ModalVerb>
+        public static readonly IEnumerable<ModalVerb> ModalVerbs = new ModalVerb[]
         {
             new ModalVerb("can"),
             new ModalVerb("could"),
@@ -144,7 +144,7 @@ namespace MyPolyglotCore
             new ModalVerb("must"),
         };
 
-        public static IReadOnlyCollection<Word> RecognizableVocabularies { get; } = Enumerable.Empty<Word>()
+        public static readonly IEnumerable<Word> RecognizableVocabularies = Enumerable.Empty<Word>()
             .Concat(SubjectPronouns)
             .Concat(ObjectPronouns)
             .Concat(PossessiveAdjectives)
@@ -153,23 +153,22 @@ namespace MyPolyglotCore
             .Concat(Determiners)
             .Concat(IrregularVerbs)
             .Concat(PrimaryVerbs)
-            .Concat(ModalVerbs)
-            .ToHashSet();
+            .Concat(ModalVerbs);
 
-        public static IReadOnlyCollection<Word> GetVocabulary(Type typeOfWord)
+        public static IEnumerable<Word> GetVocabulary(Type typeOfWord)
         {
-            dynamic vocabulary = typeOfWord.Name switch
+            dynamic vocabulary = typeOfWord switch
             {
-                nameof(SubjectPronoun) => SubjectPronouns,
-                nameof(ObjectPronoun) => ObjectPronouns,
-                nameof(PossessiveAdjective) => PossessiveAdjectives,
-                nameof(PossessivePronoun) => PossessivePronouns,
-                nameof(ReflexivePronoun) => ReflexivePronouns,
-                nameof(Determiner) => Determiners,
-                nameof(Verb) => IrregularVerbs,
-                nameof(Noun) => Nouns,
-                nameof(Adjective) => Adjectives,
-                nameof(ModalVerb) => ModalVerbs,
+                Type subjectPronoun when subjectPronoun == typeof(SubjectPronoun) => SubjectPronouns,
+                Type objectPronoun when objectPronoun == typeof(ObjectPronoun) => ObjectPronouns,
+                Type possessiveAdjective when possessiveAdjective == typeof(PossessiveAdjective) => PossessiveAdjectives,
+                Type possessivePronoun when possessivePronoun == typeof(PossessivePronoun) => PossessivePronouns,
+                Type reflexivePronoun when reflexivePronoun == typeof(ReflexivePronoun) => ReflexivePronouns,
+                Type determiner when determiner == typeof(Determiner) => Determiners,
+                Type verb when verb == typeof(Verb) => IrregularVerbs,
+                Type noun when noun == typeof(Noun) => Nouns,
+                Type adjective when adjective == typeof(Adjective) => Adjectives,
+                Type modalVerb when modalVerb == typeof(ModalVerb) => ModalVerbs,
                 _ => throw new NotImplementedException(),
             };
             return vocabulary;

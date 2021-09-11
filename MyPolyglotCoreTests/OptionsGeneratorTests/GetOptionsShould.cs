@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using MyPolyglotCore.Words;
 using MyPolyglotCore.Words.Pronouns;
@@ -9,6 +8,8 @@ namespace MyPolyglotCore.Tests.OptionsGeneratorTests
 {
     public class GetOptionsShould
     {
+        private readonly Random _random = new Random();
+
         [Fact]
         public void GivenSubjectPronoun_ReturnAllWordsFromSubjectPronounVocabulary()
         {
@@ -99,9 +100,10 @@ namespace MyPolyglotCore.Tests.OptionsGeneratorTests
         [Fact]
         public void GenerateOptionsForIrregularVerbs()
         {
-            var randomVerb = Vocabulary.IrregularVerbs.ToList()[new Random().Next(Vocabulary.IrregularVerbs.Count())];
+            var irregularVerbVocabulary = Vocabulary.IrregularVerbs.ToList();
+            var randomVerb = irregularVerbVocabulary[_random.Next(irregularVerbVocabulary.Count)];
 
-            var verbForms = new List<string>()
+            var verbForms = new string[]
             {
                 randomVerb.Text,
                 randomVerb.PastForm,
@@ -124,7 +126,7 @@ namespace MyPolyglotCore.Tests.OptionsGeneratorTests
         {
             var verb = new Verb("play");
 
-            var verbForms = new List<string>()
+            var verbForms = new string[]
             {
                 verb.Text,
                 verb.PastForm,
@@ -138,6 +140,38 @@ namespace MyPolyglotCore.Tests.OptionsGeneratorTests
             foreach (var form in verbForms)
             {
                 Assert.Contains(form, options);
+            }
+        }
+
+        [Fact]
+        public void GivenModalVerb_ReturnCollectionThatContainsPassedModalVerbTextAndNegativeForm()
+        {
+            var modalVerbVocabulary = Vocabulary.ModalVerbs.ToList();
+            var randomModalVerb = modalVerbVocabulary[_random.Next(modalVerbVocabulary.Count)];
+
+            var optionsGenerator = new OptionsGenerator();
+            var options = optionsGenerator.GetOptions(randomModalVerb);
+
+            Assert.Contains(randomModalVerb.Text, options);
+            Assert.Contains(randomModalVerb.NegativeForm, options);
+        }
+
+        [Fact]
+        public void GivenModalVerb_ReturnCollectionWithRandomModalVerbs()
+        {
+            var modalVerbVocabulary = Vocabulary.ModalVerbs.ToList();
+            var randomModalVerb = modalVerbVocabulary[_random.Next(modalVerbVocabulary.Count)];
+
+            var optionsGenerator = new OptionsGenerator();
+            var options = optionsGenerator.GetOptions(randomModalVerb);
+
+            var modalVerbsTextsAndNegativeForms = modalVerbVocabulary
+                .Select(x => x.Text)
+                .Concat(modalVerbVocabulary.Select(x => x.NegativeForm));
+
+            foreach (var option in options)
+            {
+                Assert.Contains(option, modalVerbsTextsAndNegativeForms);
             }
         }
     }

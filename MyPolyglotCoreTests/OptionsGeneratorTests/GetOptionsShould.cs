@@ -98,7 +98,7 @@ namespace MyPolyglotCore.Tests.OptionsGeneratorTests
         }
 
         [Fact]
-        public void GenerateOptionsForIrregularVerbs()
+        public void GivenIrregularVerb_ReturnCollectionThatContainsTextPastFormPastParticipleFormPresentParticipleFormAndThirdPersonForm()
         {
             var irregularVerbVocabulary = Vocabulary.IrregularVerbs.ToList();
             var randomVerb = irregularVerbVocabulary[_random.Next(irregularVerbVocabulary.Count)];
@@ -122,7 +122,7 @@ namespace MyPolyglotCore.Tests.OptionsGeneratorTests
         }
 
         [Fact]
-        public void GenerateOptionsForRegularVerbs()
+        public void GivenRegularVerb_ReturnCollectionThatContainsTextPastFormPastParticipleFormAndThirdPersonForm()
         {
             var verb = new Verb("play");
 

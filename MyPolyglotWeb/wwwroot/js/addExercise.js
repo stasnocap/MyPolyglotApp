@@ -22,8 +22,11 @@ $(document).on('focusout', '.add-exercise__unrecognized-words input[type=text]',
 
     if (!(unrecognizedWord.attr('stress-checkbox-is-showed') == 'true')) {
         leftSideOfHeader.append(`
-            <input name="UnrecognizedWords[${unrecognizedWord.attr('index')}].StressOnTheFinalSyllableInRegularVerb" type="checkbox" checked="checked" value="true">
-            <span>ударение на последний слог (у базовой формы)</span>
+            <span class="left-side-of-header__stress-block">
+                <input name="UnrecognizedWords[${unrecognizedWord.attr('index')}].StressOnTheFinalSyllableInRegularVerb" type="checkbox" checked="checked" value="true">
+                <span class="checkmark"></span>
+                <span>ударение на последний слог (у базовой формы)</span>
+            </span>
         `);
         unrecognizedWord.attr('stress-checkbox-is-showed', true);
     }

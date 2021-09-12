@@ -17,10 +17,13 @@ $(document).on('focusout', '.add-exercise__unrecognized-words input[type=text]',
     let unrecognizedWord = $(this).parent();
     unrecognizedWord.find('.unrecognized-word__header p').remove();
 
+    let leftSideOfHeader = unrecognizedWord.find('.unrecognized-word__header .left-side-of-header');
+    leftSideOfHeader.find('.left-side-of-header__word-name').text($(this).val());
+
     if (!(unrecognizedWord.attr('stress-checkbox-is-showed') == 'true')) {
-        unrecognizedWord.find('.unrecognized-word__header .left-side-of-header').append(`
+        leftSideOfHeader.append(`
             <input name="UnrecognizedWords[${unrecognizedWord.attr('index')}].StressOnTheFinalSyllableInRegularVerb" type="checkbox" checked="checked" value="true">
-            <span>ударение на последний слог</span>
+            <span>ударение на последний слог (у базовой формы)</span>
         `);
         unrecognizedWord.attr('stress-checkbox-is-showed', true);
     }

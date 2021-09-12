@@ -38,7 +38,7 @@ namespace MyPolyglotWebTests.Presentation
             _adminPresentation.AddExercise(addExerciseVMMock.Object);
 
             _mapperMock.Verify(x => x.Map<ExerciseDB>(addExerciseVMMock.Object), Times.Once);
-            exerciseDBMock.VerifySet(x => x.Lesson = lessonDBMock.Object);
+            exerciseDBMock.VerifySet(x => x.Lesson = lessonDBMock.Object, Times.Once);
             _lessonRepositoryMock.Verify(x => x.Get(lessonId), Times.Once);
             _exerciseRepositoryMock.Verify(x => x.Save(exerciseDBMock.Object), Times.Once);
         }

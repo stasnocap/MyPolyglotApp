@@ -67,9 +67,21 @@ namespace MyPolyglotCore.Words
 
         private string GeneratePastForm()
         {
+            #region Exceptions
+            switch (Text)
+            {
+                case "chew":
+                    return "chewed";
+                case "relax":
+                    return "relaxed";
+                default:
+                    break;
+            }
+            #endregion
+
             var lastTwoChars = Text.Substring(Text.Length - 2);
 
-            if (Vocabulary.Vowels.Contains(lastTwoChars[0]) && Vocabulary.Consonants.Contains(lastTwoChars[1]))
+            if (StressOnTheFinalSyllable && Vocabulary.Vowels.Contains(lastTwoChars[0]) && Vocabulary.Consonants.Contains(lastTwoChars[1]))
             {
                 return Text + lastTwoChars[1] + Vocabulary.EdEnding;
             }

@@ -20,9 +20,11 @@
 function saveOnPage(unrecognizedArray, options) {
     for (var i = 0; i < unrecognizedArray.length; i++) {
         $('.unrecognized-words-js').append(`
-            <div class="unrecognized-word">
+            <div class="unrecognized-word" index="${i}" stress-checkbox-is-showed="false">
                 <div class="unrecognized-word__header">
-                    <span>${unrecognizedArray[i].text}</span>
+                    <div class="left-side-of-header">
+                        <span class="left-side-of-header__word-name">${unrecognizedArray[i].text}</span>
+                    </div>
                 </div>
                 <select name=UnrecognizedWords[${i}].Type>${options}</select>
                 <input name="UnrecognizedWords[${i}].Text" type="hidden" value="${unrecognizedArray[i].text}"/>

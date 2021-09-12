@@ -57,7 +57,7 @@ namespace MyPolyglotWeb
             {
                 MyPolyglotCore.UnrecognizableTypes.Adjective => new Adjective(word.Text),
                 MyPolyglotCore.UnrecognizableTypes.Noun => new Noun(word.Text),
-                MyPolyglotCore.UnrecognizableTypes.Verb => new Verb(word.Text),
+                MyPolyglotCore.UnrecognizableTypes.RegularVerb => new Verb(word.Text),
                 _ => throw new NotImplementedException()
             };
         }

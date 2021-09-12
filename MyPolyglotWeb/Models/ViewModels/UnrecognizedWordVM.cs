@@ -11,5 +11,7 @@ namespace MyPolyglotWeb.Models.ViewModels
 
         [Required(ErrorMessage = CustomConst.UserTriesToBreakMe)]
         public UnrecognizableTypes Type { get; set; }
+
+        public bool StressOnTheFinalSyllableInRegularVerb { get; set; }
     }
 }

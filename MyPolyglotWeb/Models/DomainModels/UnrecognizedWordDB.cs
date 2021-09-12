@@ -6,6 +6,7 @@ namespace MyPolyglotWeb.Models.DomainModels
     {
         public string Text { get; set; }
         public UnrecognizableTypes Type { get; set; }
+        public bool StressOnTheFinalSyllableInRegularVerb { get; set; }
         public virtual ExerciseDB Exercise { get; set; }
     }
 }

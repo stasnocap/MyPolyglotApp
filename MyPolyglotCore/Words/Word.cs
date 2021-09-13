@@ -3,6 +3,7 @@ namespace MyPolyglotCore.Words
     public class Word
     {
         public string Text { get; }
+        public string FromWhatItWasRecognized { get; set; }
 
         public Word(string text)
         {

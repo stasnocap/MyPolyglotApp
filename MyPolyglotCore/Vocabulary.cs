@@ -166,6 +166,7 @@ namespace MyPolyglotCore
                 nameof(PossessivePronoun) => PossessivePronouns,
                 nameof(ReflexivePronoun) => ReflexivePronouns,
                 nameof(Determiner) => Determiners,
+                nameof(PrimaryVerb) => PrimaryVerbs,
                 nameof(Verb) => IrregularVerbs,
                 nameof(Noun) => Nouns,
                 nameof(Adjective) => Adjectives,

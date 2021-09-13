@@ -80,9 +80,9 @@ namespace MyPolyglotCoreTests.RecognizerTests
             CheckIfGivenWordHadRecognized(randomWordFromVocabulary);
         }
 
-        private Word GetRandomWordFromVocabulary(Type typeOfVocabulary)
+        private Word GetRandomWordFromVocabulary(Type typeOfWord)
         {
-            var vocabulary = Vocabulary.GetVocabulary(typeOfVocabulary);
+            var vocabulary = Vocabulary.GetVocabulary(typeOfWord);
             return vocabulary.ToList()[_random.Next(vocabulary.Count)];
         }
 
@@ -217,6 +217,70 @@ namespace MyPolyglotCoreTests.RecognizerTests
             recognizer.Recognize();
 
             Assert.Collection(recognizer.RecognizedWords, x => Assert.Equal(x, modalVerb));
+        }
+
+        [Fact]
+        public void MakeSubjectPronounRememberFromWhatItWasRecognized()
+        {
+            AssertIfWordRememberFromWhatItWasRecognized(typeof(SubjectPronoun));
+        }
+
+        [Fact]
+        public void MakeObjectPronounRememberFromWhatItWasRecognized()
+        {
+            AssertIfWordRememberFromWhatItWasRecognized(typeof(ObjectPronoun));
+        }
+
+        [Fact]
+        public void MakePossessiveAdjectiveRememberFromWhatItWasRecognized()
+        {
+            AssertIfWordRememberFromWhatItWasRecognized(typeof(PossessiveAdjective));
+        }
+
+        [Fact]
+        public void MakePossessivePronounRememberFromWhatItWasRecognized()
+        {
+            AssertIfWordRememberFromWhatItWasRecognized(typeof(PossessivePronoun));
+        }
+
+        [Fact]
+        public void MakeReflexivePronounRememberFromWhatItWasRecognized()
+        {
+            AssertIfWordRememberFromWhatItWasRecognized(typeof(ReflexivePronoun));
+        }
+
+        [Fact]
+        public void MakeDeterminerRememberFromWhatItWasRecognized()
+        {
+            AssertIfWordRememberFromWhatItWasRecognized(typeof(Determiner));
+        }
+
+        [Fact]
+        public void MakeIrregularVerbRememberFromWhatItWasRecognized()
+        {
+            AssertIfWordRememberFromWhatItWasRecognized(typeof(Verb));
+        }
+
+        [Fact]
+        public void MakePrimaryVerbRememberFromWhatItWasRecognized()
+        {
+            AssertIfWordRememberFromWhatItWasRecognized(typeof(PrimaryVerb));
+        }
+
+        [Fact]
+        public void MakeModalVerbRememberFromWhatItWasRecognized()
+        {
+            AssertIfWordRememberFromWhatItWasRecognized(typeof(ModalVerb));
+        }
+
+        private void AssertIfWordRememberFromWhatItWasRecognized(Type typeOfWord)
+        {
+            var randomWordFromVocabulary = GetRandomWordFromVocabulary(typeOfWord);
+
+            var recognizer = new Recognizer("rstrs " + randomWordFromVocabulary.Text + " rtst");
+            recognizer.Recognize();
+
+            Assert.Equal(randomWordFromVocabulary.Text, recognizer.RecognizedWords.First().FromWhatItWasRecognized);
         }
     }
 }

@@ -1,8 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text.RegularExpressions;
 using MyPolyglotCore.Words;
-using MyPolyglotCore.Words.Pronouns;
 
 namespace MyPolyglotCore
 {
@@ -20,7 +18,15 @@ namespace MyPolyglotCore
         public void Recognize()
         {
             var words = EngPhrase.SplitToWords();
-            RecognizedWords = words.SelectMany(word => Vocabulary.RecognizableVocabularies.Where(x => x.Equals(word)));
+            RecognizedWords = words.SelectMany(word => Vocabulary.RecognizableVocabularies.Where(x =>
+                {
+                    if (!x.Equals(word))
+                    {
+                        return false;
+                    }
+                    x.FromWhatItWasRecognized = word.Text;
+                    return true;
+                }));
             UnrecognizedWords = words.Where(x => !RecognizedWords.Contains(x));
         }
     }

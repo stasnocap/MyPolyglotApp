@@ -165,6 +165,7 @@ namespace MyPolyglotCore
                 Type possessivePronoun when possessivePronoun == typeof(PossessivePronoun) => PossessivePronouns,
                 Type reflexivePronoun when reflexivePronoun == typeof(ReflexivePronoun) => ReflexivePronouns,
                 Type determiner when determiner == typeof(Determiner) => Determiners,
+                Type primaryVerb when primaryVerb == typeof(PrimaryVerb) => PrimaryVerbs,
                 Type verb when verb == typeof(Verb) => IrregularVerbs,
                 Type noun when noun == typeof(Noun) => Nouns,
                 Type adjective when adjective == typeof(Adjective) => Adjectives,

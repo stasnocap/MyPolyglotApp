@@ -19,6 +19,7 @@ namespace MyPolyglotCore
         {
             return word switch
             {
+                QuestionWord questionWord => Vocabulary.QuestionWords.Select(x => x.Text),
                 SubjectPronoun subjectPronoun => Vocabulary.SubjectPronouns.Select(x => x.Text),
                 ObjectPronoun objectPronoun => Vocabulary.ObjectPronouns.Select(x => x.Text),
                 PossessiveAdjective possessiveAdjective => Vocabulary.PossessiveAdjectives.Select(x => x.Text),

@@ -24,6 +24,16 @@ namespace MyPolyglotCore
         public const string IngEnding = "ing";
         public const string EdEnding = "ed";
 
+        public static readonly IEnumerable<QuestionWord> QuestionWords = new QuestionWord[]
+        {
+            new QuestionWord("what"),
+            new QuestionWord("who"),
+            new QuestionWord("where"),
+            new QuestionWord("when"),
+            new QuestionWord("why"),
+            new QuestionWord("how"),
+        };
+
         #region Pronouns
 
         public static readonly IEnumerable<SubjectPronoun> SubjectPronouns = new SubjectPronoun[]
@@ -145,6 +155,7 @@ namespace MyPolyglotCore
         };
 
         public static readonly IEnumerable<Word> RecognizableVocabularies = Enumerable.Empty<Word>()
+            .Concat(QuestionWords)
             .Concat(SubjectPronouns)
             .Concat(ObjectPronouns)
             .Concat(PossessiveAdjectives)

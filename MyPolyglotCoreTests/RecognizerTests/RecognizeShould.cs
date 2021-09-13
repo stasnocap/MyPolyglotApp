@@ -82,8 +82,8 @@ namespace MyPolyglotCoreTests.RecognizerTests
 
         private Word GetRandomWordFromVocabulary(Type typeOfWord)
         {
-            var vocabulary = Vocabulary.GetVocabulary(typeOfWord);
-            return vocabulary.ToList()[_random.Next(vocabulary.Count)];
+            var vocabulary = Vocabulary.GetVocabulary(typeOfWord).ToList();
+            return vocabulary[_random.Next(vocabulary.Count)];
         }
 
         private void CheckIfGivenWordHadRecognized(Word word)

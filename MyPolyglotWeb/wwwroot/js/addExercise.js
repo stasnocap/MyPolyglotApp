@@ -31,3 +31,8 @@ $(document).on('focusout', '.add-exercise__unrecognized-words input[type=text]',
         unrecognizedWord.attr('stress-checkbox-is-showed', true);
     }
 });
+
+$(document).on('click', '.left-side-of-header__stress-block', function () {
+    var checkBox = $(this).find('input[type=checkbox]');
+    checkBox.prop("checked", !checkBox.prop("checked"));
+});

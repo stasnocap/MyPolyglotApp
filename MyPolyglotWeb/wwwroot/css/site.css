@@ -214,46 +214,46 @@ button {
         user-select: none;
     }
 
+.left-side-of-header__word-name {
+    cursor: pointer;
+}
+
 .add-exercise__select-lesson .field-validation-error {
     flex-shrink: 0;
     margin-left: 15px;
 }
 
-.left-side-of-header input[type=checkbox] {
-}
-
+/* The container */
 .left-side-of-header__stress-block {
-    display: block;
     position: relative;
     padding-left: 35px;
-    margin-bottom: 12px;
     cursor: pointer;
-    font-size: 22px;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
 }
 
-/* Create a custom checkbox */
-.checkmark {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 25px;
-    width: 25px;
-    background-color: #eee;
-}
+    /* Hide the browser's default checkbox */
+    .left-side-of-header__stress-block input[type=checkbox] {
+        display: none;
+    }
 
-/* On mouse-over, add a grey background color */
-.left-side-of-header__stress-block:hover input ~ .checkmark {
-    background-color: #ccc;
-}
+    /* Create a custom checkbox */
+    .left-side-of-header__stress-block .checkmark {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 25px;
+        width: 25px;
+        background-color: #fff;
+    }
 
-/* When the checkbox is checked, add a blue background */
-.left-side-of-header__stress-block input:checked ~ .checkmark {
-    background-color: #2196F3;
-}
+    /* On mouse-over, add a grey background color */
+    .left-side-of-header__stress-block:hover input ~ .checkmark {
+        background-color: #ccc;
+    }
+
+    /* When the checkbox is checked, add a blue background */
+    .left-side-of-header__stress-block input:checked ~ .checkmark {
+        background-color: #2196F3;
+    }
 
 /* Create the checkmark/indicator (hidden when not checked) */
 .checkmark:after {

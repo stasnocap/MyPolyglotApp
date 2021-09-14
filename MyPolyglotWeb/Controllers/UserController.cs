@@ -27,6 +27,8 @@ namespace MyPolyglotWeb.Controllers
                 return View(registerUserVM);
             }
 
+            _userPresentation.Register(registerUserVM);
+
             return View();
         }
     }

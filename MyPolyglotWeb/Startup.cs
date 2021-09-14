@@ -12,6 +12,7 @@ using MyPolyglotWeb.Models;
 using MyPolyglotWeb.Repositories.IRepository;
 using System;
 using MyPolyglotCore.Words;
+using MyPolyglotWeb.Repositories;
 
 namespace MyPolyglotWeb
 {
@@ -47,6 +48,7 @@ namespace MyPolyglotWeb
                 x.CreateMap<ExerciseDB, ExerciseVM>()
                     .ForMember(nameof(ExerciseVM.ExerciseId), x => x.MapFrom(x => x.Id));
                 x.CreateMap<Word, UnrecognizedWordVM>();
+                x.CreateMap<RegisterUserVM, UserDB>();
             });
             services.AddScoped(x => config.CreateMapper());
         }
@@ -69,6 +71,8 @@ namespace MyPolyglotWeb
             services.AddScoped<IExerciseRepository>(x => new ExerciseRepository(
                 x.GetService<WebContext>(),
                 x.GetService<Random>()));
+            services.AddScoped<IUserRepository>(x => new UserRepository(
+                x.GetService<WebContext>()));
         }
 
         private void RegisterPresentation(IServiceCollection services)
@@ -80,7 +84,9 @@ namespace MyPolyglotWeb
                 x.GetService<IMapper>(),
                 x.GetService<ILessonRepository>(),
                 x.GetService<IExerciseRepository>()));
-            services.AddScoped(x => new UserPresentation());
+            services.AddScoped(x => new UserPresentation(
+                x.GetService<IUserRepository>(),
+                x.GetService<IMapper>()));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

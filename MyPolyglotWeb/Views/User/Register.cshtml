@@ -1,0 +1,23 @@
+﻿@model RegisterUserVM
+
+<div class="register-user">
+    <form asp-controller="User" asp-action="Register" method="post">
+        <div class="register-user__email">
+            <div class="flexbox-space-between">
+                <label asp-for="Email"></label>
+                <span asp-validation-for="Email"></span>
+            </div>
+            <input asp-for="Email" />
+        </div>
+        <div class="register-user__password">
+            <div class="flexbox-space-between">
+                <label asp-for="Password"></label>
+                <span asp-validation-for="Password"></span>
+            </div>
+            <input asp-for="Password" type="password"/>
+        </div>
+        <button class="register-user__submit-btn" type="submit">
+            Зарегистрироваться
+        </button>
+    </form>
+</div>

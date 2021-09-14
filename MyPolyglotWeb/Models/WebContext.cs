@@ -8,6 +8,7 @@ namespace MyPolyglotWeb.Models
         public DbSet<LessonDB> Lesson { get; set; }
         public DbSet<ExerciseDB> Exercise { get; set; }
         public DbSet<UnrecognizedWordDB> UnrecognizedWord { get; set; }
+        public DbSet<UserDB> User { get; set; }
 
         public WebContext(DbContextOptions dbContext) : base(dbContext) { }
 

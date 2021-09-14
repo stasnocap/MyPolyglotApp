@@ -11,79 +11,62 @@ namespace MyPolyglotCoreTests.RecognizerTests
 
     public class RecognizeShould
     {
-        private Random _random;
-        private List<Verb> _irregularVerbs;
-        private List<Word> _recognizableWords;
-        private List<PrimaryVerb> _primaryVerbs;
-
-        public RecognizeShould()
-        {
-            _random = new Random();
-            _irregularVerbs = Vocabulary.IrregularVerbs.ToList();
-            _recognizableWords = Vocabulary.RecognizableVocabularies.ToList();
-            _primaryVerbs = Vocabulary.PrimaryVerbs.ToList();
-        }
+        private Random _random = new Random();
 
         [Fact]
         public void RecognizeSubjectPronounInPhrase()
         {
-            var randomWordFromVocabulary = GetRandomWordFromVocabulary(typeof(SubjectPronoun));
+            var randomWordFromVocabulary = typeof(SubjectPronoun).GetRandomWordFromVocabulary();
             CheckIfGivenWordHadRecognized(randomWordFromVocabulary);
         }
 
         [Fact]
         public void RecognizeObjectPronounInPhrase()
         {
-            var randomWordFromVocabulary = GetRandomWordFromVocabulary(typeof(ObjectPronoun));
+            var randomWordFromVocabulary = typeof(ObjectPronoun).GetRandomWordFromVocabulary();
             CheckIfGivenWordHadRecognized(randomWordFromVocabulary);
         }
 
         [Fact]
         public void RecognizePossessiveAdjectiveInPhrase()
         {
-            var randomWordFromVocabulary = GetRandomWordFromVocabulary(typeof(PossessiveAdjective));
+            var randomWordFromVocabulary = typeof(PossessiveAdjective).GetRandomWordFromVocabulary();
             CheckIfGivenWordHadRecognized(randomWordFromVocabulary);
         }
 
         [Fact]
         public void RecognizePossessivePronounInPhrase()
         {
-            var randomWordFromVocabulary = GetRandomWordFromVocabulary(typeof(PossessivePronoun));
+            var randomWordFromVocabulary = typeof(PossessivePronoun).GetRandomWordFromVocabulary();
             CheckIfGivenWordHadRecognized(randomWordFromVocabulary);
         }
 
         [Fact]
         public void RecognizeReflexivePronounInPhrase()
         {
-            var randomWordFromVocabulary = GetRandomWordFromVocabulary(typeof(ReflexivePronoun));
+            var randomWordFromVocabulary = typeof(ReflexivePronoun).GetRandomWordFromVocabulary();
             CheckIfGivenWordHadRecognized(randomWordFromVocabulary);
         }
 
         [Fact]
         public void RecognizeDeterminerInPhrase()
         {
-            var randomWordFromVocabulary = GetRandomWordFromVocabulary(typeof(Determiner));
+            var randomWordFromVocabulary = typeof(Determiner).GetRandomWordFromVocabulary();
             CheckIfGivenWordHadRecognized(randomWordFromVocabulary);
         }
 
         [Fact]
         public void RecognizeVerbInPhrase()
         {
-            var randomWordFromVocabulary = GetRandomWordFromVocabulary(typeof(Verb));
+            var randomWordFromVocabulary = typeof(Verb).GetRandomWordFromVocabulary();
             CheckIfGivenWordHadRecognized(randomWordFromVocabulary);
         }
 
         [Fact]
         public void RecognizeModalVerbByAffirmativeForm()
         {
-            var randomWordFromVocabulary = GetRandomWordFromVocabulary(typeof(ModalVerb));
+            var randomWordFromVocabulary = typeof(ModalVerb).GetRandomWordFromVocabulary();
             CheckIfGivenWordHadRecognized(randomWordFromVocabulary);
-        }
-
-        private Word GetRandomWordFromVocabulary(Type typeOfWord)
-        {
-            var vocabulary = Vocabulary.GetVocabulary(typeOfWord).ToList();
-            return vocabulary[_random.Next(vocabulary.Count)];
         }
 
         private void CheckIfGivenWordHadRecognized(Word word)
@@ -101,9 +84,9 @@ namespace MyPolyglotCoreTests.RecognizerTests
         public void StoreUnrecognizedWords()
         {
             var engPhrase =
-                $"arst aarst ,{GetRandomRecognizableWord()}, aaarst." +
-                $"aaaarst {GetRandomRecognizableWord()}, aaaaarst " +
-                $"aaaaaarst!ta stra {GetRandomRecognizableWord()}, ";
+                $"arst aarst ,{RandomWordHelper.GetRandomRecognizableWord()}, aaarst." +
+                $"aaaarst {RandomWordHelper.GetRandomRecognizableWord()}, aaaaarst " +
+                $"aaaaaarst!ta stra {RandomWordHelper.GetRandomRecognizableWord()}, ";
 
             var unrecognizedWords = new List<Word>()
             {
@@ -126,15 +109,10 @@ namespace MyPolyglotCoreTests.RecognizerTests
             }
         }
 
-        private string GetRandomRecognizableWord()
-        {
-            return _recognizableWords[_random.Next(_recognizableWords.Count)].Text;
-        }
-
         [Fact]
         public void RecognizeIrregularVerbByPastForm()
         {
-            var verb = GetRandomIrregularVerb();
+            var verb = RandomWordHelper.GetRandomIrregularVerb();
 
             var recognizer = new Recognizer("rastr " + verb.PastForm + " strs");
 
@@ -146,7 +124,7 @@ namespace MyPolyglotCoreTests.RecognizerTests
         [Fact]
         public void RecognizeIrregularVerbByPastParticleForm()
         {
-            var verb = GetRandomIrregularVerb();
+            var verb = RandomWordHelper.GetRandomIrregularVerb();
 
             var recognizer = new Recognizer("rastr " + verb.PastParticipleForm + " strs");
 
@@ -158,7 +136,7 @@ namespace MyPolyglotCoreTests.RecognizerTests
         [Fact]
         public void RecognizeIrregularVerbByPresentParticipleForm()
         {
-            var verb = GetRandomIrregularVerb();
+            var verb = RandomWordHelper.GetRandomIrregularVerb();
 
             var recognizer = new Recognizer("rastr " + verb.PresentParticipleForm + " strs");
 
@@ -170,7 +148,7 @@ namespace MyPolyglotCoreTests.RecognizerTests
         [Fact]
         public void RecognizeIrregularVerbByThirdPersonForm()
         {
-            var verb = GetRandomIrregularVerb();
+            var verb = RandomWordHelper.GetRandomIrregularVerb();
 
             var recognizer = new Recognizer("rastr " + verb.ThirdPersonForm + " strs");
 
@@ -179,15 +157,10 @@ namespace MyPolyglotCoreTests.RecognizerTests
             Assert.Collection(recognizer.RecognizedWords, x => Assert.Equal(x, verb));
         }
 
-        private Verb GetRandomIrregularVerb()
-        {
-            return _irregularVerbs[_random.Next(_irregularVerbs.Count)];
-        }
-
         [Fact]
         public void RecognizePrimaryVerbByNegativeForms()
         {
-            var randomPrimaryVerb = _primaryVerbs[_random.Next(_primaryVerbs.Count)];
+            var randomPrimaryVerb = RandomWordHelper.GetRandomPrimaryVerb();
 
             var randomWordFromNegativeForms = randomPrimaryVerb.ShortNegativeForms.ElementAt(_random.Next(randomPrimaryVerb.ShortNegativeForms.Count()));
             var recognizer = new Recognizer("rastr " + randomWordFromNegativeForms + " strs");
@@ -199,7 +172,7 @@ namespace MyPolyglotCoreTests.RecognizerTests
         [Fact]
         public void RecognizePrimaryVerbByAdditionalForms()
         {
-            var primaryVerb = _primaryVerbs.Find(x => x.Text == "be");
+            var primaryVerb = Vocabulary.PrimaryVerbs.First(x => x.Text == "be");
 
             var randomWordFromAdditionalForms = primaryVerb.AdditionalForms.ElementAt(_random.Next(primaryVerb.AdditionalForms.Count()));
             var recognizer = new Recognizer("rastr " + randomWordFromAdditionalForms + " strs");
@@ -211,8 +184,7 @@ namespace MyPolyglotCoreTests.RecognizerTests
         [Fact]
         public void RecognizeModalVerbByNegativeForm()
         {
-            var modalVerb = GetRandomWordFromVocabulary(typeof(ModalVerb)) as ModalVerb;
-
+            var modalVerb = typeof(ModalVerb).GetRandomWordFromVocabulary() as ModalVerb;
             var recognizer = new Recognizer("rstrs " + modalVerb.ShortNegativeForm + " rtst");
             recognizer.Recognize();
 
@@ -275,7 +247,7 @@ namespace MyPolyglotCoreTests.RecognizerTests
 
         private void AssertIfWordRememberFromWhatItWasRecognized(Type typeOfWord)
         {
-            var randomWordFromVocabulary = GetRandomWordFromVocabulary(typeOfWord);
+            var randomWordFromVocabulary = typeOfWord.GetRandomWordFromVocabulary();
 
             var recognizer = new Recognizer("rstrs " + randomWordFromVocabulary.Text + " rtst");
             recognizer.Recognize();

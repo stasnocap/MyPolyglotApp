@@ -28,31 +28,45 @@ namespace MyPolyglotCore
                 Determiner determiner => Vocabulary.Determiners.Select(x => x.Text),
                 Adjective adjective => GetRandomWordsFromVocabularyWithRightWord(adjective),
                 Noun noun => GetRandomWordsFromVocabularyWithRightWord(noun),
-                ModalVerb modalVerb => GetRandomModalVerbs(modalVerb),
+                ModalVerb modalVerb => GenerateOptionsForModalVerb(modalVerb),
                 PrimaryVerb primaryVerb => GenerateOpitonsForPrimaryVerb(primaryVerb),
                 Verb verb => GenerateOptionsForVerb(verb),
                 _ => throw new NotImplementedException(),
             };
         }
 
-        private IEnumerable<string> GetRandomModalVerbs(ModalVerb modalVerb)
+        private IEnumerable<string> GenerateOptionsForModalVerb(ModalVerb modalVerb)
         {
-            var vocabulary = Vocabulary.GetVocabulary(typeof(ModalVerb)) as IEnumerable<ModalVerb>;
+            var modalVerbVocabularyWithoutRightWord = Vocabulary
+                .GetVocabulary(typeof(ModalVerb))
+                .Cast<ModalVerb>()
+                .Where(x => !modalVerb.Equals(x));
 
-            var modalVerbs = vocabulary
-                .OrderBy(x => _random.Next())
-                .Take(3)
-                .ToList();
-
-            if (!modalVerbs.Contains(modalVerb))
+            if (modalVerb.FromWhatItWasRecognized == modalVerb.FullNegativeForm)
             {
-                modalVerbs.Remove(modalVerbs.First());
-                modalVerbs.Add(modalVerb);
+                return modalVerbVocabularyWithoutRightWord
+                    .Select(x => x.FullNegativeForm)
+                    .OrderBy(x => _random.Next())
+                    .Take(5)
+                    .Append(modalVerb.FullNegativeForm)
+                    .OrderBy(x => _random.Next());
             }
 
-            return modalVerbs
+            if (modalVerb.FromWhatItWasRecognized == modalVerb.ShortNegativeForm)
+            {
+                return modalVerbVocabularyWithoutRightWord
+                    .Select(x => x.ShortNegativeForm)
+                    .OrderBy(x => _random.Next())
+                    .Take(5)
+                    .Append(modalVerb.ShortNegativeForm)
+                    .OrderBy(x => _random.Next());
+            }
+
+            return modalVerbVocabularyWithoutRightWord
                 .Select(x => x.Text)
-                .Concat(modalVerbs.Select(x => x.ShortNegativeForm))
+                .OrderBy(x => _random.Next())
+                .Take(5)
+                .Append(modalVerb.Text)
                 .OrderBy(x => _random.Next());
         }
 
@@ -75,7 +89,7 @@ namespace MyPolyglotCore
                 .Take(5)
                 .Append(word)
                 .Select(x => x.Text)
-                .OrderBy(x => Guid.NewGuid());
+                .OrderBy(x => _random.Next());
         }
 
         private IEnumerable<string> GenerateOptionsForVerb(Verb verb)

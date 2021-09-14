@@ -2,6 +2,7 @@ using System;
 using System.Linq;
 using MyPolyglotCore.Words;
 using MyPolyglotCore.Words.Pronouns;
+using MyPolyglotCoreTests;
 using Xunit;
 
 namespace MyPolyglotCore.Tests.OptionsGeneratorTests
@@ -9,6 +10,7 @@ namespace MyPolyglotCore.Tests.OptionsGeneratorTests
     public class GetOptionsShould
     {
         private readonly Random _random = new Random();
+        private readonly OptionsGenerator _optionsGenerator = new OptionsGenerator();
 
         [Fact]
         public void GivenSubjectPronoun_ReturnAllWordsFromSubjectPronounVocabulary()
@@ -54,8 +56,7 @@ namespace MyPolyglotCore.Tests.OptionsGeneratorTests
 
         private void CheckIfAllWordsFromVocabularyHadRecieved(Word word)
         {
-            var optionsGenerator = new OptionsGenerator();
-            var options = optionsGenerator.GetOptions(word);
+            var options = _optionsGenerator.GetOptions(word);
             var vocabulary = Vocabulary.GetVocabulary(word.GetType());
             foreach (var wordFromVocabulary in vocabulary)
             {
@@ -79,8 +80,7 @@ namespace MyPolyglotCore.Tests.OptionsGeneratorTests
 
         private void CheckIfFiveWordsFromVocabularyWithRightWordHadRecieved(Word word)
         {
-            var optionsGenerator = new OptionsGenerator();
-            var options = optionsGenerator.GetOptions(word);
+            var options = _optionsGenerator.GetOptions(word);
             var vocabulary = Vocabulary.GetVocabulary(word.GetType());
 
 
@@ -112,8 +112,7 @@ namespace MyPolyglotCore.Tests.OptionsGeneratorTests
                 randomVerb.ThirdPersonForm,
             };
 
-            var optionsGenerator = new OptionsGenerator();
-            var options = optionsGenerator.GetOptions(randomVerb);
+            var options = _optionsGenerator.GetOptions(randomVerb);
 
             foreach (var form in verbForms)
             {
@@ -134,8 +133,7 @@ namespace MyPolyglotCore.Tests.OptionsGeneratorTests
                 verb.ThirdPersonForm,
             };
 
-            var optionsGenerator = new OptionsGenerator();
-            var options = optionsGenerator.GetOptions(verb);
+            var options = _optionsGenerator.GetOptions(verb);
 
             foreach (var form in verbForms)
             {
@@ -144,34 +142,83 @@ namespace MyPolyglotCore.Tests.OptionsGeneratorTests
         }
 
         [Fact]
-        public void GivenModalVerb_ReturnCollectionThatContainsPassedModalVerbTextAndNegativeForm()
+        public void GivenModalVerbRecognizedFromPositiveForm_ReturnCollectionWithPassedPositiveForm()
         {
-            var modalVerbVocabulary = Vocabulary.ModalVerbs.ToList();
-            var randomModalVerb = modalVerbVocabulary[_random.Next(modalVerbVocabulary.Count)];
+            var modalVerb = (ModalVerb)typeof(ModalVerb).GetRandomWordFromVocabulary();
 
-            var optionsGenerator = new OptionsGenerator();
-            var options = optionsGenerator.GetOptions(randomModalVerb);
+            modalVerb.FromWhatItWasRecognized = modalVerb.Text;
 
-            Assert.Contains(randomModalVerb.Text, options);
-            Assert.Contains(randomModalVerb.ShortNegativeForm, options);
+            var options = _optionsGenerator.GetOptions(modalVerb);
+
+            Assert.Contains(modalVerb.Text, options);
         }
 
         [Fact]
-        public void GivenModalVerb_ReturnCollectionWithRandomModalVerbs()
+        public void GivenModalVerbRecognizedFromPositiveForm_ReturnCollectionThatContainsRandomModalVerbsPositiveForms()
         {
-            var modalVerbVocabulary = Vocabulary.ModalVerbs.ToList();
-            var randomModalVerb = modalVerbVocabulary[_random.Next(modalVerbVocabulary.Count)];
+            var modalVerb = (ModalVerb)typeof(ModalVerb).GetRandomWordFromVocabulary();
 
-            var optionsGenerator = new OptionsGenerator();
-            var options = optionsGenerator.GetOptions(randomModalVerb);
+            modalVerb.FromWhatItWasRecognized = modalVerb.Text;
 
-            var modalVerbsTextsAndNegativeForms = modalVerbVocabulary
-                .Select(x => x.Text)
-                .Concat(modalVerbVocabulary.Select(x => x.ShortNegativeForm));
+            var options = _optionsGenerator.GetOptions(modalVerb);
 
             foreach (var option in options)
             {
-                Assert.Contains(option, modalVerbsTextsAndNegativeForms);
+                Assert.Contains(option, Vocabulary.ModalVerbs.Select(x => x.Text));
+            }
+        }
+
+        [Fact]
+        public void GivenModalVerbRecognizedFromFullNegativeForm_ReturnCollectionWithPassedFullNegativeForm()
+        {
+            var modalVerb = (ModalVerb)typeof(ModalVerb).GetRandomWordFromVocabulary();
+
+            modalVerb.FromWhatItWasRecognized = modalVerb.FullNegativeForm;
+
+            var options = _optionsGenerator.GetOptions(modalVerb);
+
+            Assert.Contains(modalVerb.FullNegativeForm, options);
+        }
+
+        [Fact]
+        public void GivenModalVerbRecognizedFromFullNegativeForm_ReturnCollectionThatContainsRandomModalVerbsFullNegativeForms()
+        {
+            var modalVerb = (ModalVerb)typeof(ModalVerb).GetRandomWordFromVocabulary();
+
+            modalVerb.FromWhatItWasRecognized = modalVerb.FullNegativeForm;
+
+            var options = _optionsGenerator.GetOptions(modalVerb);
+
+            foreach (var option in options)
+            {
+                Assert.Contains(option, Vocabulary.ModalVerbs.Select(x => x.FullNegativeForm));
+            }
+        }
+
+        [Fact]
+        public void GivenModalVerbRecognizedFromwShortNegativeForm_ReturnCollectionWithPassedShortNegativeForm()
+        {
+            var modalVerb = (ModalVerb)typeof(ModalVerb).GetRandomWordFromVocabulary();
+
+            modalVerb.FromWhatItWasRecognized = modalVerb.ShortNegativeForm;
+
+            var options = _optionsGenerator.GetOptions(modalVerb);
+
+            Assert.Contains(modalVerb.ShortNegativeForm, options);
+        }
+
+        [Fact]
+        public void GivenModalVerbRecognizedFromShortNegativeForm_ReturnCollectionThatContainsRandomModalVerbsShortNegativeForms()
+        {
+            var modalVerb = (ModalVerb)typeof(ModalVerb).GetRandomWordFromVocabulary();
+
+            modalVerb.FromWhatItWasRecognized = modalVerb.ShortNegativeForm;
+
+            var options = _optionsGenerator.GetOptions(modalVerb);
+
+            foreach (var option in options)
+            {
+                Assert.Contains(option, Vocabulary.ModalVerbs.Select(x => x.ShortNegativeForm));
             }
         }
     }

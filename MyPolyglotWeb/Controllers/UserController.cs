@@ -29,6 +29,8 @@ namespace MyPolyglotWeb.Controllers
 
             _userPresentation.Register(registerUserVM);
 
+            TempData["SuccessfulRegistration"] = "Регистрация прошла успешно!";
+
             return View();
         }
     }

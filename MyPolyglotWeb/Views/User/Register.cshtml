@@ -5,7 +5,13 @@
         <div class="register-user__email">
             <div class="flexbox-space-between">
                 <label asp-for="Email"></label>
-                <span asp-validation-for="Email"></span>
+                <span>
+                    <span asp-validation-for="Email"></span>
+                    @if (TempData["SuccessfulRegistration"] != null)
+                    {
+                        <span class="alert-success">@TempData["SuccessfulRegistration"]</span>
+                    }
+                </span>
             </div>
             <input asp-for="Email" />
         </div>
@@ -14,7 +20,7 @@
                 <label asp-for="Password"></label>
                 <span asp-validation-for="Password"></span>
             </div>
-            <input asp-for="Password" type="password"/>
+            <input asp-for="Password" type="password" />
         </div>
         <button class="register-user__submit-btn" type="submit">
             Зарегистрироваться

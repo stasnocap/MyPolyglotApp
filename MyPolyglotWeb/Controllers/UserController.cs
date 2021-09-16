@@ -2,7 +2,6 @@
 using Microsoft.AspNetCore.Mvc;
 using MyPolyglotWeb.Models.ViewModels;
 using MyPolyglotWeb.Presentation;
-using System.Diagnostics.Eventing.Reader;
 using System.Threading.Tasks;
 
 namespace MyPolyglotWeb.Controllers

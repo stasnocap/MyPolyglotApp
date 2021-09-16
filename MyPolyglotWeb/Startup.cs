@@ -13,6 +13,9 @@ using MyPolyglotWeb.Repositories.IRepository;
 using System;
 using MyPolyglotCore.Words;
 using MyPolyglotWeb.Repositories;
+using MyPolyglotWeb.Services.IServices;
+using MyPolyglotWeb.Services;
+using Microsoft.AspNetCore.Http;
 
 namespace MyPolyglotWeb
 {
@@ -43,7 +46,17 @@ namespace MyPolyglotWeb
             RegisterPresentation(services);
             RegisterRepository(services);
             RegisterMapper(services);
+            RegisterServices(services);
+            services.AddHttpContextAccessor();
             services.AddScoped(x => new Random());
+        }
+
+        private void RegisterServices(IServiceCollection services)
+        {
+            services.AddScoped<IUserService>(x => new UserService(
+                x.GetService<IUserRepository>(),
+                x.GetService<IHttpContextAccessor>()
+            ));
         }
 
         private void RegisterMapper(IServiceCollection services)
@@ -76,26 +89,32 @@ namespace MyPolyglotWeb
         private void RegisterRepository(IServiceCollection services)
         {
             services.AddScoped<ILessonRepository>(x => new LessonRepository(
-                x.GetService<WebContext>()));
+                x.GetService<WebContext>()
+            ));
             services.AddScoped<IExerciseRepository>(x => new ExerciseRepository(
                 x.GetService<WebContext>(),
-                x.GetService<Random>()));
+                x.GetService<Random>()
+            ));
             services.AddScoped<IUserRepository>(x => new UserRepository(
-                x.GetService<WebContext>()));
+                x.GetService<WebContext>()
+            ));
         }
 
         private void RegisterPresentation(IServiceCollection services)
         {
             services.AddScoped(x => new HomePresentation(
                 x.GetService<IMapper>(),
-                x.GetService<IExerciseRepository>()));
+                x.GetService<IExerciseRepository>()
+            ));
             services.AddScoped(x => new AdminPresentation(
                 x.GetService<IMapper>(),
                 x.GetService<ILessonRepository>(),
-                x.GetService<IExerciseRepository>()));
+                x.GetService<IExerciseRepository>()
+            ));
             services.AddScoped(x => new UserPresentation(
                 x.GetService<IUserRepository>(),
-                x.GetService<IMapper>()));
+                x.GetService<IMapper>()
+            ));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

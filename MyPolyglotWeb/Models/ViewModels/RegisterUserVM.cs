@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using MyPolyglotWeb.Models.ViewModels.CustomAttributes;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
 namespace MyPolyglotWeb.Models.ViewModels
@@ -8,6 +9,7 @@ namespace MyPolyglotWeb.Models.ViewModels
         [DisplayName("Электронный адрес")]
         [Required(ErrorMessage = "Вы забыли ввести электронный адрес!")]
         [EmailAddress(ErrorMessage = "Что-то не похоже не электронные адрес :(")]
+        [IsUniqUserEmail]
         public string Email { get; set; }
 
         [DisplayName("Пароль")]

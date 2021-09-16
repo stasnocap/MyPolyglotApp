@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using MyPolyglotWeb.Models.DomainModels;
 using MyPolyglotWeb.Models.ViewModels;
-using MyPolyglotWeb.Repositories.IRepository;
+using MyPolyglotWeb.Repositories.IRepositories;
 using System.Security.Claims;
 
 namespace MyPolyglotWeb.Presentations

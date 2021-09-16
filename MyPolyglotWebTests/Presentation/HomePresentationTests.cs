@@ -4,7 +4,7 @@ using MyPolyglotCore.Words;
 using MyPolyglotWeb.Models.DomainModels;
 using MyPolyglotWeb.Models.ViewModels;
 using MyPolyglotWeb.Presentations;
-using MyPolyglotWeb.Repositories.IRepository;
+using MyPolyglotWeb.Repositories.IRepositories;
 using System.Collections.Generic;
 using Xunit;
 

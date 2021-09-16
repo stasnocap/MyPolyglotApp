@@ -1,5 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using MyPolyglotWeb.Repositories.IRepository;
+using MyPolyglotWeb.Repositories.IRepositories;
 using System.ComponentModel.DataAnnotations;
 
 namespace MyPolyglotWeb.Models.ViewModels.CustomAttributes

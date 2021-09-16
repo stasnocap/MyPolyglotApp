@@ -1,6 +1,6 @@
 ﻿using MyPolyglotWeb.Models.DomainModels;
 
-namespace MyPolyglotWeb.Repositories.IRepository
+namespace MyPolyglotWeb.Repositories.IRepositories
 {
     public interface IUserRepository : IBaseRepository<UserDB>
     {

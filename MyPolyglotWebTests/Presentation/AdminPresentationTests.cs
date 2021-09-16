@@ -3,7 +3,7 @@ using Moq;
 using MyPolyglotWeb.Models.DomainModels;
 using MyPolyglotWeb.Models.ViewModels;
 using MyPolyglotWeb.Presentations;
-using MyPolyglotWeb.Repositories.IRepository;
+using MyPolyglotWeb.Repositories.IRepositories;
 using Xunit;
 
 namespace MyPolyglotWebTests.Presentation

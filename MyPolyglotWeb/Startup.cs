@@ -9,7 +9,7 @@ using MyPolyglotWeb.Models.DomainModels;
 using MyPolyglotWeb.Models.ViewModels;
 using MyPolyglotWeb.Presentations;
 using MyPolyglotWeb.Models;
-using MyPolyglotWeb.Repositories.IRepository;
+using MyPolyglotWeb.Repositories.IRepositories;
 using System;
 using MyPolyglotCore.Words;
 using MyPolyglotWeb.Repositories;

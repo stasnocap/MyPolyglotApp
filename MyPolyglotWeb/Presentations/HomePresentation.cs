@@ -5,7 +5,7 @@ using AutoMapper;
 using MyPolyglotCore;
 using MyPolyglotCore.Words;
 using MyPolyglotWeb.Models.ViewModels;
-using MyPolyglotWeb.Repositories.IRepository;
+using MyPolyglotWeb.Repositories.IRepositories;
 
 namespace MyPolyglotWeb.Presentations
 {

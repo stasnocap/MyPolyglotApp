@@ -7,7 +7,7 @@ using MyPolyglotCore.Words;
 using MyPolyglotWeb.Models.ViewModels;
 using MyPolyglotWeb.Repositories.IRepository;
 
-namespace MyPolyglotWeb.Presentation
+namespace MyPolyglotWeb.Presentations
 {
     public class HomePresentation
     {

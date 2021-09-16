@@ -2,10 +2,9 @@
 using MyPolyglotWeb.Models.DomainModels;
 using MyPolyglotWeb.Models.ViewModels;
 using MyPolyglotWeb.Repositories.IRepository;
-using System;
 using System.Security.Claims;
 
-namespace MyPolyglotWeb.Presentation
+namespace MyPolyglotWeb.Presentations
 {
     public class UserPresentation
     {

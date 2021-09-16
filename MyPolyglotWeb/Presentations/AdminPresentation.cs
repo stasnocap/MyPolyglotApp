@@ -4,9 +4,8 @@ using MyPolyglotWeb.Models.DomainModels;
 using MyPolyglotWeb.Models.ViewModels;
 using MyPolyglotWeb.Repositories.IRepository;
 using System.Collections.Generic;
-using System.Linq;
 
-namespace MyPolyglotWeb.Presentation
+namespace MyPolyglotWeb.Presentations
 {
     public class AdminPresentation
     {

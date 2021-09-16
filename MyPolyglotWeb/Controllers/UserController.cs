@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Mvc;
 using MyPolyglotWeb.Models.ViewModels;
-using MyPolyglotWeb.Presentation;
+using MyPolyglotWeb.Presentations;
 using System.Threading.Tasks;
 
 namespace MyPolyglotWeb.Controllers

@@ -1,6 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Mvc;
 using MyPolyglotWeb.Models.ViewModels;
 using MyPolyglotWeb.Presentation;
+using System.Diagnostics.Eventing.Reader;
+using System.Threading.Tasks;
 
 namespace MyPolyglotWeb.Controllers
 {
@@ -22,7 +25,7 @@ namespace MyPolyglotWeb.Controllers
         [HttpPost]
         public IActionResult Register(RegisterUserVM registerUserVM)
         {
-            if(!ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
                 return View(registerUserVM);
             }
@@ -32,6 +35,43 @@ namespace MyPolyglotWeb.Controllers
             TempData["SuccessfulRegistration"] = "Регистрация прошла успешно!";
 
             return View();
+        }
+
+        [HttpGet]
+        public IActionResult Login()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> LoginAsync(LoginVM loginVM)
+        {
+            SignIn(loginVM);
+
+            if (!ModelState.IsValid)
+            {
+                return View(loginVM);
+            }
+
+            var claimsPrincipal = _userPresentation.GetLoginClaims(loginVM);
+            await HttpContext.SignInAsync(claimsPrincipal);
+
+            return RedirectToAction("Index", "Home");
+        }
+
+        private void SignIn(LoginVM loginVM)
+        {
+            var user = _userPresentation.GetUser(loginVM.Email, loginVM.Password);
+
+            if (user == null)
+            {
+                if (!_userPresentation.IsUserExist(loginVM.Email))
+                {
+                    ModelState.AddModelError(nameof(LoginVM.Email), "Пользователя с таким электронным адресом не зарегистрировано!");
+                }
+
+                ModelState.AddModelError(nameof(LoginVM.Password), "Неправильный пароль!");
+            }
         }
     }
 }

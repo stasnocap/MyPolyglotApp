@@ -18,6 +18,8 @@ namespace MyPolyglotWeb
 {
     public class Startup
     {
+        public const string AuthMethod = "CoockieAuth";
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -30,6 +32,13 @@ namespace MyPolyglotWeb
         {
             services.AddDbContext<WebContext>(
                  options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddAuthentication(AuthMethod)
+                .AddCookie(AuthMethod, config =>
+                {
+                    config.Cookie.Name = "User.Auth";
+                    config.LoginPath = "/User/Login";
+                    config.AccessDeniedPath = "/User/AccessDenied";
+                });
             services.AddControllersWithViews();
             RegisterPresentation(services);
             RegisterRepository(services);

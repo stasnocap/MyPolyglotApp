@@ -40,5 +40,11 @@ namespace MyPolyglotWeb.Controllers
             var unrecognizedWords = _adminPresentation.GetUnrecognizedWords(engPhrase);
             return Json(unrecognizedWords);
         }
+
+        [HttpGet]
+        public IActionResult AllExercises()
+        {
+            return View();
+        }
     }
 }

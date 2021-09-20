@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace MyPolyglotWeb.Models.ViewModels
 {
-    public class ExerciseVM
+    public class ShowExerciseVM
     {
         [Required(ErrorMessage = CustomConst.UserTriesToBreakMe)]
         [Range(1, long.MaxValue, ErrorMessage = CustomConst.UserTriesToBreakMe)]

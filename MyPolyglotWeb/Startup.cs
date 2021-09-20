@@ -44,8 +44,8 @@ namespace MyPolyglotWeb
                 x.CreateMap<UnrecognizedWordVM, UnrecognizedWordDB>().ReverseMap();
                 x.CreateMap<UnrecognizedWordDB, Word>()
                     .ConvertUsing(x => CastUnrecognizedWordDBToWord(x));
-                x.CreateMap<ExerciseDB, ExerciseVM>()
-                    .ForMember(nameof(ExerciseVM.ExerciseId), x => x.MapFrom(x => x.Id));
+                x.CreateMap<ExerciseDB, ShowExerciseVM>()
+                    .ForMember(nameof(ShowExerciseVM.ExerciseId), x => x.MapFrom(x => x.Id));
                 x.CreateMap<Word, UnrecognizedWordVM>();
             });
             services.AddScoped(x => config.CreateMapper());

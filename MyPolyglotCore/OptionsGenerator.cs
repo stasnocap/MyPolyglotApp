@@ -8,13 +8,6 @@ namespace MyPolyglotCore
 {
     public class OptionsGenerator
     {
-        private Random _random;
-
-        public OptionsGenerator()
-        {
-            _random = new Random();
-        }
-
         public IEnumerable<string> GetOptions(Word word)
         {
             return word switch
@@ -28,54 +21,81 @@ namespace MyPolyglotCore
                 Determiner determiner => Vocabulary.Determiners.Select(x => x.Text),
                 Adjective adjective => GetRandomWordsFromVocabularyWithRightWord(adjective),
                 Noun noun => GetRandomWordsFromVocabularyWithRightWord(noun),
-                ModalVerb modalVerb => GetRandomModalVerbs(modalVerb),
-                PrimaryVerb primaryVerb => GenerateOpitonsForPrimaryVerb(primaryVerb),
+                ModalVerb modalVerb => GenerateOptionsForModalVerb(modalVerb),
+                PrimaryVerb primaryVerb => GenerateOptionsForPrimaryVerb(primaryVerb),
                 Verb verb => GenerateOptionsForVerb(verb),
                 _ => throw new NotImplementedException(),
             };
         }
 
-        private IEnumerable<string> GetRandomModalVerbs(ModalVerb modalVerb)
+        private IEnumerable<string> GenerateOptionsForModalVerb(ModalVerb modalVerb)
         {
-            var vocabulary = Vocabulary.GetVocabulary(typeof(ModalVerb)) as IEnumerable<ModalVerb>;
+            var modalVerbVocabularyWithoutRightWord = Vocabulary
+                .GetVocabulary(typeof(ModalVerb))
+                .Cast<ModalVerb>()
+                .Where(x => !modalVerb.Equals(x));
 
-            var modalVerbs = vocabulary
-                .OrderBy(x => _random.Next())
-                .Take(3)
-                .ToList();
-
-            if (!modalVerbs.Contains(modalVerb))
+            if (modalVerb.FromWhatItWasRecognized == modalVerb.FullNegativeForm)
             {
-                modalVerbs.Remove(modalVerbs.First());
-                modalVerbs.Add(modalVerb);
+                return modalVerbVocabularyWithoutRightWord
+                    .Select(x => x.FullNegativeForm)
+                    .TakeSixShuffledStrings(modalVerb.FullNegativeForm);
             }
 
-            return modalVerbs
+            if (modalVerb.FromWhatItWasRecognized == modalVerb.ShortNegativeForm)
+            {
+                return modalVerbVocabularyWithoutRightWord
+                    .Select(x => x.ShortNegativeForm)
+                    .TakeSixShuffledStrings(modalVerb.ShortNegativeForm);
+            }
+
+            return modalVerbVocabularyWithoutRightWord
                 .Select(x => x.Text)
-                .Concat(modalVerbs.Select(x => x.ShortNegativeForm))
-                .OrderBy(x => _random.Next());
+                .TakeSixShuffledStrings(modalVerb.Text);
         }
 
-        private IEnumerable<string> GenerateOpitonsForPrimaryVerb(PrimaryVerb primaryVerb)
+        private IEnumerable<string> GenerateOptionsForPrimaryVerb(PrimaryVerb primaryVerb)
         {
-            return primaryVerb.ShortNegativeForms
-                    .Concat(primaryVerb.AdditionalForms)
-                    .Concat(new string[]
-                    {
-                        primaryVerb.Text, primaryVerb.PastForm, primaryVerb.PastParticipleForm,
-                        primaryVerb.PresentParticipleForm, primaryVerb.ThirdPersonForm
-                    });
+            var positiveForms = new List<string>
+            {
+                primaryVerb.Text,
+                primaryVerb.PastForm,
+                primaryVerb.PastParticipleForm,
+                primaryVerb.PresentParticipleForm,
+                primaryVerb.ThirdPersonForm
+            };
+
+            if (primaryVerb.AdditionalForms != null)
+            {
+                positiveForms.AddRange(primaryVerb.AdditionalForms);
+            }
+
+            if (positiveForms.Contains(primaryVerb.FromWhatItWasRecognized))
+            {
+                if (primaryVerb.AdditionalForms == null)
+                {
+                    return positiveForms;
+                }
+
+                positiveForms.Remove(primaryVerb.FromWhatItWasRecognized);
+
+                return positiveForms.TakeSixShuffledStrings(primaryVerb.FromWhatItWasRecognized);
+            }
+
+            if (primaryVerb.FullNegativeForms.Contains(primaryVerb.FromWhatItWasRecognized))
+            {
+                return primaryVerb.FullNegativeForms;
+            }
+
+            return primaryVerb.ShortNegativeForms;
         }
 
         private IEnumerable<string> GetRandomWordsFromVocabularyWithRightWord(Word word)
         {
             var vocabulary = Vocabulary.GetVocabulary(word.GetType());
             return vocabulary
-                .OrderBy(x => _random.Next())
-                .Take(5)
-                .Append(word)
                 .Select(x => x.Text)
-                .OrderBy(x => Guid.NewGuid());
+                .TakeSixShuffledStrings(word.Text);
         }
 
         private IEnumerable<string> GenerateOptionsForVerb(Verb verb)

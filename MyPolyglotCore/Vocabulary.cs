@@ -290,15 +290,15 @@ namespace MyPolyglotCore
         public static readonly IEnumerable<PrimaryVerb> PrimaryVerbs = new PrimaryVerb[]
         {
             new PrimaryVerb("do", "did", "done", "doing", "does",
-                new HashSet<string> { "don't", "didn't", "doesn't"},
-                new HashSet<string> { "do not", "did not", "does not"}),
+                new string[] { "don't", "didn't", "doesn't"},
+                new string[] { "do not", "did not", "does not"}),
             new PrimaryVerb("have", "had", "had", "having", "has",
-                new HashSet<string> { "haven't", "hadn't", "hasn't"},
-                new HashSet<string>{ "have not", "had not", "has not"}),
+                new string[] { "haven't", "hadn't", "hasn't"},
+                new string[] { "have not", "had not", "has not"}),
             new PrimaryVerb("be", "was", "been", "being", "is",
-                new HashSet<string> { "wasn't", "weren't", "am not", "isn't", "aren't"},
-                new HashSet<string> { "was not", "were not", "am not", "is not", "are not" },
-                new HashSet<string> { "were", "am", "is", "are" })
+                new string[] { "wasn't", "weren't", "am not", "isn't", "aren't"},
+                new string[] { "was not", "were not", "am not", "is not", "are not" },
+                new string[] { "were", "am", "are" })
         };
 
         public static readonly IEnumerable<ModalVerb> ModalVerbs = new ModalVerb[]

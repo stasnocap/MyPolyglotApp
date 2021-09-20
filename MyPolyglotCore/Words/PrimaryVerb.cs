@@ -16,7 +16,6 @@ namespace MyPolyglotCore.Words
         {
             ShortNegativeForms = shortNegativeForms;
             FullNegativeForms = fullNegativeForms;
-            AdditionalForms = new HashSet<string>();
         }
 
         public PrimaryVerb(string text, string pastForm, string pastParticipleForm, string presentParticipleForm,
@@ -38,10 +37,10 @@ namespace MyPolyglotCore.Words
                 return false;
             }
 
-            return base.Equals(obj) 
-                || ShortNegativeForms.Where(x => word.Text == x).Any() 
-                || FullNegativeForms.Where(x => word.Text == x).Any() 
-                || AdditionalForms.Where(x => word.Text == x).Any();
+            return base.Equals(obj)
+                || ShortNegativeForms.Where(x => word.Text == x).Any()
+                || FullNegativeForms.Where(x => word.Text == x).Any()
+                || AdditionalForms != null && AdditionalForms.Where(x => word.Text == x).Any();
         }
 
         public override int GetHashCode()

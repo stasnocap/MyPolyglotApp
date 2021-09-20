@@ -1,7 +1,9 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using MyPolyglotCore.Words;
 using MyPolyglotCore.Words.Pronouns;
+using MyPolyglotCoreTests;
 using Xunit;
 
 namespace MyPolyglotCore.Tests.OptionsGeneratorTests
@@ -9,6 +11,7 @@ namespace MyPolyglotCore.Tests.OptionsGeneratorTests
     public class GetOptionsShould
     {
         private readonly Random _random = new Random();
+        private readonly OptionsGenerator _optionsGenerator = new OptionsGenerator();
 
         [Fact]
         public void GivenSubjectPronoun_ReturnAllWordsFromSubjectPronounVocabulary()
@@ -54,8 +57,7 @@ namespace MyPolyglotCore.Tests.OptionsGeneratorTests
 
         private void CheckIfAllWordsFromVocabularyHadRecieved(Word word)
         {
-            var optionsGenerator = new OptionsGenerator();
-            var options = optionsGenerator.GetOptions(word);
+            var options = _optionsGenerator.GetOptions(word);
             var vocabulary = Vocabulary.GetVocabulary(word.GetType());
             foreach (var wordFromVocabulary in vocabulary)
             {
@@ -79,10 +81,8 @@ namespace MyPolyglotCore.Tests.OptionsGeneratorTests
 
         private void CheckIfFiveWordsFromVocabularyWithRightWordHadRecieved(Word word)
         {
-            var optionsGenerator = new OptionsGenerator();
-            var options = optionsGenerator.GetOptions(word);
+            var options = _optionsGenerator.GetOptions(word);
             var vocabulary = Vocabulary.GetVocabulary(word.GetType());
-
 
             foreach (var option in options)
             {
@@ -100,22 +100,20 @@ namespace MyPolyglotCore.Tests.OptionsGeneratorTests
         [Fact]
         public void GivenIrregularVerb_ReturnCollectionThatContainsTextPastFormPastParticipleFormPresentParticipleFormAndThirdPersonForm()
         {
-            var irregularVerbVocabulary = Vocabulary.IrregularVerbs.ToList();
-            var randomVerb = irregularVerbVocabulary[_random.Next(irregularVerbVocabulary.Count)];
+            var randomIrregularVerb = RandomWordHelper.GetRandomIrregularVerb();
 
-            var verbForms = new string[]
+            var irregularVerbForms = new string[]
             {
-                randomVerb.Text,
-                randomVerb.PastForm,
-                randomVerb.PastParticipleForm,
-                randomVerb.PresentParticipleForm,
-                randomVerb.ThirdPersonForm,
+                randomIrregularVerb.Text,
+                randomIrregularVerb.PastForm,
+                randomIrregularVerb.PastParticipleForm,
+                randomIrregularVerb.PresentParticipleForm,
+                randomIrregularVerb.ThirdPersonForm,
             };
 
-            var optionsGenerator = new OptionsGenerator();
-            var options = optionsGenerator.GetOptions(randomVerb);
+            var options = _optionsGenerator.GetOptions(randomIrregularVerb);
 
-            foreach (var form in verbForms)
+            foreach (var form in irregularVerbForms)
             {
                 Assert.Contains(form, options);
             }
@@ -134,8 +132,7 @@ namespace MyPolyglotCore.Tests.OptionsGeneratorTests
                 verb.ThirdPersonForm,
             };
 
-            var optionsGenerator = new OptionsGenerator();
-            var options = optionsGenerator.GetOptions(verb);
+            var options = _optionsGenerator.GetOptions(verb);
 
             foreach (var form in verbForms)
             {
@@ -144,34 +141,192 @@ namespace MyPolyglotCore.Tests.OptionsGeneratorTests
         }
 
         [Fact]
-        public void GivenModalVerb_ReturnCollectionThatContainsPassedModalVerbTextAndNegativeForm()
+        public void GivenModalVerbRecognizedFromPositiveForm_ReturnCollectionWithPassedPositiveForm()
         {
-            var modalVerbVocabulary = Vocabulary.ModalVerbs.ToList();
-            var randomModalVerb = modalVerbVocabulary[_random.Next(modalVerbVocabulary.Count)];
+            var modalVerb = RandomWordHelper.GetRandomModalVerb();
 
-            var optionsGenerator = new OptionsGenerator();
-            var options = optionsGenerator.GetOptions(randomModalVerb);
+            modalVerb.FromWhatItWasRecognized = modalVerb.Text;
 
-            Assert.Contains(randomModalVerb.Text, options);
-            Assert.Contains(randomModalVerb.ShortNegativeForm, options);
+            var options = _optionsGenerator.GetOptions(modalVerb);
+
+            Assert.Contains(modalVerb.Text, options);
         }
 
         [Fact]
-        public void GivenModalVerb_ReturnCollectionWithRandomModalVerbs()
+        public void GivenModalVerbRecognizedFromPositiveForm_ReturnCollectionThatContainsRandomModalVerbsPositiveForms()
         {
-            var modalVerbVocabulary = Vocabulary.ModalVerbs.ToList();
-            var randomModalVerb = modalVerbVocabulary[_random.Next(modalVerbVocabulary.Count)];
+            var modalVerb = RandomWordHelper.GetRandomModalVerb();
 
-            var optionsGenerator = new OptionsGenerator();
-            var options = optionsGenerator.GetOptions(randomModalVerb);
+            modalVerb.FromWhatItWasRecognized = modalVerb.Text;
 
-            var modalVerbsTextsAndNegativeForms = modalVerbVocabulary
-                .Select(x => x.Text)
-                .Concat(modalVerbVocabulary.Select(x => x.ShortNegativeForm));
+            var options = _optionsGenerator.GetOptions(modalVerb);
 
             foreach (var option in options)
             {
-                Assert.Contains(option, modalVerbsTextsAndNegativeForms);
+                Assert.Contains(option, Vocabulary.ModalVerbs.Select(x => x.Text));
+            }
+        }
+
+        [Fact]
+        public void GivenModalVerbRecognizedFromFullNegativeForm_ReturnCollectionWithPassedFullNegativeForm()
+        {
+            var modalVerb = RandomWordHelper.GetRandomModalVerb();
+
+            modalVerb.FromWhatItWasRecognized = modalVerb.FullNegativeForm;
+
+            var options = _optionsGenerator.GetOptions(modalVerb);
+
+            Assert.Contains(modalVerb.FullNegativeForm, options);
+        }
+
+        [Fact]
+        public void GivenModalVerbRecognizedFromFullNegativeForm_ReturnCollectionThatContainsRandomModalVerbsFullNegativeForms()
+        {
+            var modalVerb = RandomWordHelper.GetRandomModalVerb();
+
+            modalVerb.FromWhatItWasRecognized = modalVerb.FullNegativeForm;
+
+            var options = _optionsGenerator.GetOptions(modalVerb);
+
+            foreach (var option in options)
+            {
+                Assert.Contains(option, Vocabulary.ModalVerbs.Select(x => x.FullNegativeForm));
+            }
+        }
+
+        [Fact]
+        public void GivenModalVerbRecognizedFromwShortNegativeForm_ReturnCollectionWithPassedShortNegativeForm()
+        {
+            var modalVerb = RandomWordHelper.GetRandomModalVerb();
+
+            modalVerb.FromWhatItWasRecognized = modalVerb.ShortNegativeForm;
+
+            var options = _optionsGenerator.GetOptions(modalVerb);
+
+            Assert.Contains(modalVerb.ShortNegativeForm, options);
+        }
+
+        [Fact]
+        public void GivenModalVerbRecognizedFromShortNegativeForm_ReturnCollectionThatContainsRandomModalVerbsShortNegativeForms()
+        {
+            var modalVerb = RandomWordHelper.GetRandomModalVerb();
+
+            modalVerb.FromWhatItWasRecognized = modalVerb.ShortNegativeForm;
+
+            var options = _optionsGenerator.GetOptions(modalVerb);
+
+            foreach (var option in options)
+            {
+                Assert.Contains(option, Vocabulary.ModalVerbs.Select(x => x.ShortNegativeForm));
+            }
+        }
+
+        [Fact]
+        public void GivenPrimaryVerbBeRecognizedFromPositiveForm_ReturnCollectionWithPositiveForm()
+        {
+            var primaryVerb = (PrimaryVerb)Vocabulary.GetVocabulary(typeof(PrimaryVerb)).First(x => x.Text == "be");
+
+            var positiveForms = new List<string>
+            {
+                primaryVerb.Text,
+                primaryVerb.PastForm,
+                primaryVerb.PastParticipleForm,
+                primaryVerb.PresentParticipleForm,
+                primaryVerb.ThirdPersonForm
+            };
+
+            positiveForms.AddRange(primaryVerb.AdditionalForms);
+
+            primaryVerb.FromWhatItWasRecognized = positiveForms[_random.Next(positiveForms.Count)];
+
+            var options = _optionsGenerator.GetOptions(primaryVerb);
+
+            Assert.Contains(primaryVerb.FromWhatItWasRecognized, options);
+        }
+
+        [Fact]
+        public void GivenPrimaryVerbBeRecognizedFormPositiveForm_ReturnCollectionThatContainsPositiveFormsFromPrimaryVerbBe()
+        {
+            var primaryVerb = (PrimaryVerb)Vocabulary.GetVocabulary(typeof(PrimaryVerb)).First(x => x.Text == "be");
+
+            var positiveForms = new List<string>
+            {
+                primaryVerb.Text,
+                primaryVerb.PastForm,
+                primaryVerb.PastParticipleForm,
+                primaryVerb.PresentParticipleForm,
+                primaryVerb.ThirdPersonForm,
+            };
+
+            positiveForms.AddRange(primaryVerb.AdditionalForms);
+
+            primaryVerb.FromWhatItWasRecognized = primaryVerb.Text;
+
+            var options = _optionsGenerator.GetOptions(primaryVerb);
+
+            foreach (var option in options)
+            {
+                Assert.Contains(option, positiveForms);
+            }
+        }
+
+        [Theory]
+        [InlineData("do")]
+        [InlineData("have")]
+        public void GivenPrimaryVerbRecognizedFromPositiveForm_ReturnCollectionWithAllPositiveForms(string primaryVerbText)
+        {
+            var primaryVerb = (PrimaryVerb)Vocabulary.GetVocabulary(typeof(PrimaryVerb)).First(x => x.Text == primaryVerbText);
+
+            var positiveForms = new List<string>
+            {
+                primaryVerb.Text,
+                primaryVerb.PastForm,
+                primaryVerb.PastParticipleForm,
+                primaryVerb.PresentParticipleForm,
+                primaryVerb.ThirdPersonForm,
+            };
+
+            primaryVerb.FromWhatItWasRecognized = primaryVerb.Text;
+
+            var options = _optionsGenerator.GetOptions(primaryVerb);
+
+            foreach (var positiveForm in positiveForms)
+            {
+                Assert.Contains(positiveForm, options);
+            }
+        }
+
+        [Fact]
+        public void GivenPrimaryVerbRecognizedFromFullNegativeForm_ReturnCollectionThatContainsPrimaryVerbAllFullNegativeForms()
+        {
+            var primaryVerb = RandomWordHelper.GetRandomPrimaryVerb();
+
+            var fullNegativeForms = primaryVerb.FullNegativeForms.ToList();
+
+            primaryVerb.FromWhatItWasRecognized = fullNegativeForms[_random.Next(fullNegativeForms.Count)];
+
+            var options = _optionsGenerator.GetOptions(primaryVerb);
+
+            foreach (var fullNegativeForm in fullNegativeForms)
+            {
+                Assert.Contains(fullNegativeForm, options);
+            }
+        }
+
+        [Fact]
+        public void GivenPrimaryVerbRecognizedFromShortNegativeForm_ReturnCollectionThatContainsPrimaryVerbAllShortNegativeForms()
+        {
+            var primaryVerb = RandomWordHelper.GetRandomPrimaryVerb();
+
+            var shortNegativeForms = primaryVerb.ShortNegativeForms.ToList();
+
+            primaryVerb.FromWhatItWasRecognized = shortNegativeForms[_random.Next(shortNegativeForms.Count)];
+
+            var options = _optionsGenerator.GetOptions(primaryVerb);
+
+            foreach (var shortNegativeForm in shortNegativeForms)
+            {
+                Assert.Contains(shortNegativeForm, options);
             }
         }
     }

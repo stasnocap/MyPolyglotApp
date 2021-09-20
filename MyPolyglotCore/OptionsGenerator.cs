@@ -8,13 +8,6 @@ namespace MyPolyglotCore
 {
     public class OptionsGenerator
     {
-        private Random _random;
-
-        public OptionsGenerator()
-        {
-            _random = new Random();
-        }
-
         public IEnumerable<string> GetOptions(Word word)
         {
             return word switch
@@ -29,7 +22,7 @@ namespace MyPolyglotCore
                 Adjective adjective => GetRandomWordsFromVocabularyWithRightWord(adjective),
                 Noun noun => GetRandomWordsFromVocabularyWithRightWord(noun),
                 ModalVerb modalVerb => GenerateOptionsForModalVerb(modalVerb),
-                PrimaryVerb primaryVerb => GenerateOpitonsForPrimaryVerb(primaryVerb),
+                PrimaryVerb primaryVerb => GenerateOptionsForPrimaryVerb(primaryVerb),
                 Verb verb => GenerateOptionsForVerb(verb),
                 _ => throw new NotImplementedException(),
             };
@@ -46,50 +39,63 @@ namespace MyPolyglotCore
             {
                 return modalVerbVocabularyWithoutRightWord
                     .Select(x => x.FullNegativeForm)
-                    .OrderBy(x => _random.Next())
-                    .Take(5)
-                    .Append(modalVerb.FullNegativeForm)
-                    .OrderBy(x => _random.Next());
+                    .TakeSixShuffledStrings(modalVerb.FullNegativeForm);
             }
 
             if (modalVerb.FromWhatItWasRecognized == modalVerb.ShortNegativeForm)
             {
                 return modalVerbVocabularyWithoutRightWord
                     .Select(x => x.ShortNegativeForm)
-                    .OrderBy(x => _random.Next())
-                    .Take(5)
-                    .Append(modalVerb.ShortNegativeForm)
-                    .OrderBy(x => _random.Next());
+                    .TakeSixShuffledStrings(modalVerb.ShortNegativeForm);
             }
 
             return modalVerbVocabularyWithoutRightWord
                 .Select(x => x.Text)
-                .OrderBy(x => _random.Next())
-                .Take(5)
-                .Append(modalVerb.Text)
-                .OrderBy(x => _random.Next());
+                .TakeSixShuffledStrings(modalVerb.Text);
         }
 
-        private IEnumerable<string> GenerateOpitonsForPrimaryVerb(PrimaryVerb primaryVerb)
+        private IEnumerable<string> GenerateOptionsForPrimaryVerb(PrimaryVerb primaryVerb)
         {
-            return primaryVerb.ShortNegativeForms
-                    .Concat(primaryVerb.AdditionalForms)
-                    .Concat(new string[]
-                    {
-                        primaryVerb.Text, primaryVerb.PastForm, primaryVerb.PastParticipleForm,
-                        primaryVerb.PresentParticipleForm, primaryVerb.ThirdPersonForm
-                    });
+            var positiveForms = new List<string>
+            {
+                primaryVerb.Text,
+                primaryVerb.PastForm,
+                primaryVerb.PastParticipleForm,
+                primaryVerb.PresentParticipleForm,
+                primaryVerb.ThirdPersonForm
+            };
+
+            if (primaryVerb.AdditionalForms != null)
+            {
+                positiveForms.AddRange(primaryVerb.AdditionalForms);
+            }
+
+            if (positiveForms.Contains(primaryVerb.FromWhatItWasRecognized))
+            {
+                if (primaryVerb.AdditionalForms == null)
+                {
+                    return positiveForms;
+                }
+
+                positiveForms.Remove(primaryVerb.FromWhatItWasRecognized);
+
+                return positiveForms.TakeSixShuffledStrings(primaryVerb.FromWhatItWasRecognized);
+            }
+
+            if (primaryVerb.FullNegativeForms.Contains(primaryVerb.FromWhatItWasRecognized))
+            {
+                return primaryVerb.FullNegativeForms;
+            }
+
+            return primaryVerb.ShortNegativeForms;
         }
 
         private IEnumerable<string> GetRandomWordsFromVocabularyWithRightWord(Word word)
         {
             var vocabulary = Vocabulary.GetVocabulary(word.GetType());
             return vocabulary
-                .OrderBy(x => _random.Next())
-                .Take(5)
-                .Append(word)
                 .Select(x => x.Text)
-                .OrderBy(x => _random.Next());
+                .TakeSixShuffledStrings(word.Text);
         }
 
         private IEnumerable<string> GenerateOptionsForVerb(Verb verb)

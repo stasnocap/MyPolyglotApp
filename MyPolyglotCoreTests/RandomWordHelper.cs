@@ -1,5 +1,6 @@
 ﻿using MyPolyglotCore;
 using MyPolyglotCore.Words;
+using MyPolyglotCore.Words.Pronouns;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,8 +11,6 @@ namespace MyPolyglotCoreTests
     {
         private static readonly Random _random = new Random();
         private static readonly List<Word> _recognizableWords = Vocabulary.RecognizableVocabularies.ToList();
-        private static readonly List<Verb> _irregularVerbs = Vocabulary.IrregularVerbs.ToList();
-        private static readonly List<PrimaryVerb> _primaryVerbs = Vocabulary.PrimaryVerbs.ToList();
 
         public static Word GetRandomRecognizableWord()
         {
@@ -26,12 +25,47 @@ namespace MyPolyglotCoreTests
 
         public static Verb GetRandomIrregularVerb()
         {
-            return _irregularVerbs[_random.Next(_irregularVerbs.Count)];
+            return (Verb)typeof(Verb).GetRandomWordFromVocabulary();
         }
 
         public static PrimaryVerb GetRandomPrimaryVerb()
         {
-            return _primaryVerbs[_random.Next(_primaryVerbs.Count)];
+            return (PrimaryVerb)typeof(PrimaryVerb).GetRandomWordFromVocabulary();
+        }
+
+        public static ModalVerb GetRandomModalVerb()
+        {
+            return (ModalVerb)typeof(ModalVerb).GetRandomWordFromVocabulary();
+        }
+
+        public static Determiner GetRandomDeterminer()
+        {
+            return (Determiner)typeof(Determiner).GetRandomWordFromVocabulary();
+        }
+
+        public static ReflexivePronoun GetRandomReflexivePronoun()
+        {
+            return (ReflexivePronoun)typeof(ReflexivePronoun).GetRandomWordFromVocabulary();
+        }
+
+        public static PossessivePronoun GetRandomPossessivePronoun()
+        {
+            return (PossessivePronoun)typeof(PossessivePronoun).GetRandomWordFromVocabulary();
+        }
+
+        public static PossessiveAdjective GetRandomPossessiveAdjective()
+        {
+            return (PossessiveAdjective)typeof(PossessiveAdjective).GetRandomWordFromVocabulary();
+        }
+
+        public static ObjectPronoun GetRandomObjectPronoun()
+        {
+            return (ObjectPronoun)typeof(ObjectPronoun).GetRandomWordFromVocabulary();
+        }
+
+        public static SubjectPronoun GetRandomSubjectPronoun()
+        {
+            return (SubjectPronoun)typeof(SubjectPronoun).GetRandomWordFromVocabulary();
         }
     }
 }

@@ -16,56 +16,56 @@ namespace MyPolyglotCoreTests.RecognizerTests
         [Fact]
         public void RecognizeSubjectPronounInPhrase()
         {
-            var randomWordFromVocabulary = typeof(SubjectPronoun).GetRandomWordFromVocabulary();
+            var randomWordFromVocabulary = RandomWordHelper.GetRandomSubjectPronoun();
             CheckIfGivenWordHadRecognized(randomWordFromVocabulary);
         }
 
         [Fact]
         public void RecognizeObjectPronounInPhrase()
         {
-            var randomWordFromVocabulary = typeof(ObjectPronoun).GetRandomWordFromVocabulary();
+            var randomWordFromVocabulary = RandomWordHelper.GetRandomObjectPronoun();
             CheckIfGivenWordHadRecognized(randomWordFromVocabulary);
         }
 
         [Fact]
         public void RecognizePossessiveAdjectiveInPhrase()
         {
-            var randomWordFromVocabulary = typeof(PossessiveAdjective).GetRandomWordFromVocabulary();
+            var randomWordFromVocabulary = RandomWordHelper.GetRandomPossessiveAdjective();
             CheckIfGivenWordHadRecognized(randomWordFromVocabulary);
         }
 
         [Fact]
         public void RecognizePossessivePronounInPhrase()
         {
-            var randomWordFromVocabulary = typeof(PossessivePronoun).GetRandomWordFromVocabulary();
+            var randomWordFromVocabulary = RandomWordHelper.GetRandomPossessivePronoun();
             CheckIfGivenWordHadRecognized(randomWordFromVocabulary);
         }
 
         [Fact]
         public void RecognizeReflexivePronounInPhrase()
         {
-            var randomWordFromVocabulary = typeof(ReflexivePronoun).GetRandomWordFromVocabulary();
+            var randomWordFromVocabulary = RandomWordHelper.GetRandomReflexivePronoun();
             CheckIfGivenWordHadRecognized(randomWordFromVocabulary);
         }
 
         [Fact]
         public void RecognizeDeterminerInPhrase()
         {
-            var randomWordFromVocabulary = typeof(Determiner).GetRandomWordFromVocabulary();
+            var randomWordFromVocabulary = RandomWordHelper.GetRandomDeterminer();
             CheckIfGivenWordHadRecognized(randomWordFromVocabulary);
         }
 
         [Fact]
-        public void RecognizeVerbInPhrase()
+        public void RecognizeIrregularVerbInPhrase()
         {
-            var randomWordFromVocabulary = typeof(Verb).GetRandomWordFromVocabulary();
+            var randomWordFromVocabulary = RandomWordHelper.GetRandomIrregularVerb();
             CheckIfGivenWordHadRecognized(randomWordFromVocabulary);
         }
 
         [Fact]
         public void RecognizeModalVerbByAffirmativeForm()
         {
-            var randomWordFromVocabulary = typeof(ModalVerb).GetRandomWordFromVocabulary();
+            var randomWordFromVocabulary = RandomWordHelper.GetRandomModalVerb();
             CheckIfGivenWordHadRecognized(randomWordFromVocabulary);
         }
 
@@ -158,12 +158,26 @@ namespace MyPolyglotCoreTests.RecognizerTests
         }
 
         [Fact]
-        public void RecognizePrimaryVerbByNegativeForms()
+        public void RecognizePrimaryVerbByShortNegativeForms()
         {
             var randomPrimaryVerb = RandomWordHelper.GetRandomPrimaryVerb();
+            var shortNegativeForms = randomPrimaryVerb.ShortNegativeForms.ToList();
 
-            var randomWordFromNegativeForms = randomPrimaryVerb.ShortNegativeForms.ElementAt(_random.Next(randomPrimaryVerb.ShortNegativeForms.Count()));
-            var recognizer = new Recognizer("rastr " + randomWordFromNegativeForms + " strs");
+            var randomShortNegativeForm = shortNegativeForms[_random.Next(shortNegativeForms.Count)];
+            var recognizer = new Recognizer("rastr " + randomShortNegativeForm + " strs");
+            recognizer.Recognize();
+
+            Assert.Collection(recognizer.RecognizedWords, x => Assert.Equal(x, randomPrimaryVerb));
+        }
+
+        [Fact]
+        public void RecognizePrimaryVerbByFullNegativeForms()
+        {
+            var randomPrimaryVerb = RandomWordHelper.GetRandomPrimaryVerb();
+            var fullNegativeForms = randomPrimaryVerb.FullNegativeForms.ToList();
+
+            var randomFullNegativeForm = fullNegativeForms[_random.Next(fullNegativeForms.Count)];
+            var recognizer = new Recognizer("rastr " + randomFullNegativeForm + " strs");
             recognizer.Recognize();
 
             Assert.Collection(recognizer.RecognizedWords, x => Assert.Equal(x, randomPrimaryVerb));

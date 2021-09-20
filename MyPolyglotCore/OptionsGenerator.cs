@@ -102,7 +102,7 @@ namespace MyPolyglotCore
         {
             return verb.IsIrregularVerb
                 ? new List<string>() { verb.Text, verb.PastForm, verb.PastParticipleForm, verb.PresentParticipleForm, verb.ThirdPersonForm }
-                : new List<string>() { verb.Text, verb.PastForm, verb.PastParticipleForm, verb.ThirdPersonForm };
+                : new List<string>() { verb.Text, verb.PastForm, verb.ThirdPersonForm };
         }
     }
 }

@@ -47,7 +47,7 @@ namespace MyPolyglotWebTests.Presentation
             _exerciseRepositoryMock.Verify(x => x.GetRandomExercise(lessonId), Times.Once);
             _mapperMock.Verify(x => x.Map<IEnumerable<Word>>(exerciseDBMock.Object.UnrecognizedWords), Times.Once);
             _mapperMock.Verify(x => x.Map<ShowExerciseVM>(exerciseDBMock.Object), Times.Once);
-            exerciseVMMock.VerifySet(x => x.OptionGroups = It.IsAny<List<OptionGroup>>(), Times.Once);
+            exerciseVMMock.VerifySet(x => x.OptionGroups = It.IsAny<List<OptionGroupVM>>(), Times.Once);
             exerciseVMMock.VerifySet(x => x.LessonId = lessonId, Times.Once);
         }
 

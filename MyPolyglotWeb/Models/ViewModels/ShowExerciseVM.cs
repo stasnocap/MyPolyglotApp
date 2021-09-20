@@ -18,7 +18,7 @@ namespace MyPolyglotWeb.Models.ViewModels
         public string RusPhrase { get; set; }
 
         [Required(ErrorMessage = CustomConst.UserTriesToBreakMe)]
-        public virtual List<OptionGroup> OptionGroups { get; set; }
+        public virtual List<OptionGroupVM> OptionGroups { get; set; }
 
         [Required(ErrorMessage = CustomConst.UserTriesToBreakMe)]
         public string UserAnswer { get; set; }

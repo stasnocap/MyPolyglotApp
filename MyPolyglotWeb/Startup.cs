@@ -12,6 +12,8 @@ using MyPolyglotWeb.Models;
 using MyPolyglotWeb.Repositories.IRepository;
 using System;
 using MyPolyglotCore.Words;
+using System.Linq;
+using System.Collections.Generic;
 
 namespace MyPolyglotWeb
 {
@@ -44,9 +46,13 @@ namespace MyPolyglotWeb
                 x.CreateMap<UnrecognizedWordVM, UnrecognizedWordDB>().ReverseMap();
                 x.CreateMap<UnrecognizedWordDB, Word>()
                     .ConvertUsing(x => CastUnrecognizedWordDBToWord(x));
+                x.CreateMap<ExerciseDB, ShowExerciseVM>()
+                    .ForMember(nameof(ShowExerciseVM.ExerciseId), x => x.MapFrom(x => x.Id));
+                x.CreateMap<Word, UnrecognizedWordVM>();
+                x.CreateMap<List<ExerciseDB>, AllExercisesVM>()
+                    .ForMember(nameof(AllExercisesVM.Exercises), x => x.MapFrom(x => x));
                 x.CreateMap<ExerciseDB, ExerciseVM>()
                     .ForMember(nameof(ExerciseVM.ExerciseId), x => x.MapFrom(x => x.Id));
-                x.CreateMap<Word, UnrecognizedWordVM>();
             });
             services.AddScoped(x => config.CreateMapper());
         }

@@ -1,26 +1,10 @@
-﻿using MyPolyglotWeb.Constants;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-
-namespace MyPolyglotWeb.Models.ViewModels
+﻿namespace MyPolyglotWeb.Models.ViewModels
 {
     public class ExerciseVM
     {
-        [Required(ErrorMessage = CustomConst.UserTriesToBreakMe)]
-        [Range(1, long.MaxValue, ErrorMessage = CustomConst.UserTriesToBreakMe)]
-        public virtual long LessonId { get; set; }
-
-        [Required(ErrorMessage = CustomConst.UserTriesToBreakMe)]
-        [Range(1, long.MaxValue, ErrorMessage = CustomConst.UserTriesToBreakMe)]
+        public long LessonId { get; set; }
         public long ExerciseId { get; set; }
-
-        [Required(ErrorMessage = CustomConst.UserTriesToBreakMe)]
         public string RusPhrase { get; set; }
-
-        [Required(ErrorMessage = CustomConst.UserTriesToBreakMe)]
-        public virtual List<OptionGroup> OptionGroups { get; set; }
-
-        [Required(ErrorMessage = CustomConst.UserTriesToBreakMe)]
-        public string UserAnswer { get; set; }
+        public string EngPhrase { get; set; }
     }
 }

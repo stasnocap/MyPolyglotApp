@@ -37,5 +37,16 @@ namespace MyPolyglotWeb.Presentation
 
             return _mapper.Map<IEnumerable<UnrecognizedWordVM>>(recognizer.UnrecognizedWords);
         }
+
+        public AllExercisesVM GetAllExercisesVM()
+        {
+            var exercisesDB = _exerciseRepository.GetAll().ToList();
+            return _mapper.Map<AllExercisesVM>(exercisesDB);
+        }
+
+        public void DeleteExercise(long exerciseId)
+        {
+            _exerciseRepository.Remove(exerciseId);
+        }
     }
 }

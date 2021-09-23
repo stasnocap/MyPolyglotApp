@@ -279,3 +279,30 @@ button {
     -ms-transform: rotate(45deg);
     transform: rotate(45deg);
 }
+
+.all-exercises table {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+    .all-exercises table td, .all-exercises table th {
+        border: 1px solid #ddd;
+        padding: 8px;
+    }
+
+    .all-exercises table tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+    .all-exercises table tr:hover {
+        background-color: #ddd;
+    }
+
+    .all-exercises table th {
+        padding-top: 12px;
+        padding-bottom: 12px;
+        text-align: left;
+        background-color: #04AA6D;
+        color: white;
+    }

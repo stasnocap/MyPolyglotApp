@@ -20,15 +20,15 @@ namespace MyPolyglotWeb.Presentation
             _exerciseRepository = exerciseRepository;
         }
 
-        public ExerciseVM GetExerciseVM(long lessonId)
+        public ShowExerciseVM GetExerciseVM(long lessonId)
         {
             var exerciseDB = _exerciseRepository.GetRandomExercise(lessonId);
 
             var exercise = new Exercise(exerciseDB.EngPhrase, _mapper.Map<IEnumerable<Word>>(exerciseDB.UnrecognizedWords));
 
-            var exerciseVM = _mapper.Map<ExerciseVM>(exerciseDB);
+            var exerciseVM = _mapper.Map<ShowExerciseVM>(exerciseDB);
 
-            exerciseVM.OptionGroups = exercise.Words.Select(x => new OptionGroup() { Options = exercise.NextOptions().ToList() }).ToList();
+            exerciseVM.OptionGroups = exercise.Words.Select(x => new OptionGroupVM() { Options = exercise.NextOptions().ToList() }).ToList();
 
             exerciseVM.LessonId = lessonId;
 

@@ -7,12 +7,12 @@
 
         $.get(`/Admin/Recognize?engPhrase=${engPhrase}`).done(function (unrecognizedArray) {
             if (unrecognizedArray.length > 0) {
-                $('.add-exercise__unrecognized-words div').empty();
+                $('.unrecognized-words-js').empty();
+                $('.add-exercise__unrecognized-words label').show();
                 saveOnPage(unrecognizedArray, getUnrecognizableEnumOptions());
             }
         });
 
-        $('.add-exercise__unrecognized-words label').show();
         $('.add-exercise__submit-btn').prop('disabled', false);
     });
 });

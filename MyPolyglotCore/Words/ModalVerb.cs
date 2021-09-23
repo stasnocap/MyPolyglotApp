@@ -23,7 +23,8 @@ namespace MyPolyglotCore.Words
             }
 
             return base.Equals(word)
-                || ShortNegativeForm == word.Text;
+                || ShortNegativeForm == word.Text
+                || FullNegativeForm == word.Text;
         }
 
         public override int GetHashCode()

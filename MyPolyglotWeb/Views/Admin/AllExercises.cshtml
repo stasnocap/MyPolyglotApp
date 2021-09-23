@@ -1,0 +1,25 @@
+﻿@model AllExercisesVM
+
+<div class="all-exercises">
+    <table>
+        <tr>
+            <th>Урок</th>
+            <th>На русском</th>
+            <th>На английском</th>
+            <th>Редактировать</th>
+        </tr>
+        @foreach (var exercise in Model.Exercises)
+        {
+            <tr>
+                <td>@exercise.LessonId</td>
+                <td>@exercise.RusPhrase</td>
+                <td>@exercise.EngPhrase</td>
+                <td>
+                    <a href="@Url.Action("DeleteExercise", "Admin")?exerciseId=@exercise.ExerciseId">
+                        удалить
+                    </a>
+                </td>
+            </tr>
+        }
+    </table>
+</div>

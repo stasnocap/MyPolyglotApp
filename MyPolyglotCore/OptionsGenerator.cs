@@ -24,8 +24,17 @@ namespace MyPolyglotCore
                 ModalVerb modalVerb => GenerateOptionsForModalVerb(modalVerb),
                 PrimaryVerb primaryVerb => GenerateOptionsForPrimaryVerb(primaryVerb),
                 Verb verb => GenerateOptionsForVerb(verb),
+                Preposition preposition => GetRandomWordsFromVocabularyWithRightWord(preposition),
                 _ => throw new NotImplementedException(),
             };
+        }
+
+        private IEnumerable<string> GetRandomWordsFromVocabularyWithRightWord(Word word)
+        {
+            var vocabulary = Vocabulary.GetVocabulary(word.GetType());
+            return vocabulary
+                .Select(x => x.Text)
+                .TakeSixShuffledStrings(word.Text);
         }
 
         private IEnumerable<string> GenerateOptionsForModalVerb(ModalVerb modalVerb)
@@ -88,14 +97,6 @@ namespace MyPolyglotCore
             }
 
             return primaryVerb.ShortNegativeForms;
-        }
-
-        private IEnumerable<string> GetRandomWordsFromVocabularyWithRightWord(Word word)
-        {
-            var vocabulary = Vocabulary.GetVocabulary(word.GetType());
-            return vocabulary
-                .Select(x => x.Text)
-                .TakeSixShuffledStrings(word.Text);
         }
 
         private IEnumerable<string> GenerateOptionsForVerb(Verb verb)

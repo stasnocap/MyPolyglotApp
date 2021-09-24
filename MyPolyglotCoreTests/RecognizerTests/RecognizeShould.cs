@@ -69,6 +69,13 @@ namespace MyPolyglotCoreTests.RecognizerTests
             CheckIfGivenWordHadRecognized(randomWordFromVocabulary);
         }
 
+        [Fact]
+        public void RecognizePrepositionByText()
+        {
+            var randomWordFromVocabulary = RandomWordHelper.GetRandomPreposition();
+            CheckIfGivenWordHadRecognized(randomWordFromVocabulary);
+        }
+
         private void CheckIfGivenWordHadRecognized(Word word)
         {
             var engPhrase =
@@ -257,6 +264,12 @@ namespace MyPolyglotCoreTests.RecognizerTests
         public void MakeModalVerbRememberFromWhatItWasRecognized()
         {
             AssertIfWordRememberFromWhatItWasRecognized(typeof(ModalVerb));
+        }
+
+        [Fact]
+        public void MakePrepositionRememberFromWhatItWasRecognized()
+        {
+            AssertIfWordRememberFromWhatItWasRecognized(typeof(Preposition));
         }
 
         private void AssertIfWordRememberFromWhatItWasRecognized(Type typeOfWord)

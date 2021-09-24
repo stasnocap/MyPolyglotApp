@@ -79,6 +79,13 @@ namespace MyPolyglotCore.Tests.OptionsGeneratorTests
             CheckIfFiveWordsFromVocabularyWithRightWordHadRecieved(word);
         }
 
+        [Fact]
+        public void GivenPreposition_ReturnFiveWordsFormPrepositionVocabularyWithRightAnswer()
+        {
+            var word = new Preposition("no matter");
+            CheckIfFiveWordsFromVocabularyWithRightWordHadRecieved(word);
+        }
+
         private void CheckIfFiveWordsFromVocabularyWithRightWordHadRecieved(Word word)
         {
             var options = _optionsGenerator.GetOptions(word);

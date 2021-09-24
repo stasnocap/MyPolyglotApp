@@ -24,6 +24,80 @@ namespace MyPolyglotCore
         public const string IngEnding = "ing";
         public const string EdEnding = "ed";
 
+		public static readonly IEnumerable<Preposition> Prepositions = new Preposition[] 
+		{
+            new Preposition("aboard"),
+			new Preposition("about"),
+			new Preposition("above"),
+			new Preposition("across"),
+			new Preposition("after"),
+			new Preposition("against"),
+			new Preposition("along"),
+			new Preposition("amid"),
+			new Preposition("among"),
+			new Preposition("anti"),
+			new Preposition("around"),
+			new Preposition("as"),
+			new Preposition("at"),
+			new Preposition("before"),
+			new Preposition("behind"),
+			new Preposition("below"),
+			new Preposition("beneath"),
+			new Preposition("beside"),
+			new Preposition("besides"),
+			new Preposition("between"),
+			new Preposition("beyond"),
+			new Preposition("but"),
+			new Preposition("by"),
+			new Preposition("concerning"),
+			new Preposition("considering"),
+			new Preposition("despite"),
+			new Preposition("down"),
+			new Preposition("during"),
+			new Preposition("except"),
+			new Preposition("excepting"),
+			new Preposition("excluding"),
+			new Preposition("following"),
+			new Preposition("for"),
+			new Preposition("from"),
+			new Preposition("in"),
+			new Preposition("inside"),
+			new Preposition("into"),
+			new Preposition("like"),
+			new Preposition("minus"),
+			new Preposition("near"),
+			new Preposition("of"),
+			new Preposition("off"),
+			new Preposition("on"),
+			new Preposition("onto"),
+			new Preposition("opposite"),
+			new Preposition("outside"),
+			new Preposition("over"),
+			new Preposition("past"),
+			new Preposition("per"),
+			new Preposition("plus"),
+			new Preposition("regarding"),
+			new Preposition("round"),
+			new Preposition("save"),
+			new Preposition("since"),
+			new Preposition("than"),
+			new Preposition("through"),
+			new Preposition("to"),
+			new Preposition("toward"),
+			new Preposition("towards"),
+			new Preposition("under"),
+			new Preposition("underneath"),
+			new Preposition("unlike"),
+			new Preposition("until"),
+			new Preposition("up"),
+			new Preposition("upon"),
+			new Preposition("versus"),
+			new Preposition("via"),
+			new Preposition("with"),
+			new Preposition("within"),
+			new Preposition("without"),
+		};
+
         public static readonly IEnumerable<QuestionWord> QuestionWords = new QuestionWord[]
         {
             new QuestionWord("what"),
@@ -324,7 +398,8 @@ namespace MyPolyglotCore
             .Concat(Determiners)
             .Concat(IrregularVerbs)
             .Concat(PrimaryVerbs)
-            .Concat(ModalVerbs);
+            .Concat(ModalVerbs)
+            .Concat(Prepositions);
 
         public static IEnumerable<Word> GetVocabulary(Type typeOfWord)
         {
@@ -341,6 +416,7 @@ namespace MyPolyglotCore
                 Type noun when noun == typeof(Noun) => Nouns,
                 Type adjective when adjective == typeof(Adjective) => Adjectives,
                 Type modalVerb when modalVerb == typeof(ModalVerb) => ModalVerbs,
+                Type preposition when preposition == typeof(Preposition) => Prepositions,
                 _ => throw new NotImplementedException(),
             };
             return vocabulary;

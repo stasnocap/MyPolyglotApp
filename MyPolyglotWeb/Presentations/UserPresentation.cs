@@ -41,6 +41,7 @@ namespace MyPolyglotWeb.Presentations
             var claims = new Claim[]
             {
                 new Claim("Id", user.Id.ToString()),
+                new Claim(ClaimTypes.Role, user.Role.ToString()),
             };
 
             var claimsIdentity = new ClaimsIdentity(claims, Startup.AuthMethod);

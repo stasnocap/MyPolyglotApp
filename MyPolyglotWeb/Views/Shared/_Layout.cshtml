@@ -28,11 +28,14 @@
                 }
                 @if (User.Identity.IsAuthenticated)
                 {
+                    @if (User.IsInRole(MyPolyglotWeb.Models.DomainModels.UserRole.Admin.ToString()))
+                    {
+                        <a href="@Url.Action("AddExercise", "Admin")">
+                            <span>Добавить упражнениe</span>
+                        </a>
+                    }
                     <a href="@Url.Action("Logout", "User")">
                         <span>Выйти</span>
-                    </a>
-                    <a href="@Url.Action("AddExercise", "Admin")">
-                        <span>Добавить упражнениe</span>
                     </a>
                 }
             </div>

@@ -1,9 +1,11 @@
 ﻿using AutoMapper;
 using Moq;
+using MyPolyglotCore.Words;
 using MyPolyglotWeb.Models.DomainModels;
 using MyPolyglotWeb.Models.ViewModels;
 using MyPolyglotWeb.Presentations;
 using MyPolyglotWeb.Repositories.IRepositories;
+using System.Collections.Generic;
 using Xunit;
 
 namespace MyPolyglotWebTests.Presentation
@@ -41,6 +43,14 @@ namespace MyPolyglotWebTests.Presentation
             exerciseDBMock.VerifySet(x => x.Lesson = lessonDBMock.Object, Times.Once);
             _lessonRepositoryMock.Verify(x => x.Get(lessonId), Times.Once);
             _exerciseRepositoryMock.Verify(x => x.Save(exerciseDBMock.Object), Times.Once);
+        }
+
+        [Fact]
+        public void GetUnrecognizedWords()
+        {
+            _adminPresentation.GetUnrecognizedWords("no matter");
+
+            _mapperMock.Verify(x => x.Map<IEnumerable<UnrecognizedWordVM>>(It.IsAny<IEnumerable<Word>>()), Times.Once);
         }
     }
 }

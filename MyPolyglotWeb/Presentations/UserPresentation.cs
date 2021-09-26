@@ -20,6 +20,7 @@ namespace MyPolyglotWeb.Presentations
         public void Register(RegisterUserVM registerUserVM)
         {
             var userDB = _mapper.Map<UserDB>(registerUserVM);
+            userDB.Role = UserRole.User;
             _userRepository.Save(userDB);
         }
 

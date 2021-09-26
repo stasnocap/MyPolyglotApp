@@ -30,6 +30,7 @@ namespace MyPolyglotWebTests.Presentation
 
             _userPresentation.Register(registerUserVMMock.Object);
 
+            userDBMock.VerifySet(x => x.Role = UserRole.User);
             _mapperMock.Verify(x => x.Map<UserDB>(registerUserVMMock.Object), Times.Once);
             _userRepository.Verify(x => x.Save(userDBMock.Object), Times.Once);
         }

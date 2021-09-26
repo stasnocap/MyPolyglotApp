@@ -33,9 +33,9 @@ namespace MyPolyglotWeb.Presentations
             return _userRepository.IsUserExist(email);
         }
 
-        public ClaimsPrincipal GetLoginClaims(LoginVM loginVM)
+        public ClaimsPrincipal GetLoginClaims(string email, string password)
         {
-            var user = _userRepository.GetUser(loginVM.Email, loginVM.Password);
+            var user = _userRepository.GetUser(email, password);
 
             var claims = new Claim[]
             {

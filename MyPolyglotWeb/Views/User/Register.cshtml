@@ -5,13 +5,7 @@
         <div class="register-user__email">
             <div class="flexbox-space-between">
                 <label asp-for="Email"></label>
-                <span>
-                    <span asp-validation-for="Email"></span>
-                    @if (TempData["SuccessfulRegistration"] != null)
-                    {
-                        <span class="alert-success">@TempData["SuccessfulRegistration"]</span>
-                    }
-                </span>
+                <span asp-validation-for="Email"></span>
             </div>
             <input asp-for="Email" />
         </div>

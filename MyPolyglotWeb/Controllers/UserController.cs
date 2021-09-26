@@ -22,7 +22,7 @@ namespace MyPolyglotWeb.Controllers
         }
 
         [HttpPost]
-        public IActionResult Register(RegisterUserVM registerUserVM)
+        public async Task<IActionResult> Register(RegisterUserVM registerUserVM)
         {
             if (!ModelState.IsValid)
             {
@@ -31,9 +31,9 @@ namespace MyPolyglotWeb.Controllers
 
             _userPresentation.Register(registerUserVM);
 
-            TempData["SuccessfulRegistration"] = "Регистрация прошла успешно!";
+            await SignInAsync(registerUserVM.Email, registerUserVM.Password);
 
-            return View();
+            return RedirectToAction("Index", "Home");
         }
 
         [HttpGet]
@@ -43,22 +43,27 @@ namespace MyPolyglotWeb.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> LoginAsync(LoginVM loginVM)
+        public async Task<IActionResult> Login(LoginVM loginVM)
         {
-            SignIn(loginVM);
+            CheckCredentials(loginVM);
 
             if (!ModelState.IsValid)
             {
                 return View(loginVM);
             }
 
-            var claimsPrincipal = _userPresentation.GetLoginClaims(loginVM);
-            await HttpContext.SignInAsync(claimsPrincipal);
+            await SignInAsync(loginVM.Email, loginVM.Password);
 
             return RedirectToAction("Index", "Home");
         }
 
-        private void SignIn(LoginVM loginVM)
+        private async Task SignInAsync(string email, string password)
+        {
+            var claimsPrincipal = _userPresentation.GetLoginClaims(email, password);
+            await HttpContext.SignInAsync(claimsPrincipal);
+        }
+
+        private void CheckCredentials(LoginVM loginVM)
         {
             var user = _userPresentation.GetUser(loginVM.Email, loginVM.Password);
 

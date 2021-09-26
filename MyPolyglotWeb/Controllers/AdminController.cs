@@ -1,9 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using MyPolyglotWeb.Controllers.CustomAttributes;
 using MyPolyglotWeb.Models.ViewModels;
 using MyPolyglotWeb.Presentations;
 
 namespace MyPolyglotWeb.Controllers
 {
+    [IsAdmin]
     public class AdminController : Controller
     {
         public AdminPresentation _adminPresentation;

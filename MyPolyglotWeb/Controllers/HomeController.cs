@@ -13,6 +13,7 @@ namespace MyPolyglotWeb.Controllers
             _homePresentation = homePresentation;
         }
 
+        [HttpGet]
         public IActionResult Index()
         {
             return View();

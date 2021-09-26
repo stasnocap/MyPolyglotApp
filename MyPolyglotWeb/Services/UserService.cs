@@ -19,7 +19,7 @@ namespace MyPolyglotWeb.Services
 
         public UserDB GetCurrentUser()
         {
-            var idStr = _httpContextAccessor.HttpContext.User.Claims.SingleOrDefault(x => x.Type == "Id")?.Value;
+            var idStr = _httpContextAccessor.HttpContext.User.FindFirst("Id")?.Value;
             if (string.IsNullOrEmpty(idStr))
             {
                 return null;

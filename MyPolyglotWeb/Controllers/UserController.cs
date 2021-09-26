@@ -72,5 +72,11 @@ namespace MyPolyglotWeb.Controllers
                 ModelState.AddModelError(nameof(LoginVM.Password), "Неправильный пароль!");
             }
         }
+
+        public async Task<IActionResult> Logout()
+        {
+            await HttpContext.SignOutAsync();
+            return RedirectToAction("Index", "Home");
+        }
     }
 }

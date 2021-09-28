@@ -4,6 +4,7 @@ using MyPolyglotWeb.Models.DomainModels;
 using MyPolyglotWeb.Models.ViewModels;
 using MyPolyglotWeb.Repositories.IRepositories;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace MyPolyglotWeb.Presentations
 {

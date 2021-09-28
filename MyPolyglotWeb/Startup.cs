@@ -120,11 +120,17 @@ namespace MyPolyglotWeb
             services.AddScoped<ILessonRepository>(x => new LessonRepository(
                 x.GetService<WebContext>()
             ));
+
             services.AddScoped<IExerciseRepository>(x => new ExerciseRepository(
                 x.GetService<WebContext>(),
                 x.GetService<Random>()
             ));
+
             services.AddScoped<IUserRepository>(x => new UserRepository(
+                x.GetService<WebContext>()
+            ));
+
+            services.AddScoped<IScoreRepository>(x => new ScoreRepository(
                 x.GetService<WebContext>()
             ));
         }
@@ -133,7 +139,10 @@ namespace MyPolyglotWeb
         {
             services.AddScoped(x => new HomePresentation(
                 x.GetService<IMapper>(),
-                x.GetService<IExerciseRepository>()
+                x.GetService<IExerciseRepository>(),
+                x.GetService<IUserService>(),
+                x.GetService<IScoreRepository>(),
+                x.GetService<ILessonRepository>()
             ));
             services.AddScoped(x => new AdminPresentation(
                 x.GetService<IMapper>(),

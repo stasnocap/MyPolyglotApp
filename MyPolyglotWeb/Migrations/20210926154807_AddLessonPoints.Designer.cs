@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MyPolyglotWeb.Models;
 
 namespace MyPolyglotWeb.Migrations
 {
     [DbContext(typeof(WebContext))]
-    partial class WebContextModelSnapshot : ModelSnapshot
+    [Migration("20210926154807_AddLessonPoints")]
+    partial class AddLessonPoints
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -64,7 +66,7 @@ namespace MyPolyglotWeb.Migrations
                         .HasColumnType("bigint")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<long?>("LessonId")
+                    b.Property<long>("LessonId")
                         .HasColumnType("bigint");
 
                     b.Property<int>("Points")
@@ -75,7 +77,8 @@ namespace MyPolyglotWeb.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("LessonId");
+                    b.HasIndex("LessonId")
+                        .IsUnique();
 
                     b.HasIndex("UserId");
 
@@ -142,8 +145,10 @@ namespace MyPolyglotWeb.Migrations
             modelBuilder.Entity("MyPolyglotWeb.Models.DomainModels.Score", b =>
                 {
                     b.HasOne("MyPolyglotWeb.Models.DomainModels.LessonDB", "Lesson")
-                        .WithMany()
-                        .HasForeignKey("LessonId");
+                        .WithOne()
+                        .HasForeignKey("MyPolyglotWeb.Models.DomainModels.Score", "LessonId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("MyPolyglotWeb.Models.DomainModels.UserDB", "User")
                         .WithMany("Scores")

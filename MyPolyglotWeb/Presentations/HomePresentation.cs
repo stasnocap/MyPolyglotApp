@@ -4,8 +4,10 @@ using System.Linq;
 using AutoMapper;
 using MyPolyglotCore;
 using MyPolyglotCore.Words;
+using MyPolyglotWeb.Models.DomainModels;
 using MyPolyglotWeb.Models.ViewModels;
 using MyPolyglotWeb.Repositories.IRepositories;
+using MyPolyglotWeb.Services.IServices;
 
 namespace MyPolyglotWeb.Presentations
 {
@@ -13,11 +15,17 @@ namespace MyPolyglotWeb.Presentations
     {
         private IMapper _mapper;
         private IExerciseRepository _exerciseRepository;
+        private IUserService _userService;
+        private IScoreRepository _scoreRepository;
+        private ILessonRepository _lessonRepository;
 
-        public HomePresentation(IMapper mapper, IExerciseRepository exerciseRepository)
+        public HomePresentation(IMapper mapper, IExerciseRepository exerciseRepository, IUserService userService, IScoreRepository scoreRepository, ILessonRepository lessonRepository)
         {
             _mapper = mapper;
             _exerciseRepository = exerciseRepository;
+            _userService = userService;
+            _scoreRepository = scoreRepository;
+            _lessonRepository = lessonRepository;
         }
 
         public ExerciseVM GetExerciseVM(long lessonId)
@@ -39,6 +47,29 @@ namespace MyPolyglotWeb.Presentations
         {
             var exercise = _exerciseRepository.Get(exerciseId);
             return exercise.EngPhrase.SplitToStrings().SequenceEqual(userAnswer.SplitToStrings());
+        }
+
+        public void PlusPoint(long lessonId)
+        {
+            var user = _userService.GetCurrentUser();
+            var lesson = _lessonRepository.Get(lessonId);
+            var userScore = _scoreRepository.Get(user.Id, lessonId);
+
+            if (userScore != null)
+            {
+                userScore.Points++;
+                _scoreRepository.Save(userScore);
+            }
+            else
+            {
+                var score = new ScoreDB()
+                {
+                    Lesson = lesson,
+                    User = user,
+                    Points = 1,
+                };
+                _scoreRepository.Save(score);
+            }
         }
     }
 }

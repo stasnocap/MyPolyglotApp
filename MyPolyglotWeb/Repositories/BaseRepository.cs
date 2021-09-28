@@ -61,5 +61,10 @@ namespace MyPolyglotWeb.Models
                 _webContext.Entry(local).State = EntityState.Detached;
             }
         }
+
+        public IQueryable<DbModel> GetAll()
+        {
+            return _dbSet;
+        }
     }
 }

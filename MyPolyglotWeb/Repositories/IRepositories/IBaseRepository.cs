@@ -6,6 +6,7 @@ namespace MyPolyglotWeb.Repositories.IRepositories
     public interface IBaseRepository<DbModel> where DbModel : BaseDB
     {
         DbModel Get(long id);
+        IQueryable<DbModel> GetAll();
         void Remove(DbModel model);
         void Remove(long id);
         void Save(DbModel model);

@@ -36,7 +36,7 @@ namespace MyPolyglotWeb.Controllers
         public IActionResult Exercise(ExerciseVM exerciseVM)
         {
             if (!ModelState.IsValid)
-                {
+            {
                 return View(exerciseVM);
             }
 
@@ -47,6 +47,10 @@ namespace MyPolyglotWeb.Controllers
             }
 
             TempData["Success"] = "Splendid!";
+            if (User.Identity.IsAuthenticated)
+            {
+                _homePresentation.PlusPoint(exerciseVM.LessonId);
+            }
 
             return RedirectToAction("Exercise", new { lessonId = exerciseVM.LessonId });
         }

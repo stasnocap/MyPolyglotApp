@@ -22,6 +22,6 @@ namespace MyPolyglotWeb.Models.ViewModels
 
         [RecognizedWordsByUser(ErrorMessage = "Вы забыли указать тип слова!")]
         [DisplayName("Нераспознанные слова")]
-        public IEnumerable<UnrecognizedWordVM> UnrecognizedWords { get; set; }
+        public List<UnrecognizedWordVM> UnrecognizedWords { get; set; }
     }
 }

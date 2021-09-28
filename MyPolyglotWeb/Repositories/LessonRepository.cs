@@ -1,5 +1,5 @@
 ﻿using MyPolyglotWeb.Models.DomainModels;
-using MyPolyglotWeb.Repositories.IRepository;
+using MyPolyglotWeb.Repositories.IRepositories;
 using System.Linq;
 
 namespace MyPolyglotWeb.Models

@@ -8,6 +8,8 @@ namespace MyPolyglotWeb.Models
         public DbSet<LessonDB> Lesson { get; set; }
         public DbSet<ExerciseDB> Exercise { get; set; }
         public DbSet<UnrecognizedWordDB> UnrecognizedWord { get; set; }
+        public DbSet<UserDB> User { get; set; }
+        public DbSet<ScoreDB> Score { get; set; }
 
         public WebContext(DbContextOptions dbContext) : base(dbContext) { }
 
@@ -27,6 +29,14 @@ namespace MyPolyglotWeb.Models
             modelBuilder.Entity<ExerciseDB>()
                 .HasMany(x => x.UnrecognizedWords)
                 .WithOne(x => x.Exercise)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<ScoreDB>()
+                .HasOne(x => x.Lesson);
+
+            modelBuilder.Entity<ScoreDB>()
+                .HasOne(x => x.User)
+                .WithMany(x => x.Scores)
                 .OnDelete(DeleteBehavior.Cascade);
 
             base.OnModelCreating(modelBuilder);

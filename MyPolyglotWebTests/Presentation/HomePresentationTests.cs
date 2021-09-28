@@ -3,8 +3,9 @@ using Moq;
 using MyPolyglotCore.Words;
 using MyPolyglotWeb.Models.DomainModels;
 using MyPolyglotWeb.Models.ViewModels;
-using MyPolyglotWeb.Presentation;
-using MyPolyglotWeb.Repositories.IRepository;
+using MyPolyglotWeb.Presentations;
+using MyPolyglotWeb.Repositories.IRepositories;
+using MyPolyglotWeb.Services.IServices;
 using System.Collections.Generic;
 using Xunit;
 
@@ -15,12 +16,19 @@ namespace MyPolyglotWebTests.Presentation
         private HomePresentation _homePresentation;
         private Mock<IMapper> _mapperMock;
         private Mock<IExerciseRepository> _exerciseRepositoryMock;
+        private Mock<IUserService> _userService;
+        private Mock<IScoreRepository> _scoreRepository;
+        private Mock<ILessonRepository> _lessonRepository;
 
         public HomePresentationTests()
         {
             _mapperMock = new Mock<IMapper>();
             _exerciseRepositoryMock = new Mock<IExerciseRepository>();
-            _homePresentation = new HomePresentation(_mapperMock.Object, _exerciseRepositoryMock.Object);
+            _userService = new Mock<IUserService>();
+            _scoreRepository = new Mock<IScoreRepository>();
+            _lessonRepository = new Mock<ILessonRepository>();
+            _homePresentation = new HomePresentation(_mapperMock.Object, _exerciseRepositoryMock.Object,
+                _userService.Object, _scoreRepository.Object, _lessonRepository.Object);
         }
 
         [Fact]
@@ -80,6 +88,50 @@ namespace MyPolyglotWebTests.Presentation
 
             _exerciseRepositoryMock.Verify(x => x.Get(exerciseId), Times.Once);
             Assert.False(result);
+        }
+
+        [Fact]
+        public void PlusPoint_FirstUserPoint()
+        {
+            var lessonId = 1;
+            var userId = 2;
+            var userMock = new Mock<UserDB>();
+            userMock.Setup(x => x.Id).Returns(userId);
+            _userService.Setup(x => x.GetCurrentUser()).Returns(userMock.Object);
+            var lessonMock = new Mock<LessonDB>();
+            _lessonRepository.Setup(x => x.Get(lessonId)).Returns(lessonMock.Object);
+            _scoreRepository.Setup(x => x.Get(userId, lessonId)).Returns((ScoreDB)null);
+
+            _homePresentation.PlusPoint(lessonId);
+
+            userMock.VerifyGet(x => x.Id, Times.Once);
+            _userService.Verify(x => x.GetCurrentUser(), Times.Once);
+            _lessonRepository.Verify(x => x.Get(lessonId), Times.Once);
+            _scoreRepository.Verify(x => x.Save(It.IsAny<ScoreDB>()), Times.Once);
+        }
+
+        [Fact]
+        public void PlusPoint_NotFirstUserPoint()
+        {
+            var lessonId = 1;
+            var userId = 2;
+            var userScorePoints = 3;
+            var userMock = new Mock<UserDB>();
+            userMock.Setup(x => x.Id).Returns(userId);
+            _userService.Setup(x => x.GetCurrentUser()).Returns(userMock.Object);
+            var lessonMock = new Mock<LessonDB>();
+            _lessonRepository.Setup(x => x.Get(lessonId)).Returns(lessonMock.Object);
+            var userScoreMock = new Mock<ScoreDB>();
+            userScoreMock.Setup(x => x.Points).Returns(userScorePoints);
+            _scoreRepository.Setup(x => x.Get(userId, lessonId)).Returns(userScoreMock.Object);
+
+            _homePresentation.PlusPoint(lessonId);
+
+            userMock.VerifyGet(x => x.Id, Times.Once);
+            _userService.Verify(x => x.GetCurrentUser(), Times.Once);
+            _lessonRepository.Verify(x => x.Get(lessonId), Times.Once);
+            userScoreMock.VerifySet(x => x.Points = userScorePoints + 1, Times.Once);
+            _scoreRepository.Verify(x => x.Save(userScoreMock.Object), Times.Once);
         }
     }
 }

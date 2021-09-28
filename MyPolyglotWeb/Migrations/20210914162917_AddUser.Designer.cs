@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MyPolyglotWeb.Models;
 
 namespace MyPolyglotWeb.Migrations
 {
     [DbContext(typeof(WebContext))]
-    partial class WebContextModelSnapshot : ModelSnapshot
+    [Migration("20210914162917_AddUser")]
+    partial class AddUser
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -57,31 +59,6 @@ namespace MyPolyglotWeb.Migrations
                     b.ToTable("Lesson");
                 });
 
-            modelBuilder.Entity("MyPolyglotWeb.Models.DomainModels.Score", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<long?>("LessonId")
-                        .HasColumnType("bigint");
-
-                    b.Property<int>("Points")
-                        .HasColumnType("int");
-
-                    b.Property<long?>("UserId")
-                        .HasColumnType("bigint");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("LessonId");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("Score");
-                });
-
             modelBuilder.Entity("MyPolyglotWeb.Models.DomainModels.UnrecognizedWordDB", b =>
                 {
                     b.Property<long>("Id")
@@ -121,9 +98,6 @@ namespace MyPolyglotWeb.Migrations
                     b.Property<string>("Password")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Role")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
 
                     b.ToTable("User");
@@ -137,22 +111,6 @@ namespace MyPolyglotWeb.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
 
                     b.Navigation("Lesson");
-                });
-
-            modelBuilder.Entity("MyPolyglotWeb.Models.DomainModels.Score", b =>
-                {
-                    b.HasOne("MyPolyglotWeb.Models.DomainModels.LessonDB", "Lesson")
-                        .WithMany()
-                        .HasForeignKey("LessonId");
-
-                    b.HasOne("MyPolyglotWeb.Models.DomainModels.UserDB", "User")
-                        .WithMany("Scores")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.Navigation("Lesson");
-
-                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("MyPolyglotWeb.Models.DomainModels.UnrecognizedWordDB", b =>
@@ -173,11 +131,6 @@ namespace MyPolyglotWeb.Migrations
             modelBuilder.Entity("MyPolyglotWeb.Models.DomainModels.LessonDB", b =>
                 {
                     b.Navigation("Exercises");
-                });
-
-            modelBuilder.Entity("MyPolyglotWeb.Models.DomainModels.UserDB", b =>
-                {
-                    b.Navigation("Scores");
                 });
 #pragma warning restore 612, 618
         }

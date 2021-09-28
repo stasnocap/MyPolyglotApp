@@ -2,7 +2,7 @@
 using Microsoft.Extensions.Hosting;
 using MyPolyglotWeb.Constants;
 using MyPolyglotWeb.Models.DomainModels;
-using MyPolyglotWeb.Repositories.IRepository;
+using MyPolyglotWeb.Repositories.IRepositories;
 using System;
 
 namespace MyPolyglotWeb.Models

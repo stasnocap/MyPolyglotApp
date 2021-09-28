@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using MyPolyglotWeb.Models.DomainModels;
-using MyPolyglotWeb.Repositories.IRepository;
+using MyPolyglotWeb.Repositories.IRepositories;
 using System.Linq;
 
 namespace MyPolyglotWeb.Models
@@ -19,21 +19,6 @@ namespace MyPolyglotWeb.Models
         public DbModel Get(long id)
         {
             return _dbSet.SingleOrDefault(x => x.Id == id);
-        }
-
-        public IQueryable<DbModel> GetAll()
-        {
-            return _dbSet;
-        }
-
-        public int Count()
-        {
-            return _dbSet.Count();
-        }
-
-        public virtual bool IsAny()
-        {
-            return _dbSet.Any();
         }
 
         public virtual void Save(DbModel model)
@@ -75,6 +60,11 @@ namespace MyPolyglotWeb.Models
             {
                 _webContext.Entry(local).State = EntityState.Detached;
             }
+        }
+
+        public IQueryable<DbModel> GetAll()
+        {
+            return _dbSet;
         }
     }
 }

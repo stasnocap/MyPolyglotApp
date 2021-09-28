@@ -1,6 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
-using MyPolyglotWeb.Models.DomainModels;
-using MyPolyglotWeb.Repositories.IRepository;
+﻿using MyPolyglotWeb.Models.DomainModels;
+using MyPolyglotWeb.Repositories.IRepositories;
 using System;
 using System.Linq;
 

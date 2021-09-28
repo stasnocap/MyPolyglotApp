@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MyPolyglotWeb.Models.ViewModels;
-using MyPolyglotWeb.Presentation;
+using MyPolyglotWeb.Presentations;
 
 namespace MyPolyglotWeb.Controllers
 {
@@ -13,6 +13,7 @@ namespace MyPolyglotWeb.Controllers
             _homePresentation = homePresentation;
         }
 
+        [HttpGet]
         public IActionResult Index()
         {
             return View();
@@ -35,7 +36,7 @@ namespace MyPolyglotWeb.Controllers
         public IActionResult ShowExercise(ShowExerciseVM exerciseVM)
         {
             if (!ModelState.IsValid)
-                {
+            {
                 return View(exerciseVM);
             }
 
@@ -46,6 +47,10 @@ namespace MyPolyglotWeb.Controllers
             }
 
             TempData["Success"] = "Splendid!";
+            if (User.Identity.IsAuthenticated)
+            {
+                _homePresentation.PlusPoint(exerciseVM.LessonId);
+            }
 
             return RedirectToAction("ShowExercise", new { lessonId = exerciseVM.LessonId });
         }

@@ -23,7 +23,7 @@
         setPickedWordsToAnswerInput();
 
         if (pickedWords.length == optionsGroupsData.length) {
-            $('.exercise form button[type=submit]').click();
+            $('.do-exercise form button[type=submit]').click();
         }
     });
 
@@ -40,11 +40,11 @@
 
     function hideShownAlert() {
         if (successAlertIsShown) {
-            $('.exercise__lesson-number .alert-success').hide();
+            $('.do-exercise__lesson-number .alert-success').hide();
             successAlertIsShown = false;
         }
         if (feilureAlertIsShown) {
-            $('.exercise__lesson-number .alert-feilure').hide();
+            $('.do-exercise__lesson-number .alert-feilure').hide();
             feilureAlertIsShown = false;
         }
     }
@@ -64,12 +64,12 @@
     }
 
     function setPickedWordsToAnswerInput() {
-        let sentence = $('.exercise__eng-phrase').text();
-        $('.exercise form #UserAnswer').attr('value', sentence.substring(0, sentence.length - 1));
+        let sentence = $('.do-exercise__eng-phrase').text();
+        $('.do-exercise form #UserAnswer').attr('value', sentence.substring(0, sentence.length - 1));
     }
 
     function showPickedWords() {
-        let answerDiv = $('.exercise__eng-phrase');
+        let answerDiv = $('.do-exercise__eng-phrase');
         if (pickedWords.length == 0) {
             answerDiv.text('Переведите предложение');
             return;

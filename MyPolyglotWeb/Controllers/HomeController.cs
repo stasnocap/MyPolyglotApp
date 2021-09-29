@@ -49,5 +49,11 @@ namespace MyPolyglotWeb.Controllers
 
             return RedirectToAction("DoExercise", new { lessonId = exerciseVM.LessonId });
         }
+
+        [HttpGet]
+        public IActionResult LessonInfo(long lessonId)
+        {
+            return View($"LessonInfo{lessonId}");
+        }
     }
 }

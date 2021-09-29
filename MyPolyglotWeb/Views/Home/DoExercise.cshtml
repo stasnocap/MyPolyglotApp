@@ -7,7 +7,7 @@
     <script src="~/js/doExercise.js"></script>
 }
 
-<div class="exercise">
+<div class="do-exercise">
     <form asp-controller="Home" asp-action="DoExercise" method="post">
         <input asp-for="LessonId" type="hidden" />
         <input asp-for="ExerciseId" type="hidden" />
@@ -22,16 +22,32 @@
         <input asp-for="UserAnswer" type="hidden" />
         <button type="submit"></button>
     </form>
-    <span class="lesson-help">
-        <span class="lesson-help__info">
-            <a href="@Url.Action()">content</a>
-            info
-        </span>
-        <span class="lesson-help__score">
-            0
+    <span class="do-exercise__lesson-help">
+        @if (Model.LessonId == 1)
+        {
+            <span class="lesson-hint lesson-hint1 tooltip">
+                i
+                <span class="tooltiptext">
+                    <partial name="../Shared/_helpTable1.cshtml" />
+                </span>
+            </span>
+        }
+        <a class="tooltip" href="@Url.Action("LessonInfo", "Home", new { lessonId = Model.LessonId })">
+            <span class="lesson-info-link">
+                ?
+                <span class="tooltiptext">
+                    Информация по уроку.
+                </span>
+            </span>
+        </a>
+    </span>
+    <span class="do-exercise__user-score tooltip">
+        SCORE: 0
+        <span class="tooltiptext tooltiptext-score">
+            Твои очки. Заработай 100 чтобы перейти к следующему уроку.
         </span>
     </span>
-    <div class="exercise__lesson-number previous-options-js">
+    <div class="do-exercise__lesson-number previous-options-js">
         Урок @Model.LessonId
         <span>
             @if (TempData["Success"] != null)
@@ -55,13 +71,13 @@
             </span>
         </span>
     </div>
-    <div class="exercise__rus-phrase previous-options-js">
+    <div class="do-exercise__rus-phrase previous-options-js">
         @Model.RusPhrase
     </div>
-    <div class="exercise__eng-phrase previous-options-js">
+    <div class="do-exercise__eng-phrase previous-options-js">
         Переведите предложение
     </div>
-    <div class="exercise__answer-options">
+    <div class="do-exercise__answer-options">
         @for (int i = 0; i < 2; i++)
         {
             <div class="option-group" index="@i">

@@ -1,4 +1,4 @@
-﻿<div class="lesson-links">
+﻿<div class="lesson-home-links">
     <ul>
         @{
             var i = 1;
@@ -7,15 +7,15 @@
         {
             <li>
                 <a href="@Url.Action("DoExercise", "Home", new { lessonId = i})">
-                    <div class="lesson-link">
-                        <span class="lesson-link__rating">
+                    <div class="lesson-home-link">
+                        <span class="lesson-home-link__rating">
                             0.0
                         </span>
-                        <div class="lesson-info">
-                            <div class="lesson-info__name">
+                        <div class="lesson-home-link-info">
+                            <div class="lesson-home-link-info__name">
                                 Урок @(i++)
                             </div>
-                            <div class="lesson-info__description">
+                            <div class="lesson-home-link-info__description">
                                 @lessonName
                             </div>
                         </div>

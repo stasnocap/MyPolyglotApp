@@ -20,20 +20,20 @@ namespace MyPolyglotWeb.Controllers
         }
 
         [HttpGet]
-        public IActionResult ShowExercise(long lessonId)
+        public IActionResult DoExercise(long lessonId)
         {
             if (lessonId < 1 || lessonId > 31)
             {
                 return View(_homePresentation.GetExerciseVM(1));
             }
 
-            var viewModel = _homePresentation.GetExerciseVM(lessonId);
+            var exerciseVM = _homePresentation.GetExerciseVM(lessonId);
 
-            return View(viewModel);
+            return View(exerciseVM);
         }
 
         [HttpPost]
-        public IActionResult ShowExercise(ShowExerciseVM exerciseVM)
+        public IActionResult DoExercise(DoExerciseVM exerciseVM)
         {
             if (!ModelState.IsValid)
             {
@@ -52,7 +52,13 @@ namespace MyPolyglotWeb.Controllers
                 _homePresentation.PlusPoint(exerciseVM.LessonId);
             }
 
-            return RedirectToAction("ShowExercise", new { lessonId = exerciseVM.LessonId });
+            return RedirectToAction("DoExercise", new { lessonId = exerciseVM.LessonId });
+        }
+
+        [HttpGet]
+        public IActionResult LessonInfo(long lessonId)
+        {
+            return View($"LessonInfo{lessonId}");
         }
     }
 }

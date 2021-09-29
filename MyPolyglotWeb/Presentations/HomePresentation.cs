@@ -28,13 +28,13 @@ namespace MyPolyglotWeb.Presentations
             _lessonRepository = lessonRepository;
         }
 
-        public ShowExerciseVM GetExerciseVM(long lessonId)
+        public DoExerciseVM GetExerciseVM(long lessonId)
         {
             var exerciseDB = _exerciseRepository.GetRandomExercise(lessonId);
 
             var exercise = new Exercise(exerciseDB.EngPhrase, _mapper.Map<IEnumerable<Word>>(exerciseDB.UnrecognizedWords));
 
-            var exerciseVM = _mapper.Map<ShowExerciseVM>(exerciseDB);
+            var exerciseVM = _mapper.Map<DoExerciseVM>(exerciseDB);
 
             exerciseVM.OptionGroups = exercise.Words.Select(x => new OptionGroupVM() { Options = exercise.NextOptions().ToList() }).ToList();
 

@@ -43,10 +43,10 @@ namespace MyPolyglotWebTests.Presentation
                 new Adjective("cool")
             };
 
-            var exerciseVMMock = new Mock<ShowExerciseVM>();
+            var exerciseVMMock = new Mock<DoExerciseVM>();
 
             _mapperMock.Setup(x => x.Map<IEnumerable<Word>>(exerciseDBMock.Object.UnrecognizedWords)).Returns(unrecognizedWords);
-            _mapperMock.Setup(x => x.Map<ShowExerciseVM>(exerciseDBMock.Object)).Returns(exerciseVMMock.Object);
+            _mapperMock.Setup(x => x.Map<DoExerciseVM>(exerciseDBMock.Object)).Returns(exerciseVMMock.Object);
 
             _exerciseRepositoryMock.Setup(x => x.GetRandomExercise(lessonId)).Returns(exerciseDBMock.Object);
 
@@ -54,7 +54,7 @@ namespace MyPolyglotWebTests.Presentation
 
             _exerciseRepositoryMock.Verify(x => x.GetRandomExercise(lessonId), Times.Once);
             _mapperMock.Verify(x => x.Map<IEnumerable<Word>>(exerciseDBMock.Object.UnrecognizedWords), Times.Once);
-            _mapperMock.Verify(x => x.Map<ShowExerciseVM>(exerciseDBMock.Object), Times.Once);
+            _mapperMock.Verify(x => x.Map<DoExerciseVM>(exerciseDBMock.Object), Times.Once);
             exerciseVMMock.VerifySet(x => x.OptionGroups = It.IsAny<List<OptionGroupVM>>(), Times.Once);
             exerciseVMMock.VerifySet(x => x.LessonId = lessonId, Times.Once);
         }

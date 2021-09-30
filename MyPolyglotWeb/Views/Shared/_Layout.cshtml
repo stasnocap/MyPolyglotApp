@@ -30,6 +30,9 @@
                 {
                     @if (User.IsInRole(MyPolyglotWeb.Models.DomainModels.UserRole.Admin.ToString()))
                     {
+                        <a href="@Url.Action("AllExercises", "Admin")">
+                            <span>Все упражнения</span>
+                        </a>
                         <a href="@Url.Action("AddExercise", "Admin")">
                             <span>Добавить упражнениe</span>
                         </a>

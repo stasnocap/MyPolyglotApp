@@ -45,7 +45,7 @@ namespace MyPolyglotWeb.Presentations
             return exerciseVM;
         }
 
-        private int GetCurrentUserPoints(long lessonId)
+        private double GetCurrentUserPoints(long lessonId)
         {
             var user = _userService.GetCurrentUser();
 

@@ -40,7 +40,37 @@ namespace MyPolyglotWeb.Presentations
 
             exerciseVM.LessonId = lessonId;
 
+            exerciseVM.UserPoints = GetCurrentUserPoints(lessonId);
+
             return exerciseVM;
+        }
+
+        private int GetCurrentUserPoints(long lessonId)
+        {
+            var user = _userService.GetCurrentUser();
+
+            if (user == null)
+            {
+                return -1;
+            }
+
+            var score = _scoreRepository.Get(user.Id, lessonId);
+
+            if (score != null)
+            {
+                return score.Points;
+            }
+
+            var initialScore = new ScoreDB()
+            {
+                Lesson = _lessonRepository.Get(lessonId),
+                User = user,
+                Points = 0
+            };
+
+            _scoreRepository.Save(initialScore);
+
+            return initialScore.Points;
         }
 
         public bool CheckAnswer(long exerciseId, string userAnswer)
@@ -51,25 +81,11 @@ namespace MyPolyglotWeb.Presentations
 
         public void PlusPoint(long lessonId)
         {
-            var user = _userService.GetCurrentUser();
-            var lesson = _lessonRepository.Get(lessonId);
-            var userScore = _scoreRepository.Get(user.Id, lessonId);
+            var userId = _userService.GetCurrentUserId();
+            var userScore = _scoreRepository.Get(userId, lessonId);
 
-            if (userScore != null)
-            {
-                userScore.Points++;
-                _scoreRepository.Save(userScore);
-            }
-            else
-            {
-                var score = new ScoreDB()
-                {
-                    Lesson = lesson,
-                    User = user,
-                    Points = 1,
-                };
-                _scoreRepository.Save(score);
-            }
+            userScore.Points++;
+            _scoreRepository.Save(userScore);
         }
     }
 }

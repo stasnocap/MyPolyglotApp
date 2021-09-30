@@ -20,6 +20,7 @@
         }
         <input asp-for="RusPhrase" type="hidden" />
         <input asp-for="UserAnswer" type="hidden" />
+        <input asp-for="UserPoints" type="hidden" />
         <button type="submit"></button>
     </form>
     <span class="do-exercise__lesson-help">
@@ -41,12 +42,15 @@
             </span>
         </a>
     </span>
-    <span class="do-exercise__user-score tooltip">
-        SCORE: 0
-        <span class="tooltiptext tooltiptext-score">
-            Твои очки. Заработай 100 чтобы перейти к следующему уроку.
+    @if (User.Identity.IsAuthenticated)
+    {
+        <span class="do-exercise__user-score tooltip">
+            SCORE: @Model.UserPoints
+            <span class="tooltiptext tooltiptext-score">
+                Твои очки. Заработай 100 чтобы перейти к следующему уроку.
+            </span>
         </span>
-    </span>
+    }
     <div class="do-exercise__lesson-number previous-options-js">
         Урок @Model.LessonId
         <span>

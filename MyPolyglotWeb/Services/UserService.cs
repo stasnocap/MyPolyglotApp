@@ -19,14 +19,20 @@ namespace MyPolyglotWeb.Services
 
         public UserDB GetCurrentUser()
         {
-            var idStr = _httpContextAccessor.HttpContext.User.FindFirst("Id")?.Value;
-            if (string.IsNullOrEmpty(idStr))
+            var id = GetCurrentUserId();
+
+            if (id == -1)
             {
                 return null;
             }
 
-            var id = int.Parse(idStr);
             return _userRepository.Get(id);
+        }
+
+        public long GetCurrentUserId()
+        {
+            var idStr = _httpContextAccessor.HttpContext.User.FindFirst("Id")?.Value;
+            return long.TryParse(idStr, out long result) ? result : -1;
         }
     }
 }

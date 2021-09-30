@@ -87,5 +87,17 @@ namespace MyPolyglotWeb.Presentations
             userScore.Points++;
             _scoreRepository.Save(userScore);
         }
+
+        public void MinusPoint(long lessonId)
+        {
+            var user = _userService.GetCurrentUser();
+            var userScore = _scoreRepository.Get(user.Id, lessonId);
+
+            if (userScore.Points >= 0.5)
+            {
+                userScore.Points -= 0.5;
+                _scoreRepository.Save(userScore);
+            }
+        }
     }
 }

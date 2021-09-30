@@ -184,5 +184,51 @@ namespace MyPolyglotWebTests.Presentation
             userScoreMock.VerifySet(x => x.Points = userScorePoints + 1, Times.Once);
             _scoreRepository.Verify(x => x.Save(userScoreMock.Object), Times.Once);
         }
+
+        [Theory]
+        [InlineData(0.5)]
+        [InlineData(1)]
+        [InlineData(1.5)]
+        [InlineData(2)]
+        [InlineData(50)]
+        public void MinusPoint_ScorePointsMoreThanHalfOne(double scorePoints)
+        {
+            var lessonId = 1;
+            var userId = 2;
+            var userMock = new Mock<UserDB>();
+            userMock.Setup(x => x.Id).Returns(userId);
+            _userService.Setup(x => x.GetCurrentUser()).Returns(userMock.Object);
+            var scoreMock = new Mock<ScoreDB>();
+            scoreMock.Setup(x => x.Points).Returns(scorePoints);
+            _scoreRepository.Setup(x => x.Get(userId, lessonId)).Returns(scoreMock.Object);
+            
+            _homePresentation.MinusPoint(lessonId);
+
+            _userService.Verify(x => x.GetCurrentUser(), Times.Once);
+            _scoreRepository.Verify(x => x.Get(userId, lessonId), Times.Once);
+            scoreMock.VerifySet(x => x.Points = scorePoints - 0.5, Times.Once);
+            _scoreRepository.Verify(x => x.Save(scoreMock.Object), Times.Once);
+        }
+
+        [Fact]
+        public void MinusPoint_ScorePointsIsZero()
+        {
+            var lessonId = 1;
+            var userId = 2;
+            var userMock = new Mock<UserDB>();
+            var scorePoints = 0;
+            userMock.Setup(x => x.Id).Returns(userId);
+            _userService.Setup(x => x.GetCurrentUser()).Returns(userMock.Object);
+            var scoreMock = new Mock<ScoreDB>();
+            scoreMock.Setup(x => x.Points).Returns(scorePoints);
+            _scoreRepository.Setup(x => x.Get(userId, lessonId)).Returns(scoreMock.Object);
+
+            _homePresentation.MinusPoint(lessonId);
+
+            _userService.Verify(x => x.GetCurrentUser(), Times.Once);
+            _scoreRepository.Verify(x => x.Get(userId, lessonId), Times.Once);
+            scoreMock.VerifySet(x => x.Points = scorePoints - 0.5, Times.Never);
+            _scoreRepository.Verify(x => x.Save(scoreMock.Object), Times.Never);
+        }
     }
 }

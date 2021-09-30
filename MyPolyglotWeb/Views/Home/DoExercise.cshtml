@@ -28,7 +28,16 @@
             <span class="lesson-hint lesson-hint1 tooltip">
                 i
                 <span class="tooltiptext">
-                    <partial name="../Shared/_helpTable1.cshtml" />
+                    <partial name="../Shared/HintTables/_hintTable1.cshtml" />
+                </span>
+            </span>
+        }
+        else if (Model.LessonId == 2)
+        {
+            <span class="lesson-hint lesson-hint2 tooltip">
+                i
+                <span class="tooltiptext">
+                    <partial name="../Shared/HintTables/_hintTable2.cshtml" model="Model.HintTable2VM"/>
                 </span>
             </span>
         }

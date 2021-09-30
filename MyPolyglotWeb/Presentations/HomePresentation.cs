@@ -28,7 +28,7 @@ namespace MyPolyglotWeb.Presentations
             _lessonRepository = lessonRepository;
         }
 
-        public DoExerciseVM GetExerciseVM(long lessonId)
+        public DoExerciseVM GetDoExerciseVM(long lessonId)
         {
             var exerciseDB = _exerciseRepository.GetRandomExercise(lessonId);
 

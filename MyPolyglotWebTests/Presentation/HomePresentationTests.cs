@@ -32,7 +32,7 @@ namespace MyPolyglotWebTests.Presentation
         }
 
         [Fact]
-        public void GetExerciseVM()
+        public void GetDoExerciseVM()
         {
             var lessonId = 1;
             var exerciseDBMock = new Mock<ExerciseDB>();
@@ -50,7 +50,7 @@ namespace MyPolyglotWebTests.Presentation
 
             _exerciseRepositoryMock.Setup(x => x.GetRandomExercise(lessonId)).Returns(exerciseDBMock.Object);
 
-            var exerciseVM = _homePresentation.GetExerciseVM(lessonId);
+            var exerciseVM = _homePresentation.GetDoExerciseVM(lessonId);
 
             _exerciseRepositoryMock.Verify(x => x.GetRandomExercise(lessonId), Times.Once);
             _mapperMock.Verify(x => x.Map<IEnumerable<Word>>(exerciseDBMock.Object.UnrecognizedWords), Times.Once);

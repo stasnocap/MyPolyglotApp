@@ -24,10 +24,10 @@ namespace MyPolyglotWeb.Controllers
         {
             if (lessonId < 1 || lessonId > 31)
             {
-                return View(_homePresentation.GetExerciseVM(1));
+                return View(_homePresentation.GetDoExerciseVM(1));
             }
 
-            var exerciseVM = _homePresentation.GetExerciseVM(lessonId);
+            var exerciseVM = _homePresentation.GetDoExerciseVM(lessonId);
 
             return View(exerciseVM);
         }

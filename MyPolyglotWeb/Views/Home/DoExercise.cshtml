@@ -1,3 +1,4 @@
+
 @model DoExerciseVM
 
 @section Scripts {
@@ -20,7 +21,7 @@
         }
         <input asp-for="RusPhrase" type="hidden" />
         <input asp-for="UserAnswer" type="hidden" />
-        <input asp-for="UserPoints" type="hidden" />
+        <input asp-for="UserPoints" type="hidden" value="@(Model.UserPoints - 0.5 > 0 ? Model.UserPoints - 0.5 : 0)"/>
         @if (Model.LessonId == 2)
         {
             <input asp-for="HintTable2VM.PresentForm" type="hidden" />

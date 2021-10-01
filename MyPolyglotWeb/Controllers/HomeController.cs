@@ -43,6 +43,12 @@ namespace MyPolyglotWeb.Controllers
             if (!_homePresentation.CheckAnswer(exerciseVM.ExerciseId, exerciseVM.UserAnswer))
             {
                 TempData["Feilure"] = "Please, try again!";
+
+                if (User.Identity.IsAuthenticated)
+                {
+                    _homePresentation.MinusPoint(exerciseVM.LessonId);
+                }
+
                 return View(exerciseVM);
             }
 

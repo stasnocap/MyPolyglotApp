@@ -1,11 +1,10 @@
-﻿using MyPolyglotCore;
-using MyPolyglotCore.Words;
+﻿using MyPolyglotCore.Words;
 using MyPolyglotCore.Words.Pronouns;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace MyPolyglotCoreTests
+namespace MyPolyglotCore
 {
     public static class RandomWordHelper
     {

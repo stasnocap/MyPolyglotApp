@@ -28,7 +28,7 @@ namespace MyPolyglotWeb.Presentations
             _lessonRepository = lessonRepository;
         }
 
-        public DoExerciseVM GetExerciseVM(long lessonId)
+        public DoExerciseVM GetDoExerciseVM(long lessonId)
         {
             var exerciseDB = _exerciseRepository.GetRandomExercise(lessonId);
 
@@ -41,6 +41,17 @@ namespace MyPolyglotWeb.Presentations
             exerciseVM.LessonId = lessonId;
 
             exerciseVM.UserPoints = GetCurrentUserPoints(lessonId);
+
+            if (lessonId == 2)
+            {
+                var irregularVerb = RandomWordHelper.GetRandomIrregularVerb();
+                exerciseVM.HintTable2VM = new HintTable2VM()
+                {
+                    PresentForm = irregularVerb.Text,
+                    PastForm = irregularVerb.PastForm,
+                    ThirdPersonForm = irregularVerb.ThirdPersonForm
+                };
+            }
 
             return exerciseVM;
         }

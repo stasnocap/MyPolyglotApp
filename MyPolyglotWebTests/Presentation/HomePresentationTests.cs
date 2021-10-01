@@ -32,7 +32,7 @@ namespace MyPolyglotWebTests.Presentation
         }
 
         [Fact]
-        public void GetExerciseVM_UserNotLoggedIn()
+        public void GetDoExerciseVM_UserNotLoggedIn()
         {
             var lessonId = 1;
             var exerciseDBMock = new Mock<ExerciseDB>();
@@ -49,7 +49,7 @@ namespace MyPolyglotWebTests.Presentation
 
             _userService.Setup(x => x.GetCurrentUser()).Returns((UserDB)null);
 
-            var exerciseVM = _homePresentation.GetExerciseVM(lessonId);
+            var exerciseVM = _homePresentation.GetDoExerciseVM(lessonId);
 
             _exerciseRepositoryMock.Verify(x => x.GetRandomExercise(lessonId), Times.Once);
             _mapperMock.Verify(x => x.Map<IEnumerable<Word>>(exerciseDBMock.Object.UnrecognizedWords), Times.Once);
@@ -62,7 +62,7 @@ namespace MyPolyglotWebTests.Presentation
         }
 
         [Fact]
-        public void GetExerciseVM_UserScoreIsNotNull()
+        public void GetDoExerciseVM_UserScoreIsNotNull()
         {
             var lessonId = 1;
             var userId = 2;
@@ -87,7 +87,7 @@ namespace MyPolyglotWebTests.Presentation
             scoreMock.Setup(x => x.Points).Returns(userScorePoints);
             _scoreRepository.Setup(x => x.Get(userId, lessonId)).Returns(scoreMock.Object);
 
-            var exerciseVM = _homePresentation.GetExerciseVM(lessonId);
+            var exerciseVM = _homePresentation.GetDoExerciseVM(lessonId);
 
             _exerciseRepositoryMock.Verify(x => x.GetRandomExercise(lessonId), Times.Once);
             _mapperMock.Verify(x => x.Map<IEnumerable<Word>>(exerciseDBMock.Object.UnrecognizedWords), Times.Once);
@@ -100,7 +100,7 @@ namespace MyPolyglotWebTests.Presentation
         }
 
         [Fact]
-        public void GetExerciseVM_UserScoreIsNull()
+        public void GetDoExerciseVM_UserScoreIsNull()
         {
             var lessonId = 1;
             var userId = 2;
@@ -133,6 +133,41 @@ namespace MyPolyglotWebTests.Presentation
             exerciseVMMock.VerifySet(x => x.UserPoints = 0, Times.Once);
             _userService.Verify(x => x.GetCurrentUser(), Times.Once);
             _lessonRepository.Verify(x => x.Get(lessonId), Times.Once);
+        }
+
+        [Fact]
+        public void GetDoExerciseVM_ForSecondLessonWhenUserIsNull()
+        {
+            var lessonId = 2;
+            var exerciseDBMock = new Mock<ExerciseDB>();
+            exerciseDBMock.Setup(x => x.EngPhrase).Returns("I am cool.");
+            var unrecognizedWords = new List<Word>()
+            {
+                new Adjective("cool")
+            };
+
+            var exerciseVMMock = new Mock<DoExerciseVM>();
+            _mapperMock.Setup(x => x.Map<IEnumerable<Word>>(exerciseDBMock.Object.UnrecognizedWords)).Returns(unrecognizedWords);
+            _mapperMock.Setup(x => x.Map<DoExerciseVM>(exerciseDBMock.Object)).Returns(exerciseVMMock.Object);
+            _exerciseRepositoryMock.Setup(x => x.GetRandomExercise(lessonId)).Returns(exerciseDBMock.Object);
+
+            _userService.Setup(x => x.GetCurrentUser()).Returns((UserDB)null);
+
+            var exerciseVM = _homePresentation.GetDoExerciseVM(lessonId);
+
+            Assert.NotNull(exerciseVM.HintTable2VM);
+            Assert.NotNull(exerciseVM.HintTable2VM.PresentForm);
+            Assert.NotNull(exerciseVM.HintTable2VM.PastForm);
+            Assert.NotNull(exerciseVM.HintTable2VM.ThirdPersonForm);
+
+            _exerciseRepositoryMock.Verify(x => x.GetRandomExercise(lessonId), Times.Once);
+            _mapperMock.Verify(x => x.Map<IEnumerable<Word>>(exerciseDBMock.Object.UnrecognizedWords), Times.Once);
+            _mapperMock.Verify(x => x.Map<DoExerciseVM>(exerciseDBMock.Object), Times.Once);
+            exerciseVMMock.VerifySet(x => x.OptionGroups = It.IsAny<List<OptionGroupVM>>(), Times.Once);
+            exerciseVMMock.VerifySet(x => x.LessonId = lessonId, Times.Once);
+
+            exerciseVMMock.VerifySet(x => x.UserPoints = -1, Times.Once);
+            _userService.Verify(x => x.GetCurrentUser(), Times.Once);
         }
 
         [Fact]

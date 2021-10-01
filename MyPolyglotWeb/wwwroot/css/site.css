@@ -144,6 +144,15 @@ button {
             left: 96%;
         }
 
+    .do-exercise__lesson-help .lesson-hint2 .tooltiptext {
+        width: 810px;
+        left: -871%;
+    }
+
+        .do-exercise__lesson-help .lesson-hint2 .tooltiptext::after {
+            left: 96%;
+        }
+
     .do-exercise__lesson-help .lesson-info-link .tooltiptext {
         left: 74%;
     }
@@ -450,8 +459,14 @@ table {
     width: 50px;
 }
 
-.hint-table2 {
+.hint-table2 table:not(table:last-child) {
+    width: 250px;
+}
 
+.hint-table2 .flex-center table:last-child {
+    width: 50px;
+    writing-mode: vertical-lr;
+    text-orientation: upright;
 }
 
 .lesson2-help-table1 tr {

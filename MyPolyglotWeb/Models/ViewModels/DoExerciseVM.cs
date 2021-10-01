@@ -23,6 +23,7 @@ namespace MyPolyglotWeb.Models.ViewModels
         [Required(ErrorMessage = CustomConst.UserTriesToBreakMe)]
         public string UserAnswer { get; set; }
 
+        [Required(ErrorMessage = CustomConst.UserTriesToBreakMe)]
         public virtual int UserPoints { get; set; }
 
         public HintTable2VM HintTable2VM { get; set; }

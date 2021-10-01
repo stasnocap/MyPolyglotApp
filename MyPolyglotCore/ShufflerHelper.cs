@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace MyPolyglotCore
 {
-    public static class RandomHelper
+    public static class ShufflerHelper
     {
         private static readonly Random _random = new Random(); 
 

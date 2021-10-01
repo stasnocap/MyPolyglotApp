@@ -545,21 +545,25 @@ table {
     justify-content: center;
 }
 
-.red-bold-text {
+.red-bold {
     color: red;
     font-weight: 600;
 }
 
-.bold-text {
+.bold {
     font-weight: 600;
 }
 
-.grey-text {
+.grey {
     color: #808080;
 }
 
 .italic {
     font-style: italic;
+}
+
+.underline {
+    text-decoration: underline;
 }
 
 .lesson-info h1 {

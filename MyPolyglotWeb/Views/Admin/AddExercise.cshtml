@@ -13,7 +13,7 @@
 
 <div class="add-exercise">
     <form asp-controller="Admin" asp-action="AddExercise" method="post">
-        <div class="add-exercise__select-lesson flexbox-space-between">
+        <div class="add-exercise__select-lesson flex-space-between">
             <select asp-for="LessonId">
                 <option disabled selected>Выберите урок</option>
                 @for (int i = 1; i <= 32; i++)
@@ -24,14 +24,14 @@
             <span asp-validation-for="LessonId"></span>
         </div>
         <div class="add-exercise__rus-phrase">
-            <div class="flexbox-space-between">
+            <div class="flex-space-between">
                 <label asp-for="RusPhrase"></label>
                 <span asp-validation-for="RusPhrase"></span>
             </div>
             <input asp-for="RusPhrase" placeholder="Например: Я крутой." />
         </div>
         <div class="add-exercise__eng-phrase">
-            <div class="flexbox-space-between">
+            <div class="flex-space-between">
                 <label asp-for="EngPhrase"></label>
                 <span asp-validation-for="EngPhrase"></span>
             </div>

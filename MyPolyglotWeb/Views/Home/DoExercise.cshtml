@@ -21,7 +21,7 @@
         }
         <input asp-for="RusPhrase" type="hidden" />
         <input asp-for="UserAnswer" type="hidden" />
-        <input asp-for="UserPoints" type="hidden" value="@(Model.UserPoints - 0.5 > 0 ? Model.UserPoints - 0.5 : 0)"/>
+        <input asp-for="UserPoints" type="hidden" value="@(Model.UserPoints - 0.5 > 0 ? Model.UserPoints - 0.5 : 0)" />
         @if (Model.LessonId == 2)
         {
             <input asp-for="HintTable2VM.PresentForm" type="hidden" />
@@ -46,6 +46,15 @@
                 i
                 <span class="tooltiptext">
                     <partial name="../Shared/HintTables/_hintTable2.cshtml" model="Model.HintTable2VM" />
+                </span>
+            </span>
+        }
+        else if (Model.LessonId == 3)
+        {
+            <span class="lesson-hint lesson-hint3 tooltip">
+                i
+                <span class="tooltiptext">
+                    <partial name="../Shared/HintTables/_hintTable3.cshtml" />
                 </span>
             </span>
         }

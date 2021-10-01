@@ -131,31 +131,6 @@ button {
     right: 0;
 }
 
-    .do-exercise__lesson-help .lesson-hint {
-        padding: 5px 14px;
-    }
-
-    .do-exercise__lesson-help .lesson-hint1 .tooltiptext {
-        width: 810px;
-        left: -871%;
-    }
-
-        .do-exercise__lesson-help .lesson-hint1 .tooltiptext::after {
-            left: 96%;
-        }
-
-    .do-exercise__lesson-help .lesson-hint2 .tooltiptext {
-        width: 810px;
-        left: -871%;
-    }
-
-        .do-exercise__lesson-help .lesson-hint2 .tooltiptext::after {
-            left: 96%;
-        }
-
-    .do-exercise__lesson-help .lesson-info-link .tooltiptext {
-        left: 74%;
-    }
 
     .do-exercise__lesson-help > * {
         border: 1px solid;
@@ -215,7 +190,7 @@ button {
     color: orangered;
 }
 
-.flexbox-space-between {
+.flex-space-between {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -451,20 +426,83 @@ table {
         vertical-align: middle;
     }
 
-.hint-table1 table:not(table:last-child) {
+.lesson-hint {
+    padding: 5px 14px;
+}
+
+.lesson-hint1 .tooltiptext {
+    width: 550px;
+    left: -559%;
+}
+
+    .lesson-hint1 .tooltiptext::after {
+        left: 96%;
+    }
+
+.lesson-hint2 .tooltiptext {
+    width: 650px;
+    left: -680%;
+}
+
+    .lesson-hint2 .tooltiptext::after {
+        left: 96%;
+    }
+
+.lesson-hint3 .tooltiptext {
+    width: 489px;
+    left: -487%;
+}
+
+    .lesson-hint3 .tooltiptext::after {
+        left: 96%;
+    }
+
+.lesson-info-link .tooltiptext {
+    left: 74%;
+}
+
+.lesson-info .hint-table1 table:not(table:last-child) {
     width: 250px;
 }
 
-.hint-table1 .flex-center table:last-child {
+.hint-table1 table:not(table:last-child) {
+    width: 167px;
+}
+
+.lesson-info .hint-table1 table:last-child {
     width: 50px;
+}
+
+.hint-table1 table:last-child {
+    width: 40px;
+    writing-mode: vertical-lr;
+    text-orientation: upright;
 }
 
 .hint-table2 table:not(table:last-child) {
+    width: 200px;
+}
+
+.hint-table2 table:last-child {
+    width: 40px;
+    writing-mode: vertical-lr;
+    text-orientation: upright;
+}
+
+.lesson-info .hint-table3 table:not(table:last-child) {
     width: 250px;
 }
 
-.hint-table2 .flex-center table:last-child {
+.hint-table3 table:not(table:last-child) {
+    width: 147px;
+}
+
+.lesson-info .hint-table3 table:last-child {
     width: 50px;
+}
+
+.hint-table3 table:last-child {
+    width: 40px;
     writing-mode: vertical-lr;
     text-orientation: upright;
 }
@@ -480,6 +518,18 @@ table {
     .lesson2-help-table1 tr td:nth-child(2n) {
         border-right: 2px solid #ccc;
     }
+
+.lesson3-help-table1 table:not(table:last-child) {
+    width: 250px;
+}
+
+.lesson3-help-table1 table:last-child {
+    width: 50px;
+}
+
+.lesson3-help-table2 table {
+    width: 225px;
+}
 
 .lesson2-help-table2 td {
     border: 2px solid #ccc;

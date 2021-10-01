@@ -64,7 +64,7 @@ namespace MyPolyglotWeb.Controllers
         [HttpGet]
         public IActionResult LessonInfo(long lessonId)
         {
-            return View($"LessonInfo{lessonId}");
+            return View($"/Views/Home/LessonInfos/LessonInfo{lessonId}.cshtml");
         }
     }
 }

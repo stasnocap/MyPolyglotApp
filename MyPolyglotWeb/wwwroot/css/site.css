@@ -457,6 +457,15 @@ table {
         left: 96%;
     }
 
+.lesson-hint4 .tooltiptext {
+    width: 367px;
+    left: -340%;
+}
+
+    .lesson-hint4 .tooltiptext::after {
+        left: 96%;
+    }
+
 .lesson-info-link .tooltiptext {
     left: 74%;
 }
@@ -497,6 +506,22 @@ table {
     width: 147px;
 }
 
+.hint-table4 tr {
+    border-bottom: 2px solid #ccc;
+}
+
+    .hint-table4 tr:first-child td {
+        border: 2px solid #ccc;
+    }
+
+    .hint-table4 tr:not(:first-child) td:nth-child(2n) {
+        border-right: 2px solid #ccc;
+    }
+
+    .hint-table4 tr:first-child td:last-child {
+        width: 107px;
+    }
+
 .lesson-info .hint-table3 table:last-child {
     width: 50px;
 }
@@ -511,13 +536,17 @@ table {
     border-bottom: 2px solid #ccc;
 }
 
-    .lesson2-help-table1 tr:first-child td:first-child {
-        border-right: 2px solid #ccc;
-    }
+.lesson2-help-table2 td {
+    border: 2px solid #ccc;
+}
 
-    .lesson2-help-table1 tr td:nth-child(2n) {
-        border-right: 2px solid #ccc;
-    }
+.lesson2-help-table1 tr:first-child td:first-child {
+    border-right: 2px solid #ccc;
+}
+
+.lesson2-help-table1 tr td:nth-child(2n) {
+    border-right: 2px solid #ccc;
+}
 
 .lesson3-help-table1 table:not(table:last-child) {
     width: 250px;
@@ -529,10 +558,6 @@ table {
 
 .lesson3-help-table2 table {
     width: 225px;
-}
-
-.lesson2-help-table2 td {
-    border: 2px solid #ccc;
 }
 
 .lesson-info ul {

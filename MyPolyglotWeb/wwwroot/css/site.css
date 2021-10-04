@@ -466,6 +466,15 @@ table {
         left: 96%;
     }
 
+.lesson-hint7 .tooltiptext {
+    width: 497px;
+    left: -496%;
+}
+
+    .lesson-hint7 .tooltiptext::after {
+        left: 96%;
+    }
+
 .lesson-info-link .tooltiptext {
     left: 74%;
 }
@@ -532,6 +541,11 @@ table {
     text-orientation: upright;
 }
 
+.hint-table7 td {
+    width: 100px;
+    border: 2px solid #ccc;
+}
+
 .lesson2-help-table1 tr {
     border-bottom: 2px solid #ccc;
 }
@@ -574,9 +588,12 @@ table {
     justify-content: center;
 }
 
-.red-bold {
+.red {
     color: red;
-    font-weight: 600;
+}
+
+.green {
+    color: green;
 }
 
 .bold {

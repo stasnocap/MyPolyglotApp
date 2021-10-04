@@ -565,6 +565,10 @@ table {
     margin-left: 25px;
 }
 
+.lesson-info ul.decimal {
+    list-style: decimal;
+}
+
 .flex-center {
     display: flex;
     justify-content: center;

@@ -466,6 +466,15 @@ table {
         left: 96%;
     }
 
+.lesson-hint6 .tooltiptext {
+    width: 609px;
+    left: -630%;
+}
+
+    .lesson-hint6 .tooltiptext::after {
+        left: 96%;
+    }
+
 .lesson-hint7 .tooltiptext {
     width: 497px;
     left: -496%;
@@ -531,6 +540,14 @@ table {
         width: 107px;
     }
 
+.hint-table6 th, .hint-table6 td {
+    border: 2px solid #ccc;
+}
+
+.hint-table6 td {
+    text-align: left;
+}
+
 .lesson-info .hint-table3 table:last-child {
     width: 50px;
 }
@@ -572,6 +589,10 @@ table {
 
 .lesson3-help-table2 table {
     width: 225px;
+}
+
+.lesson6-help-table1 td {
+    border: 2px solid #ccc;
 }
 
 .lesson-info ul {

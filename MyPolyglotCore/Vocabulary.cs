@@ -114,7 +114,6 @@ namespace MyPolyglotCore
 			new ComparisonAdjective("bad", "worse", "worst"),
 			new ComparisonAdjective("far", "farther", "farthest"),
 			new ComparisonAdjective("little", "less", "least"),
-			new ComparisonAdjective("many", "more", "most"),
 		};
 
         #region Pronouns

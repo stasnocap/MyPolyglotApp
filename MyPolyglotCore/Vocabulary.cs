@@ -108,7 +108,7 @@ namespace MyPolyglotCore
             new QuestionWord("how"),
         };
 
-		public static readonly IEnumerable<ComparisonAdjective> IrregularAdjectives = new ComparisonAdjective[]
+		public static readonly IEnumerable<ComparisonAdjective> IrregularComparativeAdjectives = new ComparisonAdjective[]
 		{
 			new ComparisonAdjective("good", "better", "best"),
 			new ComparisonAdjective("bad", "worse", "worst"),
@@ -408,7 +408,8 @@ namespace MyPolyglotCore
             .Concat(IrregularVerbs)
             .Concat(PrimaryVerbs)
             .Concat(ModalVerbs)
-            .Concat(Prepositions);
+            .Concat(Prepositions)
+			.Concat(IrregularComparativeAdjectives);
 
         public static IEnumerable<Word> GetVocabulary(Type typeOfWord)
         {
@@ -426,6 +427,7 @@ namespace MyPolyglotCore
                 Type adjective when adjective == typeof(Adjective) => Adjectives,
                 Type modalVerb when modalVerb == typeof(ModalVerb) => ModalVerbs,
                 Type preposition when preposition == typeof(Preposition) => Prepositions,
+                Type comparisonAdjective when comparisonAdjective == typeof(ComparisonAdjective) => IrregularComparativeAdjectives,
                 _ => throw new NotImplementedException(),
             };
             return vocabulary;

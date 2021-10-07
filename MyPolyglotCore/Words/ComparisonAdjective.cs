@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Reflection.Metadata;
 
 namespace MyPolyglotCore.Words
 {
@@ -22,6 +20,25 @@ namespace MyPolyglotCore.Words
             CountOfSyllables = countOfSyllables;
             ComparativeForm = GenerateComparativeForm();
             SuperlativeForm = GenerateSuperlativeForm();
+        }
+
+        public override bool Equals(object obj)
+        {
+            var word = obj as Word;
+
+            if (word == null)
+            {
+                return false;
+            }
+
+            return base.Equals(obj)
+                || ComparativeForm == word.Text
+                || SuperlativeForm == word.Text;
+        }
+
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(Text, ComparativeForm, SuperlativeForm);
         }
 
         private string GenerateComparativeForm()

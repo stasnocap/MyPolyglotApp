@@ -193,23 +193,53 @@ namespace MyPolyglotCoreTests.RecognizerTests
         [Fact]
         public void RecognizePrimaryVerbByAdditionalForms()
         {
-            var primaryVerb = Vocabulary.PrimaryVerbs.First(x => x.Text == "be");
+            var primaryVerbBe = Vocabulary.PrimaryVerbs.First(x => x.Text == "be");
 
-            var randomWordFromAdditionalForms = primaryVerb.AdditionalForms.ElementAt(_random.Next(primaryVerb.AdditionalForms.Count()));
+            var randomWordFromAdditionalForms = primaryVerbBe.AdditionalForms.ElementAt(_random.Next(primaryVerbBe.AdditionalForms.Count()));
             var recognizer = new Recognizer("rastr " + randomWordFromAdditionalForms + " strs");
             recognizer.Recognize();
 
-            Assert.Collection(recognizer.RecognizedWords, x => Assert.Equal(x, primaryVerb));
+            Assert.Collection(recognizer.RecognizedWords, x => Assert.Equal(x, primaryVerbBe));
         }
 
         [Fact]
         public void RecognizeModalVerbByNegativeForm()
         {
-            var modalVerb = typeof(ModalVerb).GetRandomWordFromVocabulary() as ModalVerb;
+            var modalVerb = RandomWordHelper.GetRandomModalVerb();
             var recognizer = new Recognizer("rstrs " + modalVerb.ShortNegativeForm + " rtst");
             recognizer.Recognize();
 
             Assert.Collection(recognizer.RecognizedWords, x => Assert.Equal(x, modalVerb));
+        }
+
+        [Fact]
+        public void RecognizeComparativeAdjectiveByRootForm()
+        {
+            var comparisonAdjective = RandomWordHelper.GetRandomComparisonAdjective();
+            var recognizer = new Recognizer("rstrs " + comparisonAdjective.Text + " rtst");
+            recognizer.Recognize();
+
+            Assert.Collection(recognizer.RecognizedWords, x => Assert.Equal(x, comparisonAdjective));
+        }
+
+        [Fact]
+        public void RecognizeComparativeAdjectiveByComparativeForm()
+        {
+            var comparisonAdjective = RandomWordHelper.GetRandomComparisonAdjective();
+            var recognizer = new Recognizer("rstrs " + comparisonAdjective.ComparativeForm + " rtst");
+            recognizer.Recognize();
+
+            Assert.Collection(recognizer.RecognizedWords, x => Assert.Equal(x, comparisonAdjective));
+        }
+
+        [Fact]
+        public void RecognizeComparativeAdjectiveBySuperlativeForm()
+        {
+            var comparisonAdjective = RandomWordHelper.GetRandomComparisonAdjective();
+            var recognizer = new Recognizer("rstrs " + comparisonAdjective.SuperlativeForm + " rtst");
+            recognizer.Recognize();
+
+            Assert.Collection(recognizer.RecognizedWords, x => Assert.Equal(x, comparisonAdjective));
         }
 
         [Fact]
@@ -270,6 +300,12 @@ namespace MyPolyglotCoreTests.RecognizerTests
         public void MakePrepositionRememberFromWhatItWasRecognized()
         {
             AssertIfWordRememberFromWhatItWasRecognized(typeof(Preposition));
+        }
+
+        [Fact]
+        public void MakeComparisonAdjectiveRememberFromWhatItWasRecognized()
+        {
+            AssertIfWordRememberFromWhatItWasRecognized(typeof(ComparisonAdjective));
         }
 
         private void AssertIfWordRememberFromWhatItWasRecognized(Type typeOfWord)

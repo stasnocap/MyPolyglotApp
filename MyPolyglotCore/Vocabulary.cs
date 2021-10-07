@@ -108,6 +108,15 @@ namespace MyPolyglotCore
             new QuestionWord("how"),
         };
 
+		public static readonly IEnumerable<ComparisonAdjective> IrregularAdjectives = new ComparisonAdjective[]
+		{
+			new ComparisonAdjective("good", "better", "best"),
+			new ComparisonAdjective("bad", "worse", "worst"),
+			new ComparisonAdjective("far", "farther", "farthest"),
+			new ComparisonAdjective("little", "less", "least"),
+			new ComparisonAdjective("many", "more", "most"),
+		};
+
         #region Pronouns
 
         public static readonly IEnumerable<SubjectPronoun> SubjectPronouns = new SubjectPronoun[]

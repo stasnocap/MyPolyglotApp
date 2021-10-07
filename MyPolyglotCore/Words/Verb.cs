@@ -82,12 +82,12 @@ namespace MyPolyglotCore.Words
 
             if (StressOnTheFinalSyllable && Vocabulary.Vowels.Contains(lastTwoChars[0]) && Vocabulary.Consonants.Contains(lastTwoChars[1]))
             {
-                return Text + lastTwoChars[1] + Vocabulary.EdEnding;
+                return Text + lastTwoChars[1] + "ed";
             }
 
             if (Vocabulary.Vowels.Contains(lastTwoChars[0]) && Text.EndsWith('y'))
             {
-                return Text + Vocabulary.EdEnding;
+                return Text + "ed";
             }
 
             if (Text.EndsWith('y'))
@@ -100,7 +100,7 @@ namespace MyPolyglotCore.Words
                 return Text + 'd';
             }
 
-            return Text + Vocabulary.EdEnding;
+            return Text + "ed";
         }
 
         private string GeneratePresentParticipleForm()
@@ -109,20 +109,20 @@ namespace MyPolyglotCore.Words
 
             if (StressOnTheFinalSyllable && Vocabulary.Vowels.Contains(lastTwoChars[0]) && Vocabulary.Consonants.Contains(lastTwoChars[1]))
             {
-                return Text + lastTwoChars[1] + Vocabulary.IngEnding;
+                return Text + lastTwoChars[1] + "ing";
             }
 
             if (Text.EndsWith("ie"))
             {
-                return Text.Substring(0, Text.Length - 2) + 'y' + Vocabulary.IngEnding;
+                return Text.Substring(0, Text.Length - 2) + 'y' + "ing";
             }
 
             if (Text.EndsWith('e'))
             {
-                return Text.Substring(0, Text.Length - 1) + Vocabulary.IngEnding;
+                return Text.Substring(0, Text.Length - 1) + "ing";
             }
 
-            return Text + Vocabulary.IngEnding;
+            return Text + "ing";
         }
 
         private string GenerateThirdPersonForm()

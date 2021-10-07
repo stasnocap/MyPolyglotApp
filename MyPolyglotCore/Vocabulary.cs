@@ -21,8 +21,6 @@ namespace MyPolyglotCore
         #endregion
 
         public static readonly IEnumerable<string> ThirdPersonESEndings = new string[] { "ch", "s", "sh", "x", "z" };
-        public const string IngEnding = "ing";
-        public const string EdEnding = "ed";
 
 		public static readonly IEnumerable<Preposition> Prepositions = new Preposition[] 
 		{

@@ -1,14 +1,14 @@
+﻿using MyPolyglotCore;
+using MyPolyglotCore.Words;
+using MyPolyglotCore.Words.Pronouns;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using MyPolyglotCore.Words;
-using MyPolyglotCore.Words.Pronouns;
-using MyPolyglotCoreTests;
 using Xunit;
 
-namespace MyPolyglotCore.Tests.OptionsGeneratorTests
+namespace MyPolyglotCoreTests.OptionsGeneratorTests
 {
-    public class GetOptionsShould
+    public class GenerateOptionsShould
     {
         private readonly Random _random = new Random();
         private readonly OptionsGenerator _optionsGenerator = new OptionsGenerator();
@@ -336,5 +336,6 @@ namespace MyPolyglotCore.Tests.OptionsGeneratorTests
                 Assert.Contains(shortNegativeForm, options);
             }
         }
+
     }
 }

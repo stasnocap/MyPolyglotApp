@@ -5,6 +5,7 @@
         Undefined = 0,
         Adjective = 1,
         Noun = 2,
-        RegularVerb = 3
+        RegularVerb = 3,
+        RegularComparativeAdjective = 4
     }
 }

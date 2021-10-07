@@ -71,5 +71,10 @@ namespace MyPolyglotCore
         {
             return (Preposition)typeof(Preposition).GetRandomWordFromVocabulary();
         }
+
+        public static ComparisonAdjective GetRandomComparisonAdjective()
+        {
+            return (ComparisonAdjective)typeof(ComparisonAdjective).GetRandomWordFromVocabulary();
+        }
     }
 }

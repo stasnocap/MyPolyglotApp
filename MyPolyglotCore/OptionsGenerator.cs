@@ -12,21 +12,77 @@ namespace MyPolyglotCore
         {
             return word switch
             {
-                QuestionWord questionWord => Vocabulary.QuestionWords.Select(x => x.Text),
-                SubjectPronoun subjectPronoun => Vocabulary.SubjectPronouns.Select(x => x.Text),
-                ObjectPronoun objectPronoun => Vocabulary.ObjectPronouns.Select(x => x.Text),
-                PossessiveAdjective possessiveAdjective => Vocabulary.PossessiveAdjectives.Select(x => x.Text),
-                PossessivePronoun possessivePronoun => Vocabulary.PossessivePronouns.Select(x => x.Text),
-                ReflexivePronoun reflexivePronoun => Vocabulary.ReflexivePronouns.Select(x => x.Text),
-                Determiner determiner => Vocabulary.Determiners.Select(x => x.Text),
-                Adjective adjective => GetRandomWordsFromVocabularyWithRightWord(adjective),
-                Noun noun => GetRandomWordsFromVocabularyWithRightWord(noun),
-                ModalVerb modalVerb => GenerateOptionsForModalVerb(modalVerb),
-                PrimaryVerb primaryVerb => GenerateOptionsForPrimaryVerb(primaryVerb),
-                Verb verb => GenerateOptionsForVerb(verb),
-                Preposition preposition => GetRandomWordsFromVocabularyWithRightWord(preposition),
+                QuestionWord questionWord => GenerateOptions(questionWord),
+                SubjectPronoun subjectPronoun => GenerateOptions(subjectPronoun),
+                ObjectPronoun objectPronoun => GenerateOptions(objectPronoun),
+                PossessiveAdjective possessiveAdjective => GenerateOptions(possessiveAdjective),
+                PossessivePronoun possessivePronoun => GenerateOptions(possessivePronoun),
+                ReflexivePronoun reflexivePronoun => GenerateOptions(reflexivePronoun),
+                Determiner determiner => GenerateOptions(determiner),
+                Adjective adjective => GenerateOptions(adjective),
+                Noun noun => GenerateOptions(noun),
+                ModalVerb modalVerb => GenerateOptions(modalVerb),
+                PrimaryVerb primaryVerb => GenerateOptions(primaryVerb),
+                Verb verb => GenerateOptions(verb),
+                Preposition preposition => GenerateOptions(preposition),
+                ComparisonAdjective comparisonAdjective => GenerateOptions(comparisonAdjective),
                 _ => throw new NotImplementedException(),
             };
+        }
+
+        private IEnumerable<string> GenerateOptions(QuestionWord questionWord)
+        {
+            return Vocabulary.QuestionWords.Select(x => x.Text);
+        }
+
+        private IEnumerable<string> GenerateOptions(SubjectPronoun subjectPronoun)
+        {
+            return Vocabulary.SubjectPronouns.Select(x => x.Text);
+        }
+
+        private IEnumerable<string> GenerateOptions(ObjectPronoun objectPronoun)
+        {
+            return Vocabulary.ObjectPronouns.Select(x => x.Text);
+        }
+
+        private IEnumerable<string> GenerateOptions(PossessiveAdjective possessiveAdjective)
+        {
+            return Vocabulary.PossessiveAdjectives.Select(x => x.Text);
+        }
+
+        private IEnumerable<string> GenerateOptions(PossessivePronoun possessivePronoun)
+        {
+            return Vocabulary.PossessivePronouns.Select(x => x.Text);
+        }
+
+        private IEnumerable<string> GenerateOptions(ReflexivePronoun reflexivePronoun)
+        {
+            return Vocabulary.ReflexivePronouns.Select(x => x.Text);
+        }
+
+        private IEnumerable<string> GenerateOptions(Determiner determiner)
+        {
+            return Vocabulary.Determiners.Select(x => x.Text);
+        }
+
+        private IEnumerable<string> GenerateOptions(Adjective adjective)
+        {
+            return GetRandomWordsFromVocabularyWithRightWord(adjective);
+        }
+
+        private IEnumerable<string> GenerateOptions(Noun noun)
+        {
+            return GetRandomWordsFromVocabularyWithRightWord(noun);
+        }
+
+        private IEnumerable<string> GenerateOptions(Preposition preposition)
+        {
+            return GetRandomWordsFromVocabularyWithRightWord(preposition);
+        }
+
+        private IEnumerable<string> GenerateOptions(ComparisonAdjective comparisonAdjective)
+        {
+            return new string[] { comparisonAdjective.Text, comparisonAdjective.ComparativeForm, comparisonAdjective.SuperlativeForm };
         }
 
         private IEnumerable<string> GetRandomWordsFromVocabularyWithRightWord(Word word)
@@ -37,7 +93,7 @@ namespace MyPolyglotCore
                 .TakeSixShuffledStrings(word.Text);
         }
 
-        private IEnumerable<string> GenerateOptionsForModalVerb(ModalVerb modalVerb)
+        private IEnumerable<string> GenerateOptions(ModalVerb modalVerb)
         {
             var modalVerbVocabularyWithoutRightWord = Vocabulary
                 .GetVocabulary(typeof(ModalVerb))
@@ -63,7 +119,7 @@ namespace MyPolyglotCore
                 .TakeSixShuffledStrings(modalVerb.Text);
         }
 
-        private IEnumerable<string> GenerateOptionsForPrimaryVerb(PrimaryVerb primaryVerb)
+        private IEnumerable<string> GenerateOptions(PrimaryVerb primaryVerb)
         {
             var positiveForms = new List<string>
             {
@@ -99,11 +155,11 @@ namespace MyPolyglotCore
             return primaryVerb.ShortNegativeForms;
         }
 
-        private IEnumerable<string> GenerateOptionsForVerb(Verb verb)
+        private IEnumerable<string> GenerateOptions(Verb verb)
         {
             return verb.IsIrregularVerb
-                ? new List<string>() { verb.Text, verb.PastForm, verb.PastParticipleForm, verb.PresentParticipleForm, verb.ThirdPersonForm }
-                : new List<string>() { verb.Text, verb.PastForm, verb.ThirdPersonForm };
+                ? new string[] { verb.Text, verb.PastForm, verb.PastParticipleForm, verb.PresentParticipleForm, verb.ThirdPersonForm }
+                : new string[] { verb.Text, verb.PastForm, verb.ThirdPersonForm };
         }
     }
 }

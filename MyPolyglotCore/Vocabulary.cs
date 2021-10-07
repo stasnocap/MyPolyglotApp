@@ -108,6 +108,14 @@ namespace MyPolyglotCore
             new QuestionWord("how"),
         };
 
+		public static readonly IEnumerable<ComparisonAdjective> IrregularComparativeAdjectives = new ComparisonAdjective[]
+		{
+			new ComparisonAdjective("good", "better", "best"),
+			new ComparisonAdjective("bad", "worse", "worst"),
+			new ComparisonAdjective("far", "farther", "farthest"),
+			new ComparisonAdjective("little", "less", "least"),
+		};
+
         #region Pronouns
 
         public static readonly IEnumerable<SubjectPronoun> SubjectPronouns = new SubjectPronoun[]
@@ -399,7 +407,8 @@ namespace MyPolyglotCore
             .Concat(IrregularVerbs)
             .Concat(PrimaryVerbs)
             .Concat(ModalVerbs)
-            .Concat(Prepositions);
+            .Concat(Prepositions)
+			.Concat(IrregularComparativeAdjectives);
 
         public static IEnumerable<Word> GetVocabulary(Type typeOfWord)
         {
@@ -417,6 +426,7 @@ namespace MyPolyglotCore
                 Type adjective when adjective == typeof(Adjective) => Adjectives,
                 Type modalVerb when modalVerb == typeof(ModalVerb) => ModalVerbs,
                 Type preposition when preposition == typeof(Preposition) => Prepositions,
+                Type comparisonAdjective when comparisonAdjective == typeof(ComparisonAdjective) => IrregularComparativeAdjectives,
                 _ => throw new NotImplementedException(),
             };
             return vocabulary;

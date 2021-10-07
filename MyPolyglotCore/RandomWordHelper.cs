@@ -67,6 +67,11 @@ namespace MyPolyglotCore
             return (SubjectPronoun)typeof(SubjectPronoun).GetRandomWordFromVocabulary();
         }
 
+        public static DemonstrativePronoun GetRandomDemonstrativePronoun()
+        {
+            return (DemonstrativePronoun)typeof(DemonstrativePronoun).GetRandomWordFromVocabulary();
+        }
+
         public static Preposition GetRandomPreposition()
         {
             return (Preposition)typeof(Preposition).GetRandomWordFromVocabulary();

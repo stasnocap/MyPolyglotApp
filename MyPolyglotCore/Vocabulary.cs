@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using MyPolyglotCore.Words;
 using MyPolyglotCore.Words.Pronouns;
@@ -165,6 +166,14 @@ namespace MyPolyglotCore
             new ReflexivePronoun("yourselves"),
             new ReflexivePronoun("themselves"),
         };
+
+		public static readonly IEnumerable<DemonstrativePronoun> DemonstrativePronouns = new DemonstrativePronoun[]
+		{
+			new DemonstrativePronoun("this"),
+			new DemonstrativePronoun("that"),
+			new DemonstrativePronoun("these"),
+			new DemonstrativePronoun("those"),
+		};
 
         #endregion
 
@@ -401,6 +410,7 @@ namespace MyPolyglotCore
             .Concat(PossessiveAdjectives)
             .Concat(PossessivePronouns)
             .Concat(ReflexivePronouns)
+			.Concat(DemonstrativePronouns)
             .Concat(Determiners)
             .Concat(IrregularVerbs)
             .Concat(PrimaryVerbs)
@@ -417,6 +427,7 @@ namespace MyPolyglotCore
                 Type possessiveAdjective when possessiveAdjective == typeof(PossessiveAdjective) => PossessiveAdjectives,
                 Type possessivePronoun when possessivePronoun == typeof(PossessivePronoun) => PossessivePronouns,
                 Type reflexivePronoun when reflexivePronoun == typeof(ReflexivePronoun) => ReflexivePronouns,
+                Type demonstrativePronoun when demonstrativePronoun == typeof(DemonstrativePronoun) => DemonstrativePronouns,
                 Type determiner when determiner == typeof(Determiner) => Determiners,
                 Type primaryVerb when primaryVerb == typeof(PrimaryVerb) => PrimaryVerbs,
                 Type verb when verb == typeof(Verb) => IrregularVerbs,

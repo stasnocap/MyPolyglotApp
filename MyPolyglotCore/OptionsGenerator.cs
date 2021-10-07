@@ -26,6 +26,7 @@ namespace MyPolyglotCore
                 Verb verb => GenerateOptions(verb),
                 Preposition preposition => GenerateOptions(preposition),
                 ComparisonAdjective comparisonAdjective => GenerateOptions(comparisonAdjective),
+                DemonstrativePronoun demonstrativePronoun => GenerateOptions(demonstrativePronoun),
                 _ => throw new NotImplementedException(),
             };
         }
@@ -58,6 +59,11 @@ namespace MyPolyglotCore
         private IEnumerable<string> GenerateOptions(ReflexivePronoun reflexivePronoun)
         {
             return Vocabulary.ReflexivePronouns.Select(x => x.Text);
+        }
+
+        private IEnumerable<string> GenerateOptions(DemonstrativePronoun demonstrativePronoun)
+        {
+            return Vocabulary.DemonstrativePronouns.Select(x => x.Text);
         }
 
         private IEnumerable<string> GenerateOptions(Determiner determiner)

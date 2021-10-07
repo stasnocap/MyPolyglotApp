@@ -42,6 +42,13 @@ namespace MyPolyglotCoreTests.RecognizerTests
         }
 
         [Fact]
+        public void RecognizeDemonstrativePronounInPhrase()
+        {
+            var randomWordFromVocabulary = RandomWordHelper.GetRandomDemonstrativePronoun();
+            CheckIfGivenWordHadRecognized(randomWordFromVocabulary);
+        }
+
+        [Fact]
         public void RecognizeReflexivePronounInPhrase()
         {
             var randomWordFromVocabulary = RandomWordHelper.GetRandomReflexivePronoun();
@@ -270,6 +277,12 @@ namespace MyPolyglotCoreTests.RecognizerTests
         public void MakeReflexivePronounRememberFromWhatItWasRecognized()
         {
             AssertIfWordRememberFromWhatItWasRecognized(typeof(ReflexivePronoun));
+        }
+
+        [Fact]
+        public void MakeDemonstrativePronounRememberFromWhatItWasRecognized()
+        {
+            AssertIfWordRememberFromWhatItWasRecognized(typeof(DemonstrativePronoun));
         }
 
         [Fact]

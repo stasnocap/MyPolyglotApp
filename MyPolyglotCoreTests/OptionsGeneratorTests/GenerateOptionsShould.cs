@@ -49,6 +49,13 @@ namespace MyPolyglotCoreTests.OptionsGeneratorTests
         }
 
         [Fact]
+        public void GivenDemonstrativePronoun_ReturnAllWordsFromDemonstrativePronounVocabulary()
+        {
+            var word = new DemonstrativePronoun("no matter");
+            CheckIfAllWordsFromVocabularyHadRecieved(word);
+        }
+
+        [Fact]
         public void GivenDeterminer_ReturnAllWordsFromDeterminerVocabulary()
         {
             var word = new Determiner("no matter");

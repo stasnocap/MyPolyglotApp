@@ -3,6 +3,10 @@
 });
 
 $(document).on('change', '.add-exercise__unrecognized-block select', function () {
+    if ($(this).val() == "Adjective" || $(this).val() == "Noun") {
+        $(this).parent().find('.left-side-of-header__word-name').next().remove();
+    }
+
     if ($(this).val() == 'RegularVerb') {
         $(this).prev().append('<p>Пожалуйста, введите базовую форму глагола.</p>');
 

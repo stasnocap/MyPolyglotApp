@@ -40,5 +40,6 @@ namespace MyPolyglotWeb.Constants
         };
 
         public const string UserTriesToBreakMe = "Зачем ты пытаешься сломать меня?";
+        public const int MaxCountOfSyllables = 25;
     }
 }

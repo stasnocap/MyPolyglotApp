@@ -117,6 +117,7 @@ namespace MyPolyglotWeb
                 MyPolyglotCore.UnrecognizableTypes.Adjective => new Adjective(word.Text),
                 MyPolyglotCore.UnrecognizableTypes.Noun => new Noun(word.Text),
                 MyPolyglotCore.UnrecognizableTypes.RegularVerb => new Verb(word.Text),
+                MyPolyglotCore.UnrecognizableTypes.RegularComparisonAdjective => new ComparisonAdjective(word.Text, word.SyllablesInRegularComparisonAdjective),
                 _ => throw new NotImplementedException()
             };
         }

@@ -1,5 +1,6 @@
 ﻿using MyPolyglotCore;
 using MyPolyglotWeb.Constants;
+using MyPolyglotWeb.Models.ViewModels.CustomAttributes;
 using System.ComponentModel.DataAnnotations;
 
 namespace MyPolyglotWeb.Models.ViewModels
@@ -13,5 +14,7 @@ namespace MyPolyglotWeb.Models.ViewModels
         public UnrecognizableTypes Type { get; set; }
 
         public bool StressOnTheFinalSyllableInRegularVerb { get; set; }
+
+        public int SyllablesInRegularComparisonAdjective { get; set; }
     }
 }

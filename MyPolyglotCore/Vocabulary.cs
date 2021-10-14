@@ -1,33 +1,32 @@
 using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Linq;
 using MyPolyglotCore.Words;
+using MyPolyglotCore.Words.Adverbs;
 using MyPolyglotCore.Words.Pronouns;
 
 namespace MyPolyglotCore
 {
     public static class Vocabulary
-    {
-        #region Letters
-        public static readonly IEnumerable<char> Consonants = new char[]
-        {
-            'b', 'c', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'm',
-            'n', 'p', 'q', 'r', 's', 't', 'v', 'w', 'x', 'z'
-        };
-        public static readonly IEnumerable<char> Vowels = new char[]
-        {
-            'a', 'e', 'i', 'o', 'u', 'y'
-        };
-        #endregion
-
-        public static readonly IEnumerable<string> ThirdPersonESEndings = new string[] { "ch", "s", "sh", "x", "z" };
-
-		public static readonly IEnumerable<Preposition> Prepositions = new Preposition[] 
+	{
+		#region Letters
+		public static readonly IEnumerable<char> Consonants = new char[]
 		{
-            new Preposition("aboard"),
+			'b', 'c', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'm',
+			'n', 'p', 'q', 'r', 's', 't', 'v', 'w', 'x', 'z'
+		};
+		public static readonly IEnumerable<char> Vowels = new char[]
+		{
+			'a', 'e', 'i', 'o', 'u', 'y'
+		};
+		#endregion
+
+		public static readonly IEnumerable<string> ThirdPersonESEndings = new string[] { "ch", "s", "sh", "x", "z" };
+
+		public static readonly IEnumerable<Preposition> Prepositions = new Preposition[]
+		{
+			new Preposition("aboard"),
 			new Preposition("about"),
-			new Preposition("above"),
 			new Preposition("across"),
 			new Preposition("after"),
 			new Preposition("against"),
@@ -40,7 +39,6 @@ namespace MyPolyglotCore
 			new Preposition("at"),
 			new Preposition("before"),
 			new Preposition("behind"),
-			new Preposition("below"),
 			new Preposition("beneath"),
 			new Preposition("beside"),
 			new Preposition("besides"),
@@ -60,7 +58,6 @@ namespace MyPolyglotCore
 			new Preposition("for"),
 			new Preposition("from"),
 			new Preposition("in"),
-			new Preposition("inside"),
 			new Preposition("into"),
 			new Preposition("like"),
 			new Preposition("minus"),
@@ -70,7 +67,6 @@ namespace MyPolyglotCore
 			new Preposition("on"),
 			new Preposition("onto"),
 			new Preposition("opposite"),
-			new Preposition("outside"),
 			new Preposition("over"),
 			new Preposition("past"),
 			new Preposition("per"),
@@ -97,15 +93,15 @@ namespace MyPolyglotCore
 			new Preposition("without"),
 		};
 
-        public static readonly IEnumerable<QuestionWord> QuestionWords = new QuestionWord[]
-        {
-            new QuestionWord("what"),
-            new QuestionWord("who"),
-            new QuestionWord("where"),
-            new QuestionWord("when"),
-            new QuestionWord("why"),
-            new QuestionWord("how"),
-        };
+		public static readonly IEnumerable<QuestionWord> QuestionWords = new QuestionWord[]
+		{
+			new QuestionWord("what"),
+			new QuestionWord("who"),
+			new QuestionWord("where"),
+			new QuestionWord("when"),
+			new QuestionWord("why"),
+			new QuestionWord("how"),
+		};
 
 		public static readonly IEnumerable<ComparisonAdjective> IrregularComparativeAdjectives = new ComparisonAdjective[]
 		{
@@ -115,9 +111,119 @@ namespace MyPolyglotCore
 			new ComparisonAdjective("little", "less", "least"),
 		};
 
-        #region Pronouns
+		#region Adverbs
 
-        public static readonly IEnumerable<SubjectPronoun> SubjectPronouns = new SubjectPronoun[]
+		public static readonly IEnumerable<MannerAdverb> MannerAdverbs = new MannerAdverb[]
+		{
+			new MannerAdverb("beautifully"),
+			new MannerAdverb("generously"),
+			new MannerAdverb("happily"),
+			new MannerAdverb("neatly"),
+			new MannerAdverb("patiently"),
+			new MannerAdverb("softly"),
+			new MannerAdverb("quickly"),
+			new MannerAdverb("well"),
+		};
+
+		public static readonly IEnumerable<TellHowItHappenedAdverb> TellHowItHappenedAdverbs = new TellHowItHappenedAdverb[]
+		{
+			new TellHowItHappenedAdverb("briskly"),
+			new TellHowItHappenedAdverb("brutally"),
+			new TellHowItHappenedAdverb("cheerfully"),
+			new TellHowItHappenedAdverb("expertly"),
+			new TellHowItHappenedAdverb("randomly"),
+			new TellHowItHappenedAdverb("sloppily"),
+			new TellHowItHappenedAdverb("uneasily"),
+			new TellHowItHappenedAdverb("weirdly"),
+			new TellHowItHappenedAdverb("wholeheartedly"),
+			new TellHowItHappenedAdverb("wickedly"),
+		};
+
+		public static readonly IEnumerable<TellWhereItHappenedAdverb> TellWhereItHappenedAdverbs = new TellWhereItHappenedAdverb[]
+		{
+			new TellWhereItHappenedAdverb("here"),
+			new TellWhereItHappenedAdverb("there"),
+			new TellWhereItHappenedAdverb("downstairs"),
+			new TellWhereItHappenedAdverb("upstairs"),
+			new TellWhereItHappenedAdverb("everywhere"),
+			new TellWhereItHappenedAdverb("inside"),
+			new TellWhereItHappenedAdverb("outside"),
+			new TellWhereItHappenedAdverb("somewhere"),
+			new TellWhereItHappenedAdverb("underground"),
+			new TellWhereItHappenedAdverb("above"),
+			new TellWhereItHappenedAdverb("anywhere"),
+			new TellWhereItHappenedAdverb("back"),
+			new TellWhereItHappenedAdverb("below"),
+			new TellWhereItHappenedAdverb("nowhere"),
+			new TellWhereItHappenedAdverb("out"),
+		};
+
+		public static readonly IEnumerable<TellWhenItHappenedAdverb> TellWhenItHappenedAdverbs = new TellWhenItHappenedAdverb[]
+		{
+			new TellWhenItHappenedAdverb("early"),
+			new TellWhenItHappenedAdverb("first"),
+			new TellWhenItHappenedAdverb("last"),
+			new TellWhenItHappenedAdverb("later"),
+			new TellWhenItHappenedAdverb("now"),
+			new TellWhenItHappenedAdverb("regularly"),
+			new TellWhenItHappenedAdverb("today"),
+			new TellWhenItHappenedAdverb("tomorrow"),
+			new TellWhenItHappenedAdverb("yesterday"),
+			new TellWhenItHappenedAdverb("already"),
+			new TellWhenItHappenedAdverb("immediately"),
+			new TellWhenItHappenedAdverb("lately"),
+			new TellWhenItHappenedAdverb("recently"),
+			new TellWhenItHappenedAdverb("soon"),
+		};
+
+		public static readonly IEnumerable<TellTheExtentOfTheActionAdverb> TellTheExtentOfTheActionAdverbs = new TellTheExtentOfTheActionAdverb[]
+		{
+			new TellTheExtentOfTheActionAdverb("almost"),
+			new TellTheExtentOfTheActionAdverb("also"),
+			new TellTheExtentOfTheActionAdverb("enough"),
+			new TellTheExtentOfTheActionAdverb("only"),
+			new TellTheExtentOfTheActionAdverb("quite"),
+			new TellTheExtentOfTheActionAdverb("rather"),
+			new TellTheExtentOfTheActionAdverb("so"),
+			new TellTheExtentOfTheActionAdverb("too"),
+			new TellTheExtentOfTheActionAdverb("very"),
+			new TellTheExtentOfTheActionAdverb("hardly"),
+			new TellTheExtentOfTheActionAdverb("just"),
+			new TellTheExtentOfTheActionAdverb("nearly"),
+		};
+
+		public static readonly IEnumerable<IntensifierAdverb> IntensifierAdverbs = new IntensifierAdverb[]
+		{
+			new IntensifierAdverb("literally"),
+			new IntensifierAdverb("simply"),
+			new IntensifierAdverb("really"),
+			new IntensifierAdverb("sure"),
+			new IntensifierAdverb("completely"),
+			new IntensifierAdverb("heartily"),
+			new IntensifierAdverb("totally"),
+			new IntensifierAdverb("absolutely"),
+			new IntensifierAdverb("somewhat"),
+			new IntensifierAdverb("mildly"),
+		};
+
+		public static readonly IEnumerable<FrequencyAdverb> FrequencyAdverbs = new FrequencyAdverb[]
+		{
+			new FrequencyAdverb("again"),
+			new FrequencyAdverb("always"),
+			new FrequencyAdverb("every"),
+			new FrequencyAdverb("never"),
+			new FrequencyAdverb("normally"),
+			new FrequencyAdverb("rarely"),
+			new FrequencyAdverb("seldom"),
+			new FrequencyAdverb("sometimes"),
+			new FrequencyAdverb("usually"),
+		};
+
+		#endregion
+
+		#region Pronouns
+
+		public static readonly IEnumerable<SubjectPronoun> SubjectPronouns = new SubjectPronoun[]
         {
             new SubjectPronoun("i"),
             new SubjectPronoun("you"),

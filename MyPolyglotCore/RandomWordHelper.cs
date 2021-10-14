@@ -1,4 +1,5 @@
 ﻿using MyPolyglotCore.Words;
+using MyPolyglotCore.Words.Adverbs;
 using MyPolyglotCore.Words.Pronouns;
 using System;
 using System.Collections.Generic;
@@ -80,6 +81,41 @@ namespace MyPolyglotCore
         public static ComparisonAdjective GetRandomComparisonAdjective()
         {
             return (ComparisonAdjective)typeof(ComparisonAdjective).GetRandomWordFromVocabulary();
+        }
+
+        public static FrequencyAdverb GetRandomFrequencyAdverb()
+        {
+            return (FrequencyAdverb)typeof(FrequencyAdverb).GetRandomWordFromVocabulary();
+        }
+
+        public static IntensifierAdverb GetRandomIntensifierAdverb()
+        {
+            return (IntensifierAdverb)typeof(IntensifierAdverb).GetRandomWordFromVocabulary();
+        }
+
+        public static MannerAdverb GetRandomMannerAdverb()
+        {
+            return (MannerAdverb)typeof(MannerAdverb).GetRandomWordFromVocabulary();
+        }
+
+        public static TellHowItHappenedAdverb GetRandomTellHowItHappendAdverb()
+        {
+            return (TellHowItHappenedAdverb)typeof(TellHowItHappenedAdverb).GetRandomWordFromVocabulary();
+        }
+
+        public static TellTheExtentOfTheActionAdverb GetRandomTellTheExtentOfTheActionAdverb()
+        {
+            return (TellTheExtentOfTheActionAdverb)typeof(TellTheExtentOfTheActionAdverb).GetRandomWordFromVocabulary();
+        }
+
+        public static TellWhenItHappenedAdverb GetRandomTellWhenItHappendAdverb()
+        {
+            return (TellWhenItHappenedAdverb)typeof(TellWhenItHappenedAdverb).GetRandomWordFromVocabulary();
+        }
+
+        public static TellWhereItHappenedAdverb GetRandomTellWhereItHappendAdverb()
+        {
+            return (TellWhereItHappenedAdverb)typeof(TellWhereItHappenedAdverb).GetRandomWordFromVocabulary();
         }
     }
 }

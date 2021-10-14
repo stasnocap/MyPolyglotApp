@@ -517,6 +517,13 @@ namespace MyPolyglotCore
             .Concat(PossessivePronouns)
             .Concat(ReflexivePronouns)
 			.Concat(DemonstrativePronouns)
+			.Concat(FrequencyAdverbs)
+			.Concat(IntensifierAdverbs)
+			.Concat(MannerAdverbs)
+			.Concat(TellHowItHappenedAdverbs)
+			.Concat(TellTheExtentOfTheActionAdverbs)
+			.Concat(TellWhenItHappenedAdverbs)
+			.Concat(TellWhereItHappenedAdverbs)
             .Concat(Determiners)
             .Concat(IrregularVerbs)
             .Concat(PrimaryVerbs)
@@ -534,6 +541,13 @@ namespace MyPolyglotCore
                 Type possessivePronoun when possessivePronoun == typeof(PossessivePronoun) => PossessivePronouns,
                 Type reflexivePronoun when reflexivePronoun == typeof(ReflexivePronoun) => ReflexivePronouns,
                 Type demonstrativePronoun when demonstrativePronoun == typeof(DemonstrativePronoun) => DemonstrativePronouns,
+                Type frequencyAdverb when frequencyAdverb == typeof(FrequencyAdverb) => FrequencyAdverbs,
+                Type intensifierAdverb when intensifierAdverb == typeof(IntensifierAdverb) => IntensifierAdverbs,
+                Type mannerAdverb when mannerAdverb == typeof(MannerAdverb) => MannerAdverbs,
+                Type tellHowItHappendAdverb when tellHowItHappendAdverb == typeof(TellHowItHappenedAdverb) => TellHowItHappenedAdverbs,
+                Type tellTheExtentOfTheActionAdverb when tellTheExtentOfTheActionAdverb == typeof(TellTheExtentOfTheActionAdverb) => TellTheExtentOfTheActionAdverbs,
+                Type tellWhenItHappenedAdverb when tellWhenItHappenedAdverb == typeof(TellWhenItHappenedAdverb) => TellWhenItHappenedAdverbs,
+                Type tellWhereItHappenedAdverb when tellWhereItHappenedAdverb == typeof(TellWhereItHappenedAdverb) => TellWhereItHappenedAdverbs,
                 Type determiner when determiner == typeof(Determiner) => Determiners,
                 Type primaryVerb when primaryVerb == typeof(PrimaryVerb) => PrimaryVerbs,
                 Type verb when verb == typeof(Verb) => IrregularVerbs,

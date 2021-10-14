@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using MyPolyglotCore;
 using MyPolyglotCore.Words;
+using MyPolyglotCore.Words.Adverbs;
 using MyPolyglotCore.Words.Pronouns;
 using Xunit;
 
@@ -80,6 +81,55 @@ namespace MyPolyglotCoreTests.RecognizerTests
         public void RecognizePrepositionByText()
         {
             var randomWordFromVocabulary = RandomWordHelper.GetRandomPreposition();
+            CheckIfGivenWordHadRecognized(randomWordFromVocabulary);
+        }
+
+        [Fact]
+        public void RecognizeFrequencyAdverbByText()
+        {
+            var randomWordFromVocabulary = RandomWordHelper.GetRandomFrequencyAdverb();
+            CheckIfGivenWordHadRecognized(randomWordFromVocabulary);
+        }
+
+        [Fact]
+        public void RecognizeIntensifierAdverbByText()
+        {
+            var randomWordFromVocabulary = RandomWordHelper.GetRandomIntensifierAdverb();
+            CheckIfGivenWordHadRecognized(randomWordFromVocabulary);
+        }
+
+        [Fact]
+        public void RecognizeMannerAdverbByText()
+        {
+            var randomWordFromVocabulary = RandomWordHelper.GetRandomMannerAdverb();
+            CheckIfGivenWordHadRecognized(randomWordFromVocabulary);
+        }
+
+        [Fact]
+        public void RecognizeTellHowItHappenedAdverbByText()
+        {
+            var randomWordFromVocabulary = RandomWordHelper.GetRandomTellHowItHappendAdverb();
+            CheckIfGivenWordHadRecognized(randomWordFromVocabulary);
+        }
+
+        [Fact]
+        public void RecognizeTellTheExtentOfTheActionAdverbByText()
+        {
+            var randomWordFromVocabulary = RandomWordHelper.GetRandomTellTheExtentOfTheActionAdverb();
+            CheckIfGivenWordHadRecognized(randomWordFromVocabulary);
+        }
+
+        [Fact]
+        public void RecognizeTellWhenItHappenedAdverbByText()
+        {
+            var randomWordFromVocabulary = RandomWordHelper.GetRandomTellWhenItHappendAdverb();
+            CheckIfGivenWordHadRecognized(randomWordFromVocabulary);
+        }
+
+        [Fact]
+        public void RecognizeTellWhereItHappenedAdverbByText()
+        {
+            var randomWordFromVocabulary = RandomWordHelper.GetRandomTellWhereItHappendAdverb();
             CheckIfGivenWordHadRecognized(randomWordFromVocabulary);
         }
 
@@ -283,6 +333,48 @@ namespace MyPolyglotCoreTests.RecognizerTests
         public void MakeDemonstrativePronounRememberFromWhatItWasRecognized()
         {
             AssertIfWordRememberFromWhatItWasRecognized(typeof(DemonstrativePronoun));
+        }
+
+        [Fact]
+        public void MakeFrequencyAdverbRememberFromWhatItWasRecognized()
+        {
+            AssertIfWordRememberFromWhatItWasRecognized(typeof(FrequencyAdverb));
+        }
+
+        [Fact]
+        public void MakeIntensifierAdverbRememberFromWhatItWasRecognized()
+        {
+            AssertIfWordRememberFromWhatItWasRecognized(typeof(IntensifierAdverb));
+        }
+
+        [Fact]
+        public void MakeMannerAdverbRememberFromWhatItWasRecognized()
+        {
+            AssertIfWordRememberFromWhatItWasRecognized(typeof(MannerAdverb));
+        }
+
+        [Fact]
+        public void MakeTellHowItHappenedAdverbRememberFromWhatItWasRecognized()
+        {
+            AssertIfWordRememberFromWhatItWasRecognized(typeof(TellHowItHappenedAdverb));
+        }
+
+        [Fact]
+        public void MakeTellTheExtentOfTheActionAdverbRememberFromWhatItWasRecognized()
+        {
+            AssertIfWordRememberFromWhatItWasRecognized(typeof(TellTheExtentOfTheActionAdverb));
+        }
+
+        [Fact]
+        public void MakeTellWhenItHappenedAdverbRememberFromWhatItWasRecognized()
+        {
+            AssertIfWordRememberFromWhatItWasRecognized(typeof(TellWhenItHappenedAdverb));
+        }
+
+        [Fact]
+        public void MakeTellWhereItHappenedAdverbRememberFromWhatItWasRecognized()
+        {
+            AssertIfWordRememberFromWhatItWasRecognized(typeof(TellWhereItHappenedAdverb));
         }
 
         [Fact]

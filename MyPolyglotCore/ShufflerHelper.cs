@@ -6,15 +6,30 @@ namespace MyPolyglotCore
 {
     public static class ShufflerHelper
     {
-        private static readonly Random _random = new Random(); 
+        private static readonly Random _random = new Random();
 
-        public static IEnumerable<string> TakeSixShuffledStrings(this IEnumerable<string> collection, string stringThatWillHaveHadRandomIndex)
-        { 
-            return collection
+        public static IEnumerable<string> TakeSixShuffledStrings(this IEnumerable<string> collection, string rightWord)
+        {
+            var randomizedCollection = collection
                     .OrderBy(x => _random.Next())
-                    .Take(5)
-                    .Append(stringThatWillHaveHadRandomIndex)
-                    .OrderBy(x => _random.Next());
+                    .ToList();
+
+            var fiveRandomWords = new List<string>();
+            var i = 0;
+            var countOfAddedWords = 0;
+            while (countOfAddedWords != 5)
+            {
+                if (randomizedCollection[i] != rightWord)
+                {
+                    fiveRandomWords.Add(randomizedCollection[i]);
+                    countOfAddedWords++;
+                }
+                i++;
+            }
+
+            fiveRandomWords.Add(rightWord);
+
+            return fiveRandomWords.OrderBy(x => _random.Next());
         }
     }
 }

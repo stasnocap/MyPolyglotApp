@@ -1,4 +1,5 @@
 ﻿using MyPolyglotCore.Words;
+using MyPolyglotCore.Words.Adverbs;
 using MyPolyglotCore.Words.Pronouns;
 using System;
 using System.Collections.Generic;
@@ -18,6 +19,13 @@ namespace MyPolyglotCore
                 PossessiveAdjective possessiveAdjective => GenerateOptions(possessiveAdjective),
                 PossessivePronoun possessivePronoun => GenerateOptions(possessivePronoun),
                 ReflexivePronoun reflexivePronoun => GenerateOptions(reflexivePronoun),
+                FrequencyAdverb frequencyAdverb => GenerateOptions(frequencyAdverb),
+                IntensifierAdverb intensifierAdverb => GenerateOptions(intensifierAdverb),
+                MannerAdverb mannerAdverb => GenerateOptions(mannerAdverb),
+                TellHowItHappenedAdverb tellHowItHappenedAdverb => GenerateOptions(tellHowItHappenedAdverb),
+                TellTheExtentOfTheActionAdverb tellTheExtentOfTheActionAdverb => GenerateOptions(tellTheExtentOfTheActionAdverb),
+                TellWhenItHappenedAdverb tellWhenItHappenedAdverb => GenerateOptions(tellWhenItHappenedAdverb),
+                TellWhereItHappenedAdverb tellWhereItHappenedAdverb => GenerateOptions(tellWhereItHappenedAdverb),
                 Determiner determiner => GenerateOptions(determiner),
                 Adjective adjective => GenerateOptions(adjective),
                 Noun noun => GenerateOptions(noun),
@@ -29,6 +37,41 @@ namespace MyPolyglotCore
                 DemonstrativePronoun demonstrativePronoun => GenerateOptions(demonstrativePronoun),
                 _ => throw new NotImplementedException(),
             };
+        }
+
+        private IEnumerable<string> GenerateOptions(TellWhereItHappenedAdverb tellWhereItHappenedAdverb)
+        {
+            return GetRandomWordsFromVocabularyWithRightWord(tellWhereItHappenedAdverb);
+        }
+
+        private IEnumerable<string> GenerateOptions(TellWhenItHappenedAdverb tellWhenItHappenedAdverb)
+        {
+            return GetRandomWordsFromVocabularyWithRightWord(tellWhenItHappenedAdverb);
+        }
+
+        private IEnumerable<string> GenerateOptions(TellTheExtentOfTheActionAdverb tellTheExtentOfTheActionAdverb)
+        {
+            return GetRandomWordsFromVocabularyWithRightWord(tellTheExtentOfTheActionAdverb);
+        }
+
+        private IEnumerable<string> GenerateOptions(TellHowItHappenedAdverb tellHowItHappenedAdverb)
+        {
+            return GetRandomWordsFromVocabularyWithRightWord(tellHowItHappenedAdverb);
+        }
+
+        private IEnumerable<string> GenerateOptions(MannerAdverb mannerAdverb)
+        {
+            return GetRandomWordsFromVocabularyWithRightWord(mannerAdverb);
+        }
+
+        private IEnumerable<string> GenerateOptions(IntensifierAdverb intensifierAdverb)
+        {
+            return GetRandomWordsFromVocabularyWithRightWord(intensifierAdverb);
+        }
+
+        private IEnumerable<string> GenerateOptions(FrequencyAdverb frequencyAdverb)
+        {
+            return GetRandomWordsFromVocabularyWithRightWord(frequencyAdverb);
         }
 
         private IEnumerable<string> GenerateOptions(QuestionWord questionWord)

@@ -1,5 +1,6 @@
 ﻿using MyPolyglotCore;
 using MyPolyglotCore.Words;
+using MyPolyglotCore.Words.Adverbs;
 using MyPolyglotCore.Words.Pronouns;
 using System;
 using System.Collections.Generic;
@@ -53,6 +54,55 @@ namespace MyPolyglotCoreTests.OptionsGeneratorTests
         {
             var word = new DemonstrativePronoun("no matter");
             CheckIfAllWordsFromVocabularyHadRecieved(word);
+        }
+
+        [Fact]
+        public void GivenFrequencyAdverb_ReturnFiveWordsFromNounVocabularyWithRightAnswer()
+        {
+            var word = new FrequencyAdverb("no matter");
+            CheckIfFiveWordsFromVocabularyWithRightWordHadRecieved(word);
+        }
+
+        [Fact]
+        public void GivenIntensifierAdverb_ReturnFiveWordsFromNounVocabularyWithRightAnswer()
+        {
+            var word = new IntensifierAdverb("no matter");
+            CheckIfFiveWordsFromVocabularyWithRightWordHadRecieved(word);
+        }
+
+        [Fact]
+        public void GivenMannerAdverb_ReturnFiveWordsFromNounVocabularyWithRightAnswer()
+        {
+            var word = new MannerAdverb("no matter");
+            CheckIfFiveWordsFromVocabularyWithRightWordHadRecieved(word);
+        }
+
+        [Fact]
+        public void GivenTellHowItHappenedAdverb_ReturnFiveWordsFromNounVocabularyWithRightAnswer()
+        {
+            var word = new TellHowItHappenedAdverb("no matter");
+            CheckIfFiveWordsFromVocabularyWithRightWordHadRecieved(word);
+        }
+
+        [Fact]
+        public void GivenTellTheExtentOfTheActionAdverb_ReturnFiveWordsFromNounVocabularyWithRightAnswer()
+        {
+            var word = new TellTheExtentOfTheActionAdverb("no matter");
+            CheckIfFiveWordsFromVocabularyWithRightWordHadRecieved(word);
+        }
+
+        [Fact]
+        public void GivenTellWhenItHappenedAdverb_ReturnFiveWordsFromNounVocabularyWithRightAnswer()
+        {
+            var word = new TellWhenItHappenedAdverb("no matter");
+            CheckIfFiveWordsFromVocabularyWithRightWordHadRecieved(word);
+        }
+
+        [Fact]
+        public void GivenTellWhereItHappenedAdverb_ReturnFiveWordsFromNounVocabularyWithRightAnswer()
+        {
+            var word = new TellWhereItHappenedAdverb("no matter");
+            CheckIfFiveWordsFromVocabularyWithRightWordHadRecieved(word);
         }
 
         [Fact]

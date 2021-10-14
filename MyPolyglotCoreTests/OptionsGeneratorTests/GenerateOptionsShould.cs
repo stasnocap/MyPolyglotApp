@@ -279,6 +279,15 @@ namespace MyPolyglotCoreTests.OptionsGeneratorTests
 
             var options = _optionsGenerator.GetOptions(modalVerb);
 
+            if (modalVerb.Text == "may")
+            {
+                foreach (var option in options)
+                {
+                    Assert.Contains(option, Vocabulary.ModalVerbs.Select(x => x.FullNegativeForm));
+                }
+                return;
+            }
+
             foreach (var option in options)
             {
                 Assert.Contains(option, Vocabulary.ModalVerbs.Select(x => x.ShortNegativeForm));

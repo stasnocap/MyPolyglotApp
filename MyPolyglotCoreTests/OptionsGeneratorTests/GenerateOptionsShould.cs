@@ -393,14 +393,24 @@ namespace MyPolyglotCoreTests.OptionsGeneratorTests
 
             var shortNegativeForms = primaryVerb.ShortNegativeForms.ToList();
 
-            primaryVerb.FromWhatItWasRecognized = shortNegativeForms[_random.Next(shortNegativeForms.Count)];
-
-            var options = _optionsGenerator.GetOptions(primaryVerb);
-
             foreach (var shortNegativeForm in shortNegativeForms)
             {
+                primaryVerb.FromWhatItWasRecognized = shortNegativeForm;
+
+                var options = _optionsGenerator.GetOptions(primaryVerb);
+
+                if (shortNegativeForm == "am not")
+                {
+                    foreach (var fullNegativeForms in primaryVerb.FullNegativeForms)
+                    {
+                        Assert.Contains(fullNegativeForms, options);
+                    }
+                    return;
+                }
+
                 Assert.Contains(shortNegativeForm, options);
             }
+
         }
 
     }

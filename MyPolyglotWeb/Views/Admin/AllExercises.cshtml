@@ -1,25 +1,67 @@
 ﻿@model AllExercisesVM
 
+@section Scripts {
+    <script src="~/js/allExercises.js"></script>
+}
+
 <div class="all-exercises">
-    <table>
-        <tr>
-            <th>Урок</th>
-            <th>На русском</th>
-            <th>На английском</th>
-            <th>Редактировать</th>
-        </tr>
-        @foreach (var exercise in Model.Exercises)
-        {
+    <form class="delete-form" asp-controller="Admin" asp-action="DeleteExercise" method="post">
+        <input type="hidden" name="exerciseId" />
+        <button type="submit"></button>
+    </form>
+    <form asp-controller="Admin" asp-action="AllExercises" method="post">
+        <table>
             <tr>
-                <td>@exercise.LessonId</td>
-                <td>@exercise.RusPhrase</td>
-                <td>@exercise.EngPhrase</td>
-                <td>
-                    <a href="@Url.Action("DeleteExercise", "Admin")?exerciseId=@exercise.ExerciseId">
-                        удалить
-                    </a>
-                </td>
+                <th>Урок</th>
+                <th>На русском</th>
+                <th>На английском</th>
+                <th>Нераспознанные</th>
+                <th class="edit-header">
+                    <button class="edit-header__confirm-btn" type="submit">
+                        Подтвердить
+                    </button>
+                    <p class="edit-header__text">
+                        Редактировать
+                    </p>
+                </th>
             </tr>
-        }
-    </table>
+            @for (int i = 0; i < Model.Exercises.Count; i++)
+            {
+                <tr class="exercise-info">
+                    <td>
+                        <input asp-for="Exercises[i].LessonId" value="@Model.Exercises[i].LessonId" />
+                        <input type="hidden" asp-for="Exercises[i].ExerciseId" value="@Model.Exercises[i].ExerciseId" />
+                    </td>
+                    <td>
+                        <input asp-for="Exercises[i].RusPhrase" value="@Model.Exercises[i].RusPhrase" />
+                    </td>
+                    <td>
+                        <input asp-for="Exercises[i].EngPhrase" value="@Model.Exercises[i].EngPhrase" />
+                    </td>
+                    <td>
+                        <span class="unrecognized-words-unfold">
+                            <..слова..>
+                        </span>
+                        <div class="unrecognized-words-collapsible">
+                            @for (int j = 0; j < Model.Exercises[i].UnrecognizedWords.Count; j++)
+                            {
+                                <span class="unrecognized-words-collapsible__word">
+                                    <input asp-for="Exercises[i].UnrecognizedWords[j].Text" value="@Model.Exercises[i].UnrecognizedWords[j].Text"/>
+                                    <span class="word-type">@Model.Exercises[i].UnrecognizedWords[j].Type</span>
+                                    <input type="hidden" asp-for="Exercises[i].UnrecognizedWords[j].UnrecognizedWordId" />
+                                    <input type="hidden" asp-for="Exercises[i].UnrecognizedWords[j].Type" />
+                                    <input type="hidden" asp-for="Exercises[i].UnrecognizedWords[j].StressOnTheFinalSyllableInRegularVerb" />
+                                </span>
+                            }
+                        </div>
+                    </td>
+                    <td>
+                        <button class="delete-btn" type="button" data-exercise-id="@Model.Exercises[i].ExerciseId">
+                            удалить
+                        </button>
+                    </td>
+                </tr>
+            }
+        </table>
+    </form>
 </div>

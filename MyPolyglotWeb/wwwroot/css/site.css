@@ -25,7 +25,7 @@ body {
     font-family: Montserrat;
 }
 
-input[type=text], input[type=email], input[type=password], button, select {
+input[type=text], input[type=email], input[type=password], input[type=number], button, select {
     font-size: 1rem;
     width: 100%;
     padding: 12px 20px;
@@ -33,14 +33,20 @@ input[type=text], input[type=email], input[type=password], button, select {
     border-radius: 4px;
 }
 
-input[type=text], input[type=email], input[type=password], select {
+input[type=text], input[type=email], input[type=password], input[type=number], select {
     border: 1px solid var(--grey);
     box-shadow: inset 0 1px 3px var(--greyLighter);
 }
 
-    input[type=text]:focus, input[type=email]:focus, input[type=password]:focus, select:focus {
+    input[type=text]:focus, input[type=email]:focus, input[type=password]:focus, input[type=number]:focus, select:focus {
         outline: none;
         box-shadow: inset 0 1px 1px rgb(0 0 0 / 8%), 0 0 8px rgb(102 175 233 / 60%);
+    }
+
+    input[type=number]::-webkit-outer-spin-button,
+    input[type=number]::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
     }
 
 button {
@@ -362,25 +368,111 @@ button {
     width: 100%;
 }
 
-    .all-exercises table td, .all-exercises table th {
-        border: 1px solid #ddd;
-        padding: 8px;
+.all-exercises td, .all-exercises th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+    .all-exercises th:first-child {
+        width: 68px;
     }
 
-    .all-exercises table tr:nth-child(even) {
-        background-color: #f2f2f2;
+    .all-exercises th:nth-child(2), .all-exercises th:nth-child(3) {
+        width: 425px;
     }
 
-    .all-exercises table tr:hover {
-        background-color: #ddd;
+    .all-exercises th:nth-child(4) {
+        width: 205px;
     }
 
-    .all-exercises table th {
-        padding-top: 12px;
-        padding-bottom: 12px;
-        text-align: left;
-        background-color: #04AA6D;
-        color: white;
+.all-exercises button {
+    width: auto;
+}
+
+.all-exercises tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.all-exercises tr:hover {
+    background-color: #ddd;
+}
+
+.all-exercises th {
+    text-align: left;
+    background-color: #04AA6D;
+    color: white;
+    height: 57px;
+    vertical-align: middle;
+}
+
+.all-exercises button, .all-exercises input[type=text], .all-exercises input[type=number] {
+    padding: 2px 20px;
+    margin: 0px;
+    font-size: inherit;
+}
+
+.all-exercises input[type=text], .all-exercises input[type=number] {
+    background-color: inherit;
+}
+
+.all-exercises input[type=text]:focus, .all-exercises input[type=number]:focus {
+    background-color: white;
+}
+
+    .all-exercises .save-btn {
+    display: none;
+}
+
+.all-exercises .abort-btn {
+    display: none;
+}
+
+.all-exercises .edit-header {
+    text-align: center;
+}
+
+.edit-header__confirm-btn {
+    display: none;
+    background-color: var(--porcelain);
+    color: #444;
+}
+
+    .edit-header__confirm-btn:enabled:hover {
+    background-color: #ddd;
+}
+
+.all-exercises .delete-form button[type=submit] {
+    display:none;
+}
+
+.all-exercises .unrecognized-words-unfold {
+    background-color: #ddd;
+    cursor: pointer;
+    border: 1px solid #bbb;
+    color: #696969;
+}
+
+    .all-exercises .unrecognized-words-unfold:hover {
+        background-color: #ccc;
+    }
+
+.all-exercises .unrecognized-words-collapsible {
+    display: none;
+}
+
+    .all-exercises .unrecognized-words-collapsible.flex-column {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .unrecognized-words-collapsible__word {
+        position: relative;
+    }
+
+    .unrecognized-words-collapsible__word .word-type {
+        font-size: 15px;
+        position: absolute;
+        right: 0;
     }
 
 .tooltip {

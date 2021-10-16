@@ -6,6 +6,8 @@ namespace MyPolyglotWeb.Models.ViewModels
 {
     public class UnrecognizedWordVM
     {
+        public long UnrecognizedWordId { get; set; }
+
         [Required(ErrorMessage = CustomConst.UserTriesToBreakMe)]
         public string Text { get; set; }
 

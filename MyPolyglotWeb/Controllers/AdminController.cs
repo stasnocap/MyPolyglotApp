@@ -50,6 +50,14 @@ namespace MyPolyglotWeb.Controllers
             return View(allExerciseVM);
         }
 
+        [HttpPost]
+        public IActionResult AllExercises(AllExercisesVM allExercisesVM)
+        {
+            _adminPresentation.UpdateExercises(allExercisesVM);
+            return View(allExercisesVM);
+        }
+
+        [HttpPost]
         public IActionResult DeleteExercise(long exerciseId)
         {
             _adminPresentation.DeleteExercise(exerciseId);

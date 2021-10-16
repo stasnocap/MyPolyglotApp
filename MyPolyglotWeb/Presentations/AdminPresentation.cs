@@ -1,10 +1,9 @@
 ﻿using AutoMapper;
 using Castle.Core.Internal;
-using MyPolyglotCore;
+using MyPolyglotCore.Interfaces;
 using MyPolyglotWeb.Models.DomainModels;
 using MyPolyglotWeb.Models.ViewModels;
 using MyPolyglotWeb.Repositories.IRepositories;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -16,30 +15,33 @@ namespace MyPolyglotWeb.Presentations
         public IExerciseRepository _exerciseRepository;
         public IUnrecognizedWordRepository _unrecognizedWordRepository;
         public IMapper _mapper;
+        public IRecognizer _recognizer;
 
         public AdminPresentation(IMapper mapper, ILessonRepository lessonRepository,
-            IExerciseRepository exerciseRepository, IUnrecognizedWordRepository unrecognizedWordRepository)
+            IExerciseRepository exerciseRepository, IUnrecognizedWordRepository unrecognizedWordRepository, 
+            IRecognizer recognizer)
         {
             _mapper = mapper;
             _lessonRepository = lessonRepository;
             _exerciseRepository = exerciseRepository;
             _unrecognizedWordRepository = unrecognizedWordRepository;
+            _recognizer = recognizer;
         }
 
         public void AddExercise(AddExerciseVM addExerciseVM)
         {
             var exerciseDB = _mapper.Map<ExerciseDB>(addExerciseVM);
-            exerciseDB.Lesson = _lessonRepository.Get(long.TryParse(addExerciseVM.LessonId, out long result) ? result : -1);
+
+            exerciseDB.Lesson = _lessonRepository.Get(long.Parse(addExerciseVM.LessonId));
 
             _exerciseRepository.Save(exerciseDB);
         }
 
         public IEnumerable<UnrecognizedWordVM> GetUnrecognizedWords(string engPhrase)
         {
-            var recognizer = new Recognizer(engPhrase);
-            recognizer.Recognize();
+            _recognizer.Recognize(engPhrase);
 
-            return _mapper.Map<IEnumerable<UnrecognizedWordVM>>(recognizer.UnrecognizedWords);
+            return _mapper.Map<IEnumerable<UnrecognizedWordVM>>(_recognizer.UnrecognizedWords);
         }
 
         public AllExercisesVM GetAllExercisesVM()

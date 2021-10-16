@@ -1,23 +1,18 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using MyPolyglotCore.Interfaces;
 using MyPolyglotCore.Words;
 
 namespace MyPolyglotCore
 {
-    public class Recognizer
+    public class Recognizer : IRecognizer
     {
-        public string EngPhrase { get; }
         public IEnumerable<Word> RecognizedWords { get; private set; }
         public IEnumerable<Word> UnrecognizedWords { get; private set; }
 
-        public Recognizer(string engPhrase)
+        public void Recognize(string engPhrase)
         {
-            EngPhrase = engPhrase;
-        }
-
-        public void Recognize()
-        {
-            var words = EngPhrase.SplitToWords();
+            var words = engPhrase.SplitToWords();
             RecognizedWords = words.SelectMany(word => Vocabulary.RecognizableVocabularies.Where(x =>
                 {
                     if (!x.Equals(word))

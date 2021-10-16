@@ -1,4 +1,5 @@
 ﻿using MyPolyglotCore;
+using MyPolyglotCore.Interfaces;
 using MyPolyglotCore.Words;
 using MyPolyglotCore.Words.Adverbs;
 using MyPolyglotCore.Words.Pronouns;
@@ -12,7 +13,7 @@ namespace MyPolyglotCoreTests.OptionsGeneratorTests
     public class GenerateOptionsShould
     {
         private readonly Random _random = new Random();
-        private readonly OptionsGenerator _optionsGenerator = new OptionsGenerator();
+        private readonly IOptionsGenerator _optionsGenerator = new OptionsGenerator();
 
         [Fact]
         public void GivenSubjectPronoun_ReturnAllWordsFromSubjectPronounVocabulary()

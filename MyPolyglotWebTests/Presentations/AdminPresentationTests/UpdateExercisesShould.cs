@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Moq;
+using MyPolyglotCore.Interfaces;
 using MyPolyglotWeb.Models.DomainModels;
 using MyPolyglotWeb.Models.ViewModels;
 using MyPolyglotWeb.Presentations;
@@ -16,6 +17,7 @@ namespace MyPolyglotWebTests.Presentations.AdminPresentationTests
         private Mock<ILessonRepository> _lessonRepositoryMock;
         private Mock<IExerciseRepository> _exerciseRepositoryMock;
         private Mock<IUnrecognizedWordRepository> _unrecognizedWordRepositoryMock;
+        private Mock<IRecognizer> _recognizerMock;
 
         public UpdateExercisesShould()
         {
@@ -23,8 +25,9 @@ namespace MyPolyglotWebTests.Presentations.AdminPresentationTests
             _lessonRepositoryMock = new Mock<ILessonRepository>();
             _exerciseRepositoryMock = new Mock<IExerciseRepository>();
             _unrecognizedWordRepositoryMock = new Mock<IUnrecognizedWordRepository>();
+            _recognizerMock = new Mock<IRecognizer>();
             _adminPresentation = new AdminPresentation(_mapperMock.Object, _lessonRepositoryMock.Object,
-                _exerciseRepositoryMock.Object, _unrecognizedWordRepositoryMock.Object);
+                _exerciseRepositoryMock.Object, _unrecognizedWordRepositoryMock.Object, _recognizerMock.Object);
         }
 
         [Fact]

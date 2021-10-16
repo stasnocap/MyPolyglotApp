@@ -17,6 +17,8 @@ using MyPolyglotWeb.Services.IServices;
 using MyPolyglotWeb.Services;
 using Microsoft.AspNetCore.Http;
 using System.Collections.Generic;
+using MyPolyglotCore.Interfaces;
+using MyPolyglotCore;
 
 namespace MyPolyglotWeb
 {
@@ -50,6 +52,7 @@ namespace MyPolyglotWeb
             RegisterServices(services);
             services.AddHttpContextAccessor();
             services.AddScoped(x => new Random());
+            services.AddScoped<IRecognizer>(x => new Recognizer());
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -164,7 +167,8 @@ namespace MyPolyglotWeb
                 x.GetService<IMapper>(),
                 x.GetService<ILessonRepository>(),
                 x.GetService<IExerciseRepository>(),
-                x.GetService<IUnrecognizedWordRepository>()
+                x.GetService<IUnrecognizedWordRepository>(),
+                x.GetService<IRecognizer>()
             ));
             services.AddScoped(x => new UserPresentation(
                 x.GetService<IUserRepository>(),

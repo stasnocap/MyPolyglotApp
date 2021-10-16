@@ -6,7 +6,7 @@ using MyPolyglotWeb.Presentations;
 using MyPolyglotWeb.Repositories.IRepositories;
 using Xunit;
 
-namespace MyPolyglotWebTests.Presentation
+namespace MyPolyglotWebTests.Presentations
 {
     public class UserPresentationTests
     {

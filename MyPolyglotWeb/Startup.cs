@@ -16,7 +16,6 @@ using MyPolyglotWeb.Repositories;
 using MyPolyglotWeb.Services.IServices;
 using MyPolyglotWeb.Services;
 using Microsoft.AspNetCore.Http;
-using System.Linq;
 using System.Collections.Generic;
 
 namespace MyPolyglotWeb
@@ -95,7 +94,9 @@ namespace MyPolyglotWeb
             var config = new MapperConfiguration(x =>
             {
                 x.CreateMap<AddExerciseVM, ExerciseDB>();
-                x.CreateMap<UnrecognizedWordVM, UnrecognizedWordDB>().ReverseMap();
+                x.CreateMap<UnrecognizedWordVM, UnrecognizedWordDB>()
+                    .ForMember(nameof(UnrecognizedWordDB.Id), x => x.MapFrom(x => x.UnrecognizedWordId))
+                    .ReverseMap();
                 x.CreateMap<UnrecognizedWordDB, Word>()
                     .ConvertUsing(x => CastUnrecognizedWordDBToWord(x));
                 x.CreateMap<ExerciseDB, DoExerciseVM>()
@@ -105,6 +106,10 @@ namespace MyPolyglotWeb
                     .ForMember(nameof(AllExercisesVM.Exercises), x => x.MapFrom(x => x));
                 x.CreateMap<ExerciseDB, ExerciseVM>()
                     .ForMember(nameof(ExerciseVM.ExerciseId), x => x.MapFrom(x => x.Id));
+                x.CreateMap<ExerciseVM, ExerciseDB>()
+                    .ForMember(nameof(ExerciseDB.Id), x => x.MapFrom(x => x.ExerciseId))
+                    .ForMember(nameof(ExerciseDB.UnrecognizedWords), x => x.Ignore())
+                    .ForMember(nameof(ExerciseDB.Lesson), x => x.Ignore());
                 x.CreateMap<RegisterUserVM, UserDB>();
             });
             services.AddScoped(x => config.CreateMapper());
@@ -140,6 +145,10 @@ namespace MyPolyglotWeb
             services.AddScoped<IScoreRepository>(x => new ScoreRepository(
                 x.GetService<WebContext>()
             ));
+
+            services.AddScoped<IUnrecognizedWordRepository>(x => new UnrecognizedWordRepository(
+                x.GetService<WebContext>()
+            ));
         }
 
         private void RegisterPresentation(IServiceCollection services)
@@ -154,7 +163,8 @@ namespace MyPolyglotWeb
             services.AddScoped(x => new AdminPresentation(
                 x.GetService<IMapper>(),
                 x.GetService<ILessonRepository>(),
-                x.GetService<IExerciseRepository>()
+                x.GetService<IExerciseRepository>(),
+                x.GetService<IUnrecognizedWordRepository>()
             ));
             services.AddScoped(x => new UserPresentation(
                 x.GetService<IUserRepository>(),

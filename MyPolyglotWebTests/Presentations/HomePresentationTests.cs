@@ -9,7 +9,7 @@ using MyPolyglotWeb.Services.IServices;
 using System.Collections.Generic;
 using Xunit;
 
-namespace MyPolyglotWebTests.Presentation
+namespace MyPolyglotWebTests.Presentations
 {
     public class HomePresentationTests
     {

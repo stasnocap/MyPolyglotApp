@@ -16,7 +16,7 @@
         <div class="add-exercise__select-lesson flex-space-between">
             <select asp-for="LessonId">
                 <option disabled selected>Выберите урок</option>
-                @for (int i = 1; i <= 32; i++)
+                @for (int i = 1; i <= CustomConst.LessonsNames.Count(); i++)
                 {
                     <option value="@i">Урок @i</option>
                 }

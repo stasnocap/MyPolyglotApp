@@ -299,16 +299,16 @@ namespace MyPolyglotCore
             new Adjective("large"),
         };
 
-        public static readonly IEnumerable<Noun> Nouns = new Noun[]
+        public static readonly IEnumerable<Noun> IrregularNouns = new Noun[]
         {
-            new Noun("man"),
-            new Noun("mountain"),
-            new Noun("state"),
-            new Noun("ocean"),
-            new Noun("country"),
-            new Noun("building"),
-            new Noun("cat"),
-            new Noun("airline"),
+			new Noun("child", "children"),
+			new Noun("goose", "geese"),
+			new Noun("man", "men"),
+			new Noun("woman", "women"),
+			new Noun("tooth", "teeth"),
+			new Noun("foot", "feet"),
+			new Noun("mouse", "mice"),
+			new Noun("person", "people"),
         };
 
         public static readonly IEnumerable<Verb> IrregularVerbs = new Verb[]
@@ -551,7 +551,7 @@ namespace MyPolyglotCore
                 Type determiner when determiner == typeof(Determiner) => Determiners,
                 Type primaryVerb when primaryVerb == typeof(PrimaryVerb) => PrimaryVerbs,
                 Type verb when verb == typeof(Verb) => IrregularVerbs,
-                Type noun when noun == typeof(Noun) => Nouns,
+                Type noun when noun == typeof(Noun) => IrregularNouns,
                 Type adjective when adjective == typeof(Adjective) => Adjectives,
                 Type modalVerb when modalVerb == typeof(ModalVerb) => ModalVerbs,
                 Type preposition when preposition == typeof(Preposition) => Prepositions,

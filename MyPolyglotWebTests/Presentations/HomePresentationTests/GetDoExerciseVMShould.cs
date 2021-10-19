@@ -9,9 +9,9 @@ using MyPolyglotWeb.Services.IServices;
 using System.Collections.Generic;
 using Xunit;
 
-namespace MyPolyglotWebTests.Presentations
+namespace MyPolyglotWebTests.Presentations.HomePresentationTests
 {
-    public class HomePresentationTests
+    public class GetDoExerciseVMShould
     {
         private HomePresentation _homePresentation;
         private Mock<IMapper> _mapperMock;
@@ -20,7 +20,7 @@ namespace MyPolyglotWebTests.Presentations
         private Mock<IScoreRepository> _scoreRepository;
         private Mock<ILessonRepository> _lessonRepository;
 
-        public HomePresentationTests()
+        public GetDoExerciseVMShould()
         {
             _mapperMock = new Mock<IMapper>();
             _exerciseRepositoryMock = new Mock<IExerciseRepository>();
@@ -32,7 +32,7 @@ namespace MyPolyglotWebTests.Presentations
         }
 
         [Fact]
-        public void GetDoExerciseVM_UserNotLoggedIn()
+        public void ReturnDoExerciseVM_WhenUserNotLoggedIn()
         {
             var lessonId = 1;
             var exerciseDBMock = new Mock<ExerciseDB>();
@@ -62,7 +62,7 @@ namespace MyPolyglotWebTests.Presentations
         }
 
         [Fact]
-        public void GetDoExerciseVM_UserScoreIsNotNull()
+        public void ReturnDoExerciseVM_WhenUserScoreIsNotNull()
         {
             var lessonId = 1;
             var userId = 2;
@@ -100,7 +100,7 @@ namespace MyPolyglotWebTests.Presentations
         }
 
         [Fact]
-        public void GetDoExerciseVM_UserScoreIsNull()
+        public void ReturnDoExerciseVM_WhenUserScoreIsNull()
         {
             var lessonId = 1;
             var userId = 2;
@@ -136,7 +136,7 @@ namespace MyPolyglotWebTests.Presentations
         }
 
         [Fact]
-        public void GetDoExerciseVM_ForSecondLessonWhenUserIsNull()
+        public void ReturnDoExerciseVM_ForSecondLessonWhenUserIsNull()
         {
             var lessonId = 2;
             var exerciseDBMock = new Mock<ExerciseDB>();
@@ -168,102 +168,6 @@ namespace MyPolyglotWebTests.Presentations
 
             exerciseVMMock.VerifySet(x => x.UserPoints = -1, Times.Once);
             _userService.Verify(x => x.GetCurrentUser(), Times.Once);
-        }
-
-        [Fact]
-        public void CheckAnswer_GivenRightAnswer()
-        {
-            var exerciseId = 1;
-            var userAnswer = "I am cool.";
-            var exerciseDBMock = new Mock<ExerciseDB>();
-            _exerciseRepositoryMock.Setup(x => x.Get(exerciseId)).Returns(exerciseDBMock.Object);
-            exerciseDBMock.Setup(x => x.EngPhrase).Returns(userAnswer);
-
-            var result = _homePresentation.CheckAnswer(exerciseId, userAnswer);
-
-            _exerciseRepositoryMock.Verify(x => x.Get(exerciseId), Times.Once);
-            Assert.True(result);
-        }
-
-        [Fact]
-        public void CheckAnswer_GivenWrongAnswer()
-        {
-            var exerciseId = 1;
-            var wrongUserAnswer = "I was cool.";
-            var rightAnswer = "I am cool.";
-            var exerciseDBMock = new Mock<ExerciseDB>();
-            _exerciseRepositoryMock.Setup(x => x.Get(exerciseId)).Returns(exerciseDBMock.Object);
-            exerciseDBMock.Setup(x => x.EngPhrase).Returns(rightAnswer);
-
-            var result = _homePresentation.CheckAnswer(exerciseId, wrongUserAnswer);
-
-            _exerciseRepositoryMock.Verify(x => x.Get(exerciseId), Times.Once);
-            Assert.False(result);
-        }
-
-        [Fact]
-        public void PlusPoint()
-        {
-            var lessonId = 1;
-            var userId = 2;
-            var userScorePoints = 3;
-
-            _userService.Setup(x => x.GetCurrentUserId()).Returns(userId);
-            var userScoreMock = new Mock<ScoreDB>();
-            userScoreMock.Setup(x => x.Points).Returns(userScorePoints);
-            _scoreRepository.Setup(x => x.Get(userId, lessonId)).Returns(userScoreMock.Object);
-
-            _homePresentation.PlusPoint(lessonId);
-
-            _userService.Verify(x => x.GetCurrentUserId(), Times.Once);
-            userScoreMock.VerifySet(x => x.Points = userScorePoints + 1, Times.Once);
-            _scoreRepository.Verify(x => x.Save(userScoreMock.Object), Times.Once);
-        }
-
-        [Theory]
-        [InlineData(0.5)]
-        [InlineData(1)]
-        [InlineData(1.5)]
-        [InlineData(2)]
-        [InlineData(50)]
-        public void MinusPoint_ScorePointsMoreThanHalfOne(double scorePoints)
-        {
-            var lessonId = 1;
-            var userId = 2;
-            var userMock = new Mock<UserDB>();
-            userMock.Setup(x => x.Id).Returns(userId);
-            _userService.Setup(x => x.GetCurrentUser()).Returns(userMock.Object);
-            var scoreMock = new Mock<ScoreDB>();
-            scoreMock.Setup(x => x.Points).Returns(scorePoints);
-            _scoreRepository.Setup(x => x.Get(userId, lessonId)).Returns(scoreMock.Object);
-            
-            _homePresentation.MinusPoint(lessonId);
-
-            _userService.Verify(x => x.GetCurrentUser(), Times.Once);
-            _scoreRepository.Verify(x => x.Get(userId, lessonId), Times.Once);
-            scoreMock.VerifySet(x => x.Points = scorePoints - 0.5, Times.Once);
-            _scoreRepository.Verify(x => x.Save(scoreMock.Object), Times.Once);
-        }
-
-        [Fact]
-        public void MinusPoint_ScorePointsIsZero()
-        {
-            var lessonId = 1;
-            var userId = 2;
-            var userMock = new Mock<UserDB>();
-            var scorePoints = 0;
-            userMock.Setup(x => x.Id).Returns(userId);
-            _userService.Setup(x => x.GetCurrentUser()).Returns(userMock.Object);
-            var scoreMock = new Mock<ScoreDB>();
-            scoreMock.Setup(x => x.Points).Returns(scorePoints);
-            _scoreRepository.Setup(x => x.Get(userId, lessonId)).Returns(scoreMock.Object);
-
-            _homePresentation.MinusPoint(lessonId);
-
-            _userService.Verify(x => x.GetCurrentUser(), Times.Once);
-            _scoreRepository.Verify(x => x.Get(userId, lessonId), Times.Once);
-            scoreMock.VerifySet(x => x.Points = scorePoints - 0.5, Times.Never);
-            _scoreRepository.Verify(x => x.Save(scoreMock.Object), Times.Never);
         }
     }
 }

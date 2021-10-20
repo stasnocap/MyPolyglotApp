@@ -12,7 +12,7 @@ namespace MyPolyglotCore.Words
             PluralForm = pluralForm;
         }
 
-        public Noun(string text) : base(text) 
+        public Noun(string text) : base(text)
         {
             PluralForm = GeneratePluralForm();
         }
@@ -29,7 +29,7 @@ namespace MyPolyglotCore.Words
                 return Text.Substring(0, Text.Length - 2) + "es";
             }
 
-            if (Text.EndsWith('f') 
+            if (Text.EndsWith('f')
                 && Text != "roof"
                 && Text != "belief"
                 && Text != "chef"
@@ -48,14 +48,14 @@ namespace MyPolyglotCore.Words
                 return Text.Substring(0, Text.Length - 1) + "ies";
             }
 
-            if (Text.EndsWith('s') 
-                || Text.EndsWith("ss") 
-                || Text.EndsWith("sh") 
-                || Text.EndsWith("ch") 
-                || Text.EndsWith("x") 
-                || Text.EndsWith("z") 
+            if (Text.EndsWith('s')
+                || Text.EndsWith("ss")
+                || Text.EndsWith("sh")
+                || Text.EndsWith("ch")
+                || Text.EndsWith("x")
+                || Text.EndsWith("z")
                 || Text.EndsWith("es")
-                || Text.EndsWith("o") 
+                || Text.EndsWith("o")
                 && Text != "photo"
                 && Text != "piano"
                 && Text != "halo")
@@ -64,6 +64,24 @@ namespace MyPolyglotCore.Words
             }
 
             return Text + "s";
+        }
+
+        public override bool Equals(object obj)
+        {
+            var word = obj as Word;
+
+            if (word == null)
+            {
+                return false;
+            }
+
+            return base.Equals(obj)
+                || PluralForm == word.Text;
+        }
+
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(Text, PluralForm);
         }
     }
 }

@@ -255,20 +255,20 @@ button {
         margin-left: auto;
     }
 
-.unrecognized-word__header {
+.unrecognized-word__info {
     display: flex;
     justify-content: space-between;
 }
 
-    .unrecognized-word__header p {
+    .unrecognized-word__info .right-side-of-word-info {
         color: cornflowerblue;
     }
 
-    .unrecognized-word__header span {
+    .unrecognized-word__info span {
         user-select: none;
     }
 
-.left-side-of-header__word-name {
+.left-side-of-word-info__word-name {
     cursor: pointer;
 }
 
@@ -278,19 +278,19 @@ button {
 }
 
 /* The container */
-.left-side-of-header__stress-block {
+.checkmark-block {
     position: relative;
     padding-left: 35px;
     cursor: pointer;
 }
 
     /* Hide the browser's default checkbox */
-    .left-side-of-header__stress-block input[type=checkbox] {
+    .checkmark-block input[type=checkbox] {
         display: none;
     }
 
     /* Create a custom checkbox */
-    .left-side-of-header__stress-block .checkmark {
+    .checkmark-block .checkmark {
         position: absolute;
         top: 0;
         left: 0;
@@ -300,29 +300,29 @@ button {
     }
 
     /* On mouse-over, add a grey background color */
-    .left-side-of-header__stress-block:hover input ~ .checkmark {
+    .checkmark-block:hover input ~ .checkmark {
         background-color: #ccc;
     }
 
     /* When the checkbox is checked, add a blue background */
-    .left-side-of-header__stress-block input:checked ~ .checkmark {
+    .checkmark-block input:checked ~ .checkmark {
         background-color: #2196F3;
     }
 
     /* Create the checkmark/indicator (hidden when not checked) */
-    .left-side-of-header__stress-block .checkmark:after {
+    .checkmark-block .checkmark:after {
         content: "";
         position: absolute;
         display: none;
     }
 
     /* Show the checkmark when checked */
-    .left-side-of-header__stress-block input:checked ~ .checkmark:after {
+    .checkmark-block input:checked ~ .checkmark:after {
         display: block;
     }
 
     /* Style the checkmark/indicator */
-    .left-side-of-header__stress-block .checkmark:after {
+    .checkmark-block .checkmark:after {
         left: 9px;
         top: 5px;
         width: 5px;
@@ -335,21 +335,21 @@ button {
     }
 
 /* The container */
-.syllable-radio-button {
+.radio-block {
     position: relative;
     padding-left: 35px;
     cursor: pointer;
 }
 
     /* Hide the browser's default radio button */
-    .syllable-radio-button input {
+    .radio-block input {
         position: absolute;
         opacity: 0;
         cursor: pointer;
     }
 
     /* Create a custom radio button */
-    .syllable-radio-button .checkmark {
+    .radio-block .checkmark {
         position: absolute;
         top: 0;
         left: 0;
@@ -360,29 +360,29 @@ button {
     }
 
     /* On mouse-over, add a grey background color */
-.syllable-radio-button:hover input ~ .checkmark {
+.radio-block:hover input ~ .checkmark {
     background-color: #ccc;
 }
 
     /* When the radio button is checked, add a blue background */
-.syllable-radio-button input:checked ~ .checkmark {
+.radio-block input:checked ~ .checkmark {
     background-color: #2196F3;
 }
 
     /* Create the indicator (the dot/circle - hidden when not checked) */
-.syllable-radio-button .checkmark:after {
+.radio-block .checkmark:after {
     content: "";
     position: absolute;
     display: none;
 }
 
     /* Show the indicator (dot/circle) when checked */
-.syllable-radio-button input:checked ~ .checkmark:after {
+.radio-block input:checked ~ .checkmark:after {
     display: block;
 }
 
     /* Style the indicator (dot/circle) */
-.syllable-radio-button .checkmark:after {
+.radio-block .checkmark:after {
     top: 9px;
     left: 9px;
     width: 8px;

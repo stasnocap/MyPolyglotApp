@@ -28,13 +28,15 @@
         for (var i = 0; i < unrecognizedArray.length; i++) {
             $('.unrecognized-words').append(`
             <div class="unrecognized-word" index="${i}">
-                <div class="unrecognized-word__header">
-                    <div class="left-side-of-header">
-                        <span class="left-side-of-header__word-name">${unrecognizedArray[i].text}</span>
+                <div class="unrecognized-word__info">
+                    <div class="left-side-of-word-info">
+                        <span class="left-side-of-word-info__word-name">${unrecognizedArray[i].text}</span>
                     </div>
                 </div>
-                <select name=UnrecognizedWords[${i}].Type>${options}</select>
-                <input name="UnrecognizedWords[${i}].Text" type="hidden" value="${unrecognizedArray[i].text}"/>
+                <div class="unrecognized-word__select">
+                    <select name="UnrecognizedWords[${i}].Type">${options}</select>
+                    <input name="UnrecognizedWords[${i}].Text" type="hidden" value="${unrecognizedArray[i].text}"/>
+                </div>
             </div>`
             );
         }

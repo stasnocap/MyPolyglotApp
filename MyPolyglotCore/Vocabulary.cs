@@ -337,7 +337,6 @@ namespace MyPolyglotCore
 			new Noun("system"),
 			new Noun("program"),
 			new Noun("question"),
-			new Noun("work"),
 			new Noun("government"),
 			new Noun("number"),
 			new Noun("night"),

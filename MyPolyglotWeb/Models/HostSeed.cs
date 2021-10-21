@@ -1,11 +1,9 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using MyPolyglotCore;
-using MyPolyglotCore.Words;
 using MyPolyglotWeb.Constants;
 using MyPolyglotWeb.Models.DomainModels;
 using MyPolyglotWeb.Repositories.IRepositories;
-using System;
 using System.Collections.Generic;
 
 namespace MyPolyglotWeb.Models
@@ -22,11 +20,66 @@ namespace MyPolyglotWeb.Models
                 var lessonRepository = serviceProvider.GetService<ILessonRepository>();
                 CreateLessons(lessonRepository);
                 AddExercisesToLesson1(exerciseRepository, lessonRepository.Get(1));
+                AddExercisesToLesson2(exerciseRepository, lessonRepository.Get(2));
             }
             return host;
         }
 
-        private static void AddExercisesToLesson1(IExerciseRepository exerciseRepository, LessonDB lesson)
+        private static void AddExercisesToLesson2(IExerciseRepository exerciseRepository, LessonDB lessonDB)
+        {
+            var dbExercises = new List<ExerciseDB>()
+            {
+                new ExerciseDB()
+                {
+                    RusPhrase = "Мы не оставили его.",
+                    EngPhrase = "We didn't leave him.",
+                    Lesson = lessonDB
+                },
+                new ExerciseDB()
+                {
+                    RusPhrase = "Он поймёт тебя.",
+                    EngPhrase = "He will understand you.",
+                    Lesson = lessonDB
+                },
+                new ExerciseDB()
+                {
+                    RusPhrase = "Ты открываешь ей.",
+                    EngPhrase = "You open her.",
+                    Lesson = lessonDB,
+                    UnrecognizedWords = new List<UnrecognizedWordDB>()
+                    {
+                        new UnrecognizedWordDB()
+                        {
+                            Text = "open",
+                            Type = UnrecognizableTypes.RegularVerb,
+                            StressOnTheFinalSyllableInRegularVerb = false,
+                        }
+                    }
+                },
+                new ExerciseDB()
+                {
+                    RusPhrase = "Я сломаю?",
+                    EngPhrase = "Will i break?",
+                    Lesson = lessonDB
+                },
+                new ExerciseDB()
+                {
+                    RusPhrase = "Я показал им?",
+                    EngPhrase = "Did i show them?",
+                    Lesson = lessonDB
+                },
+            };
+
+            foreach (var dbExercise in dbExercises)
+            {
+                if (!exerciseRepository.IsExist(dbExercise.EngPhrase))
+                {
+                    exerciseRepository.Save(dbExercise);
+                }
+            }
+        }
+
+        private static void AddExercisesToLesson1(IExerciseRepository exerciseRepository, LessonDB lessonDB)
         {
             var dbExercises = new List<ExerciseDB>()
             {
@@ -34,19 +87,19 @@ namespace MyPolyglotWeb.Models
                 {
                     RusPhrase = "Ты не увидишь.",
                     EngPhrase = "You will not see.",
-                    Lesson = lesson
+                    Lesson = lessonDB
                 },
                 new ExerciseDB()
                 {
                     RusPhrase = "Мы покажем?",
                     EngPhrase = "Will we show?",
-                    Lesson = lesson
+                    Lesson = lessonDB
                 },
                 new ExerciseDB()
                 {
                     RusPhrase = "Она работала.",
                     EngPhrase = "She worked.",
-                    Lesson = lesson,
+                    Lesson = lessonDB,
                     UnrecognizedWords = new List<UnrecognizedWordDB>()
                     {
                         new UnrecognizedWordDB()
@@ -61,13 +114,13 @@ namespace MyPolyglotWeb.Models
                 {
                     RusPhrase = "Ты не думал.",
                     EngPhrase = "You didn't think.",
-                    Lesson = lesson,
+                    Lesson = lessonDB,
                 },
                 new ExerciseDB()
                 {
                     RusPhrase = "Я посмотрю?",
                     EngPhrase = "Will i look?",
-                    Lesson = lesson,
+                    Lesson = lessonDB,
                     UnrecognizedWords = new List<UnrecognizedWordDB>()
                     {
                         new UnrecognizedWordDB()
@@ -80,11 +133,11 @@ namespace MyPolyglotWeb.Models
                 }
             };
 
-            foreach (var exercise in dbExercises)
+            foreach (var dbExercise in dbExercises)
             {
-                if (!exerciseRepository.IsExist(exercise.EngPhrase))
+                if (!exerciseRepository.IsExist(dbExercise.EngPhrase))
                 {
-                    exerciseRepository.Save(exercise);
+                    exerciseRepository.Save(dbExercise);
                 }
             }
         }

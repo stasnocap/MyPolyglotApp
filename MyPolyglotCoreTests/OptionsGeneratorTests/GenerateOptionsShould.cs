@@ -123,10 +123,49 @@ namespace MyPolyglotCoreTests.OptionsGeneratorTests
         }
 
         [Fact]
-        public void GivenNoun_ReturnFiveWordsFromNounVocabularyWithRightAnswer()
+        public void GivenNounRecognizedFromPluralForm_ReturnFiveWordsPluralFormsFromNounVocabularyWithRightAnswer()
         {
-            var word = new Noun("no matter");
-            CheckIfFiveWordsFromVocabularyWithRightWordHadRecieved(word);
+            var noun = new Noun("no matter")
+            {
+                WasRecognizedFromPluralForm = true
+            };
+
+            var options = _optionsGenerator.GetOptions(noun);
+
+            foreach (var option in options)
+            {
+                if (noun.PluralForm == option)
+                {
+                    continue;
+                }
+
+                Assert.Contains(option, Vocabulary.IrregularNouns.Select(x => x.PluralForm));
+            }
+
+            Assert.Contains(noun.PluralForm, options);
+        }
+
+        [Fact]
+        public void GivenNounRecognizedFromSingleForm_ReturnFiveWordsSingleFormsFromNounVocabularyWithRightAnswer()
+        {
+            var noun = new Noun("no matter")
+            {
+                WasRecognizedFromPluralForm = false
+            };
+
+            var options = _optionsGenerator.GetOptions(noun);
+
+            foreach (var option in options)
+            {
+                if (noun.Text == option)
+                {
+                    continue;
+                }
+
+                Assert.Contains(option, Vocabulary.IrregularNouns.Select(x => x.Text));
+            }
+
+            Assert.Contains(noun.Text, options);
         }
 
         [Fact]

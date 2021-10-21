@@ -1,11 +1,22 @@
 using System;
 using System.Linq;
+using System.Runtime.CompilerServices;
 
 namespace MyPolyglotCore.Words
 {
     public class Noun : Word
     {
         public string PluralForm { get; set; }
+        public bool WasRecognizedFromPluralForm { get; set; }
+
+        public Noun(string singleOrPlural, bool wasRecognizedFromPluralForm) : base(!wasRecognizedFromPluralForm ? singleOrPlural : null)
+        {
+            WasRecognizedFromPluralForm = wasRecognizedFromPluralForm;
+            if (wasRecognizedFromPluralForm)
+            {
+                PluralForm = singleOrPlural;
+            }
+        }
 
         public Noun(string text, string pluralForm) : base(text)
         {

@@ -8,6 +8,7 @@ namespace MyPolyglotWeb.Models.DomainModels
         public UnrecognizableTypes Type { get; set; }
         public bool StressOnTheFinalSyllableInRegularVerb { get; set; }
         public int SyllablesInRegularComparisonAdjective { get; set; }
+        public bool WasRecognizedFromPluralForm { get; set; }
         public virtual ExerciseDB Exercise { get; set; }
     }
 }

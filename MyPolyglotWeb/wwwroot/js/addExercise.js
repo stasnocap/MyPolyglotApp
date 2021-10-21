@@ -20,10 +20,12 @@ $(document).on('change', '.add-exercise__unrecognized-block select', function ()
             </div>
         `);
     } else if ($(this).val() == 'Noun') {
-        appendToRightSideOfWordInfo(unrecognizedWord, `
-            <div class="right-side-of-word-info">
-                Пожалуйста, введите одиночую форму существительного.
-            </div>
+        unrecognizedWord.find('.left-side-of-word-info').append(`
+            <span class="left-side-of-word-info__plural-block checkmark-block">
+                <input name="UnrecognizedWords[${unrecognizedWord.attr('index')}].WasRecognizedFromPluralForm" type="checkbox" value="true">
+                <span class="checkmark"></span>
+                <span>множественная форма</span>
+            </span>
         `);
     }
 
@@ -72,12 +74,12 @@ $(document).on('focusout', '.add-exercise__unrecognized-block input[type=text]',
                 </span>
             </span>
         `);
-    }
+    } 
 
     unrecognizedWord.find('.left-side-of-word-info__word-name').text($(this).val());
 });
 
-$(document).on('click', '.left-side-of-word-info__stress-block', function () {
+$(document).on('click', '.checkmark-block', function () {
     var checkBox = $(this).find('input[type=checkbox]');
     checkBox.prop("checked", !checkBox.prop("checked"));
 });

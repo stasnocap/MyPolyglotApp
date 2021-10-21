@@ -18,5 +18,7 @@ namespace MyPolyglotWeb.Models.ViewModels
         public bool StressOnTheFinalSyllableInRegularVerb { get; set; }
 
         public int SyllablesInRegularComparisonAdjective { get; set; }
+
+        public bool WasRecognizedFromPluralForm { get; set; }
     }
 }

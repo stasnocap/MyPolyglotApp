@@ -121,7 +121,16 @@ namespace MyPolyglotCore
 
         private IEnumerable<string> GenerateOptions(Noun noun)
         {
-            return GetRandomWordsFromVocabularyWithRightWord(noun);
+            if (noun.WasRecognizedFromPluralForm)
+            {
+                return Vocabulary.IrregularNouns
+                    .Select(x => x.PluralForm)
+                    .TakeSixShuffledStrings(noun.PluralForm);
+            }
+
+            return Vocabulary.IrregularNouns
+                    .Select(x => x.Text)
+                    .TakeSixShuffledStrings(noun.Text);
         }
 
         private IEnumerable<string> GenerateOptions(Preposition preposition)

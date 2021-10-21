@@ -139,7 +139,7 @@ namespace MyPolyglotCoreTests.OptionsGeneratorTests
                     continue;
                 }
 
-                Assert.Contains(option, Vocabulary.IrregularNouns.Select(x => x.PluralForm));
+                Assert.Contains(option, Vocabulary.Nouns.Concat(Vocabulary.IrregularNouns).Select(x => x.PluralForm));
             }
 
             Assert.Contains(noun.PluralForm, options);
@@ -162,7 +162,53 @@ namespace MyPolyglotCoreTests.OptionsGeneratorTests
                     continue;
                 }
 
-                Assert.Contains(option, Vocabulary.IrregularNouns.Select(x => x.Text));
+                Assert.Contains(option, Vocabulary.Nouns.Concat(Vocabulary.IrregularNouns).Select(x => x.Text));
+            }
+
+            Assert.Contains(noun.Text, options);
+        }
+
+        [Fact]
+        public void GivenPluralNounRecognizedNotByUserButByVocabulary_ReturnFiveWordsPluralFormsFromNounVocabularyWithRightAnswer()
+        {
+            var noun = new Noun("cat")
+            {
+                FromWhatItWasRecognized = "cats"
+            };
+
+            var options = _optionsGenerator.GetOptions(noun);
+
+            foreach (var option in options)
+            {
+                if (noun.PluralForm == option)
+                {
+                    continue;
+                }
+
+                Assert.Contains(option, Vocabulary.Nouns.Concat(Vocabulary.IrregularNouns).Select(x => x.PluralForm));
+            }
+
+            Assert.Contains(noun.PluralForm, options);
+        }
+
+        [Fact]
+        public void GivenSingleNounRecognizedNotByUserButByVocabulary_ReturnFiveWordsSingleFormsFromNounVocabularyWithRightAnswer()
+        {
+            var noun = new Noun("cat")
+            {
+                FromWhatItWasRecognized = "cat"
+            };
+
+            var options = _optionsGenerator.GetOptions(noun);
+
+            foreach (var option in options)
+            {
+                if (noun.Text == option)
+                {
+                    continue;
+                }
+
+                Assert.Contains(option, Vocabulary.Nouns.Concat(Vocabulary.IrregularNouns).Select(x => x.Text));
             }
 
             Assert.Contains(noun.Text, options);

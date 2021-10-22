@@ -142,17 +142,17 @@ namespace MyPolyglotCore
 
         private IEnumerable<string> GenerateOptions(Noun noun)
         {
+            var nounVocabulary = Vocabulary.GetVocabulary(typeof(Noun)).Cast<Noun>();
             if (noun.WasRecognizedFromPluralForm
                 || noun.PluralForm != null && noun.FromWhatItWasRecognized == noun.PluralForm)
             {
-                return Vocabulary.Nouns
-                    .Concat(Vocabulary.IrregularNouns)
+
+                return nounVocabulary
                     .Select(x => x.PluralForm)
                     .TakeSixShuffledStrings(noun.PluralForm);
             }
 
-            return Vocabulary.Nouns
-                    .Concat(Vocabulary.IrregularNouns)
+            return nounVocabulary
                     .Select(x => x.Text)
                     .TakeSixShuffledStrings(noun.Text);
         }

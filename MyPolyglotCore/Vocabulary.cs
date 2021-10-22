@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using MyPolyglotCore.Words;
 using MyPolyglotCore.Words.Adverbs;
+using MyPolyglotCore.Words.Compounds;
 using MyPolyglotCore.Words.Pronouns;
 
 namespace MyPolyglotCore
@@ -282,7 +283,43 @@ namespace MyPolyglotCore
 
         #endregion
 
-        public static readonly IEnumerable<Determiner> Determiners = new Determiner[]
+        #region Compounds
+
+        public static readonly IEnumerable<Compound> SomeCompounds = new Compound[]
+		{
+			new Compound("something"),
+			new Compound("somebody"),
+			new Compound("someone"),
+			new Compound("somewhere"),
+			new Compound("sometimes"),
+		};
+
+		public static readonly IEnumerable<Compound> AnyCompounds = new Compound[]
+{
+			new Compound("anything"),
+			new Compound("anybody"),
+			new Compound("anyone"),
+			new Compound("anywhere"),
+        };
+
+		public static readonly IEnumerable<Compound> EveryCompounds = new Compound[]
+        {
+			new Compound("everything"),
+			new Compound("everybody"),
+			new Compound("everyone"),
+			new Compound("everywhere"),
+        };
+
+		public static readonly IEnumerable<Compound> NoCompounds = new Compound[]
+		{
+			new Compound("nothing"),
+			new Compound("nobody"),
+			new Compound("nowhere"),
+		};
+
+		#endregion
+
+		public static readonly IEnumerable<Determiner> Determiners = new Determiner[]
         {
             new Determiner("the"),
             new Determiner("a"),

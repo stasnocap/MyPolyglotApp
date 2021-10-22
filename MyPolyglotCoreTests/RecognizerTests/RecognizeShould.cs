@@ -134,6 +134,20 @@ namespace MyPolyglotCoreTests.RecognizerTests
         }
 
         [Fact]
+        public void RecognizeNounByText()
+        {
+            var randomWordFromVocabulary = RandomWordHelper.GetRandomNoun();
+            CheckIfGivenWordHadRecognized(randomWordFromVocabulary);
+        }
+
+        [Fact]
+        public void RecognizeAdjectiveByText()
+        {
+            var randomWordFromVocabulary = RandomWordHelper.GetRandomAdjective();
+            CheckIfGivenWordHadRecognized(randomWordFromVocabulary);
+        }
+
+        [Fact]
         public void RecognizeCompoundByText()
         {
             var randomWordFromVocabulary = RandomWordHelper.GetRandomCompound();

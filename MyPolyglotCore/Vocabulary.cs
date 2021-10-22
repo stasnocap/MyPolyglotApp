@@ -322,11 +322,56 @@ namespace MyPolyglotCore
 
         public static readonly IEnumerable<Adjective> Adjectives = new Adjective[]
         {
-            new Adjective("other"),
+            new Adjective("able"),
+            new Adjective("bad"),
+            new Adjective("best"),
+            new Adjective("better"),
+            new Adjective("big"),
+            new Adjective("black"),
+            new Adjective("certain"),
+            new Adjective("clear"),
+            new Adjective("different"),
+            new Adjective("early"),
+            new Adjective("easy"),
+            new Adjective("economic"),
+            new Adjective("federal"),
+            new Adjective("free"),
+            new Adjective("full"),
+            new Adjective("good"),
+            new Adjective("great"),
+            new Adjective("hard"),
+            new Adjective("high"),
+            new Adjective("human"),
+            new Adjective("important"),
+            new Adjective("international"),
+            new Adjective("large"),
+            new Adjective("late"),
+            new Adjective("little"),
+            new Adjective("local"),
+            new Adjective("long"),
+            new Adjective("low"),
+            new Adjective("major"),
+            new Adjective("military"),
+            new Adjective("national"),
             new Adjective("new"),
             new Adjective("old"),
-            new Adjective("big"),
-            new Adjective("large"),
+            new Adjective("only"),
+            new Adjective("other"),
+            new Adjective("political"),
+            new Adjective("possible"),
+            new Adjective("public"),
+            new Adjective("real"),
+            new Adjective("recent"),
+            new Adjective("right"),
+            new Adjective("small"),
+            new Adjective("social"),
+            new Adjective("special"),
+            new Adjective("strong"),
+            new Adjective("sure"),
+            new Adjective("true"),
+            new Adjective("white"),
+            new Adjective("whole"),
+            new Adjective("young"),
         };
 
         public static readonly IEnumerable<Noun> IrregularNouns = new Noun[]
@@ -661,6 +706,7 @@ namespace MyPolyglotCore
             .Concat(NoCompounds)
             #endregion
             .Concat(Determiners)
+            .Concat(Adjectives)
             .Concat(IrregularNouns)
             .Concat(Nouns)
             .Concat(IrregularVerbs)

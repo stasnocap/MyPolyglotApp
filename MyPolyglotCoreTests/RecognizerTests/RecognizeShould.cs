@@ -133,6 +133,13 @@ namespace MyPolyglotCoreTests.RecognizerTests
             CheckIfGivenWordHadRecognized(randomWordFromVocabulary);
         }
 
+        [Fact]
+        public void RecognizeCompoundByText()
+        {
+            var randomWordFromVocabulary = RandomWordHelper.GetRandomCompound();
+            CheckIfGivenWordHadRecognized(randomWordFromVocabulary);
+        }
+
         private void CheckIfGivenWordHadRecognized(Word word)
         {
             var engPhrase =
@@ -413,9 +420,15 @@ namespace MyPolyglotCoreTests.RecognizerTests
             AssertIfWordRememberFromWhatItWasRecognized(typeof(ComparisonAdjective));
         }
 
+        [Fact]
+        public void MakeCompoundRememberFromWhatItWasRecognized()
+        {
+            AssertIfWordRememberFromWhatItWasRecognized(typeof(Compound));
+        }
+
         private void AssertIfWordRememberFromWhatItWasRecognized(Type typeOfWord)
         {
-            var randomWordFromVocabulary = typeOfWord.GetRandomWordFromVocabulary();
+            var randomWordFromVocabulary = typeOfWord.GetRandomWord();
 
             var recognizer = new Recognizer("rstrs " + randomWordFromVocabulary.Text + " rtst");
             recognizer.Recognize();

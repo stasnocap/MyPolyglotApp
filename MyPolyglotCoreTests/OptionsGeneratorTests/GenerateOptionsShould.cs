@@ -106,6 +106,30 @@ namespace MyPolyglotCoreTests.OptionsGeneratorTests
         }
 
         [Fact]
+        public void GivenSomeCompound_ReturnAllWordsFromSomeCompoundsVocabulary()
+        {
+            CheckIfAllWordsFromVocabularyHadRecieved(RandomWordHelper.GetRandomSomeCompound(), Vocabulary.SomeCompounds);
+        }
+
+        [Fact]
+        public void GivenAnyCompound_ReturnAllWordsFromAnyCompoundsVocabulary()
+        {
+            CheckIfAllWordsFromVocabularyHadRecieved(RandomWordHelper.GetRandomAnyCompound(), Vocabulary.AnyCompounds);
+        }
+
+        [Fact]
+        public void GivenEveryCompound_ReturnAllWordsFromEveryCompoundsVocabulary()
+        {
+            CheckIfAllWordsFromVocabularyHadRecieved(RandomWordHelper.GetRandomEveryCompound(), Vocabulary.EveryCompounds);
+        }
+
+        [Fact]
+        public void GivenNoCompound_ReturnAllWordsFromNoCompoundsVocabulary()
+        {
+            CheckIfAllWordsFromVocabularyHadRecieved(RandomWordHelper.GetRandomNoCompound(), Vocabulary.NoCompounds);
+        }
+
+        [Fact]
         public void GivenDeterminer_ReturnAllWordsFromDeterminerVocabulary()
         {
             var word = new Determiner("no matter");
@@ -114,13 +138,18 @@ namespace MyPolyglotCoreTests.OptionsGeneratorTests
 
         private void CheckIfAllWordsFromVocabularyHadRecieved(Word word)
         {
+            CheckIfAllWordsFromVocabularyHadRecieved(word, Vocabulary.GetVocabulary(word.GetType()));
+        }
+
+        private void CheckIfAllWordsFromVocabularyHadRecieved(Word word, IEnumerable<Word> vocabulary)
+        {
             var options = _optionsGenerator.GetOptions(word);
-            var vocabulary = Vocabulary.GetVocabulary(word.GetType());
             foreach (var wordFromVocabulary in vocabulary)
             {
                 Assert.Contains(wordFromVocabulary.Text, options);
             }
         }
+
 
         [Fact]
         public void GivenNounRecognizedFromPluralForm_ReturnFiveWordsPluralFormsFromNounVocabularyWithRightAnswer()

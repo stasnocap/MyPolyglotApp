@@ -26,6 +26,7 @@ namespace MyPolyglotCore
                 TellTheExtentOfTheActionAdverb tellTheExtentOfTheActionAdverb => GenerateOptions(tellTheExtentOfTheActionAdverb),
                 TellWhenItHappenedAdverb tellWhenItHappenedAdverb => GenerateOptions(tellWhenItHappenedAdverb),
                 TellWhereItHappenedAdverb tellWhereItHappenedAdverb => GenerateOptions(tellWhereItHappenedAdverb),
+                Compound compound => GenerateOptions(compound),
                 Determiner determiner => GenerateOptions(determiner),
                 Adjective adjective => GenerateOptions(adjective),
                 Noun noun => GenerateOptions(noun),
@@ -37,6 +38,26 @@ namespace MyPolyglotCore
                 DemonstrativePronoun demonstrativePronoun => GenerateOptions(demonstrativePronoun),
                 _ => throw new NotImplementedException(),
             };
+        }
+
+        private IEnumerable<string> GenerateOptions(Compound compound)
+        {
+            if (Vocabulary.SomeCompounds.Contains(compound))
+            {
+                return Vocabulary.SomeCompounds.Select(x => x.Text);
+            }
+
+            if (Vocabulary.AnyCompounds.Contains(compound))
+            {
+                return Vocabulary.AnyCompounds.Select(x => x.Text);
+            }
+
+            if (Vocabulary.EveryCompounds.Contains(compound))
+            {
+                return Vocabulary.EveryCompounds.Select(x => x.Text);
+            }
+
+            return Vocabulary.NoCompounds.Select(x => x.Text);
         }
 
         private IEnumerable<string> GenerateOptions(TellWhereItHappenedAdverb tellWhereItHappenedAdverb)
@@ -121,7 +142,7 @@ namespace MyPolyglotCore
 
         private IEnumerable<string> GenerateOptions(Noun noun)
         {
-            if (noun.WasRecognizedFromPluralForm 
+            if (noun.WasRecognizedFromPluralForm
                 || noun.PluralForm != null && noun.FromWhatItWasRecognized == noun.PluralForm)
             {
                 return Vocabulary.Nouns

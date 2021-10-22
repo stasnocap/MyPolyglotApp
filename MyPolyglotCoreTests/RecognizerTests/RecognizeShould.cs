@@ -428,7 +428,7 @@ namespace MyPolyglotCoreTests.RecognizerTests
 
         private void AssertIfWordRememberFromWhatItWasRecognized(Type typeOfWord)
         {
-            var randomWordFromVocabulary = typeOfWord.GetRandomWordFromVocabulary();
+            var randomWordFromVocabulary = typeOfWord.GetRandomWord();
 
             var recognizer = new Recognizer("rstrs " + randomWordFromVocabulary.Text + " rtst");
             recognizer.Recognize();

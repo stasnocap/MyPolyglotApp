@@ -17,110 +17,135 @@ namespace MyPolyglotCore
             return _recognizableWords[_random.Next(_recognizableWords.Count)];
         }
 
-        public static Word GetRandomWordFromVocabulary(this Type typeOfWord)
+        public static Word GetRandomWord(this Type typeOfWord)
         {
-            var vocabulary = Vocabulary.GetVocabulary(typeOfWord).ToList();
-            return vocabulary[_random.Next(vocabulary.Count)];
+            return GetRandomWord(Vocabulary.GetVocabulary(typeOfWord));
+        }
+
+        private static Word GetRandomWord(IEnumerable<Word> vocabulary)
+        {
+            var list = vocabulary.ToArray();
+            return list[_random.Next(list.Length)];
         }
 
         public static Verb GetRandomIrregularVerb()
         {
-            return (Verb)typeof(Verb).GetRandomWordFromVocabulary();
+            return (Verb)typeof(Verb).GetRandomWord();
         }
 
         public static PrimaryVerb GetRandomPrimaryVerb()
         {
-            return (PrimaryVerb)typeof(PrimaryVerb).GetRandomWordFromVocabulary();
+            return (PrimaryVerb)typeof(PrimaryVerb).GetRandomWord();
         }
 
         public static ModalVerb GetRandomModalVerb()
         {
-            return (ModalVerb)typeof(ModalVerb).GetRandomWordFromVocabulary();
+            return (ModalVerb)typeof(ModalVerb).GetRandomWord();
         }
 
         public static Determiner GetRandomDeterminer()
         {
-            return (Determiner)typeof(Determiner).GetRandomWordFromVocabulary();
+            return (Determiner)typeof(Determiner).GetRandomWord();
         }
 
         public static ReflexivePronoun GetRandomReflexivePronoun()
         {
-            return (ReflexivePronoun)typeof(ReflexivePronoun).GetRandomWordFromVocabulary();
+            return (ReflexivePronoun)typeof(ReflexivePronoun).GetRandomWord();
         }
 
         public static PossessivePronoun GetRandomPossessivePronoun()
         {
-            return (PossessivePronoun)typeof(PossessivePronoun).GetRandomWordFromVocabulary();
+            return (PossessivePronoun)typeof(PossessivePronoun).GetRandomWord();
         }
 
         public static PossessiveAdjective GetRandomPossessiveAdjective()
         {
-            return (PossessiveAdjective)typeof(PossessiveAdjective).GetRandomWordFromVocabulary();
+            return (PossessiveAdjective)typeof(PossessiveAdjective).GetRandomWord();
         }
 
         public static ObjectPronoun GetRandomObjectPronoun()
         {
-            return (ObjectPronoun)typeof(ObjectPronoun).GetRandomWordFromVocabulary();
+            return (ObjectPronoun)typeof(ObjectPronoun).GetRandomWord();
         }
 
         public static SubjectPronoun GetRandomSubjectPronoun()
         {
-            return (SubjectPronoun)typeof(SubjectPronoun).GetRandomWordFromVocabulary();
+            return (SubjectPronoun)typeof(SubjectPronoun).GetRandomWord();
         }
 
         public static DemonstrativePronoun GetRandomDemonstrativePronoun()
         {
-            return (DemonstrativePronoun)typeof(DemonstrativePronoun).GetRandomWordFromVocabulary();
+            return (DemonstrativePronoun)typeof(DemonstrativePronoun).GetRandomWord();
         }
 
         public static Preposition GetRandomPreposition()
         {
-            return (Preposition)typeof(Preposition).GetRandomWordFromVocabulary();
+            return (Preposition)typeof(Preposition).GetRandomWord();
         }
 
         public static ComparisonAdjective GetRandomComparisonAdjective()
         {
-            return (ComparisonAdjective)typeof(ComparisonAdjective).GetRandomWordFromVocabulary();
+            return (ComparisonAdjective)typeof(ComparisonAdjective).GetRandomWord();
         }
 
         public static FrequencyAdverb GetRandomFrequencyAdverb()
         {
-            return (FrequencyAdverb)typeof(FrequencyAdverb).GetRandomWordFromVocabulary();
+            return (FrequencyAdverb)typeof(FrequencyAdverb).GetRandomWord();
         }
 
         public static IntensifierAdverb GetRandomIntensifierAdverb()
         {
-            return (IntensifierAdverb)typeof(IntensifierAdverb).GetRandomWordFromVocabulary();
+            return (IntensifierAdverb)typeof(IntensifierAdverb).GetRandomWord();
         }
 
         public static MannerAdverb GetRandomMannerAdverb()
         {
-            return (MannerAdverb)typeof(MannerAdverb).GetRandomWordFromVocabulary();
+            return (MannerAdverb)typeof(MannerAdverb).GetRandomWord();
         }
 
         public static TellHowItHappenedAdverb GetRandomTellHowItHappendAdverb()
         {
-            return (TellHowItHappenedAdverb)typeof(TellHowItHappenedAdverb).GetRandomWordFromVocabulary();
+            return (TellHowItHappenedAdverb)typeof(TellHowItHappenedAdverb).GetRandomWord();
         }
 
         public static TellTheExtentOfTheActionAdverb GetRandomTellTheExtentOfTheActionAdverb()
         {
-            return (TellTheExtentOfTheActionAdverb)typeof(TellTheExtentOfTheActionAdverb).GetRandomWordFromVocabulary();
+            return (TellTheExtentOfTheActionAdverb)typeof(TellTheExtentOfTheActionAdverb).GetRandomWord();
         }
 
         public static TellWhenItHappenedAdverb GetRandomTellWhenItHappendAdverb()
         {
-            return (TellWhenItHappenedAdverb)typeof(TellWhenItHappenedAdverb).GetRandomWordFromVocabulary();
+            return (TellWhenItHappenedAdverb)typeof(TellWhenItHappenedAdverb).GetRandomWord();
         }
 
         public static TellWhereItHappenedAdverb GetRandomTellWhereItHappendAdverb()
         {
-            return (TellWhereItHappenedAdverb)typeof(TellWhereItHappenedAdverb).GetRandomWordFromVocabulary();
+            return (TellWhereItHappenedAdverb)typeof(TellWhereItHappenedAdverb).GetRandomWord();
         }
 
         public static Compound GetRandomCompound()
         {
-            return (Compound)typeof(Compound).GetRandomWordFromVocabulary();
+            return (Compound)typeof(Compound).GetRandomWord();
+        }
+
+        public static Compound GetRandomSomeCompound()
+        {
+            return (Compound)GetRandomWord(Vocabulary.SomeCompounds);
+        }
+
+        public static Compound GetRandomAnyCompound()
+        {
+            return (Compound)GetRandomWord(Vocabulary.AnyCompounds);
+        }
+
+        public static Compound GetRandomEveryCompound()
+        {
+            return (Compound)GetRandomWord(Vocabulary.EveryCompounds);
+        }
+
+        public static Compound GetRandomNoCompound()
+        {
+            return (Compound)GetRandomWord(Vocabulary.NoCompounds);
         }
     }
 }

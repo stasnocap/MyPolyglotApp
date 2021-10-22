@@ -144,16 +144,12 @@ namespace MyPolyglotCore
             new TellWhereItHappenedAdverb("there"),
             new TellWhereItHappenedAdverb("downstairs"),
             new TellWhereItHappenedAdverb("upstairs"),
-            new TellWhereItHappenedAdverb("everywhere"),
             new TellWhereItHappenedAdverb("inside"),
             new TellWhereItHappenedAdverb("outside"),
-            new TellWhereItHappenedAdverb("somewhere"),
             new TellWhereItHappenedAdverb("underground"),
             new TellWhereItHappenedAdverb("above"),
-            new TellWhereItHappenedAdverb("anywhere"),
             new TellWhereItHappenedAdverb("back"),
             new TellWhereItHappenedAdverb("below"),
-            new TellWhereItHappenedAdverb("nowhere"),
             new TellWhereItHappenedAdverb("out"),
         };
 
@@ -214,7 +210,6 @@ namespace MyPolyglotCore
             new FrequencyAdverb("normally"),
             new FrequencyAdverb("rarely"),
             new FrequencyAdverb("seldom"),
-            new FrequencyAdverb("sometimes"),
             new FrequencyAdverb("usually"),
         };
 
@@ -350,7 +345,6 @@ namespace MyPolyglotCore
         {
             new Noun("time"),
             new Noun("year"),
-            new Noun("people"),
             new Noun("way"),
             new Noun("day"),
             new Noun("thing"),
@@ -418,7 +412,6 @@ namespace MyPolyglotCore
             new Noun("kid"),
             new Noun("body"),
             new Noun("information"),
-            new Noun("back"),
             new Noun("parent"),
             new Noun("face"),
             new Noun("others"),

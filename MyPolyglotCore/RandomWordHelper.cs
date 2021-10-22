@@ -28,6 +28,16 @@ namespace MyPolyglotCore
             return list[_random.Next(list.Length)];
         }
 
+        public static Noun GetRandomNoun()
+        {
+            return (Noun)typeof(Noun).GetRandomWord();
+        }
+
+        public static Adjective GetRandomAdjective()
+        {
+            return (Adjective)typeof(Adjective).GetRandomWord();
+        }
+
         public static Verb GetRandomIrregularVerb()
         {
             return (Verb)typeof(Verb).GetRandomWord();

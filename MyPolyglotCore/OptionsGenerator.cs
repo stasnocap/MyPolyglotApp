@@ -121,7 +121,8 @@ namespace MyPolyglotCore
 
         private IEnumerable<string> GenerateOptions(Noun noun)
         {
-            if (noun.WasRecognizedFromPluralForm || noun.FromWhatItWasRecognized == noun.PluralForm)
+            if (noun.WasRecognizedFromPluralForm 
+                || noun.PluralForm != null && noun.FromWhatItWasRecognized == noun.PluralForm)
             {
                 return Vocabulary.Nouns
                     .Concat(Vocabulary.IrregularNouns)

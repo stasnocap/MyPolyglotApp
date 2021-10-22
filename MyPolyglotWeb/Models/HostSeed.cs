@@ -43,7 +43,7 @@ namespace MyPolyglotWeb.Models
                         {
                             Text = "pen",
                             Type = UnrecognizableTypes.Noun,
-                            WasRecognizedFromPluralForm = false
+                            WasRecognizedFromPluralForm = false,
                         },
                         new UnrecognizedWordDB()
                         {
@@ -150,7 +150,7 @@ namespace MyPolyglotWeb.Models
                 },
             };
 
-            SaveExercises(exerciseRepository, dbExercises);
+            //SaveExercises(exerciseRepository, dbExercises);
         }
 
         private static void AddExercisesToLesson5(IExerciseRepository exerciseRepository, LessonDB lessonDB)

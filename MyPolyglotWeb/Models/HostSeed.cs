@@ -62,13 +62,13 @@ namespace MyPolyglotWeb.Models
                 new ExerciseDB()
                 {
                     RusPhrase = "Этот телевизор не дорогой.",
-                    EngPhrase = "This TV is not expensive.",
+                    EngPhrase = "This tv is not expensive.",
                     Lesson = lessonDB,
                     UnrecognizedWords = new List<UnrecognizedWordDB>()
                     {
                         new UnrecognizedWordDB()
                         {
-                            Text = "TV",
+                            Text = "tv",
                             Type = UnrecognizableTypes.Noun,
                             WasRecognizedFromPluralForm = false
                         },

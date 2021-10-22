@@ -360,36 +360,36 @@ button {
     }
 
     /* On mouse-over, add a grey background color */
-.radio-block:hover input ~ .checkmark {
-    background-color: #ccc;
-}
+    .radio-block:hover input ~ .checkmark {
+        background-color: #ccc;
+    }
 
     /* When the radio button is checked, add a blue background */
-.radio-block input:checked ~ .checkmark {
-    background-color: #2196F3;
-}
+    .radio-block input:checked ~ .checkmark {
+        background-color: #2196F3;
+    }
 
     /* Create the indicator (the dot/circle - hidden when not checked) */
-.radio-block .checkmark:after {
-    content: "";
-    position: absolute;
-    display: none;
-}
+    .radio-block .checkmark:after {
+        content: "";
+        position: absolute;
+        display: none;
+    }
 
     /* Show the indicator (dot/circle) when checked */
-.radio-block input:checked ~ .checkmark:after {
-    display: block;
-}
+    .radio-block input:checked ~ .checkmark:after {
+        display: block;
+    }
 
     /* Style the indicator (dot/circle) */
-.radio-block .checkmark:after {
-    top: 9px;
-    left: 9px;
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: white;
-}
+    .radio-block .checkmark:after {
+        top: 9px;
+        left: 9px;
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: white;
+    }
 
 
 .register-user {
@@ -417,15 +417,16 @@ button {
 
     .all-exercises th:first-child {
         width: 68px;
-    }
-
-    .all-exercises th:nth-child(2), .all-exercises th:nth-child(3) {
-        width: 425px;
+        text-align: center;
     }
 
     .all-exercises th:nth-child(4) {
         width: 205px;
     }
+
+.all-exercises .edit-header {
+    width: 170px;
+}
 
 .all-exercises button {
     width: auto;
@@ -457,11 +458,11 @@ button {
     background-color: inherit;
 }
 
-.all-exercises input[type=text]:focus, .all-exercises input[type=number]:focus {
-    background-color: white;
-}
+    .all-exercises input[type=text]:focus, .all-exercises input[type=number]:focus {
+        background-color: white;
+    }
 
-    .all-exercises .save-btn {
+.all-exercises .save-btn {
     display: none;
 }
 
@@ -480,11 +481,11 @@ button {
 }
 
     .edit-header__confirm-btn:enabled:hover {
-    background-color: #ddd;
-}
+        background-color: #ddd;
+    }
 
 .all-exercises .delete-form button[type=submit] {
-    display:none;
+    display: none;
 }
 
 .all-exercises .unrecognized-words-unfold {
@@ -507,9 +508,9 @@ button {
         flex-direction: column;
     }
 
-    .unrecognized-words-collapsible__word {
-        position: relative;
-    }
+.unrecognized-words-collapsible__word {
+    position: relative;
+}
 
     .unrecognized-words-collapsible__word .word-type {
         font-size: 15px;

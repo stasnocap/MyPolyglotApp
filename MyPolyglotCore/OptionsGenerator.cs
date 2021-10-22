@@ -121,14 +121,17 @@ namespace MyPolyglotCore
 
         private IEnumerable<string> GenerateOptions(Noun noun)
         {
-            if (noun.WasRecognizedFromPluralForm)
+            if (noun.WasRecognizedFromPluralForm 
+                || noun.PluralForm != null && noun.FromWhatItWasRecognized == noun.PluralForm)
             {
-                return Vocabulary.IrregularNouns
+                return Vocabulary.Nouns
+                    .Concat(Vocabulary.IrregularNouns)
                     .Select(x => x.PluralForm)
                     .TakeSixShuffledStrings(noun.PluralForm);
             }
 
-            return Vocabulary.IrregularNouns
+            return Vocabulary.Nouns
+                    .Concat(Vocabulary.IrregularNouns)
                     .Select(x => x.Text)
                     .TakeSixShuffledStrings(noun.Text);
         }

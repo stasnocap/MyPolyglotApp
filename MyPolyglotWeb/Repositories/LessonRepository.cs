@@ -9,9 +9,9 @@ namespace MyPolyglotWeb.Models
     {
         public LessonRepository(WebContext webContext) : base(webContext) { }
 
-        public bool IsExistByLessonName(string lessonName)
+        public bool IsExist(string lessonName)
         {
-            return _dbSet.FirstOrDefault(x => x.LessonName == lessonName) != null ? true : false;
+            return _dbSet.FirstOrDefault(x => x.LessonName == lessonName) != null;
         }
     }
 }

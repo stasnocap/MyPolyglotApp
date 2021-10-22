@@ -19,5 +19,10 @@ namespace MyPolyglotWeb.Models
             var filteredById = _dbSet.Where(x => x.Lesson.Id == lessonId).AsEnumerable();
             return filteredById.ElementAt(_random.Next(filteredById.Count()));
         }
+
+        public bool IsExist(string engPhrase)
+        {
+            return _dbSet.FirstOrDefault(x => x.EngPhrase == engPhrase) != null;
+        }
     }
 }

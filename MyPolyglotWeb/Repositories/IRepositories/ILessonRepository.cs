@@ -4,6 +4,6 @@ namespace MyPolyglotWeb.Repositories.IRepositories
 {
     public interface ILessonRepository : IBaseRepository<LessonDB>
     {
-        public bool IsExistByLessonName(string lessonName);
+        public bool IsExist(string lessonName);
     }
 }

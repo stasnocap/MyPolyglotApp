@@ -117,5 +117,10 @@ namespace MyPolyglotCore
         {
             return (TellWhereItHappenedAdverb)typeof(TellWhereItHappenedAdverb).GetRandomWordFromVocabulary();
         }
+
+        public static Compound GetRandomCompound()
+        {
+            return (Compound)typeof(Compound).GetRandomWordFromVocabulary();
+        }
     }
 }

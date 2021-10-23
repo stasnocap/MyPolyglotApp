@@ -32,126 +32,219 @@ namespace MyPolyglotWebTests.Presentations.HomePresentationTests
         }
 
         [Fact]
-        public void ReturnDoExerciseVM_WhenUserNotLoggedIn()
+        public void GetRandomExerciseFromRepository()
         {
             var lessonId = 1;
-            var exerciseDBMock = new Mock<ExerciseDB>();
-            exerciseDBMock.Setup(x => x.EngPhrase).Returns("I am cool.");
-            var unrecognizedWords = new List<Word>()
+            var exerciseDB = new ExerciseDB()
             {
-                new Adjective("cool")
+                EngPhrase = "not null"
             };
-
-            var exerciseVMMock = new Mock<DoExerciseVM>();
-            _mapperMock.Setup(x => x.Map<IEnumerable<Word>>(exerciseDBMock.Object.UnrecognizedWords)).Returns(unrecognizedWords);
-            _mapperMock.Setup(x => x.Map<DoExerciseVM>(exerciseDBMock.Object)).Returns(exerciseVMMock.Object);
-            _exerciseRepositoryMock.Setup(x => x.GetRandomExercise(lessonId)).Returns(exerciseDBMock.Object);
-
-            _userService.Setup(x => x.GetCurrentUser()).Returns((UserDB)null);
+            _exerciseRepositoryMock.Setup(x => x.GetRandomExercise(lessonId)).Returns(exerciseDB);
+            _mapperMock.Setup(x => x.Map<DoExerciseVM>(exerciseDB)).Returns(new DoExerciseVM());
 
             var exerciseVM = _homePresentation.GetDoExerciseVM(lessonId);
 
             _exerciseRepositoryMock.Verify(x => x.GetRandomExercise(lessonId), Times.Once);
-            _mapperMock.Verify(x => x.Map<IEnumerable<Word>>(exerciseDBMock.Object.UnrecognizedWords), Times.Once);
-            _mapperMock.Verify(x => x.Map<DoExerciseVM>(exerciseDBMock.Object), Times.Once);
-            exerciseVMMock.VerifySet(x => x.OptionGroups = It.IsAny<List<OptionGroupVM>>(), Times.Once);
-            exerciseVMMock.VerifySet(x => x.LessonId = lessonId, Times.Once);
-
-            exerciseVMMock.VerifySet(x => x.UserPoints = -1, Times.Once);
-            _userService.Verify(x => x.GetCurrentUser(), Times.Once);
         }
 
         [Fact]
-        public void ReturnDoExerciseVM_WhenUserScoreIsNotNull()
+        public void MapListUnrecognizedWordToIEnumerableWord()
         {
             var lessonId = 1;
-            var userId = 2;
-            var userScorePoints = 3;
-            var exerciseDBMock = new Mock<ExerciseDB>();
-            exerciseDBMock.Setup(x => x.EngPhrase).Returns("I am cool.");
-            var unrecognizedWords = new List<Word>()
+            var exerciseDB = new ExerciseDB()
             {
-                new Adjective("cool")
+                EngPhrase = "not null",
             };
-
-            var exerciseVMMock = new Mock<DoExerciseVM>();
-            _mapperMock.Setup(x => x.Map<IEnumerable<Word>>(exerciseDBMock.Object.UnrecognizedWords)).Returns(unrecognizedWords);
-            _mapperMock.Setup(x => x.Map<DoExerciseVM>(exerciseDBMock.Object)).Returns(exerciseVMMock.Object);
-            _exerciseRepositoryMock.Setup(x => x.GetRandomExercise(lessonId)).Returns(exerciseDBMock.Object);
-
-            var userMock = new Mock<UserDB>();
-            userMock.Setup(x => x.Id).Returns(userId);
-            _userService.Setup(x => x.GetCurrentUser()).Returns(userMock.Object);
-
-            var scoreMock = new Mock<ScoreDB>();
-            scoreMock.Setup(x => x.Points).Returns(userScorePoints);
-            _scoreRepository.Setup(x => x.Get(userId, lessonId)).Returns(scoreMock.Object);
+            _exerciseRepositoryMock.Setup(x => x.GetRandomExercise(lessonId)).Returns(exerciseDB);
+            _mapperMock.Setup(x => x.Map<DoExerciseVM>(exerciseDB)).Returns(new DoExerciseVM());
 
             var exerciseVM = _homePresentation.GetDoExerciseVM(lessonId);
 
-            _exerciseRepositoryMock.Verify(x => x.GetRandomExercise(lessonId), Times.Once);
-            _mapperMock.Verify(x => x.Map<IEnumerable<Word>>(exerciseDBMock.Object.UnrecognizedWords), Times.Once);
-            _mapperMock.Verify(x => x.Map<DoExerciseVM>(exerciseDBMock.Object), Times.Once);
-            exerciseVMMock.VerifySet(x => x.OptionGroups = It.IsAny<List<OptionGroupVM>>(), Times.Once);
-            exerciseVMMock.VerifySet(x => x.LessonId = lessonId, Times.Once);
-
-            exerciseVMMock.VerifySet(x => x.UserPoints = userScorePoints, Times.Once);
-            _userService.Verify(x => x.GetCurrentUser(), Times.Once);
+            _mapperMock.Verify(x => x.Map<IEnumerable<Word>>(exerciseDB.UnrecognizedWords), Times.Once);
         }
 
         [Fact]
-        public void ReturnDoExerciseVM_WhenUserScoreIsNull()
+        public void MapExerciseDBToDoExerciseVM()
         {
             var lessonId = 1;
-            var userId = 2;
-            var exerciseDBMock = new Mock<ExerciseDB>();
-            exerciseDBMock.Setup(x => x.EngPhrase).Returns("I am cool.");
-            var unrecognizedWords = new List<Word>()
+            var exerciseDB = new ExerciseDB()
             {
-                new Adjective("cool")
+                EngPhrase = "not null",
             };
-
-            var exerciseVMMock = new Mock<DoExerciseVM>();
-            _mapperMock.Setup(x => x.Map<IEnumerable<Word>>(exerciseDBMock.Object.UnrecognizedWords)).Returns(unrecognizedWords);
-            _mapperMock.Setup(x => x.Map<DoExerciseVM>(exerciseDBMock.Object)).Returns(exerciseVMMock.Object);
-            _exerciseRepositoryMock.Setup(x => x.GetRandomExercise(lessonId)).Returns(exerciseDBMock.Object);
-
-            var userMock = new Mock<UserDB>();
-            userMock.Setup(x => x.Id).Returns(userId);
-            _userService.Setup(x => x.GetCurrentUser()).Returns(userMock.Object);
-
-            _scoreRepository.Setup(x => x.Get(userId, lessonId)).Returns((ScoreDB)null);
+            _exerciseRepositoryMock.Setup(x => x.GetRandomExercise(lessonId)).Returns(exerciseDB);
+            _mapperMock.Setup(x => x.Map<DoExerciseVM>(exerciseDB)).Returns(new DoExerciseVM());
 
             var exerciseVM = _homePresentation.GetDoExerciseVM(lessonId);
 
-            _exerciseRepositoryMock.Verify(x => x.GetRandomExercise(lessonId), Times.Once);
-            _mapperMock.Verify(x => x.Map<IEnumerable<Word>>(exerciseDBMock.Object.UnrecognizedWords), Times.Once);
-            _mapperMock.Verify(x => x.Map<DoExerciseVM>(exerciseDBMock.Object), Times.Once);
-            exerciseVMMock.VerifySet(x => x.OptionGroups = It.IsAny<List<OptionGroupVM>>(), Times.Once);
-            exerciseVMMock.VerifySet(x => x.LessonId = lessonId, Times.Once);
+            _mapperMock.Verify(x => x.Map<DoExerciseVM>(exerciseDB), Times.Once);
+        }
 
-            exerciseVMMock.VerifySet(x => x.UserPoints = 0, Times.Once);
-            _userService.Verify(x => x.GetCurrentUser(), Times.Once);
+        [Fact]
+        public void SetOptionsWithSomething()
+        {
+            var lessonId = 1;
+            var exerciseDB = new ExerciseDB()
+            {
+                EngPhrase = "I am cool.",
+            };
+            _exerciseRepositoryMock.Setup(x => x.GetRandomExercise(lessonId)).Returns(exerciseDB);
+            _mapperMock.Setup(x => x.Map<DoExerciseVM>(exerciseDB)).Returns(new DoExerciseVM());
+
+            var exerciseVM = _homePresentation.GetDoExerciseVM(lessonId);
+
+            foreach (var optionGroup in exerciseVM.OptionGroups)
+            {
+                Assert.NotNull(optionGroup);
+                foreach (var option in optionGroup.Options)
+                {
+                    Assert.NotNull(option);
+                    Assert.NotEmpty(option);
+                }
+            }
+        }
+
+        [Fact]
+        public void SetLessonId()
+        {
+            var lessonId = 1;
+            var exerciseDB = new ExerciseDB()
+            {
+                EngPhrase = "not null",
+            };
+            _exerciseRepositoryMock.Setup(x => x.GetRandomExercise(lessonId)).Returns(exerciseDB);
+            _mapperMock.Setup(x => x.Map<DoExerciseVM>(exerciseDB)).Returns(new DoExerciseVM());
+
+            var exerciseVM = _homePresentation.GetDoExerciseVM(lessonId);
+
+            Assert.Equal(lessonId, exerciseVM.LessonId);
+        }
+
+        [Fact]
+        public void SetUserPointsToMinusOne_WhenUserIsNotLoggedIn()
+        {
+            var lessonId = 1;
+            var exerciseDB = new ExerciseDB()
+            {
+                EngPhrase = "not null",
+            };
+            _exerciseRepositoryMock.Setup(x => x.GetRandomExercise(lessonId)).Returns(exerciseDB);
+            _mapperMock.Setup(x => x.Map<DoExerciseVM>(exerciseDB)).Returns(new DoExerciseVM());
+
+            var exerciseVM = _homePresentation.GetDoExerciseVM(lessonId);
+
+            Assert.Equal(-1, exerciseVM.UserPoints);
+        }
+
+        [Fact]
+        public void SetUserPointsToUserPoints_WhenUserIsLoggedIn()
+        {
+            var lessonId = 1;
+            var exerciseDB = new ExerciseDB()
+            {
+                EngPhrase = "not null",
+            };
+            _exerciseRepositoryMock.Setup(x => x.GetRandomExercise(lessonId)).Returns(exerciseDB);
+            _mapperMock.Setup(x => x.Map<DoExerciseVM>(exerciseDB)).Returns(new DoExerciseVM());
+
+            var userDB = new UserDB()
+            {
+                Id = 1
+            };
+            _userService.Setup(x => x.GetCurrentUser()).Returns(userDB);
+
+            var scoreDB = new ScoreDB()
+            {
+                Points = 1
+            };
+            _scoreRepository.Setup(x => x.Get(userDB.Id, lessonId)).Returns(scoreDB);
+
+            var exerciseVM = _homePresentation.GetDoExerciseVM(lessonId);
+
+            Assert.Equal(scoreDB.Points, exerciseVM.UserPoints);
+        }
+
+        [Fact]
+        public void SetUserPointsToZero_IfUserScoreDontExist()
+        {
+            var lessonId = 1;
+            var exerciseDB = new ExerciseDB()
+            {
+                EngPhrase = "not null",
+            };
+            _exerciseRepositoryMock.Setup(x => x.GetRandomExercise(lessonId)).Returns(exerciseDB);
+            _mapperMock.Setup(x => x.Map<DoExerciseVM>(exerciseDB)).Returns(new DoExerciseVM());
+
+            var userDB = new UserDB()
+            {
+                Id = 1
+            };
+            _userService.Setup(x => x.GetCurrentUser()).Returns(userDB);
+
+            var exerciseVM = _homePresentation.GetDoExerciseVM(lessonId);
+
+            Assert.Equal(0, exerciseVM.UserPoints);
+        }
+
+        [Fact]
+        public void GetLessonFromRepository_IfUserScoreDontExist()
+        {
+            var lessonId = 1;
+            var exerciseDB = new ExerciseDB()
+            {
+                EngPhrase = "not null",
+            };
+            _exerciseRepositoryMock.Setup(x => x.GetRandomExercise(lessonId)).Returns(exerciseDB);
+            _mapperMock.Setup(x => x.Map<DoExerciseVM>(exerciseDB)).Returns(new DoExerciseVM());
+
+            var userDB = new UserDB()
+            {
+                Id = 1
+            };
+            _userService.Setup(x => x.GetCurrentUser()).Returns(userDB);
+
+            var exerciseVM = _homePresentation.GetDoExerciseVM(lessonId);
+
             _lessonRepository.Verify(x => x.Get(lessonId), Times.Once);
         }
 
         [Fact]
-        public void ReturnDoExerciseVM_ForSecondLessonWhenUserIsNull()
+        public void SaveNewUserScoreToRepository_IfUserScoreDontExist()
+        {
+            var lessonId = 1;
+            var exerciseDB = new ExerciseDB()
+            {
+                EngPhrase = "not null",
+            };
+            _exerciseRepositoryMock.Setup(x => x.GetRandomExercise(lessonId)).Returns(exerciseDB);
+            _mapperMock.Setup(x => x.Map<DoExerciseVM>(exerciseDB)).Returns(new DoExerciseVM());
+
+            var userDB = new UserDB()
+            {
+                Id = 1
+            };
+            _userService.Setup(x => x.GetCurrentUser()).Returns(userDB);
+
+            var lessonDB = new LessonDB();
+            _lessonRepository.Setup(x => x.Get(lessonId)).Returns(lessonDB);
+
+            var exerciseVM = _homePresentation.GetDoExerciseVM(lessonId);
+
+            _scoreRepository.Verify(x => x.Save(It.Is<ScoreDB>(x => 
+                                                    x.Lesson == lessonDB 
+                                                    && x.User == userDB 
+                                                    && x.Points == 0)), Times.Once);
+        }
+
+        [Fact]
+        public void SetHint2TableWithSomething_IfLessonIdIs2()
         {
             var lessonId = 2;
-            var exerciseDBMock = new Mock<ExerciseDB>();
-            exerciseDBMock.Setup(x => x.EngPhrase).Returns("I am cool.");
-            var unrecognizedWords = new List<Word>()
+            var exerciseDB = new ExerciseDB()
             {
-                new Adjective("cool")
+                EngPhrase = "not null",
             };
-
-            var exerciseVMMock = new Mock<DoExerciseVM>();
-            _mapperMock.Setup(x => x.Map<IEnumerable<Word>>(exerciseDBMock.Object.UnrecognizedWords)).Returns(unrecognizedWords);
-            _mapperMock.Setup(x => x.Map<DoExerciseVM>(exerciseDBMock.Object)).Returns(exerciseVMMock.Object);
-            _exerciseRepositoryMock.Setup(x => x.GetRandomExercise(lessonId)).Returns(exerciseDBMock.Object);
-
-            _userService.Setup(x => x.GetCurrentUser()).Returns((UserDB)null);
+            _exerciseRepositoryMock.Setup(x => x.GetRandomExercise(lessonId)).Returns(exerciseDB);
+            _mapperMock.Setup(x => x.Map<DoExerciseVM>(exerciseDB)).Returns(new DoExerciseVM());
 
             var exerciseVM = _homePresentation.GetDoExerciseVM(lessonId);
 
@@ -159,15 +252,9 @@ namespace MyPolyglotWebTests.Presentations.HomePresentationTests
             Assert.NotNull(exerciseVM.HintTable2VM.PresentForm);
             Assert.NotNull(exerciseVM.HintTable2VM.PastForm);
             Assert.NotNull(exerciseVM.HintTable2VM.ThirdPersonForm);
-
-            _exerciseRepositoryMock.Verify(x => x.GetRandomExercise(lessonId), Times.Once);
-            _mapperMock.Verify(x => x.Map<IEnumerable<Word>>(exerciseDBMock.Object.UnrecognizedWords), Times.Once);
-            _mapperMock.Verify(x => x.Map<DoExerciseVM>(exerciseDBMock.Object), Times.Once);
-            exerciseVMMock.VerifySet(x => x.OptionGroups = It.IsAny<List<OptionGroupVM>>(), Times.Once);
-            exerciseVMMock.VerifySet(x => x.LessonId = lessonId, Times.Once);
-
-            exerciseVMMock.VerifySet(x => x.UserPoints = -1, Times.Once);
-            _userService.Verify(x => x.GetCurrentUser(), Times.Once);
+            Assert.NotEmpty(exerciseVM.HintTable2VM.PresentForm);
+            Assert.NotEmpty(exerciseVM.HintTable2VM.PastForm);
+            Assert.NotEmpty(exerciseVM.HintTable2VM.ThirdPersonForm);
         }
     }
 }

@@ -29,17 +29,26 @@ namespace MyPolyglotWebTests.Presentations.HomePresentationTests
         }
 
         [Fact]
-        public void ReturnTrue_GivenRightAnswer()
+        public void GetExerciseFromRepository()
         {
             var exerciseId = 1;
             var userAnswer = "I am cool.";
-            var exerciseDBMock = new Mock<ExerciseDB>();
-            _exerciseRepositoryMock.Setup(x => x.Get(exerciseId)).Returns(exerciseDBMock.Object);
-            exerciseDBMock.Setup(x => x.EngPhrase).Returns(userAnswer);
+            _exerciseRepositoryMock.Setup(x => x.Get(exerciseId)).Returns(new ExerciseDB() { EngPhrase = userAnswer });
 
             var result = _homePresentation.CheckAnswer(exerciseId, userAnswer);
 
             _exerciseRepositoryMock.Verify(x => x.Get(exerciseId), Times.Once);
+        }
+
+        [Fact]
+        public void ReturnTrue_GivenRightAnswer()
+        {
+            var exerciseId = 1;
+            var userAnswer = "I am cool.";
+            _exerciseRepositoryMock.Setup(x => x.Get(exerciseId)).Returns(new ExerciseDB() { EngPhrase = userAnswer });
+
+            var result = _homePresentation.CheckAnswer(exerciseId, userAnswer);
+
             Assert.True(result);
         }
 
@@ -49,13 +58,14 @@ namespace MyPolyglotWebTests.Presentations.HomePresentationTests
             var exerciseId = 1;
             var wrongUserAnswer = "I was cool.";
             var rightAnswer = "I am cool.";
-            var exerciseDBMock = new Mock<ExerciseDB>();
-            _exerciseRepositoryMock.Setup(x => x.Get(exerciseId)).Returns(exerciseDBMock.Object);
-            exerciseDBMock.Setup(x => x.EngPhrase).Returns(rightAnswer);
+            var exerciseDB = new ExerciseDB()
+            {
+                EngPhrase = rightAnswer
+            };
+            _exerciseRepositoryMock.Setup(x => x.Get(exerciseId)).Returns(exerciseDB);
 
             var result = _homePresentation.CheckAnswer(exerciseId, wrongUserAnswer);
 
-            _exerciseRepositoryMock.Verify(x => x.Get(exerciseId), Times.Once);
             Assert.False(result);
         }
     }

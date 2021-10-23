@@ -29,7 +29,45 @@ namespace MyPolyglotWebTests.Presentations.HomePresentationTests
         }
 
         [Fact]
-        public void AddPoint()
+        public void GetCurrentUserId()
+        {
+            var lessonId = 1;
+            var userId = 2;
+            var userScorePoints = 3;
+
+            _userService.Setup(x => x.GetCurrentUserId()).Returns(userId);
+            var userScore = new ScoreDB()
+            {
+                Points = userScorePoints
+            };
+            _scoreRepository.Setup(x => x.Get(userId, lessonId)).Returns(userScore);
+
+            _homePresentation.PlusPoint(lessonId);
+
+            _userService.Verify(x => x.GetCurrentUserId(), Times.Once);
+        }
+
+        [Fact]
+        public void GetScoreFromRepository()
+        {
+            var lessonId = 1;
+            var userId = 2;
+            var userScorePoints = 3;
+
+            _userService.Setup(x => x.GetCurrentUserId()).Returns(userId);
+            var userScore = new ScoreDB()
+            {
+                Points = userScorePoints
+            };
+            _scoreRepository.Setup(x => x.Get(userId, lessonId)).Returns(userScore);
+
+            _homePresentation.PlusPoint(lessonId);
+
+            _scoreRepository.Verify(x => x.Get(userId, lessonId), Times.Once); 
+        }
+
+        [Fact]
+        public void AddOneToUserScorePoints()
         {
             var lessonId = 1;
             var userId = 2;
@@ -42,9 +80,26 @@ namespace MyPolyglotWebTests.Presentations.HomePresentationTests
 
             _homePresentation.PlusPoint(lessonId);
 
-            _userService.Verify(x => x.GetCurrentUserId(), Times.Once);
             userScoreMock.VerifySet(x => x.Points = userScorePoints + 1, Times.Once);
-            _scoreRepository.Verify(x => x.Save(userScoreMock.Object), Times.Once);
+        }
+
+        [Fact]
+        public void SaveScore()
+        {
+            var lessonId = 1;
+            var userId = 2;
+            var userScorePoints = 3;
+
+            _userService.Setup(x => x.GetCurrentUserId()).Returns(userId);
+            var userScore = new ScoreDB()
+            {
+                Points = userScorePoints
+            };
+            _scoreRepository.Setup(x => x.Get(userId, lessonId)).Returns(userScore);
+
+            _homePresentation.PlusPoint(lessonId);
+
+            _scoreRepository.Verify(x => x.Save(userScore), Times.Once);
         }
     }
 }

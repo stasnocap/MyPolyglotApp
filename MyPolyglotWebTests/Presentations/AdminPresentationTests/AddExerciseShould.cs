@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
 using Moq;
-using MyPolyglotCore;
 using MyPolyglotCore.Interfaces;
 using MyPolyglotWeb.Models.DomainModels;
 using MyPolyglotWeb.Models.ViewModels;

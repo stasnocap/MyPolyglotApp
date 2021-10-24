@@ -3,12 +3,7 @@ using Moq;
 using MyPolyglotWeb.Models.DomainModels;
 using MyPolyglotWeb.Presentations;
 using MyPolyglotWeb.Repositories.IRepositories;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Security.Claims;
-using System.Text;
-using System.Threading.Tasks;
 using Xunit;
 
 namespace MyPolyglotWebTests.Presentations.UserPresentationTests

@@ -64,12 +64,14 @@ namespace MyPolyglotWeb.Presentations
                     }
                     else
                     {
-                        _unrecognizedWordRepository.Save(_mapper.Map<UnrecognizedWordDB>(unrecognizedWordVM));
+                        var unrecognizedWordDB = _mapper.Map<UnrecognizedWordDB>(unrecognizedWordVM);
+                        _unrecognizedWordRepository.Save(unrecognizedWordDB);
                     }
                 }
                 exercise.UnrecognizedWords.RemoveAll(x => unrecognizedWordsThatShouldBeRemoved.Contains(x));
 
-                _exerciseRepository.Save(_mapper.Map<ExerciseDB>(exercise));
+                var exerciseDB = _mapper.Map<ExerciseDB>(exercise);
+                _exerciseRepository.Save(exerciseDB);
             }
         }
 

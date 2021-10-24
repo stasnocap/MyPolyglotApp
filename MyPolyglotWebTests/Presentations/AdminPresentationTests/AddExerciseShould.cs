@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Moq;
+using MyPolyglotCore;
 using MyPolyglotCore.Interfaces;
 using MyPolyglotWeb.Models.DomainModels;
 using MyPolyglotWeb.Models.ViewModels;
@@ -30,24 +31,69 @@ namespace MyPolyglotWebTests.Presentations.AdminPresentationTests
         }
 
         [Fact]
+        public void MapAddExerciseVMToExerciseDB()
+        {
+            var addExerciseVM = new AddExerciseVM()
+            {
+                LessonId = "1"
+            };
+            var exerciseDB = new ExerciseDB();
+
+            _mapperMock.Setup(x => x.Map<ExerciseDB>(addExerciseVM)).Returns(exerciseDB);
+
+            _adminPresentation.AddExercise(addExerciseVM);
+
+            _mapperMock.Verify(x => x.Map<ExerciseDB>(addExerciseVM), Times.Once);
+        }
+
+        [Fact]
+        public void GetLessonFromRepository()
+        {
+            var addExerciseVM = new AddExerciseVM()
+            {
+                LessonId = "1"
+            };
+            var exerciseDB = new ExerciseDB();
+
+            _mapperMock.Setup(x => x.Map<ExerciseDB>(addExerciseVM)).Returns(exerciseDB);
+
+            _adminPresentation.AddExercise(addExerciseVM);
+
+            _lessonRepositoryMock.Verify(x => x.Get(long.Parse(addExerciseVM.LessonId)), Times.Once);
+        }
+
+        [Fact]
+        public void SetExerciseDBLesson()
+        {
+            var addExerciseVM = new AddExerciseVM()
+            {
+                LessonId = "1"
+            };
+            var exerciseDBMock = new Mock<ExerciseDB>();
+            var lessonDB = new LessonDB();
+
+            _lessonRepositoryMock.Setup(x => x.Get(long.Parse(addExerciseVM.LessonId))).Returns(lessonDB);
+            _mapperMock.Setup(x => x.Map<ExerciseDB>(addExerciseVM)).Returns(exerciseDBMock.Object);
+
+            _adminPresentation.AddExercise(addExerciseVM);
+
+            exerciseDBMock.VerifySet(x => x.Lesson = lessonDB, Times.Once);
+        }
+
+        [Fact]
         public void SaveExercise()
         {
             var addExerciseVM = new AddExerciseVM()
             {
                 LessonId = "1"
             };
-            var lessonDB = new LessonDB();
-            var exerciseDBMock = new Mock<ExerciseDB>();
+            var exerciseDB = new ExerciseDB();
 
-            _mapperMock.Setup(x => x.Map<ExerciseDB>(addExerciseVM)).Returns(exerciseDBMock.Object);
-            _lessonRepositoryMock.Setup(x => x.Get(long.Parse(addExerciseVM.LessonId))).Returns(lessonDB);
+            _mapperMock.Setup(x => x.Map<ExerciseDB>(addExerciseVM)).Returns(exerciseDB);
 
             _adminPresentation.AddExercise(addExerciseVM);
 
-            _mapperMock.Verify(x => x.Map<ExerciseDB>(addExerciseVM), Times.Once);
-            exerciseDBMock.VerifySet(x => x.Lesson = lessonDB, Times.Once);
-            _lessonRepositoryMock.Verify(x => x.Get(long.Parse(addExerciseVM.LessonId)), Times.Once);
-            _exerciseRepositoryMock.Verify(x => x.Save(exerciseDBMock.Object), Times.Once);
+            _exerciseRepositoryMock.Verify(x => x.Save(exerciseDB), Times.Once);
         }
     }
 }

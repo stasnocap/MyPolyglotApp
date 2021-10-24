@@ -31,6 +31,20 @@ namespace MyPolyglotWebTests.Presentations.AdminPresentationTests
         }
 
         [Fact]
+        public void MapExerciseVMToExerciseDB()
+        {
+            var allExercisesVM = new AllExercisesVM();
+            var exerciseVM = new ExerciseVM();
+            allExercisesVM.Exercises = new List<ExerciseVM>();
+            allExercisesVM.Exercises.Add(exerciseVM);
+            exerciseVM.UnrecognizedWords = new List<UnrecognizedWordVM>();
+
+            _adminPresentation.UpdateExercises(allExercisesVM);
+
+            _mapperMock.Verify(x => x.Map<ExerciseDB>(exerciseVM), Times.Once);
+        }
+
+        [Fact]
         public void SaveExercise()
         {
             var allExercisesVM = new AllExercisesVM();
@@ -43,8 +57,26 @@ namespace MyPolyglotWebTests.Presentations.AdminPresentationTests
 
             _adminPresentation.UpdateExercises(allExercisesVM);
 
-            _mapperMock.Verify(x => x.Map<ExerciseDB>(exerciseVM), Times.Once);
             _exerciseRepositoryMock.Verify(x => x.Save(exerciseDB), Times.Once);
+        }
+
+        [Fact]
+        public void MapUnrecognizedWordVMToUnrecognizedWordDB_IfTextIsNotEmpty()
+        {
+            var allExercisesVM = new AllExercisesVM();
+            var exerciseVM = new ExerciseVM();
+            var unrecognizedWordWithNotEmptyText = new UnrecognizedWordVM()
+            {
+                Text = "not empty",
+            };
+            allExercisesVM.Exercises = new List<ExerciseVM>();
+            allExercisesVM.Exercises.Add(exerciseVM);
+            exerciseVM.UnrecognizedWords = new List<UnrecognizedWordVM>();
+            exerciseVM.UnrecognizedWords.Add(unrecognizedWordWithNotEmptyText);
+
+            _adminPresentation.UpdateExercises(allExercisesVM);
+
+            _mapperMock.Verify(x => x.Map<UnrecognizedWordDB>(unrecognizedWordWithNotEmptyText), Times.Once);
         }
 
         [Fact]
@@ -60,16 +92,35 @@ namespace MyPolyglotWebTests.Presentations.AdminPresentationTests
             allExercisesVM.Exercises.Add(exerciseVM);
             exerciseVM.UnrecognizedWords = new List<UnrecognizedWordVM>();
             exerciseVM.UnrecognizedWords.Add(unrecognizedWordWithNotEmptyText);
-
             var unrecognizedWordDB = new UnrecognizedWordDB();
-            _mapperMock.Setup(x => x.Map<UnrecognizedWordDB>(unrecognizedWordWithNotEmptyText)).Returns(unrecognizedWordDB);
 
-            _mapperMock.Setup(x => x.Map<ExerciseDB>(exerciseVM)).Returns(new ExerciseDB());
+            _mapperMock.Setup(x => x.Map<UnrecognizedWordDB>(unrecognizedWordWithNotEmptyText)).Returns(unrecognizedWordDB);
 
             _adminPresentation.UpdateExercises(allExercisesVM);
 
-            _mapperMock.Verify(x => x.Map<UnrecognizedWordDB>(unrecognizedWordWithNotEmptyText), Times.Once);
             _unrecognizedWordRepositoryMock.Verify(x => x.Save(unrecognizedWordDB), Times.Once);
+        }
+
+        [Fact]
+        public void NotMapUnrecognizedWord_IfTextIsNullOrEmpty()
+        {
+            var allExercisesVM = new AllExercisesVM();
+            var exerciseVM = new ExerciseVM();
+            var unrecognizedWordWithNullText = new UnrecognizedWordVM();
+            var unrecognizedWordWithEmptyText = new UnrecognizedWordVM()
+            {
+                Text = string.Empty,
+            };
+            allExercisesVM.Exercises = new List<ExerciseVM>();
+            allExercisesVM.Exercises.Add(exerciseVM);
+            exerciseVM.UnrecognizedWords = new List<UnrecognizedWordVM>();
+            exerciseVM.UnrecognizedWords.Add(unrecognizedWordWithNullText);
+            exerciseVM.UnrecognizedWords.Add(unrecognizedWordWithEmptyText);
+
+            _adminPresentation.UpdateExercises(allExercisesVM);
+
+            _mapperMock.Verify(x => x.Map<UnrecognizedWordDB>(unrecognizedWordWithNullText), Times.Never);
+            _mapperMock.Verify(x => x.Map<UnrecognizedWordDB>(unrecognizedWordWithEmptyText), Times.Never);
         }
 
         [Fact]
@@ -87,13 +138,16 @@ namespace MyPolyglotWebTests.Presentations.AdminPresentationTests
             exerciseVM.UnrecognizedWords = new List<UnrecognizedWordVM>();
             exerciseVM.UnrecognizedWords.Add(unrecognizedWordWithNullText);
             exerciseVM.UnrecognizedWords.Add(unrecognizedWordWithEmptyText);
+            var unrecognizedWordWithEmptyTextDB = new UnrecognizedWordDB();
+            var unrecognizedWordWithNullTextDB = new UnrecognizedWordDB();
 
-            _mapperMock.Setup(x => x.Map<ExerciseDB>(exerciseVM)).Returns(new ExerciseDB());
+            _mapperMock.Setup(x => x.Map<UnrecognizedWordDB>(unrecognizedWordWithEmptyText)).Returns(unrecognizedWordWithEmptyTextDB);
+            _mapperMock.Setup(x => x.Map<UnrecognizedWordDB>(unrecognizedWordWithNullText)).Returns(unrecognizedWordWithNullTextDB);
 
             _adminPresentation.UpdateExercises(allExercisesVM);
 
-            _mapperMock.Verify(x => x.Map<UnrecognizedWordDB>(unrecognizedWordWithNullText), Times.Never);
-            _mapperMock.Verify(x => x.Map<UnrecognizedWordDB>(unrecognizedWordWithEmptyText), Times.Never);
+            _unrecognizedWordRepositoryMock.Verify(x => x.Save(unrecognizedWordWithEmptyTextDB), Times.Never);
+            _unrecognizedWordRepositoryMock.Verify(x => x.Save(unrecognizedWordWithNullTextDB), Times.Never);
         }
 
         [Fact]

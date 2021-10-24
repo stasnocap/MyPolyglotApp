@@ -31,18 +31,37 @@ namespace MyPolyglotWebTests.Presentations.AdminPresentationTests
         }
 
         [Fact]
+        public void RecognizeEngPhrase()
+        {
+            var engPhrase = "no matter";
+
+            _adminPresentation.GetUnrecognizedWords(engPhrase);
+
+            _recognizerMock.Verify(x => x.Recognize(engPhrase), Times.Once);
+        }
+
+        [Fact]
+        public void MapUnrecongizedWordsFromRecognizerToIEnumerableUnrecognizedWordVM()
+        {
+            var engPhrase = "no matter";
+
+            _adminPresentation.GetUnrecognizedWords(engPhrase);
+
+            _mapperMock.Verify(x => x.Map<IEnumerable<UnrecognizedWordVM>>(_recognizerMock.Object.UnrecognizedWords), Times.Once);
+        }
+
+        [Fact]
         public void ReturnMappedUnrecognizedWords()
         {
             var engPhrase = "no matter";
             var unrecognizedWords = new List<Word>();
-            _recognizerMock.Setup(x => x.UnrecognizedWords).Returns(unrecognizedWords);
             var mappedUnrecognizedWords = new List<UnrecognizedWordVM>();
+
+            _recognizerMock.Setup(x => x.UnrecognizedWords).Returns(unrecognizedWords);
             _mapperMock.Setup(x => x.Map<IEnumerable<UnrecognizedWordVM>>(unrecognizedWords)).Returns(mappedUnrecognizedWords);
 
             var result = _adminPresentation.GetUnrecognizedWords(engPhrase);
 
-            _recognizerMock.Verify(x => x.Recognize(engPhrase), Times.Once);
-            _mapperMock.Verify(x => x.Map<IEnumerable<UnrecognizedWordVM>>(unrecognizedWords), Times.Once);
             Assert.Equal(result, mappedUnrecognizedWords);
         }
     }

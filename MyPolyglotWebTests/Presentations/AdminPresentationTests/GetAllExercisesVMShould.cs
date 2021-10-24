@@ -31,17 +31,36 @@ namespace MyPolyglotWebTests.Presentations.AdminPresentationTests
         }
 
         [Fact]
-        public void ReturnAllMappedWordsFromRepository()
+        public void GetAllExercisesFromRepository()
+        {
+            _adminPresentation.GetAllExercisesVM();
+
+            _exerciseRepositoryMock.Verify(x => x.GetAll(), Times.Once);
+        }
+
+        [Fact]
+        public void MapListExerciseDBToAllExercisesVM()
         {
             var exercisesDB = Enumerable.Empty<ExerciseDB>().AsQueryable();
+
             _exerciseRepositoryMock.Setup(x => x.GetAll()).Returns(exercisesDB);
+
+            _adminPresentation.GetAllExercisesVM();
+
+            _mapperMock.Verify(x => x.Map<AllExercisesVM>(exercisesDB), Times.Once);
+        }
+
+        [Fact]
+        public void ReturnMappedAllExercisesVM()
+        {
+            var exercisesDB = Enumerable.Empty<ExerciseDB>().AsQueryable();
             var allExercisesVM = new AllExercisesVM();
+
+            _exerciseRepositoryMock.Setup(x => x.GetAll()).Returns(exercisesDB);
             _mapperMock.Setup(x => x.Map<AllExercisesVM>(exercisesDB)).Returns(allExercisesVM);
 
             var result = _adminPresentation.GetAllExercisesVM();
 
-            _exerciseRepositoryMock.Verify(x => x.GetAll(), Times.Once);
-            _mapperMock.Verify(x => x.Map<AllExercisesVM>(exercisesDB), Times.Once);
             Assert.Equal(result, allExercisesVM);
         }
     }

@@ -2,17 +2,19 @@
 using System.Collections.Generic;
 using System.Linq;
 using MyPolyglotCore;
+using MyPolyglotCore.Interfaces;
 using MyPolyglotCore.Words;
 using MyPolyglotCore.Words.Adverbs;
 using MyPolyglotCore.Words.Pronouns;
 using Xunit;
 
-namespace MyPolyglotCoreTests.RecognizerTests
+namespace MyPolyglotCoreTests._recognizerTests
 {
 
     public class RecognizeShould
     {
         private Random _random = new Random();
+        private IRecognizer _recognizer = new Recognizer();
 
         [Fact]
         public void RecognizeSubjectPronounInPhrase()
@@ -50,7 +52,7 @@ namespace MyPolyglotCoreTests.RecognizerTests
         }
 
         [Fact]
-        public void RecognizeReflexivePronounInPhrase()
+        public void _recognizereflexivePronounInPhrase()
         {
             var randomWordFromVocabulary = RandomWordHelper.GetRandomReflexivePronoun();
             CheckIfGivenWordHadRecognized(randomWordFromVocabulary);
@@ -159,10 +161,9 @@ namespace MyPolyglotCoreTests.RecognizerTests
             var engPhrase =
                 $",,.1 s,t! tr , starst nsetnrsit!ta stra {word.Text}, 2 arstar";
 
-            var recognizer = new Recognizer(engPhrase);
-            recognizer.Recognize();
+            _recognizer.Recognize(engPhrase);
 
-            Assert.Collection(recognizer.RecognizedWords, x => Assert.Equal(x, word));
+            Assert.Collection(_recognizer.RecognizedWords, x => Assert.Equal(x, word));
         }
 
         [Fact]
@@ -185,12 +186,11 @@ namespace MyPolyglotCoreTests.RecognizerTests
                 new Word("stra"),
             };
 
-            var recognizer = new Recognizer(engPhrase);
-            recognizer.Recognize();
+            _recognizer.Recognize(engPhrase);
 
             foreach (var unrecognizedWord in unrecognizedWords)
             {
-                Assert.Contains(unrecognizedWord, recognizer.UnrecognizedWords);
+                Assert.Contains(unrecognizedWord, _recognizer.UnrecognizedWords);
             }
         }
 
@@ -199,11 +199,9 @@ namespace MyPolyglotCoreTests.RecognizerTests
         {
             var verb = RandomWordHelper.GetRandomIrregularVerb();
 
-            var recognizer = new Recognizer("rastr " + verb.PastForm + " strs");
+            _recognizer.Recognize("rastr " + verb.PastForm + " strs");
 
-            recognizer.Recognize();
-
-            Assert.Collection(recognizer.RecognizedWords, x => Assert.Equal(x, verb));
+            Assert.Collection(_recognizer.RecognizedWords, x => Assert.Equal(x, verb));
         }
 
         [Fact]
@@ -211,11 +209,9 @@ namespace MyPolyglotCoreTests.RecognizerTests
         {
             var verb = RandomWordHelper.GetRandomIrregularVerb();
 
-            var recognizer = new Recognizer("rastr " + verb.PastParticipleForm + " strs");
+            _recognizer.Recognize("rastr " + verb.PastParticipleForm + " strs");
 
-            recognizer.Recognize();
-
-            Assert.Collection(recognizer.RecognizedWords, x => Assert.Equal(x, verb));
+            Assert.Collection(_recognizer.RecognizedWords, x => Assert.Equal(x, verb));
         }
 
         [Fact]
@@ -223,11 +219,9 @@ namespace MyPolyglotCoreTests.RecognizerTests
         {
             var verb = RandomWordHelper.GetRandomIrregularVerb();
 
-            var recognizer = new Recognizer("rastr " + verb.PresentParticipleForm + " strs");
+            _recognizer.Recognize("rastr " + verb.PresentParticipleForm + " strs");
 
-            recognizer.Recognize();
-
-            Assert.Collection(recognizer.RecognizedWords, x => Assert.Equal(x, verb));
+            Assert.Collection(_recognizer.RecognizedWords, x => Assert.Equal(x, verb));
         }
 
         [Fact]
@@ -235,11 +229,9 @@ namespace MyPolyglotCoreTests.RecognizerTests
         {
             var verb = RandomWordHelper.GetRandomIrregularVerb();
 
-            var recognizer = new Recognizer("rastr " + verb.ThirdPersonForm + " strs");
+            _recognizer.Recognize("rastr " + verb.ThirdPersonForm + " strs");
 
-            recognizer.Recognize();
-
-            Assert.Collection(recognizer.RecognizedWords, x => Assert.Equal(x, verb));
+            Assert.Collection(_recognizer.RecognizedWords, x => Assert.Equal(x, verb));
         }
 
         [Fact]
@@ -249,10 +241,9 @@ namespace MyPolyglotCoreTests.RecognizerTests
             var shortNegativeForms = randomPrimaryVerb.ShortNegativeForms.ToList();
 
             var randomShortNegativeForm = shortNegativeForms[_random.Next(shortNegativeForms.Count)];
-            var recognizer = new Recognizer("rastr " + randomShortNegativeForm + " strs");
-            recognizer.Recognize();
+            _recognizer.Recognize("rastr " + randomShortNegativeForm + " strs");
 
-            Assert.Collection(recognizer.RecognizedWords, x => Assert.Equal(x, randomPrimaryVerb));
+            Assert.Collection(_recognizer.RecognizedWords, x => Assert.Equal(x, randomPrimaryVerb));
         }
 
         [Fact]
@@ -262,10 +253,9 @@ namespace MyPolyglotCoreTests.RecognizerTests
             var fullNegativeForms = randomPrimaryVerb.FullNegativeForms.ToList();
 
             var randomFullNegativeForm = fullNegativeForms[_random.Next(fullNegativeForms.Count)];
-            var recognizer = new Recognizer("rastr " + randomFullNegativeForm + " strs");
-            recognizer.Recognize();
+            _recognizer.Recognize("rastr " + randomFullNegativeForm + " strs");
 
-            Assert.Collection(recognizer.RecognizedWords, x => Assert.Equal(x, randomPrimaryVerb));
+            Assert.Collection(_recognizer.RecognizedWords, x => Assert.Equal(x, randomPrimaryVerb));
         }
 
         [Fact]
@@ -274,50 +264,45 @@ namespace MyPolyglotCoreTests.RecognizerTests
             var primaryVerbBe = Vocabulary.PrimaryVerbs.First(x => x.Text == "be");
 
             var randomWordFromAdditionalForms = primaryVerbBe.AdditionalForms.ElementAt(_random.Next(primaryVerbBe.AdditionalForms.Count()));
-            var recognizer = new Recognizer("rastr " + randomWordFromAdditionalForms + " strs");
-            recognizer.Recognize();
+            _recognizer.Recognize("rastr " + randomWordFromAdditionalForms + " strs");
 
-            Assert.Collection(recognizer.RecognizedWords, x => Assert.Equal(x, primaryVerbBe));
+            Assert.Collection(_recognizer.RecognizedWords, x => Assert.Equal(x, primaryVerbBe));
         }
 
         [Fact]
         public void RecognizeModalVerbByNegativeForm()
         {
             var modalVerb = RandomWordHelper.GetRandomModalVerb();
-            var recognizer = new Recognizer("rstrs " + modalVerb.ShortNegativeForm + " rtst");
-            recognizer.Recognize();
+            _recognizer.Recognize("rstrs " + modalVerb.ShortNegativeForm + " rtst");
 
-            Assert.Collection(recognizer.RecognizedWords, x => Assert.Equal(x, modalVerb));
+            Assert.Collection(_recognizer.RecognizedWords, x => Assert.Equal(x, modalVerb));
         }
 
         [Fact]
         public void RecognizeComparativeAdjectiveByRootForm()
         {
             var comparisonAdjective = RandomWordHelper.GetRandomComparisonAdjective();
-            var recognizer = new Recognizer("rstrs " + comparisonAdjective.Text + " rtst");
-            recognizer.Recognize();
+            _recognizer.Recognize("rstrs " + comparisonAdjective.Text + " rtst");
 
-            Assert.Collection(recognizer.RecognizedWords, x => Assert.Equal(x, comparisonAdjective));
+            Assert.Collection(_recognizer.RecognizedWords, x => Assert.Equal(x, comparisonAdjective));
         }
 
         [Fact]
         public void RecognizeComparativeAdjectiveByComparativeForm()
         {
             var comparisonAdjective = RandomWordHelper.GetRandomComparisonAdjective();
-            var recognizer = new Recognizer("rstrs " + comparisonAdjective.ComparativeForm + " rtst");
-            recognizer.Recognize();
+            _recognizer.Recognize("rstrs " + comparisonAdjective.ComparativeForm + " rtst");
 
-            Assert.Collection(recognizer.RecognizedWords, x => Assert.Equal(x, comparisonAdjective));
+            Assert.Collection(_recognizer.RecognizedWords, x => Assert.Equal(x, comparisonAdjective));
         }
 
         [Fact]
         public void RecognizeComparativeAdjectiveBySuperlativeForm()
         {
             var comparisonAdjective = RandomWordHelper.GetRandomComparisonAdjective();
-            var recognizer = new Recognizer("rstrs " + comparisonAdjective.SuperlativeForm + " rtst");
-            recognizer.Recognize();
+            _recognizer.Recognize("rstrs " + comparisonAdjective.SuperlativeForm + " rtst");
 
-            Assert.Collection(recognizer.RecognizedWords, x => Assert.Equal(x, comparisonAdjective));
+            Assert.Collection(_recognizer.RecognizedWords, x => Assert.Equal(x, comparisonAdjective));
         }
 
         [Fact]
@@ -444,10 +429,9 @@ namespace MyPolyglotCoreTests.RecognizerTests
         {
             var randomWordFromVocabulary = typeOfWord.GetRandomWord();
 
-            var recognizer = new Recognizer("rstrs " + randomWordFromVocabulary.Text + " rtst");
-            recognizer.Recognize();
+            _recognizer.Recognize("rstrs " + randomWordFromVocabulary.Text + " rtst");
 
-            Assert.Equal(randomWordFromVocabulary.Text, recognizer.RecognizedWords.First().FromWhatItWasRecognized);
+            Assert.Equal(randomWordFromVocabulary.Text, _recognizer.RecognizedWords.First().FromWhatItWasRecognized);
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using MyPolyglotCore.Words;
+﻿using MyPolyglotCore.Interfaces;
+using MyPolyglotCore.Words;
 using MyPolyglotCore.Words.Adverbs;
 using MyPolyglotCore.Words.Pronouns;
 using System;
@@ -7,7 +8,7 @@ using System.Linq;
 
 namespace MyPolyglotCore
 {
-    public class OptionsGenerator
+    public class OptionsGenerator : IOptionsGenerator
     {
         public IEnumerable<string> GetOptions(Word word)
         {

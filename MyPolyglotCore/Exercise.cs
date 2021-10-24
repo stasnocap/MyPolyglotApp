@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using MyPolyglotCore.Interfaces;
 using MyPolyglotCore.Words;
 
 namespace MyPolyglotCore
@@ -8,32 +9,32 @@ namespace MyPolyglotCore
     {
         public IEnumerable<Word> Words { get; }
 
-        private readonly Recognizer _recognizer;
-        private readonly OptionsGenerator _optionsGenerator;
-        private int wordCounter;
+        private readonly IRecognizer _recognizer;
+        private readonly IOptionsGenerator _optionsGenerator;
+        private int _wordCounter;
 
         public Exercise(string engPhrase, IEnumerable<Word> unrecognizedWords)
         {
             _optionsGenerator = new OptionsGenerator();
-            wordCounter = 0;
+            _wordCounter = 0;
 
-            _recognizer = new Recognizer(engPhrase);
-            _recognizer.Recognize();
+            _recognizer = new Recognizer();
+            _recognizer.Recognize(engPhrase);
 
-            Words = OrderWords(unrecognizedWords);
+            Words = OrderWords(unrecognizedWords, engPhrase);
         }
 
         public IEnumerable<string> NextOptions()
         {
-            return wordCounter < Words.Count()
-                ? _optionsGenerator.GetOptions(Words.ElementAt(wordCounter++))
+            return _wordCounter < Words.Count()
+                ? _optionsGenerator.GetOptions(Words.ElementAt(_wordCounter++))
                 : Enumerable.Empty<string>();
         }
 
-        private IEnumerable<Word> OrderWords(IEnumerable<Word> unrecognizedWords)
+        private IEnumerable<Word> OrderWords(IEnumerable<Word> unrecognizedWords, string engPhrase)
         {
             var unOrderedWords = _recognizer.RecognizedWords.Concat(unrecognizedWords);
-            var words = _recognizer.EngPhrase.SplitToWords();
+            var words = engPhrase.SplitToWords();
 
             return words.SelectMany(x => unOrderedWords.Select(y => y.Equals(x) ? y : null)).Where(x => x != null);
         }

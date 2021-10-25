@@ -24,8 +24,48 @@ namespace MyPolyglotWeb.Models
                 AddExercisesToLesson4(exerciseRepository, lessonRepository.Get(4));
                 AddExercisesToLesson5(exerciseRepository, lessonRepository.Get(5));
                 AddExercisesToLesson6(exerciseRepository, lessonRepository.Get(6));
+                AddExercisesToLesson7(exerciseRepository, lessonRepository.Get(7));
             }
             return host;
+        }
+
+        private static void AddExercisesToLesson7(IExerciseRepository exerciseRepository, LessonDB lessonDB)
+        {
+            var dbExercises = new List<ExerciseDB>()
+            {
+                new ExerciseDB()
+                {
+                    RusPhrase = "Мы будем читать кому-нибудь.",
+                    EngPhrase = "We will read somebody.",
+                    Lesson = lessonDB
+                },
+                new ExerciseDB()
+                {
+                    RusPhrase = "Они чувствуют везде?",
+                    EngPhrase = "Do they feel everywhere?",
+                    Lesson = lessonDB
+                },
+                new ExerciseDB()
+                {
+                    RusPhrase = "Ты встречаешь везде?",
+                    EngPhrase = "Do you meet everywhere?",
+                    Lesson = lessonDB
+                },
+                new ExerciseDB()
+                {
+                    RusPhrase = "Он будет знать всех?",
+                    EngPhrase = "Will he know everybody?",
+                    Lesson = lessonDB
+                },
+                new ExerciseDB()
+                {
+                    RusPhrase = "Он никогда не видит.",
+                    EngPhrase = "He never sees.",
+                    Lesson = lessonDB
+                },
+            };
+
+            SaveExercises(exerciseRepository, dbExercises);
         }
 
         private static void AddExercisesToLesson6(IExerciseRepository exerciseRepository, LessonDB lessonDB)

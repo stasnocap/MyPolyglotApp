@@ -321,9 +321,6 @@ namespace MyPolyglotCore
         public static readonly IEnumerable<Adjective> Adjectives = new Adjective[]
         {
             new Adjective("able"),
-            new Adjective("bad"),
-            new Adjective("best"),
-            new Adjective("better"),
             new Adjective("big"),
             new Adjective("black"),
             new Adjective("certain"),
@@ -335,7 +332,6 @@ namespace MyPolyglotCore
             new Adjective("federal"),
             new Adjective("free"),
             new Adjective("full"),
-            new Adjective("good"),
             new Adjective("great"),
             new Adjective("hard"),
             new Adjective("high"),
@@ -344,7 +340,6 @@ namespace MyPolyglotCore
             new Adjective("international"),
             new Adjective("large"),
             new Adjective("late"),
-            new Adjective("little"),
             new Adjective("local"),
             new Adjective("long"),
             new Adjective("low"),

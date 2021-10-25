@@ -277,7 +277,7 @@ namespace MyPolyglotCoreTests._recognizerTests
         }
 
         [Fact]
-        public void RecognizeComparativeAdjectiveByRootForm()
+        public void RecognizeComparisonAdjectiveByRootForm()
         {
             var comparisonAdjective = RandomWordHelper.GetRandomComparisonAdjective();
             _recognizer.Recognize("rstrs " + comparisonAdjective.Text + " rtst");

@@ -1,6 +1,5 @@
 ﻿using MyPolyglotCore.Interfaces;
 using MyPolyglotCore.Words;
-using MyPolyglotCore.Words.Pronouns;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,11 +13,7 @@ namespace MyPolyglotCore
             return word switch
             {
                 QuestionWord questionWord => GenerateOptions(questionWord),
-                SubjectPronoun subjectPronoun => GenerateOptions(subjectPronoun),
-                ObjectPronoun objectPronoun => GenerateOptions(objectPronoun),
-                PossessiveAdjective possessiveAdjective => GenerateOptions(possessiveAdjective),
-                PossessivePronoun possessivePronoun => GenerateOptions(possessivePronoun),
-                ReflexivePronoun reflexivePronoun => GenerateOptions(reflexivePronoun),
+                Pronoun pronoun => GenerateOptions(pronoun),
                 Adverb adverb => GenerateOptions(adverb),
                 Compound compound => GenerateOptions(compound),
                 Determiner determiner => GenerateOptions(determiner),
@@ -29,9 +24,38 @@ namespace MyPolyglotCore
                 Verb verb => GenerateOptions(verb),
                 Preposition preposition => GenerateOptions(preposition),
                 ComparisonAdjective comparisonAdjective => GenerateOptions(comparisonAdjective),
-                DemonstrativePronoun demonstrativePronoun => GenerateOptions(demonstrativePronoun),
                 _ => throw new NotImplementedException(),
             };
+        }
+
+        private IEnumerable<string> GenerateOptions(Pronoun pronoun)
+        {
+            if (Vocabulary.SubjectPronouns.Contains(pronoun))
+            {
+                return Vocabulary.SubjectPronouns.Select(x => x.Text);
+            }
+
+            if (Vocabulary.ObjectPronouns.Contains(pronoun))
+            {
+                return Vocabulary.ObjectPronouns.Select(x => x.Text);
+            }
+
+            if (Vocabulary.PossessiveAdjectives.Contains(pronoun))
+            {
+                return Vocabulary.PossessiveAdjectives.Select(x => x.Text);
+            }
+
+            if (Vocabulary.PossessivePronouns.Contains(pronoun))
+            {
+                return Vocabulary.PossessivePronouns.Select(x => x.Text);
+            }
+
+            if (Vocabulary.ReflexivePronouns.Contains(pronoun))
+            {
+                return Vocabulary.ReflexivePronouns.Select(x => x.Text);
+            }
+
+            return Vocabulary.DemonstrativePronouns.Select(x => x.Text);
         }
 
         private IEnumerable<string> GenerateOptions(Adverb adverb)
@@ -91,36 +115,6 @@ namespace MyPolyglotCore
         private IEnumerable<string> GenerateOptions(QuestionWord questionWord)
         {
             return Vocabulary.QuestionWords.Select(x => x.Text);
-        }
-
-        private IEnumerable<string> GenerateOptions(SubjectPronoun subjectPronoun)
-        {
-            return Vocabulary.SubjectPronouns.Select(x => x.Text);
-        }
-
-        private IEnumerable<string> GenerateOptions(ObjectPronoun objectPronoun)
-        {
-            return Vocabulary.ObjectPronouns.Select(x => x.Text);
-        }
-
-        private IEnumerable<string> GenerateOptions(PossessiveAdjective possessiveAdjective)
-        {
-            return Vocabulary.PossessiveAdjectives.Select(x => x.Text);
-        }
-
-        private IEnumerable<string> GenerateOptions(PossessivePronoun possessivePronoun)
-        {
-            return Vocabulary.PossessivePronouns.Select(x => x.Text);
-        }
-
-        private IEnumerable<string> GenerateOptions(ReflexivePronoun reflexivePronoun)
-        {
-            return Vocabulary.ReflexivePronouns.Select(x => x.Text);
-        }
-
-        private IEnumerable<string> GenerateOptions(DemonstrativePronoun demonstrativePronoun)
-        {
-            return Vocabulary.DemonstrativePronouns.Select(x => x.Text);
         }
 
         private IEnumerable<string> GenerateOptions(Determiner determiner)

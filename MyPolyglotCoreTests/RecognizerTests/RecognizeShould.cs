@@ -4,7 +4,6 @@ using System.Linq;
 using MyPolyglotCore;
 using MyPolyglotCore.Interfaces;
 using MyPolyglotCore.Words;
-using MyPolyglotCore.Words.Pronouns;
 using Xunit;
 
 namespace MyPolyglotCoreTests._recognizerTests
@@ -51,7 +50,7 @@ namespace MyPolyglotCoreTests._recognizerTests
         }
 
         [Fact]
-        public void _recognizereflexivePronounInPhrase()
+        public void RecognizeReflexivePronounInPhrase()
         {
             var randomWordFromVocabulary = RandomWordHelper.GetRandomReflexivePronoun();
             CheckIfGivenWordHadRecognized(randomWordFromVocabulary);
@@ -305,39 +304,9 @@ namespace MyPolyglotCoreTests._recognizerTests
         }
 
         [Fact]
-        public void MakeSubjectPronounRememberFromWhatItWasRecognized()
+        public void MakePronounRememberFromWhatItWasRecognized()
         {
-            AssertIfWordRememberFromWhatItWasRecognized(typeof(SubjectPronoun));
-        }
-
-        [Fact]
-        public void MakeObjectPronounRememberFromWhatItWasRecognized()
-        {
-            AssertIfWordRememberFromWhatItWasRecognized(typeof(ObjectPronoun));
-        }
-
-        [Fact]
-        public void MakePossessiveAdjectiveRememberFromWhatItWasRecognized()
-        {
-            AssertIfWordRememberFromWhatItWasRecognized(typeof(PossessiveAdjective));
-        }
-
-        [Fact]
-        public void MakePossessivePronounRememberFromWhatItWasRecognized()
-        {
-            AssertIfWordRememberFromWhatItWasRecognized(typeof(PossessivePronoun));
-        }
-
-        [Fact]
-        public void MakeReflexivePronounRememberFromWhatItWasRecognized()
-        {
-            AssertIfWordRememberFromWhatItWasRecognized(typeof(ReflexivePronoun));
-        }
-
-        [Fact]
-        public void MakeDemonstrativePronounRememberFromWhatItWasRecognized()
-        {
-            AssertIfWordRememberFromWhatItWasRecognized(typeof(DemonstrativePronoun));
+            AssertIfWordRememberFromWhatItWasRecognized(typeof(Pronoun));
         }
 
         [Fact]

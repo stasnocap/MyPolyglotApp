@@ -1,6 +1,5 @@
 ﻿using MyPolyglotCore;
 using MyPolyglotCore.Words;
-using MyPolyglotCore.Words.Adverbs;
 using MyPolyglotCore.Words.Pronouns;
 using System;
 using System.Collections.Generic;
@@ -18,91 +17,91 @@ namespace MyPolyglotCoreTests.OptionsGeneratorTests
         public void GivenSubjectPronoun_ReturnAllWordsFromSubjectPronounVocabulary()
         {
             var word = new SubjectPronoun("no matter");
-            CheckIfAllWordsFromVocabularyHadRecieved(word);
+            CheckIfAllWordsFromVocabularyWasReturned(word);
         }
 
         [Fact]
         public void GivenObjectPronoun_ReturnAllWordsFromObjectPronounVocabulary()
         {
             var word = new ObjectPronoun("no matter");
-            CheckIfAllWordsFromVocabularyHadRecieved(word);
+            CheckIfAllWordsFromVocabularyWasReturned(word);
         }
 
         [Fact]
         public void GivenPossessiveAdjective_ReturnAllWordsFromPossessiveAdjectiveVocabulary()
         {
             var word = new PossessiveAdjective("no matter");
-            CheckIfAllWordsFromVocabularyHadRecieved(word);
+            CheckIfAllWordsFromVocabularyWasReturned(word);
         }
 
         [Fact]
         public void GivenPossessivePronoun_ReturnAllWordsFromPossessivePronounVocabulary()
         {
             var word = new PossessivePronoun("no matter");
-            CheckIfAllWordsFromVocabularyHadRecieved(word);
+            CheckIfAllWordsFromVocabularyWasReturned(word);
         }
 
         [Fact]
         public void GivenReflexivePronoun_ReturnAllWordsFromReflexivePronounVocabulary()
         {
             var word = new ReflexivePronoun("no matter");
-            CheckIfAllWordsFromVocabularyHadRecieved(word);
+            CheckIfAllWordsFromVocabularyWasReturned(word);
         }
 
         [Fact]
         public void GivenDemonstrativePronoun_ReturnAllWordsFromDemonstrativePronounVocabulary()
         {
             var word = new DemonstrativePronoun("no matter");
-            CheckIfAllWordsFromVocabularyHadRecieved(word);
+            CheckIfAllWordsFromVocabularyWasReturned(word);
         }
 
         [Fact]
-        public void GivenFrequencyAdverb_ReturnFiveWordsFromNounVocabularyWithRightAnswer()
+        public void GivenFrequencyAdverb_ReturnFiveWordsFromFrequencyAdverbsVocabularyWithRightAnswer()
         {
-            var word = new FrequencyAdverb("no matter");
-            CheckIfFiveWordsFromVocabularyWithRightWordHadRecieved(word);
+            var frequencyAdverb = RandomWordHelper.GetRandomFrequencyAdverb();
+            CheckIfFiveWordsFromVocabularyWithRightWordWasReturned(frequencyAdverb, Vocabulary.FrequencyAdverbs);
         }
 
         [Fact]
-        public void GivenIntensifierAdverb_ReturnFiveWordsFromNounVocabularyWithRightAnswer()
+        public void GivenIntensifierAdverb_ReturnFiveWordsFromIntensifierAdverbsVocabularyWithRightAnswer()
         {
-            var word = new IntensifierAdverb("no matter");
-            CheckIfFiveWordsFromVocabularyWithRightWordHadRecieved(word);
+            var intesifierAdverb = RandomWordHelper.GetRandomIntensifierAdverb();
+            CheckIfFiveWordsFromVocabularyWithRightWordWasReturned(intesifierAdverb, Vocabulary.IntensifierAdverbs);
         }
 
         [Fact]
-        public void GivenMannerAdverb_ReturnFiveWordsFromNounVocabularyWithRightAnswer()
+        public void GivenMannerAdverb_ReturnFiveWordsFromMannerAdverbsVocabularyWithRightAnswer()
         {
-            var word = new MannerAdverb("no matter");
-            CheckIfFiveWordsFromVocabularyWithRightWordHadRecieved(word);
+            var mannerAdverb = RandomWordHelper.GetRandomIntensifierAdverb();
+            CheckIfFiveWordsFromVocabularyWithRightWordWasReturned(mannerAdverb, Vocabulary.MannerAdverbs);
         }
 
         [Fact]
-        public void GivenTellHowItHappenedAdverb_ReturnFiveWordsFromNounVocabularyWithRightAnswer()
+        public void GivenTellHowItHappenedAdverb_ReturnFiveWordsFromTellHowItHappendAdverbsVocabularyWithRightAnswer()
         {
-            var word = new TellHowItHappenedAdverb("no matter");
-            CheckIfFiveWordsFromVocabularyWithRightWordHadRecieved(word);
+            var tellHowItHappenedAdverb = RandomWordHelper.GetRandomTellHowItHappendAdverb();
+            CheckIfFiveWordsFromVocabularyWithRightWordWasReturned(tellHowItHappenedAdverb, Vocabulary.TellHowItHappenedAdverbs);
         }
 
         [Fact]
-        public void GivenTellTheExtentOfTheActionAdverb_ReturnFiveWordsFromNounVocabularyWithRightAnswer()
+        public void GivenTellTheExtentOfTheActionAdverb_ReturnFiveWordsFromTellTheExtentOfTheActionAdverbsVocabularyWithRightAnswer()
         {
-            var word = new TellTheExtentOfTheActionAdverb("no matter");
-            CheckIfFiveWordsFromVocabularyWithRightWordHadRecieved(word);
+            var tellTheExtentOfTheActionAdverb = RandomWordHelper.GetRandomTellTheExtentOfTheActionAdverb();
+            CheckIfFiveWordsFromVocabularyWithRightWordWasReturned(tellTheExtentOfTheActionAdverb, Vocabulary.TellTheExtentOfTheActionAdverbs);
         }
 
         [Fact]
-        public void GivenTellWhenItHappenedAdverb_ReturnFiveWordsFromNounVocabularyWithRightAnswer()
+        public void GivenTellWhenItHappenedAdverb_ReturnFiveWordsFromTellWhenItHappenedAdverbsVocabularyWithRightAnswer()
         {
-            var word = new TellWhenItHappenedAdverb("no matter");
-            CheckIfFiveWordsFromVocabularyWithRightWordHadRecieved(word);
+            var tellWhenItHappenedAdverb = RandomWordHelper.GetRandomTellWhenItHappendAdverb();
+            CheckIfFiveWordsFromVocabularyWithRightWordWasReturned(tellWhenItHappenedAdverb, Vocabulary.TellWhenItHappenedAdverbs);
         }
 
         [Fact]
-        public void GivenTellWhereItHappenedAdverb_ReturnFiveWordsFromNounVocabularyWithRightAnswer()
+        public void GivenTellWhereItHappenedAdverb_ReturnFiveWordsFromTellWhereItHappenedAdverbsVocabularyWithRightAnswer()
         {
-            var word = new TellWhereItHappenedAdverb("no matter");
-            CheckIfFiveWordsFromVocabularyWithRightWordHadRecieved(word);
+            var tellWhereItHappendAdverb = RandomWordHelper.GetRandomTellWhereItHappendAdverb();
+            CheckIfFiveWordsFromVocabularyWithRightWordWasReturned(tellWhereItHappendAdverb, Vocabulary.TellWhereItHappenedAdverbs);
         }
 
         [Fact]
@@ -133,10 +132,10 @@ namespace MyPolyglotCoreTests.OptionsGeneratorTests
         public void GivenDeterminer_ReturnAllWordsFromDeterminerVocabulary()
         {
             var word = new Determiner("no matter");
-            CheckIfAllWordsFromVocabularyHadRecieved(word);
+            CheckIfAllWordsFromVocabularyWasReturned(word);
         }
 
-        private void CheckIfAllWordsFromVocabularyHadRecieved(Word word)
+        private void CheckIfAllWordsFromVocabularyWasReturned(Word word)
         {
             CheckIfAllWordsFromVocabularyHadRecieved(word, Vocabulary.GetVocabulary(word.GetType()));
         }
@@ -247,20 +246,25 @@ namespace MyPolyglotCoreTests.OptionsGeneratorTests
         public void GivenAdjective_ReturnFiveWordsFromAdjectiveVocabularyWithRightAnswer()
         {
             var word = new Adjective("no matter");
-            CheckIfFiveWordsFromVocabularyWithRightWordHadRecieved(word);
+            CheckIfFiveWordsFromVocabularyWithRightWordWasReturned(word);
         }
 
         [Fact]
         public void GivenPreposition_ReturnFiveWordsFormPrepositionVocabularyWithRightAnswer()
         {
             var word = new Preposition("no matter");
-            CheckIfFiveWordsFromVocabularyWithRightWordHadRecieved(word);
+            CheckIfFiveWordsFromVocabularyWithRightWordWasReturned(word);
         }
 
-        private void CheckIfFiveWordsFromVocabularyWithRightWordHadRecieved(Word word)
+        private void CheckIfFiveWordsFromVocabularyWithRightWordWasReturned(Word word)
+        {
+            var vocabulary = Vocabulary.GetVocabulary(word.GetType());
+            CheckIfFiveWordsFromVocabularyWithRightWordWasReturned(word, vocabulary);
+        }
+
+        private void CheckIfFiveWordsFromVocabularyWithRightWordWasReturned(Word word, IEnumerable<Word> vocabulary)
         {
             var options = _optionsGenerator.GetOptions(word);
-            var vocabulary = Vocabulary.GetVocabulary(word.GetType());
 
             foreach (var option in options)
             {

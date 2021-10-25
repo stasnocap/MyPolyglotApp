@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using MyPolyglotCore;
 using MyPolyglotCore.Words;
-using MyPolyglotCore.Words.Adverbs;
 using MyPolyglotCore.Words.Pronouns;
 using Xunit;
 
@@ -357,45 +356,9 @@ namespace MyPolyglotCoreTests.RecognizerTests
         }
 
         [Fact]
-        public void MakeFrequencyAdverbRememberFromWhatItWasRecognized()
+        public void MakeAdverbRememberFromWhatItWasRecognized()
         {
-            AssertIfWordRememberFromWhatItWasRecognized(typeof(FrequencyAdverb));
-        }
-
-        [Fact]
-        public void MakeIntensifierAdverbRememberFromWhatItWasRecognized()
-        {
-            AssertIfWordRememberFromWhatItWasRecognized(typeof(IntensifierAdverb));
-        }
-
-        [Fact]
-        public void MakeMannerAdverbRememberFromWhatItWasRecognized()
-        {
-            AssertIfWordRememberFromWhatItWasRecognized(typeof(MannerAdverb));
-        }
-
-        [Fact]
-        public void MakeTellHowItHappenedAdverbRememberFromWhatItWasRecognized()
-        {
-            AssertIfWordRememberFromWhatItWasRecognized(typeof(TellHowItHappenedAdverb));
-        }
-
-        [Fact]
-        public void MakeTellTheExtentOfTheActionAdverbRememberFromWhatItWasRecognized()
-        {
-            AssertIfWordRememberFromWhatItWasRecognized(typeof(TellTheExtentOfTheActionAdverb));
-        }
-
-        [Fact]
-        public void MakeTellWhenItHappenedAdverbRememberFromWhatItWasRecognized()
-        {
-            AssertIfWordRememberFromWhatItWasRecognized(typeof(TellWhenItHappenedAdverb));
-        }
-
-        [Fact]
-        public void MakeTellWhereItHappenedAdverbRememberFromWhatItWasRecognized()
-        {
-            AssertIfWordRememberFromWhatItWasRecognized(typeof(TellWhereItHappenedAdverb));
+            AssertIfWordRememberFromWhatItWasRecognized(typeof(Adverb));
         }
 
         [Fact]

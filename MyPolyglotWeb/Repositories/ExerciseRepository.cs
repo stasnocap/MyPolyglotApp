@@ -16,8 +16,10 @@ namespace MyPolyglotWeb.Models
 
         public ExerciseDB GetRandomExercise(long lessonId)
         {
-            var filteredById = _dbSet.Where(x => x.Lesson.Id == lessonId).AsEnumerable();
-            return filteredById.ElementAt(_random.Next(filteredById.Count()));
+            var filteredById = _dbSet.Where(x => x.Lesson.Id == lessonId).ToArray();
+            return filteredById.Length > 0 
+                ? filteredById[_random.Next(filteredById.Length)]
+                : null;
         }
 
         public bool IsExist(string engPhrase)

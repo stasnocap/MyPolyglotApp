@@ -32,6 +32,11 @@ namespace MyPolyglotWeb.Presentations
         {
             var exerciseDB = _exerciseRepository.GetRandomExercise(lessonId);
 
+            if (exerciseDB == null)
+            {
+                return null;
+            }
+
             var exercise = new Exercise(exerciseDB.EngPhrase, _mapper.Map<IEnumerable<Word>>(exerciseDB.UnrecognizedWords));
 
             var exerciseVM = _mapper.Map<DoExerciseVM>(exerciseDB);

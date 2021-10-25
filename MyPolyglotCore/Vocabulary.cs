@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using MyPolyglotCore.Words;
-using MyPolyglotCore.Words.Adverbs;
 using MyPolyglotCore.Words.Pronouns;
 
 namespace MyPolyglotCore
@@ -112,105 +111,105 @@ namespace MyPolyglotCore
 
         #region Adverbs
 
-        public static readonly IEnumerable<MannerAdverb> MannerAdverbs = new MannerAdverb[]
+        public static readonly IEnumerable<Adverb> MannerAdverbs = new Adverb[]
         {
-            new MannerAdverb("beautifully"),
-            new MannerAdverb("generously"),
-            new MannerAdverb("happily"),
-            new MannerAdverb("neatly"),
-            new MannerAdverb("patiently"),
-            new MannerAdverb("softly"),
-            new MannerAdverb("quickly"),
-            new MannerAdverb("well"),
+            new Adverb("beautifully"),
+            new Adverb("generously"),
+            new Adverb("happily"),
+            new Adverb("neatly"),
+            new Adverb("patiently"),
+            new Adverb("softly"),
+            new Adverb("quickly"),
+            new Adverb("well"),
         };
 
-        public static readonly IEnumerable<TellHowItHappenedAdverb> TellHowItHappenedAdverbs = new TellHowItHappenedAdverb[]
+        public static readonly IEnumerable<Adverb> TellHowItHappenedAdverbs = new Adverb[]
         {
-            new TellHowItHappenedAdverb("briskly"),
-            new TellHowItHappenedAdverb("brutally"),
-            new TellHowItHappenedAdverb("cheerfully"),
-            new TellHowItHappenedAdverb("expertly"),
-            new TellHowItHappenedAdverb("randomly"),
-            new TellHowItHappenedAdverb("sloppily"),
-            new TellHowItHappenedAdverb("uneasily"),
-            new TellHowItHappenedAdverb("weirdly"),
-            new TellHowItHappenedAdverb("wholeheartedly"),
-            new TellHowItHappenedAdverb("wickedly"),
+            new Adverb("briskly"),
+            new Adverb("brutally"),
+            new Adverb("cheerfully"),
+            new Adverb("expertly"),
+            new Adverb("randomly"),
+            new Adverb("sloppily"),
+            new Adverb("uneasily"),
+            new Adverb("weirdly"),
+            new Adverb("wholeheartedly"),
+            new Adverb("wickedly"),
         };
 
-        public static readonly IEnumerable<TellWhereItHappenedAdverb> TellWhereItHappenedAdverbs = new TellWhereItHappenedAdverb[]
+        public static readonly IEnumerable<Adverb> TellWhereItHappenedAdverbs = new Adverb[]
         {
-            new TellWhereItHappenedAdverb("here"),
-            new TellWhereItHappenedAdverb("there"),
-            new TellWhereItHappenedAdverb("downstairs"),
-            new TellWhereItHappenedAdverb("upstairs"),
-            new TellWhereItHappenedAdverb("inside"),
-            new TellWhereItHappenedAdverb("outside"),
-            new TellWhereItHappenedAdverb("underground"),
-            new TellWhereItHappenedAdverb("above"),
-            new TellWhereItHappenedAdverb("back"),
-            new TellWhereItHappenedAdverb("below"),
-            new TellWhereItHappenedAdverb("out"),
+            new Adverb("here"),
+            new Adverb("there"),
+            new Adverb("downstairs"),
+            new Adverb("upstairs"),
+            new Adverb("inside"),
+            new Adverb("outside"),
+            new Adverb("underground"),
+            new Adverb("above"),
+            new Adverb("back"),
+            new Adverb("below"),
+            new Adverb("out"),
         };
 
-        public static readonly IEnumerable<TellWhenItHappenedAdverb> TellWhenItHappenedAdverbs = new TellWhenItHappenedAdverb[]
+        public static readonly IEnumerable<Adverb> TellWhenItHappenedAdverbs = new Adverb[]
         {
-            new TellWhenItHappenedAdverb("early"),
-            new TellWhenItHappenedAdverb("first"),
-            new TellWhenItHappenedAdverb("last"),
-            new TellWhenItHappenedAdverb("later"),
-            new TellWhenItHappenedAdverb("now"),
-            new TellWhenItHappenedAdverb("regularly"),
-            new TellWhenItHappenedAdverb("today"),
-            new TellWhenItHappenedAdverb("tomorrow"),
-            new TellWhenItHappenedAdverb("yesterday"),
-            new TellWhenItHappenedAdverb("already"),
-            new TellWhenItHappenedAdverb("immediately"),
-            new TellWhenItHappenedAdverb("lately"),
-            new TellWhenItHappenedAdverb("recently"),
-            new TellWhenItHappenedAdverb("soon"),
+            new Adverb("early"),
+            new Adverb("first"),
+            new Adverb("last"),
+            new Adverb("later"),
+            new Adverb("now"),
+            new Adverb("regularly"),
+            new Adverb("today"),
+            new Adverb("tomorrow"),
+            new Adverb("yesterday"),
+            new Adverb("already"),
+            new Adverb("immediately"),
+            new Adverb("lately"),
+            new Adverb("recently"),
+            new Adverb("soon"),
         };
 
-        public static readonly IEnumerable<TellTheExtentOfTheActionAdverb> TellTheExtentOfTheActionAdverbs = new TellTheExtentOfTheActionAdverb[]
+        public static readonly IEnumerable<Adverb> TellTheExtentOfTheActionAdverbs = new Adverb[]
         {
-            new TellTheExtentOfTheActionAdverb("almost"),
-            new TellTheExtentOfTheActionAdverb("also"),
-            new TellTheExtentOfTheActionAdverb("enough"),
-            new TellTheExtentOfTheActionAdverb("only"),
-            new TellTheExtentOfTheActionAdverb("quite"),
-            new TellTheExtentOfTheActionAdverb("rather"),
-            new TellTheExtentOfTheActionAdverb("so"),
-            new TellTheExtentOfTheActionAdverb("too"),
-            new TellTheExtentOfTheActionAdverb("very"),
-            new TellTheExtentOfTheActionAdverb("hardly"),
-            new TellTheExtentOfTheActionAdverb("just"),
-            new TellTheExtentOfTheActionAdverb("nearly"),
+            new Adverb("almost"),
+            new Adverb("also"),
+            new Adverb("enough"),
+            new Adverb("only"),
+            new Adverb("quite"),
+            new Adverb("rather"),
+            new Adverb("so"),
+            new Adverb("too"),
+            new Adverb("very"),
+            new Adverb("hardly"),
+            new Adverb("just"),
+            new Adverb("nearly"),
         };
 
-        public static readonly IEnumerable<IntensifierAdverb> IntensifierAdverbs = new IntensifierAdverb[]
+        public static readonly IEnumerable<Adverb> IntensifierAdverbs = new Adverb[]
         {
-            new IntensifierAdverb("literally"),
-            new IntensifierAdverb("simply"),
-            new IntensifierAdverb("really"),
-            new IntensifierAdverb("sure"),
-            new IntensifierAdverb("completely"),
-            new IntensifierAdverb("heartily"),
-            new IntensifierAdverb("totally"),
-            new IntensifierAdverb("absolutely"),
-            new IntensifierAdverb("somewhat"),
-            new IntensifierAdverb("mildly"),
+            new Adverb("literally"),
+            new Adverb("simply"),
+            new Adverb("really"),
+            new Adverb("sure"),
+            new Adverb("completely"),
+            new Adverb("heartily"),
+            new Adverb("totally"),
+            new Adverb("absolutely"),
+            new Adverb("somewhat"),
+            new Adverb("mildly"),
         };
 
-        public static readonly IEnumerable<FrequencyAdverb> FrequencyAdverbs = new FrequencyAdverb[]
+        public static readonly IEnumerable<Adverb> FrequencyAdverbs = new Adverb[]
         {
-            new FrequencyAdverb("again"),
-            new FrequencyAdverb("always"),
-            new FrequencyAdverb("every"),
-            new FrequencyAdverb("never"),
-            new FrequencyAdverb("normally"),
-            new FrequencyAdverb("rarely"),
-            new FrequencyAdverb("seldom"),
-            new FrequencyAdverb("usually"),
+            new Adverb("again"),
+            new Adverb("always"),
+            new Adverb("every"),
+            new Adverb("never"),
+            new Adverb("normally"),
+            new Adverb("rarely"),
+            new Adverb("seldom"),
+            new Adverb("usually"),
         };
 
         #endregion
@@ -725,13 +724,7 @@ namespace MyPolyglotCore
                 Type possessivePronoun when possessivePronoun == typeof(PossessivePronoun) => PossessivePronouns,
                 Type reflexivePronoun when reflexivePronoun == typeof(ReflexivePronoun) => ReflexivePronouns,
                 Type demonstrativePronoun when demonstrativePronoun == typeof(DemonstrativePronoun) => DemonstrativePronouns,
-                Type frequencyAdverb when frequencyAdverb == typeof(FrequencyAdverb) => FrequencyAdverbs,
-                Type intensifierAdverb when intensifierAdverb == typeof(IntensifierAdverb) => IntensifierAdverbs,
-                Type mannerAdverb when mannerAdverb == typeof(MannerAdverb) => MannerAdverbs,
-                Type tellHowItHappendAdverb when tellHowItHappendAdverb == typeof(TellHowItHappenedAdverb) => TellHowItHappenedAdverbs,
-                Type tellTheExtentOfTheActionAdverb when tellTheExtentOfTheActionAdverb == typeof(TellTheExtentOfTheActionAdverb) => TellTheExtentOfTheActionAdverbs,
-                Type tellWhenItHappenedAdverb when tellWhenItHappenedAdverb == typeof(TellWhenItHappenedAdverb) => TellWhenItHappenedAdverbs,
-                Type tellWhereItHappenedAdverb when tellWhereItHappenedAdverb == typeof(TellWhereItHappenedAdverb) => TellWhereItHappenedAdverbs,
+                Type adverb when adverb == typeof(Adverb) => FrequencyAdverbs.Concat(IntensifierAdverbs).Concat(MannerAdverbs).Concat(TellHowItHappenedAdverbs).Concat(TellTheExtentOfTheActionAdverbs).Concat(TellWhenItHappenedAdverbs).Concat(TellWhereItHappenedAdverbs),
                 Type compound when compound == typeof(Compound) => SomeCompounds.Concat(AnyCompounds).Concat(EveryCompounds).Concat(NoCompounds),
                 Type determiner when determiner == typeof(Determiner) => Determiners,
                 Type primaryVerb when primaryVerb == typeof(PrimaryVerb) => PrimaryVerbs,

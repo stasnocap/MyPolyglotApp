@@ -1,6 +1,5 @@
 ﻿using MyPolyglotCore.Interfaces;
 using MyPolyglotCore.Words;
-using MyPolyglotCore.Words.Adverbs;
 using MyPolyglotCore.Words.Pronouns;
 using System;
 using System.Collections.Generic;
@@ -20,13 +19,7 @@ namespace MyPolyglotCore
                 PossessiveAdjective possessiveAdjective => GenerateOptions(possessiveAdjective),
                 PossessivePronoun possessivePronoun => GenerateOptions(possessivePronoun),
                 ReflexivePronoun reflexivePronoun => GenerateOptions(reflexivePronoun),
-                FrequencyAdverb frequencyAdverb => GenerateOptions(frequencyAdverb),
-                IntensifierAdverb intensifierAdverb => GenerateOptions(intensifierAdverb),
-                MannerAdverb mannerAdverb => GenerateOptions(mannerAdverb),
-                TellHowItHappenedAdverb tellHowItHappenedAdverb => GenerateOptions(tellHowItHappenedAdverb),
-                TellTheExtentOfTheActionAdverb tellTheExtentOfTheActionAdverb => GenerateOptions(tellTheExtentOfTheActionAdverb),
-                TellWhenItHappenedAdverb tellWhenItHappenedAdverb => GenerateOptions(tellWhenItHappenedAdverb),
-                TellWhereItHappenedAdverb tellWhereItHappenedAdverb => GenerateOptions(tellWhereItHappenedAdverb),
+                Adverb adverb => GenerateOptions(adverb),
                 Compound compound => GenerateOptions(compound),
                 Determiner determiner => GenerateOptions(determiner),
                 Adjective adjective => GenerateOptions(adjective),
@@ -39,6 +32,41 @@ namespace MyPolyglotCore
                 DemonstrativePronoun demonstrativePronoun => GenerateOptions(demonstrativePronoun),
                 _ => throw new NotImplementedException(),
             };
+        }
+
+        private IEnumerable<string> GenerateOptions(Adverb adverb)
+        {
+            if (Vocabulary.FrequencyAdverbs.Contains(adverb))
+            {
+                return GetRandomWordsFromVocabularyWithRightWord(adverb, Vocabulary.FrequencyAdverbs);
+            }
+
+            if (Vocabulary.IntensifierAdverbs.Contains(adverb))
+            {
+                return GetRandomWordsFromVocabularyWithRightWord(adverb, Vocabulary.IntensifierAdverbs);
+            }
+
+            if (Vocabulary.MannerAdverbs.Contains(adverb))
+            {
+                return GetRandomWordsFromVocabularyWithRightWord(adverb, Vocabulary.MannerAdverbs);
+            }
+
+            if (Vocabulary.TellHowItHappenedAdverbs.Contains(adverb))
+            {
+                return GetRandomWordsFromVocabularyWithRightWord(adverb, Vocabulary.TellHowItHappenedAdverbs);
+            }
+
+            if (Vocabulary.TellTheExtentOfTheActionAdverbs.Contains(adverb))
+            {
+                return GetRandomWordsFromVocabularyWithRightWord(adverb, Vocabulary.TellTheExtentOfTheActionAdverbs);
+            }
+
+            if (Vocabulary.TellWhenItHappenedAdverbs.Contains(adverb))
+            {
+                return GetRandomWordsFromVocabularyWithRightWord(adverb, Vocabulary.TellWhenItHappenedAdverbs);
+            }
+
+            return GetRandomWordsFromVocabularyWithRightWord(adverb, Vocabulary.TellWhereItHappenedAdverbs);
         }
 
         private IEnumerable<string> GenerateOptions(Compound compound)
@@ -60,42 +88,6 @@ namespace MyPolyglotCore
 
             return Vocabulary.NoCompounds.Select(x => x.Text);
         }
-
-        private IEnumerable<string> GenerateOptions(TellWhereItHappenedAdverb tellWhereItHappenedAdverb)
-        {
-            return GetRandomWordsFromVocabularyWithRightWord(tellWhereItHappenedAdverb);
-        }
-
-        private IEnumerable<string> GenerateOptions(TellWhenItHappenedAdverb tellWhenItHappenedAdverb)
-        {
-            return GetRandomWordsFromVocabularyWithRightWord(tellWhenItHappenedAdverb);
-        }
-
-        private IEnumerable<string> GenerateOptions(TellTheExtentOfTheActionAdverb tellTheExtentOfTheActionAdverb)
-        {
-            return GetRandomWordsFromVocabularyWithRightWord(tellTheExtentOfTheActionAdverb);
-        }
-
-        private IEnumerable<string> GenerateOptions(TellHowItHappenedAdverb tellHowItHappenedAdverb)
-        {
-            return GetRandomWordsFromVocabularyWithRightWord(tellHowItHappenedAdverb);
-        }
-
-        private IEnumerable<string> GenerateOptions(MannerAdverb mannerAdverb)
-        {
-            return GetRandomWordsFromVocabularyWithRightWord(mannerAdverb);
-        }
-
-        private IEnumerable<string> GenerateOptions(IntensifierAdverb intensifierAdverb)
-        {
-            return GetRandomWordsFromVocabularyWithRightWord(intensifierAdverb);
-        }
-
-        private IEnumerable<string> GenerateOptions(FrequencyAdverb frequencyAdverb)
-        {
-            return GetRandomWordsFromVocabularyWithRightWord(frequencyAdverb);
-        }
-
         private IEnumerable<string> GenerateOptions(QuestionWord questionWord)
         {
             return Vocabulary.QuestionWords.Select(x => x.Text);
@@ -171,6 +163,11 @@ namespace MyPolyglotCore
         private IEnumerable<string> GetRandomWordsFromVocabularyWithRightWord(Word word)
         {
             var vocabulary = Vocabulary.GetVocabulary(word.GetType());
+            return GetRandomWordsFromVocabularyWithRightWord(word, vocabulary);
+        }
+
+        private IEnumerable<string> GetRandomWordsFromVocabularyWithRightWord(Word word, IEnumerable<Word> vocabulary)
+        {
             return vocabulary
                 .Select(x => x.Text)
                 .TakeSixShuffledStrings(word.Text);

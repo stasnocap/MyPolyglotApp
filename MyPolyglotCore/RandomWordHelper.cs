@@ -1,5 +1,4 @@
 ﻿using MyPolyglotCore.Words;
-using MyPolyglotCore.Words.Adverbs;
 using MyPolyglotCore.Words.Pronouns;
 using System;
 using System.Collections.Generic;
@@ -98,39 +97,39 @@ namespace MyPolyglotCore
             return (ComparisonAdjective)typeof(ComparisonAdjective).GetRandomWord();
         }
 
-        public static FrequencyAdverb GetRandomFrequencyAdverb()
+        public static Adverb GetRandomFrequencyAdverb()
         {
-            return (FrequencyAdverb)typeof(FrequencyAdverb).GetRandomWord();
+            return (Adverb)GetRandomWord(Vocabulary.FrequencyAdverbs);
         }
 
-        public static IntensifierAdverb GetRandomIntensifierAdverb()
+        public static Adverb GetRandomIntensifierAdverb()
         {
-            return (IntensifierAdverb)typeof(IntensifierAdverb).GetRandomWord();
+            return (Adverb)GetRandomWord(Vocabulary.IntensifierAdverbs);
         }
 
-        public static MannerAdverb GetRandomMannerAdverb()
+        public static Adverb GetRandomMannerAdverb()
         {
-            return (MannerAdverb)typeof(MannerAdverb).GetRandomWord();
+            return (Adverb)GetRandomWord(Vocabulary.MannerAdverbs);
         }
 
-        public static TellHowItHappenedAdverb GetRandomTellHowItHappendAdverb()
+        public static Adverb GetRandomTellHowItHappendAdverb()
         {
-            return (TellHowItHappenedAdverb)typeof(TellHowItHappenedAdverb).GetRandomWord();
+            return (Adverb)GetRandomWord(Vocabulary.TellHowItHappenedAdverbs);
         }
 
-        public static TellTheExtentOfTheActionAdverb GetRandomTellTheExtentOfTheActionAdverb()
+        public static Adverb GetRandomTellTheExtentOfTheActionAdverb()
         {
-            return (TellTheExtentOfTheActionAdverb)typeof(TellTheExtentOfTheActionAdverb).GetRandomWord();
+            return (Adverb)GetRandomWord(Vocabulary.TellTheExtentOfTheActionAdverbs);
         }
 
-        public static TellWhenItHappenedAdverb GetRandomTellWhenItHappendAdverb()
+        public static Adverb GetRandomTellWhenItHappendAdverb()
         {
-            return (TellWhenItHappenedAdverb)typeof(TellWhenItHappenedAdverb).GetRandomWord();
+            return (Adverb)GetRandomWord(Vocabulary.TellWhenItHappenedAdverbs);
         }
 
-        public static TellWhereItHappenedAdverb GetRandomTellWhereItHappendAdverb()
+        public static Adverb GetRandomTellWhereItHappendAdverb()
         {
-            return (TellWhereItHappenedAdverb)typeof(TellWhereItHappenedAdverb).GetRandomWord();
+            return (Adverb)GetRandomWord(Vocabulary.TellWhereItHappenedAdverbs);
         }
 
         public static Compound GetRandomCompound()

@@ -1,5 +1,4 @@
 ﻿using MyPolyglotCore.Words;
-using MyPolyglotCore.Words.Pronouns;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -57,34 +56,34 @@ namespace MyPolyglotCore
             return (Determiner)typeof(Determiner).GetRandomWord();
         }
 
-        public static ReflexivePronoun GetRandomReflexivePronoun()
+        public static Pronoun GetRandomReflexivePronoun()
         {
-            return (ReflexivePronoun)typeof(ReflexivePronoun).GetRandomWord();
+            return (Pronoun)GetRandomWord(Vocabulary.ReflexivePronouns);
         }
 
-        public static PossessivePronoun GetRandomPossessivePronoun()
+        public static Pronoun GetRandomPossessivePronoun()
         {
-            return (PossessivePronoun)typeof(PossessivePronoun).GetRandomWord();
+            return (Pronoun)GetRandomWord(Vocabulary.PossessivePronouns);
         }
 
-        public static PossessiveAdjective GetRandomPossessiveAdjective()
+        public static Pronoun GetRandomPossessiveAdjective()
         {
-            return (PossessiveAdjective)typeof(PossessiveAdjective).GetRandomWord();
+            return (Pronoun)GetRandomWord(Vocabulary.PossessiveAdjectives);
         }
 
-        public static ObjectPronoun GetRandomObjectPronoun()
+        public static Pronoun GetRandomObjectPronoun()
         {
-            return (ObjectPronoun)typeof(ObjectPronoun).GetRandomWord();
+            return (Pronoun)GetRandomWord(Vocabulary.ObjectPronouns);
         }
 
-        public static SubjectPronoun GetRandomSubjectPronoun()
+        public static Pronoun GetRandomSubjectPronoun()
         {
-            return (SubjectPronoun)typeof(SubjectPronoun).GetRandomWord();
+            return (Pronoun)GetRandomWord(Vocabulary.SubjectPronouns);
         }
 
-        public static DemonstrativePronoun GetRandomDemonstrativePronoun()
+        public static Pronoun GetRandomDemonstrativePronoun()
         {
-            return (DemonstrativePronoun)typeof(DemonstrativePronoun).GetRandomWord();
+            return (Pronoun)GetRandomWord(Vocabulary.DemonstrativePronouns);
         }
 
         public static Preposition GetRandomPreposition()

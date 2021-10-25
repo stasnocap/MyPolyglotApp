@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using MyPolyglotCore.Words;
-using MyPolyglotCore.Words.Pronouns;
 
 namespace MyPolyglotCore
 {
@@ -216,62 +215,62 @@ namespace MyPolyglotCore
 
         #region Pronouns
 
-        public static readonly IEnumerable<SubjectPronoun> SubjectPronouns = new SubjectPronoun[]
+        public static readonly IEnumerable<Pronoun> SubjectPronouns = new Pronoun[]
         {
-            new SubjectPronoun("i"),
-            new SubjectPronoun("you"),
-            new SubjectPronoun("he"),
-            new SubjectPronoun("she"),
-            new SubjectPronoun("it"),
-            new SubjectPronoun("we"),
-            new SubjectPronoun("they"),
+            new Pronoun("i"),
+            new Pronoun("you"),
+            new Pronoun("he"),
+            new Pronoun("she"),
+            new Pronoun("it"),
+            new Pronoun("we"),
+            new Pronoun("they"),
         };
 
-        public static readonly IEnumerable<ObjectPronoun> ObjectPronouns = new ObjectPronoun[]
+        public static readonly IEnumerable<Pronoun> ObjectPronouns = new Pronoun[]
         {
-            new ObjectPronoun("me"),
-            new ObjectPronoun("him"),
-            new ObjectPronoun("us"),
-            new ObjectPronoun("them"),
+            new Pronoun("me"),
+            new Pronoun("him"),
+            new Pronoun("us"),
+            new Pronoun("them"),
         };
 
-        public static readonly IEnumerable<PossessiveAdjective> PossessiveAdjectives = new PossessiveAdjective[]
+        public static readonly IEnumerable<Pronoun> PossessiveAdjectives = new Pronoun[]
         {
-            new PossessiveAdjective("my"),
-            new PossessiveAdjective("your"),
-            new PossessiveAdjective("his"),
-            new PossessiveAdjective("her"),
-            new PossessiveAdjective("its"),
-            new PossessiveAdjective("our"),
-            new PossessiveAdjective("their"),
+            new Pronoun("my"),
+            new Pronoun("your"),
+            new Pronoun("his"),
+            new Pronoun("her"),
+            new Pronoun("its"),
+            new Pronoun("our"),
+            new Pronoun("their"),
         };
 
-        public static readonly IEnumerable<PossessivePronoun> PossessivePronouns = new PossessivePronoun[]
+        public static readonly IEnumerable<Pronoun> PossessivePronouns = new Pronoun[]
         {
-            new PossessivePronoun("mine"),
-            new PossessivePronoun("hers"),
-            new PossessivePronoun("ours"),
-            new PossessivePronoun("theirs"),
+            new Pronoun("mine"),
+            new Pronoun("hers"),
+            new Pronoun("ours"),
+            new Pronoun("theirs"),
         };
 
-        public static readonly IEnumerable<ReflexivePronoun> ReflexivePronouns = new ReflexivePronoun[]
+        public static readonly IEnumerable<Pronoun> ReflexivePronouns = new Pronoun[]
         {
-            new ReflexivePronoun("myself"),
-            new ReflexivePronoun("yourself"),
-            new ReflexivePronoun("himself"),
-            new ReflexivePronoun("herself"),
-            new ReflexivePronoun("itself"),
-            new ReflexivePronoun("ourselves"),
-            new ReflexivePronoun("yourselves"),
-            new ReflexivePronoun("themselves"),
+            new Pronoun("myself"),
+            new Pronoun("yourself"),
+            new Pronoun("himself"),
+            new Pronoun("herself"),
+            new Pronoun("itself"),
+            new Pronoun("ourselves"),
+            new Pronoun("yourselves"),
+            new Pronoun("themselves"),
         };
 
-        public static readonly IEnumerable<DemonstrativePronoun> DemonstrativePronouns = new DemonstrativePronoun[]
+        public static readonly IEnumerable<Pronoun> DemonstrativePronouns = new Pronoun[]
         {
-            new DemonstrativePronoun("this"),
-            new DemonstrativePronoun("that"),
-            new DemonstrativePronoun("these"),
-            new DemonstrativePronoun("those"),
+            new Pronoun("this"),
+            new Pronoun("that"),
+            new Pronoun("these"),
+            new Pronoun("those"),
         };
 
         #endregion
@@ -718,12 +717,7 @@ namespace MyPolyglotCore
         {
             dynamic vocabulary = typeOfWord switch
             {
-                Type subjectPronoun when subjectPronoun == typeof(SubjectPronoun) => SubjectPronouns,
-                Type objectPronoun when objectPronoun == typeof(ObjectPronoun) => ObjectPronouns,
-                Type possessiveAdjective when possessiveAdjective == typeof(PossessiveAdjective) => PossessiveAdjectives,
-                Type possessivePronoun when possessivePronoun == typeof(PossessivePronoun) => PossessivePronouns,
-                Type reflexivePronoun when reflexivePronoun == typeof(ReflexivePronoun) => ReflexivePronouns,
-                Type demonstrativePronoun when demonstrativePronoun == typeof(DemonstrativePronoun) => DemonstrativePronouns,
+                Type pronoun when pronoun == typeof(Pronoun) => SubjectPronouns.Concat(ObjectPronouns).Concat(PossessiveAdjectives).Concat(PossessivePronouns).Concat(ReflexivePronouns).Concat(DemonstrativePronouns),
                 Type adverb when adverb == typeof(Adverb) => FrequencyAdverbs.Concat(IntensifierAdverbs).Concat(MannerAdverbs).Concat(TellHowItHappenedAdverbs).Concat(TellTheExtentOfTheActionAdverbs).Concat(TellWhenItHappenedAdverbs).Concat(TellWhereItHappenedAdverbs),
                 Type compound when compound == typeof(Compound) => SomeCompounds.Concat(AnyCompounds).Concat(EveryCompounds).Concat(NoCompounds),
                 Type determiner when determiner == typeof(Determiner) => Determiners,

@@ -27,9 +27,14 @@ namespace MyPolyglotWeb.Controllers
                 return View(_homePresentation.GetDoExerciseVM(1));
             }
 
-            var exerciseVM = _homePresentation.GetDoExerciseVM(lessonId);
+            var doExerciseVM = _homePresentation.GetDoExerciseVM(lessonId);
 
-            return View(exerciseVM);
+            if (doExerciseVM == null)
+            {
+                return View($"/Views/Home/NoExercises.cshtml");
+            }
+
+            return View(doExerciseVM);
         }
 
         [HttpPost]

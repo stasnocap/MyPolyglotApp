@@ -256,5 +256,29 @@ namespace MyPolyglotWebTests.Presentations.HomePresentationTests
             Assert.NotEmpty(exerciseVM.HintTable2VM.PastForm);
             Assert.NotEmpty(exerciseVM.HintTable2VM.ThirdPersonForm);
         }
+
+        [Fact]
+        public void GetRandomExercise_IfThereIsNoExerciseInDatabase()
+        {
+            var lessonId = 1;
+
+            _exerciseRepositoryMock.Setup(x => x.Get(lessonId)).Returns((ExerciseDB)null);
+
+            var doExerciseVM = _homePresentation.GetDoExerciseVM(lessonId);
+
+            _exerciseRepositoryMock.Verify(x => x.GetRandomExercise(1), Times.Once);
+        }
+
+        [Fact]
+        public void ReturnNull_IfThereIsNoExerciseInDatabase()
+        {
+            var lessonId = 1;
+
+            _exerciseRepositoryMock.Setup(x => x.Get(lessonId)).Returns((ExerciseDB)null);
+
+            var doExerciseVM = _homePresentation.GetDoExerciseVM(lessonId);
+
+            Assert.Null(doExerciseVM);
+        }
     }
 }

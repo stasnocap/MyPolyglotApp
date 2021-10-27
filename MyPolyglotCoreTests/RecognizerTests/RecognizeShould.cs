@@ -18,143 +18,162 @@ namespace MyPolyglotCoreTests._recognizerTests
         public void RecognizeSubjectPronounInPhrase()
         {
             var randomWordFromVocabulary = RandomWordHelper.GetRandomSubjectPronoun();
-            CheckIfGivenWordHadRecognized(randomWordFromVocabulary);
+            CheckIfGivenWordHadRecognizedByText(randomWordFromVocabulary);
         }
 
         [Fact]
         public void RecognizeObjectPronounInPhrase()
         {
             var randomWordFromVocabulary = RandomWordHelper.GetRandomObjectPronoun();
-            CheckIfGivenWordHadRecognized(randomWordFromVocabulary);
+            CheckIfGivenWordHadRecognizedByText(randomWordFromVocabulary);
         }
 
         [Fact]
         public void RecognizePossessiveAdjectiveInPhrase()
         {
             var randomWordFromVocabulary = RandomWordHelper.GetRandomPossessiveAdjective();
-            CheckIfGivenWordHadRecognized(randomWordFromVocabulary);
+            CheckIfGivenWordHadRecognizedByText(randomWordFromVocabulary);
         }
 
         [Fact]
         public void RecognizePossessivePronounInPhrase()
         {
             var randomWordFromVocabulary = RandomWordHelper.GetRandomPossessivePronoun();
-            CheckIfGivenWordHadRecognized(randomWordFromVocabulary);
+            CheckIfGivenWordHadRecognizedByText(randomWordFromVocabulary);
         }
 
         [Fact]
         public void RecognizeDemonstrativePronounInPhrase()
         {
             var randomWordFromVocabulary = RandomWordHelper.GetRandomDemonstrativePronoun();
-            CheckIfGivenWordHadRecognized(randomWordFromVocabulary);
+            CheckIfGivenWordHadRecognizedByText(randomWordFromVocabulary);
         }
 
         [Fact]
         public void RecognizeReflexivePronounInPhrase()
         {
             var randomWordFromVocabulary = RandomWordHelper.GetRandomReflexivePronoun();
-            CheckIfGivenWordHadRecognized(randomWordFromVocabulary);
+            CheckIfGivenWordHadRecognizedByText(randomWordFromVocabulary);
         }
 
         [Fact]
         public void RecognizeDeterminerInPhrase()
         {
             var randomWordFromVocabulary = RandomWordHelper.GetRandomDeterminer();
-            CheckIfGivenWordHadRecognized(randomWordFromVocabulary);
+            CheckIfGivenWordHadRecognizedByText(randomWordFromVocabulary);
         }
 
         [Fact]
         public void RecognizeIrregularVerbInPhrase()
         {
             var randomWordFromVocabulary = RandomWordHelper.GetRandomIrregularVerb();
-            CheckIfGivenWordHadRecognized(randomWordFromVocabulary);
+            CheckIfGivenWordHadRecognizedByText(randomWordFromVocabulary);
         }
 
         [Fact]
         public void RecognizeModalVerbByAffirmativeForm()
         {
             var randomWordFromVocabulary = RandomWordHelper.GetRandomModalVerb();
-            CheckIfGivenWordHadRecognized(randomWordFromVocabulary);
+            CheckIfGivenWordHadRecognizedByText(randomWordFromVocabulary);
         }
 
         [Fact]
         public void RecognizePrepositionByText()
         {
             var randomWordFromVocabulary = RandomWordHelper.GetRandomPreposition();
-            CheckIfGivenWordHadRecognized(randomWordFromVocabulary);
+            CheckIfGivenWordHadRecognizedByText(randomWordFromVocabulary);
         }
 
         [Fact]
         public void RecognizeFrequencyAdverbByText()
         {
             var randomWordFromVocabulary = RandomWordHelper.GetRandomFrequencyAdverb();
-            CheckIfGivenWordHadRecognized(randomWordFromVocabulary);
+            CheckIfGivenWordHadRecognizedByText(randomWordFromVocabulary);
         }
 
         [Fact]
         public void RecognizeIntensifierAdverbByText()
         {
             var randomWordFromVocabulary = RandomWordHelper.GetRandomIntensifierAdverb();
-            CheckIfGivenWordHadRecognized(randomWordFromVocabulary);
+            CheckIfGivenWordHadRecognizedByText(randomWordFromVocabulary);
         }
 
         [Fact]
         public void RecognizeMannerAdverbByText()
         {
             var randomWordFromVocabulary = RandomWordHelper.GetRandomMannerAdverb();
-            CheckIfGivenWordHadRecognized(randomWordFromVocabulary);
+            CheckIfGivenWordHadRecognizedByText(randomWordFromVocabulary);
         }
 
         [Fact]
         public void RecognizeTellHowItHappenedAdverbByText()
         {
             var randomWordFromVocabulary = RandomWordHelper.GetRandomTellHowItHappendAdverb();
-            CheckIfGivenWordHadRecognized(randomWordFromVocabulary);
+            CheckIfGivenWordHadRecognizedByText(randomWordFromVocabulary);
         }
 
         [Fact]
         public void RecognizeTellTheExtentOfTheActionAdverbByText()
         {
             var randomWordFromVocabulary = RandomWordHelper.GetRandomTellTheExtentOfTheActionAdverb();
-            CheckIfGivenWordHadRecognized(randomWordFromVocabulary);
+            CheckIfGivenWordHadRecognizedByText(randomWordFromVocabulary);
         }
 
         [Fact]
         public void RecognizeTellWhenItHappenedAdverbByText()
         {
             var randomWordFromVocabulary = RandomWordHelper.GetRandomTellWhenItHappendAdverb();
-            CheckIfGivenWordHadRecognized(randomWordFromVocabulary);
+            CheckIfGivenWordHadRecognizedByText(randomWordFromVocabulary);
         }
 
         [Fact]
         public void RecognizeTellWhereItHappenedAdverbByText()
         {
             var randomWordFromVocabulary = RandomWordHelper.GetRandomTellWhereItHappendAdverb();
-            CheckIfGivenWordHadRecognized(randomWordFromVocabulary);
+            CheckIfGivenWordHadRecognizedByText(randomWordFromVocabulary);
         }
 
         [Fact]
         public void RecognizeNounByText()
         {
             var randomWordFromVocabulary = RandomWordHelper.GetRandomNoun();
-            CheckIfGivenWordHadRecognized(randomWordFromVocabulary);
+            CheckIfGivenWordHadRecognizedByText(randomWordFromVocabulary);
+        }
+
+        [Fact]
+        public void RecognizeOccupationByText()
+        {
+            var randomWordFromVocabulary = RandomWordHelper.GetRandomOccupation();
+            CheckIfGivenWordHadRecognizedByText(randomWordFromVocabulary);
+        }
+
+        [Fact]
+        public void RecognizeOccupationByPluralForm()
+        {
+            var occupation = RandomWordHelper.GetRandomOccupation();
+            CheckIfGivenWordHadRecognizedByText(occupation);
+            var engPhrase = $",,.1 s,t! tr , starst nsetnrsit!ta stra {occupation.PluralForm}, 2 arstar";
+
+            _recognizer.Recognize(engPhrase);
+
+            Assert.Collection(_recognizer.RecognizedWords, x => Assert.Equal(x, occupation));
         }
 
         [Fact]
         public void RecognizeAdjectiveByText()
         {
             var randomWordFromVocabulary = RandomWordHelper.GetRandomAdjective();
-            CheckIfGivenWordHadRecognized(randomWordFromVocabulary);
+            CheckIfGivenWordHadRecognizedByText(randomWordFromVocabulary);
         }
 
         [Fact]
         public void RecognizeCompoundByText()
         {
             var randomWordFromVocabulary = RandomWordHelper.GetRandomCompound();
-            CheckIfGivenWordHadRecognized(randomWordFromVocabulary);
+            CheckIfGivenWordHadRecognizedByText(randomWordFromVocabulary);
         }
 
-        private void CheckIfGivenWordHadRecognized(Word word)
+        private void CheckIfGivenWordHadRecognizedByText(Word word)
         {
             var engPhrase =
                 $",,.1 s,t! tr , starst nsetnrsit!ta stra {word.Text}, 2 arstar";
@@ -313,6 +332,12 @@ namespace MyPolyglotCoreTests._recognizerTests
         public void MakeAdverbRememberFromWhatItWasRecognized()
         {
             AssertIfWordRememberFromWhatItWasRecognized(typeof(Adverb));
+        }
+
+        [Fact]
+        public void MakeNounRememberFromWhatItWasRecognized()
+        {
+            AssertIfWordRememberFromWhatItWasRecognized(typeof(Noun));
         }
 
         [Fact]

@@ -360,11 +360,69 @@ namespace MyPolyglotCore
             new Adjective("social"),
             new Adjective("special"),
             new Adjective("strong"),
-            new Adjective("sure"),
             new Adjective("true"),
             new Adjective("white"),
             new Adjective("whole"),
             new Adjective("young"),
+        };
+
+        public static readonly IEnumerable<Noun> Occupations = new Noun[]
+        {
+            new Noun("accountant"),
+            new Noun("actor"),
+            new Noun("actress"),
+            new Noun("architect"),
+            new Noun("astronomer"),
+            new Noun("author"),
+            new Noun("baker"),
+            new Noun("bricklayer"),
+            new Noun("bus"),
+            new Noun("driver"),
+            new Noun("butcher"),
+            new Noun("carpenter"),
+            new Noun("chef"),
+            new Noun("cleaner"),
+            new Noun("dentist"),
+            new Noun("designer"),
+            new Noun("doctor"),
+            new Noun("dustman"),
+            new Noun("electrician"),
+            new Noun("engineer"),
+            new Noun("farmer"),
+            new Noun("fireman"),
+            new Noun("fisherman"),
+            new Noun("florist"),
+            new Noun("gardener"),
+            new Noun("hairdresser"),
+            new Noun("journalist"),
+            new Noun("judge"),
+            new Noun("lawyer"),
+            new Noun("lecturer"),
+            new Noun("librarian"),
+            new Noun("lifeguard"),
+            new Noun("mechanic"),
+            new Noun("model"),
+            new Noun("newsreader"),
+            new Noun("nurse"),
+            new Noun("optician"),
+            new Noun("painter"),
+            new Noun("pharmacist"),
+            new Noun("photographer"),
+            new Noun("pilot"),
+            new Noun("plumber"),
+            new Noun("politician"),
+            new Noun("policeman"),
+            new Noun("policewoman"),
+            new Noun("postman"),
+            new Noun("receptionist"),
+            new Noun("scientist"),
+            new Noun("secretary"),
+            new Noun("soldier"),
+            new Noun("tailor"),
+            new Noun("teacher"),
+            new Noun("translator"),
+            new Noun("waiter"),
+            new Noun("waitress"),
         };
 
         public static readonly IEnumerable<Noun> IrregularNouns = new Noun[]
@@ -698,10 +756,13 @@ namespace MyPolyglotCore
             .Concat(EveryCompounds)
             .Concat(NoCompounds)
             #endregion
-            .Concat(Determiners)
-            .Concat(Adjectives)
+            #region Nouns
             .Concat(IrregularNouns)
             .Concat(Nouns)
+            .Concat(Occupations)
+            #endregion
+            .Concat(Determiners)
+            .Concat(Adjectives)
             .Concat(IrregularVerbs)
             .Concat(PrimaryVerbs)
             .Concat(ModalVerbs)
@@ -718,7 +779,7 @@ namespace MyPolyglotCore
                 Type determiner when determiner == typeof(Determiner) => Determiners,
                 Type primaryVerb when primaryVerb == typeof(PrimaryVerb) => PrimaryVerbs,
                 Type verb when verb == typeof(Verb) => IrregularVerbs,
-                Type noun when noun == typeof(Noun) => Nouns.Concat(IrregularNouns),
+                Type noun when noun == typeof(Noun) => GetNounVocabulary(),
                 Type adjective when adjective == typeof(Adjective) => Adjectives,
                 Type modalVerb when modalVerb == typeof(ModalVerb) => ModalVerbs,
                 Type preposition when preposition == typeof(Preposition) => Prepositions,
@@ -726,6 +787,11 @@ namespace MyPolyglotCore
                 _ => throw new NotImplementedException(),
             };
             return vocabulary;
+        }
+
+        public static IEnumerable<Noun> GetNounVocabulary()
+        {
+            return Nouns.Concat(IrregularNouns).Concat(Occupations);
         }
     }
 }

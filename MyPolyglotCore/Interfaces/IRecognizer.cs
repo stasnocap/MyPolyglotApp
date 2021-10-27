@@ -7,7 +7,6 @@ namespace MyPolyglotCore.Interfaces
     {
         IEnumerable<Word> RecognizedWords { get; }
         IEnumerable<Word> UnrecognizedWords { get; }
-
         void Recognize(string engPhrase);
     }
 }

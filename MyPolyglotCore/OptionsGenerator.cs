@@ -129,7 +129,21 @@ namespace MyPolyglotCore
 
         private IEnumerable<string> GenerateOptions(Noun noun)
         {
-            var nounVocabulary = Vocabulary.GetVocabulary(typeof(Noun)).Cast<Noun>();
+            if (Vocabulary.Occupations.Contains(noun))
+            {
+                if (noun.FromWhatItWasRecognized == noun.PluralForm)
+                {
+                    return Vocabulary.Occupations
+                        .Select(x => x.PluralForm)
+                        .TakeSixShuffledStrings(noun.PluralForm);
+                }
+
+                return Vocabulary.Occupations
+                    .Select(x => x.Text)
+                    .TakeSixShuffledStrings(noun.Text);
+            }
+
+            var nounVocabulary = Vocabulary.GetNounVocabulary();
             if (noun.WasRecognizedFromPluralForm
                 || noun.PluralForm != null && noun.FromWhatItWasRecognized == noun.PluralForm)
             {

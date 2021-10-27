@@ -9,13 +9,10 @@ namespace MyPolyglotCore.Words
         public string PluralForm { get; set; }
         public bool WasRecognizedFromPluralForm { get; set; }
 
-        public Noun(string singleOrPlural, bool wasRecognizedFromPluralForm) : base(!wasRecognizedFromPluralForm ? singleOrPlural : null)
+        public Noun(string singleOrPlural, bool wasRecognizedFromPluralForm) : base(singleOrPlural)
         {
             WasRecognizedFromPluralForm = wasRecognizedFromPluralForm;
-            if (wasRecognizedFromPluralForm)
-            {
-                PluralForm = singleOrPlural;
-            }
+            PluralForm = singleOrPlural;
         }
 
         public Noun(string text, string pluralForm) : base(text)
@@ -30,7 +27,7 @@ namespace MyPolyglotCore.Words
 
         private string GeneratePluralForm()
         {
-            if (Text.EndsWith("on"))
+            if (Text.EndsWith("on") && Text[Text.Length - 3] != 'o')
             {
                 return Text.Substring(0, Text.Length - 2) + "a";
             }

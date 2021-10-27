@@ -425,6 +425,14 @@ namespace MyPolyglotCore
             new Noun("waitress"),
         };
 
+        public static readonly IEnumerable<Noun> DayParts = new Noun[]
+        {
+            new Noun("morning"),
+            new Noun("afternoon"),
+            new Noun("evening"),
+            new Noun("night"),
+        };
+
         public static readonly IEnumerable<Noun> IrregularNouns = new Noun[]
         {
             new Noun("child", "children"),
@@ -464,7 +472,6 @@ namespace MyPolyglotCore
             new Noun("question"),
             new Noun("government"),
             new Noun("number"),
-            new Noun("night"),
             new Noun("point"),
             new Noun("home"),
             new Noun("water"),
@@ -521,7 +528,6 @@ namespace MyPolyglotCore
             new Noun("party"),
             new Noun("result"),
             new Noun("change"),
-            new Noun("morning"),
             new Noun("reason"),
             new Noun("research"),
             new Noun("girl"),
@@ -760,6 +766,7 @@ namespace MyPolyglotCore
             .Concat(IrregularNouns)
             .Concat(Nouns)
             .Concat(Occupations)
+            .Concat(DayParts)
             #endregion
             .Concat(Determiners)
             .Concat(Adjectives)
@@ -791,7 +798,10 @@ namespace MyPolyglotCore
 
         public static IEnumerable<Noun> GetNounVocabulary()
         {
-            return Nouns.Concat(IrregularNouns).Concat(Occupations);
+            return Nouns
+                .Concat(IrregularNouns)
+                .Concat(Occupations)
+                .Concat(DayParts);
         }
     }
 }

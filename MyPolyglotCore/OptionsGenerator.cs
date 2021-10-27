@@ -129,6 +129,16 @@ namespace MyPolyglotCore
 
         private IEnumerable<string> GenerateOptions(Noun noun)
         {
+            if (Vocabulary.DayParts.Contains(noun))
+            {
+                if (noun.FromWhatItWasRecognized == noun.PluralForm)
+                {
+                    return Vocabulary.DayParts.Select(x => x.PluralForm);
+                }
+
+                return Vocabulary.DayParts.Select(x => x.Text);
+            }
+
             if (Vocabulary.Occupations.Contains(noun))
             {
                 if (noun.FromWhatItWasRecognized == noun.PluralForm)

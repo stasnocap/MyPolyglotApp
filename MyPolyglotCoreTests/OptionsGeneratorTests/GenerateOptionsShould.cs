@@ -280,6 +280,34 @@ namespace MyPolyglotCoreTests.OptionsGeneratorTests
         }
 
         [Fact]
+        public void GivenDayPartRecognizedFromSingleForm_ReturnAllWordsFromDayPartsVocabulary()
+        {
+            var dayPart = RandomWordHelper.GetRandomDayPart();
+            dayPart.FromWhatItWasRecognized = dayPart.Text;
+
+            var options = _optionsGenerator.GetOptions(dayPart);
+
+            foreach (var wordFromVocabulary in Vocabulary.DayParts)
+            {
+                Assert.Contains(wordFromVocabulary.Text, options);
+            }
+        }
+
+        [Fact]
+        public void GivenDayPartRecognizedFromPluralForm_ReturnAllWordsFromDayPartsVocabulary()
+        {
+            var dayPart = RandomWordHelper.GetRandomDayPart();
+            dayPart.FromWhatItWasRecognized = dayPart.PluralForm;
+
+            var options = _optionsGenerator.GetOptions(dayPart);
+
+            foreach (var wordFromVocabulary in Vocabulary.DayParts)
+            {
+                Assert.Contains(wordFromVocabulary.PluralForm, options);
+            }
+        }
+
+        [Fact]
         public void GivenAdjective_ReturnFiveWordsFromAdjectiveVocabularyWithRightAnswer()
         {
             var word = new Adjective("no matter");

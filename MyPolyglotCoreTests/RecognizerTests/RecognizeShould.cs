@@ -1,9 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using MyPolyglotCore;
+﻿using MyPolyglotCore;
 using MyPolyglotCore.Interfaces;
 using MyPolyglotCore.Words;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using Xunit;
 
 namespace MyPolyglotCoreTests._recognizerTests
@@ -137,6 +137,13 @@ namespace MyPolyglotCoreTests._recognizerTests
         public void RecognizeNounByText()
         {
             var randomWordFromVocabulary = RandomWordHelper.GetRandomNoun();
+            CheckIfWordWasRecognizedByText(randomWordFromVocabulary);
+        }
+
+        [Fact]
+        public void RecognizeDayPartByText()
+        {
+            var randomWordFromVocabulary = RandomWordHelper.GetRandomDayPart();
             CheckIfWordWasRecognizedByText(randomWordFromVocabulary);
         }
 

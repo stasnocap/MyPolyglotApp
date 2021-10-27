@@ -149,7 +149,6 @@ namespace MyPolyglotCoreTests.OptionsGeneratorTests
             }
         }
 
-
         [Fact]
         public void GivenNounRecognizedFromPluralForm_ReturnFiveWordsPluralFormsFromNounVocabularyWithRightAnswer()
         {
@@ -167,7 +166,7 @@ namespace MyPolyglotCoreTests.OptionsGeneratorTests
                     continue;
                 }
 
-                Assert.Contains(option, Vocabulary.Nouns.Concat(Vocabulary.IrregularNouns).Select(x => x.PluralForm));
+                Assert.Contains(option, Vocabulary.GetNounVocabulary().Select(x => x.PluralForm));
             }
 
             Assert.Contains(noun.PluralForm, options);
@@ -190,19 +189,17 @@ namespace MyPolyglotCoreTests.OptionsGeneratorTests
                     continue;
                 }
 
-                Assert.Contains(option, Vocabulary.Nouns.Concat(Vocabulary.IrregularNouns).Select(x => x.Text));
+                Assert.Contains(option, Vocabulary.GetNounVocabulary().Select(x => x.Text));
             }
 
             Assert.Contains(noun.Text, options);
         }
 
         [Fact]
-        public void GivenPluralNounRecognizedNotByUserButByVocabulary_ReturnFiveWordsPluralFormsFromNounVocabularyWithRightAnswer()
+        public void GivenNounRecognizedByPluralForm_ReturnFivePluralFormsFromNounVocabularyWithRightAnswer()
         {
-            var noun = new Noun("cat")
-            {
-                FromWhatItWasRecognized = "cats"
-            };
+            var noun = RandomWordHelper.GetRandomNoun();
+            noun.FromWhatItWasRecognized = noun.PluralForm;
 
             var options = _optionsGenerator.GetOptions(noun);
 
@@ -213,19 +210,17 @@ namespace MyPolyglotCoreTests.OptionsGeneratorTests
                     continue;
                 }
 
-                Assert.Contains(option, Vocabulary.Nouns.Concat(Vocabulary.IrregularNouns).Select(x => x.PluralForm));
+                Assert.Contains(option, Vocabulary.GetNounVocabulary().Select(x => x.PluralForm));
             }
 
             Assert.Contains(noun.PluralForm, options);
         }
 
         [Fact]
-        public void GivenSingleNounRecognizedNotByUserButByVocabulary_ReturnFiveWordsSingleFormsFromNounVocabularyWithRightAnswer()
+        public void GivenNounRecognizedBySingleFrom_ReturnFiveSingleFormsFromNounVocabularyWithRightAnswer()
         {
-            var noun = new Noun("cat")
-            {
-                FromWhatItWasRecognized = "cat"
-            };
+            var noun = RandomWordHelper.GetRandomNoun();
+            noun.FromWhatItWasRecognized = noun.Text;
 
             var options = _optionsGenerator.GetOptions(noun);
 
@@ -236,10 +231,52 @@ namespace MyPolyglotCoreTests.OptionsGeneratorTests
                     continue;
                 }
 
-                Assert.Contains(option, Vocabulary.Nouns.Concat(Vocabulary.IrregularNouns).Select(x => x.Text));
+                Assert.Contains(option, Vocabulary.GetNounVocabulary().Select(x => x.Text));
             }
 
             Assert.Contains(noun.Text, options);
+        }
+
+        [Fact]
+        public void GivenOccupationRecognizedFromSingleForm_ReturnFiveSingleFormsFromOccupationsVocabularyWithRightAnswer()
+        {
+            var occupation = RandomWordHelper.GetRandomOccupation();
+            occupation.FromWhatItWasRecognized = occupation.Text;
+
+            var options = _optionsGenerator.GetOptions(occupation);
+
+            foreach (var option in options)
+            {
+                if (option == occupation.Text)
+                {
+                    continue;
+                }
+
+                Assert.Contains(option, Vocabulary.Occupations.Select(x => x.Text));
+            }
+
+            Assert.Contains(occupation.Text, options);
+        }
+
+        [Fact]
+        public void GivenOccupationRecognizedFromPluralForm_ReturnFivePluralFormsFromOccupationsVocabularyWithRightAnswer()
+        {
+            var occupation = RandomWordHelper.GetRandomOccupation();
+            occupation.FromWhatItWasRecognized = occupation.PluralForm;
+
+            var options = _optionsGenerator.GetOptions(occupation);
+
+            foreach (var option in options)
+            {
+                if (option == occupation.PluralForm)
+                {
+                    continue;
+                }
+
+                Assert.Contains(option, Vocabulary.Occupations.Select(x => x.PluralForm));
+            }
+
+            Assert.Contains(occupation.PluralForm, options);
         }
 
         [Fact]

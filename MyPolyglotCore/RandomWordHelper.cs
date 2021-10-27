@@ -155,5 +155,10 @@ namespace MyPolyglotCore
         {
             return (Compound)GetRandomWord(Vocabulary.NoCompounds);
         }
+
+        public static Noun GetRandomOccupation()
+        {
+            return (Noun)GetRandomWord(Vocabulary.Occupations);
+        }
     }
 }

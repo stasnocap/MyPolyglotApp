@@ -150,7 +150,7 @@ namespace MyPolyglotCoreTests.OptionsGeneratorTests
         }
 
         [Fact]
-        public void GivenNounRecognizedFromPluralForm_ReturnFiveWordsPluralFormsFromNounVocabularyWithRightAnswer()
+        public void GivenNounRecognizedFromPluralForm_ReturnFivePluralFormsFromNounVocabularyWithRightAnswer()
         {
             var noun = new Noun("no matter")
             {
@@ -173,7 +173,7 @@ namespace MyPolyglotCoreTests.OptionsGeneratorTests
         }
 
         [Fact]
-        public void GivenNounRecognizedFromSingleForm_ReturnFiveWordsSingleFormsFromNounVocabularyWithRightAnswer()
+        public void GivenNounRecognizedFromSingleForm_ReturnFiveSingleFormsFromNounVocabularyWithRightAnswer()
         {
             var noun = new Noun("no matter")
             {

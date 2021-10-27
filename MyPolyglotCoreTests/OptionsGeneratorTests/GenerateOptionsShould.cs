@@ -149,7 +149,6 @@ namespace MyPolyglotCoreTests.OptionsGeneratorTests
             }
         }
 
-
         [Fact]
         public void GivenNounRecognizedFromPluralForm_ReturnFiveWordsPluralFormsFromNounVocabularyWithRightAnswer()
         {

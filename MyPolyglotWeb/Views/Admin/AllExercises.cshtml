@@ -98,9 +98,12 @@
                         <input asp-for="Exercises[i].EngPhrase" value="@Model.Exercises[i].EngPhrase" />
                     </td>
                     <td>
-                        <span class="unrecognized-words-unfold">
-                            <..слова..>
-                        </span>
+                        @if (Model.Exercises[i].UnrecognizedWords.Any())
+                        {
+                            <span class="unrecognized-words-unfold">
+                                <..слова..>
+                            </span>
+                        }
                         <div class="unrecognized-words-collapsible">
                             @for (int j = 0; j < Model.Exercises[i].UnrecognizedWords.Count; j++)
                             {

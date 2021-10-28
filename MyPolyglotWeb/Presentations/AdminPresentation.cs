@@ -4,6 +4,7 @@ using MyPolyglotCore.Interfaces;
 using MyPolyglotWeb.Models.DomainModels;
 using MyPolyglotWeb.Models.ViewModels;
 using MyPolyglotWeb.Repositories.IRepositories;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -18,7 +19,7 @@ namespace MyPolyglotWeb.Presentations
         public IRecognizer _recognizer;
 
         public AdminPresentation(IMapper mapper, ILessonRepository lessonRepository,
-            IExerciseRepository exerciseRepository, IUnrecognizedWordRepository unrecognizedWordRepository, 
+            IExerciseRepository exerciseRepository, IUnrecognizedWordRepository unrecognizedWordRepository,
             IRecognizer recognizer)
         {
             _mapper = mapper;
@@ -44,10 +45,47 @@ namespace MyPolyglotWeb.Presentations
             return _mapper.Map<IEnumerable<UnrecognizedWordVM>>(_recognizer.UnrecognizedWords);
         }
 
-        public AllExercisesVM GetAllExercisesVM()
+        public AllExercisesVM GetAllExercisesVM(int page, int pageSize, SortColumn sortColumn, SortDirection sortDirection)
         {
-            var exercisesDB = _exerciseRepository.GetAll().ToList();
-            return _mapper.Map<AllExercisesVM>(exercisesDB);
+            var dbExercises = _exerciseRepository.GetAll();
+            var sortedExercises = SortExercises(dbExercises, sortColumn, sortDirection);
+
+            sortedExercises = sortedExercises
+                .Skip(page * pageSize)
+                .Take(pageSize);
+
+            var allExercisesVM = _mapper.Map<AllExercisesVM>(sortedExercises.ToList());
+
+            allExercisesVM.PaginatorVM = new PaginatorVM()
+            {
+                Page = page,
+                PageSize = pageSize,
+                TotalRecordCount = dbExercises.Count(),
+                SortColumn = sortColumn,
+                SortDirection = sortDirection,
+                WhatIsOnPagePluralForm = "Упражнения",
+                WhatIsOnPageGenitive = "упражнений"
+            };
+
+            return allExercisesVM;
+        }
+
+        private IQueryable<ExerciseDB> SortExercises(IQueryable<ExerciseDB> dbExercises, SortColumn sortColumn, SortDirection sortDirection)
+        {
+            dbExercises = sortColumn switch
+            {
+                SortColumn.LessonId => dbExercises.OrderBy(x => x.Lesson.Id),
+                SortColumn.RusPhrase => dbExercises.OrderBy(x => x.RusPhrase),
+                SortColumn.EngPhrase => dbExercises.OrderBy(x => x.EngPhrase),
+                _ => throw new NotImplementedException(),
+            };
+
+            if (sortDirection == SortDirection.DESC)
+            {
+                dbExercises = dbExercises.Reverse();
+            }
+
+            return dbExercises;
         }
 
         public void UpdateExercises(AllExercisesVM allExercisesVM)

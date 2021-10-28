@@ -1,7 +1,11 @@
 ﻿@model AllExercisesVM
 
 @section Scripts {
+    <script>
+        var paginatorUrl = '/Admin/AllExercises';
+    </script>
     <script src="~/js/allExercises.js"></script>
+    <script src="~/js/paginator.js"></script>
 }
 
 <div class="all-exercises">
@@ -9,12 +13,67 @@
         <input type="hidden" name="exerciseId" />
         <button type="submit"></button>
     </form>
+    <partial name="../Shared/_paginator.cshtml" model="Model.PaginatorVM" />
     <form asp-controller="Admin" asp-action="AllExercises" method="post">
         <table>
             <tr>
-                <th>Урок</th>
-                <th>На русском</th>
-                <th>На английском</th>
+                <th>
+                    <a class="flex-space-between" asp-action="AllExercises" asp-controller="Admin"
+                       asp-route-page="@Model.PaginatorVM.Page"
+                       asp-route-pageSize="@Model.PaginatorVM.PageSize"
+                       asp-route-sortColumn="@SortColumn.LessonId"
+                       asp-route-sortDirection="@(Model.PaginatorVM.SortDirection == SortDirection.ASC
+                                ? SortDirection.DESC
+                                : SortDirection.ASC)">
+                        Урок
+                        <span class="flex">
+                            <span @if (Model.PaginatorVM.SortColumn == SortColumn.LessonId && Model.PaginatorVM.SortDirection == SortDirection.DESC) { <text> class="black" </text> }>
+                                &#8593;
+                            </span>
+                            <span @if (Model.PaginatorVM.SortColumn == SortColumn.LessonId && Model.PaginatorVM.SortDirection == SortDirection.ASC) { <text> class="black" </text> }>
+                                &#8595;
+                            </span>
+                        </span>
+                    </a>
+                </th>
+                <th>
+                    <a class="flex-space-between" asp-action="AllExercises" asp-controller="Admin"
+                       asp-route-page="@Model.PaginatorVM.Page"
+                       asp-route-pageSize="@Model.PaginatorVM.PageSize"
+                       asp-route-sortColumn="@SortColumn.RusPhrase"
+                       asp-route-sortDirection="@(Model.PaginatorVM.SortDirection == SortDirection.ASC
+                                ? SortDirection.DESC
+                                : SortDirection.ASC)">
+                        На русском
+                        <span class="flex">
+                            <span @if (Model.PaginatorVM.SortColumn == SortColumn.RusPhrase && Model.PaginatorVM.SortDirection == SortDirection.DESC) { <text> class="black" </text> }>
+                                &#8593;
+                            </span>
+                            <span @if (Model.PaginatorVM.SortColumn == SortColumn.RusPhrase && Model.PaginatorVM.SortDirection == SortDirection.ASC) { <text> class="black" </text> }>
+                                &#8595;
+                            </span>
+                        </span>
+                    </a>
+                </th>
+                <th>
+                    <a class="flex-space-between" asp-action="AllExercises" asp-controller="Admin"
+                       asp-route-page="@Model.PaginatorVM.Page"
+                       asp-route-pageSize="@Model.PaginatorVM.PageSize"
+                       asp-route-sortColumn="@SortColumn.EngPhrase"
+                       asp-route-sortDirection="@(Model.PaginatorVM.SortDirection == SortDirection.ASC
+                                ? SortDirection.DESC
+                                : SortDirection.ASC)">
+                        На английском
+                        <span class="flex">
+                            <span @if (Model.PaginatorVM.SortColumn == SortColumn.EngPhrase && Model.PaginatorVM.SortDirection == SortDirection.DESC) { <text> class="black" </text> }>
+                                &#8593;
+                            </span>
+                            <span @if (Model.PaginatorVM.SortColumn == SortColumn.EngPhrase && Model.PaginatorVM.SortDirection == SortDirection.ASC) { <text> class="black" </text> }>
+                                &#8595;
+                            </span>
+                        </span>
+                    </a>
+                </th>
                 <th>Нераспознанные</th>
                 <th class="edit-header">
                     <button class="edit-header__confirm-btn" type="submit">
@@ -46,7 +105,7 @@
                             @for (int j = 0; j < Model.Exercises[i].UnrecognizedWords.Count; j++)
                             {
                                 <span class="unrecognized-words-collapsible__word">
-                                    <input asp-for="Exercises[i].UnrecognizedWords[j].Text" value="@Model.Exercises[i].UnrecognizedWords[j].Text"/>
+                                    <input asp-for="Exercises[i].UnrecognizedWords[j].Text" value="@Model.Exercises[i].UnrecognizedWords[j].Text" />
                                     <span class="word-type">@Model.Exercises[i].UnrecognizedWords[j].Type</span>
                                     <input type="hidden" asp-for="Exercises[i].UnrecognizedWords[j].UnrecognizedWordId" />
                                     <input type="hidden" asp-for="Exercises[i].UnrecognizedWords[j].Type" />
@@ -64,4 +123,5 @@
             }
         </table>
     </form>
+    <partial name="../Shared/_paginator.cshtml" model="Model.PaginatorVM" />
 </div>

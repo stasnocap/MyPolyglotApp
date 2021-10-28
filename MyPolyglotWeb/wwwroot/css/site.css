@@ -416,7 +416,7 @@ button {
 }
 
     .all-exercises th:first-child {
-        width: 68px;
+        width: 83px;
         text-align: center;
     }
 
@@ -755,6 +755,10 @@ table {
         list-style: decimal;
     }
 
+.flex {
+    display: flex;
+}
+
 .flex-center {
     display: flex;
     justify-content: center;
@@ -762,6 +766,10 @@ table {
 
 .red {
     color: red;
+}
+
+.black {
+    color: black;
 }
 
 .green {
@@ -801,3 +809,36 @@ table {
 .do-exercise__answer-options {
     cursor: pointer;
 }
+
+.paginator-block {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    user-select: none;
+    position: relative;
+}
+
+.paginator-block__page-size {
+    position: absolute;
+    left: 0;
+}
+
+.paginator-block__page-size select {
+    width: auto;
+    padding: 5px 0;
+}
+
+.paginator_block__pages a {
+    cursor: pointer;
+    display: inline-block;
+    padding: 5px 10px;
+}
+
+    .paginator_block__pages a:hover {
+        background-color: #ddd;
+    }
+
+    .paginator_block__pages a.active {
+        background-color: #04AA6D;
+        color: white;
+    }

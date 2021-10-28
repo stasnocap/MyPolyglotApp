@@ -816,6 +816,7 @@ table {
     align-items: center;
     user-select: none;
     position: relative;
+    padding: 5px 0px;
 }
 
 .paginator-block__page-size {

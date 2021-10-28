@@ -122,10 +122,10 @@ namespace MyPolyglotWeb
         {
             return word.Type switch
             {
-                MyPolyglotCore.UnrecognizableTypes.Adjective => new Adjective(word.Text),
-                MyPolyglotCore.UnrecognizableTypes.Noun => new Noun(word.Text, word.WasRecognizedFromPluralForm),
-                MyPolyglotCore.UnrecognizableTypes.RegularVerb => new Verb(word.Text),
-                MyPolyglotCore.UnrecognizableTypes.RegularComparisonAdjective => new ComparisonAdjective(word.Text, word.SyllablesInRegularComparisonAdjective),
+                UnrecognizableTypes.Adjective => new Adjective(word.Text),
+                UnrecognizableTypes.Noun => new Noun(word.Text, word.WasRecognizedFromPluralForm),
+                UnrecognizableTypes.RegularVerb => new Verb(word.Text),
+                UnrecognizableTypes.RegularComparisonAdjective => new ComparisonAdjective(word.Text, word.SyllablesInRegularComparisonAdjective),
                 _ => throw new NotImplementedException()
             };
         }

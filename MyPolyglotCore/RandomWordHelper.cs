@@ -28,7 +28,7 @@ namespace MyPolyglotCore
 
         public static Noun GetRandomNoun()
         {
-            return (Noun)typeof(Noun).GetRandomWord();
+            return (Noun)GetRandomWord(Vocabulary.Nouns);
         }
 
         public static Adjective GetRandomAdjective()

@@ -100,7 +100,7 @@ namespace MyPolyglotCore
             new QuestionWord("how"),
         };
 
-        public static readonly IEnumerable<ComparisonAdjective> IrregularComparativeAdjectives = new ComparisonAdjective[]
+        public static readonly IEnumerable<ComparisonAdjective> IrregularComparisonAdjectives = new ComparisonAdjective[]
         {
             new ComparisonAdjective("good", "better", "best"),
             new ComparisonAdjective("bad", "worse", "worst"),
@@ -326,7 +326,6 @@ namespace MyPolyglotCore
             new Adjective("certain"),
             new Adjective("clear"),
             new Adjective("different"),
-            new Adjective("early"),
             new Adjective("easy"),
             new Adjective("economic"),
             new Adjective("federal"),
@@ -348,7 +347,6 @@ namespace MyPolyglotCore
             new Adjective("national"),
             new Adjective("new"),
             new Adjective("old"),
-            new Adjective("only"),
             new Adjective("other"),
             new Adjective("political"),
             new Adjective("possible"),
@@ -483,7 +481,6 @@ namespace MyPolyglotCore
             new Noun("fact"),
             new Noun("month"),
             new Noun("lot"),
-            new Noun("right"),
             new Noun("book"),
             new Noun("eye"),
             new Noun("job"),
@@ -774,15 +771,15 @@ namespace MyPolyglotCore
             .Concat(PrimaryVerbs)
             .Concat(ModalVerbs)
             .Concat(Prepositions)
-            .Concat(IrregularComparativeAdjectives);
+            .Concat(IrregularComparisonAdjectives);
 
         public static IEnumerable<Word> GetVocabulary(Type typeOfWord)
         {
             dynamic vocabulary = typeOfWord switch
             {
-                Type pronoun when pronoun == typeof(Pronoun) => SubjectPronouns.Concat(ObjectPronouns).Concat(PossessiveAdjectives).Concat(PossessivePronouns).Concat(ReflexivePronouns).Concat(DemonstrativePronouns),
-                Type adverb when adverb == typeof(Adverb) => FrequencyAdverbs.Concat(IntensifierAdverbs).Concat(MannerAdverbs).Concat(TellHowItHappenedAdverbs).Concat(TellTheExtentOfTheActionAdverbs).Concat(TellWhenItHappenedAdverbs).Concat(TellWhereItHappenedAdverbs),
-                Type compound when compound == typeof(Compound) => SomeCompounds.Concat(AnyCompounds).Concat(EveryCompounds).Concat(NoCompounds),
+                Type pronoun when pronoun == typeof(Pronoun) => GetPronounVocabulary(),
+                Type adverb when adverb == typeof(Adverb) => GetAdverbVocabulary(),
+                Type compound when compound == typeof(Compound) => GetCompoundVocabulary(),
                 Type determiner when determiner == typeof(Determiner) => Determiners,
                 Type primaryVerb when primaryVerb == typeof(PrimaryVerb) => PrimaryVerbs,
                 Type verb when verb == typeof(Verb) => IrregularVerbs,
@@ -790,10 +787,39 @@ namespace MyPolyglotCore
                 Type adjective when adjective == typeof(Adjective) => Adjectives,
                 Type modalVerb when modalVerb == typeof(ModalVerb) => ModalVerbs,
                 Type preposition when preposition == typeof(Preposition) => Prepositions,
-                Type comparisonAdjective when comparisonAdjective == typeof(ComparisonAdjective) => IrregularComparativeAdjectives,
+                Type comparisonAdjective when comparisonAdjective == typeof(ComparisonAdjective) => IrregularComparisonAdjectives,
                 _ => throw new NotImplementedException(),
             };
             return vocabulary;
+        }
+
+        public static IEnumerable<Pronoun> GetPronounVocabulary()
+        {
+            return SubjectPronouns
+                .Concat(ObjectPronouns)
+                .Concat(PossessiveAdjectives)
+                .Concat(PossessivePronouns)
+                .Concat(ReflexivePronouns)
+                .Concat(DemonstrativePronouns);
+        }
+
+        public static IEnumerable<Adverb> GetAdverbVocabulary()
+        {
+            return FrequencyAdverbs
+                .Concat(IntensifierAdverbs)
+                .Concat(MannerAdverbs)
+                .Concat(TellHowItHappenedAdverbs)
+                .Concat(TellTheExtentOfTheActionAdverbs)
+                .Concat(TellWhenItHappenedAdverbs)
+                .Concat(TellWhereItHappenedAdverbs);
+        }
+
+        public static IEnumerable<Compound> GetCompoundVocabulary()
+        {
+            return SomeCompounds
+                .Concat(AnyCompounds)
+                .Concat(EveryCompounds)
+                .Concat(NoCompounds);
         }
 
         public static IEnumerable<Noun> GetNounVocabulary()

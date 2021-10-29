@@ -55,7 +55,13 @@ namespace MyPolyglotWeb.Controllers
         public IActionResult AllExercises(AllExercisesVM allExercisesVM)
         {
             _adminPresentation.UpdateExercises(allExercisesVM);
-            return View(allExercisesVM);
+            return RedirectToAction("AllExercises", new
+            {
+                page = allExercisesVM.PaginatorVM.Page,
+                pageSize = allExercisesVM.PaginatorVM.PageSize,
+                sortColumn = allExercisesVM.PaginatorVM.SortColumn,
+                sortDirection = allExercisesVM.PaginatorVM.SortDirection,
+            });
         }
 
         [HttpPost]
@@ -63,8 +69,13 @@ namespace MyPolyglotWeb.Controllers
             SortColumn sortColumn, SortDirection sortDirection)
         {
             _adminPresentation.DeleteExercise(exerciseId);
-            return RedirectToAction("AllExercises", new { page = page, pageSize = pageSize, 
-                sortColumn = sortColumn, sortDirection = sortDirection });
+            return RedirectToAction("AllExercises", new
+            {
+                page = page,
+                pageSize = pageSize,
+                sortColumn = sortColumn,
+                sortDirection = sortDirection
+            });
         }
     }
 }

@@ -22,6 +22,10 @@
         <table>
             <tr>
                 <th>
+                    <input type="hidden" asp-for="PaginatorVM.Page" />
+                    <input type="hidden" asp-for="PaginatorVM.PageSize" />
+                    <input type="hidden" asp-for="PaginatorVM.SortColumn" />
+                    <input type="hidden" asp-for="PaginatorVM.SortDirection" />
                     <a class="flex-space-between" asp-action="AllExercises" asp-controller="Admin"
                        asp-route-page="@Model.PaginatorVM.Page"
                        asp-route-pageSize="@Model.PaginatorVM.PageSize"

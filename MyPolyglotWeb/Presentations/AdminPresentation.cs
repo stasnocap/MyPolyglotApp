@@ -63,8 +63,6 @@ namespace MyPolyglotWeb.Presentations
                 TotalRecordCount = dbExercises.Count(),
                 SortColumn = sortColumn,
                 SortDirection = sortDirection,
-                WhatIsOnPagePluralForm = "Упражнения",
-                WhatIsOnPageGenitive = "упражнений"
             };
 
             return allExercisesVM;
@@ -92,21 +90,24 @@ namespace MyPolyglotWeb.Presentations
         {
             foreach (var exercise in allExercisesVM.Exercises)
             {
-                var unrecognizedWordsThatShouldBeRemoved = new List<UnrecognizedWordVM>();
-                foreach (var unrecognizedWordVM in exercise.UnrecognizedWords)
+                if (exercise.UnrecognizedWords != null)
                 {
-                    if (unrecognizedWordVM.Text.IsNullOrEmpty())
+                    var unrecognizedWordsThatShouldBeRemoved = new List<UnrecognizedWordVM>();
+                    foreach (var unrecognizedWordVM in exercise.UnrecognizedWords)
                     {
-                        _unrecognizedWordRepository.Remove(unrecognizedWordVM.UnrecognizedWordId);
-                        unrecognizedWordsThatShouldBeRemoved.Add(unrecognizedWordVM);
+                        if (unrecognizedWordVM.Text.IsNullOrEmpty())
+                        {
+                            _unrecognizedWordRepository.Remove(unrecognizedWordVM.UnrecognizedWordId);
+                            unrecognizedWordsThatShouldBeRemoved.Add(unrecognizedWordVM);
+                        }
+                        else
+                        {
+                            var unrecognizedWordDB = _mapper.Map<UnrecognizedWordDB>(unrecognizedWordVM);
+                            _unrecognizedWordRepository.Save(unrecognizedWordDB);
+                        }
                     }
-                    else
-                    {
-                        var unrecognizedWordDB = _mapper.Map<UnrecognizedWordDB>(unrecognizedWordVM);
-                        _unrecognizedWordRepository.Save(unrecognizedWordDB);
+                    exercise.UnrecognizedWords.RemoveAll(x => unrecognizedWordsThatShouldBeRemoved.Contains(x));
                     }
-                }
-                exercise.UnrecognizedWords.RemoveAll(x => unrecognizedWordsThatShouldBeRemoved.Contains(x));
 
                 var exerciseDB = _mapper.Map<ExerciseDB>(exercise);
                 _exerciseRepository.Save(exerciseDB);

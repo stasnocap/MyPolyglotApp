@@ -25,8 +25,6 @@ namespace MyPolyglotWeb.Models.ViewModels
         }
         public SortColumn SortColumn { get; set; }
         public SortDirection SortDirection { get; set; }
-        public string WhatIsOnPagePluralForm { get; set; }
-        public string WhatIsOnPageGenitive { get; set; }
     }
 
     public enum SortColumn

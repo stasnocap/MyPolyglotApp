@@ -9,8 +9,8 @@ namespace MyPolyglotCoreTests.RecognizerTests.RecognizeShould
         [Fact]
         public void RecognizeCompoundByText()
         {
-            var randomWordFromVocabulary = RandomWordHelper.GetRandomCompound();
-            CheckIfWordWasRecognizedByText(randomWordFromVocabulary);
+            var randomCompound = RandomWordHelper.GetRandomCompound();
+            CheckIfWordWasRecognizedByText(randomCompound);
         }
 
         [Fact]

@@ -10,7 +10,7 @@
 
     $('.delete-btn').click(function () {
         let deleteForm = $('.delete-form');
-        deleteForm.find('input[type=hidden]').val($(this).data('exercise-id'));
+        deleteForm.find('#exerciseId').val($(this).data('exercise-id'));
         deleteForm.find('button[type=submit]').click();
     });
 

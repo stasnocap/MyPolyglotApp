@@ -44,7 +44,7 @@ namespace MyPolyglotWeb.Controllers
         }
 
         [HttpGet]
-        public IActionResult AllExercises(int page = 0, int pageSize = 10, 
+        public IActionResult AllExercises(int page = 0, int pageSize = 10,
             SortColumn sortColumn = SortColumn.LessonId, SortDirection sortDirection = SortDirection.ASC)
         {
             var allExerciseVM = _adminPresentation.GetAllExercisesVM(page, pageSize, sortColumn, sortDirection);
@@ -59,10 +59,12 @@ namespace MyPolyglotWeb.Controllers
         }
 
         [HttpPost]
-        public IActionResult DeleteExercise(long exerciseId)
+        public IActionResult DeleteExercise(long exerciseId, int page, int pageSize,
+            SortColumn sortColumn, SortDirection sortDirection)
         {
             _adminPresentation.DeleteExercise(exerciseId);
-            return RedirectToAction("AllExercises");
+            return RedirectToAction("AllExercises", new { page = page, pageSize = pageSize, 
+                sortColumn = sortColumn, sortDirection = sortDirection });
         }
     }
 }

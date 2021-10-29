@@ -10,7 +10,11 @@
 
 <div class="all-exercises">
     <form class="delete-form" asp-controller="Admin" asp-action="DeleteExercise" method="post">
-        <input type="hidden" name="exerciseId" />
+        <input type="hidden" id="exerciseId" name="exerciseId" />
+        <input type="hidden" name="page" value="@Model.PaginatorVM.Page" />
+        <input type="hidden" name="pageSize" value="@Model.PaginatorVM.PageSize" />
+        <input type="hidden" name="sortColumn" value="@Model.PaginatorVM.SortColumn"/>
+        <input type="hidden" name="sortDirection" value="@Model.PaginatorVM.SortDirection"/>
         <button type="submit"></button>
     </form>
     <partial name="../Shared/_paginator.cshtml" model="Model.PaginatorVM" />

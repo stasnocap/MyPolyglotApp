@@ -31,7 +31,7 @@ namespace MyPolyglotCoreTests.OptionsGeneratorTests.GenerateOptionsShould
         public void GivenNounRecognizedFromSingleForm_ReturnFiveSingleFormsFromNounVocabularyWithRightAnswer()
         {
             var randomNoun = RandomWordHelper.GetRandomNoun();
-            randomNoun.WasRecognizedFromPluralForm = true;
+            randomNoun.WasRecognizedFromPluralForm = false;
 
             var options = _optionsGenerator.GetOptions(randomNoun);
 

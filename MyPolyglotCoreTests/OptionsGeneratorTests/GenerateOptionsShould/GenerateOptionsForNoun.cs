@@ -1,5 +1,4 @@
 ﻿using MyPolyglotCore;
-using MyPolyglotCore.Words;
 using System.Linq;
 using Xunit;
 
@@ -10,16 +9,14 @@ namespace MyPolyglotCoreTests.OptionsGeneratorTests.GenerateOptionsShould
         [Fact]
         public void GivenNounRecognizedFromPluralForm_ReturnFivePluralFormsFromNounVocabularyWithRightAnswer()
         {
-            var noun = new Noun("no matter")
-            {
-                WasRecognizedFromPluralForm = true
-            };
+            var randomNoun = RandomWordHelper.GetRandomNoun();
+            randomNoun.WasRecognizedFromPluralForm = true;
 
-            var options = _optionsGenerator.GetOptions(noun);
+            var options = _optionsGenerator.GetOptions(randomNoun);
 
             foreach (var option in options)
             {
-                if (noun.PluralForm == option)
+                if (randomNoun.PluralForm == option)
                 {
                     continue;
                 }
@@ -27,22 +24,20 @@ namespace MyPolyglotCoreTests.OptionsGeneratorTests.GenerateOptionsShould
                 Assert.Contains(option, Vocabulary.GetNounVocabulary().Select(x => x.PluralForm));
             }
 
-            Assert.Contains(noun.PluralForm, options);
+            Assert.Contains(randomNoun.PluralForm, options);
         }
 
         [Fact]
         public void GivenNounRecognizedFromSingleForm_ReturnFiveSingleFormsFromNounVocabularyWithRightAnswer()
         {
-            var noun = new Noun("no matter")
-            {
-                WasRecognizedFromPluralForm = false
-            };
+            var randomNoun = RandomWordHelper.GetRandomNoun();
+            randomNoun.WasRecognizedFromPluralForm = true;
 
-            var options = _optionsGenerator.GetOptions(noun);
+            var options = _optionsGenerator.GetOptions(randomNoun);
 
             foreach (var option in options)
             {
-                if (noun.Text == option)
+                if (randomNoun.Text == option)
                 {
                     continue;
                 }
@@ -50,20 +45,20 @@ namespace MyPolyglotCoreTests.OptionsGeneratorTests.GenerateOptionsShould
                 Assert.Contains(option, Vocabulary.GetNounVocabulary().Select(x => x.Text));
             }
 
-            Assert.Contains(noun.Text, options);
+            Assert.Contains(randomNoun.Text, options);
         }
 
         [Fact]
         public void GivenNounRecognizedByPluralForm_ReturnFivePluralFormsFromNounVocabularyWithRightAnswer()
         {
-            var noun = RandomWordHelper.GetRandomNoun();
-            noun.FromWhatItWasRecognized = noun.PluralForm;
+            var randomNoun = RandomWordHelper.GetRandomNoun();
+            randomNoun.FromWhatItWasRecognized = randomNoun.PluralForm;
 
-            var options = _optionsGenerator.GetOptions(noun);
+            var options = _optionsGenerator.GetOptions(randomNoun);
 
             foreach (var option in options)
             {
-                if (noun.PluralForm == option)
+                if (randomNoun.PluralForm == option)
                 {
                     continue;
                 }
@@ -71,20 +66,20 @@ namespace MyPolyglotCoreTests.OptionsGeneratorTests.GenerateOptionsShould
                 Assert.Contains(option, Vocabulary.GetNounVocabulary().Select(x => x.PluralForm));
             }
 
-            Assert.Contains(noun.PluralForm, options);
+            Assert.Contains(randomNoun.PluralForm, options);
         }
 
         [Fact]
         public void GivenNounRecognizedBySingleFrom_ReturnFiveSingleFormsFromNounVocabularyWithRightAnswer()
         {
-            var noun = RandomWordHelper.GetRandomNoun();
-            noun.FromWhatItWasRecognized = noun.Text;
+            var randomNoun = RandomWordHelper.GetRandomNoun();
+            randomNoun.FromWhatItWasRecognized = randomNoun.Text;
 
-            var options = _optionsGenerator.GetOptions(noun);
+            var options = _optionsGenerator.GetOptions(randomNoun);
 
             foreach (var option in options)
             {
-                if (noun.Text == option)
+                if (randomNoun.Text == option)
                 {
                     continue;
                 }
@@ -92,20 +87,20 @@ namespace MyPolyglotCoreTests.OptionsGeneratorTests.GenerateOptionsShould
                 Assert.Contains(option, Vocabulary.GetNounVocabulary().Select(x => x.Text));
             }
 
-            Assert.Contains(noun.Text, options);
+            Assert.Contains(randomNoun.Text, options);
         }
 
         [Fact]
         public void GivenOccupationRecognizedFromSingleForm_ReturnFiveSingleFormsFromOccupationsVocabularyWithRightAnswer()
         {
-            var occupation = RandomWordHelper.GetRandomOccupation();
-            occupation.FromWhatItWasRecognized = occupation.Text;
+            var randomOccupation = RandomWordHelper.GetRandomOccupation();
+            randomOccupation.FromWhatItWasRecognized = randomOccupation.Text;
 
-            var options = _optionsGenerator.GetOptions(occupation);
+            var options = _optionsGenerator.GetOptions(randomOccupation);
 
             foreach (var option in options)
             {
-                if (option == occupation.Text)
+                if (option == randomOccupation.Text)
                 {
                     continue;
                 }
@@ -113,20 +108,20 @@ namespace MyPolyglotCoreTests.OptionsGeneratorTests.GenerateOptionsShould
                 Assert.Contains(option, Vocabulary.Occupations.Select(x => x.Text));
             }
 
-            Assert.Contains(occupation.Text, options);
+            Assert.Contains(randomOccupation.Text, options);
         }
 
         [Fact]
         public void GivenOccupationRecognizedFromPluralForm_ReturnFivePluralFormsFromOccupationsVocabularyWithRightAnswer()
         {
-            var occupation = RandomWordHelper.GetRandomOccupation();
-            occupation.FromWhatItWasRecognized = occupation.PluralForm;
+            var randomOccupation = RandomWordHelper.GetRandomOccupation();
+            randomOccupation.FromWhatItWasRecognized = randomOccupation.PluralForm;
 
-            var options = _optionsGenerator.GetOptions(occupation);
+            var options = _optionsGenerator.GetOptions(randomOccupation);
 
             foreach (var option in options)
             {
-                if (option == occupation.PluralForm)
+                if (option == randomOccupation.PluralForm)
                 {
                     continue;
                 }
@@ -134,16 +129,16 @@ namespace MyPolyglotCoreTests.OptionsGeneratorTests.GenerateOptionsShould
                 Assert.Contains(option, Vocabulary.Occupations.Select(x => x.PluralForm));
             }
 
-            Assert.Contains(occupation.PluralForm, options);
+            Assert.Contains(randomOccupation.PluralForm, options);
         }
 
         [Fact]
         public void GivenDayPartRecognizedFromSingleForm_ReturnAllWordsFromDayPartsVocabulary()
         {
-            var dayPart = RandomWordHelper.GetRandomDayPart();
-            dayPart.FromWhatItWasRecognized = dayPart.Text;
+            var randomDayPart = RandomWordHelper.GetRandomDayPart();
+            randomDayPart.FromWhatItWasRecognized = randomDayPart.Text;
 
-            var options = _optionsGenerator.GetOptions(dayPart);
+            var options = _optionsGenerator.GetOptions(randomDayPart);
 
             foreach (var wordFromVocabulary in Vocabulary.DayParts)
             {
@@ -154,10 +149,10 @@ namespace MyPolyglotCoreTests.OptionsGeneratorTests.GenerateOptionsShould
         [Fact]
         public void GivenDayPartRecognizedFromPluralForm_ReturnAllWordsFromDayPartsVocabulary()
         {
-            var dayPart = RandomWordHelper.GetRandomDayPart();
-            dayPart.FromWhatItWasRecognized = dayPart.PluralForm;
+            var randomDayPart = RandomWordHelper.GetRandomDayPart();
+            randomDayPart.FromWhatItWasRecognized = randomDayPart.PluralForm;
 
-            var options = _optionsGenerator.GetOptions(dayPart);
+            var options = _optionsGenerator.GetOptions(randomDayPart);
 
             foreach (var wordFromVocabulary in Vocabulary.DayParts)
             {

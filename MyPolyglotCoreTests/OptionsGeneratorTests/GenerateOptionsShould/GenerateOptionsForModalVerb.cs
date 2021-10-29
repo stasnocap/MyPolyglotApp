@@ -9,23 +9,23 @@ namespace MyPolyglotCoreTests.OptionsGeneratorTests.GenerateOptionsShould
         [Fact]
         public void GivenModalVerbRecognizedFromPositiveForm_ReturnCollectionWithPassedPositiveForm()
         {
-            var modalVerb = RandomWordHelper.GetRandomModalVerb();
+            var randomModalVerb = RandomWordHelper.GetRandomModalVerb();
 
-            modalVerb.FromWhatItWasRecognized = modalVerb.Text;
+            randomModalVerb.FromWhatItWasRecognized = randomModalVerb.Text;
 
-            var options = _optionsGenerator.GetOptions(modalVerb);
+            var options = _optionsGenerator.GetOptions(randomModalVerb);
 
-            Assert.Contains(modalVerb.Text, options);
+            Assert.Contains(randomModalVerb.Text, options);
         }
 
         [Fact]
         public void GivenModalVerbRecognizedFromPositiveForm_ReturnCollectionThatContainsRandomModalVerbsPositiveForms()
         {
-            var modalVerb = RandomWordHelper.GetRandomModalVerb();
+            var randomModalVerb = RandomWordHelper.GetRandomModalVerb();
 
-            modalVerb.FromWhatItWasRecognized = modalVerb.Text;
+            randomModalVerb.FromWhatItWasRecognized = randomModalVerb.Text;
 
-            var options = _optionsGenerator.GetOptions(modalVerb);
+            var options = _optionsGenerator.GetOptions(randomModalVerb);
 
             foreach (var option in options)
             {
@@ -36,23 +36,23 @@ namespace MyPolyglotCoreTests.OptionsGeneratorTests.GenerateOptionsShould
         [Fact]
         public void GivenModalVerbRecognizedFromFullNegativeForm_ReturnCollectionWithPassedFullNegativeForm()
         {
-            var modalVerb = RandomWordHelper.GetRandomModalVerb();
+            var randomModalVerb = RandomWordHelper.GetRandomModalVerb();
 
-            modalVerb.FromWhatItWasRecognized = modalVerb.FullNegativeForm;
+            randomModalVerb.FromWhatItWasRecognized = randomModalVerb.FullNegativeForm;
 
-            var options = _optionsGenerator.GetOptions(modalVerb);
+            var options = _optionsGenerator.GetOptions(randomModalVerb);
 
-            Assert.Contains(modalVerb.FullNegativeForm, options);
+            Assert.Contains(randomModalVerb.FullNegativeForm, options);
         }
 
         [Fact]
         public void GivenModalVerbRecognizedFromFullNegativeForm_ReturnCollectionThatContainsRandomModalVerbsFullNegativeForms()
         {
-            var modalVerb = RandomWordHelper.GetRandomModalVerb();
+            var randomModalVerb = RandomWordHelper.GetRandomModalVerb();
 
-            modalVerb.FromWhatItWasRecognized = modalVerb.FullNegativeForm;
+            randomModalVerb.FromWhatItWasRecognized = randomModalVerb.FullNegativeForm;
 
-            var options = _optionsGenerator.GetOptions(modalVerb);
+            var options = _optionsGenerator.GetOptions(randomModalVerb);
 
             foreach (var option in options)
             {
@@ -63,25 +63,25 @@ namespace MyPolyglotCoreTests.OptionsGeneratorTests.GenerateOptionsShould
         [Fact]
         public void GivenModalVerbRecognizedFromwShortNegativeForm_ReturnCollectionWithPassedShortNegativeForm()
         {
-            var modalVerb = RandomWordHelper.GetRandomModalVerb();
+            var randomModalVerb = RandomWordHelper.GetRandomModalVerb();
 
-            modalVerb.FromWhatItWasRecognized = modalVerb.ShortNegativeForm;
+            randomModalVerb.FromWhatItWasRecognized = randomModalVerb.ShortNegativeForm;
 
-            var options = _optionsGenerator.GetOptions(modalVerb);
+            var options = _optionsGenerator.GetOptions(randomModalVerb);
 
-            Assert.Contains(modalVerb.ShortNegativeForm, options);
+            Assert.Contains(randomModalVerb.ShortNegativeForm, options);
         }
 
         [Fact]
         public void GivenModalVerbRecognizedFromShortNegativeForm_ReturnCollectionThatContainsRandomModalVerbsShortNegativeForms()
         {
-            var modalVerb = RandomWordHelper.GetRandomModalVerb();
+            var randomModalVerb = RandomWordHelper.GetRandomModalVerb();
 
-            modalVerb.FromWhatItWasRecognized = modalVerb.ShortNegativeForm;
+            randomModalVerb.FromWhatItWasRecognized = randomModalVerb.ShortNegativeForm;
 
-            var options = _optionsGenerator.GetOptions(modalVerb);
+            var options = _optionsGenerator.GetOptions(randomModalVerb);
 
-            if (modalVerb.Text == "may")
+            if (randomModalVerb.Text == "may")
             {
                 foreach (var option in options)
                 {

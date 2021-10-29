@@ -8,43 +8,43 @@ namespace MyPolyglotCoreTests.OptionsGeneratorTests.GenerateOptionsShould
         [Fact]
         public void GivenSubjectPronoun_ReturnAllWordsFromSubjectPronounVocabulary()
         {
-            var subjectPronoun = RandomWordHelper.GetRandomSubjectPronoun();
-            CheckIfAllWordsFromVocabularyWasReturned(subjectPronoun, Vocabulary.SubjectPronouns);
+            var randomSubjectPronoun = RandomWordHelper.GetRandomSubjectPronoun();
+            CheckIfAllWordsFromVocabularyWasReturned(randomSubjectPronoun, Vocabulary.SubjectPronouns);
         }
 
         [Fact]
         public void GivenObjectPronoun_ReturnAllWordsFromObjectPronounVocabulary()
         {
-            var objectPronoun = RandomWordHelper.GetRandomObjectPronoun();
-            CheckIfAllWordsFromVocabularyWasReturned(objectPronoun, Vocabulary.ObjectPronouns);
+            var randomObjectPronoun = RandomWordHelper.GetRandomObjectPronoun();
+            CheckIfAllWordsFromVocabularyWasReturned(randomObjectPronoun, Vocabulary.ObjectPronouns);
         }
 
         [Fact]
         public void GivenPossessiveAdjective_ReturnAllWordsFromPossessiveAdjectiveVocabulary()
         {
-            var possessiveAdjective = RandomWordHelper.GetRandomPossessiveAdjective();
-            CheckIfAllWordsFromVocabularyWasReturned(possessiveAdjective, Vocabulary.PossessiveAdjectives);
+            var randomPossessiveAdjective = RandomWordHelper.GetRandomPossessiveAdjective();
+            CheckIfAllWordsFromVocabularyWasReturned(randomPossessiveAdjective, Vocabulary.PossessiveAdjectives);
         }
 
         [Fact]
         public void GivenPossessivePronoun_ReturnAllWordsFromPossessivePronounVocabulary()
         {
-            var possessivePronoun = RandomWordHelper.GetRandomPossessivePronoun();
-            CheckIfAllWordsFromVocabularyWasReturned(possessivePronoun, Vocabulary.PossessivePronouns);
+            var randomPossessivePronoun = RandomWordHelper.GetRandomPossessivePronoun();
+            CheckIfAllWordsFromVocabularyWasReturned(randomPossessivePronoun, Vocabulary.PossessivePronouns);
         }
 
         [Fact]
         public void GivenReflexivePronoun_ReturnAllWordsFromReflexivePronounVocabulary()
         {
-            var reflexivePronoun = RandomWordHelper.GetRandomReflexivePronoun();
-            CheckIfAllWordsFromVocabularyWasReturned(reflexivePronoun, Vocabulary.ReflexivePronouns);
+            var randomReflexivePronoun = RandomWordHelper.GetRandomReflexivePronoun();
+            CheckIfAllWordsFromVocabularyWasReturned(randomReflexivePronoun, Vocabulary.ReflexivePronouns);
         }
 
         [Fact]
         public void GivenDemonstrativePronoun_ReturnAllWordsFromDemonstrativePronounVocabulary()
         {
-            var demonstrativePronoun = RandomWordHelper.GetRandomDemonstrativePronoun();
-            CheckIfAllWordsFromVocabularyWasReturned(demonstrativePronoun, Vocabulary.DemonstrativePronouns);
+            var randomDemonstrativePronoun = RandomWordHelper.GetRandomDemonstrativePronoun();
+            CheckIfAllWordsFromVocabularyWasReturned(randomDemonstrativePronoun, Vocabulary.DemonstrativePronouns);
         }
     }
 }

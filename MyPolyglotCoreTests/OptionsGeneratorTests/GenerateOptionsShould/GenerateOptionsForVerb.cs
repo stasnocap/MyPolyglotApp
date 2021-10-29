@@ -54,45 +54,45 @@ namespace MyPolyglotCoreTests.OptionsGeneratorTests.GenerateOptionsShould
         [Fact]
         public void GivenPrimaryVerbBeRecognizedFromPositiveForm_ReturnCollectionWithPositiveForm()
         {
-            var primaryVerb = (PrimaryVerb)Vocabulary.GetVocabulary(typeof(PrimaryVerb)).First(x => x.Text == "be");
+            var primaryVerbBe = (PrimaryVerb)Vocabulary.GetVocabulary(typeof(PrimaryVerb)).First(x => x.Text == "be");
 
             var positiveForms = new List<string>
             {
-                primaryVerb.Text,
-                primaryVerb.PastForm,
-                primaryVerb.PastParticipleForm,
-                primaryVerb.PresentParticipleForm,
-                primaryVerb.ThirdPersonForm
+                primaryVerbBe.Text,
+                primaryVerbBe.PastForm,
+                primaryVerbBe.PastParticipleForm,
+                primaryVerbBe.PresentParticipleForm,
+                primaryVerbBe.ThirdPersonForm
             };
 
-            positiveForms.AddRange(primaryVerb.AdditionalForms);
+            positiveForms.AddRange(primaryVerbBe.AdditionalForms);
 
-            primaryVerb.FromWhatItWasRecognized = positiveForms[_random.Next(positiveForms.Count)];
+            primaryVerbBe.FromWhatItWasRecognized = positiveForms[_random.Next(positiveForms.Count)];
 
-            var options = _optionsGenerator.GetOptions(primaryVerb);
+            var options = _optionsGenerator.GetOptions(primaryVerbBe);
 
-            Assert.Contains(primaryVerb.FromWhatItWasRecognized, options);
+            Assert.Contains(primaryVerbBe.FromWhatItWasRecognized, options);
         }
 
         [Fact]
         public void GivenPrimaryVerbBeRecognizedFormPositiveForm_ReturnCollectionThatContainsPositiveFormsFromPrimaryVerbBe()
         {
-            var primaryVerb = (PrimaryVerb)Vocabulary.GetVocabulary(typeof(PrimaryVerb)).First(x => x.Text == "be");
+            var primaryVerbBe = (PrimaryVerb)Vocabulary.GetVocabulary(typeof(PrimaryVerb)).First(x => x.Text == "be");
 
             var positiveForms = new List<string>
             {
-                primaryVerb.Text,
-                primaryVerb.PastForm,
-                primaryVerb.PastParticipleForm,
-                primaryVerb.PresentParticipleForm,
-                primaryVerb.ThirdPersonForm,
+                primaryVerbBe.Text,
+                primaryVerbBe.PastForm,
+                primaryVerbBe.PastParticipleForm,
+                primaryVerbBe.PresentParticipleForm,
+                primaryVerbBe.ThirdPersonForm,
             };
 
-            positiveForms.AddRange(primaryVerb.AdditionalForms);
+            positiveForms.AddRange(primaryVerbBe.AdditionalForms);
 
-            primaryVerb.FromWhatItWasRecognized = primaryVerb.Text;
+            primaryVerbBe.FromWhatItWasRecognized = primaryVerbBe.Text;
 
-            var options = _optionsGenerator.GetOptions(primaryVerb);
+            var options = _optionsGenerator.GetOptions(primaryVerbBe);
 
             foreach (var option in options)
             {
@@ -129,13 +129,13 @@ namespace MyPolyglotCoreTests.OptionsGeneratorTests.GenerateOptionsShould
         [Fact]
         public void GivenPrimaryVerbRecognizedFromFullNegativeForm_ReturnCollectionThatContainsPrimaryVerbAllFullNegativeForms()
         {
-            var primaryVerb = RandomWordHelper.GetRandomPrimaryVerb();
+            var randomPrimaryVerb = RandomWordHelper.GetRandomPrimaryVerb();
 
-            var fullNegativeForms = primaryVerb.FullNegativeForms.ToList();
+            var fullNegativeForms = randomPrimaryVerb.FullNegativeForms.ToList();
 
-            primaryVerb.FromWhatItWasRecognized = fullNegativeForms[_random.Next(fullNegativeForms.Count)];
+            randomPrimaryVerb.FromWhatItWasRecognized = fullNegativeForms[_random.Next(fullNegativeForms.Count)];
 
-            var options = _optionsGenerator.GetOptions(primaryVerb);
+            var options = _optionsGenerator.GetOptions(randomPrimaryVerb);
 
             foreach (var fullNegativeForm in fullNegativeForms)
             {
@@ -146,19 +146,19 @@ namespace MyPolyglotCoreTests.OptionsGeneratorTests.GenerateOptionsShould
         [Fact]
         public void GivenPrimaryVerbRecognizedFromShortNegativeForm_ReturnCollectionThatContainsPrimaryVerbAllShortNegativeForms()
         {
-            var primaryVerb = RandomWordHelper.GetRandomPrimaryVerb();
+            var randomPrimaryVerb = RandomWordHelper.GetRandomPrimaryVerb();
 
-            var shortNegativeForms = primaryVerb.ShortNegativeForms.ToList();
+            var shortNegativeForms = randomPrimaryVerb.ShortNegativeForms.ToList();
 
             foreach (var shortNegativeForm in shortNegativeForms)
             {
-                primaryVerb.FromWhatItWasRecognized = shortNegativeForm;
+                randomPrimaryVerb.FromWhatItWasRecognized = shortNegativeForm;
 
-                var options = _optionsGenerator.GetOptions(primaryVerb);
+                var options = _optionsGenerator.GetOptions(randomPrimaryVerb);
 
                 if (shortNegativeForm == "am not")
                 {
-                    foreach (var fullNegativeForms in primaryVerb.FullNegativeForms)
+                    foreach (var fullNegativeForms in randomPrimaryVerb.FullNegativeForms)
                     {
                         Assert.Contains(fullNegativeForms, options);
                     }

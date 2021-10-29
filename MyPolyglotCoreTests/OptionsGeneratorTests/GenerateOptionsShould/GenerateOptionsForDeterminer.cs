@@ -1,4 +1,4 @@
-﻿using MyPolyglotCore.Words;
+﻿using MyPolyglotCore;
 using Xunit;
 
 namespace MyPolyglotCoreTests.OptionsGeneratorTests.GenerateOptionsShould
@@ -8,8 +8,8 @@ namespace MyPolyglotCoreTests.OptionsGeneratorTests.GenerateOptionsShould
         [Fact]
         public void GivenDeterminer_ReturnAllWordsFromDeterminerVocabulary()
         {
-            var word = new Determiner("no matter");
-            CheckIfAllWordsFromVocabularyWasReturned(word);
+            var randomDeterminer = RandomWordHelper.GetRandomDeterminer();
+            CheckIfAllWordsFromVocabularyWasReturned(randomDeterminer);
         }
     }
 }

@@ -8,25 +8,29 @@ namespace MyPolyglotCoreTests.OptionsGeneratorTests.GenerateOptionsShould
         [Fact]
         public void GivenSomeCompound_ReturnAllWordsFromSomeCompoundsVocabulary()
         {
-            CheckIfAllWordsFromVocabularyWasReturned(RandomWordHelper.GetRandomSomeCompound(), Vocabulary.SomeCompounds);
+            var randomSomeCompound = RandomWordHelper.GetRandomSomeCompound();
+            CheckIfAllWordsFromVocabularyWasReturned(randomSomeCompound, Vocabulary.SomeCompounds);
         }
 
         [Fact]
         public void GivenAnyCompound_ReturnAllWordsFromAnyCompoundsVocabulary()
         {
-            CheckIfAllWordsFromVocabularyWasReturned(RandomWordHelper.GetRandomAnyCompound(), Vocabulary.AnyCompounds);
+            var randomAnyCompound = RandomWordHelper.GetRandomAnyCompound();
+            CheckIfAllWordsFromVocabularyWasReturned(randomAnyCompound, Vocabulary.AnyCompounds);
         }
 
         [Fact]
         public void GivenEveryCompound_ReturnAllWordsFromEveryCompoundsVocabulary()
         {
-            CheckIfAllWordsFromVocabularyWasReturned(RandomWordHelper.GetRandomEveryCompound(), Vocabulary.EveryCompounds);
+            var randomEveryCompound = RandomWordHelper.GetRandomEveryCompound();
+            CheckIfAllWordsFromVocabularyWasReturned(randomEveryCompound, Vocabulary.EveryCompounds);
         }
 
         [Fact]
         public void GivenNoCompound_ReturnAllWordsFromNoCompoundsVocabulary()
         {
-            CheckIfAllWordsFromVocabularyWasReturned(RandomWordHelper.GetRandomNoCompound(), Vocabulary.NoCompounds);
+            var randomNoCompound = RandomWordHelper.GetRandomNoCompound();
+            CheckIfAllWordsFromVocabularyWasReturned(randomNoCompound, Vocabulary.NoCompounds);
         }
     }
 }

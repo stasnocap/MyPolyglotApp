@@ -8,8 +8,8 @@ namespace MyPolyglotCoreTests.OptionsGeneratorTests.GenerateOptionsShould
         [Fact]
         public void GivenPreposition_ReturnFiveWordsFormPrepositionVocabularyWithRightAnswer()
         {
-            var word = new Preposition("no matter");
-            CheckIfFiveWordsFromVocabularyWithRightWordWasReturned(word);
+            var randomPreposition = new Preposition("no matter");
+            CheckIfFiveWordsFromVocabularyWithRightWordWasReturned(randomPreposition);
         }
     }
 }

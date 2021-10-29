@@ -1,4 +1,4 @@
-﻿using MyPolyglotCore.Words;
+﻿using MyPolyglotCore;
 using Xunit;
 
 namespace MyPolyglotCoreTests.OptionsGeneratorTests.GenerateOptionsShould
@@ -8,8 +8,8 @@ namespace MyPolyglotCoreTests.OptionsGeneratorTests.GenerateOptionsShould
         [Fact]
         public void GivenAdjective_ReturnFiveWordsFromAdjectiveVocabularyWithRightAnswer()
         {
-            var word = new Adjective("no matter");
-            CheckIfFiveWordsFromVocabularyWithRightWordWasReturned(word);
+            var randomAdjective = RandomWordHelper.GetRandomAdjective();
+            CheckIfFiveWordsFromVocabularyWithRightWordWasReturned(randomAdjective);
         }
     }
 }

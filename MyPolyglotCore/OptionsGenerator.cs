@@ -1,4 +1,5 @@
-﻿using MyPolyglotCore.Interfaces;
+﻿using MyPolyglotCore.Helpers;
+using MyPolyglotCore.Interfaces;
 using MyPolyglotCore.Words;
 using System;
 using System.Collections.Generic;

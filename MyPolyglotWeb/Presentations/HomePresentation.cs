@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using AutoMapper;
 using MyPolyglotCore;
+using MyPolyglotCore.Helpers;
 using MyPolyglotCore.Words;
 using MyPolyglotWeb.Models.DomainModels;
 using MyPolyglotWeb.Models.ViewModels;

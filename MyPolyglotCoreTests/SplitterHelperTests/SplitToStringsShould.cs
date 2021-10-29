@@ -1,4 +1,4 @@
-﻿using MyPolyglotCore;
+﻿using MyPolyglotCore.Helpers;
 using System.Collections.Generic;
 using Xunit;
 

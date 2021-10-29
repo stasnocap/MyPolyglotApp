@@ -1,4 +1,5 @@
 ﻿using MyPolyglotCore;
+using MyPolyglotCore.Helpers;
 using MyPolyglotCore.Words;
 using System.Collections.Generic;
 using System.Linq;

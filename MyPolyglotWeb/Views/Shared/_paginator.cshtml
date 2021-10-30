@@ -1,80 +1,83 @@
 ﻿@model PaginatorVM
 
-<div class="paginator-block">
-    <input type="hidden" asp-for="SortColumn" />
-    <input type="hidden" asp-for="SortDirection" />
-    <div class="paginator-block__page-size">
-        <select>
-            @foreach (var pageSizeOption in Model.PageSizeOptions)
+@if (Model.TotalPageCount > 0)
+{
+    <div class="paginator-block">
+        <input type="hidden" asp-for="SortColumn" />
+        <input type="hidden" asp-for="SortDirection" />
+        <div class="paginator-block__page-size">
+            <select>
+                @foreach (var pageSizeOption in Model.PageSizeOptions)
+                {
+                    <option value="@pageSizeOption" selected="@(pageSizeOption == Model.PageSize ? "selected" : null)">
+                        @pageSizeOption
+                    </option>
+                }
+            </select>
+        </div>
+        <div class="paginator_block__pages">
+            <a class="page" data-page="@(Model.Page - 1 != -1 ? Model.Page - 1 : 0)">
+                &#5589;
+            </a>
+            @if (Model.TotalPageCount <= 7)
             {
-                <option value="@pageSizeOption" selected="@(pageSizeOption == Model.PageSize ? "selected" : null)">
-                    @pageSizeOption
-                </option>
+                for (int i = 0; i < Model.TotalPageCount; i++)
+                {
+                    <a class="@(Model.Page == i ? "page active" : "page")" data-page="@i">
+                        @(i + 1)
+                    </a>
+                }
             }
-        </select>
+            else
+            {
+                if (Model.Page <= 3)
+                {
+                    var count = Model.TotalPageCount > 5 ? 5 : Model.TotalPageCount;
+                    for (int i = 0; i < count; i++)
+                    {
+                        <a class="@(Model.Page == i ? "page active" : "page")" data-page="@i">
+                            @(i + 1)
+                        </a>
+                    }
+                    @:...
+                    <a class="@(Model.Page == Model.TotalPageCount - 1 ? "page active" : "page")" data-page="@(Model.TotalPageCount - 1)">
+                        @Model.TotalPageCount
+                    </a>
+                }
+                if (Model.Page > 3 && Model.Page < Model.TotalPageCount - 4)
+                {
+                    <a class="@(Model.Page == 0 ? "page active" : "page")" data-page="0">
+                        1
+                    </a>
+                    @:...
+                    for (int i = Model.Page - 2; i < Model.Page + 3; i++)
+                    {
+                        <a class="@(Model.Page == i ? "page active" : "page")" data-page="@i">
+                            @(i + 1)
+                        </a>
+                    }
+                    @:...
+                    <a class="@(Model.Page == Model.TotalPageCount - 1 ? "page active" : "page")" data-page="@(Model.TotalPageCount - 1)">
+                        @Model.TotalPageCount
+                    </a>
+                }
+                if (Model.Page > Model.TotalPageCount - 5)
+                {
+                    <a class="@(Model.Page == 0 ? "page active" : "page")" data-page="0">
+                        1
+                    </a>
+                    @:...
+                    for (int i = Model.TotalPageCount - 5; i < Model.TotalPageCount; i++)
+                    {
+                        <a class="@(Model.Page == i ? "page active" : "page")" data-page="@i">
+                            @(i + 1)
+                        </a>
+                    }
+                }
+            }
+            <a class="page" data-page="@(Model.Page + 1 != Model.TotalPageCount ? Model.Page + 1 : Model.TotalPageCount - 1)">
+                &#5586;
+            </a>
+        </div>
     </div>
-    <div class="paginator_block__pages">
-        <a class="page" data-page="@(Model.Page - 1 != -1 ? Model.Page - 1 : 0)">
-            &#5589;
-        </a>
-        @if (Model.TotalPageCount <= 7)
-        {
-            for (int i = 0; i < Model.TotalPageCount; i++)
-            {
-                <a class="@(Model.Page == i ? "page active" : "page")" data-page="@i">
-                    @(i + 1)
-                </a>
-            }
-        }
-        else
-        {
-            if (Model.Page <= 3)
-            {
-                var count = Model.TotalPageCount > 5 ? 5 : Model.TotalPageCount;
-                for (int i = 0; i < count; i++)
-                {
-                    <a class="@(Model.Page == i ? "page active" : "page")" data-page="@i">
-                        @(i + 1)
-                    </a>
-                }
-                @:...
-                <a class="@(Model.Page == Model.TotalPageCount - 1 ? "page active" : "page")" data-page="@(Model.TotalPageCount - 1)">
-                    @Model.TotalPageCount
-                </a>
-            }
-            if (Model.Page > 3 && Model.Page < Model.TotalPageCount - 4)
-            {
-                <a class="@(Model.Page == 0 ? "page active" : "page")" data-page="0">
-                    1
-                </a>
-                @:...
-                for (int i = Model.Page - 2; i < Model.Page + 3; i++)
-                {
-                    <a class="@(Model.Page == i ? "page active" : "page")" data-page="@i">
-                        @(i + 1)
-                    </a>
-                }
-                @:...
-                <a class="@(Model.Page == Model.TotalPageCount - 1 ? "page active" : "page")" data-page="@(Model.TotalPageCount - 1)">
-                    @Model.TotalPageCount
-                </a>
-            }
-            if (Model.Page > Model.TotalPageCount - 5)
-            {
-                <a class="@(Model.Page == 0 ? "page active" : "page")" data-page="0">
-                    1
-                </a>
-                @:...
-                for (int i = Model.TotalPageCount - 5; i < Model.TotalPageCount; i++)
-                {
-                    <a class="@(Model.Page == i ? "page active" : "page")" data-page="@i">
-                        @(i + 1)
-                    </a>
-                }
-            }
-        }
-        <a class="page" data-page="@(Model.Page + 1 != Model.TotalPageCount ? Model.Page + 1 : Model.TotalPageCount - 1)">
-            &#5586;
-        </a>
-    </div>
-</div>
+}

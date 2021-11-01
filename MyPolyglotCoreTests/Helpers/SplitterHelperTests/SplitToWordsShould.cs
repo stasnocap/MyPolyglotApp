@@ -1,7 +1,7 @@
 ﻿using MyPolyglotCore.Helpers;
 using Xunit;
 
-namespace MyPolyglotCoreTests.SplitterHelperTests
+namespace MyPolyglotCoreTests.Helpers.SplitterHelperTests
 {
     public class SplitToWordsShould
     {

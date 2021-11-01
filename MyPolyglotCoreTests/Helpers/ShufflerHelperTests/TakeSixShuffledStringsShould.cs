@@ -1,5 +1,6 @@
 ﻿using MyPolyglotCore.Helpers;
 using System.Collections.Generic;
+using System.Linq;
 using Xunit;
 
 namespace MyPolyglotCoreTests.Helpers.ShufflerHelperTests
@@ -7,7 +8,7 @@ namespace MyPolyglotCoreTests.Helpers.ShufflerHelperTests
     public class TakeSixShuffledStringsShould
     {
         [Fact]
-        public void ContainsRightWord()
+        public void ReturnCollectionThatContainsRightWord()
         {
             var collection = new List<string>()
             {
@@ -31,7 +32,7 @@ namespace MyPolyglotCoreTests.Helpers.ShufflerHelperTests
         }
 
         [Fact]
-        public void ContainsOtherWordsFromCollection()
+        public void ReturnCollectionThatContainsOtherWordsFromCollection()
         {
             var collection = new List<string>()
             {
@@ -60,6 +61,30 @@ namespace MyPolyglotCoreTests.Helpers.ShufflerHelperTests
 
                 Assert.Contains(wordStr, collection);
             }
+        }
+        
+        [Fact]
+        public void ReturnSixElements()
+        {
+            var collection = new List<string>()
+            {
+                "one",
+                "two",
+                "three",
+                "four",
+                "five",
+                "six",
+                "seven",
+                "eight",
+                "nine",
+                "ten",
+            };
+
+            var rightWordStr = "eleven";
+
+            var shuffled = collection.TakeSixShuffledStrings(rightWordStr);
+
+            Assert.Equal(6, shuffled.Count());
         }
     }
 }

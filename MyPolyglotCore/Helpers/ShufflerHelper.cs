@@ -31,5 +31,12 @@ namespace MyPolyglotCore.Helpers
 
             return fiveRandomWords.OrderBy(x => _random.Next());
         }
+
+        public static IEnumerable<string> TakeFiveShuffledStrings(this IEnumerable<string> collection)
+        {
+            return collection
+                .OrderBy(x => _random.Next())
+                .Take(5);
+        }
     }
 }

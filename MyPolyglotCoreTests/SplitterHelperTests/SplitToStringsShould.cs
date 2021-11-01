@@ -67,5 +67,15 @@ namespace MyPolyglotCoreTests.SplitterHelperTests
 
             Assert.Contains("most beautiful", words);
         }
+
+        [Fact]
+        public void SplitNumberWithNextWordAsSingularWord()
+        {
+            var engPhrase = "We were here 3 hours ago.";
+
+            var words = engPhrase.SplitToStrings();
+
+            Assert.Contains("3 hours", words);
+        }
     }
 }

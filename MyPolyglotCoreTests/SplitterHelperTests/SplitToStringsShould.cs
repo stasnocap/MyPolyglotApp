@@ -47,5 +47,25 @@ namespace MyPolyglotCoreTests.SplitterHelperTests
                 Assert.Contains(word, splittedEngPhrase);
             }
         }
+
+        [Fact]
+        public void SplitMoreWithNextWordAsSingularWord()
+        {
+            var engPhrase = "The weather is more beautiful today than yeasterday.";
+
+            var words = engPhrase.SplitToStrings();
+
+            Assert.Contains("more beautiful", words);
+        }
+
+        [Fact]
+        public void SplitMostWithNextWordAsSingularWord()
+        {
+            var engPhrase = "Today's weather is the most beautiful weather i have ever seen.";
+
+            var words = engPhrase.SplitToStrings();
+
+            Assert.Contains("most beautiful", words);
+        }
     }
 }

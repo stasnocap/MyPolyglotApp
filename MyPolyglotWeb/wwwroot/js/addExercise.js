@@ -22,7 +22,7 @@ $(document).on('change', '.add-exercise__unrecognized-block select', function ()
     } else if ($(this).val() == 'Noun') {
         unrecognizedWord.find('.left-side-of-word-info').append(`
             <span class="left-side-of-word-info__plural-block checkmark-block">
-                <input name="UnrecognizedWords[${unrecognizedWord.attr('index')}].WasRecognizedFromPluralForm" type="checkbox" value="true">
+                <input name="UnrecognizedWords[${unrecognizedWord.attr('index')}].WasRecognizedFromPluralFormInNoun" type="checkbox" value="true">
                 <span class="checkmark"></span>
                 <span>множественная форма</span>
             </span>

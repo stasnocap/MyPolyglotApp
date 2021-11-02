@@ -123,7 +123,7 @@ namespace MyPolyglotWeb
             return word.Type switch
             {
                 UnrecognizableTypes.Adjective => new Adjective(word.Text),
-                UnrecognizableTypes.Noun => new Noun(word.Text, word.WasRecognizedFromPluralForm),
+                UnrecognizableTypes.Noun => new Noun(word.Text, word.WasRecognizedFromPluralFormInNoun),
                 UnrecognizableTypes.RegularVerb => new Verb(word.Text),
                 UnrecognizableTypes.RegularComparisonAdjective => new ComparisonAdjective(word.Text, word.SyllablesInRegularComparisonAdjective),
                 UnrecognizableTypes.NumberWithNoun => new NumberWithNoun(word.Text),

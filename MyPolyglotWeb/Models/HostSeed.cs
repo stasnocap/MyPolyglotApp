@@ -171,7 +171,7 @@ namespace MyPolyglotWeb.Models
                         {
                             Text = "pen",
                             Type = UnrecognizableTypes.Noun,
-                            WasRecognizedFromPluralForm = false,
+                            WasRecognizedFromPluralFormInNoun = false,
                         },
                         new UnrecognizedWordDB()
                         {
@@ -183,7 +183,7 @@ namespace MyPolyglotWeb.Models
                         {
                             Text = "one",
                             Type = UnrecognizableTypes.Noun,
-                            WasRecognizedFromPluralForm = false
+                            WasRecognizedFromPluralFormInNoun = false
                         },
                     }
                 },
@@ -198,7 +198,7 @@ namespace MyPolyglotWeb.Models
                         {
                             Text = "tv",
                             Type = UnrecognizableTypes.Noun,
-                            WasRecognizedFromPluralForm = false
+                            WasRecognizedFromPluralFormInNoun = false
                         },
                         new UnrecognizedWordDB()
                         {
@@ -218,7 +218,7 @@ namespace MyPolyglotWeb.Models
                         {
                             Text = "phone",
                             Type = UnrecognizableTypes.Noun,
-                            WasRecognizedFromPluralForm = false
+                            WasRecognizedFromPluralFormInNoun = false
                         },
                         new UnrecognizedWordDB()
                         {
@@ -230,7 +230,7 @@ namespace MyPolyglotWeb.Models
                         {
                             Text = "one",
                             Type = UnrecognizableTypes.Noun,
-                            WasRecognizedFromPluralForm = false
+                            WasRecognizedFromPluralFormInNoun = false
                         },
                     }
                 },
@@ -245,7 +245,7 @@ namespace MyPolyglotWeb.Models
                         {
                             Text = "pen",
                             Type = UnrecognizableTypes.Noun,
-                            WasRecognizedFromPluralForm = false
+                            WasRecognizedFromPluralFormInNoun = false
                         },
                         new UnrecognizedWordDB()
                         {
@@ -257,7 +257,7 @@ namespace MyPolyglotWeb.Models
                         {
                             Text = "one",
                             Type = UnrecognizableTypes.Noun,
-                            WasRecognizedFromPluralForm = false
+                            WasRecognizedFromPluralFormInNoun = false
                         },
                     }
                 },
@@ -272,7 +272,7 @@ namespace MyPolyglotWeb.Models
                         {
                             Text = "oranges",
                             Type = UnrecognizableTypes.Noun,
-                            WasRecognizedFromPluralForm = true
+                            WasRecognizedFromPluralFormInNoun = true
                         },
                     }
                 },
@@ -302,7 +302,7 @@ namespace MyPolyglotWeb.Models
                         {
                             Text = "guides",
                             Type = UnrecognizableTypes.Noun,
-                            WasRecognizedFromPluralForm = true
+                            WasRecognizedFromPluralFormInNoun = true
                         }
                     }
                 },
@@ -317,7 +317,7 @@ namespace MyPolyglotWeb.Models
                         {
                             Text = "manager",
                             Type = UnrecognizableTypes.Noun,
-                            WasRecognizedFromPluralForm = false
+                            WasRecognizedFromPluralFormInNoun = false
                         }
                     }
                 },
@@ -338,7 +338,7 @@ namespace MyPolyglotWeb.Models
                         {
                             Text = "managers",
                             Type = UnrecognizableTypes.Noun,
-                            WasRecognizedFromPluralForm = true
+                            WasRecognizedFromPluralFormInNoun = true
                         }
                     }
                 },
@@ -359,7 +359,7 @@ namespace MyPolyglotWeb.Models
                         {
                             Text = "designers",
                             Type = UnrecognizableTypes.Noun,
-                            WasRecognizedFromPluralForm = true
+                            WasRecognizedFromPluralFormInNoun = true
                         }
                     }
                 },
@@ -374,7 +374,7 @@ namespace MyPolyglotWeb.Models
                         {
                             Text = "historian",
                             Type = UnrecognizableTypes.Noun,
-                            WasRecognizedFromPluralForm = false
+                            WasRecognizedFromPluralFormInNoun = false
                         }
                     }
                 },
@@ -398,7 +398,7 @@ namespace MyPolyglotWeb.Models
                         {
                             Text = "actor",
                             Type = UnrecognizableTypes.Noun,
-                            WasRecognizedFromPluralForm = false
+                            WasRecognizedFromPluralFormInNoun = false
                         }
                     }
                 },
@@ -413,7 +413,7 @@ namespace MyPolyglotWeb.Models
                         {
                             Text = "accountants",
                             Type = UnrecognizableTypes.Noun,
-                            WasRecognizedFromPluralForm = true
+                            WasRecognizedFromPluralFormInNoun = true
                         }
                     }
                 },
@@ -428,7 +428,7 @@ namespace MyPolyglotWeb.Models
                         {
                             Text = "historians",
                             Type = UnrecognizableTypes.Noun,
-                            WasRecognizedFromPluralForm = true
+                            WasRecognizedFromPluralFormInNoun = true
                         }
                     }
                 },
@@ -443,7 +443,7 @@ namespace MyPolyglotWeb.Models
                         {
                             Text = "writer",
                             Type = UnrecognizableTypes.Noun,
-                            WasRecognizedFromPluralForm = false
+                            WasRecognizedFromPluralFormInNoun = false
                         }
                     }
                 },
@@ -458,7 +458,7 @@ namespace MyPolyglotWeb.Models
                         {
                             Text = "guides",
                             Type = UnrecognizableTypes.Noun,
-                            WasRecognizedFromPluralForm = true
+                            WasRecognizedFromPluralFormInNoun = true
                         }
                     }
                 }
@@ -512,7 +512,7 @@ namespace MyPolyglotWeb.Models
                         {
                             Text = "museum",
                             Type = UnrecognizableTypes.Noun,
-                            WasRecognizedFromPluralForm = false
+                            WasRecognizedFromPluralFormInNoun = false
                         }
                     }
                 },
@@ -542,7 +542,7 @@ namespace MyPolyglotWeb.Models
                         {
                             Text = "elevator",
                             Type = UnrecognizableTypes.Noun,
-                            WasRecognizedFromPluralForm = false
+                            WasRecognizedFromPluralFormInNoun = false
                         }
                     }
                 }

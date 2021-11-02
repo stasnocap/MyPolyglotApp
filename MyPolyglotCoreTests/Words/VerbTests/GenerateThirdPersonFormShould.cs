@@ -1,7 +1,7 @@
 ﻿using MyPolyglotCore.Words;
 using Xunit;
 
-namespace MyPolyglotCoreTests.VerbTests
+namespace MyPolyglotCoreTests.Words.VerbTests
 {
     public class GenerateThirdPersonFormShould
     {

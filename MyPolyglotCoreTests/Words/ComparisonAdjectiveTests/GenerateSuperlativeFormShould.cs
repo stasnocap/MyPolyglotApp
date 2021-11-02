@@ -1,7 +1,7 @@
 ﻿using MyPolyglotCore.Words;
 using Xunit;
 
-namespace MyPolyglotCoreTests.ComparisonAdjectiveTests
+namespace MyPolyglotCoreTests.Words.ComparisonAdjectiveTests
 {
     public class GenerateSuperlativeFormShould
     {

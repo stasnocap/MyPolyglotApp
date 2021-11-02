@@ -365,6 +365,7 @@ namespace MyPolyglotCore
             new Adjective("young"),
         };
 
+        #region Nouns
         public static readonly IEnumerable<Noun> Occupations = new Noun[]
         {
             new Noun("accountant"),
@@ -545,6 +546,7 @@ namespace MyPolyglotCore
             new Noun("force"),
             new Noun("education"),
         };
+        #endregion
 
         public static readonly IEnumerable<Verb> IrregularVerbs = new Verb[]
         {

@@ -25,8 +25,96 @@ namespace MyPolyglotWeb.Models
                 AddExercisesToLesson5(exerciseRepository, lessonRepository.Get(5));
                 AddExercisesToLesson6(exerciseRepository, lessonRepository.Get(6));
                 AddExercisesToLesson7(exerciseRepository, lessonRepository.Get(7));
+                AddExercisesToLesson8(exerciseRepository, lessonRepository.Get(8));
             }
             return host;
+        }
+
+        private static void AddExercisesToLesson8(IExerciseRepository exerciseRepository, LessonDB lessonDB)
+        {
+            var dbExercises = new List<ExerciseDB>()
+            {
+                new ExerciseDB()
+                {
+                    RusPhrase = "Она не повернула нас 6 месяцев назад.",
+                    EngPhrase = "She didn't turn us six months ago.",
+                    Lesson = lessonDB,
+                    UnrecognizedWords = new List<UnrecognizedWordDB>()
+                    {
+                        new UnrecognizedWordDB()
+                        {
+                            Text = "turn",
+                            Type = UnrecognizableTypes.RegularVerb,
+                            StressOnTheFinalSyllableInRegularVerb = true
+                        }
+                    }
+                },
+                new ExerciseDB()
+                {
+                    RusPhrase = "Он будет расти через 2 месяца?",
+                    EngPhrase = "Will he grow in 2 months?",
+                    Lesson = lessonDB,
+                    UnrecognizedWords = new List<UnrecognizedWordDB>()
+                    {
+                        new UnrecognizedWordDB()
+                        {
+                            Text = "2 months",
+                            Type = UnrecognizableTypes.NumberWithNoun
+                        }
+                    }
+                },
+                new ExerciseDB()
+                {
+                    RusPhrase = "Я расскажу тебе через 6 месяцев.",
+                    EngPhrase = "I will tell you in 6 months.",
+                    Lesson = lessonDB,
+                    UnrecognizedWords = new List<UnrecognizedWordDB>()
+                    {
+                        new UnrecognizedWordDB()
+                        {
+                            Text = "6 months",
+                            Type = UnrecognizableTypes.NumberWithNoun
+                        }
+                    }
+                },
+                new ExerciseDB()
+                {
+                    RusPhrase = "Ты будешь там через 6 месяцев?",
+                    EngPhrase = "Will you be there in 6 months?",
+                    Lesson = lessonDB,
+                    UnrecognizedWords = new List<UnrecognizedWordDB>()
+                    {
+                        new UnrecognizedWordDB()
+                        {
+                            Text = "6 months",
+                            Type = UnrecognizableTypes.NumberWithNoun
+                        }
+                    }
+                },
+                new ExerciseDB()
+                {
+                    RusPhrase = "Она любила их в выходные?",
+                    EngPhrase = "Did she love them at the weekend?",
+                    Lesson = lessonDB,
+                    UnrecognizedWords = new List<UnrecognizedWordDB>()
+                    {
+                        new UnrecognizedWordDB()
+                        {
+                            Text = "love",
+                            Type = UnrecognizableTypes.RegularVerb,
+                            StressOnTheFinalSyllableInRegularVerb = true,
+                        }
+                    }
+                },
+                new ExerciseDB()
+                {
+                    RusPhrase = "Она была там вечером.",
+                    EngPhrase = "She was there in the evening.",
+                    Lesson = lessonDB,
+                }
+            };
+
+            SaveExercises(exerciseRepository, dbExercises);
         }
 
         private static void AddExercisesToLesson7(IExerciseRepository exerciseRepository, LessonDB lessonDB)

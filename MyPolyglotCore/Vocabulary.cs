@@ -23,6 +23,7 @@ namespace MyPolyglotCore
 
         public static readonly IEnumerable<Preposition> Prepositions = new Preposition[]
         {
+            new Preposition("ago"),
             new Preposition("aboard"),
             new Preposition("about"),
             new Preposition("across"),

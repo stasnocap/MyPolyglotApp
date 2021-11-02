@@ -4,6 +4,7 @@ using MyPolyglotCore.Words;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 
 namespace MyPolyglotCore
 {
@@ -20,6 +21,7 @@ namespace MyPolyglotCore
                 Determiner determiner => GenerateOptions(determiner),
                 Adjective adjective => GenerateOptions(adjective),
                 Noun noun => GenerateOptions(noun),
+                NumberWithNoun numberWithNoun => GenerateOptions(numberWithNoun),
                 ModalVerb modalVerb => GenerateOptions(modalVerb),
                 PrimaryVerb primaryVerb => GenerateOptions(primaryVerb),
                 Verb verb => GenerateOptions(verb),
@@ -27,6 +29,17 @@ namespace MyPolyglotCore
                 ComparisonAdjective comparisonAdjective => GenerateOptions(comparisonAdjective),
                 _ => throw new NotImplementedException(),
             };
+        }
+
+        private IEnumerable<string> GenerateOptions(NumberWithNoun numberWithNoun)
+        {
+            var fiveRandomNouns = Vocabulary.Nouns
+                .Select(x => x.PluralForm)
+                .TakeFiveShuffledStrings();
+
+            var number = Regex.Match(numberWithNoun.Text, @"\d+").Value;
+
+            return fiveRandomNouns.Select(x => $"{number} {x}");
         }
 
         private IEnumerable<string> GenerateOptions(Pronoun pronoun)

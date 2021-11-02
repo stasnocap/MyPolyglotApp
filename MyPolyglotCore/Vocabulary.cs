@@ -445,6 +445,7 @@ namespace MyPolyglotCore
 
         public static readonly IEnumerable<Noun> Nouns = new Noun[]
         {
+            new Noun("weekend"),
             new Noun("time"),
             new Noun("year"),
             new Noun("way"),

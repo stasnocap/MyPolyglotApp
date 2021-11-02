@@ -36,5 +36,15 @@ namespace MyPolyglotCoreTests.OptionsGeneratorTests.GenerateOptionsShould
                 Assert.Contains(word, nounsPluralForms);
             }
         }
+
+        [Fact]
+        public void ReturnOptionsThatContainsRightWord()
+        {
+            var numberWithNoun = new NumberWithNoun("3 hours");
+
+            var options = _optionsGenerator.GetOptions(numberWithNoun);
+
+            Assert.Contains(numberWithNoun.Text, options);
+        }
     }
 }

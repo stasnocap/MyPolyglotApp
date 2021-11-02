@@ -38,5 +38,10 @@ namespace MyPolyglotCore.Helpers
                 .OrderBy(x => _random.Next())
                 .Take(5);
         }
+
+        public static IEnumerable<string> Shuffle(this IEnumerable<string> collection)
+        {
+            return collection.OrderBy(x => _random.Next());
+        }
     }
 }

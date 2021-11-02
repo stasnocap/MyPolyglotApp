@@ -39,7 +39,10 @@ namespace MyPolyglotCore
 
             var number = Regex.Match(numberWithNoun.Text, @"\d+").Value;
 
-            return fiveRandomNouns.Select(x => $"{number} {x}");
+            return fiveRandomNouns
+                .Select(x => $"{number} {x}")
+                .Concat(new string[] { numberWithNoun.Text })
+                .Shuffle();
         }
 
         private IEnumerable<string> GenerateOptions(Pronoun pronoun)

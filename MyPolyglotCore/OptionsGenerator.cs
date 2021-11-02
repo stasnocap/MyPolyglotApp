@@ -27,8 +27,14 @@ namespace MyPolyglotCore
                 Verb verb => GenerateOptions(verb),
                 Preposition preposition => GenerateOptions(preposition),
                 ComparisonAdjective comparisonAdjective => GenerateOptions(comparisonAdjective),
+                LetterNumber letterNumber => GenerateOptions(letterNumber),
                 _ => throw new NotImplementedException(),
             };
+        }
+
+        private IEnumerable<string> GenerateOptions(LetterNumber letterNumber)
+        {
+            return GetRandomWordsFromVocabularyWithRightWord(letterNumber);
         }
 
         private IEnumerable<string> GenerateOptions(NumberWithNoun numberWithNoun)

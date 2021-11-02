@@ -146,6 +146,16 @@ namespace MyPolyglotCore
 
         private IEnumerable<string> GenerateOptions(Noun noun)
         {
+            if (Vocabulary.YearSeasons.Contains(noun))
+            {
+                if (noun.FromWhatItWasRecognized == noun.PluralForm)
+                {
+                    return Vocabulary.YearSeasons.Select(x => x.PluralForm);
+                }
+
+                return Vocabulary.YearSeasons.Select(x => x.Text);
+            }
+
             if (Vocabulary.DayParts.Contains(noun))
             {
                 if (noun.FromWhatItWasRecognized == noun.PluralForm)

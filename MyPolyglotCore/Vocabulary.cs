@@ -431,6 +431,14 @@ namespace MyPolyglotCore
             new Noun("night"),
         };
 
+        public static readonly IEnumerable<Noun> YearSeasons = new Noun[]
+        {
+            new Noun("winter"),
+            new Noun("spring"),
+            new Noun("summer"),
+            new Noun("autumn"),
+        };
+
         public static readonly IEnumerable<Noun> IrregularNouns = new Noun[]
         {
             new Noun("child", "children"),
@@ -445,6 +453,7 @@ namespace MyPolyglotCore
 
         public static readonly IEnumerable<Noun> Nouns = new Noun[]
         {
+            new Noun("weekend"),
             new Noun("time"),
             new Noun("year"),
             new Noun("way"),
@@ -764,6 +773,7 @@ namespace MyPolyglotCore
             .Concat(Nouns)
             .Concat(Occupations)
             .Concat(DayParts)
+            .Concat(YearSeasons)
             #endregion
             .Concat(Determiners)
             .Concat(Adjectives)
@@ -827,7 +837,8 @@ namespace MyPolyglotCore
             return Nouns
                 .Concat(IrregularNouns)
                 .Concat(Occupations)
-                .Concat(DayParts);
+                .Concat(DayParts)
+                .Concat(YearSeasons);
         }
     }
 }

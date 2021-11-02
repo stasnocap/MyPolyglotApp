@@ -159,5 +159,33 @@ namespace MyPolyglotCoreTests.OptionsGeneratorTests.GenerateOptionsShould
                 Assert.Contains(wordFromVocabulary.PluralForm, options);
             }
         }
+
+        [Fact]
+        public void GivenwYearSeasonRecognizedFromSingleForm_ReturnAllWordsFroYearSeasonsVocabulary()
+        {
+            var randomYearSeason = RandomWordHelper.GetRandomYearSeason();
+            randomYearSeason.FromWhatItWasRecognized = randomYearSeason.Text;
+
+            var options = _optionsGenerator.GetOptions(randomYearSeason);
+
+            foreach (var wordFromVocabulary in Vocabulary.YearSeasons)
+            {
+                Assert.Contains(wordFromVocabulary.Text, options);
+            }
+        }
+
+        [Fact]
+        public void GivenYearSeasonRecognizedFromPluralForm_ReturnAllWordsFromYearSeasonsVocabulary()
+        {
+            var randomYearSeason = RandomWordHelper.GetRandomYearSeason();
+            randomYearSeason.FromWhatItWasRecognized = randomYearSeason.PluralForm;
+
+            var options = _optionsGenerator.GetOptions(randomYearSeason);
+
+            foreach (var wordFromVocabulary in Vocabulary.YearSeasons)
+            {
+                Assert.Contains(wordFromVocabulary.PluralForm, options);
+            }
+        }
     }
 }

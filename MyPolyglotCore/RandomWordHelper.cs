@@ -165,5 +165,10 @@ namespace MyPolyglotCore
         {
             return (Noun)GetRandomWord(Vocabulary.DayParts);
         }
+
+        public static Noun GetRandomYearSeason()
+        {
+            return (Noun)GetRandomWord(Vocabulary.YearSeasons);
+        }
     }
 }

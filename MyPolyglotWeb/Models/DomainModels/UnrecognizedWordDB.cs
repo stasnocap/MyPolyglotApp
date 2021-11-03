@@ -9,6 +9,7 @@ namespace MyPolyglotWeb.Models.DomainModels
         public bool StressOnTheFinalSyllableInRegularVerb { get; set; }
         public int SyllablesInRegularComparisonAdjective { get; set; }
         public bool WasRecognizedFromPluralFormInNoun { get; set; }
+        public int NumberInLetterNumber { get; set; }
         public virtual ExerciseDB Exercise { get; set; }
     }
 }

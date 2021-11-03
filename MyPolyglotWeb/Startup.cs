@@ -127,6 +127,7 @@ namespace MyPolyglotWeb
                 UnrecognizableTypes.RegularVerb => new Verb(word.Text),
                 UnrecognizableTypes.RegularComparisonAdjective => new ComparisonAdjective(word.Text, word.SyllablesInRegularComparisonAdjective),
                 UnrecognizableTypes.NumberWithNoun => new NumberWithNoun(word.Text),
+                UnrecognizableTypes.LetterNumber => new LetterNumber(word.Text, word.NumberInLetterNumber),
                 _ => throw new NotImplementedException()
             };
         }

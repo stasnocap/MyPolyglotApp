@@ -8,13 +8,15 @@ $(document).on('change', '.add-exercise__unrecognized-block select', function ()
     unrecognizedWord.find('.right-side-of-word-info').remove();
 
     if ($(this).val() == 'RegularVerb') {
-        appendToRightSideOfWordInfo(unrecognizedWord, `
+        unrecognizedWord.find('.unrecognized-word__select input').attr('type', 'text');
+        unrecognizedWord.find('.unrecognized-word__info').append(`
             <div class="right-side-of-word-info">
                 Пожалуйста, введите базовую форму глагола.
             </div>
         `);
     } else if ($(this).val() == 'RegularComparisonAdjective') {
-        appendToRightSideOfWordInfo(unrecognizedWord, `
+        unrecognizedWord.find('.unrecognized-word__select input').attr('type', 'text');
+        unrecognizedWord.find('.unrecognized-word__info').append(`
             <div class="right-side-of-word-info">
                 Пожалуйста, введите базовую форму прилагательного.
             </div>
@@ -22,22 +24,26 @@ $(document).on('change', '.add-exercise__unrecognized-block select', function ()
     } else if ($(this).val() == 'Noun') {
         unrecognizedWord.find('.left-side-of-word-info').append(`
             <span class="left-side-of-word-info__plural-block checkmark-block">
-                <input name="UnrecognizedWords[${unrecognizedWord.attr('index')}].WasRecognizedFromPluralFormInNoun" type="checkbox" value="true">
+                <input name="UnrecognizedWords[${unrecognizedWord.attr('index')}].WasRecognizedFromPluralFormInNoun" type="checkbox" value="true" />
                 <span class="checkmark"></span>
                 <span>множественная форма</span>
             </span>
+        `);
+    } else if ($(this).val() == 'LetterNumber') {
+        unrecognizedWord.find('.left-side-of-word-info').append(`
+            <input name="UnrecognizedWords[${unrecognizedWord.attr('index')}].NumberInLetterNumber" type="number" />
+        `);
+        unrecognizedWord.find('.unrecognized-word__info').append(`
+            <div class="right-side-of-word-info">
+                Пожалуйста, введите цифренное представление числа.
+            </div>
         `);
     }
 
     $(this).hide();
 });
 
-function appendToRightSideOfWordInfo(unrecognizedWord, div) {
-    unrecognizedWord.find('.unrecognized-word__select input').attr('type', 'text');
-    unrecognizedWord.find('.unrecognized-word__info').append(div);
-}
-
-$(document).on('focusout', '.add-exercise__unrecognized-block input[type=text]', function () {
+$(document).on('focusout', '.add-exercise__unrecognized-block input[type=text], .add-exercise__unrecognized-block input[type=number]', function () {
     let unrecognizedWord = $(this).parents('.unrecognized-word');
     let select = unrecognizedWord.find('select');
 
@@ -49,7 +55,7 @@ $(document).on('focusout', '.add-exercise__unrecognized-block input[type=text]',
     if (select.val() == 'RegularVerb') {
         leftSideOfWordInfo.append(`
             <span class="left-side-of-word-info__stress-block checkmark-block">
-                <input name="UnrecognizedWords[${unrecognizedWordIndex}].StressOnTheFinalSyllableInRegularVerb" type="checkbox" checked="checked" value="true">
+                <input name="UnrecognizedWords[${unrecognizedWordIndex}].StressOnTheFinalSyllableInRegularVerb" type="checkbox" checked="checked" value="true" />
                 <span class="checkmark"></span>
                 <span>ударение на последний слог (у базовой формы)</span>
             </span>
@@ -76,7 +82,9 @@ $(document).on('focusout', '.add-exercise__unrecognized-block input[type=text]',
         `);
     } 
 
-    unrecognizedWord.find('.left-side-of-word-info__word-name').text($(this).val());
+    if ($(this).type == 'text') {
+        unrecognizedWord.find('.left-side-of-word-info__word-name').text($(this).val());
+    }
 });
 
 $(document).on('click', '.checkmark-block', function () {

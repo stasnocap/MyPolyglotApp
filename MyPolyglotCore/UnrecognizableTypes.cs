@@ -8,5 +8,6 @@
         RegularVerb = 3,
         RegularComparisonAdjective = 4,
         NumberWithNoun = 5,
+        LetterNumber = 6,
     }
 }

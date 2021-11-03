@@ -27,8 +27,33 @@ namespace MyPolyglotCore
                 Verb verb => GenerateOptions(verb),
                 Preposition preposition => GenerateOptions(preposition),
                 ComparisonAdjective comparisonAdjective => GenerateOptions(comparisonAdjective),
+                LetterNumber letterNumber => GenerateOptions(letterNumber),
                 _ => throw new NotImplementedException(),
             };
+        }
+
+        private IEnumerable<string> GenerateOptions(LetterNumber letterNumber)
+        {
+            var letterNumbers = Vocabulary.LetterNumbers.ToList();
+            var index = letterNumbers.FindIndex(x => x.Number == letterNumber.Number);
+
+            if (index == -1)
+            {
+                return Enumerable.Range(1, 5)
+                    .Select(x => letterNumbers[letterNumbers.Count - x].Text)
+                    .Append(letterNumber.Text)
+                    .Shuffle();
+            }
+
+            return Enumerable.Range(0, 6)
+                .Select(x =>
+                {
+                    if (index + x >= letterNumbers.Count)
+                    {
+                        return letterNumbers[letterNumbers.Count - x - 1].Text;
+                    }
+                    return letterNumbers[index + x].Text;
+                }).Shuffle();
         }
 
         private IEnumerable<string> GenerateOptions(NumberWithNoun numberWithNoun)

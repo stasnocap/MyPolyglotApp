@@ -178,5 +178,10 @@ namespace MyPolyglotCore
             return (Noun)GetRandomWord(Vocabulary.YearSeasons);
         }
         #endregion
+
+        public static LetterNumber GetRandomLetterNumber()
+        {
+            return (LetterNumber)typeof(LetterNumber).GetRandomWord();
+        }
     }
 }

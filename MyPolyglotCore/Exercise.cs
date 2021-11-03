@@ -34,10 +34,10 @@ namespace MyPolyglotCore
 
         private IEnumerable<Word> OrderWords(IEnumerable<Word> unrecognizedWords, string engPhrase)
         {
-            var unOrderedWords = _recognizer.RecognizedWords.Concat(unrecognizedWords);
+            var unorderedWords = _recognizer.RecognizedWords.Concat(unrecognizedWords);
             var words = engPhrase.SplitToWords();
 
-            return words.SelectMany(x => unOrderedWords.Select(y => y.Equals(x) ? y : null)).Where(x => x != null);
+            return words.SelectMany(word => unorderedWords.Where(unorderedWord => unorderedWord.Equals(word)));
         }
     }
 }

@@ -636,6 +636,15 @@ table {
         left: 96%;
     }
 
+.lesson-hint8 .tooltiptext {
+    width: 497px;
+    left: -496%;
+}
+
+    .lesson-hint8 .tooltiptext::after {
+        left: 96%;
+    }
+
 .lesson-info-link .tooltiptext {
     left: 74%;
 }
@@ -713,6 +722,26 @@ table {
 .hint-table7 td {
     width: 100px;
     border: 2px solid #ccc;
+}
+
+.hint-table8 table {
+    width: 750px;
+}
+
+.hint-table8 tr:not(:first-child) td {
+    text-align: left;
+}
+
+.hint-table8 td {
+    border-right: 2px solid #ccc;
+}
+
+.hint-table8 th {
+    border: 2px solid #ccc;
+}
+
+.hint-table8 td, .hint-table8 th {
+    width: 160px;
 }
 
 .lesson2-help-table1 tr {
@@ -793,6 +822,10 @@ table {
     text-decoration: underline;
 }
 
+.border-bottom {
+    border-bottom: 2px solid #ccc;
+}
+
 .lesson-info h1 {
     font-size: 32px;
     font-weight: 600;
@@ -825,10 +858,10 @@ table {
     left: 0;
 }
 
-.paginator-block__page-size select {
-    width: auto;
-    padding: 5px 0;
-}
+    .paginator-block__page-size select {
+        width: auto;
+        padding: 5px 0;
+    }
 
 .paginator_block__pages a {
     cursor: pointer;

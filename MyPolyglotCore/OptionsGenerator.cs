@@ -66,7 +66,7 @@ namespace MyPolyglotCore
 
             return fiveRandomNouns
                 .Select(x => $"{number} {x}")
-                .Concat(new string[] { numberWithNoun.Text })
+                .Append(numberWithNoun.Text)
                 .Shuffle();
         }
 

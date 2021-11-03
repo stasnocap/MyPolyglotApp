@@ -42,9 +42,7 @@ namespace MyPolyglotCoreTests.OptionsGeneratorTests.GenerateOptionsShould
         {
             var numberWithNoun = new NumberWithNoun("3 hours");
 
-            var options = _optionsGenerator.GetOptions(numberWithNoun);
-
-            Assert.Contains(numberWithNoun.Text, options);
+            CheckIfRightWordWasReturned(numberWithNoun);
         }
     }
 }

@@ -9,10 +9,10 @@ namespace MyPolyglotCoreTests.OptionsGeneratorTests.GenerateOptionsShould
     public class GenerateOptionsForLetterNumber : OptionsChecker
     {
         [Fact]
-        public void GivenLetterNumber_ReturnFiveWordsFormPrepositionVocabularyWithRightAnswer()
+        public void ReturnFiveWordsFormLetterNumberVocabulary()
         {
             var randomLetterNumber = RandomWordHelper.GetRandomLetterNumber();
-            CheckIfFiveWordsFromVocabularyWithRightWordWasReturned(randomLetterNumber);
+            CheckIfFiveWordsFromVocabularyWasReturned(randomLetterNumber);
         }
 
         [Fact]

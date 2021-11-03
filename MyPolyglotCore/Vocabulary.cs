@@ -682,7 +682,6 @@ namespace MyPolyglotCore
             new Verb("split", "split", "split"),
             new Verb("spoil", "spoilt", "spoilt"),
             new Verb("spread", "spread", "spread"),
-            new Verb("spring", "sprang", "sprung"),
             new Verb("stand", "stood", "stood"),
             new Verb("steal", "stole", "stolen"),
             new Verb("stick", "stuck", "stuck"),

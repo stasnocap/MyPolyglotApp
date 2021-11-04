@@ -28,8 +28,14 @@ namespace MyPolyglotCore
                 Preposition preposition => GenerateOptions(preposition),
                 ComparisonAdjective comparisonAdjective => GenerateOptions(comparisonAdjective),
                 LetterNumber letterNumber => GenerateOptions(letterNumber),
+                City city => GenerateOptions(city),
                 _ => throw new NotImplementedException(),
             };
+        }
+
+        private IEnumerable<string> GenerateOptions(City city)
+        {
+            return GetRandomWordsFromVocabularyWithRightWord(city);
         }
 
         private IEnumerable<string> GenerateOptions(LetterNumber letterNumber)

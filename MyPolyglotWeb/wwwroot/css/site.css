@@ -607,7 +607,7 @@ table {
 }
 
 /*hint-table for lesson 1*/
-.lesson-hint1 td.size17px {
+.lesson-hint1 td.font-size17px {
     font-size: 11px;
 }
 
@@ -620,7 +620,7 @@ table {
         left: 96%;
     }
 /*tables for lesson 2*/
-.lesson-hint2 td.size17px {
+.lesson-hint2 td.font-size17px {
     font-size: 11px;
 }
 
@@ -649,14 +649,8 @@ table {
     border-right: 2px solid #ccc;
 }
 /*tables for lesson 3*/
-.hint-table3 table:last-child {
-    width: 40px;
-    writing-mode: vertical-lr;
-    text-orientation: upright;
-}
-
-.hint-table3 table:not(table:last-child) {
-    width: 147px;
+.lesson-hint3 td.font-size17px {
+    font-size: 11px;
 }
 
 .lesson-info .hint-table3 table:last-child {
@@ -668,21 +662,13 @@ table {
 }
 
 .lesson-hint3 .tooltiptext {
-    width: 489px;
-    left: -487%;
+    width: 478px;
+    left: -472%;
 }
 
     .lesson-hint3 .tooltiptext::after {
         left: 96%;
     }
-
-.lesson3-help-table1 table:not(table:last-child) {
-    width: 250px;
-}
-
-.lesson3-help-table1 table:last-child {
-    width: 50px;
-}
 
 .lesson3-help-table2 table {
     width: 225px;
@@ -822,12 +808,16 @@ table {
     border-right: 2px solid #ccc;
 }
 
+.border-left {
+    border-left: 2px solid #ccc;
+}
+
 .vertical-upright {
     writing-mode: vertical-lr;
     text-orientation: upright;
 }
 
-.size17px {
+.font-size17px {
     font-size: 17px;
 }
 

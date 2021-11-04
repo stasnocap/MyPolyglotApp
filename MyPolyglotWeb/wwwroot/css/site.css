@@ -577,6 +577,17 @@ button {
             list-style: decimal;
         }
 
+    .lesson-info h1 {
+        font-size: 32px;
+        font-weight: 600;
+    }
+
+    .lesson-info h2 {
+        font-size: 24px;
+        font-weight: 600;
+    }
+
+
 table {
     border: 2px solid #ccc;
 }
@@ -596,27 +607,13 @@ table {
 }
 
 /*hint-table for lesson 1*/
-.hint-table1 table:not(table:last-child) {
-    width: 167px;
-}
-
-.hint-table1 table:last-child {
-    width: 40px;
-    writing-mode: vertical-lr;
-    text-orientation: upright;
-}
-
-.lesson-info .hint-table1 table:not(table:last-child) {
-    width: 250px;
-}
-
-.lesson-info .hint-table1 table:last-child {
-    width: 50px;
+.lesson-hint1 td.size17px {
+    font-size: 11px;
 }
 
 .lesson-hint1 .tooltiptext {
-    width: 550px;
-    left: -559%;
+    width: 507px;
+    left: -508%;
 }
 
     .lesson-hint1 .tooltiptext::after {
@@ -827,14 +824,17 @@ table {
     border-bottom: 2px solid #ccc;
 }
 
-.lesson-info h1 {
-    font-size: 32px;
-    font-weight: 600;
+.border-right {
+    border-right: 2px solid #ccc;
 }
 
-.lesson-info h2 {
-    font-size: 24px;
-    font-weight: 600;
+.vertical-upright {
+    writing-mode: vertical-lr;
+    text-orientation: upright;
+}
+
+.size17px {
+    font-size: 17px;
 }
 
 .previous-options-js {

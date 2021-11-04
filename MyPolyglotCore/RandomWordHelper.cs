@@ -183,5 +183,10 @@ namespace MyPolyglotCore
         {
             return (LetterNumber)typeof(LetterNumber).GetRandomWord();
         }
+
+        public static City GetRandomCity()
+        {
+            return (City)typeof(City).GetRandomWord();
+        }
     }
 }

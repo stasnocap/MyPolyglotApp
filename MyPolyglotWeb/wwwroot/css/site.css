@@ -568,21 +568,21 @@ button {
     background-color: var(--porcelain);
 }
 
-    .lesson-info ul {
+    .lesson-info ul, .lesson-hint ul {
         list-style: disc;
         margin-left: 25px;
     }
 
-        .lesson-info ul.decimal {
+        .lesson-info ul.decimal, .lesson-hint ul.decimal {
             list-style: decimal;
         }
 
-    .lesson-info h1 {
+    .lesson-info h1, .lesson-hint h1 {
         font-size: 32px;
         font-weight: 600;
     }
 
-    .lesson-info h2 {
+    .lesson-info h2, .lesson-hint h2 {
         font-size: 24px;
         font-weight: 600;
     }
@@ -760,6 +760,15 @@ table {
 }
 
     .lesson-hint8 .tooltiptext::after {
+        left: 96%;
+    }
+/*tables for lesson 9*/
+.lesson-hint9 .tooltiptext {
+    width: 497px;
+    left: -496%;
+}
+
+    .lesson-hint9 .tooltiptext::after {
         left: 96%;
     }
 /*tables end*/

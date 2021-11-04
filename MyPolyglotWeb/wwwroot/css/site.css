@@ -577,6 +577,17 @@ button {
             list-style: decimal;
         }
 
+    .lesson-info h1 {
+        font-size: 32px;
+        font-weight: 600;
+    }
+
+    .lesson-info h2 {
+        font-size: 24px;
+        font-weight: 600;
+    }
+
+
 table {
     border: 2px solid #ccc;
 }
@@ -596,46 +607,26 @@ table {
 }
 
 /*hint-table for lesson 1*/
-.hint-table1 table:not(table:last-child) {
-    width: 167px;
-}
-
-.hint-table1 table:last-child {
-    width: 40px;
-    writing-mode: vertical-lr;
-    text-orientation: upright;
-}
-
-.lesson-info .hint-table1 table:not(table:last-child) {
-    width: 250px;
-}
-
-.lesson-info .hint-table1 table:last-child {
-    width: 50px;
+.lesson-hint1 td.font-size17px {
+    font-size: 11px;
 }
 
 .lesson-hint1 .tooltiptext {
-    width: 550px;
-    left: -559%;
+    width: 507px;
+    left: -508%;
 }
 
     .lesson-hint1 .tooltiptext::after {
         left: 96%;
     }
 /*tables for lesson 2*/
-.hint-table2 table:not(table:last-child) {
-    width: 200px;
-}
-
-.hint-table2 table:last-child {
-    width: 40px;
-    writing-mode: vertical-lr;
-    text-orientation: upright;
+.lesson-hint2 td.font-size17px {
+    font-size: 11px;
 }
 
 .lesson-hint2 .tooltiptext {
-    width: 650px;
-    left: -680%;
+    width: 523px;
+    left: -527%;
 }
 
     .lesson-hint2 .tooltiptext::after {
@@ -658,14 +649,8 @@ table {
     border-right: 2px solid #ccc;
 }
 /*tables for lesson 3*/
-.hint-table3 table:last-child {
-    width: 40px;
-    writing-mode: vertical-lr;
-    text-orientation: upright;
-}
-
-.hint-table3 table:not(table:last-child) {
-    width: 147px;
+.lesson-hint3 td.font-size17px {
+    font-size: 11px;
 }
 
 .lesson-info .hint-table3 table:last-child {
@@ -677,21 +662,13 @@ table {
 }
 
 .lesson-hint3 .tooltiptext {
-    width: 489px;
-    left: -487%;
+    width: 478px;
+    left: -472%;
 }
 
     .lesson-hint3 .tooltiptext::after {
         left: 96%;
     }
-
-.lesson3-help-table1 table:not(table:last-child) {
-    width: 250px;
-}
-
-.lesson3-help-table1 table:last-child {
-    width: 50px;
-}
 
 .lesson3-help-table2 table {
     width: 225px;
@@ -827,14 +804,21 @@ table {
     border-bottom: 2px solid #ccc;
 }
 
-.lesson-info h1 {
-    font-size: 32px;
-    font-weight: 600;
+.border-right {
+    border-right: 2px solid #ccc;
 }
 
-.lesson-info h2 {
-    font-size: 24px;
-    font-weight: 600;
+.border-left {
+    border-left: 2px solid #ccc;
+}
+
+.vertical-upright {
+    writing-mode: vertical-lr;
+    text-orientation: upright;
+}
+
+.font-size17px {
+    font-size: 17px;
 }
 
 .previous-options-js {

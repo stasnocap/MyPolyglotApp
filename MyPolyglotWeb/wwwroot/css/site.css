@@ -620,19 +620,13 @@ table {
         left: 96%;
     }
 /*tables for lesson 2*/
-.hint-table2 table:not(table:last-child) {
-    width: 200px;
-}
-
-.hint-table2 table:last-child {
-    width: 40px;
-    writing-mode: vertical-lr;
-    text-orientation: upright;
+.lesson-hint2 td.size17px {
+    font-size: 11px;
 }
 
 .lesson-hint2 .tooltiptext {
-    width: 650px;
-    left: -680%;
+    width: 523px;
+    left: -527%;
 }
 
     .lesson-hint2 .tooltiptext::after {

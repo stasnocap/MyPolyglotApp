@@ -587,15 +587,18 @@ button {
         font-weight: 600;
     }
 
+    .lesson-info table, .lesson-hint table {
+        border: 2px solid #ccc;
+    }
 
-table {
-    border: 2px solid #ccc;
-}
-
-    table td {
+    .lesson-info td, .lesson-info th, .lesson-hint td, .lesson-hint th {
         padding: 1px 10px;
         text-align: center;
         vertical-align: middle;
+    }
+
+    .lesson-info th, .lesson-hint th {
+        font-weight: 600;
     }
 
 .lesson-info-link .tooltiptext {
@@ -641,7 +644,7 @@ table {
     border: 2px solid #ccc;
 }
 
-.lesson2-help-table1 tr:first-child td:first-child {
+.lesson2-help-table1 th {
     border-right: 2px solid #ccc;
 }
 
@@ -678,17 +681,17 @@ table {
     border-bottom: 2px solid #ccc;
 }
 
-    .hint-table4 tr:first-child td {
-        border: 2px solid #ccc;
-    }
+.hint-table4 th {
+    border: 2px solid #ccc;
+}
 
-    .hint-table4 tr:not(:first-child) td:nth-child(2n) {
-        border-right: 2px solid #ccc;
-    }
+.hint-table4 tr:not(:first-child) td:nth-child(2n) {
+    border-right: 2px solid #ccc;
+}
 
-    .hint-table4 tr:first-child td:last-child {
-        width: 107px;
-    }
+.hint-table4 tr:nth-child(2) td:last-child {
+    width: 107px;
+}
 
 .lesson-hint4 .tooltiptext {
     width: 367px;
@@ -720,7 +723,7 @@ table {
     border: 2px solid #ccc;
 }
 /*tables for lesson 7*/
-.hint-table7 td {
+.hint-table7 td, .hint-table7 th {
     width: 100px;
     border: 2px solid #ccc;
 }

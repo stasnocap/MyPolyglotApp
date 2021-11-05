@@ -35,7 +35,7 @@ namespace MyPolyglotCore
 
         private IEnumerable<string> GenerateOptions(City city)
         {
-            return GetRandomWordsFromVocabularyWithRightWord(city);
+            return GetRandomWordsFromVocabularyWithRightWord(city).Select(x => char.ToUpper(x[0]) + x.Substring(1));
         }
 
         private IEnumerable<string> GenerateOptions(LetterNumber letterNumber)

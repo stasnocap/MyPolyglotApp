@@ -9,8 +9,8 @@ namespace MyPolyglotCoreTests.RecognizerTests.RecognizeShould
         [Fact]
         public void RecognizeDeterminerInPhrase()
         {
-            var randomWordFromVocabulary = RandomWordHelper.GetRandomDeterminer();
-            CheckIfWordWasRecognizedByText(randomWordFromVocabulary);
+            var randomDeterminer = RandomWordHelper.GetRandomDeterminer();
+            CheckIfWordWasRecognizedByText(randomDeterminer);
         }
 
         [Fact]

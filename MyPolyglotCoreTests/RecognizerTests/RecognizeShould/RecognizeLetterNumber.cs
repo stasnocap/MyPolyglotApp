@@ -9,8 +9,8 @@ namespace MyPolyglotCoreTests.RecognizerTests.RecognizeShould
         [Fact]
         public void RecognizeLetterNumberInPhrase()
         {
-            var randomWordFromVocabulary = RandomWordHelper.GetRandomDeterminer();
-            CheckIfWordWasRecognizedByText(randomWordFromVocabulary);
+            var randomLetterNumber = RandomWordHelper.GetRandomLetterNumber();
+            CheckIfWordWasRecognizedByText(randomLetterNumber);
         }
 
         [Fact]

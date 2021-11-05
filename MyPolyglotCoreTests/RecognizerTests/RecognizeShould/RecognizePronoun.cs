@@ -9,43 +9,43 @@ namespace MyPolyglotCoreTests.RecognizerTests.RecognizeShould
         [Fact]
         public void RecognizeSubjectPronounInPhrase()
         {
-            var randomWordFromVocabulary = RandomWordHelper.GetRandomSubjectPronoun();
-            CheckIfWordWasRecognizedByText(randomWordFromVocabulary);
+            var randomSubjectPronoun = RandomWordHelper.GetRandomSubjectPronoun();
+            CheckIfWordWasRecognizedByText(randomSubjectPronoun);
         }
 
         [Fact]
         public void RecognizeObjectPronounInPhrase()
         {
-            var randomWordFromVocabulary = RandomWordHelper.GetRandomObjectPronoun();
-            CheckIfWordWasRecognizedByText(randomWordFromVocabulary);
+            var randomObjectPronoun = RandomWordHelper.GetRandomObjectPronoun();
+            CheckIfWordWasRecognizedByText(randomObjectPronoun);
         }
 
         [Fact]
         public void RecognizePossessiveAdjectiveInPhrase()
         {
-            var randomWordFromVocabulary = RandomWordHelper.GetRandomPossessiveAdjective();
-            CheckIfWordWasRecognizedByText(randomWordFromVocabulary);
+            var randomPossessiveAdjective = RandomWordHelper.GetRandomPossessiveAdjective();
+            CheckIfWordWasRecognizedByText(randomPossessiveAdjective);
         }
 
         [Fact]
         public void RecognizePossessivePronounInPhrase()
         {
-            var randomWordFromVocabulary = RandomWordHelper.GetRandomPossessivePronoun();
-            CheckIfWordWasRecognizedByText(randomWordFromVocabulary);
+            var randomPossessivePronoun = RandomWordHelper.GetRandomPossessivePronoun();
+            CheckIfWordWasRecognizedByText(randomPossessivePronoun);
         }
 
         [Fact]
         public void RecognizeDemonstrativePronounInPhrase()
         {
-            var randomWordFromVocabulary = RandomWordHelper.GetRandomDemonstrativePronoun();
-            CheckIfWordWasRecognizedByText(randomWordFromVocabulary);
+            var randomDemonstrativePronoun = RandomWordHelper.GetRandomDemonstrativePronoun();
+            CheckIfWordWasRecognizedByText(randomDemonstrativePronoun);
         }
 
         [Fact]
         public void RecognizeReflexivePronounInPhrase()
         {
-            var randomWordFromVocabulary = RandomWordHelper.GetRandomReflexivePronoun();
-            CheckIfWordWasRecognizedByText(randomWordFromVocabulary);
+            var randomReflexivePronoun = RandomWordHelper.GetRandomReflexivePronoun();
+            CheckIfWordWasRecognizedByText(randomReflexivePronoun);
         }
 
         [Fact]

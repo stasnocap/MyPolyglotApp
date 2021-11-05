@@ -9,28 +9,28 @@ namespace MyPolyglotCoreTests.RecognizerTests.RecognizeShould
         [Fact]
         public void RecognizeComparisonAdjectiveByRootForm()
         {
-            var comparisonAdjective = RandomWordHelper.GetRandomComparisonAdjective();
-            _recognizer.Recognize("rstrs " + comparisonAdjective.Text + " rtst");
+            var randomComparisonAdjective = RandomWordHelper.GetRandomComparisonAdjective();
+            _recognizer.Recognize("rstrs " + randomComparisonAdjective.Text + " rtst");
 
-            Assert.Collection(_recognizer.RecognizedWords, x => Assert.Equal(x, comparisonAdjective));
+            Assert.Collection(_recognizer.RecognizedWords, x => Assert.Equal(x, randomComparisonAdjective));
         }
 
         [Fact]
         public void RecognizeComparisonAdjectiveByComparativeForm()
         {
-            var comparisonAdjective = RandomWordHelper.GetRandomComparisonAdjective();
-            _recognizer.Recognize("rstrs " + comparisonAdjective.ComparativeForm + " rtst");
+            var randomComparisonAdjective = RandomWordHelper.GetRandomComparisonAdjective();
+            _recognizer.Recognize("rstrs " + randomComparisonAdjective.ComparativeForm + " rtst");
 
-            Assert.Collection(_recognizer.RecognizedWords, x => Assert.Equal(x, comparisonAdjective));
+            Assert.Collection(_recognizer.RecognizedWords, x => Assert.Equal(x, randomComparisonAdjective));
         }
 
         [Fact]
         public void RecognizeComparisonAdjectiveBySuperlativeForm()
         {
-            var comparisonAdjective = RandomWordHelper.GetRandomComparisonAdjective();
-            _recognizer.Recognize("rstrs " + comparisonAdjective.SuperlativeForm + " rtst");
+            var randomComparisonAdjective = RandomWordHelper.GetRandomComparisonAdjective();
+            _recognizer.Recognize("rstrs " + randomComparisonAdjective.SuperlativeForm + " rtst");
 
-            Assert.Collection(_recognizer.RecognizedWords, x => Assert.Equal(x, comparisonAdjective));
+            Assert.Collection(_recognizer.RecognizedWords, x => Assert.Equal(x, randomComparisonAdjective));
         }
 
         [Fact]

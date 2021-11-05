@@ -10,48 +10,48 @@ namespace MyPolyglotCoreTests.RecognizerTests.RecognizeShould
         [Fact]
         public void RecognizeIrregularVerbByText()
         {
-            var randomWordFromVocabulary = RandomWordHelper.GetRandomIrregularVerb();
-            CheckIfWordWasRecognizedByText(randomWordFromVocabulary);
+            var randomIrregularVerb = RandomWordHelper.GetRandomIrregularVerb();
+            CheckIfWordWasRecognizedByText(randomIrregularVerb);
         }
 
         [Fact]
         public void RecognizeIrregularVerbByPastForm()
         {
-            var verb = RandomWordHelper.GetRandomIrregularVerb();
+            var randomIrregularVerb = RandomWordHelper.GetRandomIrregularVerb();
 
-            _recognizer.Recognize("rastr " + verb.PastForm + " strs");
+            _recognizer.Recognize("rastr " + randomIrregularVerb.PastForm + " strs");
 
-            Assert.Collection(_recognizer.RecognizedWords, x => Assert.Equal(x, verb));
+            Assert.Collection(_recognizer.RecognizedWords, x => Assert.Equal(x, randomIrregularVerb));
         }
 
         [Fact]
         public void RecognizeIrregularVerbByPastParticleForm()
         {
-            var verb = RandomWordHelper.GetRandomIrregularVerb();
+            var randomIrregularVerb = RandomWordHelper.GetRandomIrregularVerb();
 
-            _recognizer.Recognize("rastr " + verb.PastParticipleForm + " strs");
+            _recognizer.Recognize("rastr " + randomIrregularVerb.PastParticipleForm + " strs");
 
-            Assert.Collection(_recognizer.RecognizedWords, x => Assert.Equal(x, verb));
+            Assert.Collection(_recognizer.RecognizedWords, x => Assert.Equal(x, randomIrregularVerb));
         }
 
         [Fact]
         public void RecognizeIrregularVerbByPresentParticipleForm()
         {
-            var verb = RandomWordHelper.GetRandomIrregularVerb();
+            var randomIrregularVerb = RandomWordHelper.GetRandomIrregularVerb();
 
-            _recognizer.Recognize("rastr " + verb.PresentParticipleForm + " strs");
+            _recognizer.Recognize("rastr " + randomIrregularVerb.PresentParticipleForm + " strs");
 
-            Assert.Collection(_recognizer.RecognizedWords, x => Assert.Equal(x, verb));
+            Assert.Collection(_recognizer.RecognizedWords, x => Assert.Equal(x, randomIrregularVerb));
         }
 
         [Fact]
         public void RecognizeIrregularVerbByThirdPersonForm()
         {
-            var verb = RandomWordHelper.GetRandomIrregularVerb();
+            var randomIrregularVerb = RandomWordHelper.GetRandomIrregularVerb();
 
-            _recognizer.Recognize("rastr " + verb.ThirdPersonForm + " strs");
+            _recognizer.Recognize("rastr " + randomIrregularVerb.ThirdPersonForm + " strs");
 
-            Assert.Collection(_recognizer.RecognizedWords, x => Assert.Equal(x, verb));
+            Assert.Collection(_recognizer.RecognizedWords, x => Assert.Equal(x, randomIrregularVerb));
         }
 
         [Fact]

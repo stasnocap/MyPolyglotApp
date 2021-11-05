@@ -9,50 +9,50 @@ namespace MyPolyglotCoreTests.RecognizerTests.RecognizeShould
         [Fact]
         public void RecognizeFrequencyAdverbByText()
         {
-            var randomWordFromVocabulary = RandomWordHelper.GetRandomFrequencyAdverb();
-            CheckIfWordWasRecognizedByText(randomWordFromVocabulary);
+            var randomFrequencyAdverb = RandomWordHelper.GetRandomFrequencyAdverb();
+            CheckIfWordWasRecognizedByText(randomFrequencyAdverb);
         }
 
         [Fact]
         public void RecognizeIntensifierAdverbByText()
         {
-            var randomWordFromVocabulary = RandomWordHelper.GetRandomIntensifierAdverb();
-            CheckIfWordWasRecognizedByText(randomWordFromVocabulary);
+            var randomIntensifierAdverb = RandomWordHelper.GetRandomIntensifierAdverb();
+            CheckIfWordWasRecognizedByText(randomIntensifierAdverb);
         }
 
         [Fact]
         public void RecognizeMannerAdverbByText()
         {
-            var randomWordFromVocabulary = RandomWordHelper.GetRandomMannerAdverb();
-            CheckIfWordWasRecognizedByText(randomWordFromVocabulary);
+            var randomMannerAdverb = RandomWordHelper.GetRandomMannerAdverb();
+            CheckIfWordWasRecognizedByText(randomMannerAdverb);
         }
 
         [Fact]
         public void RecognizeTellHowItHappenedAdverbByText()
         {
-            var randomWordFromVocabulary = RandomWordHelper.GetRandomTellHowItHappendAdverb();
-            CheckIfWordWasRecognizedByText(randomWordFromVocabulary);
+            var randomTellHowItHappendAdverb = RandomWordHelper.GetRandomTellHowItHappendAdverb();
+            CheckIfWordWasRecognizedByText(randomTellHowItHappendAdverb);
         }
 
         [Fact]
         public void RecognizeTellTheExtentOfTheActionAdverbByText()
         {
-            var randomWordFromVocabulary = RandomWordHelper.GetRandomTellTheExtentOfTheActionAdverb();
-            CheckIfWordWasRecognizedByText(randomWordFromVocabulary);
+            var randomTellTheExtentOfTheActionAdverb = RandomWordHelper.GetRandomTellTheExtentOfTheActionAdverb();
+            CheckIfWordWasRecognizedByText(randomTellTheExtentOfTheActionAdverb);
         }
 
         [Fact]
         public void RecognizeTellWhenItHappenedAdverbByText()
         {
-            var randomWordFromVocabulary = RandomWordHelper.GetRandomTellWhenItHappendAdverb();
-            CheckIfWordWasRecognizedByText(randomWordFromVocabulary);
+            var randomTellWhenItHappendAdverb = RandomWordHelper.GetRandomTellWhenItHappendAdverb();
+            CheckIfWordWasRecognizedByText(randomTellWhenItHappendAdverb);
         }
 
         [Fact]
         public void RecognizeTellWhereItHappenedAdverbByText()
         {
-            var randomWordFromVocabulary = RandomWordHelper.GetRandomTellWhereItHappendAdverb();
-            CheckIfWordWasRecognizedByText(randomWordFromVocabulary);
+            var randomTellWhereItHappendAdverb = RandomWordHelper.GetRandomTellWhereItHappendAdverb();
+            CheckIfWordWasRecognizedByText(randomTellWhereItHappendAdverb);
         }
 
         [Fact]

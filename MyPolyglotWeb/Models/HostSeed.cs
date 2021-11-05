@@ -53,14 +53,14 @@ namespace MyPolyglotWeb.Models
                 },
                 new ExerciseDB()
                 {
-                    RusPhrase = "Он идёт на станцию?",
-                    EngPhrase = "Does he go on the station?",
+                    RusPhrase = "Ты не выйдешь из сада.",
+                    EngPhrase = "You will not out of from the garden.",
                     Lesson = lessonDB,
                     UnrecognizedWords = new List<UnrecognizedWordDB>()
                     {
                         new UnrecognizedWordDB()
                         {
-                            Text = "station",
+                            Text = "garden",
                             Type = UnrecognizableTypes.Noun,
                             WasRecognizedFromPluralFormInNoun = false
                         },

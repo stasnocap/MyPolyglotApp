@@ -774,6 +774,15 @@ button {
     .lesson-hint9 .tooltiptext::after {
         left: 96%;
     }
+/*tables for lesson 10*/
+.lesson-hint10 .tooltiptext {
+    width: 313px;
+    left: -275%;
+}
+
+    .lesson-hint10 .tooltiptext::after {
+        left: 96%;
+    }
 /*tables end*/
 .flex {
     display: flex;

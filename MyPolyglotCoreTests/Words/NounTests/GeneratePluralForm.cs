@@ -1,9 +1,7 @@
 ﻿using MyPolyglotCore.Words;
-using System.ComponentModel.Design;
-using System.Runtime.InteropServices;
 using Xunit;
 
-namespace MyPolyglotCoreTests.NounTests
+namespace MyPolyglotCoreTests.Words.NounTests
 {
     public class GeneratePluralForm
     {

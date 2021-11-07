@@ -4,6 +4,7 @@ using MyPolyglotCore.Words;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 
 namespace MyPolyglotCore
 {
@@ -20,13 +21,59 @@ namespace MyPolyglotCore
                 Determiner determiner => GenerateOptions(determiner),
                 Adjective adjective => GenerateOptions(adjective),
                 Noun noun => GenerateOptions(noun),
+                NumberWithNoun numberWithNoun => GenerateOptions(numberWithNoun),
                 ModalVerb modalVerb => GenerateOptions(modalVerb),
                 PrimaryVerb primaryVerb => GenerateOptions(primaryVerb),
                 Verb verb => GenerateOptions(verb),
                 Preposition preposition => GenerateOptions(preposition),
                 ComparisonAdjective comparisonAdjective => GenerateOptions(comparisonAdjective),
+                LetterNumber letterNumber => GenerateOptions(letterNumber),
+                City city => GenerateOptions(city),
                 _ => throw new NotImplementedException(),
             };
+        }
+
+        private IEnumerable<string> GenerateOptions(City city)
+        {
+            return GetRandomWordsFromVocabularyWithRightWord(city).Select(x => char.ToUpper(x[0]) + x.Substring(1));
+        }
+
+        private IEnumerable<string> GenerateOptions(LetterNumber letterNumber)
+        {
+            var letterNumbers = Vocabulary.LetterNumbers.ToList();
+            var index = letterNumbers.FindIndex(x => x.Number == letterNumber.Number);
+
+            if (index == -1)
+            {
+                return Enumerable.Range(1, 5)
+                    .Select(x => letterNumbers[letterNumbers.Count - x].Text)
+                    .Append(letterNumber.Text)
+                    .Shuffle();
+            }
+
+            return Enumerable.Range(0, 6)
+                .Select(x =>
+                {
+                    if (index + x >= letterNumbers.Count)
+                    {
+                        return letterNumbers[letterNumbers.Count - x - 1].Text;
+                    }
+                    return letterNumbers[index + x].Text;
+                }).Shuffle();
+        }
+
+        private IEnumerable<string> GenerateOptions(NumberWithNoun numberWithNoun)
+        {
+            var fiveRandomNouns = Vocabulary.Nouns
+                .Select(x => x.PluralForm)
+                .TakeFiveShuffledStrings();
+
+            var number = Regex.Match(numberWithNoun.Text, @"\d+").Value;
+
+            return fiveRandomNouns
+                .Select(x => $"{number} {x}")
+                .Append(numberWithNoun.Text)
+                .Shuffle();
         }
 
         private IEnumerable<string> GenerateOptions(Pronoun pronoun)
@@ -130,6 +177,16 @@ namespace MyPolyglotCore
 
         private IEnumerable<string> GenerateOptions(Noun noun)
         {
+            if (Vocabulary.YearSeasons.Contains(noun))
+            {
+                if (noun.FromWhatItWasRecognized == noun.PluralForm)
+                {
+                    return Vocabulary.YearSeasons.Select(x => x.PluralForm);
+                }
+
+                return Vocabulary.YearSeasons.Select(x => x.Text);
+            }
+
             if (Vocabulary.DayParts.Contains(noun))
             {
                 if (noun.FromWhatItWasRecognized == noun.PluralForm)

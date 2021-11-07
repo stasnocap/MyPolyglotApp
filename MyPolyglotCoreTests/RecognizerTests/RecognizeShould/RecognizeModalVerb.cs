@@ -9,17 +9,17 @@ namespace MyPolyglotCoreTests.RecognizerTests.RecognizeShould
         [Fact]
         public void RecognizeModalVerbByAffirmativeForm()
         {
-            var randomWordFromVocabulary = RandomWordHelper.GetRandomModalVerb();
-            CheckIfWordWasRecognizedByText(randomWordFromVocabulary);
+            var randomModalVerb = RandomWordHelper.GetRandomModalVerb();
+            CheckIfWordWasRecognizedByText(randomModalVerb);
         }
 
         [Fact]
         public void RecognizeModalVerbByNegativeForm()
         {
-            var modalVerb = RandomWordHelper.GetRandomModalVerb();
-            _recognizer.Recognize("rstrs " + modalVerb.ShortNegativeForm + " rtst");
+            var randomModalVerb = RandomWordHelper.GetRandomModalVerb();
+            _recognizer.Recognize("rstrs " + randomModalVerb.ShortNegativeForm + " rtst");
 
-            Assert.Collection(_recognizer.RecognizedWords, x => Assert.Equal(x, modalVerb));
+            Assert.Collection(_recognizer.RecognizedWords, x => Assert.Equal(x, randomModalVerb));
         }
 
         [Fact]

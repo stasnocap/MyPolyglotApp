@@ -9,8 +9,8 @@ namespace MyPolyglotCoreTests.RecognizerTests.RecognizeShould
         [Fact]
         public void RecognizeAdjectiveByText()
         {
-            var randomWordFromVocabulary = RandomWordHelper.GetRandomAdjective();
-            CheckIfWordWasRecognizedByText(randomWordFromVocabulary);
+            var randomAdjective = RandomWordHelper.GetRandomAdjective();
+            CheckIfWordWasRecognizedByText(randomAdjective);
         }
 
         [Fact]

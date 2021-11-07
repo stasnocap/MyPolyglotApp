@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Xunit;
 
-namespace MyPolyglotCoreTests.SplitterHelperTests
+namespace MyPolyglotCoreTests.Helpers.SplitterHelperTests
 {
     public class SplitToStringsShould
     {
@@ -46,6 +46,36 @@ namespace MyPolyglotCoreTests.SplitterHelperTests
             {
                 Assert.Contains(word, splittedEngPhrase);
             }
+        }
+
+        [Fact]
+        public void SplitMoreWithNextWordAsSingularWord()
+        {
+            var engPhrase = "The weather is more beautiful today than yeasterday.";
+
+            var words = engPhrase.SplitToStrings();
+
+            Assert.Contains("more beautiful", words);
+        }
+
+        [Fact]
+        public void SplitMostWithNextWordAsSingularWord()
+        {
+            var engPhrase = "Today's weather is the most beautiful weather i have ever seen.";
+
+            var words = engPhrase.SplitToStrings();
+
+            Assert.Contains("most beautiful", words);
+        }
+
+        [Fact]
+        public void SplitNumberWithNextWordAsSingularWord()
+        {
+            var engPhrase = "We were here 3 hours ago.";
+
+            var words = engPhrase.SplitToStrings();
+
+            Assert.Contains("3 hours", words);
         }
     }
 }

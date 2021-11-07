@@ -1,4 +1,5 @@
 ﻿using MyPolyglotCore;
+using System.ComponentModel.DataAnnotations;
 using Xunit;
 
 namespace MyPolyglotCoreTests.OptionsGeneratorTests.GenerateOptionsShould
@@ -6,10 +7,17 @@ namespace MyPolyglotCoreTests.OptionsGeneratorTests.GenerateOptionsShould
     public class GenerateOptionsForAdjective : OptionsChecker
     {
         [Fact]
-        public void GivenAdjective_ReturnFiveWordsFromAdjectiveVocabularyWithRightAnswer()
+        public void ReturnFiveRandomWordsFromAdjectiveVocabulary()
         {
             var randomAdjective = RandomWordHelper.GetRandomAdjective();
-            CheckIfFiveWordsFromVocabularyWithRightWordWasReturned(randomAdjective);
+            CheckIfFiveWordsFromVocabularyWasReturned(randomAdjective);
+        }
+
+        [Fact]
+        public void ReturnRightWord()
+        {
+            var randomAdjective = RandomWordHelper.GetRandomAdjective();
+            CheckIfRightWordWasReturned(randomAdjective);
         }
     }
 }

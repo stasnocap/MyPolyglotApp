@@ -19,6 +19,8 @@ namespace MyPolyglotWeb.Models.ViewModels
 
         public int SyllablesInRegularComparisonAdjective { get; set; }
 
-        public bool WasRecognizedFromPluralForm { get; set; }
+        public bool WasRecognizedFromPluralFormInNoun { get; set; }
+
+        public int NumberInLetterNumber { get; set; }
     }
 }

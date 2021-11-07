@@ -13,13 +13,13 @@ namespace MyPolyglotCoreTests.OptionsGeneratorTests
         protected readonly Random _random = new Random();
         protected readonly IOptionsGenerator _optionsGenerator = new OptionsGenerator();
 
-        protected void CheckIfFiveWordsFromVocabularyWithRightWordWasReturned(Word word)
+        protected void CheckIfFiveWordsFromVocabularyWasReturned(Word word)
         {
             var vocabulary = Vocabulary.GetVocabulary(word.GetType());
-            CheckIfFiveWordsFromVocabularyWithRightWordWasReturned(word, vocabulary);
+            CheckIfFiveWordsFromVocabularyWasReturned(word, vocabulary);
         }
 
-        protected void CheckIfFiveWordsFromVocabularyWithRightWordWasReturned(Word word, IEnumerable<Word> vocabulary)
+        protected void CheckIfFiveWordsFromVocabularyWasReturned(Word word, IEnumerable<Word> vocabulary)
         {
             var options = _optionsGenerator.GetOptions(word);
 
@@ -32,6 +32,13 @@ namespace MyPolyglotCoreTests.OptionsGeneratorTests
 
                 Assert.Contains(option, vocabulary.Select(x => x.Text));
             }
+
+            Assert.Contains(word.Text, options);
+        }
+
+        protected void CheckIfRightWordWasReturned(Word word)
+        {
+            var options = _optionsGenerator.GetOptions(word);
 
             Assert.Contains(word.Text, options);
         }

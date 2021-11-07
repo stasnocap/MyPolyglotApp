@@ -9,8 +9,8 @@ namespace MyPolyglotCoreTests.RecognizerTests.RecognizeShould
         [Fact]
         public void RecognizePrepositionByText()
         {
-            var randomWordFromVocabulary = RandomWordHelper.GetRandomPreposition();
-            CheckIfWordWasRecognizedByText(randomWordFromVocabulary);
+            var randomPreposition = RandomWordHelper.GetRandomPreposition();
+            CheckIfWordWasRecognizedByText(randomPreposition);
         }
 
         [Fact]

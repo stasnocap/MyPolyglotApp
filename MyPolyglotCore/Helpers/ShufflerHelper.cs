@@ -11,7 +11,7 @@ namespace MyPolyglotCore.Helpers
         public static IEnumerable<string> TakeSixShuffledStrings(this IEnumerable<string> collection, string rightWord)
         {
             var randomizedCollection = collection
-                    .OrderBy(x => _random.Next())
+                    .Shuffle()
                     .ToList();
 
             var fiveRandomWords = new List<string>();
@@ -29,7 +29,19 @@ namespace MyPolyglotCore.Helpers
 
             fiveRandomWords.Add(rightWord);
 
-            return fiveRandomWords.OrderBy(x => _random.Next());
+            return fiveRandomWords.Shuffle();
+        }
+
+        public static IEnumerable<string> TakeFiveShuffledStrings(this IEnumerable<string> collection)
+        {
+            return collection
+                .Shuffle()
+                .Take(5);
+        }
+
+        public static IEnumerable<string> Shuffle(this IEnumerable<string> collection)
+        {
+            return collection.OrderBy(x => _random.Next());
         }
     }
 }

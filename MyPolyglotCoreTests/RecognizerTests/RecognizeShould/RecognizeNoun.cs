@@ -50,6 +50,20 @@ namespace MyPolyglotCoreTests.RecognizerTests.RecognizeShould
         }
 
         [Fact]
+        public void RecognizeYearSeasonByText()
+        {
+            var randomYearSeason = RandomWordHelper.GetRandomYearSeason();
+            CheckIfWordWasRecognizedByText(randomYearSeason);
+        }
+
+        [Fact]
+        public void RecognizeYearSeasonByPluralForm()
+        {
+            var randomYearSeason = RandomWordHelper.GetRandomYearSeason();
+            CheckIfNounWasRecognizedByPluralForm(randomYearSeason);
+        }
+
+        [Fact]
         public void RecognizeOccupationByText()
         {
             var randomOccupation = RandomWordHelper.GetRandomOccupation();

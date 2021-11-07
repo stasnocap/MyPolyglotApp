@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using MyPolyglotCore.Words;
@@ -23,6 +23,7 @@ namespace MyPolyglotCore
 
         public static readonly IEnumerable<Preposition> Prepositions = new Preposition[]
         {
+            new Preposition("ago"),
             new Preposition("aboard"),
             new Preposition("about"),
             new Preposition("across"),
@@ -364,6 +365,7 @@ namespace MyPolyglotCore
             new Adjective("young"),
         };
 
+        #region Nouns
         public static readonly IEnumerable<Noun> Occupations = new Noun[]
         {
             new Noun("accountant"),
@@ -431,6 +433,14 @@ namespace MyPolyglotCore
             new Noun("night"),
         };
 
+        public static readonly IEnumerable<Noun> YearSeasons = new Noun[]
+        {
+            new Noun("winter"),
+            new Noun("spring"),
+            new Noun("summer"),
+            new Noun("autumn"),
+        };
+
         public static readonly IEnumerable<Noun> IrregularNouns = new Noun[]
         {
             new Noun("child", "children"),
@@ -445,6 +455,7 @@ namespace MyPolyglotCore
 
         public static readonly IEnumerable<Noun> Nouns = new Noun[]
         {
+            new Noun("weekend"),
             new Noun("time"),
             new Noun("year"),
             new Noun("way"),
@@ -535,6 +546,7 @@ namespace MyPolyglotCore
             new Noun("force"),
             new Noun("education"),
         };
+        #endregion
 
         public static readonly IEnumerable<Verb> IrregularVerbs = new Verb[]
         {
@@ -670,7 +682,6 @@ namespace MyPolyglotCore
             new Verb("split", "split", "split"),
             new Verb("spoil", "spoilt", "spoilt"),
             new Verb("spread", "spread", "spread"),
-            new Verb("spring", "sprang", "sprung"),
             new Verb("stand", "stood", "stood"),
             new Verb("steal", "stole", "stolen"),
             new Verb("stick", "stuck", "stuck"),
@@ -734,6 +745,252 @@ namespace MyPolyglotCore
             new ModalVerb("must", "must not", "mustn't"),
         };
 
+        public static readonly IEnumerable<LetterNumber> LetterNumbers = new LetterNumber[]
+        {
+            new LetterNumber("one", 1),
+            new LetterNumber("two", 2),
+            new LetterNumber("three", 3),
+            new LetterNumber("four", 4),
+            new LetterNumber("five", 5),
+            new LetterNumber("six", 6),
+            new LetterNumber("seven", 7),
+            new LetterNumber("eight", 8),
+            new LetterNumber("nine", 9),
+            new LetterNumber("ten", 10),
+            new LetterNumber("eleven", 11),
+            new LetterNumber("twelve", 12),
+            new LetterNumber("thirteen", 13),
+            new LetterNumber("fourteen", 14),
+            new LetterNumber("fifteen", 15),
+            new LetterNumber("sixteen", 16),
+            new LetterNumber("seventeen", 17),
+            new LetterNumber("eighteen", 18),
+            new LetterNumber("nineteen", 19),
+            new LetterNumber("twenty", 20),
+            new LetterNumber("twenty-one", 21),
+            new LetterNumber("twenty-two", 22),
+            new LetterNumber("twenty-three", 23),
+            new LetterNumber("twenty-four", 24),
+            new LetterNumber("twenty-five", 25),
+            new LetterNumber("twenty-six", 26),
+            new LetterNumber("twenty-seven", 27),
+            new LetterNumber("twenty-eight", 28),
+            new LetterNumber("twenty-nine", 29),
+            new LetterNumber("thirty", 30),
+            new LetterNumber("thirty-one", 31),
+            new LetterNumber("thirty-two", 32),
+            new LetterNumber("thirty-three", 33),
+            new LetterNumber("thirty-four", 34),
+            new LetterNumber("thirty-five", 35),
+            new LetterNumber("thirty-six", 36),
+            new LetterNumber("thirty-seven", 37),
+            new LetterNumber("thirty-eight", 38),
+            new LetterNumber("thirty-nine", 39),
+            new LetterNumber("forty", 40),
+            new LetterNumber("forty-one", 41),
+            new LetterNumber("forty-two", 42),
+            new LetterNumber("forty-three", 43),
+            new LetterNumber("forty-four", 44),
+            new LetterNumber("forty-five", 45),
+            new LetterNumber("forty-six", 46),
+            new LetterNumber("forty-seven", 47),
+            new LetterNumber("forty-eight", 48),
+            new LetterNumber("forty-nine", 49),
+            new LetterNumber("fifty", 50),
+            new LetterNumber("fifty-one", 51),
+            new LetterNumber("fifty-two", 52),
+            new LetterNumber("fifty-three", 53),
+            new LetterNumber("fifty-four", 54),
+            new LetterNumber("fifty-five", 55),
+            new LetterNumber("fifty-six", 56),
+            new LetterNumber("fifty-seven", 57),
+            new LetterNumber("fifty-eight", 58),
+            new LetterNumber("fifty-nine", 59),
+            new LetterNumber("sixty", 60),
+            new LetterNumber("sixty-one", 61),
+            new LetterNumber("sixty-two", 62),
+            new LetterNumber("sixty-three", 63),
+            new LetterNumber("sixty-four", 64),
+            new LetterNumber("sixty-five", 65),
+            new LetterNumber("sixty-six", 66),
+            new LetterNumber("sixty-seven", 67),
+            new LetterNumber("sixty-eight", 68),
+            new LetterNumber("sixty-nine", 69),
+            new LetterNumber("seventy", 70),
+            new LetterNumber("seventy-one", 71),
+            new LetterNumber("seventy-two", 72),
+            new LetterNumber("seventy-three", 73),
+            new LetterNumber("seventy-four", 74),
+            new LetterNumber("seventy-five", 75),
+            new LetterNumber("seventy-six", 76),
+            new LetterNumber("seventy-seven", 77),
+            new LetterNumber("seventy-eight", 78),
+            new LetterNumber("seventy-nine", 79),
+            new LetterNumber("eighty", 80),
+            new LetterNumber("eighty-one", 81),
+            new LetterNumber("eighty-two", 82),
+            new LetterNumber("eighty-three", 83),
+            new LetterNumber("eighty-four", 84),
+            new LetterNumber("eighty-five", 85),
+            new LetterNumber("eighty-six", 86),
+            new LetterNumber("eighty-seven", 87),
+            new LetterNumber("eighty-eight", 88),
+            new LetterNumber("eighty-nine", 89),
+            new LetterNumber("ninety", 90),
+            new LetterNumber("ninety-one", 91),
+            new LetterNumber("ninety-two", 92),
+            new LetterNumber("ninety-three", 93),
+            new LetterNumber("ninety-four", 94),
+            new LetterNumber("ninety-five", 95),
+            new LetterNumber("ninety-six", 96),
+            new LetterNumber("ninety-seven", 97),
+            new LetterNumber("ninety-eight", 98),
+            new LetterNumber("ninety-nine", 99),
+        };
+
+        public static readonly IEnumerable<City> Cities = new City[]
+        {
+            new City("hong kong"),
+            new City("bangkok"),
+            new City("london"),
+            new City("macau"),
+            new City("singapore"),
+            new City("paris"),
+            new City("dubai"),
+            new City("new york city"),
+            new City("kuala lumpur"),
+            new City("istanbul"),
+            new City("delhi"),
+            new City("antalya"),
+            new City("shenzhen"),
+            new City("mumbai"),
+            new City("phuket"),
+            new City("rome"),
+            new City("tokyo"),
+            new City("pattaya"),
+            new City("taipei"),
+            new City("mecca"),
+            new City("guangzhou"),
+            new City("prague"),
+            new City("medina"),
+            new City("seoul"),
+            new City("amsterdam"),
+            new City("agra"),
+            new City("miami"),
+            new City("osaka"),
+            new City("las vegas"),
+            new City("shanghai"),
+            new City("ho chi minh city"),
+            new City("denpasar"),
+            new City("barcelona"),
+            new City("los angeles"),
+            new City("milan"),
+            new City("chennai"),
+            new City("vienna"),
+            new City("johor bahru"),
+            new City("jaipur"),
+            new City("cancun"),
+            new City("berlin"),
+            new City("cairo"),
+            new City("athens"),
+            new City("orlando"),
+            new City("moscow"),
+            new City("venice"),
+            new City("madrid"),
+            new City("ha long"),
+            new City("riyadh"),
+            new City("dublin"),
+            new City("florence"),
+            new City("hanoi"),
+            new City("toronto"),
+            new City("johannesburg"),
+            new City("sydney"),
+            new City("munich"),
+            new City("jakarta"),
+            new City("beijing"),
+            new City("saint petersburg"),
+            new City("brussels"),
+            new City("budapest"),
+            new City("jerusalem"),
+            new City("lisbon"),
+            new City("dammam"),
+            new City("penang island"),
+            new City("heraklion"),
+            new City("kyoto"),
+            new City("zhuhai"),
+            new City("vancouver"),
+            new City("chiang mai"),
+            new City("copenhagen"),
+            new City("san francisco"),
+            new City("melbourne"),
+            new City("warsaw"),
+            new City("marrakesh"),
+            new City("kolkata"),
+            new City("cebu city"),
+            new City("auckland"),
+            new City("tel aviv"),
+            new City("guilin"),
+            new City("honolulu"),
+            new City("hurghada"),
+            new City("krakow"),
+            new City("mugla"),
+            new City("buenos aires"),
+            new City("chiba"),
+            new City("frankfurt am main"),
+            new City("stockholm"),
+            new City("lima"),
+            new City("da nang"),
+            new City("batam"),
+            new City("nice"),
+            new City("fukuoka"),
+            new City("abu dhabi"),
+            new City("jeju"),
+            new City("porto"),
+            new City("rhodes"),
+            new City("rio de janeiro"),
+            new City("krabi"),
+            new City("bangalore"),
+            new City("mexico city"),
+            new City("punta cana"),
+            new City("são paulo"),
+            new City("zurich"),
+            new City("montreal"),
+            new City("washington"),
+            new City("chicago"),
+            new City("dusseldorf"),
+            new City("boston"),
+            new City("chengdu"),
+            new City("edinburgh"),
+            new City("san jose"),
+            new City("tehran"),
+            new City("houston"),
+            new City("hamburg"),
+            new City("cape town"),
+            new City("manila"),
+            new City("bogota"),
+            new City("beirut"),
+            new City("geneva"),
+            new City("colombo"),
+            new City("xiamen"),
+            new City("bucharest"),
+            new City("casablanca"),
+            new City("atlanta"),
+            new City("sofia"),
+            new City("dalian"),
+            new City("montevideo"),
+            new City("amman"),
+            new City("hangzhou"),
+            new City("pune"),
+            new City("durban"),
+            new City("dallas"),
+            new City("accra"),
+            new City("quito"),
+            new City("tianjin"),
+            new City("qingdao"),
+            new City("philadelphia"),
+            new City("lagos"),        
+        };
+
         public static readonly IEnumerable<Word> RecognizableVocabularies = Enumerable.Empty<Word>()
             .Concat(QuestionWords)
             #region Pronouns
@@ -764,6 +1021,7 @@ namespace MyPolyglotCore
             .Concat(Nouns)
             .Concat(Occupations)
             .Concat(DayParts)
+            .Concat(YearSeasons)
             #endregion
             .Concat(Determiners)
             .Concat(Adjectives)
@@ -771,7 +1029,9 @@ namespace MyPolyglotCore
             .Concat(PrimaryVerbs)
             .Concat(ModalVerbs)
             .Concat(Prepositions)
-            .Concat(IrregularComparisonAdjectives);
+            .Concat(IrregularComparisonAdjectives)
+            .Concat(LetterNumbers)
+            .Concat(Cities);
 
         public static IEnumerable<Word> GetVocabulary(Type typeOfWord)
         {
@@ -788,6 +1048,8 @@ namespace MyPolyglotCore
                 Type modalVerb when modalVerb == typeof(ModalVerb) => ModalVerbs,
                 Type preposition when preposition == typeof(Preposition) => Prepositions,
                 Type comparisonAdjective when comparisonAdjective == typeof(ComparisonAdjective) => IrregularComparisonAdjectives,
+                Type letterNumber when letterNumber == typeof(LetterNumber) => LetterNumbers,
+                Type city when city == typeof(City) => Cities,
                 _ => throw new NotImplementedException(),
             };
             return vocabulary;
@@ -827,7 +1089,8 @@ namespace MyPolyglotCore
             return Nouns
                 .Concat(IrregularNouns)
                 .Concat(Occupations)
-                .Concat(DayParts);
+                .Concat(DayParts)
+                .Concat(YearSeasons);
         }
     }
 }

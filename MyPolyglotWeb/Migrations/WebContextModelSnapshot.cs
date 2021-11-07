@@ -92,6 +92,9 @@ namespace MyPolyglotWeb.Migrations
                     b.Property<long?>("ExerciseId")
                         .HasColumnType("bigint");
 
+                    b.Property<int>("NumberInLetterNumber")
+                        .HasColumnType("int");
+
                     b.Property<bool>("StressOnTheFinalSyllableInRegularVerb")
                         .HasColumnType("bit");
 
@@ -104,7 +107,7 @@ namespace MyPolyglotWeb.Migrations
                     b.Property<int>("Type")
                         .HasColumnType("int");
 
-                    b.Property<bool>("WasRecognizedFromPluralForm")
+                    b.Property<bool>("WasRecognizedFromPluralFormInNoun")
                         .HasColumnType("bit");
 
                     b.HasKey("Id");

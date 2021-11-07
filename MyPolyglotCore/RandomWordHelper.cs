@@ -26,11 +26,6 @@ namespace MyPolyglotCore
             return list[_random.Next(list.Length)];
         }
 
-        public static Noun GetRandomNoun()
-        {
-            return (Noun)GetRandomWord(Vocabulary.Nouns);
-        }
-
         public static Adjective GetRandomAdjective()
         {
             return (Adjective)typeof(Adjective).GetRandomWord();
@@ -56,6 +51,7 @@ namespace MyPolyglotCore
             return (Determiner)typeof(Determiner).GetRandomWord();
         }
 
+        #region Pronouns
         public static Pronoun GetRandomReflexivePronoun()
         {
             return (Pronoun)GetRandomWord(Vocabulary.ReflexivePronouns);
@@ -85,6 +81,7 @@ namespace MyPolyglotCore
         {
             return (Pronoun)GetRandomWord(Vocabulary.DemonstrativePronouns);
         }
+        #endregion 
 
         public static Preposition GetRandomPreposition()
         {
@@ -96,6 +93,7 @@ namespace MyPolyglotCore
             return (ComparisonAdjective)typeof(ComparisonAdjective).GetRandomWord();
         }
 
+        #region Adverb
         public static Adverb GetRandomFrequencyAdverb()
         {
             return (Adverb)GetRandomWord(Vocabulary.FrequencyAdverbs);
@@ -130,7 +128,9 @@ namespace MyPolyglotCore
         {
             return (Adverb)GetRandomWord(Vocabulary.TellWhereItHappenedAdverbs);
         }
+        #endregion
 
+        #region Compounds
         public static Compound GetRandomCompound()
         {
             return (Compound)typeof(Compound).GetRandomWord();
@@ -155,6 +155,13 @@ namespace MyPolyglotCore
         {
             return (Compound)GetRandomWord(Vocabulary.NoCompounds);
         }
+        #endregion
+
+        #region Nouns
+        public static Noun GetRandomNoun()
+        {
+            return (Noun)GetRandomWord(Vocabulary.Nouns);
+        }
 
         public static Noun GetRandomOccupation()
         {
@@ -164,6 +171,22 @@ namespace MyPolyglotCore
         public static Noun GetRandomDayPart()
         {
             return (Noun)GetRandomWord(Vocabulary.DayParts);
+        }
+
+        public static Noun GetRandomYearSeason()
+        {
+            return (Noun)GetRandomWord(Vocabulary.YearSeasons);
+        }
+        #endregion
+
+        public static LetterNumber GetRandomLetterNumber()
+        {
+            return (LetterNumber)typeof(LetterNumber).GetRandomWord();
+        }
+
+        public static City GetRandomCity()
+        {
+            return (City)typeof(City).GetRandomWord();
         }
     }
 }

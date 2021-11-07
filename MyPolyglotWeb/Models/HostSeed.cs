@@ -25,8 +25,308 @@ namespace MyPolyglotWeb.Models
                 AddExercisesToLesson5(exerciseRepository, lessonRepository.Get(5));
                 AddExercisesToLesson6(exerciseRepository, lessonRepository.Get(6));
                 AddExercisesToLesson7(exerciseRepository, lessonRepository.Get(7));
+                AddExercisesToLesson8(exerciseRepository, lessonRepository.Get(8));
+                AddExercisesToLesson9(exerciseRepository, lessonRepository.Get(9));
+                AddExercisesToLesson10(exerciseRepository, lessonRepository.Get(10));
             }
             return host;
+        }
+
+        private static void AddExercisesToLesson10(IExerciseRepository exerciseRepository, LessonDB lessonDB)
+        {
+            var dbExercises = new List<ExerciseDB>()
+            {
+                new ExerciseDB()
+                {
+                    RusPhrase = "Он идёт на станцию?",
+                    EngPhrase = "Does he go on the station?",
+                    Lesson = lessonDB,
+                    UnrecognizedWords = new List<UnrecognizedWordDB>()
+                    {
+                        new UnrecognizedWordDB()
+                        {
+                            Text = "station",
+                            Type = UnrecognizableTypes.Noun,
+                            WasRecognizedFromPluralFormInNoun = false
+                        },
+                    }
+                },
+                new ExerciseDB()
+                {
+                    RusPhrase = "Ты не выйдешь из сада.",
+                    EngPhrase = "You will not out of from the garden.",
+                    Lesson = lessonDB,
+                    UnrecognizedWords = new List<UnrecognizedWordDB>()
+                    {
+                        new UnrecognizedWordDB()
+                        {
+                            Text = "garden",
+                            Type = UnrecognizableTypes.Noun,
+                            WasRecognizedFromPluralFormInNoun = false
+                        },
+                    }
+                },
+                new ExerciseDB()
+                {
+                    RusPhrase = "В комнате не будет шкафов.",
+                    EngPhrase = "There won't be cupboards in the room.",
+                    Lesson = lessonDB,
+                    UnrecognizedWords = new List<UnrecognizedWordDB>()
+                    {
+                        new UnrecognizedWordDB()
+                        {
+                            Text = "cupboard",
+                            Type = UnrecognizableTypes.Noun,
+                            WasRecognizedFromPluralFormInNoun = true
+                        },
+                    }
+                },
+                new ExerciseDB()
+                {
+                    RusPhrase = "На подоконнике будет чашка.",
+                    EngPhrase = "There will be a cup on the windowsill.",
+                    Lesson = lessonDB,
+                    UnrecognizedWords = new List<UnrecognizedWordDB>()
+                    {
+                        new UnrecognizedWordDB()
+                        {
+                            Text = "cup",
+                            Type = UnrecognizableTypes.Noun,
+                            WasRecognizedFromPluralFormInNoun = false
+                        },
+                        new UnrecognizedWordDB()
+                        {
+                            Text = "windowsill",
+                            Type = UnrecognizableTypes.Noun,
+                            WasRecognizedFromPluralFormInNoun = false
+                        },
+                    }
+                },
+                new ExerciseDB()
+                {
+                    RusPhrase = "Под столом были стаканы?",
+                    EngPhrase = "Were there glasses under the table?",
+                    Lesson = lessonDB,
+                    UnrecognizedWords = new List<UnrecognizedWordDB>()
+                    {
+                        new UnrecognizedWordDB()
+                        {
+                            Text = "glasses",
+                            Type = UnrecognizableTypes.Noun,
+                            WasRecognizedFromPluralFormInNoun = true
+                        },
+                        new UnrecognizedWordDB()
+                        {
+                            Text = "table",
+                            Type = UnrecognizableTypes.Noun,
+                            WasRecognizedFromPluralFormInNoun = false
+                        },
+                    }
+                },
+            };
+
+            SaveExercises(exerciseRepository, dbExercises);
+        }
+
+        private static void AddExercisesToLesson9(IExerciseRepository exerciseRepository, LessonDB lessonDB)
+        {
+            var dbExercises = new List<ExerciseDB>()
+            {
+                new ExerciseDB()
+                {
+                    RusPhrase = "На полу не было ручек.",
+                    EngPhrase = "There were not pens on the floor.",
+                    Lesson = lessonDB,
+                    UnrecognizedWords = new List<UnrecognizedWordDB>()
+                    {
+                        new UnrecognizedWordDB()
+                        {
+                            Text = "pens",
+                            Type = UnrecognizableTypes.Noun,
+                            WasRecognizedFromPluralFormInNoun = true
+                        },
+                        new UnrecognizedWordDB()
+                        {
+                            Text = "floor",
+                            Type = UnrecognizableTypes.Noun,
+                            WasRecognizedFromPluralFormInNoun = false
+                        },
+                    }
+                },
+                new ExerciseDB()
+                {
+                    RusPhrase = "Под столом есть ножи.",
+                    EngPhrase = "There are knives under the table.",
+                    Lesson = lessonDB,
+                    UnrecognizedWords = new List<UnrecognizedWordDB>()
+                    {
+                        new UnrecognizedWordDB()
+                        {
+                            Text = "knives",
+                            Type = UnrecognizableTypes.Noun,
+                            WasRecognizedFromPluralFormInNoun = true
+                        },
+                        new UnrecognizedWordDB()
+                        {
+                            Text = "table",
+                            Type = UnrecognizableTypes.Noun,
+                            WasRecognizedFromPluralFormInNoun = false
+                        },
+                    }
+                },
+                new ExerciseDB()
+                {
+                    RusPhrase = "Под креслом будет мяч.",
+                    EngPhrase = "There will be a ball under the armchair.",
+                    Lesson = lessonDB,
+                    UnrecognizedWords = new List<UnrecognizedWordDB>()
+                    {
+                        new UnrecognizedWordDB()
+                        {
+                            Text = "ball",
+                            Type = UnrecognizableTypes.Noun,
+                            WasRecognizedFromPluralFormInNoun = false
+                        },
+                        new UnrecognizedWordDB()
+                        {
+                            Text = "armchair",
+                            Type = UnrecognizableTypes.Noun,
+                            WasRecognizedFromPluralFormInNoun = false
+                        },
+                    }
+                },
+                new ExerciseDB()
+                {
+                    RusPhrase = "На столе нет ручки.",
+                    EngPhrase = "There isn't a pen on the table.",
+                    Lesson = lessonDB,
+                    UnrecognizedWords = new List<UnrecognizedWordDB>()
+                    {
+                        new UnrecognizedWordDB()
+                        {
+                            Text = "pen",
+                            Type = UnrecognizableTypes.Noun,
+                            WasRecognizedFromPluralFormInNoun = false
+                        },
+                        new UnrecognizedWordDB()
+                        {
+                            Text = "table",
+                            Type = UnrecognizableTypes.Noun,
+                            WasRecognizedFromPluralFormInNoun = false
+                        },
+                    }
+                },
+                new ExerciseDB()
+                {
+                    RusPhrase = "Под креслом был стакан?",
+                    EngPhrase = "Was there a glass under the armchair?",
+                    Lesson = lessonDB,
+                    UnrecognizedWords = new List<UnrecognizedWordDB>()
+                    {
+                        new UnrecognizedWordDB()
+                        {
+                            Text = "glass",
+                            Type = UnrecognizableTypes.Noun,
+                            WasRecognizedFromPluralFormInNoun = false
+                        },
+                        new UnrecognizedWordDB()
+                        {
+                            Text = "armchair",
+                            Type = UnrecognizableTypes.Noun,
+                            WasRecognizedFromPluralFormInNoun = false
+                        },
+                    }
+                },
+            };
+
+            SaveExercises(exerciseRepository, dbExercises);
+        }
+
+        private static void AddExercisesToLesson8(IExerciseRepository exerciseRepository, LessonDB lessonDB)
+        {
+            var dbExercises = new List<ExerciseDB>()
+            {
+                new ExerciseDB()
+                {
+                    RusPhrase = "Она не повернула нас 6 месяцев назад.",
+                    EngPhrase = "She didn't turn us six months ago.",
+                    Lesson = lessonDB,
+                    UnrecognizedWords = new List<UnrecognizedWordDB>()
+                    {
+                        new UnrecognizedWordDB()
+                        {
+                            Text = "turn",
+                            Type = UnrecognizableTypes.RegularVerb,
+                            StressOnTheFinalSyllableInRegularVerb = true
+                        }
+                    }
+                },
+                new ExerciseDB()
+                {
+                    RusPhrase = "Он будет расти через 2 месяца?",
+                    EngPhrase = "Will he grow in 2 months?",
+                    Lesson = lessonDB,
+                    UnrecognizedWords = new List<UnrecognizedWordDB>()
+                    {
+                        new UnrecognizedWordDB()
+                        {
+                            Text = "2 months",
+                            Type = UnrecognizableTypes.NumberWithNoun
+                        }
+                    }
+                },
+                new ExerciseDB()
+                {
+                    RusPhrase = "Я расскажу тебе через 6 месяцев.",
+                    EngPhrase = "I will tell you in 6 months.",
+                    Lesson = lessonDB,
+                    UnrecognizedWords = new List<UnrecognizedWordDB>()
+                    {
+                        new UnrecognizedWordDB()
+                        {
+                            Text = "6 months",
+                            Type = UnrecognizableTypes.NumberWithNoun
+                        }
+                    }
+                },
+                new ExerciseDB()
+                {
+                    RusPhrase = "Ты будешь там через 6 месяцев?",
+                    EngPhrase = "Will you be there in 6 months?",
+                    Lesson = lessonDB,
+                    UnrecognizedWords = new List<UnrecognizedWordDB>()
+                    {
+                        new UnrecognizedWordDB()
+                        {
+                            Text = "6 months",
+                            Type = UnrecognizableTypes.NumberWithNoun
+                        }
+                    }
+                },
+                new ExerciseDB()
+                {
+                    RusPhrase = "Она любила их в выходные?",
+                    EngPhrase = "Did she love them at the weekend?",
+                    Lesson = lessonDB,
+                    UnrecognizedWords = new List<UnrecognizedWordDB>()
+                    {
+                        new UnrecognizedWordDB()
+                        {
+                            Text = "love",
+                            Type = UnrecognizableTypes.RegularVerb,
+                            StressOnTheFinalSyllableInRegularVerb = true,
+                        }
+                    }
+                },
+                new ExerciseDB()
+                {
+                    RusPhrase = "Она была там вечером.",
+                    EngPhrase = "She was there in the evening.",
+                    Lesson = lessonDB,
+                }
+            };
+
+            SaveExercises(exerciseRepository, dbExercises);
         }
 
         private static void AddExercisesToLesson7(IExerciseRepository exerciseRepository, LessonDB lessonDB)
@@ -83,7 +383,7 @@ namespace MyPolyglotWeb.Models
                         {
                             Text = "pen",
                             Type = UnrecognizableTypes.Noun,
-                            WasRecognizedFromPluralForm = false,
+                            WasRecognizedFromPluralFormInNoun = false,
                         },
                         new UnrecognizedWordDB()
                         {
@@ -95,7 +395,7 @@ namespace MyPolyglotWeb.Models
                         {
                             Text = "one",
                             Type = UnrecognizableTypes.Noun,
-                            WasRecognizedFromPluralForm = false
+                            WasRecognizedFromPluralFormInNoun = false
                         },
                     }
                 },
@@ -110,7 +410,7 @@ namespace MyPolyglotWeb.Models
                         {
                             Text = "tv",
                             Type = UnrecognizableTypes.Noun,
-                            WasRecognizedFromPluralForm = false
+                            WasRecognizedFromPluralFormInNoun = false
                         },
                         new UnrecognizedWordDB()
                         {
@@ -130,7 +430,7 @@ namespace MyPolyglotWeb.Models
                         {
                             Text = "phone",
                             Type = UnrecognizableTypes.Noun,
-                            WasRecognizedFromPluralForm = false
+                            WasRecognizedFromPluralFormInNoun = false
                         },
                         new UnrecognizedWordDB()
                         {
@@ -142,7 +442,7 @@ namespace MyPolyglotWeb.Models
                         {
                             Text = "one",
                             Type = UnrecognizableTypes.Noun,
-                            WasRecognizedFromPluralForm = false
+                            WasRecognizedFromPluralFormInNoun = false
                         },
                     }
                 },
@@ -157,7 +457,7 @@ namespace MyPolyglotWeb.Models
                         {
                             Text = "pen",
                             Type = UnrecognizableTypes.Noun,
-                            WasRecognizedFromPluralForm = false
+                            WasRecognizedFromPluralFormInNoun = false
                         },
                         new UnrecognizedWordDB()
                         {
@@ -169,7 +469,7 @@ namespace MyPolyglotWeb.Models
                         {
                             Text = "one",
                             Type = UnrecognizableTypes.Noun,
-                            WasRecognizedFromPluralForm = false
+                            WasRecognizedFromPluralFormInNoun = false
                         },
                     }
                 },
@@ -184,7 +484,7 @@ namespace MyPolyglotWeb.Models
                         {
                             Text = "oranges",
                             Type = UnrecognizableTypes.Noun,
-                            WasRecognizedFromPluralForm = true
+                            WasRecognizedFromPluralFormInNoun = true
                         },
                     }
                 },
@@ -214,7 +514,7 @@ namespace MyPolyglotWeb.Models
                         {
                             Text = "guides",
                             Type = UnrecognizableTypes.Noun,
-                            WasRecognizedFromPluralForm = true
+                            WasRecognizedFromPluralFormInNoun = true
                         }
                     }
                 },
@@ -229,7 +529,7 @@ namespace MyPolyglotWeb.Models
                         {
                             Text = "manager",
                             Type = UnrecognizableTypes.Noun,
-                            WasRecognizedFromPluralForm = false
+                            WasRecognizedFromPluralFormInNoun = false
                         }
                     }
                 },
@@ -250,7 +550,7 @@ namespace MyPolyglotWeb.Models
                         {
                             Text = "managers",
                             Type = UnrecognizableTypes.Noun,
-                            WasRecognizedFromPluralForm = true
+                            WasRecognizedFromPluralFormInNoun = true
                         }
                     }
                 },
@@ -271,7 +571,7 @@ namespace MyPolyglotWeb.Models
                         {
                             Text = "designers",
                             Type = UnrecognizableTypes.Noun,
-                            WasRecognizedFromPluralForm = true
+                            WasRecognizedFromPluralFormInNoun = true
                         }
                     }
                 },
@@ -286,7 +586,7 @@ namespace MyPolyglotWeb.Models
                         {
                             Text = "historian",
                             Type = UnrecognizableTypes.Noun,
-                            WasRecognizedFromPluralForm = false
+                            WasRecognizedFromPluralFormInNoun = false
                         }
                     }
                 },
@@ -310,7 +610,7 @@ namespace MyPolyglotWeb.Models
                         {
                             Text = "actor",
                             Type = UnrecognizableTypes.Noun,
-                            WasRecognizedFromPluralForm = false
+                            WasRecognizedFromPluralFormInNoun = false
                         }
                     }
                 },
@@ -325,7 +625,7 @@ namespace MyPolyglotWeb.Models
                         {
                             Text = "accountants",
                             Type = UnrecognizableTypes.Noun,
-                            WasRecognizedFromPluralForm = true
+                            WasRecognizedFromPluralFormInNoun = true
                         }
                     }
                 },
@@ -340,7 +640,7 @@ namespace MyPolyglotWeb.Models
                         {
                             Text = "historians",
                             Type = UnrecognizableTypes.Noun,
-                            WasRecognizedFromPluralForm = true
+                            WasRecognizedFromPluralFormInNoun = true
                         }
                     }
                 },
@@ -355,7 +655,7 @@ namespace MyPolyglotWeb.Models
                         {
                             Text = "writer",
                             Type = UnrecognizableTypes.Noun,
-                            WasRecognizedFromPluralForm = false
+                            WasRecognizedFromPluralFormInNoun = false
                         }
                     }
                 },
@@ -370,7 +670,7 @@ namespace MyPolyglotWeb.Models
                         {
                             Text = "guides",
                             Type = UnrecognizableTypes.Noun,
-                            WasRecognizedFromPluralForm = true
+                            WasRecognizedFromPluralFormInNoun = true
                         }
                     }
                 }
@@ -424,7 +724,7 @@ namespace MyPolyglotWeb.Models
                         {
                             Text = "museum",
                             Type = UnrecognizableTypes.Noun,
-                            WasRecognizedFromPluralForm = false
+                            WasRecognizedFromPluralFormInNoun = false
                         }
                     }
                 },
@@ -454,7 +754,7 @@ namespace MyPolyglotWeb.Models
                         {
                             Text = "elevator",
                             Type = UnrecognizableTypes.Noun,
-                            WasRecognizedFromPluralForm = false
+                            WasRecognizedFromPluralFormInNoun = false
                         }
                     }
                 }

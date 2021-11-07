@@ -6,6 +6,9 @@
         Adjective = 1,
         Noun = 2,
         RegularVerb = 3,
-        RegularComparisonAdjective = 4
+        RegularComparisonAdjective = 4,
+        NumberWithNoun = 5,
+        LetterNumber = 6,
+        City = 7,
     }
 }

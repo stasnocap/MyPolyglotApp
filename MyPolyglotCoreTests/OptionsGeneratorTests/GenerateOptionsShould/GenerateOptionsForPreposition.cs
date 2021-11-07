@@ -1,4 +1,5 @@
-﻿using MyPolyglotCore.Words;
+﻿using MyPolyglotCore;
+using MyPolyglotCore.Words;
 using Xunit;
 
 namespace MyPolyglotCoreTests.OptionsGeneratorTests.GenerateOptionsShould
@@ -6,10 +7,17 @@ namespace MyPolyglotCoreTests.OptionsGeneratorTests.GenerateOptionsShould
     public class GenerateOptionsForPreposition : OptionsChecker
     {
         [Fact]
-        public void GivenPreposition_ReturnFiveWordsFormPrepositionVocabularyWithRightAnswer()
+        public void ReturnFiveRandomWordsFormPrepositionVocabulary()
         {
-            var randomPreposition = new Preposition("no matter");
-            CheckIfFiveWordsFromVocabularyWithRightWordWasReturned(randomPreposition);
+            var randomPreposition = RandomWordHelper.GetRandomPreposition();
+            CheckIfFiveWordsFromVocabularyWasReturned(randomPreposition);
+        }
+
+        [Fact]
+        public void ReturnRightWord()
+        {
+            var randomPreposition = RandomWordHelper.GetRandomPreposition();
+            CheckIfRightWordWasReturned(randomPreposition);
         }
     }
 }

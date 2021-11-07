@@ -45,7 +45,8 @@ namespace MyPolyglotWeb.Presentations
             return _mapper.Map<IEnumerable<UnrecognizedWordVM>>(_recognizer.UnrecognizedWords);
         }
 
-        public AllExercisesVM GetAllExercisesVM(int page, int pageSize, SortColumn sortColumn, SortDirection sortDirection)
+        public AllExercisesVM GetAllExercisesVM(int page = 0, int pageSize = 10,
+            SortColumn sortColumn = SortColumn.LessonId, SortDirection sortDirection = SortDirection.ASC)
         {
             var dbExercises = _exerciseRepository.GetAll();
             var sortedExercises = SortExercises(dbExercises, sortColumn, sortDirection);
@@ -68,7 +69,7 @@ namespace MyPolyglotWeb.Presentations
             return allExercisesVM;
         }
 
-        private IQueryable<ExerciseDB> SortExercises(IQueryable<ExerciseDB> dbExercises, SortColumn sortColumn, SortDirection sortDirection)
+        protected IQueryable<ExerciseDB> SortExercises(IQueryable<ExerciseDB> dbExercises, SortColumn sortColumn, SortDirection sortDirection)
         {
             dbExercises = sortColumn switch
             {
@@ -107,7 +108,7 @@ namespace MyPolyglotWeb.Presentations
                         }
                     }
                     exercise.UnrecognizedWords.RemoveAll(x => unrecognizedWordsThatShouldBeRemoved.Contains(x));
-                    }
+                }
 
                 var exerciseDB = _mapper.Map<ExerciseDB>(exercise);
                 _exerciseRepository.Save(exerciseDB);

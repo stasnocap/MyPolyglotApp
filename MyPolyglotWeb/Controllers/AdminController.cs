@@ -44,8 +44,7 @@ namespace MyPolyglotWeb.Controllers
         }
 
         [HttpGet]
-        public IActionResult AllExercises(int page = 0, int pageSize = 10,
-            SortColumn sortColumn = SortColumn.LessonId, SortDirection sortDirection = SortDirection.ASC)
+        public IActionResult AllExercises(int page, int pageSize, SortColumn sortColumn, SortDirection sortDirection)
         {
             var allExerciseVM = _adminPresentation.GetAllExercisesVM(page, pageSize, sortColumn, sortDirection);
             return View(allExerciseVM);

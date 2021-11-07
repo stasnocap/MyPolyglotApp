@@ -5,6 +5,7 @@ using MyPolyglotWeb.Models.DomainModels;
 using MyPolyglotWeb.Models.ViewModels;
 using MyPolyglotWeb.Presentations;
 using MyPolyglotWeb.Repositories.IRepositories;
+using System.Collections.Generic;
 using System.Linq;
 using Xunit;
 
@@ -33,6 +34,7 @@ namespace MyPolyglotWebTests.Presentations.AdminPresentationTests
         [Fact]
         public void GetAllExercisesFromRepository()
         {
+            _mapperMock.Setup(x => x.Map<AllExercisesVM>(It.IsAny<List<ExerciseDB>>())).Returns(new AllExercisesVM());
             _adminPresentation.GetAllExercisesVM();
 
             _exerciseRepositoryMock.Verify(x => x.GetAll(), Times.Once);
@@ -44,6 +46,7 @@ namespace MyPolyglotWebTests.Presentations.AdminPresentationTests
             var exercisesDB = Enumerable.Empty<ExerciseDB>().AsQueryable();
 
             _exerciseRepositoryMock.Setup(x => x.GetAll()).Returns(exercisesDB);
+            _mapperMock.Setup(x => x.Map<AllExercisesVM>(It.IsAny<List<ExerciseDB>>())).Returns(new AllExercisesVM());
 
             _adminPresentation.GetAllExercisesVM();
 
@@ -62,6 +65,42 @@ namespace MyPolyglotWebTests.Presentations.AdminPresentationTests
             var result = _adminPresentation.GetAllExercisesVM();
 
             Assert.Equal(result, allExercisesVM);
+        }
+
+        [Fact]
+        public void SetPaginatorVMPropertiesToDefault_WhenArgumentsDoNotPassed()
+        {
+            var defaultPage = 0;
+            var defaultPageSize = 10;
+            var defaultSortColumn = SortColumn.LessonId;
+            var defaultSortDirection = SortDirection.ASC;
+
+            _mapperMock.Setup(x => x.Map<AllExercisesVM>(It.IsAny<List<ExerciseDB>>())).Returns(new AllExercisesVM());
+
+            var allExerciseVM = _adminPresentation.GetAllExercisesVM();
+
+            Assert.Equal(defaultPage, allExerciseVM.PaginatorVM.Page);
+            Assert.Equal(defaultPageSize, allExerciseVM.PaginatorVM.PageSize);
+            Assert.Equal(defaultSortColumn, allExerciseVM.PaginatorVM.SortColumn);
+            Assert.Equal(defaultSortDirection, allExerciseVM.PaginatorVM.SortDirection);
+        }
+
+        [Fact]
+        public void SetPaginatorVMProperties_WhenArgumentsPassed()
+        {
+            var page = 1;
+            var pageSize = 20;
+            var sortColumn = SortColumn.RusPhrase;
+            var sortDirection = SortDirection.DESC;
+
+            _mapperMock.Setup(x => x.Map<AllExercisesVM>(It.IsAny<List<ExerciseDB>>())).Returns(new AllExercisesVM());
+
+            var allExerciseVM = _adminPresentation.GetAllExercisesVM(page, pageSize, sortColumn, sortDirection);
+
+            Assert.Equal(page, allExerciseVM.PaginatorVM.Page);
+            Assert.Equal(pageSize, allExerciseVM.PaginatorVM.PageSize);
+            Assert.Equal(sortColumn, allExerciseVM.PaginatorVM.SortColumn);
+            Assert.Equal(sortDirection, allExerciseVM.PaginatorVM.SortDirection);
         }
     }
 }

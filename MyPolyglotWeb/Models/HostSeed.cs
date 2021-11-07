@@ -28,8 +28,66 @@ namespace MyPolyglotWeb.Models
                 AddExercisesToLesson8(exerciseRepository, lessonRepository.Get(8));
                 AddExercisesToLesson9(exerciseRepository, lessonRepository.Get(9));
                 AddExercisesToLesson10(exerciseRepository, lessonRepository.Get(10));
+                AddExercisesToLesson11(exerciseRepository, lessonRepository.Get(11));
             }
             return host;
+        }
+
+        private static void AddExercisesToLesson11(IExerciseRepository exerciseRepository, LessonDB lessonDB)
+        {
+            var dbExercises = new List<ExerciseDB>()
+            {
+                new ExerciseDB()
+                {
+                    RusPhrase = "Мы не должны чувствовать.",
+                    EngPhrase = "We mustn't feel.",
+                    Lesson = lessonDB,
+                },
+                new ExerciseDB()
+                {
+                    RusPhrase = "Нужно мне стоять?",
+                    EngPhrase = "Should I stand?",
+                    Lesson = lessonDB,
+                },
+                new ExerciseDB()
+                {
+                    RusPhrase = "Мы можем закрыть.",
+                    EngPhrase = "We can close.",
+                    Lesson = lessonDB,
+                    UnrecognizedWords = new List<UnrecognizedWordDB>()
+                    {
+                        new UnrecognizedWordDB()
+                        {
+                            Text = "close",
+                            Type = UnrecognizableTypes.RegularVerb,
+                            StressOnTheFinalSyllableInRegularVerb = true
+                        }
+                    }
+                },
+                new ExerciseDB()
+                {
+                    RusPhrase = "Мы не показали.",
+                    EngPhrase = "We didn't show.",
+                    Lesson = lessonDB,
+                },
+                new ExerciseDB()
+                {
+                    RusPhrase = "Она не должна ответить.",
+                    EngPhrase = "She must not answer.",
+                    Lesson = lessonDB,
+                    UnrecognizedWords = new List<UnrecognizedWordDB>()
+                    {
+                        new UnrecognizedWordDB()
+                        {
+                            Text = "answer",
+                            Type = UnrecognizableTypes.RegularVerb,
+                            StressOnTheFinalSyllableInRegularVerb = false
+                        }
+                    }
+                },
+            };
+
+            SaveExercises(exerciseRepository, dbExercises);
         }
 
         private static void AddExercisesToLesson10(IExerciseRepository exerciseRepository, LessonDB lessonDB)

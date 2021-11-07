@@ -45,8 +45,8 @@ namespace MyPolyglotWeb.Presentations
             return _mapper.Map<IEnumerable<UnrecognizedWordVM>>(_recognizer.UnrecognizedWords);
         }
 
-        public AllExercisesVM GetAllExercisesVM(int page = 0, int pageSize = 10,
-            SortColumn sortColumn = SortColumn.LessonId, SortDirection sortDirection = SortDirection.ASC)
+        public AllExercisesVM GetAllExercisesVM(int page, int pageSize,
+            SortColumn sortColumn, SortDirection sortDirection)
         {
             var dbExercises = _exerciseRepository.GetAll();
             var sortedExercises = SortExercises(dbExercises, sortColumn, sortDirection);

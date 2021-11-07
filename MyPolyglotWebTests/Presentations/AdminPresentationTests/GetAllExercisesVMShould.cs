@@ -20,6 +20,12 @@ namespace MyPolyglotWebTests.Presentations.AdminPresentationTests
         private Mock<IUnrecognizedWordRepository> _unrecognizedWordRepositoryMock;
         private Mock<IRecognizer> _recognizerMock;
 
+        private readonly int _defaultPage = 0;
+        private readonly int _defaultPageSize = 10;
+        private readonly SortColumn _defaultSortColumn = SortColumn.LessonId;
+        private readonly SortDirection _defaultSortDirection = SortDirection.ASC;
+
+
         public GetAllExercisesVMShould()
         {
             _mapperMock = new Mock<IMapper>();
@@ -35,7 +41,7 @@ namespace MyPolyglotWebTests.Presentations.AdminPresentationTests
         public void GetAllExercisesFromRepository()
         {
             _mapperMock.Setup(x => x.Map<AllExercisesVM>(It.IsAny<List<ExerciseDB>>())).Returns(new AllExercisesVM());
-            _adminPresentation.GetAllExercisesVM();
+            _adminPresentation.GetAllExercisesVM(_defaultPage, _defaultPageSize, _defaultSortColumn, _defaultSortDirection);
 
             _exerciseRepositoryMock.Verify(x => x.GetAll(), Times.Once);
         }
@@ -48,7 +54,7 @@ namespace MyPolyglotWebTests.Presentations.AdminPresentationTests
             _exerciseRepositoryMock.Setup(x => x.GetAll()).Returns(exercisesDB);
             _mapperMock.Setup(x => x.Map<AllExercisesVM>(It.IsAny<List<ExerciseDB>>())).Returns(new AllExercisesVM());
 
-            _adminPresentation.GetAllExercisesVM();
+            _adminPresentation.GetAllExercisesVM(_defaultPage, _defaultPageSize, _defaultSortColumn, _defaultSortDirection);
 
             _mapperMock.Verify(x => x.Map<AllExercisesVM>(exercisesDB), Times.Once);
         }
@@ -62,7 +68,7 @@ namespace MyPolyglotWebTests.Presentations.AdminPresentationTests
             _exerciseRepositoryMock.Setup(x => x.GetAll()).Returns(exercisesDB);
             _mapperMock.Setup(x => x.Map<AllExercisesVM>(exercisesDB)).Returns(allExercisesVM);
 
-            var result = _adminPresentation.GetAllExercisesVM();
+            var result = _adminPresentation.GetAllExercisesVM(_defaultPage, _defaultPageSize, _defaultSortColumn, _defaultSortDirection);
 
             Assert.Equal(result, allExercisesVM);
         }
@@ -70,19 +76,14 @@ namespace MyPolyglotWebTests.Presentations.AdminPresentationTests
         [Fact]
         public void SetPaginatorVMPropertiesToDefault_WhenArgumentsDoNotPassed()
         {
-            var defaultPage = 0;
-            var defaultPageSize = 10;
-            var defaultSortColumn = SortColumn.LessonId;
-            var defaultSortDirection = SortDirection.ASC;
-
             _mapperMock.Setup(x => x.Map<AllExercisesVM>(It.IsAny<List<ExerciseDB>>())).Returns(new AllExercisesVM());
 
-            var allExerciseVM = _adminPresentation.GetAllExercisesVM();
+            var allExerciseVM = _adminPresentation.GetAllExercisesVM(_defaultPage, _defaultPageSize, _defaultSortColumn, _defaultSortDirection);
 
-            Assert.Equal(defaultPage, allExerciseVM.PaginatorVM.Page);
-            Assert.Equal(defaultPageSize, allExerciseVM.PaginatorVM.PageSize);
-            Assert.Equal(defaultSortColumn, allExerciseVM.PaginatorVM.SortColumn);
-            Assert.Equal(defaultSortDirection, allExerciseVM.PaginatorVM.SortDirection);
+            Assert.Equal(_defaultPage, allExerciseVM.PaginatorVM.Page);
+            Assert.Equal(_defaultPageSize, allExerciseVM.PaginatorVM.PageSize);
+            Assert.Equal(_defaultSortColumn, allExerciseVM.PaginatorVM.SortColumn);
+            Assert.Equal(_defaultSortDirection, allExerciseVM.PaginatorVM.SortDirection);
         }
 
         [Fact]

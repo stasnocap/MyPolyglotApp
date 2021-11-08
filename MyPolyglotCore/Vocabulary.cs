@@ -941,7 +941,6 @@ namespace MyPolyglotCore
             new City("lima"),
             new City("da nang"),
             new City("batam"),
-            new City("nice"),
             new City("fukuoka"),
             new City("abu dhabi"),
             new City("jeju"),

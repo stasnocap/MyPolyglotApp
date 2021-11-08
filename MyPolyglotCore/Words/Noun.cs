@@ -9,10 +9,10 @@ namespace MyPolyglotCore.Words
         public string PluralForm { get; set; }
         public bool WasRecognizedFromPluralForm { get; set; }
 
-        public Noun(string singleOrPlural, bool wasRecognizedFromPluralForm) : base(singleOrPlural)
+        public Noun(string singleOrPlural, bool wasRecognizedFromPluralForm) : base(!wasRecognizedFromPluralForm ? singleOrPlural : null)
         {
             WasRecognizedFromPluralForm = wasRecognizedFromPluralForm;
-            PluralForm = singleOrPlural;
+            PluralForm = wasRecognizedFromPluralForm ? singleOrPlural : null;
         }
 
         public Noun(string text, string pluralForm) : base(text)

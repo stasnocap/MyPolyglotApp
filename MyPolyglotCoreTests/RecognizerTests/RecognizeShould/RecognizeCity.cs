@@ -1,5 +1,6 @@
 ﻿using MyPolyglotCore;
 using MyPolyglotCore.Words;
+using System.Linq;
 using Xunit;
 
 namespace MyPolyglotCoreTests.RecognizerTests.RecognizeShould
@@ -9,14 +10,29 @@ namespace MyPolyglotCoreTests.RecognizerTests.RecognizeShould
         [Fact]
         public void RecognizeCityByText()
         {
-            var randomCity = RandomWordHelper.GetRandomCity();
+            var randomCity = default(City);
+            do
+            {
+                randomCity = RandomWordHelper.GetRandomCity();
+            } while (randomCity.Text.Split(' ').Length > 1);
+            // because 2 and 3 city words non-recognizable, it is exist only for options generating
+
             CheckIfWordWasRecognizedByText(randomCity);
         }
 
         [Fact]
         public void DoCityRememberFromWhatItWasRecognized()
         {
-            CheckIfWordRememberFromWhatItWasRecognized(typeof(City));
+            var randomCity = default(City);
+            do
+            {
+                randomCity = RandomWordHelper.GetRandomCity();
+            } while (randomCity.Text.Split(' ').Length > 1);
+            // because 2 and 3 city words non-recognizable, it is exist only for options generating
+
+            _recognizer.Recognize("rstrs " + randomCity.Text + " rtst");
+
+            Assert.Equal(randomCity.Text, _recognizer.RecognizedWords.First().FromWhatItWasRecognized);
         }
     }
 }

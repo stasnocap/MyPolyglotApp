@@ -35,7 +35,7 @@ namespace MyPolyglotCore
 
         private IEnumerable<string> GenerateOptions(City city)
         {
-            return GetRandomWordsFromVocabularyWithRightWord(city).Select(x => char.ToUpper(x[0]) + x.Substring(1));
+            return GetRandomWordsFromVocabularyWithRightWord(city);
         }
 
         private IEnumerable<string> GenerateOptions(LetterNumber letterNumber)
@@ -179,7 +179,7 @@ namespace MyPolyglotCore
         {
             if (Vocabulary.YearSeasons.Contains(noun))
             {
-                if (noun.FromWhatItWasRecognized == noun.PluralForm)
+                if (noun.WasRecognizedFromPluralForm)
                 {
                     return Vocabulary.YearSeasons.Select(x => x.PluralForm);
                 }
@@ -189,7 +189,7 @@ namespace MyPolyglotCore
 
             if (Vocabulary.DayParts.Contains(noun))
             {
-                if (noun.FromWhatItWasRecognized == noun.PluralForm)
+                if (noun.WasRecognizedFromPluralForm)
                 {
                     return Vocabulary.DayParts.Select(x => x.PluralForm);
                 }
@@ -199,7 +199,7 @@ namespace MyPolyglotCore
 
             if (Vocabulary.Occupations.Contains(noun))
             {
-                if (noun.FromWhatItWasRecognized == noun.PluralForm)
+                if (noun.WasRecognizedFromPluralForm)
                 {
                     return Vocabulary.Occupations
                         .Select(x => x.PluralForm)
@@ -212,8 +212,7 @@ namespace MyPolyglotCore
             }
 
             var nounVocabulary = Vocabulary.GetNounVocabulary();
-            if (noun.WasRecognizedFromPluralForm
-                || noun.PluralForm != null && noun.FromWhatItWasRecognized == noun.PluralForm)
+            if (noun.WasRecognizedFromPluralForm)
             {
 
                 return nounVocabulary

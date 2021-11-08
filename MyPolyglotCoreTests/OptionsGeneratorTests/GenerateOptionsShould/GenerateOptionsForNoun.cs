@@ -70,7 +70,7 @@ namespace MyPolyglotCoreTests.OptionsGeneratorTests.GenerateOptionsShould
         public void GivenOccupationRecognizedFromSingleForm_ReturnFiveRandomSingleFormsFromOccupationsVocabulary()
         {
             var randomOccupation = RandomWordHelper.GetRandomOccupation();
-            randomOccupation.FromWhatItWasRecognized = randomOccupation.Text;
+            randomOccupation.WasRecognizedFromPluralForm = false;
 
             var options = _optionsGenerator.GetOptions(randomOccupation);
 
@@ -91,7 +91,7 @@ namespace MyPolyglotCoreTests.OptionsGeneratorTests.GenerateOptionsShould
         public void GivenOccupationRecognizedFromSingleForm_ReturnRightSingleForm()
         {
             var randomOccupation = RandomWordHelper.GetRandomOccupation();
-            randomOccupation.FromWhatItWasRecognized = randomOccupation.Text;
+            randomOccupation.WasRecognizedFromPluralForm = false;
 
             var options = _optionsGenerator.GetOptions(randomOccupation);
 
@@ -102,7 +102,7 @@ namespace MyPolyglotCoreTests.OptionsGeneratorTests.GenerateOptionsShould
         public void GivenOccupationRecognizedFromPluralForm_ReturnFiveRandomPluralFormsFromOccupationsVocabulary()
         {
             var randomOccupation = RandomWordHelper.GetRandomOccupation();
-            randomOccupation.FromWhatItWasRecognized = randomOccupation.PluralForm;
+            randomOccupation.WasRecognizedFromPluralForm = true;
 
             var options = _optionsGenerator.GetOptions(randomOccupation);
 
@@ -121,7 +121,7 @@ namespace MyPolyglotCoreTests.OptionsGeneratorTests.GenerateOptionsShould
         public void GivenOccupationRecognizedFromPluralForm_ReturnRightPluralForm()
         {
             var randomOccupation = RandomWordHelper.GetRandomOccupation();
-            randomOccupation.FromWhatItWasRecognized = randomOccupation.PluralForm;
+            randomOccupation.WasRecognizedFromPluralForm = true;
 
             var options = _optionsGenerator.GetOptions(randomOccupation);
 
@@ -132,7 +132,7 @@ namespace MyPolyglotCoreTests.OptionsGeneratorTests.GenerateOptionsShould
         public void GivenDayPartRecognizedFromSingleForm_ReturnAllWordsFromDayPartsVocabulary()
         {
             var randomDayPart = RandomWordHelper.GetRandomDayPart();
-            randomDayPart.FromWhatItWasRecognized = randomDayPart.Text;
+            randomDayPart.WasRecognizedFromPluralForm = false;
 
             var options = _optionsGenerator.GetOptions(randomDayPart);
 
@@ -146,7 +146,7 @@ namespace MyPolyglotCoreTests.OptionsGeneratorTests.GenerateOptionsShould
         public void GivenDayPartRecognizedFromPluralForm_ReturnAllWordsFromDayPartsVocabulary()
         {
             var randomDayPart = RandomWordHelper.GetRandomDayPart();
-            randomDayPart.FromWhatItWasRecognized = randomDayPart.PluralForm;
+            randomDayPart.WasRecognizedFromPluralForm = true;
 
             var options = _optionsGenerator.GetOptions(randomDayPart);
 
@@ -160,7 +160,7 @@ namespace MyPolyglotCoreTests.OptionsGeneratorTests.GenerateOptionsShould
         public void GivenwYearSeasonRecognizedFromSingleForm_ReturnAllWordsFroYearSeasonsVocabulary()
         {
             var randomYearSeason = RandomWordHelper.GetRandomYearSeason();
-            randomYearSeason.FromWhatItWasRecognized = randomYearSeason.Text;
+            randomYearSeason.WasRecognizedFromPluralForm = false;
 
             var options = _optionsGenerator.GetOptions(randomYearSeason);
 
@@ -174,7 +174,7 @@ namespace MyPolyglotCoreTests.OptionsGeneratorTests.GenerateOptionsShould
         public void GivenYearSeasonRecognizedFromPluralForm_ReturnAllWordsFromYearSeasonsVocabulary()
         {
             var randomYearSeason = RandomWordHelper.GetRandomYearSeason();
-            randomYearSeason.FromWhatItWasRecognized = randomYearSeason.PluralForm;
+            randomYearSeason.WasRecognizedFromPluralForm = true;
 
             var options = _optionsGenerator.GetOptions(randomYearSeason);
 

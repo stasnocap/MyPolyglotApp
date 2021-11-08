@@ -13,18 +13,6 @@ namespace MyPolyglotCoreTests.OptionsGeneratorTests.GenerateOptionsShould
         }
 
         [Fact]
-        public void CapitalizeFirstLetter()
-        {
-            var randomCity = RandomWordHelper.GetRandomCity();
-            var options = _optionsGenerator.GetOptions(randomCity);
-
-            foreach (var option in options)
-            {
-                Assert.True(char.IsUpper(option[0]));
-            }
-        }
-
-        [Fact]
         public void ReturnRightWord()
         {
             var randomCity = RandomWordHelper.GetRandomCity();

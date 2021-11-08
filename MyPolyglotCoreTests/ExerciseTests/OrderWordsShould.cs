@@ -13,7 +13,7 @@ namespace MyPolyglotCoreTests.ExerciseTests
         public void ReturnWordsInOrder()
         {
             var engPhrase = "Cool is a nice word.";
-            var exercise = new Exercise(engPhrase, new List<Word> { new Adjective("cool"), new Adjective("nice"), new Noun("word") });
+            var exercise = new Exercise(engPhrase, new List<Word> { new Adjective("cool"), new Adjective("nice"), });
             var wordsInOrder = engPhrase.SplitToWords();
 
             var exerciseWordsList = exercise.Words.ToList();

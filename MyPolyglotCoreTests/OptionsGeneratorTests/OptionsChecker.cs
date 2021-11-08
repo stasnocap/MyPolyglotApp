@@ -32,8 +32,6 @@ namespace MyPolyglotCoreTests.OptionsGeneratorTests
 
                 Assert.Contains(option, vocabulary.Select(x => x.Text));
             }
-
-            Assert.Contains(word.Text, options);
         }
 
         protected void CheckIfRightWordWasReturned(Word word)

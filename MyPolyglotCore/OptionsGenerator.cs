@@ -29,8 +29,14 @@ namespace MyPolyglotCore
                 ComparisonAdjective comparisonAdjective => GenerateOptions(comparisonAdjective),
                 LetterNumber letterNumber => GenerateOptions(letterNumber),
                 City city => GenerateOptions(city),
+                Language language => GenerateOptions(language),
                 _ => throw new NotImplementedException(),
             };
+        }
+
+        private IEnumerable<string> GenerateOptions(Language language)
+        {
+            return GetRandomWordsFromVocabularyWithRightWord(language);
         }
 
         private IEnumerable<string> GenerateOptions(City city)

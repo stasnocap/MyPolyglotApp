@@ -10,5 +10,6 @@
         NumberWithNoun = 5,
         LetterNumber = 6,
         City = 7,
+        Language = 8,
     }
 }

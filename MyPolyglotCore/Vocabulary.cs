@@ -990,17 +990,112 @@ namespace MyPolyglotCore
             new City("lagos"),        
         };
 
+        public static readonly IEnumerable<Language> Languages = new Language[]
+        {
+            new Language("mandarin chinese"),
+            new Language("spanish"),
+            new Language("english"),
+            new Language("hindi"),
+            new Language("bengali"),
+            new Language("portuguese"),
+            new Language("russian"),
+            new Language("japanese"),
+            new Language("western punjabi"),
+            new Language("marathi"),
+            new Language("telugu"),
+            new Language("wu chinese"),
+            new Language("turkish"),
+            new Language("korean"),
+            new Language("french"),
+            new Language("german"),
+            new Language("vietnamese"),
+            new Language("tamil"),
+            new Language("yue chinese"),
+            new Language("urdu"),
+            new Language("javanese"),
+            new Language("italian"),
+            new Language("egyptian arabic"),
+            new Language("gujarati"),
+            new Language("iranian persian"),
+            new Language("bhojpuri"),
+            new Language("southern min"),
+            new Language("hakka"),
+            new Language("jin chinese"),
+            new Language("hausa"),
+            new Language("kannada"),
+            new Language("indonesian"),
+            new Language("polish"),
+            new Language("yoruba"),
+            new Language("xiang chinese"),
+            new Language("malayalam"),
+            new Language("odia"),
+            new Language("maithili"),
+            new Language("burmese"),
+            new Language("eastern punjabi"),
+            new Language("sunda"),
+            new Language("sudanese arabic"),
+            new Language("algerian arabic"),
+            new Language("moroccan arabic"),
+            new Language("ukrainian"),
+            new Language("igbo"),
+            new Language("northern uzbek"),
+            new Language("sindhi"),
+            new Language("north levantine arabic"),
+            new Language("romanian"),
+            new Language("tagalog"),
+            new Language("dutch"),
+            new Language("saʽidi arabic"),
+            new Language("gan chinese"),
+            new Language("amharic"),
+            new Language("northern pashto"),
+            new Language("magahi"),
+            new Language("thai"),
+            new Language("saraiki"),
+            new Language("khmer"),
+            new Language("chhattisgarhi"),
+            new Language("somali"),
+            new Language("malaysian"),
+            new Language("cebuano"),
+            new Language("nepali"),
+            new Language("mesopotamian arabic"),
+            new Language("assamese"),
+            new Language("sinhalese"),
+            new Language("northern kurdish"),
+            new Language("hejazi arabic"),
+            new Language("nigerian fulfulde"),
+            new Language("bavarian"),
+            new Language("south azerbaijani"),
+            new Language("greek"),
+            new Language("chittagonian"),
+            new Language("kazakh"),
+            new Language("deccan"),
+            new Language("hungarian"),
+            new Language("kinyarwanda"),
+            new Language("zulu"),
+            new Language("south levantine arabic"),
+            new Language("tunisian arabic"),
+            new Language("sanaani spoken arabic"),
+            new Language("northern min"),
+            new Language("southern pashto"),
+            new Language("rundi"),
+            new Language("czech"),
+            new Language("taʽizzi-adeni arabic"),
+            new Language("uyghur"),
+            new Language("eastern min"),
+            new Language("sylheti"),
+        };
+
         public static readonly IEnumerable<Word> RecognizableVocabularies = Enumerable.Empty<Word>()
             .Concat(QuestionWords)
-            #region Pronouns
+        #region Pronouns
             .Concat(SubjectPronouns)
             .Concat(ObjectPronouns)
             .Concat(PossessiveAdjectives)
             .Concat(PossessivePronouns)
             .Concat(ReflexivePronouns)
             .Concat(DemonstrativePronouns)
-            #endregion
-            #region AdVerbs
+        #endregion
+        #region AdVerbs
             .Concat(FrequencyAdverbs)
             .Concat(IntensifierAdverbs)
             .Concat(MannerAdverbs)
@@ -1008,20 +1103,20 @@ namespace MyPolyglotCore
             .Concat(TellTheExtentOfTheActionAdverbs)
             .Concat(TellWhenItHappenedAdverbs)
             .Concat(TellWhereItHappenedAdverbs)
-            #endregion
-            #region Compounds
+        #endregion
+        #region Compounds
             .Concat(SomeCompounds)
             .Concat(AnyCompounds)
             .Concat(EveryCompounds)
             .Concat(NoCompounds)
-            #endregion
-            #region Nouns
+        #endregion
+        #region Nouns
             .Concat(IrregularNouns)
             .Concat(Nouns)
             .Concat(Occupations)
             .Concat(DayParts)
             .Concat(YearSeasons)
-            #endregion
+        #endregion
             .Concat(Determiners)
             .Concat(Adjectives)
             .Concat(IrregularVerbs)
@@ -1030,8 +1125,8 @@ namespace MyPolyglotCore
             .Concat(Prepositions)
             .Concat(IrregularComparisonAdjectives)
             .Concat(LetterNumbers)
-            .Concat(Cities);
-
+            .Concat(Cities)
+            .Concat(Languages);
         public static IEnumerable<Word> GetVocabulary(Type typeOfWord)
         {
             dynamic vocabulary = typeOfWord switch
@@ -1049,6 +1144,7 @@ namespace MyPolyglotCore
                 Type comparisonAdjective when comparisonAdjective == typeof(ComparisonAdjective) => IrregularComparisonAdjectives,
                 Type letterNumber when letterNumber == typeof(LetterNumber) => LetterNumbers,
                 Type city when city == typeof(City) => Cities,
+                Type language when language == typeof(Language) => Languages,
                 _ => throw new NotImplementedException(),
             };
             return vocabulary;

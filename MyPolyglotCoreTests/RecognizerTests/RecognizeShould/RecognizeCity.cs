@@ -15,7 +15,7 @@ namespace MyPolyglotCoreTests.RecognizerTests.RecognizeShould
             {
                 randomCity = RandomWordHelper.GetRandomCity();
             } while (randomCity.Text.Split(' ').Length > 1);
-            // because 2 and 3 city words non-recognizable, it is exist only for options generating
+            // because city words that consist of >1 words are non-recognizable, those words exist only for options generating
 
             CheckIfWordWasRecognizedByText(randomCity);
         }
@@ -28,7 +28,7 @@ namespace MyPolyglotCoreTests.RecognizerTests.RecognizeShould
             {
                 randomCity = RandomWordHelper.GetRandomCity();
             } while (randomCity.Text.Split(' ').Length > 1);
-            // because 2 and 3 city words non-recognizable, it is exist only for options generating
+            // because city words that consist of >1 words are non-recognizable, those words exist only for options generating
 
             _recognizer.Recognize("rstrs " + randomCity.Text + " rtst");
 

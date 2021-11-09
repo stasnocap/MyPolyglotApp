@@ -129,6 +129,7 @@ namespace MyPolyglotWeb
                 UnrecognizableTypes.NumberWithNoun => new NumberWithNoun(word.Text),
                 UnrecognizableTypes.LetterNumber => new LetterNumber(word.Text, word.NumberInLetterNumber),
                 UnrecognizableTypes.City => new City(word.Text),
+                UnrecognizableTypes.Language => new Language(word.Text),
                 _ => throw new NotImplementedException()
             };
         }

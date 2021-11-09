@@ -188,5 +188,10 @@ namespace MyPolyglotCore
         {
             return (City)typeof(City).GetRandomWord();
         }
+
+        public static Language GetRandomLanguage()
+        {
+            return (Language)typeof(Language).GetRandomWord();
+        }
     }
 }

@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.IO.IsolatedStorage;
 using System.Linq;
 using MyPolyglotCore.Helpers;
 using MyPolyglotCore.Interfaces;
@@ -37,7 +38,22 @@ namespace MyPolyglotCore
             var unorderedWords = _recognizer.RecognizedWords.Concat(unrecognizedWords);
             var words = engPhrase.SplitToWords();
 
-            return words.SelectMany(word => unorderedWords.Where(unorderedWord => unorderedWord.Equals(word)));
+            var orderedWords = words.SelectMany(word => unorderedWords.Where(unorderedWord => unorderedWord.Equals(word))).ToList();
+
+            return RemoveDuplicate(orderedWords);
+        }
+
+        private IEnumerable<Word> RemoveDuplicate(IList<Word> orderedWords)
+        {
+            for (int i = 0; i < orderedWords.Count - 1; i++)
+            {
+                if (orderedWords[i].Equals(orderedWords[i + 1]))
+                {
+                    orderedWords.RemoveAt(i + 1);
+                }
+            }
+
+            return orderedWords;
         }
     }
 }

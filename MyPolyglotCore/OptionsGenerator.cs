@@ -320,7 +320,7 @@ namespace MyPolyglotCore
         {
             return verb.IsIrregularVerb
                 ? new string[] { verb.Text, verb.PastForm, verb.PastParticipleForm, verb.PresentParticipleForm, verb.ThirdPersonForm }
-                : new string[] { verb.Text, verb.PastForm, verb.ThirdPersonForm };
+                : new string[] { verb.Text, verb.PastForm, verb.PresentParticipleForm, verb.ThirdPersonForm };
         }
     }
 }

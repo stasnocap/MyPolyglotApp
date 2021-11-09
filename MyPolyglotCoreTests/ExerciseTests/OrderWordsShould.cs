@@ -24,5 +24,15 @@ namespace MyPolyglotCoreTests.ExerciseTests
                 Assert.True(exerciseWordsList[i].Equals(wordsInOrderList[i]));
             }
         }
+
+        [Fact]
+        public void ReturnRightCountOfWords()
+        {
+            var engPhrase = "You will be reading the book the whole day tomorrow.";
+
+            var exercise = new Exercise(engPhrase, Enumerable.Empty<Word>());
+
+            Assert.Equal(engPhrase.SplitToWords().Count(), exercise.Words.Count());
+        }
     }
 }

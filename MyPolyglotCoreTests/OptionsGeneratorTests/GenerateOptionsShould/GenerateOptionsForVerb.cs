@@ -24,14 +24,11 @@ namespace MyPolyglotCoreTests.OptionsGeneratorTests.GenerateOptionsShould
 
             var options = _optionsGenerator.GetOptions(randomIrregularVerb);
 
-            foreach (var form in irregularVerbForms)
-            {
-                Assert.Contains(form, options);
-            }
+            Assert.All(irregularVerbForms, irregularVerbForm => Assert.Contains(irregularVerbForm, options));
         }
 
         [Fact]
-        public void GivenRegularVerb_ReturnCollectionThatContainsTextPastFormPastParticipleFormAndThirdPersonForm()
+        public void GivenRegularVerb_ReturnCollectionThatContainsTextPastFormPresentParticipleFormAndThirdPersonForm()
         {
             var verb = new Verb("play");
 
@@ -39,16 +36,13 @@ namespace MyPolyglotCoreTests.OptionsGeneratorTests.GenerateOptionsShould
             {
                 verb.Text,
                 verb.PastForm,
-                verb.PastParticipleForm,
+                verb.PresentParticipleForm,
                 verb.ThirdPersonForm,
             };
 
             var options = _optionsGenerator.GetOptions(verb);
 
-            foreach (var form in verbForms)
-            {
-                Assert.Contains(form, options);
-            }
+            Assert.All(verbForms, verbForm => Assert.Contains(verbForm, options));
         }
 
         [Fact]
@@ -137,10 +131,7 @@ namespace MyPolyglotCoreTests.OptionsGeneratorTests.GenerateOptionsShould
 
             var options = _optionsGenerator.GetOptions(randomPrimaryVerb);
 
-            foreach (var fullNegativeForm in fullNegativeForms)
-            {
-                Assert.Contains(fullNegativeForm, options);
-            }
+            Assert.All(fullNegativeForms, fullNegativeForm => Assert.Contains(fullNegativeForm, options));
         }
 
         [Fact]

@@ -29,8 +29,81 @@ namespace MyPolyglotWeb.Models
                 AddExercisesToLesson9(exerciseRepository, lessonRepository.Get(9));
                 AddExercisesToLesson10(exerciseRepository, lessonRepository.Get(10));
                 AddExercisesToLesson11(exerciseRepository, lessonRepository.Get(11));
+                AddExercisesToLesson12(exerciseRepository, lessonRepository.Get(12));
             }
             return host;
+        }
+
+        private static void AddExercisesToLesson12(IExerciseRepository exerciseRepository, LessonDB lessonDB)
+        {
+            var dbExercises = new List<ExerciseDB>()
+            {
+                new ExerciseDB()
+                {
+                    RusPhrase = "Он читал письмо с 4 до 10 вчера.",
+                    EngPhrase = "He was reading the letter from four to ten yesterday.",
+                    Lesson = lessonDB,
+                    UnrecognizedWords = new List<UnrecognizedWordDB>()
+                    {
+                        new UnrecognizedWordDB()
+                        {
+                            Text = "letter",
+                            Type = UnrecognizableTypes.Noun,
+                            WasRecognizedFromPluralFormInNoun = false,
+                        }
+                    }
+                },
+                new ExerciseDB()
+                {
+                    RusPhrase = "Мы отвечали на письмо в 4 вчера.",
+                    EngPhrase = "We were answering the letter at four yesterday.",
+                    Lesson = lessonDB,
+                    UnrecognizedWords = new List<UnrecognizedWordDB>()
+                    {
+                        new UnrecognizedWordDB()
+                        {
+                            Text = "answer",
+                            Type = UnrecognizableTypes.RegularVerb,
+                            StressOnTheFinalSyllableInRegularVerb = false
+                        },
+                        new UnrecognizedWordDB()
+                        {
+                            Text = "letter",
+                            Type = UnrecognizableTypes.Noun,
+                            WasRecognizedFromPluralFormInNoun = false,
+                        }
+                    }
+                },
+                new ExerciseDB()
+                {
+                    RusPhrase = "Ты чувствуешь себя плохо целый день сегодня.",
+                    EngPhrase = "You are feeling bad the whole day today.",
+                    Lesson = lessonDB,
+                },
+                new ExerciseDB()
+                {
+                    RusPhrase = "Мы изучали французский целый день вчера.",
+                    EngPhrase = "We were studying French the whole day yesterday.",
+                    Lesson = lessonDB,
+                    UnrecognizedWords = new List<UnrecognizedWordDB>()
+                    {
+                        new UnrecognizedWordDB()
+                        {
+                            Text = "study",
+                            Type = UnrecognizableTypes.RegularVerb,
+                            StressOnTheFinalSyllableInRegularVerb = false
+                        }
+                    }
+                },
+                new ExerciseDB()
+                {
+                    RusPhrase = "Ты будешь читать книгу целый день завтра.",
+                    EngPhrase = "You will be reading the book the whole day tomorrow.",
+                    Lesson = lessonDB,
+                },
+            };
+
+            SaveExercises(exerciseRepository, dbExercises);
         }
 
         private static void AddExercisesToLesson11(IExerciseRepository exerciseRepository, LessonDB lessonDB)

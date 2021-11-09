@@ -1087,15 +1087,15 @@ namespace MyPolyglotCore
 
         public static readonly IEnumerable<Word> RecognizableVocabularies = Enumerable.Empty<Word>()
             .Concat(QuestionWords)
-            #region Pronouns
+        #region Pronouns
             .Concat(SubjectPronouns)
             .Concat(ObjectPronouns)
             .Concat(PossessiveAdjectives)
             .Concat(PossessivePronouns)
             .Concat(ReflexivePronouns)
             .Concat(DemonstrativePronouns)
-            #endregion
-            #region AdVerbs
+        #endregion
+        #region AdVerbs
             .Concat(FrequencyAdverbs)
             .Concat(IntensifierAdverbs)
             .Concat(MannerAdverbs)
@@ -1103,20 +1103,20 @@ namespace MyPolyglotCore
             .Concat(TellTheExtentOfTheActionAdverbs)
             .Concat(TellWhenItHappenedAdverbs)
             .Concat(TellWhereItHappenedAdverbs)
-            #endregion
-            #region Compounds
+        #endregion
+        #region Compounds
             .Concat(SomeCompounds)
             .Concat(AnyCompounds)
             .Concat(EveryCompounds)
             .Concat(NoCompounds)
-            #endregion
-            #region Nouns
+        #endregion
+        #region Nouns
             .Concat(IrregularNouns)
             .Concat(Nouns)
             .Concat(Occupations)
             .Concat(DayParts)
             .Concat(YearSeasons)
-            #endregion
+        #endregion
             .Concat(Determiners)
             .Concat(Adjectives)
             .Concat(IrregularVerbs)
@@ -1125,8 +1125,8 @@ namespace MyPolyglotCore
             .Concat(Prepositions)
             .Concat(IrregularComparisonAdjectives)
             .Concat(LetterNumbers)
-            .Concat(Cities);
-
+            .Concat(Cities)
+            .Concat(Languages);
         public static IEnumerable<Word> GetVocabulary(Type typeOfWord)
         {
             dynamic vocabulary = typeOfWord switch
@@ -1144,6 +1144,7 @@ namespace MyPolyglotCore
                 Type comparisonAdjective when comparisonAdjective == typeof(ComparisonAdjective) => IrregularComparisonAdjectives,
                 Type letterNumber when letterNumber == typeof(LetterNumber) => LetterNumbers,
                 Type city when city == typeof(City) => Cities,
+                Type language when language == typeof(Language) => Languages,
                 _ => throw new NotImplementedException(),
             };
             return vocabulary;

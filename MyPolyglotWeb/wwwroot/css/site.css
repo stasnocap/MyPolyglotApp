@@ -783,6 +783,19 @@ button {
     .lesson-hint10 .tooltiptext::after {
         left: 96%;
     }
+/*tables for lesson 12*/
+.lesson-hint12 td.font-size17px {
+    font-size: 11px;
+}
+
+.lesson-hint12 .tooltiptext {
+    width: 677px;
+    left: -712%;
+}
+
+    .lesson-hint12 .tooltiptext::after {
+        left: 96%;
+    }
 /*tables end*/
 .flex {
     display: flex;

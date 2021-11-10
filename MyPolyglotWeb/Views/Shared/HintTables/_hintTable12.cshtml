@@ -1,0 +1,130 @@
+﻿<div class="flex-center">
+    @{ 
+        var randomPresentParticipleForm = MyPolyglotCore.RandomWordHelper.GetRandomIrregularVerb().PresentParticipleForm;
+    }
+    <table>
+        <tr class="border-bottom">
+            <td colspan="4" class="border-right">Вопрос</td>
+            <td colspan="3" class="border-right">Утверждение</td>
+            <td colspan="3" class="border-right">Отрицание</td>
+        </tr>
+        <tr>
+            <td rowspan="6">Will</td>
+            <td>I</td>
+            <td colspan="2" rowspan="6" class="border-right">be @randomPresentParticipleForm</td>
+            <td>I</td>
+            <td colspan="2" rowspan="6" class="border-right">will be @randomPresentParticipleForm</td>
+            <td>I</td>
+            <td colspan="2" rowspan="6" class="border-right">will not be @randomPresentParticipleForm</td>
+            <td rowspan="6" class="vertical-upright font-size17px">Будущее</td>
+        </tr>
+        <tr>
+            <td>he</td>
+            <td>he</td>
+            <td>he</td>
+        </tr>
+        <tr>
+            <td>she</td>
+            <td>she</td>
+            <td>she</td>
+        </tr>
+        <tr>
+            <td>you</td>
+            <td>you</td>
+            <td>you</td>
+        </tr>
+        <tr>
+            <td>we</td>
+            <td>we</td>
+            <td>we</td>
+        </tr>
+        <tr class="border-bottom">
+            <td>they</td>
+            <td>they</td>
+            <td>they</td>
+        </tr>
+        <tr>
+            <td>Am</td>
+            <td>I</td>
+            <td colspan="2" rowspan="6" class="border-right">@randomPresentParticipleForm</td>
+            <td>I</td>
+            <td >am</td>
+            <td rowspan="6" class="border-right">@randomPresentParticipleForm</td>
+            <td>I</td>
+            <td>am not</td>
+            <td rowspan="6" class="border-right">@randomPresentParticipleForm</td>
+            <td rowspan="6" class="vertical-upright font-size17px">Настоящее</td>
+        </tr>
+        <tr>
+            <td rowspan="2">Is</td>
+            <td>he</td>
+            <td>he</td>
+            <td rowspan="2">is</td>
+            <td>he</td>
+            <td rowspan="2">is not</td>
+        </tr>
+        <tr>
+            <td>she</td>
+            <td>she</td>
+            <td>she</td>
+        </tr>
+        <tr>
+            <td rowspan="3">Are</td>
+            <td>you</td>
+            <td>you</td>
+            <td rowspan="3">are</td>
+            <td>you</td>
+            <td rowspan="3">are not</td>
+        </tr>
+        <tr>
+            <td>we</td>
+            <td>we</td>
+            <td>we</td>
+        </tr>
+        <tr class="border-bottom">
+            <td>they</td>
+            <td>they</td>
+            <td>they</td>
+        </tr>
+        <tr>
+            <td rowspan="3">Was</td>
+            <td>I</td>
+            <td colspan="2" rowspan="6" class="border-right">@randomPresentParticipleForm</td>
+            <td>I</td>
+            <td rowspan="3">was</td>
+            <td rowspan="6" class="border-right">@randomPresentParticipleForm</td>
+            <td>I</td>
+            <td rowspan="3">was not</td>
+            <td rowspan="6" class="border-right">@randomPresentParticipleForm</td>
+            <td rowspan="6" class="vertical-upright font-size17px">Прошедшее</td>
+        </tr>
+        <tr>
+            <td>he</td>
+            <td>he</td>
+            <td>he</td>
+        </tr>
+        <tr>
+            <td>she</td>
+            <td>she</td>
+            <td>she</td>
+        </tr>
+        <tr>
+            <td rowspan="3">Were</td>
+            <td>you</td>
+            <td>you</td>
+            <td rowspan="3">were</td>
+            <td>you</td>
+            <td rowspan="3">were not</td>
+        </tr>
+        <tr>
+            <td>we</td>
+            <td>we</td>
+            <td>we</td>
+        </tr>
+        <tr>
+            <td>they</td>
+            <td>they</td>
+            <td>they</td>
+        </tr>
+    </table>
+</div>

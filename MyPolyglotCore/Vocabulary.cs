@@ -164,6 +164,7 @@ namespace MyPolyglotCore
             new Adverb("tomorrow"),
             new Adverb("yesterday"),
             new Adverb("already"),
+            new Adverb("yet"),
             new Adverb("immediately"),
             new Adverb("lately"),
             new Adverb("recently"),

@@ -31,8 +31,66 @@ namespace MyPolyglotWeb.Models
                 AddExercisesToLesson11(exerciseRepository, lessonRepository.Get(11));
                 AddExercisesToLesson12(exerciseRepository, lessonRepository.Get(12));
                 AddExercisesToLesson13(exerciseRepository, lessonRepository.Get(13));
+                AddExercisesToLesson14(exerciseRepository, lessonRepository.Get(14));
             }
             return host;
+        }
+
+        private static void AddExercisesToLesson14(IExerciseRepository exerciseRepository, LessonDB lessonDB)
+        {
+            var dbExercises = new List<ExerciseDB>()
+            {
+                new ExerciseDB()
+                {
+                    RusPhrase = "Он уже почувствовал?",
+                    EngPhrase = "Has he felt yet?",
+                    Lesson = lessonDB,
+                },
+                new ExerciseDB()
+                {
+                    RusPhrase = "Он уже работал?",
+                    EngPhrase = "Has he worked yet?",
+                    Lesson = lessonDB,
+                    UnrecognizedWords = new List<UnrecognizedWordDB>()
+                    {
+                        new UnrecognizedWordDB()
+                        {
+                            Text = "work",
+                            Type = UnrecognizableTypes.RegularVerb,
+                            StressOnTheFinalSyllableInRegularVerb = true
+                        }
+                    }
+                },
+                new ExerciseDB()
+                {
+                    RusPhrase = "Она уже закончила.",
+                    EngPhrase = "She has already finished.",
+                    Lesson = lessonDB,
+                    UnrecognizedWords = new List<UnrecognizedWordDB>()
+                    {
+                        new UnrecognizedWordDB()
+                        {
+                            Text = "finish",
+                            Type = UnrecognizableTypes.RegularVerb,
+                            StressOnTheFinalSyllableInRegularVerb = false
+                        }
+                    }
+                },
+                new ExerciseDB()
+                {
+                    RusPhrase = "Он ещё не понял.",
+                    EngPhrase = "He has not understood yet.",
+                    Lesson = lessonDB,
+                },
+                new ExerciseDB()
+                {
+                    RusPhrase = "Он уже получил?",
+                    EngPhrase = "Has he got yet?",
+                    Lesson = lessonDB,
+                },
+            };
+
+            SaveExercises(exerciseRepository, dbExercises);
         }
 
         private static void AddExercisesToLesson13(IExerciseRepository exerciseRepository, LessonDB lessonDB)

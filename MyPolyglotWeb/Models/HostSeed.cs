@@ -30,8 +30,80 @@ namespace MyPolyglotWeb.Models
                 AddExercisesToLesson10(exerciseRepository, lessonRepository.Get(10));
                 AddExercisesToLesson11(exerciseRepository, lessonRepository.Get(11));
                 AddExercisesToLesson12(exerciseRepository, lessonRepository.Get(12));
+                AddExercisesToLesson13(exerciseRepository, lessonRepository.Get(13));
             }
             return host;
+        }
+
+        private static void AddExercisesToLesson13(IExerciseRepository exerciseRepository, LessonDB lessonDB)
+        {
+            var dbExercises = new List<ExerciseDB>()
+            {
+                new ExerciseDB()
+                {
+                    RusPhrase = "Мне холодно?",
+                    EngPhrase = "Am I cold?",
+                    Lesson = lessonDB,
+                    UnrecognizedWords = new List<UnrecognizedWordDB>()
+                    {
+                        new UnrecognizedWordDB()
+                        {
+                            Text = "cold",
+                            Type = UnrecognizableTypes.Adjective,
+                        }
+                    }
+                },
+                new ExerciseDB()
+                {
+                    RusPhrase = "У меня не голубые глаза.",
+                    EngPhrase = "I do not have blue eyes.",
+                    Lesson = lessonDB,
+                },
+                new ExerciseDB()
+                {
+                    RusPhrase = "Ты здоров.",
+                    EngPhrase = "You are healthy.",
+                    Lesson = lessonDB,
+                    UnrecognizedWords = new List<UnrecognizedWordDB>()
+                    {
+                        new UnrecognizedWordDB()
+                        {
+                            Text = "healthy",
+                            Type = UnrecognizableTypes.Adjective
+                        }
+                    }
+                },
+                new ExerciseDB()
+                {
+                    RusPhrase = "Вчера было жарко.",
+                    EngPhrase = "It was hot yesterday.",
+                    Lesson = lessonDB,
+                    UnrecognizedWords = new List<UnrecognizedWordDB>()
+                    {
+                        new UnrecognizedWordDB()
+                        {
+                            Text = "hot",
+                            Type = UnrecognizableTypes.Adjective
+                        }
+                    }
+                },
+                new ExerciseDB()
+                {
+                    RusPhrase = "Она взрослая.",
+                    EngPhrase = "She is adult.",
+                    Lesson = lessonDB,
+                    UnrecognizedWords = new List<UnrecognizedWordDB>()
+                    {
+                        new UnrecognizedWordDB()
+                        {
+                            Text = "adult",
+                            Type = UnrecognizableTypes.Adjective
+                        }
+                    }
+                },
+            };
+
+            SaveExercises(exerciseRepository, dbExercises);
         }
 
         private static void AddExercisesToLesson12(IExerciseRepository exerciseRepository, LessonDB lessonDB)

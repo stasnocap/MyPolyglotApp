@@ -236,28 +236,6 @@ namespace MyPolyglotWebTests.Presentations.HomePresentationTests
         }
 
         [Fact]
-        public void SetHint2TableWithSomething_IfLessonIdIs2()
-        {
-            var lessonId = 2;
-            var exerciseDB = new ExerciseDB()
-            {
-                EngPhrase = "not null",
-            };
-            _exerciseRepositoryMock.Setup(x => x.GetRandomExercise(lessonId)).Returns(exerciseDB);
-            _mapperMock.Setup(x => x.Map<DoExerciseVM>(exerciseDB)).Returns(new DoExerciseVM());
-
-            var exerciseVM = _homePresentation.GetDoExerciseVM(lessonId);
-
-            Assert.NotNull(exerciseVM.HintTable2VM);
-            Assert.NotNull(exerciseVM.HintTable2VM.PresentForm);
-            Assert.NotNull(exerciseVM.HintTable2VM.PastForm);
-            Assert.NotNull(exerciseVM.HintTable2VM.ThirdPersonForm);
-            Assert.NotEmpty(exerciseVM.HintTable2VM.PresentForm);
-            Assert.NotEmpty(exerciseVM.HintTable2VM.PastForm);
-            Assert.NotEmpty(exerciseVM.HintTable2VM.ThirdPersonForm);
-        }
-
-        [Fact]
         public void GetRandomExercise_IfThereIsNoExerciseInDatabase()
         {
             var lessonId = 1;

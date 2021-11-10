@@ -48,17 +48,6 @@ namespace MyPolyglotWeb.Presentations
 
             exerciseVM.UserPoints = GetCurrentUserPoints(lessonId);
 
-            if (lessonId == 2)
-            {
-                var irregularVerb = RandomWordHelper.GetRandomIrregularVerb();
-                exerciseVM.HintTable2VM = new HintTable2VM()
-                {
-                    PresentForm = irregularVerb.Text,
-                    PastForm = irregularVerb.PastForm,
-                    ThirdPersonForm = irregularVerb.ThirdPersonForm
-                };
-            }
-
             return exerciseVM;
         }
 

@@ -22,12 +22,6 @@
         <input asp-for="RusPhrase" type="hidden" />
         <input asp-for="UserAnswer" type="hidden" />
         <input asp-for="UserPoints" type="hidden" value="@(Model.UserPoints - 0.5 > 0 ? Model.UserPoints - 0.5 : 0)" />
-        @if (Model.LessonId == 2)
-        {
-            <input asp-for="HintTable2VM.PresentForm" type="hidden" />
-            <input asp-for="HintTable2VM.PastForm" type="hidden" />
-            <input asp-for="HintTable2VM.ThirdPersonForm" type="hidden" />
-        }
         <button type="submit"></button>
     </form>
     <span class="do-exercise__lesson-help">
@@ -36,7 +30,7 @@
             <span class="lesson-hint lesson-hint1 tooltip">
                 i
                 <span class="tooltiptext">
-                    <partial name="../Shared/HintTables/_hintTable1.cshtml" />
+                    <partial name="../Shared/Hints/_hint1.cshtml" />
                 </span>
             </span>
         }
@@ -45,7 +39,7 @@
             <span class="lesson-hint lesson-hint2 tooltip">
                 i
                 <span class="tooltiptext">
-                    <partial name="../Shared/HintTables/_hintTable2.cshtml" model="Model.HintTable2VM" />
+                    <partial name="../Shared/Hints/_hint2.cshtml" />
                 </span>
             </span>
         }
@@ -54,7 +48,7 @@
             <span class="lesson-hint lesson-hint3 tooltip">
                 i
                 <span class="tooltiptext">
-                    <partial name="../Shared/HintTables/_hintTable3.cshtml" />
+                    <partial name="../Shared/Hints/_hint3.cshtml" />
                 </span>
             </span>
         }
@@ -63,7 +57,7 @@
             <span class="lesson-hint lesson-hint4 tooltip">
                 i
                 <span class="tooltiptext">
-                    <partial name="../Shared/HintTables/_hintTable4.cshtml" />
+                    <partial name="../Shared/Hints/_hint4.cshtml" />
                 </span>
             </span>
         }
@@ -72,7 +66,7 @@
             <span class="lesson-hint lesson-hint6 tooltip">
                 i
                 <span class="tooltiptext">
-                    <partial name="../Shared/HintTables/_hintTable6.cshtml" />
+                    <partial name="../Shared/Hints/_hint6.cshtml" />
                 </span>
             </span>
         }
@@ -81,7 +75,7 @@
             <span class="lesson-hint lesson-hint7 tooltip">
                 i
                 <span class="tooltiptext">
-                    <partial name="../Shared/HintTables/_hintTable7.cshtml" />
+                    <partial name="../Shared/Hints/_hint7.cshtml" />
                 </span>
             </span>
         }
@@ -90,7 +84,7 @@
             <span class="lesson-hint lesson-hint8 tooltip">
                 i
                 <span class="tooltiptext">
-                    <partial name="../Shared/HintTables/_hintTable8.cshtml" />
+                    <partial name="../Shared/Hints/_hint8.cshtml" />
                 </span>
             </span>
         }
@@ -99,7 +93,7 @@
             <span class="lesson-hint lesson-hint9 tooltip">
                 i
                 <span class="tooltiptext">
-                    <partial name="../Shared/HintTables/_hintTable9.cshtml" />
+                    <partial name="../Shared/Hints/_hint9.cshtml" />
                 </span>
             </span>
         }
@@ -108,7 +102,7 @@
             <span class="lesson-hint lesson-hint10 tooltip">
                 i
                 <span class="tooltiptext">
-                    <partial name="../Shared/HintTables/_hintTable10.cshtml" />
+                    <partial name="../Shared/Hints/_hint10.cshtml" />
                 </span>
             </span>
         }
@@ -117,7 +111,7 @@
             <span class="lesson-hint lesson-hint12 tooltip">
                 i
                 <span class="tooltiptext">
-                    <partial name="../Shared/HintTables/_hintTable12.cshtml" />
+                    <partial name="../Shared/Hints/_hint12.cshtml" />
                 </span>
             </span>
         }

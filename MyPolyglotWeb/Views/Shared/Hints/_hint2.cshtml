@@ -1,5 +1,7 @@
-﻿@model HintTable2VM
-<div class="hint-table2 flex-center">
+﻿<div class="hint-table2 flex-center">
+    @{
+        var randomIrregularVerb = MyPolyglotCore.RandomWordHelper.GetRandomIrregularVerb();
+    }
     <table>
         <tr class="border-bottom">
             <td colspan="3" class="border-right">Вопрос</td>
@@ -11,14 +13,14 @@
                 Will
             </td>
             <td>I</td>
-            <td rowspan="6" class="border-right">@Model.PresentForm</td>
+            <td rowspan="6" class="border-right">@randomIrregularVerb.Text</td>
             <td>I</td>
             <td rowspan="6" class="border-right">
-                will @Model.PresentForm
+                will @randomIrregularVerb.Text
             </td>
             <td>I</td>
             <td rowspan="6" class="border-right">
-                will not @Model.PresentForm
+                will not @randomIrregularVerb.Text
             </td>
             <td rowspan="6" class="vertical-upright font-size17px">Будущее</td>
         </tr>
@@ -52,12 +54,12 @@
                 Do
             </td>
             <td>I</td>
-            <td rowspan="6" class="border-right">@Model.PresentForm</td>
+            <td rowspan="6" class="border-right">@randomIrregularVerb.Text</td>
             <td>I</td>
-            <td rowspan="4" class="border-right">@Model.PresentForm</td>
+            <td rowspan="4" class="border-right">@randomIrregularVerb.Text</td>
             <td>I</td>
             <td rowspan="4" class="border-right">
-                don't @Model.PresentForm
+                don't @randomIrregularVerb.Text
             </td>
             <td rowspan="6" class="vertical-upright font-size17px">Настоящее</td>
         </tr>
@@ -82,10 +84,10 @@
             </td>
             <td>he</td>
             <td>he</td>
-            <td rowspan="2" class="border-right">@Model.ThirdPersonForm</td>
+            <td rowspan="2" class="border-right">@randomIrregularVerb.ThirdPersonForm</td>
             <td>he</td>
             <td rowspan="2" class="border-right">
-                doesn't @Model.PresentForm
+                doesn't @randomIrregularVerb.Text
             </td>
         </tr>
         <tr class="border-bottom">
@@ -98,12 +100,12 @@
                 Did
             </td>
             <td>I</td>
-            <td rowspan="6" class="border-right">@Model.PresentForm</td>
+            <td rowspan="6" class="border-right">@randomIrregularVerb.Text</td>
             <td>I</td>
-            <td rowspan="6" class="border-right">@Model.PastForm</td>
+            <td rowspan="6" class="border-right">@randomIrregularVerb.PastForm</td>
             <td>I</td>
             <td rowspan="6" class="border-right">
-                did not @Model.PresentForm
+                did not @randomIrregularVerb.Text
             </td>
             <td rowspan="6" class="vertical-upright font-size17px">Прошедшее</td>
         </tr>

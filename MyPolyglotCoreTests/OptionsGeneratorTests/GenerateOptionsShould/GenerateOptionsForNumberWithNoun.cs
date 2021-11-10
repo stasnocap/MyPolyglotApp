@@ -6,7 +6,7 @@ using Xunit;
 
 namespace MyPolyglotCoreTests.OptionsGeneratorTests.GenerateOptionsShould
 {
-    public class GenerateOpitonsForNumberWithNoun : OptionsChecker
+    public class GenerateOptionsForNumberWithNoun : OptionsChecker
     {
         [Fact]
         public void ReturnOptionsThatContainsNumberFromNumberWithNounWord()

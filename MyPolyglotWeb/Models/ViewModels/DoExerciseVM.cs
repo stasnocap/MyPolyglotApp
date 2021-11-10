@@ -25,7 +25,5 @@ namespace MyPolyglotWeb.Models.ViewModels
 
         [Required(ErrorMessage = CustomConst.UserTriesToBreakMe)]
         public virtual double UserPoints { get; set; }
-
-        public HintTable2VM HintTable2VM { get; set; }
     }
 }

@@ -127,6 +127,11 @@ namespace MyPolyglotCore.Words
 
         private string GenerateThirdPersonForm()
         {
+            if (Text == "go")
+            {
+                return "goes";
+            }
+
             var lastTwoChars = Text.Substring(Text.Length - 2);
 
             foreach (var ending in Vocabulary.ThirdPersonESEndings)

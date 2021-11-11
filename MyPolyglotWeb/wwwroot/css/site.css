@@ -806,13 +806,25 @@ button {
         left: 96%;
     }
 /*tables for lesson 16*/
-.lesson16-help-table th, .lesson16-help-table td {
+.hint-table16 {
+}
+
+.hint-table16 th, .hint-table16 td {
     border: 2px solid #ccc;
 }
 
-.lesson16-help-table td {
+.hint-table16 td {
     text-align: left;
 }
+
+.lesson-hint16 .tooltiptext {
+    width: 630px;
+    left: -655%;
+}
+
+    .lesson-hint16 .tooltiptext::after {
+        left: 96%;
+    }
 /*tables end*/
 .flex {
     display: flex;

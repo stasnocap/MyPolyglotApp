@@ -34,8 +34,81 @@ namespace MyPolyglotWeb.Models
                 AddExercisesToLesson14(exerciseRepository, lessonRepository.Get(14));
                 AddExercisesToLesson15(exerciseRepository, lessonRepository.Get(15));
                 AddExercisesToLesson16(exerciseRepository, lessonRepository.Get(16));
+                AddExercisesToLesson17(exerciseRepository, lessonRepository.Get(17));
             }
             return host;
+        }
+
+        private static void AddExercisesToLesson17(IExerciseRepository exerciseRepository, LessonDB lessonDB)
+        {
+            var dbExercises = new List<ExerciseDB>()
+            {
+                new ExerciseDB()
+                {
+                    RusPhrase = "Он только что вышел.",
+                    EngPhrase = "He has just gone out.",
+                    Lesson = lessonDB,
+                },
+                new ExerciseDB()
+                {
+                    RusPhrase = "Думаю, что я видел вас где-то.",
+                    EngPhrase = "I think I have seen you somewhere.",
+                    Lesson = lessonDB,
+                },
+                new ExerciseDB()
+                {
+                    RusPhrase = "Я выполнил работу.",
+                    EngPhrase = "I have done the work.",
+                    Lesson = lessonDB,
+                    UnrecognizedWords = new List<UnrecognizedWordDB>()
+                    {
+                        new UnrecognizedWordDB()
+                        {
+                            Text = "work",
+                            Type = UnrecognizableTypes.Noun,
+                            WasRecognizedFromPluralFormInNoun = false
+                        }
+                    }
+                },
+                new ExerciseDB()
+                {
+                    RusPhrase = "Я уже написал письмо своему другу.",
+                    EngPhrase = "I have already written the letter to my friend.",
+                    Lesson = lessonDB,
+                    UnrecognizedWords = new List<UnrecognizedWordDB>()
+                    {
+                        new UnrecognizedWordDB()
+                        {
+                            Text = "letter",
+                            Type = UnrecognizableTypes.Noun,
+                            WasRecognizedFromPluralFormInNoun = false
+                        }
+                    }
+                },
+                new ExerciseDB()
+                {
+                    RusPhrase = "Он только что посетил этот супермаркет.",
+                    EngPhrase = "He has just visited this supermarket.",
+                    Lesson = lessonDB,
+                    UnrecognizedWords = new List<UnrecognizedWordDB>()
+                    {
+                        new UnrecognizedWordDB()
+                        {
+                            Text = "visit",
+                            Type = UnrecognizableTypes.RegularVerb,
+                            StressOnTheFinalSyllableInRegularVerb = false
+                        },
+                        new UnrecognizedWordDB()
+                        {
+                            Text = "supermarket",
+                            Type = UnrecognizableTypes.Noun,
+                            WasRecognizedFromPluralFormInNoun = false
+                        },
+                    }
+                },
+            };
+
+            SaveExercises(exerciseRepository, dbExercises);
         }
 
         private static void AddExercisesToLesson16(IExerciseRepository exerciseRepository, LessonDB lessonDB)

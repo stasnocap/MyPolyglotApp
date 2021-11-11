@@ -629,7 +629,6 @@ namespace MyPolyglotCore
             new Verb("lend", "lent", "lent"),
             new Verb("let", "let", "let"),
             new Verb("lie", "lay", "lain"),
-            new Verb("light", "lit", "lit"),
             new Verb("lose", "lost", "lost"),
             new Verb("make", "made", "made"),
             new Verb("mean", "meant", "meant"),

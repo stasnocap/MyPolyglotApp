@@ -33,8 +33,111 @@ namespace MyPolyglotWeb.Models
                 AddExercisesToLesson13(exerciseRepository, lessonRepository.Get(13));
                 AddExercisesToLesson14(exerciseRepository, lessonRepository.Get(14));
                 AddExercisesToLesson15(exerciseRepository, lessonRepository.Get(15));
+                AddExercisesToLesson16(exerciseRepository, lessonRepository.Get(16));
             }
             return host;
+        }
+
+        private static void AddExercisesToLesson16(IExerciseRepository exerciseRepository, LessonDB lessonDB)
+        {
+            var dbExercises = new List<ExerciseDB>()
+            {
+                new ExerciseDB()
+                {
+                    RusPhrase = "Он сбросил вес.",
+                    EngPhrase = "He took off weight.",
+                    Lesson = lessonDB,
+                    UnrecognizedWords = new List<UnrecognizedWordDB>()
+                    {
+                        new UnrecognizedWordDB()
+                        {
+                            Text = "weight",
+                            Type = UnrecognizableTypes.Noun,
+                            WasRecognizedFromPluralFormInNoun = false
+                        }
+                    }
+                },
+                new ExerciseDB()
+                {
+                    RusPhrase = "Твой сын просит выключить свет.",
+                    EngPhrase = "Your son asks to turn on the light.",
+                    Lesson = lessonDB,
+                    UnrecognizedWords = new List<UnrecognizedWordDB>()
+                    {
+                        new UnrecognizedWordDB()
+                        {
+                            Text = "son",
+                            Type = UnrecognizableTypes.Noun,
+                            WasRecognizedFromPluralFormInNoun = false
+                        },
+                        new UnrecognizedWordDB()
+                        {
+                            Text = "ask",
+                            Type = UnrecognizableTypes.RegularVerb,
+                            StressOnTheFinalSyllableInRegularVerb = true
+                        },
+                        new UnrecognizedWordDB()
+                        {
+                            Text = "turn",
+                            Type = UnrecognizableTypes.RegularVerb,
+                            StressOnTheFinalSyllableInRegularVerb = true
+                        },
+                        new UnrecognizedWordDB()
+                        {
+                            Text = "light",
+                            Type = UnrecognizableTypes.Noun,
+                            WasRecognizedFromPluralFormInNoun = false
+                        }
+                    }
+                },
+                new ExerciseDB()
+                {
+                    RusPhrase = "Он свалился с пневмонией.",
+                    EngPhrase = "He went down with pneumonia.",
+                    Lesson = lessonDB,
+                    UnrecognizedWords = new List<UnrecognizedWordDB>()
+                    {
+                        new UnrecognizedWordDB()
+                        {
+                            Text = "pneumonia",
+                            Type = UnrecognizableTypes.Noun,
+                            WasRecognizedFromPluralFormInNoun = false
+                        }
+                    }
+                },
+                new ExerciseDB()
+                {
+                    RusPhrase = "Он взломал дверь.",
+                    EngPhrase = "He broke down the door.",
+                    Lesson = lessonDB,
+                    UnrecognizedWords = new List<UnrecognizedWordDB>()
+                    {
+                        new UnrecognizedWordDB()
+                        {
+                            Text = "door",
+                            Type = UnrecognizableTypes.Noun,
+                            WasRecognizedFromPluralFormInNoun = false
+                        }
+                    }
+                },
+                new ExerciseDB()
+                {
+                    RusPhrase = "Цены никогда не падают.",
+                    EngPhrase = "The prices never go down.",
+                    Lesson = lessonDB,
+                    UnrecognizedWords = new List<UnrecognizedWordDB>()
+                    {
+                        new UnrecognizedWordDB()
+                        {
+                            Text = "prices",
+                            Type = UnrecognizableTypes.Noun,
+                            WasRecognizedFromPluralFormInNoun = true
+                        }
+                    }
+                },
+            };
+
+            SaveExercises(exerciseRepository, dbExercises);
         }
 
         private static void AddExercisesToLesson15(IExerciseRepository exerciseRepository, LessonDB lessonDB)

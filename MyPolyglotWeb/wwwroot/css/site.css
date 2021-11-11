@@ -805,6 +805,14 @@ button {
     .lesson-hint12 .tooltiptext::after {
         left: 96%;
     }
+/*tables for lesson 16*/
+.lesson16-help-table th, .lesson16-help-table td {
+    border: 2px solid #ccc;
+}
+
+.lesson16-help-table td {
+    text-align: left;
+}
 /*tables end*/
 .flex {
     display: flex;

@@ -74,6 +74,7 @@ namespace MyPolyglotCore
             new Preposition("save"),
             new Preposition("since"),
             new Preposition("than"),
+            new Preposition("then"),
             new Preposition("through"),
             new Preposition("to"),
             new Preposition("toward"),

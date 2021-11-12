@@ -38,8 +38,138 @@ namespace MyPolyglotWeb.Models
                 AddExercisesToLesson18(exerciseRepository, lessonRepository.Get(18));
                 AddExercisesToLesson19(exerciseRepository, lessonRepository.Get(19));
                 AddExercisesToLesson20(exerciseRepository, lessonRepository.Get(20));
+                AddExercisesToLesson21(exerciseRepository, lessonRepository.Get(21));
             }
             return host;
+        }
+
+        private static void AddExercisesToLesson21(IExerciseRepository exerciseRepository, LessonDB lessonDB)
+        {
+            var dbExercises = new List<ExerciseDB>()
+            {
+                new ExerciseDB()
+                {
+                    RusPhrase = "С теп пор показатель быстро рос.",
+                    EngPhrase = "Since then the index had been rising fast.",
+                    Lesson = lessonDB,
+                    UnrecognizedWords = new List<UnrecognizedWordDB>()
+                    {
+                        new UnrecognizedWordDB()
+                        {
+                            Text = "index",
+                            Type = UnrecognizableTypes.Noun,
+                            WasRecognizedFromPluralFormInNoun = false,
+                        },
+                        new UnrecognizedWordDB()
+                        {
+                            Text = "fast",
+                            Type = UnrecognizableTypes.Adjective,
+                        },
+                    }
+                },
+                new ExerciseDB()
+                {
+                    RusPhrase = "Его руки были грязные, он копал.",
+                    EngPhrase = "His hands were dirty he had been digging.",
+                    Lesson = lessonDB,
+                    UnrecognizedWords = new List<UnrecognizedWordDB>()
+                    {
+                        new UnrecognizedWordDB()
+                        {
+                            Text = "dirty",
+                            Type = UnrecognizableTypes.Adjective,
+                        },
+                    }
+                },
+                new ExerciseDB()
+                {
+                    RusPhrase = "Они разговаривали больше часа, до того, как он пришел.",
+                    EngPhrase = "They had been talking for over an hour before he arrived.",
+                    Lesson = lessonDB,
+                    UnrecognizedWords = new List<UnrecognizedWordDB>()
+                    {
+                        new UnrecognizedWordDB()
+                        {
+                            Text = "talk",
+                            Type = UnrecognizableTypes.RegularVerb,
+                            StressOnTheFinalSyllableInRegularVerb = true,
+                        },
+                        new UnrecognizedWordDB()
+                        {
+                            Text = "arrive",
+                            Type = UnrecognizableTypes.RegularVerb,
+                            StressOnTheFinalSyllableInRegularVerb = true,
+                        },
+                    }
+                },
+                new ExerciseDB()
+                {
+                    RusPhrase = "Был час ночи, а соседкая собака лаяла уже 2 часа.",
+                    EngPhrase = "It was one o'clock and the dog from next door had been barking for two hours.",
+                    Lesson = lessonDB,
+                    UnrecognizedWords = new List<UnrecognizedWordDB>()
+                    {
+                        new UnrecognizedWordDB()
+                        {
+                            Text = "o'clock",
+                            Type = UnrecognizableTypes.Noun,
+                            WasRecognizedFromPluralFormInNoun = false,
+                        },
+                        new UnrecognizedWordDB()
+                        {
+                            Text = "dog",
+                            Type = UnrecognizableTypes.Noun,
+                            WasRecognizedFromPluralFormInNoun = false
+                        },
+                        new UnrecognizedWordDB()
+                        {
+                            Text = "next",
+                            Type = UnrecognizableTypes.Adjective,
+                        },
+                        new UnrecognizedWordDB()
+                        {
+                            Text = "bark",
+                            Type = UnrecognizableTypes.RegularVerb,
+                            StressOnTheFinalSyllableInRegularVerb = true,
+                        },
+                    }
+                },
+                new ExerciseDB()
+                {
+                    RusPhrase = "Моя собака играла уже полчаса перед тем, как мы пошли гулять.",
+                    EngPhrase = "My dog had been playing for half an hour before we went for a walk.",
+                    Lesson = lessonDB,
+                    UnrecognizedWords = new List<UnrecognizedWordDB>()
+                    {
+                        new UnrecognizedWordDB()
+                        {
+                            Text = "dog",
+                            Type = UnrecognizableTypes.Noun,
+                            WasRecognizedFromPluralFormInNoun = false,
+                        },
+                        new UnrecognizedWordDB()
+                        {
+                            Text = "play",
+                            Type = UnrecognizableTypes.RegularVerb,
+                            StressOnTheFinalSyllableInRegularVerb = true
+                        },
+                        new UnrecognizedWordDB()
+                        {
+                            Text = "half",
+                            Type = UnrecognizableTypes.Noun,
+                            WasRecognizedFromPluralFormInNoun = false
+                        },
+                        new UnrecognizedWordDB()
+                        {
+                            Text = "walk",
+                            Type = UnrecognizableTypes.Noun,
+                            WasRecognizedFromPluralFormInNoun = false
+                        },
+                    }
+                },
+            };
+
+            SaveExercises(exerciseRepository, dbExercises);
         }
 
         private static void AddExercisesToLesson20(IExerciseRepository exerciseRepository, LessonDB lessonDB)

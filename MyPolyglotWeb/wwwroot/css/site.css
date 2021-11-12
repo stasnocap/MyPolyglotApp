@@ -609,6 +609,10 @@ button {
     padding: 5px 14px;
 }
 
+.lesson-hint .tooltiptext::after {
+    left: 96%;
+}
+
 /*hint-table for lesson 1*/
 .lesson-hint1 td.font-size17px {
     font-size: 11px;
@@ -618,11 +622,7 @@ button {
     width: 507px;
     left: -508%;
 }
-
-    .lesson-hint1 .tooltiptext::after {
-        left: 96%;
-    }
-/*tables for lesson 2*/
+/*for lesson 2*/
 .lesson-hint2 td.font-size17px {
     font-size: 11px;
 }
@@ -631,10 +631,6 @@ button {
     width: 523px;
     left: -527%;
 }
-
-    .lesson-hint2 .tooltiptext::after {
-        left: 96%;
-    }
 
 .lesson2-help-table1 tr {
     border-bottom: 2px solid #ccc;
@@ -651,7 +647,7 @@ button {
 .lesson2-help-table1 tr td:nth-child(2n) {
     border-right: 2px solid #ccc;
 }
-/*tables for lesson 3*/
+/*for lesson 3*/
 .lesson-hint3 td.font-size17px {
     font-size: 11px;
 }
@@ -669,14 +665,10 @@ button {
     left: -472%;
 }
 
-    .lesson-hint3 .tooltiptext::after {
-        left: 96%;
-    }
-
 .lesson3-help-table2 table {
     width: 225px;
 }
-/*tables for lesson 4*/
+/*for lesson 4*/
 .hint-table4 tr {
     border-bottom: 2px solid #ccc;
 }
@@ -697,11 +689,7 @@ button {
     width: 367px;
     left: -340%;
 }
-
-    .lesson-hint4 .tooltiptext::after {
-        left: 96%;
-    }
-/*tables for lesson 6*/
+/*for lesson 6*/
 .hint-table6 th, .hint-table6 td {
     border: 2px solid #ccc;
 }
@@ -715,14 +703,10 @@ button {
     left: -630%;
 }
 
-    .lesson-hint6 .tooltiptext::after {
-        left: 96%;
-    }
-
 .lesson6-help-table1 td {
     border: 2px solid #ccc;
 }
-/*tables for lesson 7*/
+/*for lesson 7*/
 .hint-table7 td, .hint-table7 th {
     width: 100px;
     border: 2px solid #ccc;
@@ -733,10 +717,7 @@ button {
     left: -496%;
 }
 
-    .lesson-hint7 .tooltiptext::after {
-        left: 96%;
-    }
-/*tables for lesson 8*/
+/*for lesson 8*/
 .hint-table8 table {
     width: 750px;
 }
@@ -762,37 +743,25 @@ button {
     left: -496%;
 }
 
-    .lesson-hint8 .tooltiptext::after {
-        left: 96%;
-    }
-/*tables for lesson 9*/
+/*for lesson 9*/
 .lesson-hint9 .tooltiptext {
     width: 497px;
     left: -496%;
 }
 
-    .lesson-hint9 .tooltiptext::after {
-        left: 96%;
-    }
-/*tables for lesson 10*/
+/*for lesson 10*/
 .lesson-hint10 .tooltiptext {
     width: 313px;
     left: -275%;
 }
 
-    .lesson-hint10 .tooltiptext::after {
-        left: 96%;
-    }
-/*tables for lesson 11*/
+/*for lesson 11*/
 .lesson-hint11 .tooltiptext {
     width: 500px;
     left: -500%;
 }
 
-    .lesson-hint11 .tooltiptext::after {
-        left: 96%;
-    }
-/*tables for lesson 12*/
+/*for lesson 12*/
 .lesson-hint12 td.font-size17px {
     font-size: 11px;
 }
@@ -802,10 +771,7 @@ button {
     left: -712%;
 }
 
-    .lesson-hint12 .tooltiptext::after {
-        left: 96%;
-    }
-/*tables for lesson 16*/
+/*for lesson 15*/
 .hint-table15 th, .hint-table15 td {
     border: 2px solid #ccc;
 }
@@ -818,20 +784,19 @@ button {
     width: 630px;
     left: -655%;
 }
+/*for lesson 16*/
+.lesson-hint16 .tooltiptext {
+    width: 513px;
+    left: -514%
+}
 
-    .lesson-hint15 .tooltiptext::after {
-        left: 96%;
-    }
-/*tables for lesson 19*/
+/*for lesson 19*/
 .lesson-hint19 .tooltiptext {
     width: 569px;
     left: -582%;
 }
 
-    .lesson-hint19 .tooltiptext::after {
-        left: 96%;
-    }
-/*tables end*/
+/*lessons end*/
 .flex {
     display: flex;
 }

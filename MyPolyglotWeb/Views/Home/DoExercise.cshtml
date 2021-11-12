@@ -1,11 +1,10 @@
-
 @model DoExerciseVM
 
 @section Scripts {
-    <script>
-        let optionsGroupsData = JSON.parse('@Json.Serialize(@Model.OptionGroups)');
-    </script>
-    <script src="~/js/doExercise.js"></script>
+<script>
+    let optionsGroupsData = JSON.parse('@Json.Serialize(@Model.OptionGroups)');
+</script>
+<script src="~/js/doExercise.js"></script>
 }
 
 <div class="do-exercise">
@@ -130,6 +129,15 @@
                 i
                 <span class="tooltiptext">
                     <partial name="../Shared/Hints/_hint15.cshtml" />
+                </span>
+            </span>
+        }
+        else if (Model.LessonId == 16)
+        {
+            <span class="lesson-hint lesson-hint16 tooltip">
+                i
+                <span class="tooltiptext">
+                    <partial name="../Shared/Hints/_hint16.cshtml" />
                 </span>
             </span>
         }

@@ -615,9 +615,18 @@ namespace MyPolyglotWeb.Models
                 },
                 new ExerciseDB()
                 {
-                    RusPhrase = "Учи английский язык.",
-                    EngPhrase = "Study English.",
+                    RusPhrase = "Не бери мой планшет.",
+                    EngPhrase = "Don't take my tablet.",
                     Lesson = lessonDB,
+                    UnrecognizedWords = new List<UnrecognizedWordDB>()
+                    {
+                        new UnrecognizedWordDB()
+                        {
+                            Text = "tablet",
+                            Type = UnrecognizableTypes.Noun,
+                            WasRecognizedFromPluralFormInNoun = false
+                        }
+                    }
                 },
                 new ExerciseDB()
                 {

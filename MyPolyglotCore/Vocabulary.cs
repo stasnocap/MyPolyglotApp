@@ -161,6 +161,7 @@ namespace MyPolyglotCore
             new Adverb("now"),
             new Adverb("regularly"),
             new Adverb("today"),
+            new Adverb("tonight"),
             new Adverb("tomorrow"),
             new Adverb("yesterday"),
             new Adverb("already"),

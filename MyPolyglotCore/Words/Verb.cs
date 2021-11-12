@@ -69,6 +69,8 @@ namespace MyPolyglotCore.Words
             #region Exceptions
             switch (Text)
             {
+                case "ship":
+                    return "shipped";
                 case "chew":
                     return "chewed";
                 case "relax":

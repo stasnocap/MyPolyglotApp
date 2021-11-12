@@ -36,8 +36,147 @@ namespace MyPolyglotWeb.Models
                 AddExercisesToLesson16(exerciseRepository, lessonRepository.Get(16));
                 AddExercisesToLesson17(exerciseRepository, lessonRepository.Get(17));
                 AddExercisesToLesson18(exerciseRepository, lessonRepository.Get(18));
+                AddExercisesToLesson19(exerciseRepository, lessonRepository.Get(19));
             }
             return host;
+        }
+
+        private static void AddExercisesToLesson19(IExerciseRepository exerciseRepository, LessonDB lessonDB)
+        {
+            var dbExercises = new List<ExerciseDB>()
+            {
+                new ExerciseDB()
+                {
+                    RusPhrase = "Ученики займут свои места до того, как начнется урок.",
+                    EngPhrase = "The pupils will have taken their seats before the lesson starts.",
+                    Lesson = lessonDB,
+                    UnrecognizedWords = new List<UnrecognizedWordDB>()
+                    {
+                        new UnrecognizedWordDB()
+                        {
+                            Text = "pupils",
+                            Type = UnrecognizableTypes.Noun,
+                            WasRecognizedFromPluralFormInNoun = true
+                        },
+                        new UnrecognizedWordDB()
+                        {
+                            Text = "seats",
+                            Type = UnrecognizableTypes.Noun,
+                            WasRecognizedFromPluralFormInNoun = true
+                        },
+                        new UnrecognizedWordDB()
+                        {
+                            Text = "lesson",
+                            Type = UnrecognizableTypes.Noun,
+                            WasRecognizedFromPluralFormInNoun = false
+                        },
+                        new UnrecognizedWordDB()
+                        {
+                            Text = "start",
+                            Type = UnrecognizableTypes.RegularVerb,
+                            StressOnTheFinalSyllableInRegularVerb = true
+                        },
+                    }
+                },
+                new ExerciseDB()
+                {
+                    RusPhrase = "Они не успеют выиграть три игры к концу месяца.",
+                    EngPhrase = "They will not have won three games by the end of the month.",
+                    Lesson = lessonDB,
+                    UnrecognizedWords = new List<UnrecognizedWordDB>()
+                    {
+                        new UnrecognizedWordDB()
+                        {
+                            Text = "games",
+                            Type = UnrecognizableTypes.Noun,
+                            WasRecognizedFromPluralFormInNoun = true
+                        },
+                    }
+                },
+                new ExerciseDB()
+                {
+                    RusPhrase = "Я уже окончу эту работу до того, как вы возвратитесь.",
+                    EngPhrase = "I will have finished this work, before you return.",
+                    Lesson = lessonDB,
+                    UnrecognizedWords = new List<UnrecognizedWordDB>()
+                    {
+                        new UnrecognizedWordDB()
+                        {
+                            Text = "finish",
+                            Type = UnrecognizableTypes.RegularVerb,
+                            StressOnTheFinalSyllableInRegularVerb = false
+                        },
+                        new UnrecognizedWordDB()
+                        {
+                            Text = "work",
+                            Type = UnrecognizableTypes.Noun,
+                            WasRecognizedFromPluralFormInNoun = false
+                        },
+                        new UnrecognizedWordDB()
+                        {
+                            Text = "return",
+                            Type = UnrecognizableTypes.RegularVerb,
+                            StressOnTheFinalSyllableInRegularVerb = true
+                        },
+                    }
+                },
+                new ExerciseDB()
+                {
+                    RusPhrase = "Они еще не отгрузят товар, когда придет ваша телеграмма.",
+                    EngPhrase = "They will not have shipped the goods when your telegram arrives.",
+                    Lesson = lessonDB,
+                    UnrecognizedWords = new List<UnrecognizedWordDB>()
+                    {
+                        new UnrecognizedWordDB()
+                        {
+                            Text = "ship",
+                            Type = UnrecognizableTypes.RegularVerb,
+                            StressOnTheFinalSyllableInRegularVerb = true
+                        },
+                        new UnrecognizedWordDB()
+                        {
+                            Text = "goods",
+                            Type = UnrecognizableTypes.Noun,
+                            WasRecognizedFromPluralFormInNoun = true
+                        },
+                        new UnrecognizedWordDB()
+                        {
+                            Text = "telegram",
+                            Type = UnrecognizableTypes.Noun,
+                            WasRecognizedFromPluralFormInNoun = false
+                        },
+                        new UnrecognizedWordDB()
+                        {
+                            Text = "arrive",
+                            Type = UnrecognizableTypes.RegularVerb,
+                            StressOnTheFinalSyllableInRegularVerb = true
+                        },
+                    }
+                },
+                new ExerciseDB()
+                {
+                    RusPhrase = "Я не закончу писать доклад к вечеру.",
+                    EngPhrase = "I will not have finished the report by tonight.",
+                    Lesson = lessonDB,
+                    UnrecognizedWords = new List<UnrecognizedWordDB>()
+                    {
+                        new UnrecognizedWordDB()
+                        {
+                            Text = "finish",
+                            Type = UnrecognizableTypes.RegularVerb,
+                            StressOnTheFinalSyllableInRegularVerb = false
+                        },
+                        new UnrecognizedWordDB()
+                        {
+                            Text = "report",
+                            Type = UnrecognizableTypes.Noun,
+                            WasRecognizedFromPluralFormInNoun = false
+                        },
+                    }
+                },
+            };
+
+            SaveExercises(exerciseRepository, dbExercises);
         }
 
         private static void AddExercisesToLesson18(IExerciseRepository exerciseRepository, LessonDB lessonDB)

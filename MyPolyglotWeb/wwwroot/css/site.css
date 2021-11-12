@@ -806,20 +806,20 @@ button {
         left: 96%;
     }
 /*tables for lesson 16*/
-.hint-table16 th, .hint-table16 td {
+.hint-table15 th, .hint-table15 td {
     border: 2px solid #ccc;
 }
 
-.hint-table16 td {
+.hint-table15 td {
     text-align: left;
 }
 
-.lesson-hint16 .tooltiptext {
+.lesson-hint15 .tooltiptext {
     width: 630px;
     left: -655%;
 }
 
-    .lesson-hint16 .tooltiptext::after {
+    .lesson-hint15 .tooltiptext::after {
         left: 96%;
     }
 /*tables for lesson 19*/

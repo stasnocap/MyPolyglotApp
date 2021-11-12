@@ -790,6 +790,12 @@ button {
     left: -514%
 }
 
+/*for lesson 18*/
+.lesson-hint18 .tooltiptext {
+    width: 513px;
+    left: -514%
+}
+
 /*for lesson 19*/
 .lesson-hint19 .tooltiptext {
     width: 569px;

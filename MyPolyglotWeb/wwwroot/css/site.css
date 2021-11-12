@@ -806,9 +806,6 @@ button {
         left: 96%;
     }
 /*tables for lesson 16*/
-.hint-table16 {
-}
-
 .hint-table16 th, .hint-table16 td {
     border: 2px solid #ccc;
 }
@@ -823,6 +820,15 @@ button {
 }
 
     .lesson-hint16 .tooltiptext::after {
+        left: 96%;
+    }
+/*tables for lesson 19*/
+.lesson-hint19 .tooltiptext {
+    width: 569px;
+    left: -582%;
+}
+
+    .lesson-hint19 .tooltiptext::after {
         left: 96%;
     }
 /*tables end*/

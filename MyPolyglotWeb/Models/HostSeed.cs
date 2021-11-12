@@ -37,8 +37,129 @@ namespace MyPolyglotWeb.Models
                 AddExercisesToLesson17(exerciseRepository, lessonRepository.Get(17));
                 AddExercisesToLesson18(exerciseRepository, lessonRepository.Get(18));
                 AddExercisesToLesson19(exerciseRepository, lessonRepository.Get(19));
+                AddExercisesToLesson20(exerciseRepository, lessonRepository.Get(20));
             }
             return host;
+        }
+
+        private static void AddExercisesToLesson20(IExerciseRepository exerciseRepository, LessonDB lessonDB)
+        {
+            var dbExercises = new List<ExerciseDB>()
+            {
+                new ExerciseDB()
+                {
+                    RusPhrase = "Она готовит ужин уже три часа.",
+                    EngPhrase = "She has been cooking dinner for three hours.",
+                    Lesson = lessonDB,
+                    UnrecognizedWords = new List<UnrecognizedWordDB>()
+                    {
+                        new UnrecognizedWordDB()
+                        {
+                            Text = "cook",
+                            Type = UnrecognizableTypes.RegularVerb,
+                            StressOnTheFinalSyllableInRegularVerb = true
+                        },
+                        new UnrecognizedWordDB()
+                        {
+                            Text = "dinner",
+                            Type = UnrecognizableTypes.Noun,
+                            WasRecognizedFromPluralFormInNoun = false
+                        },
+                    }
+                },
+                new ExerciseDB()
+                {
+                    RusPhrase = "Я пекла этот пирог с самого утра.",
+                    EngPhrase = "I have been baking this cake since morning.",
+                    Lesson = lessonDB,
+                    UnrecognizedWords = new List<UnrecognizedWordDB>()
+                    {
+                        new UnrecognizedWordDB()
+                        {
+                            Text = "bake",
+                            Type = UnrecognizableTypes.RegularVerb,
+                            StressOnTheFinalSyllableInRegularVerb = true
+                        },
+                        new UnrecognizedWordDB()
+                        {
+                            Text = "cake",
+                            Type = UnrecognizableTypes.Noun,
+                            WasRecognizedFromPluralFormInNoun = false
+                        },
+                    }
+                },
+                new ExerciseDB()
+                {
+                    RusPhrase = "Рабочие пытаются сдвинуть наш шкаф с места вот уже полчаса.",
+                    EngPhrase = "The workers have been trying to move our cupboard for half an hour.",
+                    Lesson = lessonDB,
+                    UnrecognizedWords = new List<UnrecognizedWordDB>()
+                    {
+                        new UnrecognizedWordDB()
+                        {
+                            Text = "workers",
+                            Type = UnrecognizableTypes.Noun,
+                            WasRecognizedFromPluralFormInNoun = true
+                        },
+                        new UnrecognizedWordDB()
+                        {
+                            Text = "try",
+                            Type = UnrecognizableTypes.RegularVerb,
+                            StressOnTheFinalSyllableInRegularVerb = true
+                        },
+                        new UnrecognizedWordDB()
+                        {
+                            Text = "move",
+                            Type = UnrecognizableTypes.RegularVerb,
+                            StressOnTheFinalSyllableInRegularVerb = true
+                        },
+                        new UnrecognizedWordDB()
+                        {
+                            Text = "cupboard",
+                            Type = UnrecognizableTypes.Noun,
+                            WasRecognizedFromPluralFormInNoun = false
+                        },
+                        new UnrecognizedWordDB()
+                        {
+                            Text = "half",
+                            Type = UnrecognizableTypes.Noun,
+                            WasRecognizedFromPluralFormInNoun = false
+                        },
+                    }
+                },
+                new ExerciseDB()
+                {
+                    RusPhrase = "Я читаю этот журнал с тех пор, как купил его неделю назад.",
+                    EngPhrase = "I have been reading this magazine since I bought it a week ago.",
+                    Lesson = lessonDB,
+                    UnrecognizedWords = new List<UnrecognizedWordDB>()
+                    {
+                        new UnrecognizedWordDB()
+                        {
+                            Text = "magazine",
+                            Type = UnrecognizableTypes.Noun,
+                            WasRecognizedFromPluralFormInNoun = false
+                        },
+                    }
+                },
+                new ExerciseDB()
+                {
+                    RusPhrase = "Я жду свою маму уже давно.",
+                    EngPhrase = "I have been waiting for my mother for a long time.",
+                    Lesson = lessonDB,
+                    UnrecognizedWords = new List<UnrecognizedWordDB>()
+                    {
+                        new UnrecognizedWordDB()
+                        {
+                            Text = "wait",
+                            Type = UnrecognizableTypes.RegularVerb,
+                            StressOnTheFinalSyllableInRegularVerb = true
+                        },
+                    }
+                },
+            };
+
+            SaveExercises(exerciseRepository, dbExercises);
         }
 
         private static void AddExercisesToLesson19(IExerciseRepository exerciseRepository, LessonDB lessonDB)

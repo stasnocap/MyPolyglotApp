@@ -37,12 +37,11 @@ namespace MyPolyglotWeb.Models
                 AddExercisesToLesson17(exerciseRepository, lessonRepository.Get(17));
                 AddExercisesToLesson18(exerciseRepository, lessonRepository.Get(18));
                 AddExercisesToLesson19(exerciseRepository, lessonRepository.Get(19));
-                AddExercisesToLesson20(exerciseRepository, lessonRepository.Get(20));
             }
             return host;
         }
 
-        private static void AddExercisesToLesson20(IExerciseRepository exerciseRepository, LessonDB lessonDB)
+        private static void AddExercisesToLesson19(IExerciseRepository exerciseRepository, LessonDB lessonDB)
         {
             var dbExercises = new List<ExerciseDB>()
             {
@@ -156,7 +155,7 @@ namespace MyPolyglotWeb.Models
             SaveExercises(exerciseRepository, dbExercises);
         }
 
-        private static void AddExercisesToLesson19(IExerciseRepository exerciseRepository, LessonDB lessonDB)
+        private static void AddExercisesToLesson18(IExerciseRepository exerciseRepository, LessonDB lessonDB)
         {
             var dbExercises = new List<ExerciseDB>()
             {
@@ -294,7 +293,7 @@ namespace MyPolyglotWeb.Models
             SaveExercises(exerciseRepository, dbExercises);
         }
 
-        private static void AddExercisesToLesson18(IExerciseRepository exerciseRepository, LessonDB lessonDB)
+        private static void AddExercisesToLesson17(IExerciseRepository exerciseRepository, LessonDB lessonDB)
         {
             var dbExercises = new List<ExerciseDB>()
             {
@@ -414,7 +413,7 @@ namespace MyPolyglotWeb.Models
             SaveExercises(exerciseRepository, dbExercises);
         }
 
-        private static void AddExercisesToLesson17(IExerciseRepository exerciseRepository, LessonDB lessonDB)
+        private static void AddExercisesToLesson16(IExerciseRepository exerciseRepository, LessonDB lessonDB)
         {
             var dbExercises = new List<ExerciseDB>()
             {
@@ -486,7 +485,7 @@ namespace MyPolyglotWeb.Models
             SaveExercises(exerciseRepository, dbExercises);
         }
 
-        private static void AddExercisesToLesson16(IExerciseRepository exerciseRepository, LessonDB lessonDB)
+        private static void AddExercisesToLesson15(IExerciseRepository exerciseRepository, LessonDB lessonDB)
         {
             var dbExercises = new List<ExerciseDB>()
             {
@@ -588,7 +587,7 @@ namespace MyPolyglotWeb.Models
             SaveExercises(exerciseRepository, dbExercises);
         }
 
-        private static void AddExercisesToLesson15(IExerciseRepository exerciseRepository, LessonDB lessonDB)
+        private static void AddExercisesToLesson14(IExerciseRepository exerciseRepository, LessonDB lessonDB)
         {
             var dbExercises = new List<ExerciseDB>()
             {
@@ -657,63 +656,6 @@ namespace MyPolyglotWeb.Models
                             StressOnTheFinalSyllableInRegularVerb = false
                         }
                     }
-                },
-            };
-
-            SaveExercises(exerciseRepository, dbExercises);
-        }
-
-        private static void AddExercisesToLesson14(IExerciseRepository exerciseRepository, LessonDB lessonDB)
-        {
-            var dbExercises = new List<ExerciseDB>()
-            {
-                new ExerciseDB()
-                {
-                    RusPhrase = "Он уже почувствовал?",
-                    EngPhrase = "Has he felt yet?",
-                    Lesson = lessonDB,
-                },
-                new ExerciseDB()
-                {
-                    RusPhrase = "Он уже работал?",
-                    EngPhrase = "Has he worked yet?",
-                    Lesson = lessonDB,
-                    UnrecognizedWords = new List<UnrecognizedWordDB>()
-                    {
-                        new UnrecognizedWordDB()
-                        {
-                            Text = "work",
-                            Type = UnrecognizableTypes.RegularVerb,
-                            StressOnTheFinalSyllableInRegularVerb = true
-                        }
-                    }
-                },
-                new ExerciseDB()
-                {
-                    RusPhrase = "Она уже закончила.",
-                    EngPhrase = "She has already finished.",
-                    Lesson = lessonDB,
-                    UnrecognizedWords = new List<UnrecognizedWordDB>()
-                    {
-                        new UnrecognizedWordDB()
-                        {
-                            Text = "finish",
-                            Type = UnrecognizableTypes.RegularVerb,
-                            StressOnTheFinalSyllableInRegularVerb = false
-                        }
-                    }
-                },
-                new ExerciseDB()
-                {
-                    RusPhrase = "Он ещё не понял.",
-                    EngPhrase = "He has not understood yet.",
-                    Lesson = lessonDB,
-                },
-                new ExerciseDB()
-                {
-                    RusPhrase = "Он уже получил?",
-                    EngPhrase = "Has he got yet?",
-                    Lesson = lessonDB,
                 },
             };
 

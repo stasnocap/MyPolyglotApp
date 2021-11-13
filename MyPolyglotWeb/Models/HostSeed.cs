@@ -39,8 +39,140 @@ namespace MyPolyglotWeb.Models
                 AddExercisesToLesson19(exerciseRepository, lessonRepository.Get(19));
                 AddExercisesToLesson20(exerciseRepository, lessonRepository.Get(20));
                 AddExercisesToLesson21(exerciseRepository, lessonRepository.Get(21));
+                AddExercisesToLesson22(exerciseRepository, lessonRepository.Get(22));
             }
             return host;
+        }
+
+        private static void AddExercisesToLesson22(IExerciseRepository exerciseRepository, LessonDB lessonDB)
+        {
+            var dbExercises = new List<ExerciseDB>()
+            {
+                new ExerciseDB()
+                {
+                    RusPhrase = "Они будут разговаривать уже свыше часа, к тому моменту, когда приедет он.",
+                    EngPhrase = "They will have been talking for over an hour, by the time, he arrives.",
+                    Lesson = lessonDB,
+                    UnrecognizedWords = new List<UnrecognizedWordDB>()
+                    {
+                        new UnrecognizedWordDB()
+                        {
+                            Text = "talk",
+                            Type = UnrecognizableTypes.RegularVerb,
+                            StressOnTheFinalSyllableInRegularVerb = true
+                        },
+                        new UnrecognizedWordDB()
+                        {
+                            Text = "arrive",
+                            Type = UnrecognizableTypes.RegularVerb,
+                            StressOnTheFinalSyllableInRegularVerb = true
+                        },
+                    }
+                },
+                new ExerciseDB()
+                {
+                    RusPhrase = "К первому июня он будет работать на этам заводе уже двадцать лет.",
+                    EngPhrase = "By the first of June he will have been working at this plant for twenty years.",
+                    Lesson = lessonDB,
+                    UnrecognizedWords = new List<UnrecognizedWordDB>()
+                    {
+                        new UnrecognizedWordDB()
+                        {
+                            Text = "June",
+                            Type = UnrecognizableTypes.Noun,
+                            WasRecognizedFromPluralFormInNoun = false
+                        },
+                        new UnrecognizedWordDB()
+                        {
+                            Text = "work",
+                            Type = UnrecognizableTypes.RegularVerb,
+                            StressOnTheFinalSyllableInRegularVerb = true
+                        },
+                        new UnrecognizedWordDB()
+                        {
+                            Text = "plant",
+                            Type = UnrecognizableTypes.Noun,
+                            WasRecognizedFromPluralFormInNoun = false
+                        },
+                    }
+                },
+                new ExerciseDB()
+                {
+                    RusPhrase = "К следующему рождеству я уже буду преподавать 10 лет.",
+                    EngPhrase = "Next Christmas I will have been teaching for ten years.",
+                    Lesson = lessonDB,
+                    UnrecognizedWords = new List<UnrecognizedWordDB>()
+                    {
+                        new UnrecognizedWordDB()
+                        {
+                            Text = "Christmas",
+                            Type = UnrecognizableTypes.Noun,
+                            WasRecognizedFromPluralFormInNoun = false
+                        },
+                        new UnrecognizedWordDB()
+                        {
+                            Text = "next",
+                            Type = UnrecognizableTypes.Adjective,
+                        },
+                    }
+                },
+                new ExerciseDB()
+                {
+                    RusPhrase = "Ты будешь ждать свыше двух часов, прежде чем ее самолет, наконец, приземлится?",
+                    EngPhrase = "Will you have been waiting for more than two hours, when her plane finally arrives?",
+                    Lesson = lessonDB,
+                    UnrecognizedWords = new List<UnrecognizedWordDB>()
+                    {
+                        new UnrecognizedWordDB()
+                        {
+                            Text = "wait",
+                            Type = UnrecognizableTypes.RegularVerb,
+                            StressOnTheFinalSyllableInRegularVerb = true
+                        },
+                        new UnrecognizedWordDB()
+                        {
+                            Text = "more",
+                            Type = UnrecognizableTypes.Noun,
+                            WasRecognizedFromPluralFormInNoun = false
+                        },
+                        new UnrecognizedWordDB()
+                        {
+                            Text = "plane",
+                            Type = UnrecognizableTypes.Noun,
+                            WasRecognizedFromPluralFormInNoun = false
+                        },
+                        new UnrecognizedWordDB()
+                        {
+                            Text = "arrive",
+                            Type = UnrecognizableTypes.Noun,
+                            StressOnTheFinalSyllableInRegularVerb = true
+                        },
+                    }
+                },
+                new ExerciseDB()
+                {
+                    RusPhrase = "В следующем месяце мы будем жить вместе уже 15 лет.",
+                    EngPhrase = "Next month we will have been living together for fifteen years.",
+                    Lesson = lessonDB,
+                    UnrecognizedWords = new List<UnrecognizedWordDB>()
+                    {
+                        new UnrecognizedWordDB()
+                        {
+                            Text = "live",
+                            Type = UnrecognizableTypes.RegularVerb,
+                            StressOnTheFinalSyllableInRegularVerb = true
+                        },
+                        new UnrecognizedWordDB()
+                        {
+                            Text = "together",
+                            Type = UnrecognizableTypes.Noun,
+                            WasRecognizedFromPluralFormInNoun = false
+                        },
+                    }
+                },
+            };
+
+            SaveExercises(exerciseRepository, dbExercises);
         }
 
         private static void AddExercisesToLesson21(IExerciseRepository exerciseRepository, LessonDB lessonDB)

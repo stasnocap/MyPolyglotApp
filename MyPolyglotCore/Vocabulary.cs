@@ -122,6 +122,7 @@ namespace MyPolyglotCore
             new Adverb("softly"),
             new Adverb("quickly"),
             new Adverb("well"),
+            new Adverb("finally"),
         };
 
         public static readonly IEnumerable<Adverb> TellHowItHappenedAdverbs = new Adverb[]
@@ -546,7 +547,6 @@ namespace MyPolyglotCore
             new Noun("guy"),
             new Noun("moment"),
             new Noun("air"),
-            new Noun("teacher"),
             new Noun("force"),
             new Noun("education"),
         };

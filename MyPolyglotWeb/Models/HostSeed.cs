@@ -42,8 +42,126 @@ namespace MyPolyglotWeb.Models
                 AddExercisesToLesson22(exerciseRepository, lessonRepository.Get(22));
                 AddExercisesToLesson23(exerciseRepository, lessonRepository.Get(23));
                 AddExercisesToLesson24(exerciseRepository, lessonRepository.Get(24));
+                AddExercisesToLesson25(exerciseRepository, lessonRepository.Get(25));
             }
             return host;
+        }
+
+        private static void AddExercisesToLesson25(IExerciseRepository exerciseRepository, LessonDB lessonDB)
+        {
+            var dbExercises = new List<ExerciseDB>()
+            {
+                new ExerciseDB()
+                {
+                    RusPhrase = "Я был разочарован услышать, что все больше и больше людей теряют свою работу.",
+                    EngPhrase = "I was disappointed to hear that more and more people lose their jobs.",
+                    Lesson = lessonDB,
+                    UnrecognizedWords = new List<UnrecognizedWordDB>()
+                    {
+                        new UnrecognizedWordDB()
+                        {
+                            Text = "disappoint",
+                            Type = UnrecognizableTypes.RegularVerb,
+                            StressOnTheFinalSyllableInRegularVerb = true,
+                        },
+                    }
+                },
+                new ExerciseDB()
+                {
+                    RusPhrase = "Измученный, он провалился в сон.",
+                    EngPhrase = "Exhausted, he fell asleep.",
+                    Lesson = lessonDB,
+                    UnrecognizedWords = new List<UnrecognizedWordDB>()
+                    {
+                        new UnrecognizedWordDB()
+                        {
+                            Text = "exhausted",
+                            Type = UnrecognizableTypes.Adjective,
+                        },
+                        new UnrecognizedWordDB()
+                        {
+                            Text = "asleep",
+                            Type = UnrecognizableTypes.Adjective,
+                        },
+                    }
+                },
+                new ExerciseDB()
+                {
+                    RusPhrase = "Прибор, купленный в специализированнмом магазине, имеет гарантию.",
+                    EngPhrase = "The appliance bought from the specialized shop has a guarantee.",
+                    Lesson = lessonDB,
+                    UnrecognizedWords = new List<UnrecognizedWordDB>()
+                    {
+                        new UnrecognizedWordDB()
+                        {
+                            Text = "appliance",
+                            Type = UnrecognizableTypes.Noun,
+                            WasRecognizedFromPluralFormInNoun = false
+                        },
+                        new UnrecognizedWordDB()
+                        {
+                            Text = "specialized",
+                            Type = UnrecognizableTypes.Adjective,
+                        },
+                        new UnrecognizedWordDB()
+                        {
+                            Text = "shop",
+                            Type = UnrecognizableTypes.Noun,
+                            WasRecognizedFromPluralFormInNoun = false
+                        },
+                        new UnrecognizedWordDB()
+                        {
+                            Text = "guarantee",
+                            Type = UnrecognizableTypes.Noun,
+                            WasRecognizedFromPluralFormInNoun = false
+                        },
+                    }
+                },
+                new ExerciseDB()
+                {
+                    RusPhrase = "Они не смогли оправиться от проигранной войны.",
+                    EngPhrase = "They could not recover from the lost war.",
+                    Lesson = lessonDB,
+                    UnrecognizedWords = new List<UnrecognizedWordDB>()
+                    {
+                        new UnrecognizedWordDB()
+                        {
+                            Text = "recover",
+                            Type = UnrecognizableTypes.RegularVerb,
+                            StressOnTheFinalSyllableInRegularVerb = false,
+                        },
+                    }
+                },
+                new ExerciseDB()
+                {
+                    RusPhrase = "После компьютерного сбоя мы не смогли восстановить потерянные данные.",
+                    EngPhrase = "After computer breaking down we could not restore the lost data.",
+                    Lesson = lessonDB,
+                    UnrecognizedWords = new List<UnrecognizedWordDB>()
+                    {
+                        new UnrecognizedWordDB()
+                        {
+                            Text = "computer",
+                            Type = UnrecognizableTypes.Noun,
+                            WasRecognizedFromPluralFormInNoun = false
+                        },
+                        new UnrecognizedWordDB()
+                        {
+                            Text = "restore",
+                            Type = UnrecognizableTypes.RegularVerb,
+                            StressOnTheFinalSyllableInRegularVerb = true,
+                        },
+                        new UnrecognizedWordDB()
+                        {
+                            Text = "data",
+                            Type = UnrecognizableTypes.Noun,
+                            WasRecognizedFromPluralFormInNoun = false
+                        },
+                    }
+                },
+            };
+
+            SaveExercises(exerciseRepository, dbExercises, lessonDB.Id);
         }
 
         private static void AddExercisesToLesson24(IExerciseRepository exerciseRepository, LessonDB lessonDB)
@@ -258,12 +376,6 @@ namespace MyPolyglotWeb.Models
                             Text = "wait",
                             Type = UnrecognizableTypes.RegularVerb,
                             StressOnTheFinalSyllableInRegularVerb = true
-                        },
-                        new UnrecognizedWordDB()
-                        {
-                            Text = "more",
-                            Type = UnrecognizableTypes.Noun,
-                            WasRecognizedFromPluralFormInNoun = false
                         },
                         new UnrecognizedWordDB()
                         {

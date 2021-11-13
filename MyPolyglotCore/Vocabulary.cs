@@ -189,6 +189,8 @@ namespace MyPolyglotCore
             new Adverb("hardly"),
             new Adverb("just"),
             new Adverb("nearly"),
+            new Adverb("more"),
+            new Adverb("much"),
         };
 
         public static readonly IEnumerable<Adverb> IntensifierAdverbs = new Adverb[]

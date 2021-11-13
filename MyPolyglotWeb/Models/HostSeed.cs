@@ -40,8 +40,16 @@ namespace MyPolyglotWeb.Models
                 AddExercisesToLesson20(exerciseRepository, lessonRepository.Get(20));
                 AddExercisesToLesson21(exerciseRepository, lessonRepository.Get(21));
                 AddExercisesToLesson22(exerciseRepository, lessonRepository.Get(22));
+                AddExercisesToLesson23(exerciseRepository, lessonRepository.Get(23));
             }
             return host;
+        }
+
+        private static void AddExercisesToLesson23(IExerciseRepository exerciseRepository, LessonDB lessonDB)
+        {
+            AddExercisesToLesson22(exerciseRepository, lessonDB);
+            AddExercisesToLesson21(exerciseRepository, lessonDB);
+            AddExercisesToLesson20(exerciseRepository, lessonDB);
         }
 
         private static void AddExercisesToLesson22(IExerciseRepository exerciseRepository, LessonDB lessonDB)
@@ -426,116 +434,9 @@ namespace MyPolyglotWeb.Models
 
         private static void AddExercisesToLesson19(IExerciseRepository exerciseRepository, LessonDB lessonDB)
         {
-            var dbExercises = new List<ExerciseDB>()
-            {
-                new ExerciseDB()
-                {
-                    RusPhrase = "Они сдадут все свои экзамены до того, как поедут в лагерь.",
-                    EngPhrase = "They will have passed all their exams before they go to the camp.",
-                    Lesson = lessonDB,
-                    UnrecognizedWords = new List<UnrecognizedWordDB>()
-                    {
-                        new UnrecognizedWordDB()
-                        {
-                            Text = "pass",
-                            Type = UnrecognizableTypes.RegularVerb,
-                            StressOnTheFinalSyllableInRegularVerb = true
-                        },
-                        new UnrecognizedWordDB()
-                        {
-                            Text = "exams",
-                            Type = UnrecognizableTypes.Noun,
-                            WasRecognizedFromPluralFormInNoun = true
-                        },
-                        new UnrecognizedWordDB()
-                        {
-                            Text = "all",
-                            Type = UnrecognizableTypes.Noun,
-                            WasRecognizedFromPluralFormInNoun = false
-                        },
-                        new UnrecognizedWordDB()
-                        {
-                            Text = "camp",
-                            Type = UnrecognizableTypes.Noun,
-                            WasRecognizedFromPluralFormInNoun = false
-                        },
-                    }
-                },
-                new ExerciseDB()
-                {
-                    RusPhrase = "Мы уже написали статью к пяти часам?",
-                    EngPhrase = "Had we written the article by five o'clock?",
-                    Lesson = lessonDB,
-                    UnrecognizedWords = new List<UnrecognizedWordDB>()
-                    {
-                        new UnrecognizedWordDB()
-                        {
-                            Text = "article",
-                            Type = UnrecognizableTypes.Noun,
-                            WasRecognizedFromPluralFormInNoun = false
-                        },
-                        new UnrecognizedWordDB()
-                        {
-                            Text = "o'clock",
-                            Type = UnrecognizableTypes.Noun,
-                            WasRecognizedFromPluralFormInNoun = false
-                        },
-                    }
-                },
-                new ExerciseDB()
-                {
-                    RusPhrase = "Она написала только 2 письма к полудню.",
-                    EngPhrase = "She had written only two letters by noon.",
-                    Lesson = lessonDB,
-                    UnrecognizedWords = new List<UnrecognizedWordDB>()
-                    {
-                        new UnrecognizedWordDB()
-                        {
-                            Text = "letters",
-                            Type = UnrecognizableTypes.Noun,
-                            WasRecognizedFromPluralFormInNoun = true
-                        },
-                    }
-                },
-                new ExerciseDB()
-                {
-                    RusPhrase = "Вы вернулись домой до того, как начался дождь.",
-                    EngPhrase = "You had returned home before the rain began.",
-                    Lesson = lessonDB,
-                    UnrecognizedWords = new List<UnrecognizedWordDB>()
-                    {
-                        new UnrecognizedWordDB()
-                        {
-                            Text = "return",
-                            Type = UnrecognizableTypes.RegularVerb,
-                            StressOnTheFinalSyllableInRegularVerb = true
-                        },
-                        new UnrecognizedWordDB()
-                        {
-                            Text = "rain",
-                            Type = UnrecognizableTypes.Noun,
-                            WasRecognizedFromPluralFormInNoun = false
-                        },
-                    }
-                },
-                new ExerciseDB()
-                {
-                    RusPhrase = "Она уже пришла домой к 9 часам.",
-                    EngPhrase = "She had already come home by nine o'clock.",
-                    Lesson = lessonDB,
-                    UnrecognizedWords = new List<UnrecognizedWordDB>()
-                    {
-                        new UnrecognizedWordDB()
-                        {
-                            Text = "o'clock",
-                            Type = UnrecognizableTypes.Noun,
-                            WasRecognizedFromPluralFormInNoun = false
-                        },
-                    }
-                },
-            };
-
-            SaveExercises(exerciseRepository, dbExercises);
+            AddExercisesToLesson18(exerciseRepository, lessonDB);
+            AddExercisesToLesson17(exerciseRepository, lessonDB);
+            AddExercisesToLesson16(exerciseRepository, lessonDB);
         }
 
         private static void AddExercisesToLesson18(IExerciseRepository exerciseRepository, LessonDB lessonDB)

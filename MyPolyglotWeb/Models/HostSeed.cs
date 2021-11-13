@@ -49,8 +49,24 @@ namespace MyPolyglotWeb.Models
                 AddExercisesToLesson29(exerciseRepository, lessonRepository.Get(29));
                 AddExercisesToLesson30(exerciseRepository, lessonRepository.Get(30));
                 AddExercisesToLesson31(exerciseRepository, lessonRepository.Get(31));
+                AddAdmin(serviceProvider.GetService<IUserRepository>());
             }
             return host;
+        }
+
+        private static void AddAdmin(IUserRepository userRepository)
+        {
+            var admin = new UserDB()
+            {
+                Email = "admin@admin.com",
+                Password = "admin",
+                Role = UserRole.Admin,
+            };
+
+            if (!userRepository.IsUserExist(admin.Email))
+            {
+                userRepository.Save(admin);
+            }
         }
 
         private static void AddExercisesToLesson31(IExerciseRepository exerciseRepository, LessonDB lessonDB)

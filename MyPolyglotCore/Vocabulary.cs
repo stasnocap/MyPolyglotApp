@@ -173,6 +173,7 @@ namespace MyPolyglotCore
             new Adverb("lately"),
             new Adverb("recently"),
             new Adverb("soon"),
+            new Adverb("o'clock"),
         };
 
         public static readonly IEnumerable<Adverb> TellTheExtentOfTheActionAdverbs = new Adverb[]

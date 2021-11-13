@@ -46,8 +46,90 @@ namespace MyPolyglotWeb.Models
                 AddExercisesToLesson26(exerciseRepository, lessonRepository.Get(26));
                 AddExercisesToLesson27(exerciseRepository, lessonRepository.Get(27));
                 AddExercisesToLesson28(exerciseRepository, lessonRepository.Get(28));
+                AddExercisesToLesson29(exerciseRepository, lessonRepository.Get(29));
             }
             return host;
+        }
+
+        private static void AddExercisesToLesson29(IExerciseRepository exerciseRepository, LessonDB lessonDB)
+        {
+            var dbExercises = new List<ExerciseDB>()
+            {
+                new ExerciseDB()
+                {
+                    RusPhrase = "Вопрос обсуждался в семь часов?",
+                    EngPhrase = "Was the question being discussed at seven o'clock?",
+                    Lesson = lessonDB,
+                    UnrecognizedWords = new List<UnrecognizedWordDB>()
+                    {
+                        new UnrecognizedWordDB()
+                        {
+                            Text = "discuss",
+                            Type = UnrecognizableTypes.RegularVerb,
+                            StressOnTheFinalSyllableInRegularVerb = true
+                        },
+                    }
+                },
+                new ExerciseDB()
+                {
+                    RusPhrase = "Комнату в этот момент моют.",
+                    EngPhrase = "The room is being cleaned at this moment.",
+                    Lesson = lessonDB,
+                    UnrecognizedWords = new List<UnrecognizedWordDB>()
+                    {
+                        new UnrecognizedWordDB()
+                        {
+                            Text = "clean",
+                            Type = UnrecognizableTypes.RegularVerb,
+                            StressOnTheFinalSyllableInRegularVerb = true
+                        },
+                    }
+                },
+                new ExerciseDB()
+                {
+                    RusPhrase = "Его осматривает доктор в настоящий момент.",
+                    EngPhrase = "He is being examined by the doctor at the moment.",
+                    Lesson = lessonDB,
+                    UnrecognizedWords = new List<UnrecognizedWordDB>()
+                    {
+                        new UnrecognizedWordDB()
+                        {
+                            Text = "examin",
+                            Type = UnrecognizableTypes.RegularVerb,
+                            StressOnTheFinalSyllableInRegularVerb = false
+                        },
+                    }
+                },
+                new ExerciseDB()
+                {
+                    RusPhrase = "Его не преследует полиция в даный момент.",
+                    EngPhrase = "He is not being followed by the police at the moment.",
+                    Lesson = lessonDB,
+                    UnrecognizedWords = new List<UnrecognizedWordDB>()
+                    {
+                        new UnrecognizedWordDB()
+                        {
+                            Text = "follow",
+                            Type = UnrecognizableTypes.RegularVerb,
+                            StressOnTheFinalSyllableInRegularVerb = false
+                        },
+                        new UnrecognizedWordDB()
+                        {
+                            Text = "police",
+                            Type = UnrecognizableTypes.Noun,
+                            WasRecognizedFromPluralFormInNoun = false
+                        },
+                    }
+                },
+                new ExerciseDB()
+                {
+                    RusPhrase = "Его дом строится сейчас?",
+                    EngPhrase = "Is his house being built now?",
+                    Lesson = lessonDB,
+                },
+            };
+
+            SaveExercises(exerciseRepository, dbExercises, lessonDB.Id);
         }
 
         private static void AddExercisesToLesson28(IExerciseRepository exerciseRepository, LessonDB lessonDB)
@@ -710,12 +792,6 @@ namespace MyPolyglotWeb.Models
                     Lesson = lessonDB,
                     UnrecognizedWords = new List<UnrecognizedWordDB>()
                     {
-                        new UnrecognizedWordDB()
-                        {
-                            Text = "o'clock",
-                            Type = UnrecognizableTypes.Noun,
-                            WasRecognizedFromPluralFormInNoun = false,
-                        },
                         new UnrecognizedWordDB()
                         {
                             Text = "dog",

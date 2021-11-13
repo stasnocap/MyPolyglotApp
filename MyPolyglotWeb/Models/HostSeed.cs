@@ -180,7 +180,7 @@ namespace MyPolyglotWeb.Models
                 },
             };
 
-            SaveExercises(exerciseRepository, dbExercises);
+            SaveExercises(exerciseRepository, dbExercises, lessonDB.Id);
         }
 
         private static void AddExercisesToLesson21(IExerciseRepository exerciseRepository, LessonDB lessonDB)
@@ -309,7 +309,7 @@ namespace MyPolyglotWeb.Models
                 },
             };
 
-            SaveExercises(exerciseRepository, dbExercises);
+            SaveExercises(exerciseRepository, dbExercises, lessonDB.Id);
         }
 
         private static void AddExercisesToLesson20(IExerciseRepository exerciseRepository, LessonDB lessonDB)
@@ -429,7 +429,7 @@ namespace MyPolyglotWeb.Models
                 },
             };
 
-            SaveExercises(exerciseRepository, dbExercises);
+            SaveExercises(exerciseRepository, dbExercises, lessonDB.Id);
         }
 
         private static void AddExercisesToLesson19(IExerciseRepository exerciseRepository, LessonDB lessonDB)
@@ -574,7 +574,7 @@ namespace MyPolyglotWeb.Models
                 },
             };
 
-            SaveExercises(exerciseRepository, dbExercises);
+            SaveExercises(exerciseRepository, dbExercises, lessonDB.Id);
         }
 
         private static void AddExercisesToLesson17(IExerciseRepository exerciseRepository, LessonDB lessonDB)
@@ -694,7 +694,7 @@ namespace MyPolyglotWeb.Models
                 },
             };
 
-            SaveExercises(exerciseRepository, dbExercises);
+            SaveExercises(exerciseRepository, dbExercises, lessonDB.Id);
         }
 
         private static void AddExercisesToLesson16(IExerciseRepository exerciseRepository, LessonDB lessonDB)
@@ -766,7 +766,7 @@ namespace MyPolyglotWeb.Models
                 },
             };
 
-            SaveExercises(exerciseRepository, dbExercises);
+            SaveExercises(exerciseRepository, dbExercises, lessonDB.Id);
         }
 
         private static void AddExercisesToLesson15(IExerciseRepository exerciseRepository, LessonDB lessonDB)
@@ -868,7 +868,7 @@ namespace MyPolyglotWeb.Models
                 },
             };
 
-            SaveExercises(exerciseRepository, dbExercises);
+            SaveExercises(exerciseRepository, dbExercises, lessonDB.Id);
         }
 
         private static void AddExercisesToLesson14(IExerciseRepository exerciseRepository, LessonDB lessonDB)
@@ -943,7 +943,7 @@ namespace MyPolyglotWeb.Models
                 },
             };
 
-            SaveExercises(exerciseRepository, dbExercises);
+            SaveExercises(exerciseRepository, dbExercises, lessonDB.Id);
         }
 
         private static void AddExercisesToLesson13(IExerciseRepository exerciseRepository, LessonDB lessonDB)
@@ -1014,7 +1014,7 @@ namespace MyPolyglotWeb.Models
                 },
             };
 
-            SaveExercises(exerciseRepository, dbExercises);
+            SaveExercises(exerciseRepository, dbExercises, lessonDB.Id);
         }
 
         private static void AddExercisesToLesson12(IExerciseRepository exerciseRepository, LessonDB lessonDB)
@@ -1086,7 +1086,7 @@ namespace MyPolyglotWeb.Models
                 },
             };
 
-            SaveExercises(exerciseRepository, dbExercises);
+            SaveExercises(exerciseRepository, dbExercises, lessonDB.Id);
         }
 
         private static void AddExercisesToLesson11(IExerciseRepository exerciseRepository, LessonDB lessonDB)
@@ -1143,7 +1143,7 @@ namespace MyPolyglotWeb.Models
                 },
             };
 
-            SaveExercises(exerciseRepository, dbExercises);
+            SaveExercises(exerciseRepository, dbExercises, lessonDB.Id);
         }
 
         private static void AddExercisesToLesson10(IExerciseRepository exerciseRepository, LessonDB lessonDB)
@@ -1239,7 +1239,7 @@ namespace MyPolyglotWeb.Models
                 },
             };
 
-            SaveExercises(exerciseRepository, dbExercises);
+            SaveExercises(exerciseRepository, dbExercises, lessonDB.Id);
         }
 
         private static void AddExercisesToLesson9(IExerciseRepository exerciseRepository, LessonDB lessonDB)
@@ -1353,7 +1353,7 @@ namespace MyPolyglotWeb.Models
                 },
             };
 
-            SaveExercises(exerciseRepository, dbExercises);
+            SaveExercises(exerciseRepository, dbExercises, lessonDB.Id);
         }
 
         private static void AddExercisesToLesson8(IExerciseRepository exerciseRepository, LessonDB lessonDB)
@@ -1440,7 +1440,7 @@ namespace MyPolyglotWeb.Models
                 }
             };
 
-            SaveExercises(exerciseRepository, dbExercises);
+            SaveExercises(exerciseRepository, dbExercises, lessonDB.Id);
         }
 
         private static void AddExercisesToLesson7(IExerciseRepository exerciseRepository, LessonDB lessonDB)
@@ -1479,7 +1479,7 @@ namespace MyPolyglotWeb.Models
                 },
             };
 
-            SaveExercises(exerciseRepository, dbExercises);
+            SaveExercises(exerciseRepository, dbExercises, lessonDB.Id);
         }
 
         private static void AddExercisesToLesson6(IExerciseRepository exerciseRepository, LessonDB lessonDB)
@@ -1604,7 +1604,7 @@ namespace MyPolyglotWeb.Models
                 },
             };
 
-            SaveExercises(exerciseRepository, dbExercises);
+            SaveExercises(exerciseRepository, dbExercises, lessonDB.Id);
         }
 
         private static void AddExercisesToLesson5(IExerciseRepository exerciseRepository, LessonDB lessonDB)
@@ -1706,7 +1706,7 @@ namespace MyPolyglotWeb.Models
                 },
             };
 
-            SaveExercises(exerciseRepository, dbExercises);
+            SaveExercises(exerciseRepository, dbExercises, lessonDB.Id);
         }
 
         private static void AddExercisesToLesson4(IExerciseRepository exerciseRepository, LessonDB lessonDB)
@@ -1790,7 +1790,7 @@ namespace MyPolyglotWeb.Models
                 }
             };
 
-            SaveExercises(exerciseRepository, dbExercises);
+            SaveExercises(exerciseRepository, dbExercises, lessonDB.Id);
         }
 
         private static void AddExercisesToLesson3(IExerciseRepository exerciseRepository, LessonDB lessonDB)
@@ -1874,7 +1874,7 @@ namespace MyPolyglotWeb.Models
                 }
             };
 
-            SaveExercises(exerciseRepository, dbExercises);
+            SaveExercises(exerciseRepository, dbExercises, lessonDB.Id);
         }
 
         private static void AddExercisesToLesson2(IExerciseRepository exerciseRepository, LessonDB lessonDB)
@@ -1922,7 +1922,7 @@ namespace MyPolyglotWeb.Models
                 },
             };
 
-            SaveExercises(exerciseRepository, dbExercises);
+            SaveExercises(exerciseRepository, dbExercises, lessonDB.Id);
         }
 
         private static void AddExercisesToLesson1(IExerciseRepository exerciseRepository, LessonDB lessonDB)
@@ -1979,14 +1979,14 @@ namespace MyPolyglotWeb.Models
                 }
             };
 
-            SaveExercises(exerciseRepository, dbExercises);
+            SaveExercises(exerciseRepository, dbExercises, lessonDB.Id);
         }
 
-        private static void SaveExercises(IExerciseRepository exerciseRepository, IEnumerable<ExerciseDB> dbExercises)
+        private static void SaveExercises(IExerciseRepository exerciseRepository, IEnumerable<ExerciseDB> dbExercises, long lessonId)
         {
             foreach (var dbExercise in dbExercises)
             {
-                if (!exerciseRepository.IsExist(dbExercise.EngPhrase))
+                if (!exerciseRepository.IsExist(dbExercise.EngPhrase, lessonId))
                 {
                     exerciseRepository.Save(dbExercise);
                 }

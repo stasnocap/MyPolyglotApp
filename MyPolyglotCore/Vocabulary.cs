@@ -394,6 +394,7 @@ namespace MyPolyglotCore
             new Noun("carpenter"),
             new Noun("chef"),
             new Noun("cleaner"),
+            new Noun("courier"),
             new Noun("dentist"),
             new Noun("designer"),
             new Noun("doctor"),

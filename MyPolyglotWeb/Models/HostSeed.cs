@@ -48,8 +48,16 @@ namespace MyPolyglotWeb.Models
                 AddExercisesToLesson28(exerciseRepository, lessonRepository.Get(28));
                 AddExercisesToLesson29(exerciseRepository, lessonRepository.Get(29));
                 AddExercisesToLesson30(exerciseRepository, lessonRepository.Get(30));
+                AddExercisesToLesson31(exerciseRepository, lessonRepository.Get(31));
             }
             return host;
+        }
+
+        private static void AddExercisesToLesson31(IExerciseRepository exerciseRepository, LessonDB lessonDB)
+        {
+            AddExercisesToLesson30(exerciseRepository, lessonDB);
+            AddExercisesToLesson29(exerciseRepository, lessonDB);
+            AddExercisesToLesson28(exerciseRepository, lessonDB);
         }
 
         private static void AddExercisesToLesson30(IExerciseRepository exerciseRepository, LessonDB lessonDB)

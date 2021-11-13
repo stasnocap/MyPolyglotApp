@@ -613,7 +613,7 @@ button {
     left: 96%;
 }
 
-/*hint-table for lesson 1*/
+/*for lesson 1*/
 .lesson-hint1 td.font-size17px {
     font-size: 11px;
 }
@@ -786,6 +786,12 @@ button {
 }
 /*for lesson 16*/
 .lesson-hint16 .tooltiptext {
+    width: 513px;
+    left: -514%
+}
+
+/*for lesson 17*/
+.lesson-hint17 .tooltiptext {
     width: 513px;
     left: -514%
 }

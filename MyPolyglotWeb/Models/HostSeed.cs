@@ -41,8 +41,130 @@ namespace MyPolyglotWeb.Models
                 AddExercisesToLesson21(exerciseRepository, lessonRepository.Get(21));
                 AddExercisesToLesson22(exerciseRepository, lessonRepository.Get(22));
                 AddExercisesToLesson23(exerciseRepository, lessonRepository.Get(23));
+                AddExercisesToLesson24(exerciseRepository, lessonRepository.Get(24));
             }
             return host;
+        }
+
+        private static void AddExercisesToLesson24(IExerciseRepository exerciseRepository, LessonDB lessonDB)
+        {
+            var dbExercises = new List<ExerciseDB>()
+            {
+                new ExerciseDB()
+                {
+                    RusPhrase = "Зная материал, вы можете получить отличную оценку.",
+                    EngPhrase = "Knowing the material you can get an excellent mark.",
+                    Lesson = lessonDB,
+                    UnrecognizedWords = new List<UnrecognizedWordDB>()
+                    {
+                        new UnrecognizedWordDB()
+                        {
+                            Text = "material",
+                            Type = UnrecognizableTypes.Noun,
+                            WasRecognizedFromPluralFormInNoun = false
+                        },
+                        new UnrecognizedWordDB()
+                        {
+                            Text = "excellent",
+                            Type = UnrecognizableTypes.Adjective,
+                        },
+                        new UnrecognizedWordDB()
+                        {
+                            Text = "mark",
+                            Type = UnrecognizableTypes.Noun,
+                            WasRecognizedFromPluralFormInNoun = false
+                        },
+                    }
+                },
+                new ExerciseDB()
+                {
+                    RusPhrase = "Работая за компьютером постоянно он теряет свое зрение.",
+                    EngPhrase = "Working on computer all the time he loses his eyesight.",
+                    Lesson = lessonDB,
+                    UnrecognizedWords = new List<UnrecognizedWordDB>()
+                    {
+                        new UnrecognizedWordDB()
+                        {
+                            Text = "work",
+                            Type = UnrecognizableTypes.RegularVerb,
+                            StressOnTheFinalSyllableInRegularVerb = true
+                        },
+                        new UnrecognizedWordDB()
+                        {
+                            Text = "computer",
+                            Type = UnrecognizableTypes.Noun,
+                            WasRecognizedFromPluralFormInNoun = false
+                        },
+                        new UnrecognizedWordDB()
+                        {
+                            Text = "all",
+                            Type = UnrecognizableTypes.Noun,
+                            WasRecognizedFromPluralFormInNoun = false
+                        },
+                        new UnrecognizedWordDB()
+                        {
+                            Text = "eyesight",
+                            Type = UnrecognizableTypes.Noun,
+                            WasRecognizedFromPluralFormInNoun = false
+                        },
+                    }
+                },
+                new ExerciseDB()
+                {
+                    RusPhrase = "Читая стихотворение ребоенок сделала несколько ошибок.",
+                    EngPhrase = "Reading a poem the child made several mistakes.",
+                    Lesson = lessonDB,
+                    UnrecognizedWords = new List<UnrecognizedWordDB>()
+                    {
+                        new UnrecognizedWordDB()
+                        {
+                            Text = "poem",
+                            Type = UnrecognizableTypes.Noun,
+                            WasRecognizedFromPluralFormInNoun = false
+                        },
+                        new UnrecognizedWordDB()
+                        {
+                            Text = "several",
+                            Type = UnrecognizableTypes.Adjective,
+                        },
+                        new UnrecognizedWordDB()
+                        {
+                            Text = "mistake",
+                            Type = UnrecognizableTypes.Noun,
+                            WasRecognizedFromPluralFormInNoun = false
+                        },
+                    }
+                },
+                new ExerciseDB()
+                {
+                    RusPhrase = "Все большее число людей изучают английский.",
+                    EngPhrase = "Growing number of people learn English.",
+                    Lesson = lessonDB,
+                },
+                new ExerciseDB()
+                {
+                    RusPhrase = "Покупая машину, вам нужно получить страховку.",
+                    EngPhrase = "Buying a car you need to get the insurance.",
+                    Lesson = lessonDB,
+                    UnrecognizedWords = new List<UnrecognizedWordDB>()
+                    {
+                        new UnrecognizedWordDB()
+                        {
+                            Text = "need",
+                            Type = UnrecognizableTypes.RegularVerb,
+                            StressOnTheFinalSyllableInRegularVerb = true
+                        },
+                        new UnrecognizedWordDB()
+                        {
+                            Text = "insurance",
+                            Type = UnrecognizableTypes.Noun,
+                            WasRecognizedFromPluralFormInNoun = false
+                        },
+                    }
+                },
+            };
+
+            SaveExercises(exerciseRepository, dbExercises, lessonDB.Id);
         }
 
         private static void AddExercisesToLesson23(IExerciseRepository exerciseRepository, LessonDB lessonDB)

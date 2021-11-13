@@ -186,6 +186,15 @@
                 </span>
             </span>
         }
+        else if (Model.LessonId == 23)
+        {
+            <span class="lesson-hint lesson-hint23 tooltip">
+                i
+                <span class="tooltiptext">
+                    <partial name="../Shared/Hints/_hint23.cshtml" />
+                </span>
+            </span>
+        }
         <a class="tooltip" href="@Url.Action("LessonInfo", "Home", new { lessonId = Model.LessonId })">
             <span class="lesson-info-link">
                 ?

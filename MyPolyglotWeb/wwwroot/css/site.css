@@ -820,6 +820,12 @@ button {
     left: -582%;
 }
 
+/*for lesson 23*/
+.lesson-hint23 .tooltiptext {
+    width: 600px;
+    left: -619%;
+}}
+
 /*lessons end*/
 .flex {
     display: flex;

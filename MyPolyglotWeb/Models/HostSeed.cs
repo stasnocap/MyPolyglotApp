@@ -43,8 +43,123 @@ namespace MyPolyglotWeb.Models
                 AddExercisesToLesson23(exerciseRepository, lessonRepository.Get(23));
                 AddExercisesToLesson24(exerciseRepository, lessonRepository.Get(24));
                 AddExercisesToLesson25(exerciseRepository, lessonRepository.Get(25));
+                AddExercisesToLesson26(exerciseRepository, lessonRepository.Get(26));
             }
             return host;
+        }
+
+        private static void AddExercisesToLesson26(IExerciseRepository exerciseRepository, LessonDB lessonDB)
+        {
+            var dbExercises = new List<ExerciseDB>()
+            {
+                new ExerciseDB()
+                {
+                    RusPhrase = "Купив немного новой одежды, она почувствовала себя намного лучше.",
+                    EngPhrase = "Having bought some new clothes she felt much better.",
+                    Lesson = lessonDB,
+                    UnrecognizedWords = new List<UnrecognizedWordDB>()
+                    {
+                        new UnrecognizedWordDB()
+                        {
+                            Text = "cloth",
+                            Type = UnrecognizableTypes.Noun,
+                            WasRecognizedFromPluralFormInNoun = true
+                        },
+                    }
+                },
+                new ExerciseDB()
+                {
+                    RusPhrase = "Посмотрев много журналов и газет, он начал писать свой доклад.",
+                    EngPhrase = "Having looked through a lot of jounals and papers he began to write his report.",
+                    Lesson = lessonDB,
+                    UnrecognizedWords = new List<UnrecognizedWordDB>()
+                    {
+                        new UnrecognizedWordDB()
+                        {
+                            Text = "look",
+                            Type = UnrecognizableTypes.RegularVerb,
+                            StressOnTheFinalSyllableInRegularVerb = true
+                        },
+                        new UnrecognizedWordDB()
+                        {
+                            Text = "journals",
+                            Type = UnrecognizableTypes.Noun,
+                            WasRecognizedFromPluralFormInNoun = true
+                        },
+                        new UnrecognizedWordDB()
+                        {
+                            Text = "papers",
+                            Type = UnrecognizableTypes.Noun,
+                            WasRecognizedFromPluralFormInNoun = true
+                        },
+                        new UnrecognizedWordDB()
+                        {
+                            Text = "report",
+                            Type = UnrecognizableTypes.Noun,
+                            WasRecognizedFromPluralFormInNoun = false
+                        },
+                    },
+                },
+                new ExerciseDB()
+                {
+                    RusPhrase = "Приняв мой совет, она последовала ему.",
+                    EngPhrase = "Having taken my advice she followed it.",
+                    Lesson = lessonDB,
+                    UnrecognizedWords = new List<UnrecognizedWordDB>()
+                    {
+                        new UnrecognizedWordDB()
+                        {
+                            Text = "advice",
+                            Type = UnrecognizableTypes.Noun,
+                            WasRecognizedFromPluralFormInNoun = false
+                        },
+                        new UnrecognizedWordDB()
+                        {
+                            Text = "follow",
+                            Type = UnrecognizableTypes.RegularVerb,
+                            StressOnTheFinalSyllableInRegularVerb = false
+                        },
+                    },
+                },
+                new ExerciseDB()
+                {
+                    RusPhrase = "Заплатив штраф, он больше не нарушал закон.",
+                    EngPhrase = "Having paid the fine he did not break the law again.",
+                    Lesson = lessonDB,
+                    UnrecognizedWords = new List<UnrecognizedWordDB>()
+                    {
+                        new UnrecognizedWordDB()
+                        {
+                            Text = "fine",
+                            Type = UnrecognizableTypes.Noun,
+                            WasRecognizedFromPluralFormInNoun = false
+                        },
+                    },
+                },
+                new ExerciseDB()
+                {
+                    RusPhrase = "Обыскав квартиру, они не не нашли никаих доказательств.",
+                    EngPhrase = "Having sought the flat they found no evidence.",
+                    Lesson = lessonDB,
+                    UnrecognizedWords = new List<UnrecognizedWordDB>()
+                    {
+                        new UnrecognizedWordDB()
+                        {
+                            Text = "flat",
+                            Type = UnrecognizableTypes.Noun,
+                            WasRecognizedFromPluralFormInNoun = false
+                        },
+                        new UnrecognizedWordDB()
+                        {
+                            Text = "evidence",
+                            Type = UnrecognizableTypes.RegularVerb,
+                            StressOnTheFinalSyllableInRegularVerb = false
+                        },
+                    },
+                },
+            };
+
+            SaveExercises(exerciseRepository, dbExercises, lessonDB.Id);
         }
 
         private static void AddExercisesToLesson25(IExerciseRepository exerciseRepository, LessonDB lessonDB)

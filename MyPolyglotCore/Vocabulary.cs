@@ -190,7 +190,11 @@ namespace MyPolyglotCore
             new Adverb("just"),
             new Adverb("nearly"),
             new Adverb("more"),
+            new Adverb("anymore"),
             new Adverb("much"),
+            new Adverb("some"),
+            new Adverb("lot"),
+            new Adverb("no"),
         };
 
         public static readonly IEnumerable<Adverb> IntensifierAdverbs = new Adverb[]
@@ -498,7 +502,6 @@ namespace MyPolyglotCore
             new Noun("story"),
             new Noun("fact"),
             new Noun("month"),
-            new Noun("lot"),
             new Noun("book"),
             new Noun("eye"),
             new Noun("job"),

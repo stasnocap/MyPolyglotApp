@@ -45,7 +45,7 @@
   </ol>
 </details>
 
-![product-screenshot](https://github.com/captystacy/MyPolyglotApp/blob/AddReadme/readme-images/home.jpg?raw=true)
+![product-screenshot](https://github.com/captystacy/MyPolyglotApp/blob/master/readme-images/home.jpg?raw=true)
 
 <p align="right">(<a href="#top">вверх</a>)</p>
 

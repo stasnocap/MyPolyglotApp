@@ -98,10 +98,6 @@ password: admin
 
 Информация по уроку.
 
-![product-screenshot](https://github.com/captystacy/MyPolyglotApp/blob/master/readme-images/no-exercises.jpg?raw=true)
-
-Если по уроку еще нет упражнений.
-
 <p align="right">(<a href="#top">вверх</a>)</p>
 
 ## Информация_по_уроку

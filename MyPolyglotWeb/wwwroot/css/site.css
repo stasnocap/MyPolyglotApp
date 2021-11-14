@@ -558,8 +558,8 @@ button {
     }
 
     .tooltip .tooltiptext.tooltiptext-score {
-        width: 250px;
-        margin-left: -125px;
+        width: 100px;
+        margin-left: -47px;
     }
 
 .lesson-info {

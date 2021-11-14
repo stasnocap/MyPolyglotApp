@@ -74,31 +74,31 @@ password: admin
 
 ## Упражнение
 
-![product-screenshot](https://github.com/captystacy/MyPolyglotApp/blob/AddReadme/readme-images/do-exercise1.jpg?raw=true)
+![product-screenshot](https://github.com/captystacy/MyPolyglotApp/blob/master/readme-images/do-exercise1.jpg?raw=true)
 
-![product-screenshot](https://github.com/captystacy/MyPolyglotApp/blob/AddReadme/readme-images/do-exercise2.jpg?raw=true)
+![product-screenshot](https://github.com/captystacy/MyPolyglotApp/blob/master/readme-images/do-exercise2.jpg?raw=true)
 
 <strong>Чтобы отменить выбранное слово необходимо нажать на область имеющую серый цвет.</strong>
 
-![product-screenshot](https://github.com/captystacy/MyPolyglotApp/blob/AddReadme/readme-images/do-exercise3.jpg?raw=true)
+![product-screenshot](https://github.com/captystacy/MyPolyglotApp/blob/master/readme-images/do-exercise3.jpg?raw=true)
 
-![product-screenshot](https://github.com/captystacy/MyPolyglotApp/blob/AddReadme/readme-images/do-exercise-splendid.jpg?raw=true)
+![product-screenshot](https://github.com/captystacy/MyPolyglotApp/blob/master/readme-images/do-exercise-splendid.jpg?raw=true)
 
 За правильный ответ +1 очко.
 
-![product-screenshot](https://github.com/captystacy/MyPolyglotApp/blob/AddReadme/readme-images/do-exercise-wrong.jpg?raw=true)
+![product-screenshot](https://github.com/captystacy/MyPolyglotApp/blob/master/readme-images/do-exercise-wrong.jpg?raw=true)
 
 За неправильный ответ -0.5 очка.
 
-![product-screenshot](https://github.com/captystacy/MyPolyglotApp/blob/AddReadme/readme-images/do-exercise-hint.jpg?raw=true)
+![product-screenshot](https://github.com/captystacy/MyPolyglotApp/blob/master/readme-images/do-exercise-hint.jpg?raw=true)
 
 Подсказка.
 
-![product-screenshot](https://github.com/captystacy/MyPolyglotApp/blob/AddReadme/readme-images/lesson-info-hover.jpg?raw=true)
+![product-screenshot](https://github.com/captystacy/MyPolyglotApp/blob/master/readme-images/lesson-info-hover.jpg?raw=true)
 
 Информация по уроку.
 
-![product-screenshot](https://github.com/captystacy/MyPolyglotApp/blob/AddReadme/readme-images/no-exercises.jpg?raw=true)
+![product-screenshot](https://github.com/captystacy/MyPolyglotApp/blob/master/readme-images/no-exercises.jpg?raw=true)
 
 Если по уроку еще нет упражнений.
 
@@ -106,47 +106,47 @@ password: admin
 
 ## Информация_по_уроку
 
-![product-screenshot](https://github.com/captystacy/MyPolyglotApp/blob/AddReadme/readme-images/lesson-info.jpg?raw=true)
+![product-screenshot](https://github.com/captystacy/MyPolyglotApp/blob/master/readme-images/lesson-info.jpg?raw=true)
 
 <p align="right">(<a href="#top">вверх</a>)</p>
 
 ## Добавить_упражнение
 
-![product-screenshot](https://github.com/captystacy/MyPolyglotApp/blob/AddReadme/readme-images/add-exercise.jpg?raw=true)
-![product-screenshot](https://github.com/captystacy/MyPolyglotApp/blob/AddReadme/readme-images/add-exercise2.jpg?raw=true)
-![product-screenshot](https://github.com/captystacy/MyPolyglotApp/blob/AddReadme/readme-images/add-exercise3.jpg?raw=true)
+![product-screenshot](https://github.com/captystacy/MyPolyglotApp/blob/master/readme-images/add-exercise.jpg?raw=true)
+![product-screenshot](https://github.com/captystacy/MyPolyglotApp/blob/master/readme-images/add-exercise2.jpg?raw=true)
+![product-screenshot](https://github.com/captystacy/MyPolyglotApp/blob/master/readme-images/add-exercise3.jpg?raw=true)
 
 В случае, если Полиглот распознал все слова просто жмем Добавить.
 
-![product-screenshot](https://github.com/captystacy/MyPolyglotApp/blob/AddReadme/readme-images/add-exercise4.jpg?raw=true)
+![product-screenshot](https://github.com/captystacy/MyPolyglotApp/blob/master/readme-images/add-exercise4.jpg?raw=true)
 
 В случае, если полиглот не распознал какие-то слова необходимо сделать эту вручную.
 
-![product-screenshot](https://github.com/captystacy/MyPolyglotApp/blob/AddReadme/readme-images/add-exercise5.jpg?raw=true)
+![product-screenshot](https://github.com/captystacy/MyPolyglotApp/blob/master/readme-images/add-exercise5.jpg?raw=true)
 
 Для любого прилагательного, связки (число + слово), города либо языка необходимо лишь выбрать соответствующий тип.
 
-![product-screenshot](https://github.com/captystacy/MyPolyglotApp/blob/AddReadme/readme-images/add-exercise7.jpg?raw=true)
+![product-screenshot](https://github.com/captystacy/MyPolyglotApp/blob/master/readme-images/add-exercise7.jpg?raw=true)
 
 Для существительного, после выбора его из выпадающего списка, необходимо также указать множественная ли форма нераспознанного слова.
 
-![product-screenshot](https://github.com/captystacy/MyPolyglotApp/blob/AddReadme/readme-images/add-exercise8.jpg?raw=true)
+![product-screenshot](https://github.com/captystacy/MyPolyglotApp/blob/master/readme-images/add-exercise8.jpg?raw=true)
 
 Для правильного глагола, после выбора его из выпадающего списка, необходимо также указать базовую форму глагола. После смещения фокуса, строка исчезнет.
 
-![product-screenshot](https://github.com/captystacy/MyPolyglotApp/blob/AddReadme/readme-images/add-exercise9.jpg?raw=true)
+![product-screenshot](https://github.com/captystacy/MyPolyglotApp/blob/master/readme-images/add-exercise9.jpg?raw=true)
 
 Далее для правильного глагола, нужно указать есть ли ударение на последнем слоге у базовой формы.
 
-![product-screenshot](https://github.com/captystacy/MyPolyglotApp/blob/AddReadme/readme-images/add-exercise10.jpg?raw=true)
+![product-screenshot](https://github.com/captystacy/MyPolyglotApp/blob/master/readme-images/add-exercise10.jpg?raw=true)
 
 Для прилагательного, для которого мы хотим чтобы он генерировал в последствии опции в виде (big, bigger, biggest;expensive, more expensive, most expensive;... so on) необходимо выбрать тип слова "сравнительное прилагательное" и указать базовую форму глагола в случае, если это не исключение и распознаватель не распознал его.
 
-![product-screenshot](https://github.com/captystacy/MyPolyglotApp/blob/AddReadme/readme-images/add-exercise11.jpg?raw=true)
+![product-screenshot](https://github.com/captystacy/MyPolyglotApp/blob/master/readme-images/add-exercise11.jpg?raw=true)
 
 Затем выбрать количество слогов у базовой формы сравнительного прилагательного.
 
-![product-screenshot](https://github.com/captystacy/MyPolyglotApp/blob/AddReadme/readme-images/add-exercise12.jpg?raw=true)
+![product-screenshot](https://github.com/captystacy/MyPolyglotApp/blob/master/readme-images/add-exercise12.jpg?raw=true)
 
 Для числа в буквенной форме необходимо вписать его предствление в цифровом виде.
 

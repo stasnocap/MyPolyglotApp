@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ViewEngines;
 using MyPolyglotWeb.Models.ViewModels;
 using MyPolyglotWeb.Presentations;
 
@@ -6,11 +7,13 @@ namespace MyPolyglotWeb.Controllers
 {
     public class HomeController : Controller
     {
-        private HomePresentation _homePresentation;
+        private readonly HomePresentation _homePresentation;
+        private readonly ICompositeViewEngine _compositeViewEngine;
 
-        public HomeController(HomePresentation homePresentation)
+        public HomeController(HomePresentation homePresentation, ICompositeViewEngine compositeViewEngine)
         {
             _homePresentation = homePresentation;
+            _compositeViewEngine = compositeViewEngine;
         }
 
         [HttpGet]
@@ -69,7 +72,14 @@ namespace MyPolyglotWeb.Controllers
         [HttpGet]
         public IActionResult LessonInfo(long lessonId)
         {
-            return View($"/Views/Home/LessonInfos/LessonInfo{lessonId}.cshtml");
+            var viewPath = $"/Views/Home/LessonInfos/LessonInfo{lessonId}.cshtml";
+
+            if (!_compositeViewEngine.GetView("", viewPath, false).Success)
+            {
+                return View("/Views/Home/NoLessonInfo.cshtml");
+            }
+
+            return View(viewPath);
         }
     }
 }

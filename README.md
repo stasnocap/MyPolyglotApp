@@ -39,6 +39,7 @@
     <li><a href="#упражнение">Упражнение</a></li>
     <li><a href="#информация_по_уроку">Информация_по_уроку</a></li>
     <li><a href="#добавить_упражнение">Добавить_упражнение</a></li>
+    <li><a href="#все_упражнения">Все_упражнения</a></li>
     <li><a href="#как_полиглот_генерирует_опции">Как_полиглот_генерирует_опции</a></li>
     <li><a href="#как_это_работает">Как_это_работает</a></li>
     <li><a href="#идеи">Идеи</a></li>
@@ -145,6 +146,20 @@ password: admin
 ![product-screenshot](https://github.com/captystacy/MyPolyglotApp/blob/master/readme-images/add-exercise12.jpg?raw=true)
 
 Для числа в буквенной форме необходимо вписать его предствление в цифровом виде.
+
+![product-screenshot](https://github.com/captystacy/MyPolyglotApp/blob/master/readme-images/add-exercise-validation.jpg?raw=true)
+
+Валидация.
+
+<p align="right">(<a href="#top">вверх</a>)</p>
+
+## Все_упражнения
+
+![product-screenshot](https://github.com/captystacy/MyPolyglotApp/blob/master/readme-images/table.jpg?raw=true)
+
+Здесь мы можем удалять и редактировать упражнения.
+
+![product-screenshot](https://github.com/captystacy/MyPolyglotApp/blob/master/readme-images/table-edit.jpg?raw=true)
 
 <p align="right">(<a href="#top">вверх</a>)</p>
 

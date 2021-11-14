@@ -157,7 +157,7 @@ password: admin
 
 ![product-screenshot](https://github.com/captystacy/MyPolyglotApp/blob/master/readme-images/table.jpg?raw=true)
 
-Здесь мы можем удалять и редактировать упражнения.
+Здесь мы можем сортировать, редактировать и удалять упражнения.
 
 ![product-screenshot](https://github.com/captystacy/MyPolyglotApp/blob/master/readme-images/table-edit.jpg?raw=true)
 

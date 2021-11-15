@@ -814,6 +814,12 @@ button {
     left: -582%;
 }
 
+/*for lesson 21*/
+.lesson-hint21 .tooltiptext {
+    width: 569px;
+    left: -582%;
+}
+
 /*for lesson 22*/
 .lesson-hint22 .tooltiptext {
     width: 569px;

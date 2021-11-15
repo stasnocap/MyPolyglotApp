@@ -122,6 +122,7 @@ namespace MyPolyglotCore
             new Adverb("softly"),
             new Adverb("quickly"),
             new Adverb("well"),
+            new Adverb("finally"),
         };
 
         public static readonly IEnumerable<Adverb> TellHowItHappenedAdverbs = new Adverb[]
@@ -172,6 +173,7 @@ namespace MyPolyglotCore
             new Adverb("lately"),
             new Adverb("recently"),
             new Adverb("soon"),
+            new Adverb("o'clock"),
         };
 
         public static readonly IEnumerable<Adverb> TellTheExtentOfTheActionAdverbs = new Adverb[]
@@ -188,6 +190,12 @@ namespace MyPolyglotCore
             new Adverb("hardly"),
             new Adverb("just"),
             new Adverb("nearly"),
+            new Adverb("more"),
+            new Adverb("anymore"),
+            new Adverb("much"),
+            new Adverb("some"),
+            new Adverb("lot"),
+            new Adverb("no"),
         };
 
         public static readonly IEnumerable<Adverb> IntensifierAdverbs = new Adverb[]
@@ -386,6 +394,7 @@ namespace MyPolyglotCore
             new Noun("carpenter"),
             new Noun("chef"),
             new Noun("cleaner"),
+            new Noun("courier"),
             new Noun("dentist"),
             new Noun("designer"),
             new Noun("doctor"),
@@ -495,7 +504,6 @@ namespace MyPolyglotCore
             new Noun("story"),
             new Noun("fact"),
             new Noun("month"),
-            new Noun("lot"),
             new Noun("book"),
             new Noun("eye"),
             new Noun("job"),
@@ -546,7 +554,6 @@ namespace MyPolyglotCore
             new Noun("guy"),
             new Noun("moment"),
             new Noun("air"),
-            new Noun("teacher"),
             new Noun("force"),
             new Noun("education"),
         };

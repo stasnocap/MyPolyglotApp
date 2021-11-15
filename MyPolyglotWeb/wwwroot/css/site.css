@@ -558,8 +558,8 @@ button {
     }
 
     .tooltip .tooltiptext.tooltiptext-score {
-        width: 250px;
-        margin-left: -125px;
+        width: 100px;
+        margin-left: -47px;
     }
 
 .lesson-info {
@@ -613,7 +613,7 @@ button {
     left: 96%;
 }
 
-/*hint-table for lesson 1*/
+/*for lesson 1*/
 .lesson-hint1 td.font-size17px {
     font-size: 11px;
 }
@@ -790,6 +790,12 @@ button {
     left: -514%
 }
 
+/*for lesson 17*/
+.lesson-hint17 .tooltiptext {
+    width: 513px;
+    left: -514%
+}
+
 /*for lesson 18*/
 .lesson-hint18 .tooltiptext {
     width: 513px;
@@ -807,6 +813,18 @@ button {
     width: 569px;
     left: -582%;
 }
+
+/*for lesson 22*/
+.lesson-hint22 .tooltiptext {
+    width: 569px;
+    left: -582%;
+}
+
+/*for lesson 23*/
+.lesson-hint23 .tooltiptext {
+    width: 600px;
+    left: -619%;
+}}
 
 /*lessons end*/
 .flex {

@@ -256,26 +256,21 @@ namespace MyPolyglotCore
 
         private IEnumerable<string> GenerateOptions(ModalVerb modalVerb)
         {
-            var modalVerbVocabularyWithoutRightWord = Vocabulary
-                .GetVocabulary(typeof(ModalVerb))
-                .Cast<ModalVerb>()
-                .Where(x => !modalVerb.Equals(x));
-
             if (modalVerb.FromWhatItWasRecognized == modalVerb.FullNegativeForm)
             {
-                return modalVerbVocabularyWithoutRightWord
+                return Vocabulary.ModalVerbs
                     .Select(x => x.FullNegativeForm)
                     .TakeSixShuffledStrings(modalVerb.FullNegativeForm);
             }
 
             if (modalVerb.FromWhatItWasRecognized == modalVerb.ShortNegativeForm)
             {
-                return modalVerbVocabularyWithoutRightWord
+                return Vocabulary.ModalVerbs
                     .Select(x => x.ShortNegativeForm)
                     .TakeSixShuffledStrings(modalVerb.ShortNegativeForm);
             }
 
-            return modalVerbVocabularyWithoutRightWord
+            return Vocabulary.ModalVerbs
                 .Select(x => x.Text)
                 .TakeSixShuffledStrings(modalVerb.Text);
         }

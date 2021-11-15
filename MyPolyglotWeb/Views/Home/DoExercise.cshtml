@@ -141,6 +141,15 @@
                 </span>
             </span>
         }
+        else if (Model.LessonId == 17)
+        {
+            <span class="lesson-hint lesson-hint17 tooltip">
+                i
+                <span class="tooltiptext">
+                    <partial name="../Shared/Hints/_hint17.cshtml" />
+                </span>
+            </span>
+        }
         else if (Model.LessonId == 18)
         {
             <span class="lesson-hint lesson-hint18 tooltip">
@@ -168,6 +177,24 @@
                 </span>
             </span>
         }
+        else if (Model.LessonId == 22)
+        {
+            <span class="lesson-hint lesson-hint22 tooltip">
+                i
+                <span class="tooltiptext">
+                    <partial name="../Shared/Hints/_hint22.cshtml" />
+                </span>
+            </span>
+        }
+        else if (Model.LessonId == 23)
+        {
+            <span class="lesson-hint lesson-hint23 tooltip">
+                i
+                <span class="tooltiptext">
+                    <partial name="../Shared/Hints/_hint23.cshtml" />
+                </span>
+            </span>
+        }
         <a class="tooltip" href="@Url.Action("LessonInfo", "Home", new { lessonId = Model.LessonId })">
             <span class="lesson-info-link">
                 ?
@@ -182,7 +209,7 @@
         <span class="do-exercise__user-score tooltip">
             SCORE: @Model.UserPoints
             <span class="tooltiptext tooltiptext-score">
-                Твои очки. Заработай 100 чтобы перейти к следующему уроку.
+                Твои очки.
             </span>
         </span>
     }

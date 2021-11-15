@@ -22,9 +22,9 @@ namespace MyPolyglotWeb.Models
                 : null;
         }
 
-        public bool IsExist(string engPhrase)
+        public bool IsExist(string engPhrase, long lessonId)
         {
-            return _dbSet.FirstOrDefault(x => x.EngPhrase == engPhrase) != null;
+            return _dbSet.FirstOrDefault(x => x.EngPhrase == engPhrase && x.Lesson.Id == lessonId) != null;
         }
     }
 }

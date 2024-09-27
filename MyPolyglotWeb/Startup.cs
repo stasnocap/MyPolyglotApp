@@ -37,7 +37,11 @@ namespace MyPolyglotWeb
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<WebContext>(
-                 options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+                 options =>
+                 {
+                     // options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
+                     options.UseInMemoryDatabase("polyglot");
+                 });
             services.AddAuthentication(AuthMethod)
                 .AddCookie(AuthMethod, config =>
                 {

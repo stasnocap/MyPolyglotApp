@@ -10,9 +10,9 @@ public class ClaimsPrincipalFactory : IClaimsPrincipalFactory
     public ClaimsPrincipal Create(User user)
     {
         List<Claim> claims = [
-            new(nameof(User.FirstName), user.FirstName.Value),
-            new(nameof(User.LastName), user.LastName.Value),
-            new(nameof(User.Email), user.Email.Value),
+            // new(nameof(User.FirstName), user.FirstName.Value),
+            // new(nameof(User.LastName), user.LastName.Value),
+            // new(nameof(User.Email), user.Email.Value),
         ];
                 
         var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);

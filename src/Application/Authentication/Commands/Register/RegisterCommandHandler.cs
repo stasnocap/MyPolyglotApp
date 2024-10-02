@@ -19,46 +19,48 @@ public class RegisterCommandHandler(
     public async Task<ErrorOr<ClaimsPrincipal>> Handle(RegisterCommand request,
         CancellationToken cancellationToken)
     {
-        var errors = new List<Error>();
+        // var errors = new List<Error>();
+        //
+        // var errorOrEmail = Email.Create(request.Email);
+        // errors.AddRange(errorOrEmail.ErrorsOrEmptyList);
+        // var errorOrFirstName = FirstName.Create(request.FirstName);
+        // errors.AddRange(errorOrFirstName.ErrorsOrEmptyList);
+        // var errorOrLastName = LastName.Create(request.LastName);
+        // errors.AddRange(errorOrLastName.ErrorsOrEmptyList);
+        // var errorOrPassword = Password.Create(request.Password);
+        // errors.AddRange(errorOrPassword.ErrorsOrEmptyList);
+        //
+        // if (errors.Count != 0)
+        // {
+        //     return errors;
+        // }
+        //
+        // if (await _userRepository.SingleOrDefaultAsync(errorOrEmail.Value, cancellationToken) is not null)
+        // {
+        //     return UserErrors.DuplicateEmail;
+        // }
+        //
+        // var firstName = errorOrFirstName.Value;
+        // var lastName = errorOrLastName.Value;
+        // var email = errorOrEmail.Value;
+        // var password = errorOrPassword.Value;
+        //
+        // var user = User.Create();
+        //
+        // new User();
+        //
+        // var errorOrPasswordHash = PasswordHash.Create(_passwordHasher.HashPassword(user, password.Value));
+        // errors.AddRange(errorOrPassword.ErrorsOrEmptyList);
+        //
+        // if (errors.Any())
+        // {
+        //     return errors;
+        // }
+        //
+        // user.PasswordHash = errorOrPasswordHash.Value;
+        //
+        // await _userRepository.AddAsync(user, cancellationToken);
 
-        var errorOrEmail = Email.Create(request.Email);
-        errors.AddRange(errorOrEmail.ErrorsOrEmptyList);
-        var errorOrFirstName = FirstName.Create(request.FirstName);
-        errors.AddRange(errorOrFirstName.ErrorsOrEmptyList);
-        var errorOrLastName = LastName.Create(request.LastName);
-        errors.AddRange(errorOrLastName.ErrorsOrEmptyList);
-        var errorOrPassword = Password.Create(request.Password);
-        errors.AddRange(errorOrPassword.ErrorsOrEmptyList);
-
-        if (errors.Count != 0)
-        {
-            return errors;
-        }
-
-        if (await _userRepository.SingleOrDefaultAsync(errorOrEmail.Value, cancellationToken) is not null)
-        {
-            return UserErrors.DuplicateEmail;
-        }
-
-        var firstName = errorOrFirstName.Value;
-        var lastName = errorOrLastName.Value;
-        var email = errorOrEmail.Value;
-        var password = errorOrPassword.Value;
-
-        var user = User.Create(firstName, lastName, email);
-
-        var errorOrPasswordHash = PasswordHash.Create(_passwordHasher.HashPassword(user, password.Value));
-        errors.AddRange(errorOrPassword.ErrorsOrEmptyList);
-
-        if (errors.Any())
-        {
-            return errors;
-        }
-
-        user.PasswordHash = errorOrPasswordHash.Value;
-
-        await _userRepository.AddAsync(user, cancellationToken);
-
-        return _claimsPrincipalFactory.Create(user);
+        return _claimsPrincipalFactory.Create(null!);
     }
 }

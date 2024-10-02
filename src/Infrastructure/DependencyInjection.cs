@@ -6,7 +6,6 @@ using Infrastructure.Authentication;
 using Infrastructure.Persistence;
 using Infrastructure.Persistence.Repositories;
 using Infrastructure.Services;
-using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -44,8 +43,9 @@ public static class DependencyInjection
 
     private static IServiceCollection AddAuth(this IServiceCollection services, IConfiguration configuration)
     {
-        services.AddAuthentication(defaultScheme: CookieAuthenticationDefaults.AuthenticationScheme)
-            .AddCookie();
+        services
+            .AddDefaultIdentity<User>(options => options.SignIn.RequireConfirmedAccount = true)
+            .AddEntityFrameworkStores<AppDbContext>();
 
         return services;
     }

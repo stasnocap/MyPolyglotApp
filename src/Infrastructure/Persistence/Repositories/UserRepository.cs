@@ -9,24 +9,29 @@ public class UserRepository(AppDbContext _dbContext) : IUserRepository
 {
     public Task<User?> SingleOrDefaultAsync(Email email, CancellationToken cancellationToken)
     {
-        return _dbContext
-            .Set<User>()
-            .SingleOrDefaultAsync(x => x.Email == email, cancellationToken);
+        // return _dbContext
+        //     .Set<User>()
+        //     .SingleOrDefaultAsync(x => x.Email == email, cancellationToken);
+        return null!;
     }
 
     public Task<User?> SingleOrDefaultAsync(UserId userId, CancellationToken cancellationToken)
     {
-        return _dbContext
-            .Set<User>()
-            .SingleOrDefaultAsync(x => x.Id == userId, cancellationToken);
+        return null!;
+
+        // return _dbContext
+        //     .Set<User>()
+        //     .SingleOrDefaultAsync(x => x.Id == userId, cancellationToken);
     }
 
     public Task AddAsync(User user, CancellationToken cancellationToken)
     {
-        _dbContext
-            .Set<User>()
-            .Add(user);
-        
-        return _dbContext.SaveChangesAsync(cancellationToken);
+        return null!;
+
+        // _dbContext
+        //     .Set<User>()
+        //     .Add(user);
+        //
+        // return _dbContext.SaveChangesAsync(cancellationToken);
     }
 }

@@ -19,7 +19,7 @@ public class AuthenticationController(ISender _mediatr, IMapper _mapper) : ApiCo
 
         var result = await _mediatr.Send(command, HttpContext.RequestAborted);
 
-        return result.Match(r => Created((Uri?)null, _mapper.Map<AuthenticationResponse>(r)), Problem);
+        return result.Match(SignIn, Problem);
     }
 
     [HttpPost("login")]
@@ -29,6 +29,6 @@ public class AuthenticationController(ISender _mediatr, IMapper _mapper) : ApiCo
 
         var result = await _mediatr.Send(query, HttpContext.RequestAborted);
 
-        return result.Match(r => Ok(_mapper.Map<AuthenticationResponse>(r)), Problem);
+        return result.Match(SignIn, Problem);
     }
 }

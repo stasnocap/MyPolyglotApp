@@ -1,5 +1,5 @@
-﻿using Application.Authentication.Common;
-using Application.Common.Interfaces.Authentication;
+﻿using System.Security.Claims;
+using Application.Common.Authentication;
 using Application.Common.Interfaces.Persistence;
 using Domain.Users;
 using Domain.Users.Errors;
@@ -12,32 +12,32 @@ namespace Application.Authentication.Commands.Register;
 
 public class RegisterCommandHandler(
     IUserRepository _userRepository,
-    IJwtTokenGenerator _jwtTokenGenerator,
-    IPasswordHasher<User> _passwordHasher)
-    : IRequestHandler<RegisterCommand, ErrorOr<AuthenticationResult>>
+    IPasswordHasher<User> _passwordHasher,
+    IClaimsPrincipalFactory _claimsPrincipalFactory)
+    : IRequestHandler<RegisterCommand, ErrorOr<ClaimsPrincipal>>
 {
-    public async Task<ErrorOr<AuthenticationResult>> Handle(RegisterCommand request,
+    public async Task<ErrorOr<ClaimsPrincipal>> Handle(RegisterCommand request,
         CancellationToken cancellationToken)
     {
-        if (await _userRepository.SingleOrDefaultAsync(request.Email, cancellationToken) is not null)
-        {
-            return UserErrors.DuplicateEmail;
-        }
-
         var errors = new List<Error>();
 
+        var errorOrEmail = Email.Create(request.Email);
+        errors.AddRange(errorOrEmail.ErrorsOrEmptyList);
         var errorOrFirstName = FirstName.Create(request.FirstName);
         errors.AddRange(errorOrFirstName.ErrorsOrEmptyList);
         var errorOrLastName = LastName.Create(request.LastName);
         errors.AddRange(errorOrLastName.ErrorsOrEmptyList);
-        var errorOrEmail = Email.Create(request.Email);
-        errors.AddRange(errorOrEmail.ErrorsOrEmptyList);
         var errorOrPassword = Password.Create(request.Password);
         errors.AddRange(errorOrPassword.ErrorsOrEmptyList);
 
-        if (errors.Any())
+        if (errors.Count != 0)
         {
             return errors;
+        }
+
+        if (await _userRepository.SingleOrDefaultAsync(errorOrEmail.Value, cancellationToken) is not null)
+        {
+            return UserErrors.DuplicateEmail;
         }
 
         var firstName = errorOrFirstName.Value;
@@ -59,8 +59,6 @@ public class RegisterCommandHandler(
 
         await _userRepository.AddAsync(user, cancellationToken);
 
-        var token = _jwtTokenGenerator.GenerateToken(user);
-
-        return new AuthenticationResult(user, request.Email, token);
+        return _claimsPrincipalFactory.Create(user);
     }
 }

@@ -1,23 +1,32 @@
 ﻿using Application.Common.Interfaces.Persistence;
 using Domain.Users;
 using Domain.Users.ValueObjects;
+using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Persistence.Repositories;
 
-public class UserRepository : IUserRepository
+public class UserRepository(AppDbContext _dbContext) : IUserRepository
 {
-    public Task<User?> SingleOrDefaultAsync(string email, CancellationToken cancellationToken)
+    public Task<User?> SingleOrDefaultAsync(Email email, CancellationToken cancellationToken)
     {
-        throw new NotImplementedException();
+        return _dbContext
+            .Set<User>()
+            .SingleOrDefaultAsync(x => x.Email == email, cancellationToken);
     }
 
     public Task<User?> SingleOrDefaultAsync(UserId userId, CancellationToken cancellationToken)
     {
-        throw new NotImplementedException();
+        return _dbContext
+            .Set<User>()
+            .SingleOrDefaultAsync(x => x.Id == userId, cancellationToken);
     }
 
     public Task AddAsync(User user, CancellationToken cancellationToken)
     {
-        throw new NotImplementedException();
+        _dbContext
+            .Set<User>()
+            .Add(user);
+        
+        return _dbContext.SaveChangesAsync(cancellationToken);
     }
 }

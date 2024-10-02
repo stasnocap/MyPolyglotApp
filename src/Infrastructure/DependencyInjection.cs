@@ -1,17 +1,16 @@
-﻿using System.Text;
-using Application.Common.Interfaces.Authentication;
+﻿using Application.Common.Authentication;
 using Application.Common.Interfaces.Persistence;
 using Application.Common.Interfaces.Services;
 using Domain.Users;
 using Infrastructure.Authentication;
+using Infrastructure.Persistence;
 using Infrastructure.Persistence.Repositories;
 using Infrastructure.Services;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Options;
-using Microsoft.IdentityModel.Tokens;
 
 namespace Infrastructure;
 
@@ -21,35 +20,32 @@ public static class DependencyInjection
         IConfiguration configuration)
     {
         services.AddAuth(configuration);
+        services.AddSingleton<IClaimsPrincipalFactory, ClaimsPrincipalFactory>();
         services.AddSingleton<IDateTimeProvider, DateTimeProvider>();
         services.AddHttpContextAccessor();
         services.AddScoped<IUserContext, UserContext>();
-        services.AddScoped<IUserRepository, UserRepository>();
-
         services.AddScoped<IPasswordHasher<User>, PasswordHasher<User>>();
-        
+        services.AddPostgresDatabase(configuration);
         return services;
+    }
+
+    private static void AddPostgresDatabase(this IServiceCollection services, IConfiguration configuration)
+    {
+        var connectionString = configuration.GetConnectionString("Database");
+        if (string.IsNullOrWhiteSpace(connectionString))
+        {
+            throw new ArgumentNullException(nameof(connectionString), "Database connection string can't be empty.");
+        }
+        
+        services.AddDbContext<AppDbContext>(options => options.UseNpgsql(connectionString));
+        
+        services.AddScoped<IUserRepository, UserRepository>();
     }
 
     private static IServiceCollection AddAuth(this IServiceCollection services, IConfiguration configuration)
     {
-        var jwtSettings = new JwtSettings();
-        configuration.Bind(JwtSettings.SectionName, jwtSettings);
-
-        services.AddSingleton(Options.Create(jwtSettings));
-        services.AddSingleton<IJwtTokenGenerator, JwtTokenGenerator>();
-
-        services.AddAuthentication(defaultScheme: JwtBearerDefaults.AuthenticationScheme)
-            .AddJwtBearer(options => options.TokenValidationParameters = new TokenValidationParameters
-            {
-                ValidateIssuer = true,
-                ValidateAudience = true,
-                ValidateLifetime = true,
-                ValidateIssuerSigningKey = true,
-                ValidIssuer = jwtSettings.Issuer,
-                ValidAudience = jwtSettings.Audience,
-                IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSettings.Secret))
-            });
+        services.AddAuthentication(defaultScheme: CookieAuthenticationDefaults.AuthenticationScheme)
+            .AddCookie();
 
         return services;
     }

@@ -1,20 +1,28 @@
-﻿using Application.Authentication.Common;
-using Application.Common.Interfaces.Authentication;
+﻿using System.Security.Claims;
+using Application.Common.Authentication;
 using Application.Common.Interfaces.Persistence;
 using Domain.Users;
 using Domain.Users.Errors;
+using Domain.Users.ValueObjects;
 using ErrorOr;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
 
 namespace Application.Authentication.Queries.Login;
 
-public class LoginQueryHandler(IUserRepository _userRepository, IJwtTokenGenerator _jwtTokenGenerator, IPasswordHasher<User> _passwordHasher)
-    : IRequestHandler<LoginQuery, ErrorOr<AuthenticationResult>>
+public class LoginQueryHandler(IUserRepository _userRepository, IPasswordHasher<User> _passwordHasher, IClaimsPrincipalFactory _claimsPrincipalFactory)
+    : IRequestHandler<LoginQuery, ErrorOr<ClaimsPrincipal>>
 {
-    public async Task<ErrorOr<AuthenticationResult>> Handle(LoginQuery request, CancellationToken cancellationToken)
+    public async Task<ErrorOr<ClaimsPrincipal>> Handle(LoginQuery request, CancellationToken cancellationToken)
     {
-        var user = await _userRepository.SingleOrDefaultAsync(request.Email, cancellationToken);
+        var errorOrEmail = Email.Create(request.Email);
+
+        if (errorOrEmail.IsError)
+        {
+            return errorOrEmail.Errors;
+        }
+
+        var user = await _userRepository.SingleOrDefaultAsync(errorOrEmail.Value, cancellationToken);
 
         if (user is null)
         {
@@ -27,9 +35,7 @@ public class LoginQueryHandler(IUserRepository _userRepository, IJwtTokenGenerat
         {
             return AuthenticationErrors.InvalidCredentials;
         }
-
-        var token = _jwtTokenGenerator.GenerateToken(user);
-
-        return new AuthenticationResult(user, request.Email, token);
+        
+        return _claimsPrincipalFactory.Create(user);
     }
 }

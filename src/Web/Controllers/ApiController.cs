@@ -7,6 +7,7 @@ using Web.Common.Http;
 namespace Web.Controllers;
 
 [ApiController]
+[Authorize]
 public class ApiController : ControllerBase
 {
     protected IActionResult Problem(List<Error> errors)

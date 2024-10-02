@@ -18,7 +18,13 @@ var app = builder.Build();
     app.UseStaticFiles();
     app.UseAuthentication();
     app.UseAuthorization();
-    app.MapControllers();
+    
+    var mapControllers = app.MapControllers();
+    if (!builder.Environment.IsDevelopment())
+    {
+        mapControllers.RequireAuthorization();
+    }
+    
     app.MapRazorPages();
     app.Run();
 }

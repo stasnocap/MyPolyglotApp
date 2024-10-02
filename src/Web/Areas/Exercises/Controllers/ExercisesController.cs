@@ -4,8 +4,9 @@ using Contracts.Exercises.Responses;
 using MapsterMapper;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using Web.Controllers;
 
-namespace Web.Controllers;
+namespace Web.Areas.Exercises.Controllers;
 
 [Route("exercises")]
 public class ExercisesController(ISender _sender, IMapper _mapper) : ApiController

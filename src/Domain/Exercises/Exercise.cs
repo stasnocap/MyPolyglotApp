@@ -11,16 +11,20 @@ public sealed class Exercise : AggregateRoot<ExerciseId>
     private readonly List<Word> _words = [];
     
     public LessonId LessonId { get; }
+    public EngPhrase EngPhrase { get; }
+    public RusPhrase RusPhrase { get; }
     public IReadOnlyList<Word> Words => _words.AsReadOnly();
     
-    private Exercise(ExerciseId id, LessonId lessonId) : base(id)
+    private Exercise(ExerciseId id, LessonId lessonId, EngPhrase engPhrase, RusPhrase rusPhrase) : base(id)
     {
         LessonId = lessonId;
+        EngPhrase = engPhrase;
+        RusPhrase = rusPhrase;
     }
 
-    public static ErrorOr<Exercise> Create(LessonId lessonId)
+    public static ErrorOr<Exercise> Create(LessonId lessonId, EngPhrase engPhrase, RusPhrase rusPhrase)
     {
-        return new Exercise(ExerciseId.CreateUnique(), lessonId);
+        return new Exercise(ExerciseId.CreateUnique(), lessonId, engPhrase, rusPhrase);
     }
 
     public void AddWord(Word word)

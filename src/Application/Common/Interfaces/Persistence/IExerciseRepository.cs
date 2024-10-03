@@ -1,5 +1,5 @@
-﻿using Domain.Exercises;
-using Domain.Lessons.ValueObjects;
+﻿using Domain.Practice.Exercises;
+using Domain.Practice.Lessons.ValueObjects;
 
 namespace Application.Common.Interfaces.Persistence;
 

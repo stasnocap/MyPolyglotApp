@@ -4,7 +4,7 @@
 
 using System;
 using System.Threading.Tasks;
-using Domain.Users;
+using Domain.Identity;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;

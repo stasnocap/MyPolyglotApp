@@ -1,5 +1,5 @@
-﻿using Domain.Users;
-using Domain.Users.ValueObjects;
+﻿using Domain.Identity;
+using Domain.Identity.ValueObjects;
 
 namespace Application.Common.Interfaces.Persistence;
 

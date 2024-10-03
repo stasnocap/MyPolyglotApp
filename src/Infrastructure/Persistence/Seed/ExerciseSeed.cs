@@ -1,6 +1,6 @@
-﻿using Domain.Exercises;
-using Domain.Exercises.Entities;
-using Domain.Exercises.ValueObjects;
+﻿using Domain.Practice.Exercises;
+using Domain.Practice.Exercises.Entities;
+using Domain.Practice.Exercises.ValueObjects;
 
 namespace Infrastructure.Persistence.Seed;
 

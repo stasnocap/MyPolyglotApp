@@ -1,5 +1,5 @@
-﻿using Domain.Lessons;
-using Domain.Lessons.ValueObjects;
+﻿using Domain.Practice.Lessons;
+using Domain.Practice.Lessons.ValueObjects;
 
 namespace Infrastructure.Persistence.Seed;
 

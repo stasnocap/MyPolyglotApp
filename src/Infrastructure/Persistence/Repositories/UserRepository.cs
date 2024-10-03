@@ -1,6 +1,6 @@
 ﻿using Application.Common.Interfaces.Persistence;
-using Domain.Users;
-using Domain.Users.ValueObjects;
+using Domain.Identity;
+using Domain.Identity.ValueObjects;
 using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Persistence.Repositories;

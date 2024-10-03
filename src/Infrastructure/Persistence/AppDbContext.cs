@@ -1,4 +1,5 @@
-﻿using Domain.Users;
+﻿using Domain.Identity;
+using Infrastructure.Persistence.Configurations;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
@@ -18,7 +19,7 @@ public class AppDbContext(DbContextOptions options) : IdentityDbContext<User, Id
 
     private static void SetIdentitySchema(ModelBuilder modelBuilder)
     {
-        const string identitySchema = "identity";
+        const string identitySchema = Schemas.Identity;
         modelBuilder.Entity<IdentityRoleClaim<Guid>>().ToTable("AspNetRoleClaims", identitySchema);
         modelBuilder.Entity<IdentityRole<Guid>>().ToTable("AspNetRoles", identitySchema);
         modelBuilder.Entity<IdentityUserClaim<Guid>>().ToTable("AspNetUserClaims", identitySchema);

@@ -1,6 +1,6 @@
 ﻿using Application.Common.Interfaces.Persistence;
-using Domain.Exercises;
-using Domain.Lessons.ValueObjects;
+using Domain.Practice.Exercises;
+using Domain.Practice.Lessons.ValueObjects;
 using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Persistence.Repositories;

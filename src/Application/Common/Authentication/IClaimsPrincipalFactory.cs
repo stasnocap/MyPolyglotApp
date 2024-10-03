@@ -1,5 +1,5 @@
 ﻿using System.Security.Claims;
-using Domain.Users;
+using Domain.Identity;
 
 namespace Application.Common.Authentication;
 

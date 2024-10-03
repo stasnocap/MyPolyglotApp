@@ -1,6 +1,6 @@
 ﻿using System.Security.Claims;
 using Application.Common.Authentication;
-using Domain.Users;
+using Domain.Identity;
 using Microsoft.AspNetCore.Authentication.Cookies;
 
 namespace Infrastructure.Authentication;

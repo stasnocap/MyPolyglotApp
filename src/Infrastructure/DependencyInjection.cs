@@ -1,7 +1,7 @@
 ﻿using Application.Common.Authentication;
 using Application.Common.Interfaces.Persistence;
 using Application.Common.Interfaces.Services;
-using Domain.Users;
+using Domain.Identity;
 using Infrastructure.Authentication;
 using Infrastructure.Persistence;
 using Infrastructure.Persistence.Repositories;

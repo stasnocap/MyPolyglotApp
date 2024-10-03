@@ -22,94 +22,7 @@ namespace Infrastructure.Persistence.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
-            modelBuilder.Entity("Domain.Exercises.Exercise", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .HasColumnType("uuid");
-
-                    b.Property<string>("EngPhrase")
-                        .IsRequired()
-                        .HasMaxLength(255)
-                        .HasColumnType("character varying(255)");
-
-                    b.Property<Guid>("LessonId")
-                        .HasColumnType("uuid");
-
-                    b.Property<string>("RusPhrase")
-                        .IsRequired()
-                        .HasMaxLength(255)
-                        .HasColumnType("character varying(255)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Exercises", "lessons");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = new Guid("6ed88863-0c5d-45cd-b361-3071bf62a907"),
-                            EngPhrase = "Ты не увидишь.",
-                            LessonId = new Guid("099df6d4-f116-4b6e-8cae-96dd9f3623dd"),
-                            RusPhrase = "You will not see."
-                        },
-                        new
-                        {
-                            Id = new Guid("ec6ea7e1-3dbb-45a7-801c-3441c6ef962f"),
-                            EngPhrase = "Will we show?",
-                            LessonId = new Guid("099df6d4-f116-4b6e-8cae-96dd9f3623dd"),
-                            RusPhrase = "Мы покажем?"
-                        },
-                        new
-                        {
-                            Id = new Guid("dacb0b73-7bb2-491f-9bf6-adb1f3e2f50f"),
-                            EngPhrase = "She worked.",
-                            LessonId = new Guid("099df6d4-f116-4b6e-8cae-96dd9f3623dd"),
-                            RusPhrase = "Она работала."
-                        },
-                        new
-                        {
-                            Id = new Guid("f8d8fcb2-4df3-4321-9538-fe576ef04c2d"),
-                            EngPhrase = "You didn't think.",
-                            LessonId = new Guid("099df6d4-f116-4b6e-8cae-96dd9f3623dd"),
-                            RusPhrase = "Ты не думал."
-                        },
-                        new
-                        {
-                            Id = new Guid("69dfc0ba-ac95-44bb-b412-b36b2a45f6bb"),
-                            EngPhrase = "Will i look?",
-                            LessonId = new Guid("099df6d4-f116-4b6e-8cae-96dd9f3623dd"),
-                            RusPhrase = "Я посмотрю?"
-                        });
-                });
-
-            modelBuilder.Entity("Domain.Lessons.Lesson", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .HasColumnType("uuid");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(255)
-                        .HasColumnType("character varying(255)");
-
-                    b.Property<int>("Number")
-                        .HasMaxLength(255)
-                        .HasColumnType("integer");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Lessons", "lessons");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = new Guid("099df6d4-f116-4b6e-8cae-96dd9f3623dd"),
-                            Name = "Базовая форма глагола",
-                            Number = 1
-                        });
-                });
-
-            modelBuilder.Entity("Domain.Users.User", b =>
+            modelBuilder.Entity("Domain.Identity.User", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -172,6 +85,93 @@ namespace Infrastructure.Persistence.Migrations
                         .HasDatabaseName("UserNameIndex");
 
                     b.ToTable("AspNetUsers", "identity");
+                });
+
+            modelBuilder.Entity("Domain.Practice.Exercises.Exercise", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("EngPhrase")
+                        .IsRequired()
+                        .HasMaxLength(255)
+                        .HasColumnType("character varying(255)");
+
+                    b.Property<Guid>("LessonId")
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("RusPhrase")
+                        .IsRequired()
+                        .HasMaxLength(255)
+                        .HasColumnType("character varying(255)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Exercises", "practice");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("6ed88863-0c5d-45cd-b361-3071bf62a907"),
+                            EngPhrase = "Ты не увидишь.",
+                            LessonId = new Guid("099df6d4-f116-4b6e-8cae-96dd9f3623dd"),
+                            RusPhrase = "You will not see."
+                        },
+                        new
+                        {
+                            Id = new Guid("ec6ea7e1-3dbb-45a7-801c-3441c6ef962f"),
+                            EngPhrase = "Will we show?",
+                            LessonId = new Guid("099df6d4-f116-4b6e-8cae-96dd9f3623dd"),
+                            RusPhrase = "Мы покажем?"
+                        },
+                        new
+                        {
+                            Id = new Guid("dacb0b73-7bb2-491f-9bf6-adb1f3e2f50f"),
+                            EngPhrase = "She worked.",
+                            LessonId = new Guid("099df6d4-f116-4b6e-8cae-96dd9f3623dd"),
+                            RusPhrase = "Она работала."
+                        },
+                        new
+                        {
+                            Id = new Guid("f8d8fcb2-4df3-4321-9538-fe576ef04c2d"),
+                            EngPhrase = "You didn't think.",
+                            LessonId = new Guid("099df6d4-f116-4b6e-8cae-96dd9f3623dd"),
+                            RusPhrase = "Ты не думал."
+                        },
+                        new
+                        {
+                            Id = new Guid("69dfc0ba-ac95-44bb-b412-b36b2a45f6bb"),
+                            EngPhrase = "Will i look?",
+                            LessonId = new Guid("099df6d4-f116-4b6e-8cae-96dd9f3623dd"),
+                            RusPhrase = "Я посмотрю?"
+                        });
+                });
+
+            modelBuilder.Entity("Domain.Practice.Lessons.Lesson", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(255)
+                        .HasColumnType("character varying(255)");
+
+                    b.Property<int>("Number")
+                        .HasMaxLength(255)
+                        .HasColumnType("integer");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Lessons", "practice");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("099df6d4-f116-4b6e-8cae-96dd9f3623dd"),
+                            Name = "Базовая форма глагола",
+                            Number = 1
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole<System.Guid>", b =>
@@ -308,9 +308,39 @@ namespace Infrastructure.Persistence.Migrations
                     b.ToTable("AspNetUserTokens", "identity");
                 });
 
-            modelBuilder.Entity("Domain.Exercises.Exercise", b =>
+            modelBuilder.Entity("Domain.Identity.User", b =>
                 {
-                    b.OwnsMany("Domain.Exercises.Entities.Word", "Words", b1 =>
+                    b.OwnsMany("Domain.Practice.Scores.ValueObjects.ScoreId", "ScoreIds", b1 =>
+                        {
+                            b1.Property<int>("Id")
+                                .ValueGeneratedOnAdd()
+                                .HasColumnType("integer");
+
+                            NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b1.Property<int>("Id"));
+
+                            b1.Property<Guid>("UserId")
+                                .HasColumnType("uuid");
+
+                            b1.Property<Guid>("Value")
+                                .HasColumnType("uuid")
+                                .HasColumnName("ScoreId");
+
+                            b1.HasKey("Id");
+
+                            b1.HasIndex("UserId");
+
+                            b1.ToTable("UserScoreIds", "identity");
+
+                            b1.WithOwner()
+                                .HasForeignKey("UserId");
+                        });
+
+                    b.Navigation("ScoreIds");
+                });
+
+            modelBuilder.Entity("Domain.Practice.Exercises.Exercise", b =>
+                {
+                    b.OwnsMany("Domain.Practice.Exercises.Entities.Word", "Words", b1 =>
                         {
                             b1.Property<Guid>("Id")
                                 .HasColumnType("uuid");
@@ -328,7 +358,7 @@ namespace Infrastructure.Persistence.Migrations
 
                             b1.HasIndex("ExerciseId");
 
-                            b1.ToTable("Words", "lessons");
+                            b1.ToTable("Words", "practice");
 
                             b1.WithOwner()
                                 .HasForeignKey("ExerciseId");
@@ -336,98 +366,98 @@ namespace Infrastructure.Persistence.Migrations
                             b1.HasData(
                                 new
                                 {
-                                    Id = new Guid("7bea42aa-c74f-4cad-834d-cf97b8285cdd"),
+                                    Id = new Guid("367c462d-4ee7-4a18-a893-72f6d7f06627"),
                                     ExerciseId = new Guid("6ed88863-0c5d-45cd-b361-3071bf62a907"),
                                     Number = 1,
                                     Type = 14
                                 },
                                 new
                                 {
-                                    Id = new Guid("89fa3ec6-d2ae-4fc0-b87a-036f97e5a027"),
+                                    Id = new Guid("275afd08-1346-4b40-bebb-da9c29191564"),
                                     ExerciseId = new Guid("6ed88863-0c5d-45cd-b361-3071bf62a907"),
                                     Number = 2,
                                     Type = 9
                                 },
                                 new
                                 {
-                                    Id = new Guid("7e0de572-9cb1-4e82-b812-97dd6347fa2e"),
+                                    Id = new Guid("025b5bb4-c9e1-4e78-ba1c-fca0d1682c1d"),
                                     ExerciseId = new Guid("6ed88863-0c5d-45cd-b361-3071bf62a907"),
                                     Number = 3,
                                     Type = 16
                                 },
                                 new
                                 {
-                                    Id = new Guid("a8785465-31a9-406f-9c80-346b00a3c563"),
+                                    Id = new Guid("4e1ff101-6d6f-494c-9176-e7166141786a"),
                                     ExerciseId = new Guid("ec6ea7e1-3dbb-45a7-801c-3441c6ef962f"),
                                     Number = 1,
                                     Type = 9
                                 },
                                 new
                                 {
-                                    Id = new Guid("ff51e2ad-30d6-46e6-a650-ea6213871953"),
+                                    Id = new Guid("266676ca-171d-4732-bc40-f12bd6df44f0"),
                                     ExerciseId = new Guid("ec6ea7e1-3dbb-45a7-801c-3441c6ef962f"),
                                     Number = 2,
                                     Type = 14
                                 },
                                 new
                                 {
-                                    Id = new Guid("54d4acf1-1085-4e7e-a8ca-e75771753d08"),
+                                    Id = new Guid("bb4b8972-c64c-4f87-a047-a04336a7f18e"),
                                     ExerciseId = new Guid("ec6ea7e1-3dbb-45a7-801c-3441c6ef962f"),
                                     Number = 3,
                                     Type = 16
                                 },
                                 new
                                 {
-                                    Id = new Guid("4f0c61b7-adfe-41cc-93d8-db36bdeffca3"),
+                                    Id = new Guid("f0511203-5ae6-46cc-b5b7-c68e3b4f7057"),
                                     ExerciseId = new Guid("dacb0b73-7bb2-491f-9bf6-adb1f3e2f50f"),
                                     Number = 1,
                                     Type = 14
                                 },
                                 new
                                 {
-                                    Id = new Guid("444f91d9-f5d8-4700-ba2d-65d87575817b"),
+                                    Id = new Guid("d5b8ee02-bea0-4b61-a911-d9d0a8b9d960"),
                                     ExerciseId = new Guid("dacb0b73-7bb2-491f-9bf6-adb1f3e2f50f"),
                                     Number = 2,
                                     Type = 16
                                 },
                                 new
                                 {
-                                    Id = new Guid("b65930a2-bf2d-4eec-8b6d-4a4ef33fe501"),
+                                    Id = new Guid("5d114101-ac9f-478d-a44d-a8eb62df31f4"),
                                     ExerciseId = new Guid("f8d8fcb2-4df3-4321-9538-fe576ef04c2d"),
                                     Number = 1,
                                     Type = 14
                                 },
                                 new
                                 {
-                                    Id = new Guid("ee9c95aa-b9c4-4f0b-84a4-d39c03886d68"),
+                                    Id = new Guid("8547f67c-ee17-4e52-be8c-0b1e36655e49"),
                                     ExerciseId = new Guid("f8d8fcb2-4df3-4321-9538-fe576ef04c2d"),
                                     Number = 2,
                                     Type = 13
                                 },
                                 new
                                 {
-                                    Id = new Guid("8bf34191-c641-4f68-bab3-bd22758166c7"),
+                                    Id = new Guid("13394798-f440-42c6-a29c-f3b0a2c3ac75"),
                                     ExerciseId = new Guid("f8d8fcb2-4df3-4321-9538-fe576ef04c2d"),
                                     Number = 3,
                                     Type = 16
                                 },
                                 new
                                 {
-                                    Id = new Guid("b5ed1e9b-005f-492d-aed0-88e28f7d2f8e"),
+                                    Id = new Guid("b69c646d-0764-4f8b-babc-851202589f7d"),
                                     ExerciseId = new Guid("69dfc0ba-ac95-44bb-b412-b36b2a45f6bb"),
                                     Number = 1,
                                     Type = 9
                                 },
                                 new
                                 {
-                                    Id = new Guid("107f9dec-e5f8-4ef5-90c7-0d7887d151fb"),
+                                    Id = new Guid("b0da53aa-6bd8-47c7-9d45-d52d4286f049"),
                                     ExerciseId = new Guid("69dfc0ba-ac95-44bb-b412-b36b2a45f6bb"),
                                     Number = 2,
                                     Type = 14
                                 },
                                 new
                                 {
-                                    Id = new Guid("d1e6435b-55da-4882-bc8a-755cdf2e9216"),
+                                    Id = new Guid("b5ce28cb-d49e-4aee-a9f1-8f2fddfdfe7d"),
                                     ExerciseId = new Guid("69dfc0ba-ac95-44bb-b412-b36b2a45f6bb"),
                                     Number = 3,
                                     Type = 16
@@ -437,9 +467,9 @@ namespace Infrastructure.Persistence.Migrations
                     b.Navigation("Words");
                 });
 
-            modelBuilder.Entity("Domain.Lessons.Lesson", b =>
+            modelBuilder.Entity("Domain.Practice.Lessons.Lesson", b =>
                 {
-                    b.OwnsMany("Domain.Exercises.ValueObjects.ExerciseId", "ExerciseIds", b1 =>
+                    b.OwnsMany("Domain.Practice.Exercises.ValueObjects.ExerciseId", "ExerciseIds", b1 =>
                         {
                             b1.Property<int>("Id")
                                 .ValueGeneratedOnAdd()
@@ -458,7 +488,7 @@ namespace Infrastructure.Persistence.Migrations
 
                             b1.HasIndex("LessonId");
 
-                            b1.ToTable("LessonExerciseIds", "lessons");
+                            b1.ToTable("LessonExerciseIds", "practice");
 
                             b1.WithOwner()
                                 .HasForeignKey("LessonId");
@@ -496,7 +526,7 @@ namespace Infrastructure.Persistence.Migrations
                                 });
                         });
 
-                    b.OwnsMany("Domain.Scores.ValueObjects.ScoreId", "ScoreIds", b1 =>
+                    b.OwnsMany("Domain.Practice.Scores.ValueObjects.ScoreId", "ScoreIds", b1 =>
                         {
                             b1.Property<int>("Id")
                                 .ValueGeneratedOnAdd()
@@ -515,43 +545,13 @@ namespace Infrastructure.Persistence.Migrations
 
                             b1.HasIndex("LessonId");
 
-                            b1.ToTable("LessonScoreIds", "lessons");
+                            b1.ToTable("LessonScoreIds", "practice");
 
                             b1.WithOwner()
                                 .HasForeignKey("LessonId");
                         });
 
                     b.Navigation("ExerciseIds");
-
-                    b.Navigation("ScoreIds");
-                });
-
-            modelBuilder.Entity("Domain.Users.User", b =>
-                {
-                    b.OwnsMany("Domain.Scores.ValueObjects.ScoreId", "ScoreIds", b1 =>
-                        {
-                            b1.Property<int>("Id")
-                                .ValueGeneratedOnAdd()
-                                .HasColumnType("integer");
-
-                            NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b1.Property<int>("Id"));
-
-                            b1.Property<Guid>("UserId")
-                                .HasColumnType("uuid");
-
-                            b1.Property<Guid>("Value")
-                                .HasColumnType("uuid")
-                                .HasColumnName("ScoreId");
-
-                            b1.HasKey("Id");
-
-                            b1.HasIndex("UserId");
-
-                            b1.ToTable("UserScoreIds", "identity");
-
-                            b1.WithOwner()
-                                .HasForeignKey("UserId");
-                        });
 
                     b.Navigation("ScoreIds");
                 });
@@ -567,7 +567,7 @@ namespace Infrastructure.Persistence.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<System.Guid>", b =>
                 {
-                    b.HasOne("Domain.Users.User", null)
+                    b.HasOne("Domain.Identity.User", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -576,7 +576,7 @@ namespace Infrastructure.Persistence.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<System.Guid>", b =>
                 {
-                    b.HasOne("Domain.Users.User", null)
+                    b.HasOne("Domain.Identity.User", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -591,7 +591,7 @@ namespace Infrastructure.Persistence.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Domain.Users.User", null)
+                    b.HasOne("Domain.Identity.User", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -600,7 +600,7 @@ namespace Infrastructure.Persistence.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<System.Guid>", b =>
                 {
-                    b.HasOne("Domain.Users.User", null)
+                    b.HasOne("Domain.Identity.User", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)

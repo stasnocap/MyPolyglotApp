@@ -1,5 +1,5 @@
-﻿using Domain.Exercises.Errors;
-using Domain.Exercises.ValueObjects;
+﻿using Domain.Practice.Exercises.Errors;
+using Domain.Practice.Exercises.ValueObjects;
 using FluentAssertions;
 
 namespace Domain.UnitTests.Exercises.ValueObjects;

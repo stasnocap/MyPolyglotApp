@@ -1,5 +1,4 @@
 ﻿using Domain.Users;
-using Domain.Users.ValueObjects;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -14,15 +13,15 @@ public class UserConfiguration : IEntityTypeConfiguration<User>
     
     private void ConfigureScoreIds(EntityTypeBuilder<User> builder)
     {
-        builder.OwnsMany(u => u.ScoreIds, score =>
+        builder.OwnsMany(u => u.ScoreIds, scoreIds =>
         {
-            score.ToTable("UserScoreIds");
+            scoreIds.ToTable("UserScoreIds");
 
-            score.WithOwner().HasForeignKey("UserId");
+            scoreIds.WithOwner().HasForeignKey("UserId");
 
-            score.HasKey("Id");
+            scoreIds.HasKey("Id");
 
-            score.Property(s => s.Value)
+            scoreIds.Property(s => s.Value)
                 .HasColumnName("ScoreId")
                 .ValueGeneratedNever();
         });

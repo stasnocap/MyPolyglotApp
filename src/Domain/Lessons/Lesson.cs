@@ -27,9 +27,19 @@ public sealed class Lesson : AggregateRoot<LessonId>
         return new Lesson(LessonId.CreateUnique(), number, name);
     }
 
+    public static ErrorOr<Lesson> Create(LessonId lessonId, LessonNumber number, LessonName name)
+    {
+        return new Lesson(lessonId, number, name);
+    }
+
     public void AddExercise(ExerciseId exerciseId)
     {
         _exerciseIds.Add(exerciseId);
+    }
+
+    public void AddExercises(IReadOnlyList<ExerciseId> exerciseIds)
+    {
+        _exerciseIds.AddRange(exerciseIds);
     }
 
     public void AddScore(ScoreId scoreId)

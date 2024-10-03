@@ -5,17 +5,19 @@ namespace Domain.Exercises.Entities;
 
 public sealed class Word : Entity<WordId>
 {
+    public ExerciseId ExerciseId { get; }
     public WordNumber Number { get; }
     public WordType Type { get; }
 
-    private Word(WordId id, WordNumber number, WordType type) : base(id)
+    private Word(WordId id, ExerciseId exerciseId, WordNumber number, WordType type) : base(id)
     {
         Number = number;
         Type = type;
+        ExerciseId = exerciseId;
     }
 
-    public static Word Create(WordNumber number, WordType type)
+    public static Word Create(ExerciseId exerciseId, WordNumber number, WordType type)
     {
-        return new Word(WordId.CreateUnique(), number, type);
+        return new Word(WordId.CreateUnique(), exerciseId, number, type);
     }
 }

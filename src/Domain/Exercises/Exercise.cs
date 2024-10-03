@@ -21,10 +21,20 @@ public sealed class Exercise : AggregateRoot<ExerciseId>
         EngPhrase = engPhrase;
         RusPhrase = rusPhrase;
     }
+    
+    // ReSharper disable once UnusedMember.Local
+    private Exercise()
+    {
+    }
 
     public static ErrorOr<Exercise> Create(LessonId lessonId, EngPhrase engPhrase, RusPhrase rusPhrase)
     {
         return new Exercise(ExerciseId.CreateUnique(), lessonId, engPhrase, rusPhrase);
+    }
+
+    public static ErrorOr<Exercise> Create(ExerciseId exerciseId, LessonId lessonId, EngPhrase engPhrase, RusPhrase rusPhrase)
+    {
+        return new Exercise(exerciseId, lessonId, engPhrase, rusPhrase);
     }
 
     public void AddWord(Word word)

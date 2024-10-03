@@ -6,7 +6,7 @@ using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Web.Controllers;
 
-namespace Web.Areas.Exercises.Controllers;
+namespace Web.Areas.Lessons.Controllers;
 
 [Route("exercises")]
 public class ExercisesController(ISender _sender, IMapper _mapper) : ApiController

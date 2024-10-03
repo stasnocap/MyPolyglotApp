@@ -9,7 +9,22 @@ public class AppDbContext(DbContextOptions options) : IdentityDbContext<User, Id
 {
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.ApplyConfigurationsFromAssembly(typeof(AppDbContext).Assembly);
         base.OnModelCreating(modelBuilder);
+        
+        modelBuilder.ApplyConfigurationsFromAssembly(typeof(AppDbContext).Assembly);
+                
+        SetIdentitySchema(modelBuilder);
+    }
+
+    private static void SetIdentitySchema(ModelBuilder modelBuilder)
+    {
+        const string identitySchema = "identity";
+        modelBuilder.Entity<IdentityRoleClaim<Guid>>().ToTable("AspNetRoleClaims", identitySchema);
+        modelBuilder.Entity<IdentityRole<Guid>>().ToTable("AspNetRoles", identitySchema);
+        modelBuilder.Entity<IdentityUserClaim<Guid>>().ToTable("AspNetUserClaims", identitySchema);
+        modelBuilder.Entity<IdentityUserLogin<Guid>>().ToTable("AspNetUserLogins", identitySchema);
+        modelBuilder.Entity<IdentityUserRole<Guid>>().ToTable("AspNetUserRoles", identitySchema);
+        modelBuilder.Entity<User>().ToTable("AspNetUsers", identitySchema);
+        modelBuilder.Entity<IdentityUserToken<Guid>>().ToTable("AspNetUserTokens", identitySchema);
     }
 }

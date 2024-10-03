@@ -1,5 +1,6 @@
 ﻿using Domain.Exercises;
 using Domain.Exercises.ValueObjects;
+using Domain.Lessons.ValueObjects;
 using Infrastructure.Persistence.Seed;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
@@ -12,8 +13,6 @@ public class ExerciseConfiguration : IEntityTypeConfiguration<Exercise>
     {
         ConfigureExercises(builder);
         ConfigureWords(builder);
-        
-        builder.HasData(ExerciseSeed.GetSeedExercisesForLesson1());
     }
 
     private void ConfigureWords(EntityTypeBuilder<Exercise> builder)
@@ -51,6 +50,9 @@ public class ExerciseConfiguration : IEntityTypeConfiguration<Exercise>
         builder.Property(e => e.Id)
             .ValueGeneratedNever()
             .HasConversion(id => id.Value, value => ExerciseId.Create(value));
+
+        builder.Property(e => e.LessonId)
+            .HasConversion(id => id.Value, value => LessonId.Create(value));
         
         builder.Property(e => e.EngPhrase)
             .HasMaxLength(255)
@@ -59,5 +61,7 @@ public class ExerciseConfiguration : IEntityTypeConfiguration<Exercise>
         builder.Property(e => e.RusPhrase)
             .HasMaxLength(255)
             .HasConversion(rusPhrase => rusPhrase.Value, value => RusPhrase.Create(value).Value);
+                
+        builder.HasData(ExerciseSeed.GetSeedExercisesForLesson1());
     }
 }

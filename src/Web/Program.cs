@@ -1,6 +1,7 @@
 using Web;
 using Application;
 using Infrastructure;
+using Web.Common.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,7 +14,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 var app = builder.Build();
 {
-    app.UseExceptionHandler("/error");
+    app.ApplyMigrations();
+    
     app.UseHttpsRedirection();
     app.UseStaticFiles();
     app.UseAuthentication();
@@ -28,3 +30,5 @@ var app = builder.Build();
     app.MapRazorPages();
     app.Run();
 }
+
+public partial class Program;

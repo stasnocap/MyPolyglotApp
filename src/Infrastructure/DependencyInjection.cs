@@ -22,8 +22,10 @@ public static class DependencyInjection
         services.AddSingleton<IClaimsPrincipalFactory, ClaimsPrincipalFactory>();
         services.AddSingleton<IDateTimeProvider, DateTimeProvider>();
         services.AddHttpContextAccessor();
-        services.AddScoped<IUserContext, UserContext>();
+        
         services.AddScoped<IExerciseRepository, ExerciseRepository>();
+        services.AddScoped<ILessonRepository, LessonRepository>();
+        
         services.AddScoped<IPasswordHasher<User>, PasswordHasher<User>>();
         services.AddPostgresDatabase(configuration);
         return services;

@@ -15,12 +15,10 @@ public sealed class EngPhrase : ValueObject
 
     public static ErrorOr<EngPhrase> Create(string value)
     {
-        if (string.IsNullOrWhiteSpace(value))
-        {
-            return ExerciseErrors.EmptyEngPhrase;
-        }
-
-        return new EngPhrase(value);
+        return value
+            .ToErrorOr()
+            .FailIf(string.IsNullOrWhiteSpace, ExerciseErrors.EmptyEngPhrase)
+            .Then(x => new EngPhrase(x));
     }
 
     protected override IEnumerable<object> GetEqualityComponents()

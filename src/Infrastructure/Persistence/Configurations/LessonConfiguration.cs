@@ -13,8 +13,6 @@ public class LessonConfiguration : IEntityTypeConfiguration<Lesson>
         ConfigureLesson(builder);
         ConfigureExerciseIds(builder);
         ConfigureScoreIds(builder);
-
-        builder.HasData(LessonSeed.GetLesson1());
     }
 
     private void ConfigureExerciseIds(EntityTypeBuilder<Lesson> builder)
@@ -72,5 +70,7 @@ public class LessonConfiguration : IEntityTypeConfiguration<Lesson>
         builder.Property(l => l.Name)
             .HasMaxLength(255)
             .HasConversion(lessonName => lessonName.Value, value => LessonName.Create(value).Value);
+        
+        builder.HasData(LessonSeed.GetLesson1());
     }
 }

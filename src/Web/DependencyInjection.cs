@@ -1,6 +1,4 @@
-﻿using ErrorOr;
-using Web.Common.Mapping;
-using Web.Common.Http;
+﻿using Web.Common.Mapping;
 
 namespace Web;
 
@@ -10,16 +8,6 @@ public static class DependencyInjection
     {
         services.AddControllers();
         services.AddMappings();
-        services.AddProblemDetails(options =>
-        {
-            options.CustomizeProblemDetails = context =>
-            {
-                if (context.HttpContext.Items[HttpContextItemKeys.Errors] is List<Error> errors)
-                {
-                    context.ProblemDetails.Extensions.Add("errorCodes", errors.Select(e => e.Code));
-                }
-            };
-        });
         services.AddRazorPages();
         return services;
     }

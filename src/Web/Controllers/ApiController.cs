@@ -1,7 +1,6 @@
 ﻿using ErrorOr;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
-using Web.Common.Http;
 
 namespace Web.Controllers;
 
@@ -19,8 +18,6 @@ public abstract class ApiController : ControllerBase
         {
             return ValidationProblem(errors);
         }
-        
-        HttpContext.Items[HttpContextItemKeys.Errors] = errors;
 
         var firstNotValidationError = errors.First(x => x.Type != ErrorType.Validation);
         
@@ -39,7 +36,7 @@ public abstract class ApiController : ControllerBase
             _ => StatusCodes.Status500InternalServerError
         };
 
-        return Problem(statusCode: statusCode, title: error.Description);
+        return Problem(statusCode: statusCode, detail: error.Description);
     }
 
     private IActionResult ValidationProblem(List<Error> errors)

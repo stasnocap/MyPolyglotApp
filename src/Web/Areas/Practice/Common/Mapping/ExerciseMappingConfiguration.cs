@@ -15,7 +15,6 @@ public class ExerciseMappingConfiguration : IRegister
             .Map(dest => dest.LessonId, src => LessonId.Create(src.LessonId));
 
         config.NewConfig<Exercise, ExerciseResponse>()
-            .Map(dest => dest.EngPhrase, src => src.EngPhrase.Value)
             .Map(dest => dest.RusPhrase, src => src.RusPhrase.Value)
             .Map(dest => dest.ExerciseId, src => src.Id.Value);
 

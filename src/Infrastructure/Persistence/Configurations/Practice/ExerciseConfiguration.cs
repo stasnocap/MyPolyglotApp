@@ -1,7 +1,9 @@
-﻿using Domain.Practice.Exercises;
+﻿using Domain.Common.ValueObjects;
+using Domain.Practice.Exercises;
 using Domain.Practice.Exercises.ValueObjects;
 using Domain.Practice.Lessons.ValueObjects;
 using Infrastructure.Persistence.Seed;
+using Infrastructure.Persistence.Seed.Practice;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -31,6 +33,10 @@ public class ExerciseConfiguration : IEntityTypeConfiguration<Exercise>
 
             wb.Property(w => w.Number)
                 .HasConversion(wordNumber => wordNumber.Value, value => WordNumber.Create(value).Value);
+            
+            wb.Property(e => e.Text)
+                .HasMaxLength(100)
+                .HasConversion(engPhrase => engPhrase.Value, value => Text.Create(value).Value);
 
             wb.Property(w => w.Type);
 
@@ -53,10 +59,6 @@ public class ExerciseConfiguration : IEntityTypeConfiguration<Exercise>
 
         builder.Property(e => e.LessonId)
             .HasConversion(id => id.Value, value => LessonId.Create(value));
-        
-        builder.Property(e => e.EngPhrase)
-            .HasMaxLength(255)
-            .HasConversion(engPhrase => engPhrase.Value, value => EngPhrase.Create(value).Value);
         
         builder.Property(e => e.RusPhrase)
             .HasMaxLength(255)

@@ -1,10 +1,16 @@
 ﻿using Application.Common.Authentication;
 using Application.Common.Interfaces.Persistence;
+using Application.Common.Interfaces.Persistence.Identity;
+using Application.Common.Interfaces.Persistence.Practice;
+using Application.Common.Interfaces.Persistence.Vocabulary;
 using Application.Common.Interfaces.Services;
 using Domain.Identity;
 using Infrastructure.Authentication;
 using Infrastructure.Persistence;
 using Infrastructure.Persistence.Repositories;
+using Infrastructure.Persistence.Repositories.Identity;
+using Infrastructure.Persistence.Repositories.Practice;
+using Infrastructure.Persistence.Repositories.Vocabulary;
 using Infrastructure.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -25,6 +31,8 @@ public static class DependencyInjection
         
         services.AddScoped<IExerciseRepository, ExerciseRepository>();
         services.AddScoped<ILessonRepository, LessonRepository>();
+        services.AddScoped<IVocabularyRepository, VocabularyRepository>();
+        services.AddScoped<IComparisionAdjectiveRepository, ComparisonAdjectiveRepository>();
         
         services.AddScoped<IPasswordHasher<User>, PasswordHasher<User>>();
         services.AddPostgresDatabase(configuration);

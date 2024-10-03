@@ -1,9 +1,9 @@
-﻿using Application.Common.Interfaces.Persistence;
+﻿using Application.Common.Interfaces.Persistence.Practice;
 using Domain.Practice.Exercises;
 using Domain.Practice.Lessons.ValueObjects;
 using Microsoft.EntityFrameworkCore;
 
-namespace Infrastructure.Persistence.Repositories;
+namespace Infrastructure.Persistence.Repositories.Practice;
 
 public class ExerciseRepository(AppDbContext _dbContext) : IExerciseRepository
 {

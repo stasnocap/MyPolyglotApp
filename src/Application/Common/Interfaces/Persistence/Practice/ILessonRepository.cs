@@ -1,6 +1,6 @@
 ﻿using Domain.Practice.Lessons.ValueObjects;
 
-namespace Application.Common.Interfaces.Persistence;
+namespace Application.Common.Interfaces.Persistence.Practice;
 
 public interface ILessonRepository
 {

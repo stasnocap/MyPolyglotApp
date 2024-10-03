@@ -1,8 +1,13 @@
-﻿using Domain.Identity;
+﻿using System.Diagnostics.CodeAnalysis;
+using System.Reflection;
+using Domain.Common.Models;
+using Domain.Identity;
+using Domain.Vocabulary.Pronouns;
 using Infrastructure.Persistence.Configurations;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Internal;
 
 namespace Infrastructure.Persistence;
 
@@ -27,5 +32,14 @@ public class AppDbContext(DbContextOptions options) : IdentityDbContext<User, Id
         modelBuilder.Entity<IdentityUserRole<Guid>>().ToTable("AspNetUserRoles", identitySchema);
         modelBuilder.Entity<User>().ToTable("AspNetUsers", identitySchema);
         modelBuilder.Entity<IdentityUserToken<Guid>>().ToTable("AspNetUserTokens", identitySchema);
+    }
+    
+            
+    [SuppressMessage("Usage", "EF1001:Internal EF Core API usage.")]
+    public IQueryable<object> GetAll(Type type)
+    {
+        MethodInfo setSource = GetType() .GetMethod("Microsoft.EntityFrameworkCore.Internal.IDbContextDependencies.get_SetSource", BindingFlags.NonPublic | BindingFlags.Instance)!;
+
+        return (IQueryable<object>)((IDbSetCache)this).GetOrAddSet((IDbSetSource)setSource.Invoke(this, null!)!, type);
     }
 }

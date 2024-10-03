@@ -1,6 +1,7 @@
 ﻿using Domain.Practice.Lessons;
 using Domain.Practice.Lessons.ValueObjects;
 using Infrastructure.Persistence.Seed;
+using Infrastructure.Persistence.Seed.Practice;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 

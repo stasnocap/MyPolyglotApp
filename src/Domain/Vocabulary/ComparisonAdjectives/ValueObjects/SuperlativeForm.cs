@@ -1,5 +1,6 @@
 ﻿using Domain.Common;
 using Domain.Common.Models;
+using Domain.Common.ValueObjects;
 using Domain.Vocabulary.ComparisonAdjectives.Errors;
 using ErrorOr;
 
@@ -8,10 +9,22 @@ namespace Domain.Vocabulary.ComparisonAdjectives.ValueObjects;
 public sealed class SuperlativeForm : ValueObject
 {
     public string Value { get; }
+    
+    public static explicit operator string(SuperlativeForm superlativeForm) => superlativeForm.Value;
 
     private SuperlativeForm(string value)
     {
         Value = value;
+    }
+    
+    public static bool Is(Text text)
+    {
+        return text.Value.EndsWith("est");
+    }
+
+    public static SuperlativeForm Create(Text text)
+    {
+        return new SuperlativeForm(text.Value);
     }
 
     public static ErrorOr<SuperlativeForm> Create(string value)

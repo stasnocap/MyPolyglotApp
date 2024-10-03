@@ -1,7 +1,7 @@
 ﻿using Domain.Identity;
 using Domain.Identity.ValueObjects;
 
-namespace Application.Common.Interfaces.Persistence;
+namespace Application.Common.Interfaces.Persistence.Identity;
 
 public interface IUserRepository
 {

@@ -14,4 +14,9 @@ public sealed class Pronoun : BaseWord<PronounId>
     {
         return new Pronoun(PronounId.CreateUnique(), text);
     }
+
+    public static Pronoun Create(PronounId pronounId, Text text)
+    {
+        return new Pronoun(pronounId, text);
+    }
 }

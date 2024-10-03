@@ -68,7 +68,6 @@ namespace Infrastructure.Persistence.Migrations
                 {
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
                     LessonId = table.Column<Guid>(type: "uuid", nullable: false),
-                    EngPhrase = table.Column<string>(type: "character varying(255)", maxLength: 255, nullable: false),
                     RusPhrase = table.Column<string>(type: "character varying(255)", maxLength: 255, nullable: false)
                 },
                 constraints: table =>
@@ -88,6 +87,19 @@ namespace Infrastructure.Persistence.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Lessons", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Pronouns",
+                schema: "practice",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uuid", nullable: false),
+                    Text = table.Column<string>(type: "text", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Pronouns", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -237,7 +249,8 @@ namespace Infrastructure.Persistence.Migrations
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
                     ExerciseId = table.Column<Guid>(type: "uuid", nullable: false),
                     Number = table.Column<int>(type: "integer", nullable: false),
-                    Type = table.Column<int>(type: "integer", nullable: false)
+                    Type = table.Column<int>(type: "integer", nullable: false),
+                    Text = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -298,14 +311,14 @@ namespace Infrastructure.Persistence.Migrations
             migrationBuilder.InsertData(
                 schema: "practice",
                 table: "Exercises",
-                columns: new[] { "Id", "EngPhrase", "LessonId", "RusPhrase" },
+                columns: new[] { "Id", "LessonId", "RusPhrase" },
                 values: new object[,]
                 {
-                    { new Guid("69dfc0ba-ac95-44bb-b412-b36b2a45f6bb"), "Will i look?", new Guid("099df6d4-f116-4b6e-8cae-96dd9f3623dd"), "Я посмотрю?" },
-                    { new Guid("6ed88863-0c5d-45cd-b361-3071bf62a907"), "Ты не увидишь.", new Guid("099df6d4-f116-4b6e-8cae-96dd9f3623dd"), "You will not see." },
-                    { new Guid("dacb0b73-7bb2-491f-9bf6-adb1f3e2f50f"), "She worked.", new Guid("099df6d4-f116-4b6e-8cae-96dd9f3623dd"), "Она работала." },
-                    { new Guid("ec6ea7e1-3dbb-45a7-801c-3441c6ef962f"), "Will we show?", new Guid("099df6d4-f116-4b6e-8cae-96dd9f3623dd"), "Мы покажем?" },
-                    { new Guid("f8d8fcb2-4df3-4321-9538-fe576ef04c2d"), "You didn't think.", new Guid("099df6d4-f116-4b6e-8cae-96dd9f3623dd"), "Ты не думал." }
+                    { new Guid("69dfc0ba-ac95-44bb-b412-b36b2a45f6bb"), new Guid("099df6d4-f116-4b6e-8cae-96dd9f3623dd"), "Я посмотрю?" },
+                    { new Guid("6ed88863-0c5d-45cd-b361-3071bf62a907"), new Guid("099df6d4-f116-4b6e-8cae-96dd9f3623dd"), "Ты не увидишь." },
+                    { new Guid("dacb0b73-7bb2-491f-9bf6-adb1f3e2f50f"), new Guid("099df6d4-f116-4b6e-8cae-96dd9f3623dd"), "Она работала." },
+                    { new Guid("ec6ea7e1-3dbb-45a7-801c-3441c6ef962f"), new Guid("099df6d4-f116-4b6e-8cae-96dd9f3623dd"), "Мы покажем?" },
+                    { new Guid("f8d8fcb2-4df3-4321-9538-fe576ef04c2d"), new Guid("099df6d4-f116-4b6e-8cae-96dd9f3623dd"), "Ты не думал." }
                 });
 
             migrationBuilder.InsertData(
@@ -313,6 +326,21 @@ namespace Infrastructure.Persistence.Migrations
                 table: "Lessons",
                 columns: new[] { "Id", "Name", "Number" },
                 values: new object[] { new Guid("099df6d4-f116-4b6e-8cae-96dd9f3623dd"), "Базовая форма глагола", 1 });
+
+            migrationBuilder.InsertData(
+                schema: "practice",
+                table: "Pronouns",
+                columns: new[] { "Id", "Text" },
+                values: new object[,]
+                {
+                    { new Guid("004a6a6b-bb91-4d03-bec1-ba2529fab0c0"), "he" },
+                    { new Guid("0bb651d1-cc92-41a5-9b24-2934db01ed07"), "they" },
+                    { new Guid("1a412290-7271-4385-8fc9-f08be3b0452c"), "she" },
+                    { new Guid("575963a0-80f7-4024-9c82-90e52aea846a"), "it" },
+                    { new Guid("60a86ad4-6d5f-4874-819a-61f9c200b7b1"), "we" },
+                    { new Guid("95280413-d92d-4907-827e-1bd3fadd5f20"), "you" },
+                    { new Guid("c5e9499f-6682-4de2-bb4c-f6cf2c3e5e7f"), "i" }
+                });
 
             migrationBuilder.InsertData(
                 schema: "practice",
@@ -330,23 +358,23 @@ namespace Infrastructure.Persistence.Migrations
             migrationBuilder.InsertData(
                 schema: "practice",
                 table: "Words",
-                columns: new[] { "Id", "ExerciseId", "Number", "Type" },
+                columns: new[] { "Id", "ExerciseId", "Number", "Text", "Type" },
                 values: new object[,]
                 {
-                    { new Guid("025b5bb4-c9e1-4e78-ba1c-fca0d1682c1d"), new Guid("6ed88863-0c5d-45cd-b361-3071bf62a907"), 3, 16 },
-                    { new Guid("13394798-f440-42c6-a29c-f3b0a2c3ac75"), new Guid("f8d8fcb2-4df3-4321-9538-fe576ef04c2d"), 3, 16 },
-                    { new Guid("266676ca-171d-4732-bc40-f12bd6df44f0"), new Guid("ec6ea7e1-3dbb-45a7-801c-3441c6ef962f"), 2, 14 },
-                    { new Guid("275afd08-1346-4b40-bebb-da9c29191564"), new Guid("6ed88863-0c5d-45cd-b361-3071bf62a907"), 2, 9 },
-                    { new Guid("367c462d-4ee7-4a18-a893-72f6d7f06627"), new Guid("6ed88863-0c5d-45cd-b361-3071bf62a907"), 1, 14 },
-                    { new Guid("4e1ff101-6d6f-494c-9176-e7166141786a"), new Guid("ec6ea7e1-3dbb-45a7-801c-3441c6ef962f"), 1, 9 },
-                    { new Guid("5d114101-ac9f-478d-a44d-a8eb62df31f4"), new Guid("f8d8fcb2-4df3-4321-9538-fe576ef04c2d"), 1, 14 },
-                    { new Guid("8547f67c-ee17-4e52-be8c-0b1e36655e49"), new Guid("f8d8fcb2-4df3-4321-9538-fe576ef04c2d"), 2, 13 },
-                    { new Guid("b0da53aa-6bd8-47c7-9d45-d52d4286f049"), new Guid("69dfc0ba-ac95-44bb-b412-b36b2a45f6bb"), 2, 14 },
-                    { new Guid("b5ce28cb-d49e-4aee-a9f1-8f2fddfdfe7d"), new Guid("69dfc0ba-ac95-44bb-b412-b36b2a45f6bb"), 3, 16 },
-                    { new Guid("b69c646d-0764-4f8b-babc-851202589f7d"), new Guid("69dfc0ba-ac95-44bb-b412-b36b2a45f6bb"), 1, 9 },
-                    { new Guid("bb4b8972-c64c-4f87-a047-a04336a7f18e"), new Guid("ec6ea7e1-3dbb-45a7-801c-3441c6ef962f"), 3, 16 },
-                    { new Guid("d5b8ee02-bea0-4b61-a911-d9d0a8b9d960"), new Guid("dacb0b73-7bb2-491f-9bf6-adb1f3e2f50f"), 2, 16 },
-                    { new Guid("f0511203-5ae6-46cc-b5b7-c68e3b4f7057"), new Guid("dacb0b73-7bb2-491f-9bf6-adb1f3e2f50f"), 1, 14 }
+                    { new Guid("03e9797f-ab16-4422-bfd9-bf76ca33f436"), new Guid("6ed88863-0c5d-45cd-b361-3071bf62a907"), 1, "You", 14 },
+                    { new Guid("16738012-8d9a-4790-810e-bbf91672cdf6"), new Guid("ec6ea7e1-3dbb-45a7-801c-3441c6ef962f"), 1, "Will", 9 },
+                    { new Guid("1deab725-e374-4ad7-a169-45a4e77d58f5"), new Guid("6ed88863-0c5d-45cd-b361-3071bf62a907"), 3, "see.", 16 },
+                    { new Guid("37b924c3-3886-49a1-8c0a-07a718957e92"), new Guid("69dfc0ba-ac95-44bb-b412-b36b2a45f6bb"), 3, "look?", 16 },
+                    { new Guid("4da38ea9-9eb1-4463-928b-5d38bea9c17b"), new Guid("ec6ea7e1-3dbb-45a7-801c-3441c6ef962f"), 3, "show?", 16 },
+                    { new Guid("862f83cd-d378-410e-88d6-27b01a06a2dc"), new Guid("f8d8fcb2-4df3-4321-9538-fe576ef04c2d"), 1, "You", 14 },
+                    { new Guid("9215550e-7cfd-4e41-a946-90e09def9e39"), new Guid("dacb0b73-7bb2-491f-9bf6-adb1f3e2f50f"), 2, "worked?", 16 },
+                    { new Guid("a5915abb-95f9-425d-a054-5ee27997b634"), new Guid("ec6ea7e1-3dbb-45a7-801c-3441c6ef962f"), 2, "we", 14 },
+                    { new Guid("c02b1a8b-0138-47d6-873b-16e084831444"), new Guid("6ed88863-0c5d-45cd-b361-3071bf62a907"), 2, "will not", 9 },
+                    { new Guid("ccac4b45-c615-438b-aeb4-2ec52947e9c4"), new Guid("69dfc0ba-ac95-44bb-b412-b36b2a45f6bb"), 1, "Will", 9 },
+                    { new Guid("d74bcb9b-36d6-4ec0-8cf8-b1a8be9624af"), new Guid("dacb0b73-7bb2-491f-9bf6-adb1f3e2f50f"), 1, "She", 14 },
+                    { new Guid("dfd01a72-3ec6-47b1-8a40-32c3a32ad2da"), new Guid("69dfc0ba-ac95-44bb-b412-b36b2a45f6bb"), 2, "I", 14 },
+                    { new Guid("e86dff93-aeb8-476b-bfe0-ded0dc21e2de"), new Guid("f8d8fcb2-4df3-4321-9538-fe576ef04c2d"), 2, "didn't", 13 },
+                    { new Guid("ee70e409-d59e-4c23-86eb-1f2878181e1b"), new Guid("f8d8fcb2-4df3-4321-9538-fe576ef04c2d"), 3, "think.", 16 }
                 });
 
             migrationBuilder.CreateIndex(
@@ -447,6 +475,10 @@ namespace Infrastructure.Persistence.Migrations
 
             migrationBuilder.DropTable(
                 name: "LessonScoreIds",
+                schema: "practice");
+
+            migrationBuilder.DropTable(
+                name: "Pronouns",
                 schema: "practice");
 
             migrationBuilder.DropTable(

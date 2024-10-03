@@ -1,9 +1,8 @@
-﻿using Application.Common.Interfaces.Persistence;
+﻿using Application.Common.Interfaces.Persistence.Identity;
 using Domain.Identity;
 using Domain.Identity.ValueObjects;
-using Microsoft.EntityFrameworkCore;
 
-namespace Infrastructure.Persistence.Repositories;
+namespace Infrastructure.Persistence.Repositories.Identity;
 
 public class UserRepository(AppDbContext _dbContext) : IUserRepository
 {

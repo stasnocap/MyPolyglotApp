@@ -4,6 +4,7 @@ using Contracts.Exercises.Responses;
 using Domain.Practice.Lessons.Errors;
 using FluentAssertions;
 using Infrastructure.Persistence.Seed;
+using Infrastructure.Persistence.Seed.Practice;
 using Microsoft.AspNetCore.Mvc;
 using Web.FunctionalTests.Abstractions;
 

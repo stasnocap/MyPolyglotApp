@@ -1,5 +1,6 @@
 ﻿using Domain.Common;
 using Domain.Common.Models;
+using Domain.Common.ValueObjects;
 using Domain.Vocabulary.ComparisonAdjectives.Errors;
 using ErrorOr;
 
@@ -8,10 +9,22 @@ namespace Domain.Vocabulary.ComparisonAdjectives.ValueObjects;
 public sealed class ComparativeForm : ValueObject
 {
     public string Value { get; }
+    
+    public static explicit operator string(ComparativeForm comparativeForm) => comparativeForm.Value;
 
     private ComparativeForm(string value)
     {
         Value = value;
+    }
+
+    public static bool Is(Text text)
+    {
+        return text.Value.EndsWith("er");
+    }
+
+    public static ComparativeForm Create(Text text)
+    {
+        return new ComparativeForm(text.Value);
     }
 
     public static ErrorOr<ComparativeForm> Create(string value)

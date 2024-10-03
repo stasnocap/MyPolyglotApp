@@ -1,4 +1,5 @@
 ﻿using Domain.Common.Models;
+using Domain.Common.ValueObjects;
 using Domain.Vocabulary.ModalVerbs.Errors;
 using ErrorOr;
 
@@ -8,9 +9,16 @@ public class FullNegativeForm : ValueObject
 {
     public string Value { get; }
 
+    public static explicit operator string(FullNegativeForm fullNegativeForm) => fullNegativeForm.Value;
+
     private FullNegativeForm(string value)
     {
         Value = value;
+    }
+
+    public static bool Is(Text text)
+    {
+        return text.Value.EndsWith("not");
     }
 
     public static ErrorOr<FullNegativeForm> Create(string value)

@@ -8,6 +8,8 @@ public sealed class Text : ValueObject
 {
     public string Value { get; }
 
+    public static explicit operator string(Text text) => text.Value;
+
     private Text(string value)
     {
         Value = value;

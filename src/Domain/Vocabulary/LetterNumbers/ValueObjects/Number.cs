@@ -6,6 +6,8 @@ public sealed class Number : ValueObject
 {
     public int Value { get; }
 
+    public static explicit operator int(Number number) => number.Value;
+
     private Number(int value)
     {
         Value = value;

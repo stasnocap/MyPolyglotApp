@@ -1,7 +1,7 @@
 ﻿using Domain.Practice.Lessons;
 using Domain.Practice.Lessons.ValueObjects;
 
-namespace Infrastructure.Persistence.Seed;
+namespace Infrastructure.Persistence.Seed.Practice;
 
 public static class LessonSeed
 {

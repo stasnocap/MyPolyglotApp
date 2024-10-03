@@ -92,11 +92,6 @@ namespace Infrastructure.Persistence.Migrations
                     b.Property<Guid>("Id")
                         .HasColumnType("uuid");
 
-                    b.Property<string>("EngPhrase")
-                        .IsRequired()
-                        .HasMaxLength(255)
-                        .HasColumnType("character varying(255)");
-
                     b.Property<Guid>("LessonId")
                         .HasColumnType("uuid");
 
@@ -113,35 +108,30 @@ namespace Infrastructure.Persistence.Migrations
                         new
                         {
                             Id = new Guid("6ed88863-0c5d-45cd-b361-3071bf62a907"),
-                            EngPhrase = "Ты не увидишь.",
                             LessonId = new Guid("099df6d4-f116-4b6e-8cae-96dd9f3623dd"),
-                            RusPhrase = "You will not see."
+                            RusPhrase = "Ты не увидишь."
                         },
                         new
                         {
                             Id = new Guid("ec6ea7e1-3dbb-45a7-801c-3441c6ef962f"),
-                            EngPhrase = "Will we show?",
                             LessonId = new Guid("099df6d4-f116-4b6e-8cae-96dd9f3623dd"),
                             RusPhrase = "Мы покажем?"
                         },
                         new
                         {
                             Id = new Guid("dacb0b73-7bb2-491f-9bf6-adb1f3e2f50f"),
-                            EngPhrase = "She worked.",
                             LessonId = new Guid("099df6d4-f116-4b6e-8cae-96dd9f3623dd"),
                             RusPhrase = "Она работала."
                         },
                         new
                         {
                             Id = new Guid("f8d8fcb2-4df3-4321-9538-fe576ef04c2d"),
-                            EngPhrase = "You didn't think.",
                             LessonId = new Guid("099df6d4-f116-4b6e-8cae-96dd9f3623dd"),
                             RusPhrase = "Ты не думал."
                         },
                         new
                         {
                             Id = new Guid("69dfc0ba-ac95-44bb-b412-b36b2a45f6bb"),
-                            EngPhrase = "Will i look?",
                             LessonId = new Guid("099df6d4-f116-4b6e-8cae-96dd9f3623dd"),
                             RusPhrase = "Я посмотрю?"
                         });
@@ -171,6 +161,57 @@ namespace Infrastructure.Persistence.Migrations
                             Id = new Guid("099df6d4-f116-4b6e-8cae-96dd9f3623dd"),
                             Name = "Базовая форма глагола",
                             Number = 1
+                        });
+                });
+
+            modelBuilder.Entity("Domain.Vocabulary.Pronouns.Pronoun", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("Text")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Pronouns", "practice");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("c5e9499f-6682-4de2-bb4c-f6cf2c3e5e7f"),
+                            Text = "i"
+                        },
+                        new
+                        {
+                            Id = new Guid("95280413-d92d-4907-827e-1bd3fadd5f20"),
+                            Text = "you"
+                        },
+                        new
+                        {
+                            Id = new Guid("004a6a6b-bb91-4d03-bec1-ba2529fab0c0"),
+                            Text = "he"
+                        },
+                        new
+                        {
+                            Id = new Guid("1a412290-7271-4385-8fc9-f08be3b0452c"),
+                            Text = "she"
+                        },
+                        new
+                        {
+                            Id = new Guid("575963a0-80f7-4024-9c82-90e52aea846a"),
+                            Text = "it"
+                        },
+                        new
+                        {
+                            Id = new Guid("60a86ad4-6d5f-4874-819a-61f9c200b7b1"),
+                            Text = "we"
+                        },
+                        new
+                        {
+                            Id = new Guid("0bb651d1-cc92-41a5-9b24-2934db01ed07"),
+                            Text = "they"
                         });
                 });
 
@@ -351,6 +392,11 @@ namespace Infrastructure.Persistence.Migrations
                             b1.Property<int>("Number")
                                 .HasColumnType("integer");
 
+                            b1.Property<string>("Text")
+                                .IsRequired()
+                                .HasMaxLength(100)
+                                .HasColumnType("character varying(100)");
+
                             b1.Property<int>("Type")
                                 .HasColumnType("integer");
 
@@ -366,100 +412,114 @@ namespace Infrastructure.Persistence.Migrations
                             b1.HasData(
                                 new
                                 {
-                                    Id = new Guid("367c462d-4ee7-4a18-a893-72f6d7f06627"),
+                                    Id = new Guid("03e9797f-ab16-4422-bfd9-bf76ca33f436"),
                                     ExerciseId = new Guid("6ed88863-0c5d-45cd-b361-3071bf62a907"),
                                     Number = 1,
+                                    Text = "You",
                                     Type = 14
                                 },
                                 new
                                 {
-                                    Id = new Guid("275afd08-1346-4b40-bebb-da9c29191564"),
+                                    Id = new Guid("c02b1a8b-0138-47d6-873b-16e084831444"),
                                     ExerciseId = new Guid("6ed88863-0c5d-45cd-b361-3071bf62a907"),
                                     Number = 2,
+                                    Text = "will not",
                                     Type = 9
                                 },
                                 new
                                 {
-                                    Id = new Guid("025b5bb4-c9e1-4e78-ba1c-fca0d1682c1d"),
+                                    Id = new Guid("1deab725-e374-4ad7-a169-45a4e77d58f5"),
                                     ExerciseId = new Guid("6ed88863-0c5d-45cd-b361-3071bf62a907"),
                                     Number = 3,
+                                    Text = "see.",
                                     Type = 16
                                 },
                                 new
                                 {
-                                    Id = new Guid("4e1ff101-6d6f-494c-9176-e7166141786a"),
+                                    Id = new Guid("16738012-8d9a-4790-810e-bbf91672cdf6"),
                                     ExerciseId = new Guid("ec6ea7e1-3dbb-45a7-801c-3441c6ef962f"),
                                     Number = 1,
+                                    Text = "Will",
                                     Type = 9
                                 },
                                 new
                                 {
-                                    Id = new Guid("266676ca-171d-4732-bc40-f12bd6df44f0"),
+                                    Id = new Guid("a5915abb-95f9-425d-a054-5ee27997b634"),
                                     ExerciseId = new Guid("ec6ea7e1-3dbb-45a7-801c-3441c6ef962f"),
                                     Number = 2,
+                                    Text = "we",
                                     Type = 14
                                 },
                                 new
                                 {
-                                    Id = new Guid("bb4b8972-c64c-4f87-a047-a04336a7f18e"),
+                                    Id = new Guid("4da38ea9-9eb1-4463-928b-5d38bea9c17b"),
                                     ExerciseId = new Guid("ec6ea7e1-3dbb-45a7-801c-3441c6ef962f"),
                                     Number = 3,
+                                    Text = "show?",
                                     Type = 16
                                 },
                                 new
                                 {
-                                    Id = new Guid("f0511203-5ae6-46cc-b5b7-c68e3b4f7057"),
+                                    Id = new Guid("d74bcb9b-36d6-4ec0-8cf8-b1a8be9624af"),
                                     ExerciseId = new Guid("dacb0b73-7bb2-491f-9bf6-adb1f3e2f50f"),
                                     Number = 1,
+                                    Text = "She",
                                     Type = 14
                                 },
                                 new
                                 {
-                                    Id = new Guid("d5b8ee02-bea0-4b61-a911-d9d0a8b9d960"),
+                                    Id = new Guid("9215550e-7cfd-4e41-a946-90e09def9e39"),
                                     ExerciseId = new Guid("dacb0b73-7bb2-491f-9bf6-adb1f3e2f50f"),
                                     Number = 2,
+                                    Text = "worked?",
                                     Type = 16
                                 },
                                 new
                                 {
-                                    Id = new Guid("5d114101-ac9f-478d-a44d-a8eb62df31f4"),
+                                    Id = new Guid("862f83cd-d378-410e-88d6-27b01a06a2dc"),
                                     ExerciseId = new Guid("f8d8fcb2-4df3-4321-9538-fe576ef04c2d"),
                                     Number = 1,
+                                    Text = "You",
                                     Type = 14
                                 },
                                 new
                                 {
-                                    Id = new Guid("8547f67c-ee17-4e52-be8c-0b1e36655e49"),
+                                    Id = new Guid("e86dff93-aeb8-476b-bfe0-ded0dc21e2de"),
                                     ExerciseId = new Guid("f8d8fcb2-4df3-4321-9538-fe576ef04c2d"),
                                     Number = 2,
+                                    Text = "didn't",
                                     Type = 13
                                 },
                                 new
                                 {
-                                    Id = new Guid("13394798-f440-42c6-a29c-f3b0a2c3ac75"),
+                                    Id = new Guid("ee70e409-d59e-4c23-86eb-1f2878181e1b"),
                                     ExerciseId = new Guid("f8d8fcb2-4df3-4321-9538-fe576ef04c2d"),
                                     Number = 3,
+                                    Text = "think.",
                                     Type = 16
                                 },
                                 new
                                 {
-                                    Id = new Guid("b69c646d-0764-4f8b-babc-851202589f7d"),
+                                    Id = new Guid("ccac4b45-c615-438b-aeb4-2ec52947e9c4"),
                                     ExerciseId = new Guid("69dfc0ba-ac95-44bb-b412-b36b2a45f6bb"),
                                     Number = 1,
+                                    Text = "Will",
                                     Type = 9
                                 },
                                 new
                                 {
-                                    Id = new Guid("b0da53aa-6bd8-47c7-9d45-d52d4286f049"),
+                                    Id = new Guid("dfd01a72-3ec6-47b1-8a40-32c3a32ad2da"),
                                     ExerciseId = new Guid("69dfc0ba-ac95-44bb-b412-b36b2a45f6bb"),
                                     Number = 2,
+                                    Text = "I",
                                     Type = 14
                                 },
                                 new
                                 {
-                                    Id = new Guid("b5ce28cb-d49e-4aee-a9f1-8f2fddfdfe7d"),
+                                    Id = new Guid("37b924c3-3886-49a1-8c0a-07a718957e92"),
                                     ExerciseId = new Guid("69dfc0ba-ac95-44bb-b412-b36b2a45f6bb"),
                                     Number = 3,
+                                    Text = "look?",
                                     Type = 16
                                 });
                         });

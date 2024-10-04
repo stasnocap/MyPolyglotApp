@@ -1,14 +1,10 @@
 ﻿using Application.Common.Authentication;
-using Application.Common.Interfaces.Persistence;
-using Application.Common.Interfaces.Persistence.Identity;
 using Application.Common.Interfaces.Persistence.Practice;
 using Application.Common.Interfaces.Persistence.Vocabulary;
 using Application.Common.Interfaces.Services;
 using Domain.Identity;
 using Infrastructure.Authentication;
 using Infrastructure.Persistence;
-using Infrastructure.Persistence.Repositories;
-using Infrastructure.Persistence.Repositories.Identity;
 using Infrastructure.Persistence.Repositories.Practice;
 using Infrastructure.Persistence.Repositories.Vocabulary;
 using Infrastructure.Services;
@@ -33,6 +29,11 @@ public static class DependencyInjection
         services.AddScoped<ILessonRepository, LessonRepository>();
         services.AddScoped<IVocabularyRepository, VocabularyRepository>();
         services.AddScoped<IComparisionAdjectiveRepository, ComparisonAdjectiveRepository>();
+        services.AddScoped<INounRepository, NounRepository>();
+        services.AddScoped<IVerbRepository, VerbRepository>();
+        services.AddScoped<IPrimaryVerbRepository, PrimaryVerbRepository>();
+        services.AddScoped<ILetterNumberRepository, LetterNumberRepository>();
+        services.AddScoped<IModalVerbRepository, ModalVerbRepository>();
         
         services.AddScoped<IPasswordHasher<User>, PasswordHasher<User>>();
         services.AddPostgresDatabase(configuration);
@@ -48,8 +49,6 @@ public static class DependencyInjection
         }
         
         services.AddDbContext<AppDbContext>(options => options.UseNpgsql(connectionString));
-        
-        services.AddScoped<IUserRepository, UserRepository>();
     }
 
     private static IServiceCollection AddAuth(this IServiceCollection services, IConfiguration configuration)

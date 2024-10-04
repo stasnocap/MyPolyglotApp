@@ -14,4 +14,9 @@ public sealed class Adjective : BaseWord<AdjectiveId>
     {
         return new Adjective(AdjectiveId.CreateUnique(), text);
     }
+
+    public static Adjective Create(AdjectiveId adjectiveId, Text text)
+    {
+        return new Adjective(adjectiveId, text);
+    }
 }

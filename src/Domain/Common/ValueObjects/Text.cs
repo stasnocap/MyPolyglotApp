@@ -1,4 +1,5 @@
-﻿using Domain.Common.Errors;
+﻿using System.Text.RegularExpressions;
+using Domain.Common.Errors;
 using Domain.Common.Models;
 using ErrorOr;
 
@@ -14,6 +15,8 @@ public sealed class Text : ValueObject
     {
         Value = value;
     }
+
+    public string GetWord() => Regex.Match(Value, "\\w+").Value;
 
     public static ErrorOr<Text> Create(string value)
     {

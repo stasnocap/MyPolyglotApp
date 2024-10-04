@@ -13,16 +13,16 @@ public class ModalVerbRepository(AppDbContext _dbContext) : IModalVerbRepository
         var lowerWordText = word.Text.Value.ToLower();
 
         var modalVerb = await _dbContext.Set<ModalVerb>()
-            .FirstOrDefaultAsync(ca => lowerWordText.Contains((string)ca.Text)
-                                       || lowerWordText.Contains((string)ca.FullNegativeForm)
-                                       || lowerWordText.Contains((string)ca.ShortNegativeForm), cancellationToken);
+            .FirstOrDefaultAsync(mv => lowerWordText.Contains((string)mv.Text)
+                                       || lowerWordText.Contains((string)mv.FullNegativeForm)
+                                       || lowerWordText.Contains((string)mv.ShortNegativeForm), cancellationToken);
 
         var modalVerbs = await _dbContext
             .Set<ModalVerb>()
-            .Where(ca => !lowerWordText.Contains((string)ca.Text)
-                         && !lowerWordText.Contains((string)ca.FullNegativeForm)
-                         && !lowerWordText.Contains((string)ca.ShortNegativeForm))
-            .OrderBy(ca => Guid.NewGuid())
+            .Where(mv => !lowerWordText.Contains((string)mv.Text)
+                         && !lowerWordText.Contains((string)mv.FullNegativeForm)
+                         && !lowerWordText.Contains((string)mv.ShortNegativeForm))
+            .OrderBy(mv => Guid.NewGuid())
             .Take(count)
             .ToListAsync(cancellationToken);
 
@@ -30,32 +30,32 @@ public class ModalVerbRepository(AppDbContext _dbContext) : IModalVerbRepository
         {
             if (lowerWordText.Contains((string)modalVerb.Text))
             {
-                return modalVerbs.Select(ca => ca.Text.Value).ToList();
+                return modalVerbs.Select(mv => mv.Text.Value).ToList();
             }
 
             if (lowerWordText.Contains((string)modalVerb.FullNegativeForm))
             {
-                return modalVerbs.Select(ca => ca.FullNegativeForm.Value).ToList();
+                return modalVerbs.Select(mv => mv.FullNegativeForm.Value).ToList();
             }
 
             if (lowerWordText.Contains((string)modalVerb.ShortNegativeForm))
             {
-                return modalVerbs.Select(ca => ca.ShortNegativeForm.Value).ToList();
+                return modalVerbs.Select(mv => mv.ShortNegativeForm.Value).ToList();
             }
         }
         else
         {
             if (FullNegativeForm.Is(word.Text))
             {
-                return modalVerbs.Select(ca => ca.FullNegativeForm.Value).ToList();
+                return modalVerbs.Select(mv => mv.FullNegativeForm.Value).ToList();
             }
 
             if (ShortNegativeForm.Is(word.Text))
             {
-                return modalVerbs.Select(ca => ca.ShortNegativeForm.Value).ToList();
+                return modalVerbs.Select(mv => mv.ShortNegativeForm.Value).ToList();
             }
 
-            return modalVerbs.Select(ca => ca.Text.Value).ToList();
+            return modalVerbs.Select(mv => mv.Text.Value).ToList();
         }
 
         throw new ArgumentOutOfRangeException();

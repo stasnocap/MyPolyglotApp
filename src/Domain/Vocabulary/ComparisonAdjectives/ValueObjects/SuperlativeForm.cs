@@ -19,7 +19,7 @@ public sealed class SuperlativeForm : ValueObject
     
     public static bool Is(Text text)
     {
-        return text.Value.EndsWith("est");
+        return text.GetWord().EndsWith("est");
     }
 
     public static SuperlativeForm Create(Text text)

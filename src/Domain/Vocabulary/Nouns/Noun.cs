@@ -17,4 +17,9 @@ public sealed class Noun : BaseWord<NounId>
     {
         return new Noun(NounId.CreateUnique(), text, pluralForm);
     }
+
+    public static Noun Create(NounId nounId, Text text, PluralForm pluralForm)
+    {
+        return new Noun(nounId, text, pluralForm);
+    }
 }

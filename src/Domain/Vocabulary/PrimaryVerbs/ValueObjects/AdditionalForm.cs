@@ -7,6 +7,8 @@ namespace Domain.Vocabulary.PrimaryVerbs.ValueObjects;
 public class AdditionalForm : ValueObject
 {
     public string Value { get; }
+    
+    public static explicit operator string(AdditionalForm additionalForm) => additionalForm.Value;
 
     private AdditionalForm(string value)
     {

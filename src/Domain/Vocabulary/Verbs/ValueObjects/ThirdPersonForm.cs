@@ -1,5 +1,6 @@
 ﻿using Domain.Common;
 using Domain.Common.Models;
+using Domain.Common.ValueObjects;
 using Domain.Vocabulary.Verbs.Errors;
 using ErrorOr;
 
@@ -10,6 +11,13 @@ public sealed class ThirdPersonForm : ValueObject
     private static readonly IReadOnlyList<string> EsEndings = ["ch", "s", "sh", "x", "z"];
 
     public string Value { get; }
+    
+    public static explicit operator string(ThirdPersonForm thirdPersonForm) => thirdPersonForm.Value;
+
+    public static bool Is(Text text)
+    {
+        return text.Value.EndsWith("s");
+    }
 
     private ThirdPersonForm(string value)
     {

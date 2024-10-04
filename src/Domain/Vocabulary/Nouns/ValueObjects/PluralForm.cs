@@ -1,4 +1,5 @@
 ﻿using Domain.Common.Models;
+using Domain.Common.ValueObjects;
 using Domain.Vocabulary.Nouns.Errors;
 using ErrorOr;
 
@@ -8,9 +9,16 @@ public class PluralForm : ValueObject
 {
     public string Value { get; }
 
+    public static explicit operator string(PluralForm pluralForm) => pluralForm.Value;
+
     private PluralForm(string value)
     {
         Value = value;
+    }
+    
+    public static bool Is(Text singularNoun)
+    {
+        return singularNoun.GetWord().EndsWith("s");
     }
 
     public static ErrorOr<PluralForm> Create(string value)

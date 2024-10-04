@@ -19,7 +19,7 @@ public sealed class ComparativeForm : ValueObject
 
     public static bool Is(Text text)
     {
-        return text.Value.EndsWith("er");
+        return text.GetWord().EndsWith("er");
     }
 
     public static ComparativeForm Create(Text text)

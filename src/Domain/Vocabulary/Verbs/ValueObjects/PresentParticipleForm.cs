@@ -1,5 +1,6 @@
 ﻿using Domain.Common;
 using Domain.Common.Models;
+using Domain.Common.ValueObjects;
 using Domain.Vocabulary.Verbs.Errors;
 using ErrorOr;
 
@@ -8,10 +9,17 @@ namespace Domain.Vocabulary.Verbs.ValueObjects;
 public sealed class PresentParticipleForm : ValueObject
 {
     public string Value { get; }
+    
+    public static explicit operator string(PresentParticipleForm presentParticipleForm) => presentParticipleForm.Value;
 
     private PresentParticipleForm(string value)
     {
         Value = value;
+    }
+
+    public static bool Is(Text text)
+    {
+        return text.Value.EndsWith("ing");
     }
 
     public static ErrorOr<PresentParticipleForm> Create(string value)

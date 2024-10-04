@@ -1,5 +1,6 @@
 ﻿using Domain.Common;
 using Domain.Common.Models;
+using Domain.Common.ValueObjects;
 using Domain.Vocabulary.Verbs.Errors;
 using ErrorOr;
 
@@ -8,6 +9,13 @@ namespace Domain.Vocabulary.Verbs.ValueObjects;
 public sealed class PastForm : ValueObject
 {
     public string Value { get; }
+
+    public static explicit operator string(PastForm pastForm) => pastForm.Value;
+
+    public static bool Is(Text text)
+    {
+        return text.Value.EndsWith("ed");
+    }
 
     private PastForm(string value)
     {

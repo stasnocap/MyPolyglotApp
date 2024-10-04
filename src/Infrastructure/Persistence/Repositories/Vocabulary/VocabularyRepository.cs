@@ -3,8 +3,6 @@ using Domain.Common;
 using Domain.Common.ValueObjects;
 using Domain.Practice.Exercises.Entities;
 using Domain.Practice.Exercises.ValueObjects;
-using Domain.Vocabulary.LetterNumbers;
-using Domain.Vocabulary.ModalVerbs;
 using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Persistence.Repositories.Vocabulary;
@@ -12,7 +10,9 @@ namespace Infrastructure.Persistence.Repositories.Vocabulary;
 public class VocabularyRepository(AppDbContext _dbContext, 
     IComparisionAdjectiveRepository _comparisionAdjectiveRepository,
     ILetterNumberRepository _letterNumberRepository,
-    IModalVerbRepository _modalVerbRepository) : IVocabularyRepository
+    IModalVerbRepository _modalVerbRepository,
+    INounRepository _nounRepository,
+    IPrimaryVerbRepository _primaryVerbRepository) : IVocabularyRepository
 {
     public async Task<IReadOnlyList<string>> GetRandomAsync(Word word, int count, CancellationToken cancellationToken)
     {
@@ -47,16 +47,14 @@ public class VocabularyRepository(AppDbContext _dbContext,
             case WordType.ModalVerb:
                 return await _modalVerbRepository.GetRandomModalVerbs(word, count, cancellationToken);
             case WordType.Noun:
-                break;
+                return await _nounRepository.GetRandomNouns(word, count, cancellationToken);
             case WordType.PrimaryVerb:
-                break;
+                return await _primaryVerbRepository.GetRandomPrimaryVerbs(word, count, cancellationToken);
             case WordType.Verb:
-                break;
+                return await _primaryVerbRepository.GetRandomPrimaryVerbs(word, count, cancellationToken);
             case WordType.None:
             default:
                 throw new ArgumentOutOfRangeException();
         }
-
-        return new List<string>();
     }
 }

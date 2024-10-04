@@ -1,27 +1,29 @@
 ﻿using Domain.Common.ValueObjects;
-using Domain.Vocabulary.Adjectives;
-using Domain.Vocabulary.Adjectives.ValueObjects;
+using Domain.Vocabulary.Adverbs;
+using Domain.Vocabulary.Adverbs.ValueObjects;
 using Infrastructure.Persistence.Seed.Vocabulary;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Infrastructure.Persistence.Configurations.Vocabulary;
 
-public class AdjectiveConfiguration : IEntityTypeConfiguration<Adjective>
+public class AdverbConfiguration : IEntityTypeConfiguration<Adverb>
 {
-    public void Configure(EntityTypeBuilder<Adjective> builder)
+    public void Configure(EntityTypeBuilder<Adverb> builder)
     {
-        builder.ToTable("Adjectives", schema: Schemas.Practice);
+        builder.ToTable("Adverbs", schema: Schemas.Practice);
 
         builder.HasKey(a => a.Id);
 
         builder.Property(a => a.Id)
             .ValueGeneratedNever()
-            .HasConversion(id => id.Value, value => AdjectiveId.Create(value));
+            .HasConversion(id => id.Value, value => AdverbId.Create(value));
 
         builder.Property(a => a.Text)
             .HasConversion(text => text.Value, value => Text.Create(value).Value);
 
-        builder.HasData(AdjectiveSeed.GetAdjectives());
+        builder.Property(a => a.Type);
+
+        builder.HasData(AdverbSeed.GetAdverbs());
     }
 }

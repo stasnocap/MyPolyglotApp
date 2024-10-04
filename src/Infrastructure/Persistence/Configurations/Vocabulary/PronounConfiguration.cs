@@ -13,13 +13,13 @@ public class PronounConfiguration : IEntityTypeConfiguration<Pronoun>
     {
         builder.ToTable("Pronouns", schema: Schemas.Practice);
 
-        builder.HasKey(e => e.Id);
+        builder.HasKey(p => p.Id);
 
-        builder.Property(e => e.Id)
+        builder.Property(p => p.Id)
             .ValueGeneratedNever()
             .HasConversion(id => id.Value, value => PronounId.Create(value));
 
-        builder.Property(e => e.Text)
+        builder.Property(p => p.Text)
             .HasConversion(text => text.Value, value => Text.Create(value).Value);
 
         builder.HasData(PronounSeed.GetPronouns());

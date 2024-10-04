@@ -6,12 +6,20 @@ namespace Domain.Vocabulary.Adverbs;
 
 public sealed class Adverb : BaseWord<AdverbId>
 {
-    private Adverb(AdverbId id, Text text) : base(id, text)
+    public AdverbType Type { get; }
+
+    private Adverb(AdverbId id, Text text, AdverbType type) : base(id, text)
     {
+        Type = type;
     }
 
-    public static Adverb Create(Text text)
+    public static Adverb Create(Text text, AdverbType type)
     {
-        return new Adverb(AdverbId.CreateUnique(), text);
+        return new Adverb(AdverbId.CreateUnique(), text, type);
+    }
+
+    public static Adverb Create(AdverbId adverbId, Text text, AdverbType type)
+    {
+        return new Adverb(adverbId, text, type);
     }
 }

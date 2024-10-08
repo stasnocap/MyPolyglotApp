@@ -14,4 +14,9 @@ public sealed class Language : BaseWord<LanguageId>
     {
         return new Language(LanguageId.CreateUnique(), text);
     }
+
+    public static Language Create(LanguageId languageId, Text text)
+    {
+        return new Language(languageId, text);
+    }
 }

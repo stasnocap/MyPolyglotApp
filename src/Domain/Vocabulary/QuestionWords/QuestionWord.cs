@@ -14,4 +14,9 @@ public sealed class QuestionWord : BaseWord<QuestionWordId>
     {
         return new QuestionWord(QuestionWordId.CreateUnique(), text);
     }
+
+    public static QuestionWord Create(QuestionWordId questionWordId, Text text)
+    {
+        return new QuestionWord(questionWordId, text);
+    }
 }

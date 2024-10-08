@@ -32,19 +32,19 @@ public sealed class PastForm : ValueObject
         return new PastForm(value);
     }
 
-    public static ErrorOr<PastForm> From(string verbText, StressOnFinalSyllable stress)
+    public static ErrorOr<PastForm> From(string verbText, bool stressOnFinalSyllable)
     {
         if (string.IsNullOrWhiteSpace(verbText))
         {
             return VerbErrors.EmptyVerbText;
         }
 
-        var value = GeneratePastForm(verbText, stress);
+        var value = GeneratePastForm(verbText, stressOnFinalSyllable);
 
         return new PastForm(value);
     }
 
-    private static string GeneratePastForm(string text, StressOnFinalSyllable stress)
+    private static string GeneratePastForm(string text, bool stressOnFinalSyllable)
     {
         switch (text)
         {
@@ -58,7 +58,7 @@ public sealed class PastForm : ValueObject
 
         var lastTwoChars = text[^2..];
 
-        if (stress.Value && Letters.Vowels.Contains(lastTwoChars[0]) && Letters.Consonants.Contains(lastTwoChars[1]))
+        if (stressOnFinalSyllable && Letters.Vowels.Contains(lastTwoChars[0]) && Letters.Consonants.Contains(lastTwoChars[1]))
         {
             return text + lastTwoChars[1] + "ed";
         }

@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Infrastructure.Persistence.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20241008082129_AddNouns")]
-    partial class AddNouns
+    [Migration("20241008140136_Init")]
+    partial class Init
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -179,7 +179,7 @@ namespace Infrastructure.Persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Adjectives", "practice");
+                    b.ToTable("Adjectives", "vocabulary");
 
                     b.HasData(
                         new
@@ -409,7 +409,7 @@ namespace Infrastructure.Persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Adverbs", "practice");
+                    b.ToTable("Adverbs", "vocabulary");
 
                     b.HasData(
                         new
@@ -924,7 +924,7 @@ namespace Infrastructure.Persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Cities", "practice");
+                    b.ToTable("Cities", "vocabulary");
 
                     b.HasData(
                         new
@@ -1644,7 +1644,7 @@ namespace Infrastructure.Persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("ComparisonAdjectives", "practice");
+                    b.ToTable("ComparisonAdjectives", "vocabulary");
 
                     b.HasData(
                         new
@@ -1696,7 +1696,7 @@ namespace Infrastructure.Persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Compounds", "practice");
+                    b.ToTable("Compounds", "vocabulary");
 
                     b.HasData(
                         new
@@ -1809,7 +1809,7 @@ namespace Infrastructure.Persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Determiners", "practice");
+                    b.ToTable("Determiners", "vocabulary");
 
                     b.HasData(
                         new
@@ -1841,7 +1841,7 @@ namespace Infrastructure.Persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Languages", "practice");
+                    b.ToTable("Languages", "vocabulary");
 
                     b.HasData(
                         new
@@ -2316,7 +2316,7 @@ namespace Infrastructure.Persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("LetterNumbers", "practice");
+                    b.ToTable("LetterNumbers", "vocabulary");
 
                     b.HasData(
                         new
@@ -2937,7 +2937,7 @@ namespace Infrastructure.Persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("ModalVerbs", "practice");
+                    b.ToTable("ModalVerbs", "vocabulary");
 
                     b.HasData(
                         new
@@ -3020,574 +3020,2151 @@ namespace Infrastructure.Persistence.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("character varying(100)");
 
+                    b.Property<int>("Type")
+                        .HasColumnType("integer");
+
                     b.HasKey("Id");
 
-                    b.ToTable("Nouns", "practice");
+                    b.ToTable("Nouns", "vocabulary");
 
                     b.HasData(
                         new
                         {
                             Id = new Guid("3e84413f-4522-4cdd-8e01-d868a1d1495e"),
                             PluralForm = "addenda",
-                            Text = "addendum"
+                            Text = "addendum",
+                            Type = 1
                         },
                         new
                         {
                             Id = new Guid("532cc556-74b3-445a-8032-5d931a579c6f"),
                             PluralForm = "aircraft",
-                            Text = "aircraft"
+                            Text = "aircraft",
+                            Type = 1
                         },
                         new
                         {
                             Id = new Guid("ef44000a-07c9-4bb5-91ff-af40b26a9169"),
                             PluralForm = "alumnae",
-                            Text = "alumna"
+                            Text = "alumna",
+                            Type = 1
                         },
                         new
                         {
                             Id = new Guid("35926da0-252d-4b68-ba64-7e8a271e72a9"),
                             PluralForm = "alumni",
-                            Text = "alumnus"
+                            Text = "alumnus",
+                            Type = 1
                         },
                         new
                         {
                             Id = new Guid("cf84efdc-aa12-48c8-bd99-d6b41236dabd"),
                             PluralForm = "analyses",
-                            Text = "analysis"
+                            Text = "analysis",
+                            Type = 1
                         },
                         new
                         {
                             Id = new Guid("6c7ed5f2-cc74-4b98-b44b-9c987fc57baa"),
                             PluralForm = "antennae",
-                            Text = "antenna"
+                            Text = "antenna",
+                            Type = 1
                         },
                         new
                         {
                             Id = new Guid("2788328f-fd07-4825-826b-dd5b84989b9e"),
                             PluralForm = "antitheses",
-                            Text = "antithesis"
+                            Text = "antithesis",
+                            Type = 1
                         },
                         new
                         {
                             Id = new Guid("14879bb3-f4f6-49eb-868c-756ec9b5eb75"),
                             PluralForm = "apices",
-                            Text = "apex"
+                            Text = "apex",
+                            Type = 1
                         },
                         new
                         {
                             Id = new Guid("df480d98-db6d-4700-a3ff-05f896ef7dc7"),
                             PluralForm = "appendices",
-                            Text = "appendix"
+                            Text = "appendix",
+                            Type = 1
                         },
                         new
                         {
                             Id = new Guid("6eea2102-f1ca-43a4-80d4-9efc03cbc9a9"),
                             PluralForm = "axes",
-                            Text = "axis"
+                            Text = "axis",
+                            Type = 1
                         },
                         new
                         {
                             Id = new Guid("7726b965-9229-433e-b6c7-774425b641f7"),
                             PluralForm = "bacilli",
-                            Text = "bacillus"
+                            Text = "bacillus",
+                            Type = 1
                         },
                         new
                         {
                             Id = new Guid("c135498f-f97c-457e-9a3c-d6e23dc578dd"),
                             PluralForm = "bacteria",
-                            Text = "bacterium"
+                            Text = "bacterium",
+                            Type = 1
                         },
                         new
                         {
                             Id = new Guid("67907bc9-6be9-4e8a-a017-b1a1411e3d10"),
                             PluralForm = "bases",
-                            Text = "basis"
+                            Text = "basis",
+                            Type = 1
                         },
                         new
                         {
                             Id = new Guid("37e39b47-4899-4716-8ac8-484c2137d2b9"),
                             PluralForm = "beaux",
-                            Text = "beau"
+                            Text = "beau",
+                            Type = 1
                         },
                         new
                         {
                             Id = new Guid("6c68af73-e165-42c1-8712-fc6321b85b3a"),
                             PluralForm = "bison",
-                            Text = "bison"
+                            Text = "bison",
+                            Type = 1
                         },
                         new
                         {
                             Id = new Guid("4be04cba-73f9-4ca9-ae4e-a20074556716"),
                             PluralForm = "bureaux",
-                            Text = "bureau"
+                            Text = "bureau",
+                            Type = 1
                         },
                         new
                         {
                             Id = new Guid("f752aee6-0190-4fee-88b2-54659742dc7c"),
                             PluralForm = "cacti",
-                            Text = "cactus"
+                            Text = "cactus",
+                            Type = 1
                         },
                         new
                         {
                             Id = new Guid("9e93f191-4112-49ee-8a8a-beb6efb5f98c"),
                             PluralForm = "chateaux",
-                            Text = "chateau"
+                            Text = "chateau",
+                            Type = 1
                         },
                         new
                         {
                             Id = new Guid("be97eb44-72bc-4ead-ad82-4568cba67059"),
                             PluralForm = "children",
-                            Text = "child"
+                            Text = "child",
+                            Type = 1
                         },
                         new
                         {
                             Id = new Guid("69d77d54-8dc5-43c6-b4cc-a1fc81790ee4"),
                             PluralForm = "codices",
-                            Text = "codex"
+                            Text = "codex",
+                            Type = 1
                         },
                         new
                         {
                             Id = new Guid("a139edc3-a54b-48a1-a41f-e26e49406068"),
                             PluralForm = "concerti",
-                            Text = "concerto"
+                            Text = "concerto",
+                            Type = 1
                         },
                         new
                         {
                             Id = new Guid("eda699d8-8c96-46a3-8479-8df3a0d85df2"),
                             PluralForm = "corpora",
-                            Text = "corpus"
+                            Text = "corpus",
+                            Type = 1
                         },
                         new
                         {
                             Id = new Guid("cbb70e24-54a7-4984-bb40-9280fe3a4dc1"),
                             PluralForm = "crises",
-                            Text = "crisis"
+                            Text = "crisis",
+                            Type = 1
                         },
                         new
                         {
                             Id = new Guid("40ac69ca-7f16-4830-a6b1-d3f50ab7ca6a"),
                             PluralForm = "criteria",
-                            Text = "criterion"
+                            Text = "criterion",
+                            Type = 1
                         },
                         new
                         {
                             Id = new Guid("23b223ea-134a-4d78-8cd0-375fe647016a"),
                             PluralForm = "curricula",
-                            Text = "curriculum"
+                            Text = "curriculum",
+                            Type = 1
                         },
                         new
                         {
                             Id = new Guid("2c2b0889-79f3-4f76-87db-3a5cc02011fd"),
                             PluralForm = "data",
-                            Text = "datum"
+                            Text = "datum",
+                            Type = 1
                         },
                         new
                         {
                             Id = new Guid("6ef22f13-96f9-4f6a-a828-789b7f8771b6"),
                             PluralForm = "deer",
-                            Text = "deer"
+                            Text = "deer",
+                            Type = 1
                         },
                         new
                         {
                             Id = new Guid("6d3db140-c060-49c0-aa80-83269a7c1f92"),
                             PluralForm = "diagnoses",
-                            Text = "diagnosis"
+                            Text = "diagnosis",
+                            Type = 1
                         },
                         new
                         {
                             Id = new Guid("12bd1acd-141f-4248-8db5-e4a598317e88"),
                             PluralForm = "dice",
-                            Text = "die"
+                            Text = "die",
+                            Type = 1
                         },
                         new
                         {
                             Id = new Guid("3a40539b-f6f7-4af5-97b9-797130ab9e3e"),
                             PluralForm = "dwarves",
-                            Text = "dwarf"
+                            Text = "dwarf",
+                            Type = 1
                         },
                         new
                         {
                             Id = new Guid("ef0a61de-fcd0-4d29-9c4f-f728710a3833"),
                             PluralForm = "ellipses",
-                            Text = "ellipsis"
+                            Text = "ellipsis",
+                            Type = 1
                         },
                         new
                         {
                             Id = new Guid("8d84d2ed-0381-4c20-b3ed-3e86116ff176"),
                             PluralForm = "errata",
-                            Text = "erratum"
+                            Text = "erratum",
+                            Type = 1
                         },
                         new
                         {
                             Id = new Guid("0af3f8c9-04b7-4826-98f3-2eee9f18bf54"),
                             PluralForm = "fezzes",
-                            Text = "fez"
+                            Text = "fez",
+                            Type = 1
                         },
                         new
                         {
                             Id = new Guid("844263ed-8a64-4537-b02c-c409d8e234ca"),
                             PluralForm = "foci",
-                            Text = "focus"
+                            Text = "focus",
+                            Type = 1
                         },
                         new
                         {
                             Id = new Guid("d6416b77-e82b-4d3d-ae47-2e828bf4df32"),
                             PluralForm = "feet",
-                            Text = "foot"
+                            Text = "foot",
+                            Type = 1
                         },
                         new
                         {
                             Id = new Guid("0a97d081-940f-4ac2-be45-5415f901bfd3"),
                             PluralForm = "formulae",
-                            Text = "formula"
+                            Text = "formula",
+                            Type = 1
                         },
                         new
                         {
                             Id = new Guid("fd759b28-1d26-4c33-aefd-f0dbb8ce1787"),
                             PluralForm = "fungi",
-                            Text = "fungus"
+                            Text = "fungus",
+                            Type = 1
                         },
                         new
                         {
                             Id = new Guid("4869c0cb-2bcd-4b69-b0ef-4821a4c5f8c2"),
                             PluralForm = "genera",
-                            Text = "genus"
+                            Text = "genus",
+                            Type = 1
                         },
                         new
                         {
                             Id = new Guid("2b64ff6f-e4fa-4cf7-8dc4-b58532d79dec"),
                             PluralForm = "geese",
-                            Text = "goose"
+                            Text = "goose",
+                            Type = 1
                         },
                         new
                         {
                             Id = new Guid("c9d8d5e8-85ce-4254-bd81-813e367c7763"),
                             PluralForm = "graffiti",
-                            Text = "graffito"
+                            Text = "graffito",
+                            Type = 1
                         },
                         new
                         {
                             Id = new Guid("3f3ed318-2891-4c78-924b-70ba61c288d6"),
                             PluralForm = "grouse",
-                            Text = "grouse"
+                            Text = "grouse",
+                            Type = 1
                         },
                         new
                         {
                             Id = new Guid("61ae4477-73f5-49e4-a7f4-68a3279b709c"),
                             PluralForm = "halves",
-                            Text = "half"
+                            Text = "half",
+                            Type = 1
                         },
                         new
                         {
                             Id = new Guid("f22b22cb-6507-45b3-82a7-7c6faec7919b"),
                             PluralForm = "hooves",
-                            Text = "hoof"
+                            Text = "hoof",
+                            Type = 1
                         },
                         new
                         {
                             Id = new Guid("a20cd4b1-626b-4d55-9636-c5abe59388c5"),
                             PluralForm = "hypotheses",
-                            Text = "hypothesis"
+                            Text = "hypothesis",
+                            Type = 1
                         },
                         new
                         {
                             Id = new Guid("d3c30d3c-75b2-4fe5-ba31-18f309f3c587"),
                             PluralForm = "indices",
-                            Text = "index"
+                            Text = "index",
+                            Type = 1
                         },
                         new
                         {
                             Id = new Guid("a361de63-7e01-4833-bc76-af3688ba0861"),
                             PluralForm = "larvae",
-                            Text = "larva"
+                            Text = "larva",
+                            Type = 1
                         },
                         new
                         {
                             Id = new Guid("bd8fd622-e592-4b3a-bb17-d9606b7aa5c2"),
                             PluralForm = "libretti",
-                            Text = "libretto"
+                            Text = "libretto",
+                            Type = 1
                         },
                         new
                         {
                             Id = new Guid("d8d16893-49fd-4bad-b9f0-a769c05fafc8"),
                             PluralForm = "loaves",
-                            Text = "loaf"
+                            Text = "loaf",
+                            Type = 1
                         },
                         new
                         {
                             Id = new Guid("d6adf7fa-98cd-4800-9594-dc270d7174cc"),
                             PluralForm = "loci",
-                            Text = "locus"
+                            Text = "locus",
+                            Type = 1
                         },
                         new
                         {
                             Id = new Guid("472ae0b3-27d9-4488-998d-af50d84fde9d"),
                             PluralForm = "lice",
-                            Text = "louse"
+                            Text = "louse",
+                            Type = 1
                         },
                         new
                         {
                             Id = new Guid("a4d2cb74-9c23-4629-9c3b-fa5dd7d8cb0f"),
                             PluralForm = "men",
-                            Text = "man"
+                            Text = "man",
+                            Type = 1
                         },
                         new
                         {
                             Id = new Guid("b29a2e94-bdd0-48dc-8c3c-bf6f1f7cf546"),
                             PluralForm = "matrices",
-                            Text = "matrix"
+                            Text = "matrix",
+                            Type = 1
                         },
                         new
                         {
                             Id = new Guid("4476956e-2d7e-47ae-8ec9-73d1a091c0c8"),
                             PluralForm = "media",
-                            Text = "medium"
+                            Text = "medium",
+                            Type = 1
                         },
                         new
                         {
                             Id = new Guid("1a7c848f-23df-4a78-9922-5600755ac939"),
                             PluralForm = "memoranda",
-                            Text = "memorandum"
+                            Text = "memorandum",
+                            Type = 1
                         },
                         new
                         {
                             Id = new Guid("f129f9e5-3bf3-4b65-9a4d-51a6cc59ed97"),
                             PluralForm = "minutiae",
-                            Text = "minutia"
+                            Text = "minutia",
+                            Type = 1
                         },
                         new
                         {
                             Id = new Guid("0a5a1b84-4e5f-4491-a81b-1023baa21587"),
                             PluralForm = "moose",
-                            Text = "moose"
+                            Text = "moose",
+                            Type = 1
                         },
                         new
                         {
                             Id = new Guid("ec72ed55-7737-4a17-940c-206cb755300f"),
                             PluralForm = "mice",
-                            Text = "mouse"
+                            Text = "mouse",
+                            Type = 1
                         },
                         new
                         {
                             Id = new Guid("b779d65e-e66f-4320-9a5b-b55f7d54d4a8"),
                             PluralForm = "nebulae",
-                            Text = "nebula"
+                            Text = "nebula",
+                            Type = 1
                         },
                         new
                         {
                             Id = new Guid("c5bf888a-a578-4267-9301-a819269efdf5"),
                             PluralForm = "nuclei",
-                            Text = "nucleus"
+                            Text = "nucleus",
+                            Type = 1
                         },
                         new
                         {
                             Id = new Guid("0f1d1568-8748-434e-b393-13f3e76a890b"),
                             PluralForm = "oases",
-                            Text = "oasis"
+                            Text = "oasis",
+                            Type = 1
                         },
                         new
                         {
                             Id = new Guid("f877f17d-92d7-4d29-8112-a8fa5b63609b"),
                             PluralForm = "opera",
-                            Text = "opus"
+                            Text = "opus",
+                            Type = 1
                         },
                         new
                         {
                             Id = new Guid("f0e8d288-1e01-454e-a8d7-60aedaa503cc"),
                             PluralForm = "ova",
-                            Text = "ovum"
+                            Text = "ovum",
+                            Type = 1
                         },
                         new
                         {
                             Id = new Guid("29fb9af0-59cd-45ef-b294-d6ef961d5f4d"),
                             PluralForm = "oxen",
-                            Text = "ox"
+                            Text = "ox",
+                            Type = 1
                         },
                         new
                         {
                             Id = new Guid("02410ac9-865a-4ef4-bf35-a97c572c775d"),
                             PluralForm = "parentheses",
-                            Text = "parenthesis"
+                            Text = "parenthesis",
+                            Type = 1
                         },
                         new
                         {
                             Id = new Guid("3212ad08-807e-4c7d-9a38-65d76b3b8dc7"),
                             PluralForm = "phenomena",
-                            Text = "phenomenon"
+                            Text = "phenomenon",
+                            Type = 1
                         },
                         new
                         {
                             Id = new Guid("c557a8d7-70f2-4752-914a-40cbd5c7f356"),
                             PluralForm = "phyla",
-                            Text = "phylum"
+                            Text = "phylum",
+                            Type = 1
                         },
                         new
                         {
                             Id = new Guid("1031bfa3-afaa-4f8d-ba5c-67c4bd76e090"),
                             PluralForm = "quizzes",
-                            Text = "quiz"
+                            Text = "quiz",
+                            Type = 1
                         },
                         new
                         {
                             Id = new Guid("23a9befc-3bcb-4ba2-b10c-9d01815df55f"),
                             PluralForm = "radii",
-                            Text = "radius"
+                            Text = "radius",
+                            Type = 1
                         },
                         new
                         {
                             Id = new Guid("10a584ce-08d0-45a3-a2c1-60c0ed418ba5"),
                             PluralForm = "referenda",
-                            Text = "referendum"
+                            Text = "referendum",
+                            Type = 1
                         },
                         new
                         {
                             Id = new Guid("aa3c70eb-c598-4ba3-9e60-9d10596b5bda"),
                             PluralForm = "salmon",
-                            Text = "salmon"
+                            Text = "salmon",
+                            Type = 1
                         },
                         new
                         {
                             Id = new Guid("d7870492-791a-4703-b988-de79eb5fd243"),
                             PluralForm = "scarves",
-                            Text = "scarf"
+                            Text = "scarf",
+                            Type = 1
                         },
                         new
                         {
                             Id = new Guid("1ec16fa1-e22e-460f-992f-ed1a5f6e6cdf"),
                             PluralForm = "selves",
-                            Text = "self"
+                            Text = "self",
+                            Type = 1
                         },
                         new
                         {
                             Id = new Guid("fcf3ec11-03cf-46e3-9e15-5dee1882b272"),
                             PluralForm = "series",
-                            Text = "series"
+                            Text = "series",
+                            Type = 1
                         },
                         new
                         {
                             Id = new Guid("055014c0-4580-4f66-8a26-909c81ada9ab"),
                             PluralForm = "sheep",
-                            Text = "sheep"
+                            Text = "sheep",
+                            Type = 1
                         },
                         new
                         {
                             Id = new Guid("0bb3c129-831b-4360-9405-c86ba88b2bd1"),
                             PluralForm = "species",
-                            Text = "species"
+                            Text = "species",
+                            Type = 1
                         },
                         new
                         {
                             Id = new Guid("bdc6e7dd-ece8-4ef8-b06b-dac3cb09cabc"),
                             PluralForm = "stimuli",
-                            Text = "stimulus"
+                            Text = "stimulus",
+                            Type = 1
                         },
                         new
                         {
                             Id = new Guid("6cac2ba2-42c6-452e-8851-2e91113c08a2"),
                             PluralForm = "strata",
-                            Text = "stratum"
+                            Text = "stratum",
+                            Type = 1
                         },
                         new
                         {
                             Id = new Guid("9e719618-3957-45f5-a579-84db93d75679"),
                             PluralForm = "swine",
-                            Text = "swine"
+                            Text = "swine",
+                            Type = 1
                         },
                         new
                         {
                             Id = new Guid("ac376ab4-ca67-4015-bb32-4937b2013f4c"),
                             PluralForm = "syllabi",
-                            Text = "syllabus"
+                            Text = "syllabus",
+                            Type = 1
                         },
                         new
                         {
                             Id = new Guid("488678df-1b0c-4049-99b4-2e6b77b64b56"),
                             PluralForm = "symposia",
-                            Text = "symposium"
+                            Text = "symposium",
+                            Type = 1
                         },
                         new
                         {
                             Id = new Guid("c74d197c-7d53-4385-a56d-68a8701b2a7c"),
                             PluralForm = "synopses",
-                            Text = "synopsis"
+                            Text = "synopsis",
+                            Type = 1
                         },
                         new
                         {
                             Id = new Guid("b106231d-6747-42de-b599-fc3bbd88b5b6"),
                             PluralForm = "tableaux",
-                            Text = "tableau"
+                            Text = "tableau",
+                            Type = 1
                         },
                         new
                         {
                             Id = new Guid("9ec6c1d6-14f0-496a-85f6-649c2b1942db"),
                             PluralForm = "theses",
-                            Text = "thesis"
+                            Text = "thesis",
+                            Type = 1
                         },
                         new
                         {
                             Id = new Guid("b2276b1b-4e10-4361-9098-b9119a6a30a7"),
                             PluralForm = "thieves",
-                            Text = "thief"
+                            Text = "thief",
+                            Type = 1
                         },
                         new
                         {
                             Id = new Guid("c570f1e7-090c-462f-aa6a-361b0109f561"),
                             PluralForm = "teeth",
-                            Text = "tooth"
+                            Text = "tooth",
+                            Type = 1
                         },
                         new
                         {
                             Id = new Guid("b1c21999-f653-4c3b-ac25-4f978a2e03c6"),
                             PluralForm = "vertebrae",
-                            Text = "vertebra"
+                            Text = "vertebra",
+                            Type = 1
                         },
                         new
                         {
                             Id = new Guid("e51bd39b-d01e-4d64-82b5-74820f7f8298"),
                             PluralForm = "vertices",
-                            Text = "vertex"
+                            Text = "vertex",
+                            Type = 1
                         },
                         new
                         {
                             Id = new Guid("844a8806-4cb2-42e8-a970-fb6ac9411381"),
                             PluralForm = "vitae",
-                            Text = "vita"
+                            Text = "vita",
+                            Type = 1
                         },
                         new
                         {
                             Id = new Guid("1f9d67de-d6b1-430a-91f5-ca59f2fefef0"),
                             PluralForm = "vortices",
-                            Text = "vortex"
+                            Text = "vortex",
+                            Type = 1
                         },
                         new
                         {
                             Id = new Guid("7ec7af1c-2f7b-4c81-b003-9a2c42098c3e"),
                             PluralForm = "wharves",
-                            Text = "wharf"
+                            Text = "wharf",
+                            Type = 1
                         },
                         new
                         {
                             Id = new Guid("d3b0da8d-49aa-4f45-9a04-da1629643f58"),
                             PluralForm = "wives",
-                            Text = "wife"
+                            Text = "wife",
+                            Type = 1
                         },
                         new
                         {
                             Id = new Guid("c6f4bb5e-4653-4edf-bc00-63fea7d5276b"),
                             PluralForm = "wolves",
-                            Text = "wolf"
+                            Text = "wolf",
+                            Type = 1
                         },
                         new
                         {
                             Id = new Guid("ef872690-a08c-4498-9a4c-f94c22cf80cd"),
                             PluralForm = "women",
-                            Text = "woman"
+                            Text = "woman",
+                            Type = 1
                         },
                         new
                         {
                             Id = new Guid("5c17986c-b2e5-48fe-9ba2-1429d1f9d4f8"),
                             PluralForm = "people",
-                            Text = "person"
+                            Text = "person",
+                            Type = 1
+                        },
+                        new
+                        {
+                            Id = new Guid("a380b3cc-c753-4a76-a744-ad7783354e76"),
+                            PluralForm = "weekends",
+                            Text = "weekend",
+                            Type = 2
+                        },
+                        new
+                        {
+                            Id = new Guid("528b4e51-9348-4f1c-bd4a-559ab40062e5"),
+                            PluralForm = "times",
+                            Text = "time",
+                            Type = 2
+                        },
+                        new
+                        {
+                            Id = new Guid("fece8942-d66e-4eab-8490-39634b3696f6"),
+                            PluralForm = "years",
+                            Text = "year",
+                            Type = 2
+                        },
+                        new
+                        {
+                            Id = new Guid("7f1c580c-87ec-4e11-bef0-c5e1931272a8"),
+                            PluralForm = "ways",
+                            Text = "way",
+                            Type = 2
+                        },
+                        new
+                        {
+                            Id = new Guid("c5ef7a7b-3832-493e-8c53-8d6bb05609e7"),
+                            PluralForm = "days",
+                            Text = "day",
+                            Type = 2
+                        },
+                        new
+                        {
+                            Id = new Guid("34f7eb99-ed14-4e47-8720-ad048cfc29eb"),
+                            PluralForm = "things",
+                            Text = "thing",
+                            Type = 2
+                        },
+                        new
+                        {
+                            Id = new Guid("b9ac7157-9847-465f-b288-26a5f471519c"),
+                            PluralForm = "lives",
+                            Text = "life",
+                            Type = 2
+                        },
+                        new
+                        {
+                            Id = new Guid("72d5ad38-35d4-4603-a33f-c96e6c7be57e"),
+                            PluralForm = "worlds",
+                            Text = "world",
+                            Type = 2
+                        },
+                        new
+                        {
+                            Id = new Guid("2fc46f1b-a7bc-45ec-a7b4-2b5cb34e7166"),
+                            PluralForm = "schools",
+                            Text = "school",
+                            Type = 2
+                        },
+                        new
+                        {
+                            Id = new Guid("92e6c1bf-1c1b-4413-8c03-77487b2d119a"),
+                            PluralForm = "states",
+                            Text = "state",
+                            Type = 2
+                        },
+                        new
+                        {
+                            Id = new Guid("d310565f-0c1f-40d9-9166-80b404ec12fc"),
+                            PluralForm = "families",
+                            Text = "family",
+                            Type = 2
+                        },
+                        new
+                        {
+                            Id = new Guid("56816b39-edf8-4421-b9d3-75d8e05f5d72"),
+                            PluralForm = "students",
+                            Text = "student",
+                            Type = 2
+                        },
+                        new
+                        {
+                            Id = new Guid("156b01b8-5c94-4f6d-83fb-5aadea4df9c1"),
+                            PluralForm = "groups",
+                            Text = "group",
+                            Type = 2
+                        },
+                        new
+                        {
+                            Id = new Guid("1e4d832a-f94b-4fb5-87da-45585523db2d"),
+                            PluralForm = "countries",
+                            Text = "country",
+                            Type = 2
+                        },
+                        new
+                        {
+                            Id = new Guid("43467274-8382-47cf-93fc-a2ee8cd99915"),
+                            PluralForm = "problems",
+                            Text = "problem",
+                            Type = 2
+                        },
+                        new
+                        {
+                            Id = new Guid("65638e34-2354-44e2-8348-36a739bf4922"),
+                            PluralForm = "hands",
+                            Text = "hand",
+                            Type = 2
+                        },
+                        new
+                        {
+                            Id = new Guid("6e7fa7ee-1bfe-4184-9de5-a49983288056"),
+                            PluralForm = "parts",
+                            Text = "part",
+                            Type = 2
+                        },
+                        new
+                        {
+                            Id = new Guid("f4762345-53d0-4b4f-be1f-092affd937f4"),
+                            PluralForm = "places",
+                            Text = "place",
+                            Type = 2
+                        },
+                        new
+                        {
+                            Id = new Guid("94ddcf5a-c8f1-4997-aa89-a396122543dd"),
+                            PluralForm = "cases",
+                            Text = "case",
+                            Type = 2
+                        },
+                        new
+                        {
+                            Id = new Guid("4faa8802-2eb9-4267-90a9-da08e35c4d52"),
+                            PluralForm = "weeks",
+                            Text = "week",
+                            Type = 2
+                        },
+                        new
+                        {
+                            Id = new Guid("e4a9298b-58a6-4ae6-98d7-531dfc0e4558"),
+                            PluralForm = "companies",
+                            Text = "company",
+                            Type = 2
+                        },
+                        new
+                        {
+                            Id = new Guid("c5217814-da8d-497c-b7c5-12c12575d465"),
+                            PluralForm = "systems",
+                            Text = "system",
+                            Type = 2
+                        },
+                        new
+                        {
+                            Id = new Guid("aa9aa506-df3b-4d94-8400-a15da489cdc3"),
+                            PluralForm = "programs",
+                            Text = "program",
+                            Type = 2
+                        },
+                        new
+                        {
+                            Id = new Guid("4c0835ec-a42a-467b-a204-2399339ff5f5"),
+                            PluralForm = "questia",
+                            Text = "question",
+                            Type = 2
+                        },
+                        new
+                        {
+                            Id = new Guid("c06cd075-037a-466e-9180-2af65efeaeb1"),
+                            PluralForm = "governments",
+                            Text = "government",
+                            Type = 2
+                        },
+                        new
+                        {
+                            Id = new Guid("3b73c619-56f1-4be5-b426-921a4b1a9de3"),
+                            PluralForm = "numbers",
+                            Text = "number",
+                            Type = 2
+                        },
+                        new
+                        {
+                            Id = new Guid("b3fffae9-2c61-43de-8f90-6f351f1e0bd5"),
+                            PluralForm = "points",
+                            Text = "point",
+                            Type = 2
+                        },
+                        new
+                        {
+                            Id = new Guid("0728eca1-2889-4ed6-9a2b-cf36e0cab016"),
+                            PluralForm = "homes",
+                            Text = "home",
+                            Type = 2
+                        },
+                        new
+                        {
+                            Id = new Guid("46528ce7-8f52-47ed-b39e-bdee68bbbad1"),
+                            PluralForm = "waters",
+                            Text = "water",
+                            Type = 2
+                        },
+                        new
+                        {
+                            Id = new Guid("f0b5c633-1f1b-4f36-ba29-89de161f147b"),
+                            PluralForm = "rooms",
+                            Text = "room",
+                            Type = 2
+                        },
+                        new
+                        {
+                            Id = new Guid("ccc3e204-80c9-4104-a0a1-3cd421c3db78"),
+                            PluralForm = "mothers",
+                            Text = "mother",
+                            Type = 2
+                        },
+                        new
+                        {
+                            Id = new Guid("dc91b3a0-23aa-4fd0-88e7-85ea8027ad8c"),
+                            PluralForm = "areas",
+                            Text = "area",
+                            Type = 2
+                        },
+                        new
+                        {
+                            Id = new Guid("7bad199d-a87f-4325-94b4-1351ef7365bc"),
+                            PluralForm = "moneys",
+                            Text = "money",
+                            Type = 2
+                        },
+                        new
+                        {
+                            Id = new Guid("3cf788be-e267-4d66-9905-313f9f49b1f8"),
+                            PluralForm = "stories",
+                            Text = "story",
+                            Type = 2
+                        },
+                        new
+                        {
+                            Id = new Guid("acaa7f8a-90a3-4b37-ae93-ea31a8a01a3c"),
+                            PluralForm = "facts",
+                            Text = "fact",
+                            Type = 2
+                        },
+                        new
+                        {
+                            Id = new Guid("eba9e2d1-440b-49b8-8861-0f9bc7cf668c"),
+                            PluralForm = "months",
+                            Text = "month",
+                            Type = 2
+                        },
+                        new
+                        {
+                            Id = new Guid("fa35d904-5472-4177-9693-50b53aae2832"),
+                            PluralForm = "books",
+                            Text = "book",
+                            Type = 2
+                        },
+                        new
+                        {
+                            Id = new Guid("fc48c01b-2b53-416e-b00b-f840af122e86"),
+                            PluralForm = "eyes",
+                            Text = "eye",
+                            Type = 2
+                        },
+                        new
+                        {
+                            Id = new Guid("5059544c-cad0-43c4-bfab-712945cda6a3"),
+                            PluralForm = "jobs",
+                            Text = "job",
+                            Type = 2
+                        },
+                        new
+                        {
+                            Id = new Guid("f4ae5328-eecc-40f3-bbc3-6714438a8ce3"),
+                            PluralForm = "words",
+                            Text = "word",
+                            Type = 2
+                        },
+                        new
+                        {
+                            Id = new Guid("7ed87e69-2afb-4a52-b2e0-bb229e18c0e5"),
+                            PluralForm = "businesses",
+                            Text = "business",
+                            Type = 2
+                        },
+                        new
+                        {
+                            Id = new Guid("8ab835ec-4f1b-4b7a-ab04-7097fc541f3b"),
+                            PluralForm = "issues",
+                            Text = "issue",
+                            Type = 2
+                        },
+                        new
+                        {
+                            Id = new Guid("2511f5cf-0f09-4d4d-b5ad-73278fa65b5b"),
+                            PluralForm = "sides",
+                            Text = "side",
+                            Type = 2
+                        },
+                        new
+                        {
+                            Id = new Guid("5161f011-b8df-4e4c-909c-44fb8d4e80c1"),
+                            PluralForm = "kinds",
+                            Text = "kind",
+                            Type = 2
+                        },
+                        new
+                        {
+                            Id = new Guid("8cfd2035-9431-4297-8f32-be0c1e26e31d"),
+                            PluralForm = "heads",
+                            Text = "head",
+                            Type = 2
+                        },
+                        new
+                        {
+                            Id = new Guid("718034f2-5601-4184-b268-f708e2dc7d16"),
+                            PluralForm = "houses",
+                            Text = "house",
+                            Type = 2
+                        },
+                        new
+                        {
+                            Id = new Guid("aeeaa146-827d-467c-9d5b-770d99d1b8cb"),
+                            PluralForm = "services",
+                            Text = "service",
+                            Type = 2
+                        },
+                        new
+                        {
+                            Id = new Guid("ff1a4f2a-4b3f-4531-bd64-9452d9756ca5"),
+                            PluralForm = "friends",
+                            Text = "friend",
+                            Type = 2
+                        },
+                        new
+                        {
+                            Id = new Guid("22a1741d-4999-4b9c-b926-5a6e8f5ccae8"),
+                            PluralForm = "fathers",
+                            Text = "father",
+                            Type = 2
+                        },
+                        new
+                        {
+                            Id = new Guid("10621b0a-3611-4bb9-a957-f8c19dec236a"),
+                            PluralForm = "powers",
+                            Text = "power",
+                            Type = 2
+                        },
+                        new
+                        {
+                            Id = new Guid("31dd7787-634a-43d7-8f08-08ae039e3489"),
+                            PluralForm = "hours",
+                            Text = "hour",
+                            Type = 2
+                        },
+                        new
+                        {
+                            Id = new Guid("7ab1006d-c5ee-4d4d-b57c-2ca6a38fa580"),
+                            PluralForm = "games",
+                            Text = "game",
+                            Type = 2
+                        },
+                        new
+                        {
+                            Id = new Guid("a091136a-6227-48e4-a6a1-c8070d5bc610"),
+                            PluralForm = "lines",
+                            Text = "line",
+                            Type = 2
+                        },
+                        new
+                        {
+                            Id = new Guid("69f8049d-e810-4b0f-923e-b66c28cbc595"),
+                            PluralForm = "ends",
+                            Text = "end",
+                            Type = 2
+                        },
+                        new
+                        {
+                            Id = new Guid("63e88cde-d7c4-44ed-8428-cfb3fbed65e3"),
+                            PluralForm = "members",
+                            Text = "member",
+                            Type = 2
+                        },
+                        new
+                        {
+                            Id = new Guid("8eee8b6d-3289-4f18-b5fa-35e6201bc8e2"),
+                            PluralForm = "laws",
+                            Text = "law",
+                            Type = 2
+                        },
+                        new
+                        {
+                            Id = new Guid("5d260a19-82f8-4ad1-81e1-7b0e3ae7d32d"),
+                            PluralForm = "cars",
+                            Text = "car",
+                            Type = 2
+                        },
+                        new
+                        {
+                            Id = new Guid("67060766-de81-4cd7-b2cc-34d3f7ebf0b9"),
+                            PluralForm = "cities",
+                            Text = "city",
+                            Type = 2
+                        },
+                        new
+                        {
+                            Id = new Guid("d810593c-5817-45f6-9292-fbe886c17c76"),
+                            PluralForm = "communities",
+                            Text = "community",
+                            Type = 2
+                        },
+                        new
+                        {
+                            Id = new Guid("06b41465-0054-43e0-a604-eeaedd96d003"),
+                            PluralForm = "names",
+                            Text = "name",
+                            Type = 2
+                        },
+                        new
+                        {
+                            Id = new Guid("ce173151-a957-48fb-87d7-77ef65ae422d"),
+                            PluralForm = "presidents",
+                            Text = "president",
+                            Type = 2
+                        },
+                        new
+                        {
+                            Id = new Guid("8effd891-9f66-44d6-b77c-8d9ff446b6ab"),
+                            PluralForm = "teams",
+                            Text = "team",
+                            Type = 2
+                        },
+                        new
+                        {
+                            Id = new Guid("c622cb5d-4f34-4c81-aa41-752a0c55a514"),
+                            PluralForm = "minutes",
+                            Text = "minute",
+                            Type = 2
+                        },
+                        new
+                        {
+                            Id = new Guid("6cc9a7a3-cb0b-4171-9ce1-35a9ddcaca3e"),
+                            PluralForm = "ideas",
+                            Text = "idea",
+                            Type = 2
+                        },
+                        new
+                        {
+                            Id = new Guid("2f1a8f23-220b-4c76-911b-69cddd22d6af"),
+                            PluralForm = "kids",
+                            Text = "kid",
+                            Type = 2
+                        },
+                        new
+                        {
+                            Id = new Guid("4e101834-2d9c-4487-97c3-19a564cc49b5"),
+                            PluralForm = "bodies",
+                            Text = "body",
+                            Type = 2
+                        },
+                        new
+                        {
+                            Id = new Guid("24f499a2-6b44-4fb5-81d4-53b47a2bd2a2"),
+                            PluralForm = "informatia",
+                            Text = "information",
+                            Type = 2
+                        },
+                        new
+                        {
+                            Id = new Guid("627b4a70-44eb-4428-8cea-6bfeb92a3d4d"),
+                            PluralForm = "parents",
+                            Text = "parent",
+                            Type = 2
+                        },
+                        new
+                        {
+                            Id = new Guid("080b75d8-eed4-41b8-b504-7e4e80fdc07b"),
+                            PluralForm = "faces",
+                            Text = "face",
+                            Type = 2
+                        },
+                        new
+                        {
+                            Id = new Guid("f89dee56-49a6-4aba-a982-4c7023c079cd"),
+                            PluralForm = "otherses",
+                            Text = "others",
+                            Type = 2
+                        },
+                        new
+                        {
+                            Id = new Guid("4350d8a4-0e75-48cf-95aa-ff59dc6fad2d"),
+                            PluralForm = "levels",
+                            Text = "level",
+                            Type = 2
+                        },
+                        new
+                        {
+                            Id = new Guid("d475bfd3-5bc3-4185-8dbb-269a26ae50f3"),
+                            PluralForm = "offices",
+                            Text = "office",
+                            Type = 2
+                        },
+                        new
+                        {
+                            Id = new Guid("45aa172e-1ab9-4747-a809-c4060a72c12b"),
+                            PluralForm = "doors",
+                            Text = "door",
+                            Type = 2
+                        },
+                        new
+                        {
+                            Id = new Guid("c559c60d-28c9-4e51-b639-f8db426dd58c"),
+                            PluralForm = "healths",
+                            Text = "health",
+                            Type = 2
+                        },
+                        new
+                        {
+                            Id = new Guid("51907a8c-acd1-4176-8498-dcd6eed2a2d1"),
+                            PluralForm = "arts",
+                            Text = "art",
+                            Type = 2
+                        },
+                        new
+                        {
+                            Id = new Guid("4687b7e4-885f-4703-905c-9a6f2baa2326"),
+                            PluralForm = "wars",
+                            Text = "war",
+                            Type = 2
+                        },
+                        new
+                        {
+                            Id = new Guid("515ced18-6e2d-4360-9e4d-d9a24431d6e9"),
+                            PluralForm = "histories",
+                            Text = "history",
+                            Type = 2
+                        },
+                        new
+                        {
+                            Id = new Guid("b519ee27-47d8-486a-a0e4-3dfba526ca40"),
+                            PluralForm = "parties",
+                            Text = "party",
+                            Type = 2
+                        },
+                        new
+                        {
+                            Id = new Guid("cc13b733-19bc-4440-ba0d-fd9cb1b2f755"),
+                            PluralForm = "results",
+                            Text = "result",
+                            Type = 2
+                        },
+                        new
+                        {
+                            Id = new Guid("f246d643-818c-46a0-82d2-d3d5ba9f45be"),
+                            PluralForm = "changes",
+                            Text = "change",
+                            Type = 2
+                        },
+                        new
+                        {
+                            Id = new Guid("e094c20b-6708-44fb-b11a-a4ce665366d2"),
+                            PluralForm = "reasa",
+                            Text = "reason",
+                            Type = 2
+                        },
+                        new
+                        {
+                            Id = new Guid("b9e13b57-0fd5-40ba-9f8c-0afdab9b4e1b"),
+                            PluralForm = "researches",
+                            Text = "research",
+                            Type = 2
+                        },
+                        new
+                        {
+                            Id = new Guid("961fb472-9232-467d-87e5-1c03b10ea4c2"),
+                            PluralForm = "girls",
+                            Text = "girl",
+                            Type = 2
+                        },
+                        new
+                        {
+                            Id = new Guid("1352b302-875f-4c0e-b030-d2d00f104124"),
+                            PluralForm = "guys",
+                            Text = "guy",
+                            Type = 2
+                        },
+                        new
+                        {
+                            Id = new Guid("83566a4c-90ae-40e7-a2c8-9aa064b03919"),
+                            PluralForm = "moments",
+                            Text = "moment",
+                            Type = 2
+                        },
+                        new
+                        {
+                            Id = new Guid("608074f5-faf1-436f-ac26-872c8266faad"),
+                            PluralForm = "airs",
+                            Text = "air",
+                            Type = 2
+                        },
+                        new
+                        {
+                            Id = new Guid("cd46c903-f640-4844-ad4c-e99d35ea7b5a"),
+                            PluralForm = "forces",
+                            Text = "force",
+                            Type = 2
+                        },
+                        new
+                        {
+                            Id = new Guid("31f59a36-25e5-4e93-87f8-c83e040429a2"),
+                            PluralForm = "educatia",
+                            Text = "education",
+                            Type = 2
+                        },
+                        new
+                        {
+                            Id = new Guid("055fe9d1-edec-4398-9880-6f781b2c7ec8"),
+                            PluralForm = "accountants",
+                            Text = "accountant",
+                            Type = 3
+                        },
+                        new
+                        {
+                            Id = new Guid("58f100cc-6dc3-411a-941d-af6ad4a13180"),
+                            PluralForm = "actors",
+                            Text = "actor",
+                            Type = 3
+                        },
+                        new
+                        {
+                            Id = new Guid("b49cabb5-b209-48d9-aad0-6cd1647e905f"),
+                            PluralForm = "actresses",
+                            Text = "actress",
+                            Type = 3
+                        },
+                        new
+                        {
+                            Id = new Guid("f585a5a5-6be4-4c6f-b985-e046b8f6bad1"),
+                            PluralForm = "architects",
+                            Text = "architect",
+                            Type = 3
+                        },
+                        new
+                        {
+                            Id = new Guid("c5c45345-c601-4978-9808-06ad8b77fb62"),
+                            PluralForm = "astronomers",
+                            Text = "astronomer",
+                            Type = 3
+                        },
+                        new
+                        {
+                            Id = new Guid("481c13ac-c43e-4fd3-ac17-3ba3c208fc96"),
+                            PluralForm = "authors",
+                            Text = "author",
+                            Type = 3
+                        },
+                        new
+                        {
+                            Id = new Guid("52a39a54-ca47-4548-8f25-f7b58eda97f6"),
+                            PluralForm = "bakers",
+                            Text = "baker",
+                            Type = 3
+                        },
+                        new
+                        {
+                            Id = new Guid("fdbe9e4a-affb-4a92-bd51-585b8afd95d1"),
+                            PluralForm = "bricklayers",
+                            Text = "bricklayer",
+                            Type = 3
+                        },
+                        new
+                        {
+                            Id = new Guid("ccbd1a54-e85a-45ca-a125-69f9b85a04d1"),
+                            PluralForm = "buses",
+                            Text = "bus",
+                            Type = 3
+                        },
+                        new
+                        {
+                            Id = new Guid("1e29bc31-f060-4bcc-9212-401f7536270d"),
+                            PluralForm = "drivers",
+                            Text = "driver",
+                            Type = 3
+                        },
+                        new
+                        {
+                            Id = new Guid("aa8249a7-eb2d-4520-97eb-3824ee01d690"),
+                            PluralForm = "butchers",
+                            Text = "butcher",
+                            Type = 3
+                        },
+                        new
+                        {
+                            Id = new Guid("78b9c7b3-12aa-4f6a-95ba-81a2ed3d25bb"),
+                            PluralForm = "carpenters",
+                            Text = "carpenter",
+                            Type = 3
+                        },
+                        new
+                        {
+                            Id = new Guid("6954d389-8c5e-4129-8352-267dad1ef7e1"),
+                            PluralForm = "chefs",
+                            Text = "chef",
+                            Type = 3
+                        },
+                        new
+                        {
+                            Id = new Guid("133ff439-dc78-4724-aca4-ac6127199e15"),
+                            PluralForm = "cleaners",
+                            Text = "cleaner",
+                            Type = 3
+                        },
+                        new
+                        {
+                            Id = new Guid("435360ae-25aa-4717-b0cc-83debd355db6"),
+                            PluralForm = "couriers",
+                            Text = "courier",
+                            Type = 3
+                        },
+                        new
+                        {
+                            Id = new Guid("3c3eab92-6fb3-4525-a5fd-20dcb8b7ea7b"),
+                            PluralForm = "dentists",
+                            Text = "dentist",
+                            Type = 3
+                        },
+                        new
+                        {
+                            Id = new Guid("8f97c762-bbd8-4be9-9521-78a9c3267629"),
+                            PluralForm = "designers",
+                            Text = "designer",
+                            Type = 3
+                        },
+                        new
+                        {
+                            Id = new Guid("86cd6d6d-2cfd-44ca-ad31-14c3b2ae5a42"),
+                            PluralForm = "doctors",
+                            Text = "doctor",
+                            Type = 3
+                        },
+                        new
+                        {
+                            Id = new Guid("57372e55-b9c9-47ab-8364-58f4ac1690f3"),
+                            PluralForm = "dustmans",
+                            Text = "dustman",
+                            Type = 3
+                        },
+                        new
+                        {
+                            Id = new Guid("aba004eb-6188-4e94-93e6-24a77bfda0e7"),
+                            PluralForm = "electricians",
+                            Text = "electrician",
+                            Type = 3
+                        },
+                        new
+                        {
+                            Id = new Guid("aae9ba77-77e8-4723-935e-1f6d9e8d7d38"),
+                            PluralForm = "engineers",
+                            Text = "engineer",
+                            Type = 3
+                        },
+                        new
+                        {
+                            Id = new Guid("76ebb3e6-6b35-4211-a942-c970f3a5ae70"),
+                            PluralForm = "farmers",
+                            Text = "farmer",
+                            Type = 3
+                        },
+                        new
+                        {
+                            Id = new Guid("78123adf-756d-419b-8290-80e4377bbfcb"),
+                            PluralForm = "firemans",
+                            Text = "fireman",
+                            Type = 3
+                        },
+                        new
+                        {
+                            Id = new Guid("f94a25e9-4c7a-49b1-9455-fdac5152b58e"),
+                            PluralForm = "fishermans",
+                            Text = "fisherman",
+                            Type = 3
+                        },
+                        new
+                        {
+                            Id = new Guid("a4e594bb-3ef2-45ea-98a4-5d7294a2cf3c"),
+                            PluralForm = "florists",
+                            Text = "florist",
+                            Type = 3
+                        },
+                        new
+                        {
+                            Id = new Guid("2700812f-632a-4717-a69b-5ea51b49e315"),
+                            PluralForm = "gardeners",
+                            Text = "gardener",
+                            Type = 3
+                        },
+                        new
+                        {
+                            Id = new Guid("ef9db620-dd0b-4f7a-8f7c-5feef834d084"),
+                            PluralForm = "hairdressers",
+                            Text = "hairdresser",
+                            Type = 3
+                        },
+                        new
+                        {
+                            Id = new Guid("2bd613c3-bfc4-4922-beb2-007513e15818"),
+                            PluralForm = "journalists",
+                            Text = "journalist",
+                            Type = 3
+                        },
+                        new
+                        {
+                            Id = new Guid("6dea7038-8c39-460a-837a-e68debfe610c"),
+                            PluralForm = "judges",
+                            Text = "judge",
+                            Type = 3
+                        },
+                        new
+                        {
+                            Id = new Guid("170b8259-2556-4148-8cba-29b74f092b7a"),
+                            PluralForm = "lawyers",
+                            Text = "lawyer",
+                            Type = 3
+                        },
+                        new
+                        {
+                            Id = new Guid("1c0e049c-1e56-4982-b6b9-30770daff4c7"),
+                            PluralForm = "lecturers",
+                            Text = "lecturer",
+                            Type = 3
+                        },
+                        new
+                        {
+                            Id = new Guid("9285bde5-981e-4aeb-89a2-40cb0aeceb1c"),
+                            PluralForm = "librarians",
+                            Text = "librarian",
+                            Type = 3
+                        },
+                        new
+                        {
+                            Id = new Guid("779295d4-cf20-4cbb-9a38-7572c641f5ba"),
+                            PluralForm = "lifeguards",
+                            Text = "lifeguard",
+                            Type = 3
+                        },
+                        new
+                        {
+                            Id = new Guid("a135fa3a-91e0-474e-9cd4-7d1cf1ea056a"),
+                            PluralForm = "mechanics",
+                            Text = "mechanic",
+                            Type = 3
+                        },
+                        new
+                        {
+                            Id = new Guid("0d9d9c1c-c3f2-4696-80a6-125702b5ed5d"),
+                            PluralForm = "models",
+                            Text = "model",
+                            Type = 3
+                        },
+                        new
+                        {
+                            Id = new Guid("94605695-8060-4643-a2eb-e87795a377e0"),
+                            PluralForm = "newsreaders",
+                            Text = "newsreader",
+                            Type = 3
+                        },
+                        new
+                        {
+                            Id = new Guid("cba67a01-8895-4215-bc52-3cdf566a6fa5"),
+                            PluralForm = "nurses",
+                            Text = "nurse",
+                            Type = 3
+                        },
+                        new
+                        {
+                            Id = new Guid("f55fcfba-dfc0-4a23-b80b-ae706a4f26da"),
+                            PluralForm = "opticians",
+                            Text = "optician",
+                            Type = 3
+                        },
+                        new
+                        {
+                            Id = new Guid("ed701365-6da1-46fe-bdfd-a5ea549db565"),
+                            PluralForm = "painters",
+                            Text = "painter",
+                            Type = 3
+                        },
+                        new
+                        {
+                            Id = new Guid("50f9b3ff-063c-445a-91e9-994615f6a4a0"),
+                            PluralForm = "pharmacists",
+                            Text = "pharmacist",
+                            Type = 3
+                        },
+                        new
+                        {
+                            Id = new Guid("bed75909-6f45-4a8c-a7cb-5dca3fc61adc"),
+                            PluralForm = "photographers",
+                            Text = "photographer",
+                            Type = 3
+                        },
+                        new
+                        {
+                            Id = new Guid("377325f0-561e-4ae0-a8a5-451d7449e9c0"),
+                            PluralForm = "pilots",
+                            Text = "pilot",
+                            Type = 3
+                        },
+                        new
+                        {
+                            Id = new Guid("43a676a6-e325-411a-b9bc-f9058f20eab1"),
+                            PluralForm = "plumbers",
+                            Text = "plumber",
+                            Type = 3
+                        },
+                        new
+                        {
+                            Id = new Guid("bd0a481c-f9a2-419c-99b7-5f8352f17541"),
+                            PluralForm = "politicians",
+                            Text = "politician",
+                            Type = 3
+                        },
+                        new
+                        {
+                            Id = new Guid("f2d72547-2049-42c6-ab5a-174bec4f0cf6"),
+                            PluralForm = "policemans",
+                            Text = "policeman",
+                            Type = 3
+                        },
+                        new
+                        {
+                            Id = new Guid("dce4c333-d24b-4cc6-9297-873df89a2d21"),
+                            PluralForm = "policewomans",
+                            Text = "policewoman",
+                            Type = 3
+                        },
+                        new
+                        {
+                            Id = new Guid("86f42f23-b7ed-44f3-aace-5cc3723617be"),
+                            PluralForm = "postmans",
+                            Text = "postman",
+                            Type = 3
+                        },
+                        new
+                        {
+                            Id = new Guid("162e288a-d060-41cd-8a6b-a42c16baff0f"),
+                            PluralForm = "receptionists",
+                            Text = "receptionist",
+                            Type = 3
+                        },
+                        new
+                        {
+                            Id = new Guid("d6f1d49a-b4fb-45f1-bdf6-1924cb75add4"),
+                            PluralForm = "scientists",
+                            Text = "scientist",
+                            Type = 3
+                        },
+                        new
+                        {
+                            Id = new Guid("4504cf9a-e14c-4c5a-92a2-5be20df566a7"),
+                            PluralForm = "secretaries",
+                            Text = "secretary",
+                            Type = 3
+                        },
+                        new
+                        {
+                            Id = new Guid("b33cca0d-89e3-41fc-a5a3-b585f4f2f037"),
+                            PluralForm = "soldiers",
+                            Text = "soldier",
+                            Type = 3
+                        },
+                        new
+                        {
+                            Id = new Guid("7656bd9b-e1a8-4eae-b1fd-9cab3efcac7c"),
+                            PluralForm = "tailors",
+                            Text = "tailor",
+                            Type = 3
+                        },
+                        new
+                        {
+                            Id = new Guid("6d2e41ae-33dd-45b5-ac89-94b94370dff1"),
+                            PluralForm = "teachers",
+                            Text = "teacher",
+                            Type = 3
+                        },
+                        new
+                        {
+                            Id = new Guid("2def382d-2002-4e39-ad5d-68a4331c992a"),
+                            PluralForm = "translators",
+                            Text = "translator",
+                            Type = 3
+                        },
+                        new
+                        {
+                            Id = new Guid("dc5f756e-a1dd-409c-9e2d-8e98ebdbe791"),
+                            PluralForm = "waiters",
+                            Text = "waiter",
+                            Type = 3
+                        },
+                        new
+                        {
+                            Id = new Guid("8fb5565a-862c-4d5f-83fe-240826140e50"),
+                            PluralForm = "waitresses",
+                            Text = "waitress",
+                            Type = 3
+                        },
+                        new
+                        {
+                            Id = new Guid("ccdaee0f-79cf-43da-a34b-4b4336ab5f32"),
+                            PluralForm = "mornings",
+                            Text = "morning",
+                            Type = 4
+                        },
+                        new
+                        {
+                            Id = new Guid("57f5f0e2-104a-4fd5-9ab0-f8eabe35bd35"),
+                            PluralForm = "afternoons",
+                            Text = "afternoon",
+                            Type = 4
+                        },
+                        new
+                        {
+                            Id = new Guid("685bc24c-dfa0-4818-a431-65091b5009d0"),
+                            PluralForm = "evenings",
+                            Text = "evening",
+                            Type = 4
+                        },
+                        new
+                        {
+                            Id = new Guid("8fb6b0b2-e8c0-47b9-a5e7-b10f02d203cf"),
+                            PluralForm = "nights",
+                            Text = "night",
+                            Type = 4
+                        },
+                        new
+                        {
+                            Id = new Guid("f1075b37-436f-406e-97ca-80df599e95ff"),
+                            PluralForm = "winters",
+                            Text = "winter",
+                            Type = 5
+                        },
+                        new
+                        {
+                            Id = new Guid("c0fcab94-33c9-41fe-9788-44561ac423a9"),
+                            PluralForm = "springs",
+                            Text = "spring",
+                            Type = 5
+                        },
+                        new
+                        {
+                            Id = new Guid("b1a53f9d-910c-44e8-83c7-10267cfcf643"),
+                            PluralForm = "summers",
+                            Text = "summer",
+                            Type = 5
+                        },
+                        new
+                        {
+                            Id = new Guid("3f3d7406-8d08-4d59-86ba-fa503f866b40"),
+                            PluralForm = "autumns",
+                            Text = "autumn",
+                            Type = 5
+                        });
+                });
+
+            modelBuilder.Entity("Domain.Vocabulary.Prepositions.Preposition", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("Text")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("character varying(100)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Prepositions", "vocabulary");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("03839a0b-94c8-4ecf-9e67-4952db8cfab3"),
+                            Text = "ago"
+                        },
+                        new
+                        {
+                            Id = new Guid("246fbad8-a590-423c-b9b5-48886501f621"),
+                            Text = "aboard"
+                        },
+                        new
+                        {
+                            Id = new Guid("9fd75223-53f7-4221-b4a8-01439e4e67b3"),
+                            Text = "about"
+                        },
+                        new
+                        {
+                            Id = new Guid("0f6fafc1-c5eb-4401-931a-debf4a65f728"),
+                            Text = "across"
+                        },
+                        new
+                        {
+                            Id = new Guid("7b3c5115-faa0-4355-85dc-2ec976be3793"),
+                            Text = "after"
+                        },
+                        new
+                        {
+                            Id = new Guid("e78fea2f-8aaf-49b2-bd9b-8456caa2430a"),
+                            Text = "against"
+                        },
+                        new
+                        {
+                            Id = new Guid("e22c1b46-ef0b-4b79-ae79-19dbb6d481ec"),
+                            Text = "along"
+                        },
+                        new
+                        {
+                            Id = new Guid("8e95e1f5-c09d-4697-9b68-ef441df09af4"),
+                            Text = "amid"
+                        },
+                        new
+                        {
+                            Id = new Guid("82cb41ac-c41e-41db-a55e-9828e163f1d1"),
+                            Text = "among"
+                        },
+                        new
+                        {
+                            Id = new Guid("663dbdc5-eee5-4a7d-ae6f-26ba63303f5c"),
+                            Text = "anti"
+                        },
+                        new
+                        {
+                            Id = new Guid("c3c80b52-c594-495f-9be5-43d2e6691eb4"),
+                            Text = "around"
+                        },
+                        new
+                        {
+                            Id = new Guid("2ef33252-685c-48e6-9281-3f609f66b7a0"),
+                            Text = "as"
+                        },
+                        new
+                        {
+                            Id = new Guid("f0b7e1d1-d200-4783-b759-082a420f7ca1"),
+                            Text = "at"
+                        },
+                        new
+                        {
+                            Id = new Guid("36a5ec67-8236-4633-95ea-2465b9333139"),
+                            Text = "before"
+                        },
+                        new
+                        {
+                            Id = new Guid("8a9251d2-c821-4fe8-bc5d-ece189c72939"),
+                            Text = "behind"
+                        },
+                        new
+                        {
+                            Id = new Guid("a121847c-af91-4c15-a095-b457ef6f1f78"),
+                            Text = "beneath"
+                        },
+                        new
+                        {
+                            Id = new Guid("ec5d1566-90d7-481a-8cc2-3ee9cfef9a93"),
+                            Text = "beside"
+                        },
+                        new
+                        {
+                            Id = new Guid("a8d9601e-466b-4692-b959-e052325cfbfc"),
+                            Text = "besides"
+                        },
+                        new
+                        {
+                            Id = new Guid("b3efaafb-1826-4548-879e-cb1366ec2753"),
+                            Text = "between"
+                        },
+                        new
+                        {
+                            Id = new Guid("0ae076f4-649a-4346-bd40-02b0b7d2c710"),
+                            Text = "beyond"
+                        },
+                        new
+                        {
+                            Id = new Guid("9e87a351-3d94-4037-825a-8eda3d6f3650"),
+                            Text = "but"
+                        },
+                        new
+                        {
+                            Id = new Guid("e797b489-9322-4d25-b9c5-140798975c21"),
+                            Text = "by"
+                        },
+                        new
+                        {
+                            Id = new Guid("aec0ce77-7a36-46d5-a071-fde8dd8dca3f"),
+                            Text = "concerning"
+                        },
+                        new
+                        {
+                            Id = new Guid("e49816da-2b0c-4882-80de-1db6a3a46045"),
+                            Text = "considering"
+                        },
+                        new
+                        {
+                            Id = new Guid("83192b0e-0caf-4dcd-a9d9-e0cb13b193f3"),
+                            Text = "despite"
+                        },
+                        new
+                        {
+                            Id = new Guid("83d901e7-b772-4870-80f1-54dae00c64d8"),
+                            Text = "down"
+                        },
+                        new
+                        {
+                            Id = new Guid("b66ae075-99e9-435b-bf6a-dbdf5526dbdf"),
+                            Text = "during"
+                        },
+                        new
+                        {
+                            Id = new Guid("516d2b89-4ecc-4c59-a899-396c36bb0b2b"),
+                            Text = "except"
+                        },
+                        new
+                        {
+                            Id = new Guid("dbf3c1e1-dd11-433d-a2ac-e01dd197e056"),
+                            Text = "excepting"
+                        },
+                        new
+                        {
+                            Id = new Guid("f8ca831c-7cde-4a51-bbbb-657ffac0f4e0"),
+                            Text = "excluding"
+                        },
+                        new
+                        {
+                            Id = new Guid("35264b0e-a345-4a2a-97a0-77fac3077520"),
+                            Text = "following"
+                        },
+                        new
+                        {
+                            Id = new Guid("e80f9dcf-9e7e-4260-b3e3-d4a9571a0fa6"),
+                            Text = "for"
+                        },
+                        new
+                        {
+                            Id = new Guid("0fe30342-b74c-4136-9636-4d89fff18de0"),
+                            Text = "from"
+                        },
+                        new
+                        {
+                            Id = new Guid("26c92022-b7bc-4c95-ba23-f8eedccb2868"),
+                            Text = "in"
+                        },
+                        new
+                        {
+                            Id = new Guid("7f878ec0-1e74-41d4-aca7-b819d0b65ea6"),
+                            Text = "into"
+                        },
+                        new
+                        {
+                            Id = new Guid("63992e57-31c2-4340-984d-a105ac52a865"),
+                            Text = "minus"
+                        },
+                        new
+                        {
+                            Id = new Guid("04b2ca86-608b-4b0c-9d67-ad756ca79f4e"),
+                            Text = "near"
+                        },
+                        new
+                        {
+                            Id = new Guid("64db07d1-263c-4add-9b36-683706b9f171"),
+                            Text = "of"
+                        },
+                        new
+                        {
+                            Id = new Guid("3518e7c5-18c0-4624-9e57-39edd55e2c5b"),
+                            Text = "off"
+                        },
+                        new
+                        {
+                            Id = new Guid("fc9455a5-bf8e-45ab-ae25-18a6b6085128"),
+                            Text = "on"
+                        },
+                        new
+                        {
+                            Id = new Guid("ceefd2ed-ae04-427d-94ce-ece35551f504"),
+                            Text = "onto"
+                        },
+                        new
+                        {
+                            Id = new Guid("0030e9fe-b7f2-44a0-9561-72312a3d90fd"),
+                            Text = "opposite"
+                        },
+                        new
+                        {
+                            Id = new Guid("c6840982-5776-4f45-b3ce-4dc6724eb769"),
+                            Text = "over"
+                        },
+                        new
+                        {
+                            Id = new Guid("d3830f80-738e-487b-aba5-4f66a9bb171f"),
+                            Text = "past"
+                        },
+                        new
+                        {
+                            Id = new Guid("4fbfc4e5-495e-4ef1-9522-851483702851"),
+                            Text = "per"
+                        },
+                        new
+                        {
+                            Id = new Guid("87a385cd-306b-4c63-a75d-61878fe2e502"),
+                            Text = "plus"
+                        },
+                        new
+                        {
+                            Id = new Guid("783d2ea9-3bcb-473a-af99-dd209f7e04ff"),
+                            Text = "regarding"
+                        },
+                        new
+                        {
+                            Id = new Guid("2ace2fa7-821b-4db1-8d98-d667cd2ae57c"),
+                            Text = "round"
+                        },
+                        new
+                        {
+                            Id = new Guid("ca49d61b-8819-460d-8743-4b3de38b06be"),
+                            Text = "save"
+                        },
+                        new
+                        {
+                            Id = new Guid("a3d589cd-1c19-40c3-9637-fc365a9bc370"),
+                            Text = "since"
+                        },
+                        new
+                        {
+                            Id = new Guid("3403ee74-673a-4bda-acfc-d135cbf468d7"),
+                            Text = "than"
+                        },
+                        new
+                        {
+                            Id = new Guid("3e0b8392-0434-4351-9373-19a4be5f96e8"),
+                            Text = "then"
+                        },
+                        new
+                        {
+                            Id = new Guid("5c9d8453-c5ae-49a7-a0b1-78c71d85224c"),
+                            Text = "through"
+                        },
+                        new
+                        {
+                            Id = new Guid("c4a0c377-5159-4044-ac48-6d6f44baaad2"),
+                            Text = "to"
+                        },
+                        new
+                        {
+                            Id = new Guid("131fad37-0e85-4e99-9f26-3d20a989394a"),
+                            Text = "toward"
+                        },
+                        new
+                        {
+                            Id = new Guid("ebbb3faf-b17a-40c8-b716-ffc09a3500fa"),
+                            Text = "towards"
+                        },
+                        new
+                        {
+                            Id = new Guid("0c4294f3-327b-4eb9-8831-951c236b3e37"),
+                            Text = "under"
+                        },
+                        new
+                        {
+                            Id = new Guid("9d77e7ff-bff5-41fa-b70c-164b45ead20a"),
+                            Text = "underneath"
+                        },
+                        new
+                        {
+                            Id = new Guid("d1b35063-29c3-4d42-b169-6d955bc3cc2d"),
+                            Text = "unlike"
+                        },
+                        new
+                        {
+                            Id = new Guid("83a7211c-fd5d-441e-b198-8b44befc2e1a"),
+                            Text = "until"
+                        },
+                        new
+                        {
+                            Id = new Guid("aa005900-1d04-499e-8623-d32fb6cbcc1f"),
+                            Text = "up"
+                        },
+                        new
+                        {
+                            Id = new Guid("f1b984b4-74e1-4811-b38a-03201124c205"),
+                            Text = "upon"
+                        },
+                        new
+                        {
+                            Id = new Guid("5516e049-ec23-4182-8046-b24465cca0b1"),
+                            Text = "versus"
+                        },
+                        new
+                        {
+                            Id = new Guid("516c2674-c9bf-4c0f-860a-976999751714"),
+                            Text = "via"
+                        },
+                        new
+                        {
+                            Id = new Guid("e42d087f-cf56-4671-a7e9-b816b7fec5e0"),
+                            Text = "with"
+                        },
+                        new
+                        {
+                            Id = new Guid("e890b4a7-b2fa-4d74-968c-bd717f72b01e"),
+                            Text = "within"
+                        },
+                        new
+                        {
+                            Id = new Guid("a9de3c60-e5a4-47e5-9d58-68e7ec493e0e"),
+                            Text = "without"
+                        });
+                });
+
+            modelBuilder.Entity("Domain.Vocabulary.PrimaryVerbs.PrimaryVerb", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("PastForm")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("character varying(100)");
+
+                    b.Property<string>("PastParticipleForm")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("character varying(100)");
+
+                    b.Property<string>("PresentParticipleForm")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("character varying(100)");
+
+                    b.Property<string>("Text")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("character varying(100)");
+
+                    b.Property<string>("ThirdPersonForm")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("character varying(100)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("PrimaryVerbs", "vocabulary");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("928e8efd-1a11-4df9-9703-0631fa073ca3"),
+                            PastForm = "did",
+                            PastParticipleForm = "done",
+                            PresentParticipleForm = "doing",
+                            Text = "do",
+                            ThirdPersonForm = "does"
+                        },
+                        new
+                        {
+                            Id = new Guid("aedf0d06-70b2-4270-8c69-6a5b7ce26d1c"),
+                            PastForm = "had",
+                            PastParticipleForm = "had",
+                            PresentParticipleForm = "having",
+                            Text = "have",
+                            ThirdPersonForm = "has"
+                        },
+                        new
+                        {
+                            Id = new Guid("f286ad7c-e394-42b6-ad07-4be4a8bb137c"),
+                            PastForm = "was",
+                            PastParticipleForm = "been",
+                            PresentParticipleForm = "being",
+                            Text = "be",
+                            ThirdPersonForm = "is"
                         });
                 });
 
@@ -3602,7 +5179,7 @@ namespace Infrastructure.Persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Pronouns", "practice");
+                    b.ToTable("Pronouns", "vocabulary");
 
                     b.HasData(
                         new
@@ -3639,6 +5216,53 @@ namespace Infrastructure.Persistence.Migrations
                         {
                             Id = new Guid("0bb651d1-cc92-41a5-9b24-2934db01ed07"),
                             Text = "they"
+                        });
+                });
+
+            modelBuilder.Entity("Domain.Vocabulary.QuestionWords.QuestionWord", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("Text")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("character varying(100)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("QuestionWords", "vocabulary");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("377f7b4a-765b-4ac4-87e0-343b645cbc7c"),
+                            Text = "what"
+                        },
+                        new
+                        {
+                            Id = new Guid("3db6df5d-e140-4d7f-a231-c9a356e725fe"),
+                            Text = "who"
+                        },
+                        new
+                        {
+                            Id = new Guid("c92e0865-0310-4f68-89f5-6f23c38c40b2"),
+                            Text = "where"
+                        },
+                        new
+                        {
+                            Id = new Guid("9dffa778-547f-45e5-8e6e-22bdaef6d2f9"),
+                            Text = "when"
+                        },
+                        new
+                        {
+                            Id = new Guid("95aaeb38-63a9-4933-9aa0-78363d5ce039"),
+                            Text = "why"
+                        },
+                        new
+                        {
+                            Id = new Guid("28a50d80-9744-419f-ab08-a69cfcc80fd4"),
+                            Text = "how"
                         });
                 });
 
@@ -4041,6 +5665,249 @@ namespace Infrastructure.Persistence.Migrations
                     b.Navigation("ExerciseIds");
 
                     b.Navigation("ScoreIds");
+                });
+
+            modelBuilder.Entity("Domain.Vocabulary.PrimaryVerbs.PrimaryVerb", b =>
+                {
+                    b.OwnsMany("Domain.Vocabulary.ModalVerbs.ValueObjects.FullNegativeForm", "FullNegativeForms", b1 =>
+                        {
+                            b1.Property<int>("Id")
+                                .ValueGeneratedOnAdd()
+                                .HasColumnType("integer");
+
+                            NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b1.Property<int>("Id"));
+
+                            b1.Property<Guid>("PrimaryVerbId")
+                                .HasColumnType("uuid");
+
+                            b1.Property<string>("Value")
+                                .IsRequired()
+                                .HasColumnType("text")
+                                .HasColumnName("Text");
+
+                            b1.HasKey("Id");
+
+                            b1.HasIndex("PrimaryVerbId");
+
+                            b1.ToTable("FullNegativeForms", "vocabulary");
+
+                            b1.WithOwner()
+                                .HasForeignKey("PrimaryVerbId");
+
+                            b1.HasData(
+                                new
+                                {
+                                    Id = 1,
+                                    PrimaryVerbId = new Guid("928e8efd-1a11-4df9-9703-0631fa073ca3"),
+                                    Value = "do not"
+                                },
+                                new
+                                {
+                                    Id = 2,
+                                    PrimaryVerbId = new Guid("928e8efd-1a11-4df9-9703-0631fa073ca3"),
+                                    Value = "did not"
+                                },
+                                new
+                                {
+                                    Id = 3,
+                                    PrimaryVerbId = new Guid("928e8efd-1a11-4df9-9703-0631fa073ca3"),
+                                    Value = "does not"
+                                },
+                                new
+                                {
+                                    Id = 4,
+                                    PrimaryVerbId = new Guid("aedf0d06-70b2-4270-8c69-6a5b7ce26d1c"),
+                                    Value = "have not"
+                                },
+                                new
+                                {
+                                    Id = 5,
+                                    PrimaryVerbId = new Guid("aedf0d06-70b2-4270-8c69-6a5b7ce26d1c"),
+                                    Value = "had not"
+                                },
+                                new
+                                {
+                                    Id = 6,
+                                    PrimaryVerbId = new Guid("928e8efd-1a11-4df9-9703-0631fa073ca3"),
+                                    Value = "has not"
+                                },
+                                new
+                                {
+                                    Id = 7,
+                                    PrimaryVerbId = new Guid("f286ad7c-e394-42b6-ad07-4be4a8bb137c"),
+                                    Value = "was not"
+                                },
+                                new
+                                {
+                                    Id = 8,
+                                    PrimaryVerbId = new Guid("f286ad7c-e394-42b6-ad07-4be4a8bb137c"),
+                                    Value = "were not"
+                                },
+                                new
+                                {
+                                    Id = 9,
+                                    PrimaryVerbId = new Guid("f286ad7c-e394-42b6-ad07-4be4a8bb137c"),
+                                    Value = "am not"
+                                },
+                                new
+                                {
+                                    Id = 10,
+                                    PrimaryVerbId = new Guid("f286ad7c-e394-42b6-ad07-4be4a8bb137c"),
+                                    Value = "is not"
+                                },
+                                new
+                                {
+                                    Id = 11,
+                                    PrimaryVerbId = new Guid("f286ad7c-e394-42b6-ad07-4be4a8bb137c"),
+                                    Value = "are not"
+                                });
+                        });
+
+                    b.OwnsMany("Domain.Vocabulary.ModalVerbs.ValueObjects.ShortNegativeForm", "ShortNegativeForms", b1 =>
+                        {
+                            b1.Property<int>("Id")
+                                .ValueGeneratedOnAdd()
+                                .HasColumnType("integer");
+
+                            NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b1.Property<int>("Id"));
+
+                            b1.Property<Guid>("PrimaryVerbId")
+                                .HasColumnType("uuid");
+
+                            b1.Property<string>("Value")
+                                .IsRequired()
+                                .HasColumnType("text")
+                                .HasColumnName("Text");
+
+                            b1.HasKey("Id");
+
+                            b1.HasIndex("PrimaryVerbId");
+
+                            b1.ToTable("ShortNegativeForms", "vocabulary");
+
+                            b1.WithOwner()
+                                .HasForeignKey("PrimaryVerbId");
+
+                            b1.HasData(
+                                new
+                                {
+                                    Id = 1,
+                                    PrimaryVerbId = new Guid("928e8efd-1a11-4df9-9703-0631fa073ca3"),
+                                    Value = "don't"
+                                },
+                                new
+                                {
+                                    Id = 2,
+                                    PrimaryVerbId = new Guid("928e8efd-1a11-4df9-9703-0631fa073ca3"),
+                                    Value = "didn't"
+                                },
+                                new
+                                {
+                                    Id = 3,
+                                    PrimaryVerbId = new Guid("928e8efd-1a11-4df9-9703-0631fa073ca3"),
+                                    Value = "doesn't"
+                                },
+                                new
+                                {
+                                    Id = 4,
+                                    PrimaryVerbId = new Guid("aedf0d06-70b2-4270-8c69-6a5b7ce26d1c"),
+                                    Value = "haven't"
+                                },
+                                new
+                                {
+                                    Id = 5,
+                                    PrimaryVerbId = new Guid("aedf0d06-70b2-4270-8c69-6a5b7ce26d1c"),
+                                    Value = "hadn't"
+                                },
+                                new
+                                {
+                                    Id = 6,
+                                    PrimaryVerbId = new Guid("aedf0d06-70b2-4270-8c69-6a5b7ce26d1c"),
+                                    Value = "hasn't"
+                                },
+                                new
+                                {
+                                    Id = 7,
+                                    PrimaryVerbId = new Guid("f286ad7c-e394-42b6-ad07-4be4a8bb137c"),
+                                    Value = "wasn't"
+                                },
+                                new
+                                {
+                                    Id = 8,
+                                    PrimaryVerbId = new Guid("f286ad7c-e394-42b6-ad07-4be4a8bb137c"),
+                                    Value = "weren't"
+                                },
+                                new
+                                {
+                                    Id = 9,
+                                    PrimaryVerbId = new Guid("f286ad7c-e394-42b6-ad07-4be4a8bb137c"),
+                                    Value = "am not"
+                                },
+                                new
+                                {
+                                    Id = 10,
+                                    PrimaryVerbId = new Guid("f286ad7c-e394-42b6-ad07-4be4a8bb137c"),
+                                    Value = "isn't"
+                                },
+                                new
+                                {
+                                    Id = 11,
+                                    PrimaryVerbId = new Guid("f286ad7c-e394-42b6-ad07-4be4a8bb137c"),
+                                    Value = "aren't"
+                                });
+                        });
+
+                    b.OwnsMany("Domain.Vocabulary.PrimaryVerbs.ValueObjects.AdditionalForm", "AdditionalForms", b1 =>
+                        {
+                            b1.Property<int>("Id")
+                                .ValueGeneratedOnAdd()
+                                .HasColumnType("integer");
+
+                            NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b1.Property<int>("Id"));
+
+                            b1.Property<Guid>("PrimaryVerbId")
+                                .HasColumnType("uuid");
+
+                            b1.Property<string>("Value")
+                                .IsRequired()
+                                .HasColumnType("text")
+                                .HasColumnName("Text");
+
+                            b1.HasKey("Id");
+
+                            b1.HasIndex("PrimaryVerbId");
+
+                            b1.ToTable("AdditionalForms", "vocabulary");
+
+                            b1.WithOwner()
+                                .HasForeignKey("PrimaryVerbId");
+
+                            b1.HasData(
+                                new
+                                {
+                                    Id = 1,
+                                    PrimaryVerbId = new Guid("f286ad7c-e394-42b6-ad07-4be4a8bb137c"),
+                                    Value = "were"
+                                },
+                                new
+                                {
+                                    Id = 2,
+                                    PrimaryVerbId = new Guid("f286ad7c-e394-42b6-ad07-4be4a8bb137c"),
+                                    Value = "am"
+                                },
+                                new
+                                {
+                                    Id = 3,
+                                    PrimaryVerbId = new Guid("f286ad7c-e394-42b6-ad07-4be4a8bb137c"),
+                                    Value = "are"
+                                });
+                        });
+
+                    b.Navigation("AdditionalForms");
+
+                    b.Navigation("FullNegativeForms");
+
+                    b.Navigation("ShortNegativeForms");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<System.Guid>", b =>

@@ -34,9 +34,9 @@ public sealed class ThirdPersonForm : ValueObject
         return new ThirdPersonForm(value);
     }
 
-    public static ErrorOr<ThirdPersonForm> From(string verbText)
+    public static ErrorOr<ThirdPersonForm> From(Text verbText)
     {
-        if (string.IsNullOrWhiteSpace(verbText))
+        if (string.IsNullOrWhiteSpace(verbText.Value))
         {
             return VerbErrors.EmptyVerbText;
         }
@@ -46,26 +46,28 @@ public sealed class ThirdPersonForm : ValueObject
         return new ThirdPersonForm(value);
     }
 
-    private static string GenerateThirdPersonForm(string text)
+    private static string GenerateThirdPersonForm(Text text)
     {
-        if (text == "go")
+        var textValue = text.Value;
+        
+        if (textValue == "go")
         {
             return "goes";
         }
 
-        var lastTwoChars = text[^2..];
+        var lastTwoChars = textValue[^2..];
 
-        if (EsEndings.Any(text.EndsWith))
+        if (EsEndings.Any(textValue.EndsWith))
         {
-            return text + "es";
+            return textValue + "es";
         }
 
         if (Letters.Consonants.Contains(lastTwoChars[0]) && lastTwoChars[1] == 'y')
         {
-            return text[..^1] + "ies";
+            return textValue[..^1] + "ies";
         }
 
-        return text + 's';
+        return textValue + 's';
     }
 
     protected override IEnumerable<object> GetEqualityComponents()

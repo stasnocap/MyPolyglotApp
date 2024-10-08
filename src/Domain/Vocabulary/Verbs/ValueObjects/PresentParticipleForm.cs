@@ -32,35 +32,37 @@ public sealed class PresentParticipleForm : ValueObject
         return new PresentParticipleForm(value);
     }
 
-    public static ErrorOr<PresentParticipleForm> From(string verbText, StressOnFinalSyllable stress)
+    public static ErrorOr<PresentParticipleForm> From(Text verbText, bool stressOnFinalSyllable)
     {
-        if (string.IsNullOrWhiteSpace(verbText))
+        if (string.IsNullOrWhiteSpace(verbText.Value))
         {
             return VerbErrors.EmptyVerbText;
         }
 
-        var value = GeneratePresentParticipleForm(verbText, stress);
+        var value = GeneratePresentParticipleForm(verbText, stressOnFinalSyllable);
 
         return new PresentParticipleForm(value);
     }
 
-    private static string GeneratePresentParticipleForm(string text, StressOnFinalSyllable stress)
+    private static string GeneratePresentParticipleForm(Text text, bool stressOnFinalSyllable)
     {
-        var lastTwoChars = text[^2..];
+        var textValue = text.Value;
+        
+        var lastTwoChars = textValue[^2..];
 
-        if (stress.Value && Letters.Vowels.Contains(lastTwoChars[0]) && Letters.Consonants.Contains(lastTwoChars[1]))
+        if (stressOnFinalSyllable && Letters.Vowels.Contains(lastTwoChars[0]) && Letters.Consonants.Contains(lastTwoChars[1]))
         {
-            return text + lastTwoChars[1] + "ing";
+            return textValue + lastTwoChars[1] + "ing";
         }
 
-        if (text.EndsWith("ie"))
+        if (textValue.EndsWith("ie"))
         {
-            return text[..^2] + 'y' + "ing";
+            return textValue[..^2] + 'y' + "ing";
         }
 
-        if (text.EndsWith('e'))
+        if (textValue.EndsWith('e'))
         {
-            return text[..^1] + "ing";
+            return textValue[..^1] + "ing";
         }
 
         return text + "ing";

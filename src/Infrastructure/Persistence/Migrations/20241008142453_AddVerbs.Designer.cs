@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Infrastructure.Persistence.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20241008084743_UpdateNouns")]
-    partial class UpdateNouns
+    [Migration("20241008142453_AddVerbs")]
+    partial class AddVerbs
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -179,7 +179,7 @@ namespace Infrastructure.Persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Adjectives", "practice");
+                    b.ToTable("Adjectives", "vocabulary");
 
                     b.HasData(
                         new
@@ -409,7 +409,7 @@ namespace Infrastructure.Persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Adverbs", "practice");
+                    b.ToTable("Adverbs", "vocabulary");
 
                     b.HasData(
                         new
@@ -924,7 +924,7 @@ namespace Infrastructure.Persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Cities", "practice");
+                    b.ToTable("Cities", "vocabulary");
 
                     b.HasData(
                         new
@@ -1644,7 +1644,7 @@ namespace Infrastructure.Persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("ComparisonAdjectives", "practice");
+                    b.ToTable("ComparisonAdjectives", "vocabulary");
 
                     b.HasData(
                         new
@@ -1696,7 +1696,7 @@ namespace Infrastructure.Persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Compounds", "practice");
+                    b.ToTable("Compounds", "vocabulary");
 
                     b.HasData(
                         new
@@ -1809,7 +1809,7 @@ namespace Infrastructure.Persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Determiners", "practice");
+                    b.ToTable("Determiners", "vocabulary");
 
                     b.HasData(
                         new
@@ -1841,7 +1841,7 @@ namespace Infrastructure.Persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Languages", "practice");
+                    b.ToTable("Languages", "vocabulary");
 
                     b.HasData(
                         new
@@ -2316,7 +2316,7 @@ namespace Infrastructure.Persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("LetterNumbers", "practice");
+                    b.ToTable("LetterNumbers", "vocabulary");
 
                     b.HasData(
                         new
@@ -2937,7 +2937,7 @@ namespace Infrastructure.Persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("ModalVerbs", "practice");
+                    b.ToTable("ModalVerbs", "vocabulary");
 
                     b.HasData(
                         new
@@ -3025,7 +3025,7 @@ namespace Infrastructure.Persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Nouns", "practice");
+                    b.ToTable("Nouns", "vocabulary");
 
                     b.HasData(
                         new
@@ -4752,6 +4752,422 @@ namespace Infrastructure.Persistence.Migrations
                         });
                 });
 
+            modelBuilder.Entity("Domain.Vocabulary.Prepositions.Preposition", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("Text")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("character varying(100)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Prepositions", "vocabulary");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("03839a0b-94c8-4ecf-9e67-4952db8cfab3"),
+                            Text = "ago"
+                        },
+                        new
+                        {
+                            Id = new Guid("246fbad8-a590-423c-b9b5-48886501f621"),
+                            Text = "aboard"
+                        },
+                        new
+                        {
+                            Id = new Guid("9fd75223-53f7-4221-b4a8-01439e4e67b3"),
+                            Text = "about"
+                        },
+                        new
+                        {
+                            Id = new Guid("0f6fafc1-c5eb-4401-931a-debf4a65f728"),
+                            Text = "across"
+                        },
+                        new
+                        {
+                            Id = new Guid("7b3c5115-faa0-4355-85dc-2ec976be3793"),
+                            Text = "after"
+                        },
+                        new
+                        {
+                            Id = new Guid("e78fea2f-8aaf-49b2-bd9b-8456caa2430a"),
+                            Text = "against"
+                        },
+                        new
+                        {
+                            Id = new Guid("e22c1b46-ef0b-4b79-ae79-19dbb6d481ec"),
+                            Text = "along"
+                        },
+                        new
+                        {
+                            Id = new Guid("8e95e1f5-c09d-4697-9b68-ef441df09af4"),
+                            Text = "amid"
+                        },
+                        new
+                        {
+                            Id = new Guid("82cb41ac-c41e-41db-a55e-9828e163f1d1"),
+                            Text = "among"
+                        },
+                        new
+                        {
+                            Id = new Guid("663dbdc5-eee5-4a7d-ae6f-26ba63303f5c"),
+                            Text = "anti"
+                        },
+                        new
+                        {
+                            Id = new Guid("c3c80b52-c594-495f-9be5-43d2e6691eb4"),
+                            Text = "around"
+                        },
+                        new
+                        {
+                            Id = new Guid("2ef33252-685c-48e6-9281-3f609f66b7a0"),
+                            Text = "as"
+                        },
+                        new
+                        {
+                            Id = new Guid("f0b7e1d1-d200-4783-b759-082a420f7ca1"),
+                            Text = "at"
+                        },
+                        new
+                        {
+                            Id = new Guid("36a5ec67-8236-4633-95ea-2465b9333139"),
+                            Text = "before"
+                        },
+                        new
+                        {
+                            Id = new Guid("8a9251d2-c821-4fe8-bc5d-ece189c72939"),
+                            Text = "behind"
+                        },
+                        new
+                        {
+                            Id = new Guid("a121847c-af91-4c15-a095-b457ef6f1f78"),
+                            Text = "beneath"
+                        },
+                        new
+                        {
+                            Id = new Guid("ec5d1566-90d7-481a-8cc2-3ee9cfef9a93"),
+                            Text = "beside"
+                        },
+                        new
+                        {
+                            Id = new Guid("a8d9601e-466b-4692-b959-e052325cfbfc"),
+                            Text = "besides"
+                        },
+                        new
+                        {
+                            Id = new Guid("b3efaafb-1826-4548-879e-cb1366ec2753"),
+                            Text = "between"
+                        },
+                        new
+                        {
+                            Id = new Guid("0ae076f4-649a-4346-bd40-02b0b7d2c710"),
+                            Text = "beyond"
+                        },
+                        new
+                        {
+                            Id = new Guid("9e87a351-3d94-4037-825a-8eda3d6f3650"),
+                            Text = "but"
+                        },
+                        new
+                        {
+                            Id = new Guid("e797b489-9322-4d25-b9c5-140798975c21"),
+                            Text = "by"
+                        },
+                        new
+                        {
+                            Id = new Guid("aec0ce77-7a36-46d5-a071-fde8dd8dca3f"),
+                            Text = "concerning"
+                        },
+                        new
+                        {
+                            Id = new Guid("e49816da-2b0c-4882-80de-1db6a3a46045"),
+                            Text = "considering"
+                        },
+                        new
+                        {
+                            Id = new Guid("83192b0e-0caf-4dcd-a9d9-e0cb13b193f3"),
+                            Text = "despite"
+                        },
+                        new
+                        {
+                            Id = new Guid("83d901e7-b772-4870-80f1-54dae00c64d8"),
+                            Text = "down"
+                        },
+                        new
+                        {
+                            Id = new Guid("b66ae075-99e9-435b-bf6a-dbdf5526dbdf"),
+                            Text = "during"
+                        },
+                        new
+                        {
+                            Id = new Guid("516d2b89-4ecc-4c59-a899-396c36bb0b2b"),
+                            Text = "except"
+                        },
+                        new
+                        {
+                            Id = new Guid("dbf3c1e1-dd11-433d-a2ac-e01dd197e056"),
+                            Text = "excepting"
+                        },
+                        new
+                        {
+                            Id = new Guid("f8ca831c-7cde-4a51-bbbb-657ffac0f4e0"),
+                            Text = "excluding"
+                        },
+                        new
+                        {
+                            Id = new Guid("35264b0e-a345-4a2a-97a0-77fac3077520"),
+                            Text = "following"
+                        },
+                        new
+                        {
+                            Id = new Guid("e80f9dcf-9e7e-4260-b3e3-d4a9571a0fa6"),
+                            Text = "for"
+                        },
+                        new
+                        {
+                            Id = new Guid("0fe30342-b74c-4136-9636-4d89fff18de0"),
+                            Text = "from"
+                        },
+                        new
+                        {
+                            Id = new Guid("26c92022-b7bc-4c95-ba23-f8eedccb2868"),
+                            Text = "in"
+                        },
+                        new
+                        {
+                            Id = new Guid("7f878ec0-1e74-41d4-aca7-b819d0b65ea6"),
+                            Text = "into"
+                        },
+                        new
+                        {
+                            Id = new Guid("63992e57-31c2-4340-984d-a105ac52a865"),
+                            Text = "minus"
+                        },
+                        new
+                        {
+                            Id = new Guid("04b2ca86-608b-4b0c-9d67-ad756ca79f4e"),
+                            Text = "near"
+                        },
+                        new
+                        {
+                            Id = new Guid("64db07d1-263c-4add-9b36-683706b9f171"),
+                            Text = "of"
+                        },
+                        new
+                        {
+                            Id = new Guid("3518e7c5-18c0-4624-9e57-39edd55e2c5b"),
+                            Text = "off"
+                        },
+                        new
+                        {
+                            Id = new Guid("fc9455a5-bf8e-45ab-ae25-18a6b6085128"),
+                            Text = "on"
+                        },
+                        new
+                        {
+                            Id = new Guid("ceefd2ed-ae04-427d-94ce-ece35551f504"),
+                            Text = "onto"
+                        },
+                        new
+                        {
+                            Id = new Guid("0030e9fe-b7f2-44a0-9561-72312a3d90fd"),
+                            Text = "opposite"
+                        },
+                        new
+                        {
+                            Id = new Guid("c6840982-5776-4f45-b3ce-4dc6724eb769"),
+                            Text = "over"
+                        },
+                        new
+                        {
+                            Id = new Guid("d3830f80-738e-487b-aba5-4f66a9bb171f"),
+                            Text = "past"
+                        },
+                        new
+                        {
+                            Id = new Guid("4fbfc4e5-495e-4ef1-9522-851483702851"),
+                            Text = "per"
+                        },
+                        new
+                        {
+                            Id = new Guid("87a385cd-306b-4c63-a75d-61878fe2e502"),
+                            Text = "plus"
+                        },
+                        new
+                        {
+                            Id = new Guid("783d2ea9-3bcb-473a-af99-dd209f7e04ff"),
+                            Text = "regarding"
+                        },
+                        new
+                        {
+                            Id = new Guid("2ace2fa7-821b-4db1-8d98-d667cd2ae57c"),
+                            Text = "round"
+                        },
+                        new
+                        {
+                            Id = new Guid("ca49d61b-8819-460d-8743-4b3de38b06be"),
+                            Text = "save"
+                        },
+                        new
+                        {
+                            Id = new Guid("a3d589cd-1c19-40c3-9637-fc365a9bc370"),
+                            Text = "since"
+                        },
+                        new
+                        {
+                            Id = new Guid("3403ee74-673a-4bda-acfc-d135cbf468d7"),
+                            Text = "than"
+                        },
+                        new
+                        {
+                            Id = new Guid("3e0b8392-0434-4351-9373-19a4be5f96e8"),
+                            Text = "then"
+                        },
+                        new
+                        {
+                            Id = new Guid("5c9d8453-c5ae-49a7-a0b1-78c71d85224c"),
+                            Text = "through"
+                        },
+                        new
+                        {
+                            Id = new Guid("c4a0c377-5159-4044-ac48-6d6f44baaad2"),
+                            Text = "to"
+                        },
+                        new
+                        {
+                            Id = new Guid("131fad37-0e85-4e99-9f26-3d20a989394a"),
+                            Text = "toward"
+                        },
+                        new
+                        {
+                            Id = new Guid("ebbb3faf-b17a-40c8-b716-ffc09a3500fa"),
+                            Text = "towards"
+                        },
+                        new
+                        {
+                            Id = new Guid("0c4294f3-327b-4eb9-8831-951c236b3e37"),
+                            Text = "under"
+                        },
+                        new
+                        {
+                            Id = new Guid("9d77e7ff-bff5-41fa-b70c-164b45ead20a"),
+                            Text = "underneath"
+                        },
+                        new
+                        {
+                            Id = new Guid("d1b35063-29c3-4d42-b169-6d955bc3cc2d"),
+                            Text = "unlike"
+                        },
+                        new
+                        {
+                            Id = new Guid("83a7211c-fd5d-441e-b198-8b44befc2e1a"),
+                            Text = "until"
+                        },
+                        new
+                        {
+                            Id = new Guid("aa005900-1d04-499e-8623-d32fb6cbcc1f"),
+                            Text = "up"
+                        },
+                        new
+                        {
+                            Id = new Guid("f1b984b4-74e1-4811-b38a-03201124c205"),
+                            Text = "upon"
+                        },
+                        new
+                        {
+                            Id = new Guid("5516e049-ec23-4182-8046-b24465cca0b1"),
+                            Text = "versus"
+                        },
+                        new
+                        {
+                            Id = new Guid("516c2674-c9bf-4c0f-860a-976999751714"),
+                            Text = "via"
+                        },
+                        new
+                        {
+                            Id = new Guid("e42d087f-cf56-4671-a7e9-b816b7fec5e0"),
+                            Text = "with"
+                        },
+                        new
+                        {
+                            Id = new Guid("e890b4a7-b2fa-4d74-968c-bd717f72b01e"),
+                            Text = "within"
+                        },
+                        new
+                        {
+                            Id = new Guid("a9de3c60-e5a4-47e5-9d58-68e7ec493e0e"),
+                            Text = "without"
+                        });
+                });
+
+            modelBuilder.Entity("Domain.Vocabulary.PrimaryVerbs.PrimaryVerb", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("PastForm")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("character varying(100)");
+
+                    b.Property<string>("PastParticipleForm")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("character varying(100)");
+
+                    b.Property<string>("PresentParticipleForm")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("character varying(100)");
+
+                    b.Property<string>("Text")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("character varying(100)");
+
+                    b.Property<string>("ThirdPersonForm")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("character varying(100)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("PrimaryVerbs", "vocabulary");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("928e8efd-1a11-4df9-9703-0631fa073ca3"),
+                            PastForm = "did",
+                            PastParticipleForm = "done",
+                            PresentParticipleForm = "doing",
+                            Text = "do",
+                            ThirdPersonForm = "does"
+                        },
+                        new
+                        {
+                            Id = new Guid("aedf0d06-70b2-4270-8c69-6a5b7ce26d1c"),
+                            PastForm = "had",
+                            PastParticipleForm = "had",
+                            PresentParticipleForm = "having",
+                            Text = "have",
+                            ThirdPersonForm = "has"
+                        },
+                        new
+                        {
+                            Id = new Guid("f286ad7c-e394-42b6-ad07-4be4a8bb137c"),
+                            PastForm = "was",
+                            PastParticipleForm = "been",
+                            PresentParticipleForm = "being",
+                            Text = "be",
+                            ThirdPersonForm = "is"
+                        });
+                });
+
             modelBuilder.Entity("Domain.Vocabulary.Pronouns.Pronoun", b =>
                 {
                     b.Property<Guid>("Id")
@@ -4763,7 +5179,7 @@ namespace Infrastructure.Persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Pronouns", "practice");
+                    b.ToTable("Pronouns", "vocabulary");
 
                     b.HasData(
                         new
@@ -4800,6 +5216,1743 @@ namespace Infrastructure.Persistence.Migrations
                         {
                             Id = new Guid("0bb651d1-cc92-41a5-9b24-2934db01ed07"),
                             Text = "they"
+                        });
+                });
+
+            modelBuilder.Entity("Domain.Vocabulary.QuestionWords.QuestionWord", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("Text")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("character varying(100)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("QuestionWords", "vocabulary");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("377f7b4a-765b-4ac4-87e0-343b645cbc7c"),
+                            Text = "what"
+                        },
+                        new
+                        {
+                            Id = new Guid("3db6df5d-e140-4d7f-a231-c9a356e725fe"),
+                            Text = "who"
+                        },
+                        new
+                        {
+                            Id = new Guid("c92e0865-0310-4f68-89f5-6f23c38c40b2"),
+                            Text = "where"
+                        },
+                        new
+                        {
+                            Id = new Guid("9dffa778-547f-45e5-8e6e-22bdaef6d2f9"),
+                            Text = "when"
+                        },
+                        new
+                        {
+                            Id = new Guid("95aaeb38-63a9-4933-9aa0-78363d5ce039"),
+                            Text = "why"
+                        },
+                        new
+                        {
+                            Id = new Guid("28a50d80-9744-419f-ab08-a69cfcc80fd4"),
+                            Text = "how"
+                        });
+                });
+
+            modelBuilder.Entity("Domain.Vocabulary.Verbs.Verb", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .HasColumnType("uuid");
+
+                    b.Property<bool>("IsIrregularVerb")
+                        .HasColumnType("boolean");
+
+                    b.Property<string>("PastForm")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("character varying(100)");
+
+                    b.Property<string>("PastParticipleForm")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("character varying(100)");
+
+                    b.Property<string>("PresentParticipleForm")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("character varying(100)");
+
+                    b.Property<string>("Text")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("character varying(100)");
+
+                    b.Property<string>("ThirdPersonForm")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("character varying(100)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Verbs", "vocabulary");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("b1494345-3795-46ed-b4d6-89225b6b4780"),
+                            IsIrregularVerb = true,
+                            PastForm = "abode",
+                            PastParticipleForm = "abode",
+                            PresentParticipleForm = "abiding",
+                            Text = "abide",
+                            ThirdPersonForm = "abides"
+                        },
+                        new
+                        {
+                            Id = new Guid("c97d9f53-ce6a-4a24-8a1d-5b169ee70b03"),
+                            IsIrregularVerb = true,
+                            PastForm = "arose",
+                            PastParticipleForm = "arisen",
+                            PresentParticipleForm = "arising",
+                            Text = "arise",
+                            ThirdPersonForm = "arises"
+                        },
+                        new
+                        {
+                            Id = new Guid("4a6faca6-8c13-4866-8720-902208050e57"),
+                            IsIrregularVerb = true,
+                            PastForm = "awoke",
+                            PastParticipleForm = "awoken",
+                            PresentParticipleForm = "awaking",
+                            Text = "awake",
+                            ThirdPersonForm = "awakes"
+                        },
+                        new
+                        {
+                            Id = new Guid("f18bb6cc-df77-478e-a111-7c6d24225dfc"),
+                            IsIrregularVerb = true,
+                            PastForm = "bore",
+                            PastParticipleForm = "born",
+                            PresentParticipleForm = "bearring",
+                            Text = "bear",
+                            ThirdPersonForm = "bears"
+                        },
+                        new
+                        {
+                            Id = new Guid("85157b6e-e03e-4965-b70b-f8a0189ecdf6"),
+                            IsIrregularVerb = true,
+                            PastForm = "beat",
+                            PastParticipleForm = "beaten",
+                            PresentParticipleForm = "beatting",
+                            Text = "beat",
+                            ThirdPersonForm = "beats"
+                        },
+                        new
+                        {
+                            Id = new Guid("c2f578f8-c4d1-4c6a-af64-29b8b2b765b8"),
+                            IsIrregularVerb = true,
+                            PastForm = "became",
+                            PastParticipleForm = "become",
+                            PresentParticipleForm = "becoming",
+                            Text = "become",
+                            ThirdPersonForm = "becomes"
+                        },
+                        new
+                        {
+                            Id = new Guid("97b38d61-b8ca-4263-8a18-b85b50c0bbed"),
+                            IsIrregularVerb = true,
+                            PastForm = "begot",
+                            PastParticipleForm = "begotten",
+                            PresentParticipleForm = "begetting",
+                            Text = "beget",
+                            ThirdPersonForm = "begets"
+                        },
+                        new
+                        {
+                            Id = new Guid("4805b2d0-c197-4e5f-af3b-0a73279b01f0"),
+                            IsIrregularVerb = true,
+                            PastForm = "began",
+                            PastParticipleForm = "begun",
+                            PresentParticipleForm = "beginning",
+                            Text = "begin",
+                            ThirdPersonForm = "begins"
+                        },
+                        new
+                        {
+                            Id = new Guid("158cac94-063a-4758-a869-be0c1684a43a"),
+                            IsIrregularVerb = true,
+                            PastForm = "bent",
+                            PastParticipleForm = "bent",
+                            PresentParticipleForm = "Domain.Common.ValueObjects.Texting",
+                            Text = "bend",
+                            ThirdPersonForm = "bends"
+                        },
+                        new
+                        {
+                            Id = new Guid("a58a1299-b66a-45fb-9d57-df2744a61b10"),
+                            IsIrregularVerb = true,
+                            PastForm = "bet",
+                            PastParticipleForm = "bet",
+                            PresentParticipleForm = "betting",
+                            Text = "bet",
+                            ThirdPersonForm = "bets"
+                        },
+                        new
+                        {
+                            Id = new Guid("4098a85e-ef2b-4074-8ae6-a45ff5e15d51"),
+                            IsIrregularVerb = true,
+                            PastForm = "bade",
+                            PastParticipleForm = "bidden",
+                            PresentParticipleForm = "bidding",
+                            Text = "bid",
+                            ThirdPersonForm = "bids"
+                        },
+                        new
+                        {
+                            Id = new Guid("a4e177a4-7c4a-48eb-a1ee-c2755ccfa190"),
+                            IsIrregularVerb = true,
+                            PastForm = "bit",
+                            PastParticipleForm = "bitten",
+                            PresentParticipleForm = "biting",
+                            Text = "bite",
+                            ThirdPersonForm = "bites"
+                        },
+                        new
+                        {
+                            Id = new Guid("a5cbe034-b84b-4e47-a8ed-bb2ead73882f"),
+                            IsIrregularVerb = true,
+                            PastForm = "bled",
+                            PastParticipleForm = "bled",
+                            PresentParticipleForm = "bleedding",
+                            Text = "bleed",
+                            ThirdPersonForm = "bleeds"
+                        },
+                        new
+                        {
+                            Id = new Guid("61a3c2be-e5d0-4584-9b50-bfa927717ae1"),
+                            IsIrregularVerb = true,
+                            PastForm = "blew",
+                            PastParticipleForm = "blown",
+                            PresentParticipleForm = "blowwing",
+                            Text = "blow",
+                            ThirdPersonForm = "blows"
+                        },
+                        new
+                        {
+                            Id = new Guid("cd81482c-117f-4e42-9381-aabea7644bc4"),
+                            IsIrregularVerb = true,
+                            PastForm = "broke",
+                            PastParticipleForm = "broken",
+                            PresentParticipleForm = "breakking",
+                            Text = "break",
+                            ThirdPersonForm = "breaks"
+                        },
+                        new
+                        {
+                            Id = new Guid("acb9b244-8b67-439a-b518-aab7e685afa1"),
+                            IsIrregularVerb = true,
+                            PastForm = "brought",
+                            PastParticipleForm = "brought",
+                            PresentParticipleForm = "Domain.Common.ValueObjects.Texting",
+                            Text = "bring",
+                            ThirdPersonForm = "brings"
+                        },
+                        new
+                        {
+                            Id = new Guid("5a14ab27-fc58-4521-81d0-02e5677646b4"),
+                            IsIrregularVerb = true,
+                            PastForm = "broadcast",
+                            PastParticipleForm = "broadcast",
+                            PresentParticipleForm = "Domain.Common.ValueObjects.Texting",
+                            Text = "broadcast",
+                            ThirdPersonForm = "broadcasts"
+                        },
+                        new
+                        {
+                            Id = new Guid("25a5199c-93c3-4be9-8efe-ebee1f8790e2"),
+                            IsIrregularVerb = true,
+                            PastForm = "built",
+                            PastParticipleForm = "built",
+                            PresentParticipleForm = "Domain.Common.ValueObjects.Texting",
+                            Text = "build",
+                            ThirdPersonForm = "builds"
+                        },
+                        new
+                        {
+                            Id = new Guid("5532f559-1fee-43d7-a14b-ff84f4b52d83"),
+                            IsIrregularVerb = true,
+                            PastForm = "burnt",
+                            PastParticipleForm = "burnt",
+                            PresentParticipleForm = "Domain.Common.ValueObjects.Texting",
+                            Text = "burn",
+                            ThirdPersonForm = "burns"
+                        },
+                        new
+                        {
+                            Id = new Guid("abe95156-5447-4598-aa44-d76b85c32763"),
+                            IsIrregularVerb = true,
+                            PastForm = "burst",
+                            PastParticipleForm = "burst",
+                            PresentParticipleForm = "Domain.Common.ValueObjects.Texting",
+                            Text = "burst",
+                            ThirdPersonForm = "bursts"
+                        },
+                        new
+                        {
+                            Id = new Guid("c1d02fd0-3597-4e99-973b-a9b226278804"),
+                            IsIrregularVerb = true,
+                            PastForm = "bought",
+                            PastParticipleForm = "bought",
+                            PresentParticipleForm = "Domain.Common.ValueObjects.Texting",
+                            Text = "buy",
+                            ThirdPersonForm = "buys"
+                        },
+                        new
+                        {
+                            Id = new Guid("8300a19e-0ebb-4db6-bc4e-cd52365f2f5e"),
+                            IsIrregularVerb = true,
+                            PastForm = "cast",
+                            PastParticipleForm = "cast",
+                            PresentParticipleForm = "Domain.Common.ValueObjects.Texting",
+                            Text = "cast",
+                            ThirdPersonForm = "casts"
+                        },
+                        new
+                        {
+                            Id = new Guid("89ee0d44-f1fd-43fd-8c81-d078a22dd83d"),
+                            IsIrregularVerb = true,
+                            PastForm = "caught",
+                            PastParticipleForm = "caught",
+                            PresentParticipleForm = "Domain.Common.ValueObjects.Texting",
+                            Text = "catch",
+                            ThirdPersonForm = "catches"
+                        },
+                        new
+                        {
+                            Id = new Guid("91744462-e0d2-47ce-8eb5-9253c0af16ed"),
+                            IsIrregularVerb = true,
+                            PastForm = "chid",
+                            PastParticipleForm = "chidden",
+                            PresentParticipleForm = "chiding",
+                            Text = "chide",
+                            ThirdPersonForm = "chides"
+                        },
+                        new
+                        {
+                            Id = new Guid("938ea4bf-d4b7-4cd3-9901-aeeff2856c3a"),
+                            IsIrregularVerb = true,
+                            PastForm = "chose",
+                            PastParticipleForm = "chosen",
+                            PresentParticipleForm = "choosing",
+                            Text = "choose",
+                            ThirdPersonForm = "chooses"
+                        },
+                        new
+                        {
+                            Id = new Guid("2761cd31-5b0d-40b0-b623-6e34130635eb"),
+                            IsIrregularVerb = true,
+                            PastForm = "clung",
+                            PastParticipleForm = "clung",
+                            PresentParticipleForm = "Domain.Common.ValueObjects.Texting",
+                            Text = "cling",
+                            ThirdPersonForm = "clings"
+                        },
+                        new
+                        {
+                            Id = new Guid("611b238f-7a9f-4b73-af3c-b9f31acb2998"),
+                            IsIrregularVerb = true,
+                            PastForm = "clad",
+                            PastParticipleForm = "clad",
+                            PresentParticipleForm = "clothing",
+                            Text = "clothe",
+                            ThirdPersonForm = "clothes"
+                        },
+                        new
+                        {
+                            Id = new Guid("fca52707-889b-43ea-a2d3-5ff2045a7f02"),
+                            IsIrregularVerb = true,
+                            PastForm = "came",
+                            PastParticipleForm = "come",
+                            PresentParticipleForm = "coming",
+                            Text = "come",
+                            ThirdPersonForm = "comes"
+                        },
+                        new
+                        {
+                            Id = new Guid("6abbd57b-093d-4cb5-817e-b7e66eb08125"),
+                            IsIrregularVerb = true,
+                            PastForm = "cost",
+                            PastParticipleForm = "cost",
+                            PresentParticipleForm = "Domain.Common.ValueObjects.Texting",
+                            Text = "cost",
+                            ThirdPersonForm = "costs"
+                        },
+                        new
+                        {
+                            Id = new Guid("4d70edf3-9322-44be-af1e-a63944bb5322"),
+                            IsIrregularVerb = true,
+                            PastForm = "crept",
+                            PastParticipleForm = "crept",
+                            PresentParticipleForm = "creepping",
+                            Text = "creep",
+                            ThirdPersonForm = "creeps"
+                        },
+                        new
+                        {
+                            Id = new Guid("06427786-569b-4223-a6eb-684494ea262b"),
+                            IsIrregularVerb = true,
+                            PastForm = "cut",
+                            PastParticipleForm = "cut",
+                            PresentParticipleForm = "cutting",
+                            Text = "cut",
+                            ThirdPersonForm = "cuts"
+                        },
+                        new
+                        {
+                            Id = new Guid("3c27cf22-018c-4e74-98da-214856aa6f9c"),
+                            IsIrregularVerb = true,
+                            PastForm = "dealt",
+                            PastParticipleForm = "dealt",
+                            PresentParticipleForm = "dealling",
+                            Text = "deal",
+                            ThirdPersonForm = "deals"
+                        },
+                        new
+                        {
+                            Id = new Guid("7c1495a8-f1ba-4b01-b788-a85a283ba32d"),
+                            IsIrregularVerb = true,
+                            PastForm = "dug",
+                            PastParticipleForm = "dug",
+                            PresentParticipleForm = "digging",
+                            Text = "dig",
+                            ThirdPersonForm = "digs"
+                        },
+                        new
+                        {
+                            Id = new Guid("7f81be1c-f743-43cf-aff6-5a5304faa629"),
+                            IsIrregularVerb = true,
+                            PastForm = "dived",
+                            PastParticipleForm = "dove",
+                            PresentParticipleForm = "diving",
+                            Text = "dive",
+                            ThirdPersonForm = "dives"
+                        },
+                        new
+                        {
+                            Id = new Guid("08b0300b-35fd-4b9a-a281-a5816e6bafee"),
+                            IsIrregularVerb = true,
+                            PastForm = "drew",
+                            PastParticipleForm = "drawn",
+                            PresentParticipleForm = "drawwing",
+                            Text = "draw",
+                            ThirdPersonForm = "draws"
+                        },
+                        new
+                        {
+                            Id = new Guid("da2c4743-6a2d-4f2c-a16d-fcc67f487fc7"),
+                            IsIrregularVerb = true,
+                            PastForm = "dreamt",
+                            PastParticipleForm = "dreamt",
+                            PresentParticipleForm = "dreamming",
+                            Text = "dream",
+                            ThirdPersonForm = "dreams"
+                        },
+                        new
+                        {
+                            Id = new Guid("9af79d54-7da4-4c95-81b1-cb80100d3c9e"),
+                            IsIrregularVerb = true,
+                            PastForm = "drank",
+                            PastParticipleForm = "drunk",
+                            PresentParticipleForm = "Domain.Common.ValueObjects.Texting",
+                            Text = "drink",
+                            ThirdPersonForm = "drinks"
+                        },
+                        new
+                        {
+                            Id = new Guid("e72e57c4-99d6-47d9-9e9f-b138aa4ffd34"),
+                            IsIrregularVerb = true,
+                            PastForm = "drove",
+                            PastParticipleForm = "driven",
+                            PresentParticipleForm = "driving",
+                            Text = "drive",
+                            ThirdPersonForm = "drives"
+                        },
+                        new
+                        {
+                            Id = new Guid("dbbd1b3b-dff7-401e-9f6e-05ac28aab49d"),
+                            IsIrregularVerb = true,
+                            PastForm = "dwelt",
+                            PastParticipleForm = "dwelt",
+                            PresentParticipleForm = "Domain.Common.ValueObjects.Texting",
+                            Text = "dwell",
+                            ThirdPersonForm = "dwells"
+                        },
+                        new
+                        {
+                            Id = new Guid("4d62450a-6de9-4c0a-be8e-c8a1bef0064a"),
+                            IsIrregularVerb = true,
+                            PastForm = "ate",
+                            PastParticipleForm = "eaten",
+                            PresentParticipleForm = "eatting",
+                            Text = "eat",
+                            ThirdPersonForm = "eats"
+                        },
+                        new
+                        {
+                            Id = new Guid("098d7331-be3b-49cd-ae17-e1f058049949"),
+                            IsIrregularVerb = true,
+                            PastForm = "fell",
+                            PastParticipleForm = "fallen",
+                            PresentParticipleForm = "Domain.Common.ValueObjects.Texting",
+                            Text = "fall",
+                            ThirdPersonForm = "falls"
+                        },
+                        new
+                        {
+                            Id = new Guid("a4f228c6-6276-40f9-a535-583b4bf288ae"),
+                            IsIrregularVerb = true,
+                            PastForm = "fed",
+                            PastParticipleForm = "fed",
+                            PresentParticipleForm = "feedding",
+                            Text = "feed",
+                            ThirdPersonForm = "feeds"
+                        },
+                        new
+                        {
+                            Id = new Guid("2a738136-3ae1-4924-b5fb-3f36876be47c"),
+                            IsIrregularVerb = true,
+                            PastForm = "felt",
+                            PastParticipleForm = "felt",
+                            PresentParticipleForm = "feelling",
+                            Text = "feel",
+                            ThirdPersonForm = "feels"
+                        },
+                        new
+                        {
+                            Id = new Guid("8bcb4916-3727-476f-a651-9ca122860264"),
+                            IsIrregularVerb = true,
+                            PastForm = "fought",
+                            PastParticipleForm = "fought",
+                            PresentParticipleForm = "Domain.Common.ValueObjects.Texting",
+                            Text = "fight",
+                            ThirdPersonForm = "fights"
+                        },
+                        new
+                        {
+                            Id = new Guid("0ed5f9db-d1ae-4d2b-b6c5-82674b728385"),
+                            IsIrregularVerb = true,
+                            PastForm = "found",
+                            PastParticipleForm = "found",
+                            PresentParticipleForm = "Domain.Common.ValueObjects.Texting",
+                            Text = "find",
+                            ThirdPersonForm = "finds"
+                        },
+                        new
+                        {
+                            Id = new Guid("7ec3b062-c755-4be1-a81a-e1c26549e894"),
+                            IsIrregularVerb = true,
+                            PastForm = "fled",
+                            PastParticipleForm = "fled",
+                            PresentParticipleForm = "fleing",
+                            Text = "flee",
+                            ThirdPersonForm = "flees"
+                        },
+                        new
+                        {
+                            Id = new Guid("e6d94b61-d7ba-45fb-8f38-f923dff8838c"),
+                            IsIrregularVerb = true,
+                            PastForm = "flung",
+                            PastParticipleForm = "flung",
+                            PresentParticipleForm = "Domain.Common.ValueObjects.Texting",
+                            Text = "fling",
+                            ThirdPersonForm = "flings"
+                        },
+                        new
+                        {
+                            Id = new Guid("82178b0c-7097-4d53-b1fe-b306b748d5f3"),
+                            IsIrregularVerb = true,
+                            PastForm = "flew",
+                            PastParticipleForm = "flown",
+                            PresentParticipleForm = "Domain.Common.ValueObjects.Texting",
+                            Text = "fly",
+                            ThirdPersonForm = "flies"
+                        },
+                        new
+                        {
+                            Id = new Guid("4ea1553e-6516-4de5-a674-c963fb2efa22"),
+                            IsIrregularVerb = true,
+                            PastForm = "forbade",
+                            PastParticipleForm = "forbidden",
+                            PresentParticipleForm = "forbidding",
+                            Text = "forbid",
+                            ThirdPersonForm = "forbids"
+                        },
+                        new
+                        {
+                            Id = new Guid("2b98a90c-fd7d-4985-8390-4105c4a840fa"),
+                            IsIrregularVerb = true,
+                            PastForm = "forecast",
+                            PastParticipleForm = "forecast",
+                            PresentParticipleForm = "Domain.Common.ValueObjects.Texting",
+                            Text = "forecast",
+                            ThirdPersonForm = "forecasts"
+                        },
+                        new
+                        {
+                            Id = new Guid("94cd5eac-9aa7-4949-81ae-b7b6d973e375"),
+                            IsIrregularVerb = true,
+                            PastForm = "foresaw",
+                            PastParticipleForm = "foreseen",
+                            PresentParticipleForm = "foreseing",
+                            Text = "foresee",
+                            ThirdPersonForm = "foresees"
+                        },
+                        new
+                        {
+                            Id = new Guid("b968739c-3347-49f7-883a-544ecfd2e3c2"),
+                            IsIrregularVerb = true,
+                            PastForm = "forgot",
+                            PastParticipleForm = "forgotten",
+                            PresentParticipleForm = "forgetting",
+                            Text = "forget",
+                            ThirdPersonForm = "forgets"
+                        },
+                        new
+                        {
+                            Id = new Guid("70885a73-7dc3-4051-a7a7-9a9f02c53577"),
+                            IsIrregularVerb = true,
+                            PastForm = "forgave",
+                            PastParticipleForm = "forgiven",
+                            PresentParticipleForm = "forgiving",
+                            Text = "forgive",
+                            ThirdPersonForm = "forgives"
+                        },
+                        new
+                        {
+                            Id = new Guid("bc0fc4dd-9706-46ab-90ca-ce1e5a658cd0"),
+                            IsIrregularVerb = true,
+                            PastForm = "forsook",
+                            PastParticipleForm = "forsaken",
+                            PresentParticipleForm = "forsaking",
+                            Text = "forsake",
+                            ThirdPersonForm = "forsakes"
+                        },
+                        new
+                        {
+                            Id = new Guid("8e64f20e-d532-4a1b-befc-1d828e224b8e"),
+                            IsIrregularVerb = true,
+                            PastForm = "froze",
+                            PastParticipleForm = "frozen",
+                            PresentParticipleForm = "freezing",
+                            Text = "freeze",
+                            ThirdPersonForm = "freezes"
+                        },
+                        new
+                        {
+                            Id = new Guid("edc9d6e1-b311-40ac-bc21-14458f2de1e7"),
+                            IsIrregularVerb = true,
+                            PastForm = "got",
+                            PastParticipleForm = "gotten",
+                            PresentParticipleForm = "getting",
+                            Text = "get",
+                            ThirdPersonForm = "gets"
+                        },
+                        new
+                        {
+                            Id = new Guid("0df3959a-9857-46df-afc2-26600d78f00b"),
+                            IsIrregularVerb = true,
+                            PastForm = "gave",
+                            PastParticipleForm = "given",
+                            PresentParticipleForm = "giving",
+                            Text = "give",
+                            ThirdPersonForm = "gives"
+                        },
+                        new
+                        {
+                            Id = new Guid("26e6b636-b240-4890-9ae8-8350e43a3e07"),
+                            IsIrregularVerb = true,
+                            PastForm = "went",
+                            PastParticipleForm = "gone",
+                            PresentParticipleForm = "Domain.Common.ValueObjects.Texting",
+                            Text = "go",
+                            ThirdPersonForm = "goes"
+                        },
+                        new
+                        {
+                            Id = new Guid("554f731e-250c-47c8-8b41-7fd78324c09f"),
+                            IsIrregularVerb = true,
+                            PastForm = "ground",
+                            PastParticipleForm = "ground",
+                            PresentParticipleForm = "Domain.Common.ValueObjects.Texting",
+                            Text = "grind",
+                            ThirdPersonForm = "grinds"
+                        },
+                        new
+                        {
+                            Id = new Guid("7b6c7a3e-d252-4f9d-a64d-817015a797d1"),
+                            IsIrregularVerb = true,
+                            PastForm = "grew",
+                            PastParticipleForm = "grown",
+                            PresentParticipleForm = "growwing",
+                            Text = "grow",
+                            ThirdPersonForm = "grows"
+                        },
+                        new
+                        {
+                            Id = new Guid("d423ff7a-2b86-4d9e-b384-d39fba3cb911"),
+                            IsIrregularVerb = true,
+                            PastForm = "hung",
+                            PastParticipleForm = "hung",
+                            PresentParticipleForm = "Domain.Common.ValueObjects.Texting",
+                            Text = "hang",
+                            ThirdPersonForm = "hangs"
+                        },
+                        new
+                        {
+                            Id = new Guid("08fa6d47-2392-4a24-a852-4cb0c979f5d2"),
+                            IsIrregularVerb = true,
+                            PastForm = "heard",
+                            PastParticipleForm = "heard",
+                            PresentParticipleForm = "hearring",
+                            Text = "hear",
+                            ThirdPersonForm = "hears"
+                        },
+                        new
+                        {
+                            Id = new Guid("fc0ca563-4b36-451f-bb87-506f25bd77d7"),
+                            IsIrregularVerb = true,
+                            PastForm = "hid",
+                            PastParticipleForm = "hidden",
+                            PresentParticipleForm = "hiding",
+                            Text = "hide",
+                            ThirdPersonForm = "hides"
+                        },
+                        new
+                        {
+                            Id = new Guid("860a328d-fd17-4928-ab76-b965477ce613"),
+                            IsIrregularVerb = true,
+                            PastForm = "hit",
+                            PastParticipleForm = "hit",
+                            PresentParticipleForm = "hitting",
+                            Text = "hit",
+                            ThirdPersonForm = "hits"
+                        },
+                        new
+                        {
+                            Id = new Guid("af5372e8-fef0-4167-a9f7-8a496bb48e22"),
+                            IsIrregularVerb = true,
+                            PastForm = "held",
+                            PastParticipleForm = "held",
+                            PresentParticipleForm = "Domain.Common.ValueObjects.Texting",
+                            Text = "hold",
+                            ThirdPersonForm = "holds"
+                        },
+                        new
+                        {
+                            Id = new Guid("e0d4995c-c46d-405b-98d7-3f6a7c8c3f77"),
+                            IsIrregularVerb = true,
+                            PastForm = "hurt",
+                            PastParticipleForm = "hurt",
+                            PresentParticipleForm = "Domain.Common.ValueObjects.Texting",
+                            Text = "hurt",
+                            ThirdPersonForm = "hurts"
+                        },
+                        new
+                        {
+                            Id = new Guid("3d73ca6c-bebc-4d3d-8333-d3bb8152fb7c"),
+                            IsIrregularVerb = true,
+                            PastForm = "kept",
+                            PastParticipleForm = "kept",
+                            PresentParticipleForm = "keepping",
+                            Text = "keep",
+                            ThirdPersonForm = "keeps"
+                        },
+                        new
+                        {
+                            Id = new Guid("1673a086-7cf3-4ea0-ad83-09acc782570f"),
+                            IsIrregularVerb = true,
+                            PastForm = "knelt",
+                            PastParticipleForm = "knelt",
+                            PresentParticipleForm = "kneelling",
+                            Text = "kneel",
+                            ThirdPersonForm = "kneels"
+                        },
+                        new
+                        {
+                            Id = new Guid("84c4f361-df60-42f2-99f4-1cbec1bfa2c0"),
+                            IsIrregularVerb = true,
+                            PastForm = "knew",
+                            PastParticipleForm = "known",
+                            PresentParticipleForm = "knowwing",
+                            Text = "know",
+                            ThirdPersonForm = "knows"
+                        },
+                        new
+                        {
+                            Id = new Guid("ea7a0759-f64e-4d54-800a-eb11e578892d"),
+                            IsIrregularVerb = true,
+                            PastForm = "laid",
+                            PastParticipleForm = "laid",
+                            PresentParticipleForm = "Domain.Common.ValueObjects.Texting",
+                            Text = "lay",
+                            ThirdPersonForm = "lays"
+                        },
+                        new
+                        {
+                            Id = new Guid("fc67d2ae-8e41-4ef7-a30f-acd00f396762"),
+                            IsIrregularVerb = true,
+                            PastForm = "led",
+                            PastParticipleForm = "led",
+                            PresentParticipleForm = "leadding",
+                            Text = "lead",
+                            ThirdPersonForm = "leads"
+                        },
+                        new
+                        {
+                            Id = new Guid("1222c440-64e7-4515-a858-457378ff0b82"),
+                            IsIrregularVerb = true,
+                            PastForm = "leant",
+                            PastParticipleForm = "leant",
+                            PresentParticipleForm = "leanning",
+                            Text = "lean",
+                            ThirdPersonForm = "leans"
+                        },
+                        new
+                        {
+                            Id = new Guid("90401257-cf69-4236-a93b-6b5e128da8bc"),
+                            IsIrregularVerb = true,
+                            PastForm = "leapt",
+                            PastParticipleForm = "leapt",
+                            PresentParticipleForm = "leapping",
+                            Text = "leap",
+                            ThirdPersonForm = "leaps"
+                        },
+                        new
+                        {
+                            Id = new Guid("7a5fca8f-db9e-466b-98c7-bd0496dead20"),
+                            IsIrregularVerb = true,
+                            PastForm = "learnt",
+                            PastParticipleForm = "learnt",
+                            PresentParticipleForm = "Domain.Common.ValueObjects.Texting",
+                            Text = "learn",
+                            ThirdPersonForm = "learns"
+                        },
+                        new
+                        {
+                            Id = new Guid("abd6465a-a429-4e7b-a2f1-c787e3388e52"),
+                            IsIrregularVerb = true,
+                            PastForm = "left",
+                            PastParticipleForm = "left",
+                            PresentParticipleForm = "leaving",
+                            Text = "leave",
+                            ThirdPersonForm = "leaves"
+                        },
+                        new
+                        {
+                            Id = new Guid("0ab08388-0598-44ed-868c-1710e684d6c7"),
+                            IsIrregularVerb = true,
+                            PastForm = "lent",
+                            PastParticipleForm = "lent",
+                            PresentParticipleForm = "Domain.Common.ValueObjects.Texting",
+                            Text = "lend",
+                            ThirdPersonForm = "lends"
+                        },
+                        new
+                        {
+                            Id = new Guid("0d48ccf2-83be-4124-bc0b-c354bf72b6b0"),
+                            IsIrregularVerb = true,
+                            PastForm = "let",
+                            PastParticipleForm = "let",
+                            PresentParticipleForm = "letting",
+                            Text = "let",
+                            ThirdPersonForm = "lets"
+                        },
+                        new
+                        {
+                            Id = new Guid("e567a9c0-da5e-4ee0-b4e4-e3caa71eb981"),
+                            IsIrregularVerb = true,
+                            PastForm = "lay",
+                            PastParticipleForm = "lain",
+                            PresentParticipleForm = "lying",
+                            Text = "lie",
+                            ThirdPersonForm = "lies"
+                        },
+                        new
+                        {
+                            Id = new Guid("d3222b12-b5cd-4110-a73d-1913f89dcba1"),
+                            IsIrregularVerb = true,
+                            PastForm = "lost",
+                            PastParticipleForm = "lost",
+                            PresentParticipleForm = "losing",
+                            Text = "lose",
+                            ThirdPersonForm = "loses"
+                        },
+                        new
+                        {
+                            Id = new Guid("21c80b82-aeea-4909-b3a7-4a1262b55087"),
+                            IsIrregularVerb = true,
+                            PastForm = "made",
+                            PastParticipleForm = "made",
+                            PresentParticipleForm = "making",
+                            Text = "make",
+                            ThirdPersonForm = "makes"
+                        },
+                        new
+                        {
+                            Id = new Guid("e7707ca6-f16a-4ab3-9593-8fec65260e61"),
+                            IsIrregularVerb = true,
+                            PastForm = "meant",
+                            PastParticipleForm = "meant",
+                            PresentParticipleForm = "meanning",
+                            Text = "mean",
+                            ThirdPersonForm = "means"
+                        },
+                        new
+                        {
+                            Id = new Guid("dda3e8d9-7d3b-471c-86b6-6662fc266186"),
+                            IsIrregularVerb = true,
+                            PastForm = "met",
+                            PastParticipleForm = "met",
+                            PresentParticipleForm = "meetting",
+                            Text = "meet",
+                            ThirdPersonForm = "meets"
+                        },
+                        new
+                        {
+                            Id = new Guid("8ed7e97a-8abe-4b3e-b9fa-e13784a61c7e"),
+                            IsIrregularVerb = true,
+                            PastForm = "mowed",
+                            PastParticipleForm = "mown",
+                            PresentParticipleForm = "mowwing",
+                            Text = "mow",
+                            ThirdPersonForm = "mows"
+                        },
+                        new
+                        {
+                            Id = new Guid("b81fb64f-1e58-4794-ba7d-504f9458d134"),
+                            IsIrregularVerb = true,
+                            PastForm = "offset",
+                            PastParticipleForm = "offset",
+                            PresentParticipleForm = "offsetting",
+                            Text = "offset",
+                            ThirdPersonForm = "offsets"
+                        },
+                        new
+                        {
+                            Id = new Guid("502109a1-2505-4d98-97af-7beb39769996"),
+                            IsIrregularVerb = true,
+                            PastForm = "overcame",
+                            PastParticipleForm = "overcome",
+                            PresentParticipleForm = "overcoming",
+                            Text = "overcome",
+                            ThirdPersonForm = "overcomes"
+                        },
+                        new
+                        {
+                            Id = new Guid("cba1fa00-2b55-49aa-ae64-4a1fab683af7"),
+                            IsIrregularVerb = true,
+                            PastForm = "partook",
+                            PastParticipleForm = "partaken",
+                            PresentParticipleForm = "partaking",
+                            Text = "partake",
+                            ThirdPersonForm = "partakes"
+                        },
+                        new
+                        {
+                            Id = new Guid("de80680e-085f-4411-80a9-c7ee92f98b1c"),
+                            IsIrregularVerb = true,
+                            PastForm = "paid",
+                            PastParticipleForm = "paid",
+                            PresentParticipleForm = "Domain.Common.ValueObjects.Texting",
+                            Text = "pay",
+                            ThirdPersonForm = "pays"
+                        },
+                        new
+                        {
+                            Id = new Guid("ffc5ecd7-4914-4fb2-b9d5-51b81359b3f2"),
+                            IsIrregularVerb = true,
+                            PastForm = "pled",
+                            PastParticipleForm = "pled",
+                            PresentParticipleForm = "pleadding",
+                            Text = "plead",
+                            ThirdPersonForm = "pleads"
+                        },
+                        new
+                        {
+                            Id = new Guid("82b38513-75c6-483c-895f-1450b1808446"),
+                            IsIrregularVerb = true,
+                            PastForm = "preset",
+                            PastParticipleForm = "preset",
+                            PresentParticipleForm = "presetting",
+                            Text = "preset",
+                            ThirdPersonForm = "presets"
+                        },
+                        new
+                        {
+                            Id = new Guid("71a0001c-2c55-4acf-b8e2-281d6a88d7b3"),
+                            IsIrregularVerb = true,
+                            PastForm = "proved",
+                            PastParticipleForm = "proven",
+                            PresentParticipleForm = "proving",
+                            Text = "prove",
+                            ThirdPersonForm = "proves"
+                        },
+                        new
+                        {
+                            Id = new Guid("7034c0c8-5b47-46bb-a134-07dde1ee5c1a"),
+                            IsIrregularVerb = true,
+                            PastForm = "put",
+                            PastParticipleForm = "put",
+                            PresentParticipleForm = "putting",
+                            Text = "put",
+                            ThirdPersonForm = "puts"
+                        },
+                        new
+                        {
+                            Id = new Guid("127f441c-e486-43c6-8881-ccb18e57f407"),
+                            IsIrregularVerb = true,
+                            PastForm = "quit",
+                            PastParticipleForm = "quit",
+                            PresentParticipleForm = "quitting",
+                            Text = "quit",
+                            ThirdPersonForm = "quits"
+                        },
+                        new
+                        {
+                            Id = new Guid("73c5d350-28b0-4e73-bb3b-5db644a42c2a"),
+                            IsIrregularVerb = true,
+                            PastForm = "read",
+                            PastParticipleForm = "read",
+                            PresentParticipleForm = "readding",
+                            Text = "read",
+                            ThirdPersonForm = "reads"
+                        },
+                        new
+                        {
+                            Id = new Guid("889d8c29-a848-416e-8989-2f320a764d7a"),
+                            IsIrregularVerb = true,
+                            PastForm = "relaid",
+                            PastParticipleForm = "relaid",
+                            PresentParticipleForm = "Domain.Common.ValueObjects.Texting",
+                            Text = "relay",
+                            ThirdPersonForm = "relays"
+                        },
+                        new
+                        {
+                            Id = new Guid("96be195b-163b-46b4-b0aa-daddef5906d5"),
+                            IsIrregularVerb = true,
+                            PastForm = "rent",
+                            PastParticipleForm = "rent",
+                            PresentParticipleForm = "Domain.Common.ValueObjects.Texting",
+                            Text = "rend",
+                            ThirdPersonForm = "rends"
+                        },
+                        new
+                        {
+                            Id = new Guid("750957e2-7499-48e1-86e6-bbc2b6e44f9e"),
+                            IsIrregularVerb = true,
+                            PastForm = "rid",
+                            PastParticipleForm = "rid",
+                            PresentParticipleForm = "ridding",
+                            Text = "rid",
+                            ThirdPersonForm = "rids"
+                        },
+                        new
+                        {
+                            Id = new Guid("7a455aff-4665-444d-84f9-8e72bdd6fbec"),
+                            IsIrregularVerb = true,
+                            PastForm = "rang",
+                            PastParticipleForm = "rung",
+                            PresentParticipleForm = "Domain.Common.ValueObjects.Texting",
+                            Text = "ring",
+                            ThirdPersonForm = "rings"
+                        },
+                        new
+                        {
+                            Id = new Guid("79940793-9681-4072-8a8d-38faafffb3bd"),
+                            IsIrregularVerb = true,
+                            PastForm = "rose",
+                            PastParticipleForm = "risen",
+                            PresentParticipleForm = "rising",
+                            Text = "rise",
+                            ThirdPersonForm = "rises"
+                        },
+                        new
+                        {
+                            Id = new Guid("9b997b2a-5c4a-412c-82c9-0afefbcc509f"),
+                            IsIrregularVerb = true,
+                            PastForm = "ran",
+                            PastParticipleForm = "run",
+                            PresentParticipleForm = "running",
+                            Text = "run",
+                            ThirdPersonForm = "runs"
+                        },
+                        new
+                        {
+                            Id = new Guid("1a5688fa-d1f7-484a-8096-f17505b13b31"),
+                            IsIrregularVerb = true,
+                            PastForm = "said",
+                            PastParticipleForm = "said",
+                            PresentParticipleForm = "Domain.Common.ValueObjects.Texting",
+                            Text = "say",
+                            ThirdPersonForm = "says"
+                        },
+                        new
+                        {
+                            Id = new Guid("ce39bc7e-7215-4631-906c-25bd5b842bb4"),
+                            IsIrregularVerb = true,
+                            PastForm = "saw",
+                            PastParticipleForm = "seen",
+                            PresentParticipleForm = "seing",
+                            Text = "see",
+                            ThirdPersonForm = "sees"
+                        },
+                        new
+                        {
+                            Id = new Guid("b3a6f96a-20fc-403e-b58b-8fc437d0572c"),
+                            IsIrregularVerb = true,
+                            PastForm = "sought",
+                            PastParticipleForm = "sought",
+                            PresentParticipleForm = "seekking",
+                            Text = "seek",
+                            ThirdPersonForm = "seeks"
+                        },
+                        new
+                        {
+                            Id = new Guid("c76194e3-5c0a-4409-9e3a-0ee53699a4df"),
+                            IsIrregularVerb = true,
+                            PastForm = "sold",
+                            PastParticipleForm = "sold",
+                            PresentParticipleForm = "Domain.Common.ValueObjects.Texting",
+                            Text = "sell",
+                            ThirdPersonForm = "sells"
+                        },
+                        new
+                        {
+                            Id = new Guid("79f3cd18-6c93-4179-9682-b97501edd5f4"),
+                            IsIrregularVerb = true,
+                            PastForm = "sent",
+                            PastParticipleForm = "sent",
+                            PresentParticipleForm = "Domain.Common.ValueObjects.Texting",
+                            Text = "send",
+                            ThirdPersonForm = "sends"
+                        },
+                        new
+                        {
+                            Id = new Guid("df985827-fbba-4f62-b61c-9b5cf771cc08"),
+                            IsIrregularVerb = true,
+                            PastForm = "set",
+                            PastParticipleForm = "set",
+                            PresentParticipleForm = "setting",
+                            Text = "set",
+                            ThirdPersonForm = "sets"
+                        },
+                        new
+                        {
+                            Id = new Guid("e918e2ec-50c0-474f-bd68-fe5e50dd1439"),
+                            IsIrregularVerb = true,
+                            PastForm = "shook",
+                            PastParticipleForm = "shaken",
+                            PresentParticipleForm = "shaking",
+                            Text = "shake",
+                            ThirdPersonForm = "shakes"
+                        },
+                        new
+                        {
+                            Id = new Guid("26350c1b-2247-465f-beb4-ea783f1c4d0d"),
+                            IsIrregularVerb = true,
+                            PastForm = "shed",
+                            PastParticipleForm = "shed",
+                            PresentParticipleForm = "shedding",
+                            Text = "shed",
+                            ThirdPersonForm = "sheds"
+                        },
+                        new
+                        {
+                            Id = new Guid("9f234f2c-d977-4ce5-88e8-3eb982d9a65b"),
+                            IsIrregularVerb = true,
+                            PastForm = "shone",
+                            PastParticipleForm = "shone",
+                            PresentParticipleForm = "shining",
+                            Text = "shine",
+                            ThirdPersonForm = "shines"
+                        },
+                        new
+                        {
+                            Id = new Guid("2f5d0a03-9cb1-43ce-93d8-43eab5a2d44c"),
+                            IsIrregularVerb = true,
+                            PastForm = "shod",
+                            PastParticipleForm = "shod",
+                            PresentParticipleForm = "shoing",
+                            Text = "shoe",
+                            ThirdPersonForm = "shoes"
+                        },
+                        new
+                        {
+                            Id = new Guid("436330f7-5fc3-41f5-8618-ce373125aa7f"),
+                            IsIrregularVerb = true,
+                            PastForm = "shot",
+                            PastParticipleForm = "shot",
+                            PresentParticipleForm = "shootting",
+                            Text = "shoot",
+                            ThirdPersonForm = "shoots"
+                        },
+                        new
+                        {
+                            Id = new Guid("ed068755-e3ff-4d7c-98bc-b1d966bcb018"),
+                            IsIrregularVerb = true,
+                            PastForm = "showed",
+                            PastParticipleForm = "shown",
+                            PresentParticipleForm = "showwing",
+                            Text = "show",
+                            ThirdPersonForm = "shows"
+                        },
+                        new
+                        {
+                            Id = new Guid("0dce8088-31b1-455d-a725-3fadefe06f4c"),
+                            IsIrregularVerb = true,
+                            PastForm = "shut",
+                            PastParticipleForm = "shut",
+                            PresentParticipleForm = "shutting",
+                            Text = "shut",
+                            ThirdPersonForm = "shuts"
+                        },
+                        new
+                        {
+                            Id = new Guid("3fce18bd-a3de-4b95-b072-b156ba86762d"),
+                            IsIrregularVerb = true,
+                            PastForm = "sang",
+                            PastParticipleForm = "sung",
+                            PresentParticipleForm = "Domain.Common.ValueObjects.Texting",
+                            Text = "sing",
+                            ThirdPersonForm = "sings"
+                        },
+                        new
+                        {
+                            Id = new Guid("cfa7a5d6-23d8-420a-afa2-93fa6756605c"),
+                            IsIrregularVerb = true,
+                            PastForm = "sank",
+                            PastParticipleForm = "sunk",
+                            PresentParticipleForm = "Domain.Common.ValueObjects.Texting",
+                            Text = "sink",
+                            ThirdPersonForm = "sinks"
+                        },
+                        new
+                        {
+                            Id = new Guid("7e74a77c-657c-4a1e-8c3b-64cebe8c0e26"),
+                            IsIrregularVerb = true,
+                            PastForm = "sat",
+                            PastParticipleForm = "sat",
+                            PresentParticipleForm = "sitting",
+                            Text = "sit",
+                            ThirdPersonForm = "sits"
+                        },
+                        new
+                        {
+                            Id = new Guid("0764754b-2dfe-477b-be38-239cded26c61"),
+                            IsIrregularVerb = true,
+                            PastForm = "slew",
+                            PastParticipleForm = "slain",
+                            PresentParticipleForm = "Domain.Common.ValueObjects.Texting",
+                            Text = "slay",
+                            ThirdPersonForm = "slays"
+                        },
+                        new
+                        {
+                            Id = new Guid("913e3089-5c81-4667-8c14-f2d2b6dd0006"),
+                            IsIrregularVerb = true,
+                            PastForm = "slept",
+                            PastParticipleForm = "slept",
+                            PresentParticipleForm = "sleepping",
+                            Text = "sleep",
+                            ThirdPersonForm = "sleeps"
+                        },
+                        new
+                        {
+                            Id = new Guid("c6ab312d-6ed1-4f5d-87b8-a9bfab2e2574"),
+                            IsIrregularVerb = true,
+                            PastForm = "slid",
+                            PastParticipleForm = "slid",
+                            PresentParticipleForm = "sliding",
+                            Text = "slide",
+                            ThirdPersonForm = "slides"
+                        },
+                        new
+                        {
+                            Id = new Guid("9032bf12-4097-4f76-8292-458bb6f0de71"),
+                            IsIrregularVerb = true,
+                            PastForm = "slit",
+                            PastParticipleForm = "slit",
+                            PresentParticipleForm = "slitting",
+                            Text = "slit",
+                            ThirdPersonForm = "slits"
+                        },
+                        new
+                        {
+                            Id = new Guid("c7470fca-80d5-4d71-8c7d-b67a97a7d575"),
+                            IsIrregularVerb = true,
+                            PastForm = "smelt",
+                            PastParticipleForm = "smelt",
+                            PresentParticipleForm = "Domain.Common.ValueObjects.Texting",
+                            Text = "smell",
+                            ThirdPersonForm = "smells"
+                        },
+                        new
+                        {
+                            Id = new Guid("3e629f3c-3b99-4213-8a09-3de389f68a15"),
+                            IsIrregularVerb = true,
+                            PastForm = "sowed",
+                            PastParticipleForm = "sown",
+                            PresentParticipleForm = "sowwing",
+                            Text = "sow",
+                            ThirdPersonForm = "sows"
+                        },
+                        new
+                        {
+                            Id = new Guid("d2dc4e1f-dc32-4063-9d06-4887333902c7"),
+                            IsIrregularVerb = true,
+                            PastForm = "spoke",
+                            PastParticipleForm = "spoken",
+                            PresentParticipleForm = "speakking",
+                            Text = "speak",
+                            ThirdPersonForm = "speaks"
+                        },
+                        new
+                        {
+                            Id = new Guid("088de34d-a32a-4fea-a64e-af5e3ad516cf"),
+                            IsIrregularVerb = true,
+                            PastForm = "sped",
+                            PastParticipleForm = "sped",
+                            PresentParticipleForm = "speedding",
+                            Text = "speed",
+                            ThirdPersonForm = "speeds"
+                        },
+                        new
+                        {
+                            Id = new Guid("ab5892f9-80ef-49d8-aaba-245b64fb2177"),
+                            IsIrregularVerb = true,
+                            PastForm = "spelt",
+                            PastParticipleForm = "spelt",
+                            PresentParticipleForm = "Domain.Common.ValueObjects.Texting",
+                            Text = "spell",
+                            ThirdPersonForm = "spells"
+                        },
+                        new
+                        {
+                            Id = new Guid("c3fab5ba-ca4b-4bce-ae97-60204ce6c4c6"),
+                            IsIrregularVerb = true,
+                            PastForm = "spent",
+                            PastParticipleForm = "spent",
+                            PresentParticipleForm = "Domain.Common.ValueObjects.Texting",
+                            Text = "spend",
+                            ThirdPersonForm = "spends"
+                        },
+                        new
+                        {
+                            Id = new Guid("3844a8ab-9c33-4163-b2f7-33f6e033fba9"),
+                            IsIrregularVerb = true,
+                            PastForm = "spilt",
+                            PastParticipleForm = "spilt",
+                            PresentParticipleForm = "Domain.Common.ValueObjects.Texting",
+                            Text = "spill",
+                            ThirdPersonForm = "spills"
+                        },
+                        new
+                        {
+                            Id = new Guid("d5d93861-bbe7-40aa-81b3-3d56b579dcab"),
+                            IsIrregularVerb = true,
+                            PastForm = "spun",
+                            PastParticipleForm = "spun",
+                            PresentParticipleForm = "spinning",
+                            Text = "spin",
+                            ThirdPersonForm = "spins"
+                        },
+                        new
+                        {
+                            Id = new Guid("cc37c5e2-984c-40c1-a262-c868c764fa43"),
+                            IsIrregularVerb = true,
+                            PastForm = "spat",
+                            PastParticipleForm = "spat",
+                            PresentParticipleForm = "spitting",
+                            Text = "spit",
+                            ThirdPersonForm = "spits"
+                        },
+                        new
+                        {
+                            Id = new Guid("395bcf7c-6c11-49c3-a48b-fdd25a012965"),
+                            IsIrregularVerb = true,
+                            PastForm = "split",
+                            PastParticipleForm = "split",
+                            PresentParticipleForm = "splitting",
+                            Text = "split",
+                            ThirdPersonForm = "splits"
+                        },
+                        new
+                        {
+                            Id = new Guid("1a0abad8-b485-47ba-922b-8959d38ef117"),
+                            IsIrregularVerb = true,
+                            PastForm = "spoilt",
+                            PastParticipleForm = "spoilt",
+                            PresentParticipleForm = "spoilling",
+                            Text = "spoil",
+                            ThirdPersonForm = "spoils"
+                        },
+                        new
+                        {
+                            Id = new Guid("6f256de3-b725-49ca-a5f4-6da70d42b129"),
+                            IsIrregularVerb = true,
+                            PastForm = "spread",
+                            PastParticipleForm = "spread",
+                            PresentParticipleForm = "spreadding",
+                            Text = "spread",
+                            ThirdPersonForm = "spreads"
+                        },
+                        new
+                        {
+                            Id = new Guid("e52e7fbc-3382-45f6-9cdc-fd28f4553499"),
+                            IsIrregularVerb = true,
+                            PastForm = "stood",
+                            PastParticipleForm = "stood",
+                            PresentParticipleForm = "Domain.Common.ValueObjects.Texting",
+                            Text = "stand",
+                            ThirdPersonForm = "stands"
+                        },
+                        new
+                        {
+                            Id = new Guid("6685d3ee-7bfe-4568-bb04-eb12cbaa4723"),
+                            IsIrregularVerb = true,
+                            PastForm = "stole",
+                            PastParticipleForm = "stolen",
+                            PresentParticipleForm = "stealling",
+                            Text = "steal",
+                            ThirdPersonForm = "steals"
+                        },
+                        new
+                        {
+                            Id = new Guid("7a22ad10-f387-4575-af64-dca2fc91034d"),
+                            IsIrregularVerb = true,
+                            PastForm = "stuck",
+                            PastParticipleForm = "stuck",
+                            PresentParticipleForm = "Domain.Common.ValueObjects.Texting",
+                            Text = "stick",
+                            ThirdPersonForm = "sticks"
+                        },
+                        new
+                        {
+                            Id = new Guid("c359384e-c2da-426e-994e-a52d7a0270c2"),
+                            IsIrregularVerb = true,
+                            PastForm = "stung",
+                            PastParticipleForm = "stung",
+                            PresentParticipleForm = "Domain.Common.ValueObjects.Texting",
+                            Text = "sting",
+                            ThirdPersonForm = "stings"
+                        },
+                        new
+                        {
+                            Id = new Guid("a74a87b4-aa94-4467-a781-a3b2cdc8a200"),
+                            IsIrregularVerb = true,
+                            PastForm = "stank",
+                            PastParticipleForm = "stunk",
+                            PresentParticipleForm = "Domain.Common.ValueObjects.Texting",
+                            Text = "stink",
+                            ThirdPersonForm = "stinks"
+                        },
+                        new
+                        {
+                            Id = new Guid("daf80c76-a3e8-46f5-b1e9-9da5153639c7"),
+                            IsIrregularVerb = true,
+                            PastForm = "strewed",
+                            PastParticipleForm = "strewn",
+                            PresentParticipleForm = "strewwing",
+                            Text = "strew",
+                            ThirdPersonForm = "strews"
+                        },
+                        new
+                        {
+                            Id = new Guid("77ed9757-f9bf-4d6f-89df-d7e2551ca5d1"),
+                            IsIrregularVerb = true,
+                            PastForm = "struck",
+                            PastParticipleForm = "stricken",
+                            PresentParticipleForm = "striking",
+                            Text = "strike",
+                            ThirdPersonForm = "strikes"
+                        },
+                        new
+                        {
+                            Id = new Guid("9c47b4b4-0811-400e-bd0e-eb501ecfcf0b"),
+                            IsIrregularVerb = true,
+                            PastForm = "strove",
+                            PastParticipleForm = "striven",
+                            PresentParticipleForm = "striving",
+                            Text = "strive",
+                            ThirdPersonForm = "strives"
+                        },
+                        new
+                        {
+                            Id = new Guid("3fbe704d-e885-4f10-8d1c-f740b40b7aca"),
+                            IsIrregularVerb = true,
+                            PastForm = "swore",
+                            PastParticipleForm = "sworn",
+                            PresentParticipleForm = "swearring",
+                            Text = "swear",
+                            ThirdPersonForm = "swears"
+                        },
+                        new
+                        {
+                            Id = new Guid("7ba25920-32eb-4272-a737-915fc7ddb55e"),
+                            IsIrregularVerb = true,
+                            PastForm = "sweat",
+                            PastParticipleForm = "sweat",
+                            PresentParticipleForm = "sweatting",
+                            Text = "sweat",
+                            ThirdPersonForm = "sweats"
+                        },
+                        new
+                        {
+                            Id = new Guid("a6d8aa1f-8022-4197-9446-bbb014d20803"),
+                            IsIrregularVerb = true,
+                            PastForm = "swept",
+                            PastParticipleForm = "swept",
+                            PresentParticipleForm = "sweepping",
+                            Text = "sweep",
+                            ThirdPersonForm = "sweeps"
+                        },
+                        new
+                        {
+                            Id = new Guid("3f227149-0a0e-4c4b-964d-2aab47b367c2"),
+                            IsIrregularVerb = true,
+                            PastForm = "sweated",
+                            PastParticipleForm = "swollen",
+                            PresentParticipleForm = "Domain.Common.ValueObjects.Texting",
+                            Text = "swell",
+                            ThirdPersonForm = "swells"
+                        },
+                        new
+                        {
+                            Id = new Guid("49413c3b-d69b-4da0-809f-5418c5c59433"),
+                            IsIrregularVerb = true,
+                            PastForm = "swam",
+                            PastParticipleForm = "swum",
+                            PresentParticipleForm = "swimming",
+                            Text = "swim",
+                            ThirdPersonForm = "swims"
+                        },
+                        new
+                        {
+                            Id = new Guid("04a72eda-53b6-493d-b25e-f347b9c47d6f"),
+                            IsIrregularVerb = true,
+                            PastForm = "swung",
+                            PastParticipleForm = "swung",
+                            PresentParticipleForm = "Domain.Common.ValueObjects.Texting",
+                            Text = "swing",
+                            ThirdPersonForm = "swings"
+                        },
+                        new
+                        {
+                            Id = new Guid("212f73fc-1723-467c-bce0-ed86b0562968"),
+                            IsIrregularVerb = true,
+                            PastForm = "took",
+                            PastParticipleForm = "taken",
+                            PresentParticipleForm = "taking",
+                            Text = "take",
+                            ThirdPersonForm = "takes"
+                        },
+                        new
+                        {
+                            Id = new Guid("173345e5-0dc9-4b71-a500-92a4353ebea8"),
+                            IsIrregularVerb = true,
+                            PastForm = "taught",
+                            PastParticipleForm = "taught",
+                            PresentParticipleForm = "Domain.Common.ValueObjects.Texting",
+                            Text = "teach",
+                            ThirdPersonForm = "teaches"
+                        },
+                        new
+                        {
+                            Id = new Guid("ee423aa3-4f92-4e8e-b393-7d28b288e3b8"),
+                            IsIrregularVerb = true,
+                            PastForm = "tore",
+                            PastParticipleForm = "torn",
+                            PresentParticipleForm = "tearring",
+                            Text = "tear",
+                            ThirdPersonForm = "tears"
+                        },
+                        new
+                        {
+                            Id = new Guid("92fb4a16-dd8c-4852-b06e-fd3fff0326d7"),
+                            IsIrregularVerb = true,
+                            PastForm = "told",
+                            PastParticipleForm = "told",
+                            PresentParticipleForm = "Domain.Common.ValueObjects.Texting",
+                            Text = "tell",
+                            ThirdPersonForm = "tells"
+                        },
+                        new
+                        {
+                            Id = new Guid("080ca9f8-b293-464d-91f7-48e5cadee032"),
+                            IsIrregularVerb = true,
+                            PastForm = "thought",
+                            PastParticipleForm = "thought",
+                            PresentParticipleForm = "Domain.Common.ValueObjects.Texting",
+                            Text = "think",
+                            ThirdPersonForm = "thinks"
+                        },
+                        new
+                        {
+                            Id = new Guid("152748d4-96a3-4b2f-8fd1-1cf452611903"),
+                            IsIrregularVerb = true,
+                            PastForm = "throve",
+                            PastParticipleForm = "thriven",
+                            PresentParticipleForm = "thriving",
+                            Text = "thrive",
+                            ThirdPersonForm = "thrives"
+                        },
+                        new
+                        {
+                            Id = new Guid("b67ca360-ab47-4943-b96b-5fdb2c6e4975"),
+                            IsIrregularVerb = true,
+                            PastForm = "threw",
+                            PastParticipleForm = "thrown",
+                            PresentParticipleForm = "throwwing",
+                            Text = "throw",
+                            ThirdPersonForm = "throws"
+                        },
+                        new
+                        {
+                            Id = new Guid("e6afcdc5-4a80-4351-8f9e-625b49997d84"),
+                            IsIrregularVerb = true,
+                            PastForm = "thrust",
+                            PastParticipleForm = "thrust",
+                            PresentParticipleForm = "Domain.Common.ValueObjects.Texting",
+                            Text = "thrust",
+                            ThirdPersonForm = "thrusts"
+                        },
+                        new
+                        {
+                            Id = new Guid("852d7c61-79d8-471a-b65b-ee68e54de4b5"),
+                            IsIrregularVerb = true,
+                            PastForm = "typeset",
+                            PastParticipleForm = "typeset",
+                            PresentParticipleForm = "typesetting",
+                            Text = "typeset",
+                            ThirdPersonForm = "typesets"
+                        },
+                        new
+                        {
+                            Id = new Guid("3ef19c91-2e94-4fb7-bd66-58f3dbd5273e"),
+                            IsIrregularVerb = true,
+                            PastForm = "underwent",
+                            PastParticipleForm = "undergone",
+                            PresentParticipleForm = "Domain.Common.ValueObjects.Texting",
+                            Text = "undergo",
+                            ThirdPersonForm = "undergos"
+                        },
+                        new
+                        {
+                            Id = new Guid("87c4e6a2-d3e5-4233-b66a-c39edfbc7a2a"),
+                            IsIrregularVerb = true,
+                            PastForm = "understood",
+                            PastParticipleForm = "understood",
+                            PresentParticipleForm = "Domain.Common.ValueObjects.Texting",
+                            Text = "understand",
+                            ThirdPersonForm = "understands"
+                        },
+                        new
+                        {
+                            Id = new Guid("b7268c58-3613-4c82-a8fc-128651ec4bb8"),
+                            IsIrregularVerb = true,
+                            PastForm = "woke",
+                            PastParticipleForm = "woken",
+                            PresentParticipleForm = "waking",
+                            Text = "wake",
+                            ThirdPersonForm = "wakes"
+                        },
+                        new
+                        {
+                            Id = new Guid("f59dc9cd-2fd4-4f0c-ad56-e33cfa7fce49"),
+                            IsIrregularVerb = true,
+                            PastForm = "wore",
+                            PastParticipleForm = "worn",
+                            PresentParticipleForm = "wearring",
+                            Text = "wear",
+                            ThirdPersonForm = "wears"
+                        },
+                        new
+                        {
+                            Id = new Guid("a0defac1-5990-4a9e-8ad0-4cb059080d53"),
+                            IsIrregularVerb = true,
+                            PastForm = "wept",
+                            PastParticipleForm = "wept",
+                            PresentParticipleForm = "weepping",
+                            Text = "weep",
+                            ThirdPersonForm = "weeps"
+                        },
+                        new
+                        {
+                            Id = new Guid("a8384112-316d-462b-bcd6-7f1684fa129b"),
+                            IsIrregularVerb = true,
+                            PastForm = "wet",
+                            PastParticipleForm = "wet",
+                            PresentParticipleForm = "wetting",
+                            Text = "wet",
+                            ThirdPersonForm = "wets"
+                        },
+                        new
+                        {
+                            Id = new Guid("c4b30f8a-01ba-4b2c-8ded-67e7885f3316"),
+                            IsIrregularVerb = true,
+                            PastForm = "won",
+                            PastParticipleForm = "won",
+                            PresentParticipleForm = "winning",
+                            Text = "win",
+                            ThirdPersonForm = "wins"
+                        },
+                        new
+                        {
+                            Id = new Guid("19c8a9bf-1119-4630-bd1d-7530032ff5b9"),
+                            IsIrregularVerb = true,
+                            PastForm = "wound",
+                            PastParticipleForm = "wound",
+                            PresentParticipleForm = "Domain.Common.ValueObjects.Texting",
+                            Text = "wind",
+                            ThirdPersonForm = "winds"
+                        },
+                        new
+                        {
+                            Id = new Guid("7e38585c-2be1-47f3-bc9d-216658fdcbdc"),
+                            IsIrregularVerb = true,
+                            PastForm = "withdrew",
+                            PastParticipleForm = "withdrawn",
+                            PresentParticipleForm = "withdrawwing",
+                            Text = "withdraw",
+                            ThirdPersonForm = "withdraws"
+                        },
+                        new
+                        {
+                            Id = new Guid("748672bd-4337-4a13-84fc-26ef9e330385"),
+                            IsIrregularVerb = true,
+                            PastForm = "wrung",
+                            PastParticipleForm = "wrung",
+                            PresentParticipleForm = "Domain.Common.ValueObjects.Texting",
+                            Text = "wring",
+                            ThirdPersonForm = "wrings"
+                        },
+                        new
+                        {
+                            Id = new Guid("a8095252-e298-4c2a-b273-5a879b60663a"),
+                            IsIrregularVerb = true,
+                            PastForm = "wrote",
+                            PastParticipleForm = "written",
+                            PresentParticipleForm = "writing",
+                            Text = "write",
+                            ThirdPersonForm = "writes"
                         });
                 });
 
@@ -5202,6 +7355,249 @@ namespace Infrastructure.Persistence.Migrations
                     b.Navigation("ExerciseIds");
 
                     b.Navigation("ScoreIds");
+                });
+
+            modelBuilder.Entity("Domain.Vocabulary.PrimaryVerbs.PrimaryVerb", b =>
+                {
+                    b.OwnsMany("Domain.Vocabulary.ModalVerbs.ValueObjects.FullNegativeForm", "FullNegativeForms", b1 =>
+                        {
+                            b1.Property<int>("Id")
+                                .ValueGeneratedOnAdd()
+                                .HasColumnType("integer");
+
+                            NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b1.Property<int>("Id"));
+
+                            b1.Property<Guid>("PrimaryVerbId")
+                                .HasColumnType("uuid");
+
+                            b1.Property<string>("Value")
+                                .IsRequired()
+                                .HasColumnType("text")
+                                .HasColumnName("Text");
+
+                            b1.HasKey("Id");
+
+                            b1.HasIndex("PrimaryVerbId");
+
+                            b1.ToTable("FullNegativeForms", "vocabulary");
+
+                            b1.WithOwner()
+                                .HasForeignKey("PrimaryVerbId");
+
+                            b1.HasData(
+                                new
+                                {
+                                    Id = 1,
+                                    PrimaryVerbId = new Guid("928e8efd-1a11-4df9-9703-0631fa073ca3"),
+                                    Value = "do not"
+                                },
+                                new
+                                {
+                                    Id = 2,
+                                    PrimaryVerbId = new Guid("928e8efd-1a11-4df9-9703-0631fa073ca3"),
+                                    Value = "did not"
+                                },
+                                new
+                                {
+                                    Id = 3,
+                                    PrimaryVerbId = new Guid("928e8efd-1a11-4df9-9703-0631fa073ca3"),
+                                    Value = "does not"
+                                },
+                                new
+                                {
+                                    Id = 4,
+                                    PrimaryVerbId = new Guid("aedf0d06-70b2-4270-8c69-6a5b7ce26d1c"),
+                                    Value = "have not"
+                                },
+                                new
+                                {
+                                    Id = 5,
+                                    PrimaryVerbId = new Guid("aedf0d06-70b2-4270-8c69-6a5b7ce26d1c"),
+                                    Value = "had not"
+                                },
+                                new
+                                {
+                                    Id = 6,
+                                    PrimaryVerbId = new Guid("928e8efd-1a11-4df9-9703-0631fa073ca3"),
+                                    Value = "has not"
+                                },
+                                new
+                                {
+                                    Id = 7,
+                                    PrimaryVerbId = new Guid("f286ad7c-e394-42b6-ad07-4be4a8bb137c"),
+                                    Value = "was not"
+                                },
+                                new
+                                {
+                                    Id = 8,
+                                    PrimaryVerbId = new Guid("f286ad7c-e394-42b6-ad07-4be4a8bb137c"),
+                                    Value = "were not"
+                                },
+                                new
+                                {
+                                    Id = 9,
+                                    PrimaryVerbId = new Guid("f286ad7c-e394-42b6-ad07-4be4a8bb137c"),
+                                    Value = "am not"
+                                },
+                                new
+                                {
+                                    Id = 10,
+                                    PrimaryVerbId = new Guid("f286ad7c-e394-42b6-ad07-4be4a8bb137c"),
+                                    Value = "is not"
+                                },
+                                new
+                                {
+                                    Id = 11,
+                                    PrimaryVerbId = new Guid("f286ad7c-e394-42b6-ad07-4be4a8bb137c"),
+                                    Value = "are not"
+                                });
+                        });
+
+                    b.OwnsMany("Domain.Vocabulary.ModalVerbs.ValueObjects.ShortNegativeForm", "ShortNegativeForms", b1 =>
+                        {
+                            b1.Property<int>("Id")
+                                .ValueGeneratedOnAdd()
+                                .HasColumnType("integer");
+
+                            NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b1.Property<int>("Id"));
+
+                            b1.Property<Guid>("PrimaryVerbId")
+                                .HasColumnType("uuid");
+
+                            b1.Property<string>("Value")
+                                .IsRequired()
+                                .HasColumnType("text")
+                                .HasColumnName("Text");
+
+                            b1.HasKey("Id");
+
+                            b1.HasIndex("PrimaryVerbId");
+
+                            b1.ToTable("ShortNegativeForms", "vocabulary");
+
+                            b1.WithOwner()
+                                .HasForeignKey("PrimaryVerbId");
+
+                            b1.HasData(
+                                new
+                                {
+                                    Id = 1,
+                                    PrimaryVerbId = new Guid("928e8efd-1a11-4df9-9703-0631fa073ca3"),
+                                    Value = "don't"
+                                },
+                                new
+                                {
+                                    Id = 2,
+                                    PrimaryVerbId = new Guid("928e8efd-1a11-4df9-9703-0631fa073ca3"),
+                                    Value = "didn't"
+                                },
+                                new
+                                {
+                                    Id = 3,
+                                    PrimaryVerbId = new Guid("928e8efd-1a11-4df9-9703-0631fa073ca3"),
+                                    Value = "doesn't"
+                                },
+                                new
+                                {
+                                    Id = 4,
+                                    PrimaryVerbId = new Guid("aedf0d06-70b2-4270-8c69-6a5b7ce26d1c"),
+                                    Value = "haven't"
+                                },
+                                new
+                                {
+                                    Id = 5,
+                                    PrimaryVerbId = new Guid("aedf0d06-70b2-4270-8c69-6a5b7ce26d1c"),
+                                    Value = "hadn't"
+                                },
+                                new
+                                {
+                                    Id = 6,
+                                    PrimaryVerbId = new Guid("aedf0d06-70b2-4270-8c69-6a5b7ce26d1c"),
+                                    Value = "hasn't"
+                                },
+                                new
+                                {
+                                    Id = 7,
+                                    PrimaryVerbId = new Guid("f286ad7c-e394-42b6-ad07-4be4a8bb137c"),
+                                    Value = "wasn't"
+                                },
+                                new
+                                {
+                                    Id = 8,
+                                    PrimaryVerbId = new Guid("f286ad7c-e394-42b6-ad07-4be4a8bb137c"),
+                                    Value = "weren't"
+                                },
+                                new
+                                {
+                                    Id = 9,
+                                    PrimaryVerbId = new Guid("f286ad7c-e394-42b6-ad07-4be4a8bb137c"),
+                                    Value = "am not"
+                                },
+                                new
+                                {
+                                    Id = 10,
+                                    PrimaryVerbId = new Guid("f286ad7c-e394-42b6-ad07-4be4a8bb137c"),
+                                    Value = "isn't"
+                                },
+                                new
+                                {
+                                    Id = 11,
+                                    PrimaryVerbId = new Guid("f286ad7c-e394-42b6-ad07-4be4a8bb137c"),
+                                    Value = "aren't"
+                                });
+                        });
+
+                    b.OwnsMany("Domain.Vocabulary.PrimaryVerbs.ValueObjects.AdditionalForm", "AdditionalForms", b1 =>
+                        {
+                            b1.Property<int>("Id")
+                                .ValueGeneratedOnAdd()
+                                .HasColumnType("integer");
+
+                            NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b1.Property<int>("Id"));
+
+                            b1.Property<Guid>("PrimaryVerbId")
+                                .HasColumnType("uuid");
+
+                            b1.Property<string>("Value")
+                                .IsRequired()
+                                .HasColumnType("text")
+                                .HasColumnName("Text");
+
+                            b1.HasKey("Id");
+
+                            b1.HasIndex("PrimaryVerbId");
+
+                            b1.ToTable("AdditionalForms", "vocabulary");
+
+                            b1.WithOwner()
+                                .HasForeignKey("PrimaryVerbId");
+
+                            b1.HasData(
+                                new
+                                {
+                                    Id = 1,
+                                    PrimaryVerbId = new Guid("f286ad7c-e394-42b6-ad07-4be4a8bb137c"),
+                                    Value = "were"
+                                },
+                                new
+                                {
+                                    Id = 2,
+                                    PrimaryVerbId = new Guid("f286ad7c-e394-42b6-ad07-4be4a8bb137c"),
+                                    Value = "am"
+                                },
+                                new
+                                {
+                                    Id = 3,
+                                    PrimaryVerbId = new Guid("f286ad7c-e394-42b6-ad07-4be4a8bb137c"),
+                                    Value = "are"
+                                });
+                        });
+
+                    b.Navigation("AdditionalForms");
+
+                    b.Navigation("FullNegativeForms");
+
+                    b.Navigation("ShortNegativeForms");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<System.Guid>", b =>

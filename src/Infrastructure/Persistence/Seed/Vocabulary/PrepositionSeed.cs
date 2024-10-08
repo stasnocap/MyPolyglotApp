@@ -1,0 +1,82 @@
+﻿using Domain.Common.ValueObjects;
+using Domain.Vocabulary.Prepositions;
+using Domain.Vocabulary.Prepositions.ValueObjects;
+
+namespace Infrastructure.Persistence.Seed.Vocabulary;
+
+public static class PrepositionSeed
+{
+    public static IReadOnlyList<Preposition> GetPrepositions()
+    {
+        return
+        [
+            Preposition.Create(PrepositionId.Create(Guid.Parse("03839a0b-94c8-4ecf-9e67-4952db8cfab3")), Text.Create("ago").Value),
+            Preposition.Create(PrepositionId.Create(Guid.Parse("246fbad8-a590-423c-b9b5-48886501f621")), Text.Create("aboard").Value),
+            Preposition.Create(PrepositionId.Create(Guid.Parse("9fd75223-53f7-4221-b4a8-01439e4e67b3")), Text.Create("about").Value),
+            Preposition.Create(PrepositionId.Create(Guid.Parse("0f6fafc1-c5eb-4401-931a-debf4a65f728")), Text.Create("across").Value),
+            Preposition.Create(PrepositionId.Create(Guid.Parse("7b3c5115-faa0-4355-85dc-2ec976be3793")), Text.Create("after").Value),
+            Preposition.Create(PrepositionId.Create(Guid.Parse("e78fea2f-8aaf-49b2-bd9b-8456caa2430a")), Text.Create("against").Value),
+            Preposition.Create(PrepositionId.Create(Guid.Parse("e22c1b46-ef0b-4b79-ae79-19dbb6d481ec")), Text.Create("along").Value),
+            Preposition.Create(PrepositionId.Create(Guid.Parse("8e95e1f5-c09d-4697-9b68-ef441df09af4")), Text.Create("amid").Value),
+            Preposition.Create(PrepositionId.Create(Guid.Parse("82cb41ac-c41e-41db-a55e-9828e163f1d1")), Text.Create("among").Value),
+            Preposition.Create(PrepositionId.Create(Guid.Parse("663dbdc5-eee5-4a7d-ae6f-26ba63303f5c")), Text.Create("anti").Value),
+            Preposition.Create(PrepositionId.Create(Guid.Parse("c3c80b52-c594-495f-9be5-43d2e6691eb4")), Text.Create("around").Value),
+            Preposition.Create(PrepositionId.Create(Guid.Parse("2ef33252-685c-48e6-9281-3f609f66b7a0")), Text.Create("as").Value),
+            Preposition.Create(PrepositionId.Create(Guid.Parse("f0b7e1d1-d200-4783-b759-082a420f7ca1")), Text.Create("at").Value),
+            Preposition.Create(PrepositionId.Create(Guid.Parse("36a5ec67-8236-4633-95ea-2465b9333139")), Text.Create("before").Value),
+            Preposition.Create(PrepositionId.Create(Guid.Parse("8a9251d2-c821-4fe8-bc5d-ece189c72939")), Text.Create("behind").Value),
+            Preposition.Create(PrepositionId.Create(Guid.Parse("a121847c-af91-4c15-a095-b457ef6f1f78")), Text.Create("beneath").Value),
+            Preposition.Create(PrepositionId.Create(Guid.Parse("ec5d1566-90d7-481a-8cc2-3ee9cfef9a93")), Text.Create("beside").Value),
+            Preposition.Create(PrepositionId.Create(Guid.Parse("a8d9601e-466b-4692-b959-e052325cfbfc")), Text.Create("besides").Value),
+            Preposition.Create(PrepositionId.Create(Guid.Parse("b3efaafb-1826-4548-879e-cb1366ec2753")), Text.Create("between").Value),
+            Preposition.Create(PrepositionId.Create(Guid.Parse("0ae076f4-649a-4346-bd40-02b0b7d2c710")), Text.Create("beyond").Value),
+            Preposition.Create(PrepositionId.Create(Guid.Parse("9e87a351-3d94-4037-825a-8eda3d6f3650")), Text.Create("but").Value),
+            Preposition.Create(PrepositionId.Create(Guid.Parse("e797b489-9322-4d25-b9c5-140798975c21")), Text.Create("by").Value),
+            Preposition.Create(PrepositionId.Create(Guid.Parse("aec0ce77-7a36-46d5-a071-fde8dd8dca3f")), Text.Create("concerning").Value),
+            Preposition.Create(PrepositionId.Create(Guid.Parse("e49816da-2b0c-4882-80de-1db6a3a46045")), Text.Create("considering").Value),
+            Preposition.Create(PrepositionId.Create(Guid.Parse("83192b0e-0caf-4dcd-a9d9-e0cb13b193f3")), Text.Create("despite").Value),
+            Preposition.Create(PrepositionId.Create(Guid.Parse("83d901e7-b772-4870-80f1-54dae00c64d8")), Text.Create("down").Value),
+            Preposition.Create(PrepositionId.Create(Guid.Parse("b66ae075-99e9-435b-bf6a-dbdf5526dbdf")), Text.Create("during").Value),
+            Preposition.Create(PrepositionId.Create(Guid.Parse("516d2b89-4ecc-4c59-a899-396c36bb0b2b")), Text.Create("except").Value),
+            Preposition.Create(PrepositionId.Create(Guid.Parse("dbf3c1e1-dd11-433d-a2ac-e01dd197e056")), Text.Create("excepting").Value),
+            Preposition.Create(PrepositionId.Create(Guid.Parse("f8ca831c-7cde-4a51-bbbb-657ffac0f4e0")), Text.Create("excluding").Value),
+            Preposition.Create(PrepositionId.Create(Guid.Parse("35264b0e-a345-4a2a-97a0-77fac3077520")), Text.Create("following").Value),
+            Preposition.Create(PrepositionId.Create(Guid.Parse("e80f9dcf-9e7e-4260-b3e3-d4a9571a0fa6")), Text.Create("for").Value),
+            Preposition.Create(PrepositionId.Create(Guid.Parse("0fe30342-b74c-4136-9636-4d89fff18de0")), Text.Create("from").Value),
+            Preposition.Create(PrepositionId.Create(Guid.Parse("26c92022-b7bc-4c95-ba23-f8eedccb2868")), Text.Create("in").Value),
+            Preposition.Create(PrepositionId.Create(Guid.Parse("7f878ec0-1e74-41d4-aca7-b819d0b65ea6")), Text.Create("into").Value),
+            Preposition.Create(PrepositionId.Create(Guid.Parse("63992e57-31c2-4340-984d-a105ac52a865")), Text.Create("minus").Value),
+            Preposition.Create(PrepositionId.Create(Guid.Parse("04b2ca86-608b-4b0c-9d67-ad756ca79f4e")), Text.Create("near").Value),
+            Preposition.Create(PrepositionId.Create(Guid.Parse("64db07d1-263c-4add-9b36-683706b9f171")), Text.Create("of").Value),
+            Preposition.Create(PrepositionId.Create(Guid.Parse("3518e7c5-18c0-4624-9e57-39edd55e2c5b")), Text.Create("off").Value),
+            Preposition.Create(PrepositionId.Create(Guid.Parse("fc9455a5-bf8e-45ab-ae25-18a6b6085128")), Text.Create("on").Value),
+            Preposition.Create(PrepositionId.Create(Guid.Parse("ceefd2ed-ae04-427d-94ce-ece35551f504")), Text.Create("onto").Value),
+            Preposition.Create(PrepositionId.Create(Guid.Parse("0030e9fe-b7f2-44a0-9561-72312a3d90fd")), Text.Create("opposite").Value),
+            Preposition.Create(PrepositionId.Create(Guid.Parse("c6840982-5776-4f45-b3ce-4dc6724eb769")), Text.Create("over").Value),
+            Preposition.Create(PrepositionId.Create(Guid.Parse("d3830f80-738e-487b-aba5-4f66a9bb171f")), Text.Create("past").Value),
+            Preposition.Create(PrepositionId.Create(Guid.Parse("4fbfc4e5-495e-4ef1-9522-851483702851")), Text.Create("per").Value),
+            Preposition.Create(PrepositionId.Create(Guid.Parse("87a385cd-306b-4c63-a75d-61878fe2e502")), Text.Create("plus").Value),
+            Preposition.Create(PrepositionId.Create(Guid.Parse("783d2ea9-3bcb-473a-af99-dd209f7e04ff")), Text.Create("regarding").Value),
+            Preposition.Create(PrepositionId.Create(Guid.Parse("2ace2fa7-821b-4db1-8d98-d667cd2ae57c")), Text.Create("round").Value),
+            Preposition.Create(PrepositionId.Create(Guid.Parse("ca49d61b-8819-460d-8743-4b3de38b06be")), Text.Create("save").Value),
+            Preposition.Create(PrepositionId.Create(Guid.Parse("a3d589cd-1c19-40c3-9637-fc365a9bc370")), Text.Create("since").Value),
+            Preposition.Create(PrepositionId.Create(Guid.Parse("3403ee74-673a-4bda-acfc-d135cbf468d7")), Text.Create("than").Value),
+            Preposition.Create(PrepositionId.Create(Guid.Parse("3e0b8392-0434-4351-9373-19a4be5f96e8")), Text.Create("then").Value),
+            Preposition.Create(PrepositionId.Create(Guid.Parse("5c9d8453-c5ae-49a7-a0b1-78c71d85224c")), Text.Create("through").Value),
+            Preposition.Create(PrepositionId.Create(Guid.Parse("c4a0c377-5159-4044-ac48-6d6f44baaad2")), Text.Create("to").Value),
+            Preposition.Create(PrepositionId.Create(Guid.Parse("131fad37-0e85-4e99-9f26-3d20a989394a")), Text.Create("toward").Value),
+            Preposition.Create(PrepositionId.Create(Guid.Parse("ebbb3faf-b17a-40c8-b716-ffc09a3500fa")), Text.Create("towards").Value),
+            Preposition.Create(PrepositionId.Create(Guid.Parse("0c4294f3-327b-4eb9-8831-951c236b3e37")), Text.Create("under").Value),
+            Preposition.Create(PrepositionId.Create(Guid.Parse("9d77e7ff-bff5-41fa-b70c-164b45ead20a")), Text.Create("underneath").Value),
+            Preposition.Create(PrepositionId.Create(Guid.Parse("d1b35063-29c3-4d42-b169-6d955bc3cc2d")), Text.Create("unlike").Value),
+            Preposition.Create(PrepositionId.Create(Guid.Parse("83a7211c-fd5d-441e-b198-8b44befc2e1a")), Text.Create("until").Value),
+            Preposition.Create(PrepositionId.Create(Guid.Parse("aa005900-1d04-499e-8623-d32fb6cbcc1f")), Text.Create("up").Value),
+            Preposition.Create(PrepositionId.Create(Guid.Parse("f1b984b4-74e1-4811-b38a-03201124c205")), Text.Create("upon").Value),
+            Preposition.Create(PrepositionId.Create(Guid.Parse("5516e049-ec23-4182-8046-b24465cca0b1")), Text.Create("versus").Value),
+            Preposition.Create(PrepositionId.Create(Guid.Parse("516c2674-c9bf-4c0f-860a-976999751714")), Text.Create("via").Value),
+            Preposition.Create(PrepositionId.Create(Guid.Parse("e42d087f-cf56-4671-a7e9-b816b7fec5e0")), Text.Create("with").Value),
+            Preposition.Create(PrepositionId.Create(Guid.Parse("e890b4a7-b2fa-4d74-968c-bd717f72b01e")), Text.Create("within").Value),
+            Preposition.Create(PrepositionId.Create(Guid.Parse("a9de3c60-e5a4-47e5-9d58-68e7ec493e0e")), Text.Create("without").Value),
+        ];
+    }
+}

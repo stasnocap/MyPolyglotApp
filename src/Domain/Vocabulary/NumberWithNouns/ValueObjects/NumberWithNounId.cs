@@ -15,12 +15,12 @@ public sealed class NumberWithNounId : ValueObject
     {
         return new NumberWithNounId(value);
     }
-    
+
     public static NumberWithNounId CreateUnique()
     {
         return new NumberWithNounId(Guid.NewGuid());
     }
-    
+
     protected override IEnumerable<object> GetEqualityComponents()
     {
         yield return Value;

@@ -14,4 +14,9 @@ public sealed class Preposition : BaseWord<PrepositionId>
     {
         return new Preposition(PrepositionId.CreateUnique(), text);
     }
+
+    public static Preposition Create(PrepositionId prepositionId, Text text)
+    {
+        return new Preposition(prepositionId, text);
+    }
 }

@@ -14,4 +14,9 @@ public sealed class NumberWithNoun : BaseWord<NumberWithNounId>
     {
         return new NumberWithNoun(NumberWithNounId.CreateUnique(), text);
     }
+
+    public static NumberWithNoun Create(NumberWithNounId numberWithNounId, Text text)
+    {
+        return new NumberWithNoun(numberWithNounId, text);
+    }
 }

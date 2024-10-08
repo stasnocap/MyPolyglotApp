@@ -7,21 +7,22 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Persistence.Repositories.Vocabulary;
 
-public class VocabularyRepository(AppDbContext _dbContext,
+public class VocabularyRepository(
+    AppDbContext _dbContext,
     IComparisionAdjectiveRepository _comparisionAdjectiveRepository,
     ILetterNumberRepository _letterNumberRepository,
     IModalVerbRepository _modalVerbRepository,
     INounRepository _nounRepository,
-    IPrimaryVerbRepository _primaryVerbRepository) : IVocabularyRepository
+    IPrimaryVerbRepository _primaryVerbRepository,
+    IAdverbRepository _adverbRepository,
+    ICompoundRepository _compoundRepository) : IVocabularyRepository
 {
     public async Task<IReadOnlyList<string>> GetRandomAsync(Word word, int count, CancellationToken cancellationToken)
     {
         switch (word.Type)
         {
             case WordType.Adjective:
-            case WordType.Adverb:
             case WordType.City:
-            case WordType.Compound:
             case WordType.Determiner:
             case WordType.Language:
             case WordType.NumberWithNoun:
@@ -40,6 +41,10 @@ public class VocabularyRepository(AppDbContext _dbContext,
                 var textProperty = wordType.GetProperty("Text")!;
 
                 return words.Select(x => ((Text)textProperty.GetValue(x)!).Value).ToList();
+            case WordType.Adverb:
+                return await _adverbRepository.GetRandomAdverbs(word, count, cancellationToken);
+            case WordType.Compound:
+                return await _compoundRepository.GetRandomCompounds(word, count, cancellationToken);
             case WordType.ComparisonAdjective:
                 return await _comparisionAdjectiveRepository.GetRandomComparisonAdjectives(word, count, cancellationToken);
             case WordType.LetterNumber:

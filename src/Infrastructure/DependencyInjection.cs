@@ -1,9 +1,7 @@
-﻿using Application.Common.Authentication;
-using Application.Common.Interfaces.Persistence.Practice;
+﻿using Application.Common.Interfaces.Persistence.Practice;
 using Application.Common.Interfaces.Persistence.Vocabulary;
 using Application.Common.Interfaces.Services;
 using Domain.Identity;
-using Infrastructure.Authentication;
 using Infrastructure.Persistence;
 using Infrastructure.Persistence.Repositories.Practice;
 using Infrastructure.Persistence.Repositories.Vocabulary;
@@ -21,7 +19,6 @@ public static class DependencyInjection
         IConfiguration configuration)
     {
         services.AddAuth(configuration);
-        services.AddSingleton<IClaimsPrincipalFactory, ClaimsPrincipalFactory>();
         services.AddSingleton<IDateTimeProvider, DateTimeProvider>();
         services.AddHttpContextAccessor();
         
@@ -34,6 +31,8 @@ public static class DependencyInjection
         services.AddScoped<IPrimaryVerbRepository, PrimaryVerbRepository>();
         services.AddScoped<ILetterNumberRepository, LetterNumberRepository>();
         services.AddScoped<IModalVerbRepository, ModalVerbRepository>();
+        services.AddScoped<IAdverbRepository, AdverbRepository>();
+        services.AddScoped<ICompoundRepository, CompoundRepository>();
         
         services.AddScoped<IPasswordHasher<User>, PasswordHasher<User>>();
         services.AddPostgresDatabase(configuration);

@@ -11,7 +11,7 @@ public class AdjectiveConfiguration : IEntityTypeConfiguration<Adjective>
 {
     public void Configure(EntityTypeBuilder<Adjective> builder)
     {
-        builder.ToTable("Adjectives", schema: Schemas.Practice);
+        builder.ToTable("Adjectives", schema: Schemas.Vocabulary);
 
         builder.HasKey(a => a.Id);
 

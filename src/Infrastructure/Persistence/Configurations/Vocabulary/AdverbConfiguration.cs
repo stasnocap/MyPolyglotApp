@@ -11,7 +11,7 @@ public class AdverbConfiguration : IEntityTypeConfiguration<Adverb>
 {
     public void Configure(EntityTypeBuilder<Adverb> builder)
     {
-        builder.ToTable("Adverbs", schema: Schemas.Practice);
+        builder.ToTable("Adverbs", schema: Schemas.Vocabulary);
 
         builder.HasKey(a => a.Id);
 

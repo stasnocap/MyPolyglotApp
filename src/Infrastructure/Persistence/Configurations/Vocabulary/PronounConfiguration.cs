@@ -11,7 +11,7 @@ public class PronounConfiguration : IEntityTypeConfiguration<Pronoun>
 {
     public void Configure(EntityTypeBuilder<Pronoun> builder)
     {
-        builder.ToTable("Pronouns", schema: Schemas.Practice);
+        builder.ToTable("Pronouns", schema: Schemas.Vocabulary);
 
         builder.HasKey(p => p.Id);
 

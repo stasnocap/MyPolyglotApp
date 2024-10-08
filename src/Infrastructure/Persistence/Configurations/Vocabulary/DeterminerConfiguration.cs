@@ -11,7 +11,7 @@ public class DeterminerConfiguration : IEntityTypeConfiguration<Determiner>
 {
     public void Configure(EntityTypeBuilder<Determiner> builder)
     {
-        builder.ToTable("Determiners", schema: Schemas.Practice);
+        builder.ToTable("Determiners", schema: Schemas.Vocabulary);
 
         builder.HasKey(d => d.Id);
 

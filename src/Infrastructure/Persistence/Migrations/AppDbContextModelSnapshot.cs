@@ -5288,7 +5288,7 @@ namespace Infrastructure.Persistence.Migrations
 
             modelBuilder.Entity("Domain.Identity.User", b =>
                 {
-                    b.OwnsMany("Domain.Practice.Scores.ValueObjects.ScoreId", "ScoreIds", b1 =>
+                    b.OwnsMany("Domain.Identity.User.ScoreIds#Domain.Practice.Scores.ValueObjects.ScoreId", "ScoreIds", b1 =>
                         {
                             b1.Property<int>("Id")
                                 .ValueGeneratedOnAdd()
@@ -5318,7 +5318,7 @@ namespace Infrastructure.Persistence.Migrations
 
             modelBuilder.Entity("Domain.Practice.Exercises.Exercise", b =>
                 {
-                    b.OwnsMany("Domain.Practice.Exercises.Entities.Word", "Words", b1 =>
+                    b.OwnsMany("Domain.Practice.Exercises.Exercise.Words#Domain.Practice.Exercises.Entities.Word", "Words", b1 =>
                         {
                             b1.Property<Guid>("Id")
                                 .HasColumnType("uuid");
@@ -5466,7 +5466,7 @@ namespace Infrastructure.Persistence.Migrations
 
             modelBuilder.Entity("Domain.Practice.Lessons.Lesson", b =>
                 {
-                    b.OwnsMany("Domain.Practice.Exercises.ValueObjects.ExerciseId", "ExerciseIds", b1 =>
+                    b.OwnsMany("Domain.Practice.Lessons.Lesson.ExerciseIds#Domain.Practice.Exercises.ValueObjects.ExerciseId", "ExerciseIds", b1 =>
                         {
                             b1.Property<int>("Id")
                                 .ValueGeneratedOnAdd()
@@ -5523,7 +5523,7 @@ namespace Infrastructure.Persistence.Migrations
                                 });
                         });
 
-                    b.OwnsMany("Domain.Practice.Scores.ValueObjects.ScoreId", "ScoreIds", b1 =>
+                    b.OwnsMany("Domain.Practice.Lessons.Lesson.ScoreIds#Domain.Practice.Scores.ValueObjects.ScoreId", "ScoreIds", b1 =>
                         {
                             b1.Property<int>("Id")
                                 .ValueGeneratedOnAdd()

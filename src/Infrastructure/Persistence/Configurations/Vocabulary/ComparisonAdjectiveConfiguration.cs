@@ -11,7 +11,7 @@ public class ComparisonAdjectiveConfiguration : IEntityTypeConfiguration<Compari
 {
     public void Configure(EntityTypeBuilder<ComparisonAdjective> builder)
     {
-        builder.ToTable("ComparisonAdjectives", schema: Schemas.Practice);
+        builder.ToTable("ComparisonAdjectives", schema: Schemas.Vocabulary);
 
         builder.HasKey(ca => ca.Id);
 

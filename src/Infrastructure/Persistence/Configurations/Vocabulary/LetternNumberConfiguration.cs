@@ -11,7 +11,7 @@ public class LetterNumberConfiguration : IEntityTypeConfiguration<LetterNumber>
 {
     public void Configure(EntityTypeBuilder<LetterNumber> builder)
     {
-        builder.ToTable("LetterNumbers", schema: Schemas.Practice);
+        builder.ToTable("LetterNumbers", schema: Schemas.Vocabulary);
 
         builder.HasKey(ln => ln.Id);
 

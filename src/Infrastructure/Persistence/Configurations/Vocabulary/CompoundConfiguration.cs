@@ -11,7 +11,7 @@ public class CompoundConfiguration : IEntityTypeConfiguration<Compound>
 {
     public void Configure(EntityTypeBuilder<Compound> builder)
     {
-        builder.ToTable("Compounds", schema: Schemas.Practice);
+        builder.ToTable("Compounds", schema: Schemas.Vocabulary);
 
         builder.HasKey(c => c.Id);
 

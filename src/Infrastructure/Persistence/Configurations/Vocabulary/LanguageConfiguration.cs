@@ -11,7 +11,7 @@ public class LanguageConfiguration : IEntityTypeConfiguration<Language>
 {
     public void Configure(EntityTypeBuilder<Language> builder)
     {
-        builder.ToTable("Languages", schema: Schemas.Practice);
+        builder.ToTable("Languages", schema: Schemas.Vocabulary);
 
         builder.HasKey(l => l.Id);
 

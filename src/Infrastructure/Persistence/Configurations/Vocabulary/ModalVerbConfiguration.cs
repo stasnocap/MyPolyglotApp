@@ -11,7 +11,7 @@ public class ModalVerbConfiguration : IEntityTypeConfiguration<ModalVerb>
 {
     public void Configure(EntityTypeBuilder<ModalVerb> builder)
     {
-        builder.ToTable("ModalVerbs", schema: Schemas.Practice);
+        builder.ToTable("ModalVerbs", schema: Schemas.Vocabulary);
 
         builder.HasKey(mv => mv.Id);
 

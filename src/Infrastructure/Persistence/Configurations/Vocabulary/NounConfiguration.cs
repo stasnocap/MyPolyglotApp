@@ -11,7 +11,7 @@ public class NounConfiguration : IEntityTypeConfiguration<Noun>
 {
     public void Configure(EntityTypeBuilder<Noun> builder)
     {
-        builder.ToTable("Nouns", schema: Schemas.Practice);
+        builder.ToTable("Nouns", schema: Schemas.Vocabulary);
 
         builder.HasKey(n => n.Id);
 

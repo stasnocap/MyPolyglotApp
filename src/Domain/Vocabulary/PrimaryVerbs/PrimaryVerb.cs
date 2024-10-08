@@ -16,8 +16,6 @@ public sealed class PrimaryVerb : BaseWord<PrimaryVerbId>
     public PastParticipleForm PastParticipleForm { get; }
     public PresentParticipleForm PresentParticipleForm { get; }
     public ThirdPersonForm ThirdPersonForm { get; }
-    public StressOnFinalSyllable Stress { get; }
-    public IsIrregularVerb IsIrregularVerb { get; }
     public IReadOnlyList<FullNegativeForm> FullNegativeForms => _fullNegativeForms.AsReadOnly();
     public IReadOnlyList<ShortNegativeForm> ShortNegativeForms => _shortNegativeForms.AsReadOnly();
     public IReadOnlyList<AdditionalForm> AdditionalForms => _additionalForms.AsReadOnly();
@@ -27,34 +25,41 @@ public sealed class PrimaryVerb : BaseWord<PrimaryVerbId>
         PastForm pastForm,
         PastParticipleForm pastParticipleForm,
         PresentParticipleForm presentParticipleForm,
-        ThirdPersonForm thirdPersonForm,
-        StressOnFinalSyllable stress,
-        IsIrregularVerb isIrregularVerb) : base(id, text)
+        ThirdPersonForm thirdPersonForm) : base(id, text)
     {
         PastForm = pastForm;
         PastParticipleForm = pastParticipleForm;
         PresentParticipleForm = presentParticipleForm;
         ThirdPersonForm = thirdPersonForm;
-        Stress = stress;
-        IsIrregularVerb = isIrregularVerb;
     }
 
     public static PrimaryVerb Create(Text text,
         PastForm pastForm,
         PastParticipleForm pastParticipleForm,
         PresentParticipleForm presentParticipleForm,
-        ThirdPersonForm thirdPersonForm,
-        StressOnFinalSyllable stress,
-        IsIrregularVerb isIrregularVerb)
+        ThirdPersonForm thirdPersonForm)
     {
         return new PrimaryVerb(PrimaryVerbId.CreateUnique(),
             text,
             pastForm,
             pastParticipleForm,
             presentParticipleForm,
-            thirdPersonForm,
-            stress,
-            isIrregularVerb);
+            thirdPersonForm);
+    }
+
+    public static PrimaryVerb Create(PrimaryVerbId primaryVerbId,
+        Text text,
+        PastForm pastForm,
+        PastParticipleForm pastParticipleForm,
+        PresentParticipleForm presentParticipleForm,
+        ThirdPersonForm thirdPersonForm)
+    {
+        return new PrimaryVerb(primaryVerbId,
+            text,
+            pastForm,
+            pastParticipleForm,
+            presentParticipleForm,
+            thirdPersonForm);
     }
 
     public void AddFullNegativeForms(IReadOnlyList<FullNegativeForm> fullNegativeForms)

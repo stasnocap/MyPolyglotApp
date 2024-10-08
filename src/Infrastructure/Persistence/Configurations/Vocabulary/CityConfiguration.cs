@@ -11,7 +11,7 @@ public class CityConfiguration : IEntityTypeConfiguration<City>
 {
     public void Configure(EntityTypeBuilder<City> builder)
     {
-        builder.ToTable("Cities", schema: Schemas.Practice);
+        builder.ToTable("Cities", schema: Schemas.Vocabulary);
 
         builder.HasKey(c => c.Id);
 

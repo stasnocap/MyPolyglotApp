@@ -11,7 +11,7 @@ public class PrepositionConfiguration : IEntityTypeConfiguration<Preposition>
 {
     public void Configure(EntityTypeBuilder<Preposition> builder)
     {
-        builder.ToTable("Prepositions", schema: Schemas.Practice);
+        builder.ToTable("Prepositions", schema: Schemas.Vocabulary);
 
         builder.HasKey(c => c.Id);
 

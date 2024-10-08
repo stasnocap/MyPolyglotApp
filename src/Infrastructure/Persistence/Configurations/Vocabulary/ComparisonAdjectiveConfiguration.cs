@@ -13,25 +13,25 @@ public class ComparisonAdjectiveConfiguration : IEntityTypeConfiguration<Compari
     {
         builder.ToTable("ComparisonAdjectives", schema: Schemas.Practice);
 
-        builder.HasKey(a => a.Id);
+        builder.HasKey(ca => ca.Id);
 
-        builder.Property(a => a.Id)
+        builder.Property(ca => ca.Id)
             .ValueGeneratedNever()
             .HasConversion(id => id.Value, value => ComparisonAdjectiveId.Create(value));
 
-        builder.Property(a => a.Text)
+        builder.Property(ca => ca.Text)
             .HasMaxLength(100)
             .HasConversion(text => text.Value, value => Text.Create(value).Value);
 
-        builder.Property(a => a.ComparativeForm)
+        builder.Property(ca => ca.ComparativeForm)
             .HasMaxLength(100)
             .HasConversion(comparativeForm => comparativeForm.Value, value => ComparativeForm.Create(value).Value);
 
-        builder.Property(a => a.SuperlativeForm)
+        builder.Property(ca => ca.SuperlativeForm)
             .HasMaxLength(100)
             .HasConversion(superlativeForm => superlativeForm.Value, value => SuperlativeForm.Create(value).Value);
 
-        builder.Property(a => a.SyllablesCount)
+        builder.Property(ca => ca.SyllablesCount)
             .HasConversion(sylleblesCount => sylleblesCount.Value, value => SyllablesCount.Create(value).Value);
 
         builder.HasData(ComparisonAdjectiveSeed.GetComparisonAdjectives());

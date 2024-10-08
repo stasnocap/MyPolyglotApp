@@ -6,12 +6,20 @@ namespace Domain.Vocabulary.Compounds;
 
 public sealed class Compound : BaseWord<CompoundId>
 {
-    private Compound(CompoundId id, Text text) : base(id, text)
+    public CompoundType Type { get; }
+
+    private Compound(CompoundId id, Text text, CompoundType type) : base(id, text)
     {
+        Type = type;
     }
 
-    public static Compound Create(Text text)
+    public static Compound Create(Text text, CompoundType type)
     {
-        return new Compound(CompoundId.CreateUnique(), text);
+        return new Compound(CompoundId.CreateUnique(), text, type);
+    }
+
+    public static Compound Create(CompoundId compoundId, Text text, CompoundType type)
+    {
+        return new Compound(compoundId, text, type);
     }
 }

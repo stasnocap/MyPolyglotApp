@@ -13,13 +13,13 @@ public class CityConfiguration : IEntityTypeConfiguration<City>
     {
         builder.ToTable("Cities", schema: Schemas.Practice);
 
-        builder.HasKey(a => a.Id);
+        builder.HasKey(c => c.Id);
 
-        builder.Property(a => a.Id)
+        builder.Property(c => c.Id)
             .ValueGeneratedNever()
             .HasConversion(id => id.Value, value => CityId.Create(value));
 
-        builder.Property(a => a.Text)
+        builder.Property(c => c.Text)
             .HasMaxLength(100)
             .HasConversion(text => text.Value, value => Text.Create(value).Value);
 

@@ -14,4 +14,9 @@ public sealed class City : BaseWord<CityId>
     {
         return new City(CityId.CreateUnique(), text);
     }
+
+    public static City Create(CityId cityId, Text text)
+    {
+        return new City(cityId, text);
+    }
 }

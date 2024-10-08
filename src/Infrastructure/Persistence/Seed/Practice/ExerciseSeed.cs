@@ -22,7 +22,7 @@ public static class ExerciseSeed
     public static readonly Guid GuidForExerciseId5 = Guid.Parse("69dfc0ba-ac95-44bb-b412-b36b2a45f6bb");
     public static readonly ExerciseId ExerciseId5 = ExerciseId.Create(GuidForExerciseId5);
 
-    public static IReadOnlyList<Exercise> GetSeedExercisesForLesson1()
+    public static IReadOnlyList<Exercise> GetExercisesForLesson1()
     {
         var lessonId = LessonSeed.LessonId1;
         return
@@ -35,7 +35,7 @@ public static class ExerciseSeed
         ];
     }
 
-    public static IReadOnlyList<Word> GetSeedWordsForLesson1()
+    public static IReadOnlyList<Word> GetWordsForLesson1()
     {
         return
         [
@@ -49,11 +49,11 @@ public static class ExerciseSeed
 
             Word.Create(WordId.Create(Guid.Parse("d74bcb9b-36d6-4ec0-8cf8-b1a8be9624af")), ExerciseId3, WordNumber.Create(1).Value, Text.Create("She").Value, WordType.Pronoun),
             Word.Create(WordId.Create(Guid.Parse("9215550e-7cfd-4e41-a946-90e09def9e39")), ExerciseId3, WordNumber.Create(2).Value, Text.Create("worked?").Value, WordType.Verb),
-            
+
             Word.Create(WordId.Create(Guid.Parse("862f83cd-d378-410e-88d6-27b01a06a2dc")), ExerciseId4, WordNumber.Create(1).Value, Text.Create("You").Value, WordType.Pronoun),
             Word.Create(WordId.Create(Guid.Parse("e86dff93-aeb8-476b-bfe0-ded0dc21e2de")), ExerciseId4, WordNumber.Create(2).Value, Text.Create("didn't").Value, WordType.PrimaryVerb),
             Word.Create(WordId.Create(Guid.Parse("ee70e409-d59e-4c23-86eb-1f2878181e1b")), ExerciseId4, WordNumber.Create(3).Value, Text.Create("think.").Value, WordType.Verb),
-            
+
             Word.Create(WordId.Create(Guid.Parse("ccac4b45-c615-438b-aeb4-2ec52947e9c4")), ExerciseId5, WordNumber.Create(1).Value, Text.Create("Will").Value, WordType.ModalVerb),
             Word.Create(WordId.Create(Guid.Parse("dfd01a72-3ec6-47b1-8a40-32c3a32ad2da")), ExerciseId5, WordNumber.Create(2).Value, Text.Create("I").Value, WordType.Pronoun),
             Word.Create(WordId.Create(Guid.Parse("37b924c3-3886-49a1-8c0a-07a718957e92")), ExerciseId5, WordNumber.Create(3).Value, Text.Create("look?").Value, WordType.Verb),

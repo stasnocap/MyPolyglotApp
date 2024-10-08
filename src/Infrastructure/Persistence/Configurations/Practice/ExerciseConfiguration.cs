@@ -33,16 +33,16 @@ public class ExerciseConfiguration : IEntityTypeConfiguration<Exercise>
 
             wb.Property(w => w.Number)
                 .HasConversion(wordNumber => wordNumber.Value, value => WordNumber.Create(value).Value);
-            
+
             wb.Property(e => e.Text)
                 .HasMaxLength(100)
                 .HasConversion(engPhrase => engPhrase.Value, value => Text.Create(value).Value);
 
             wb.Property(w => w.Type);
 
-            wb.HasData(ExerciseSeed.GetSeedWordsForLesson1());
+            wb.HasData(ExerciseSeed.GetWordsForLesson1());
         });
-        
+
         builder.Metadata.FindNavigation(nameof(Exercise.Words))!.SetPropertyAccessMode(PropertyAccessMode.Field);
 
     }
@@ -59,11 +59,11 @@ public class ExerciseConfiguration : IEntityTypeConfiguration<Exercise>
 
         builder.Property(e => e.LessonId)
             .HasConversion(id => id.Value, value => LessonId.Create(value));
-        
+
         builder.Property(e => e.RusPhrase)
             .HasMaxLength(255)
             .HasConversion(rusPhrase => rusPhrase.Value, value => RusPhrase.Create(value).Value);
-                
-        builder.HasData(ExerciseSeed.GetSeedExercisesForLesson1());
+
+        builder.HasData(ExerciseSeed.GetExercisesForLesson1());
     }
 }

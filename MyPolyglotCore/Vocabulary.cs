@@ -744,7 +744,7 @@ namespace MyPolyglotCore
 
         public static readonly IEnumerable<ModalVerb> ModalVerbs = new ModalVerb[]
         {
-            new ModalVerb("can", "cannot", "can't"),
+            new ModalVerb("can", "can not", "can't"),
             new ModalVerb("could", "could not", "couldn't"),
             new ModalVerb("may", "may not", "may not"),
             new ModalVerb("might", "might not", "mightn't"),
@@ -997,7 +997,7 @@ namespace MyPolyglotCore
             new City("tianjin"),
             new City("qingdao"),
             new City("philadelphia"),
-            new City("lagos"),        
+            new City("lagos"),
         };
 
         public static readonly IEnumerable<Language> Languages = new Language[]

@@ -8,14 +8,14 @@ namespace Domain.Vocabulary.ModalVerbs.ValueObjects;
 public class ShortNegativeForm : ValueObject
 {
     public string Value { get; }
-    
+
     public static explicit operator string(ShortNegativeForm shortNegativeForm) => shortNegativeForm.Value;
 
     private ShortNegativeForm(string value)
     {
         Value = value;
     }
-    
+
     public static bool Is(Text text)
     {
         return text.GetWord().EndsWith("n't");

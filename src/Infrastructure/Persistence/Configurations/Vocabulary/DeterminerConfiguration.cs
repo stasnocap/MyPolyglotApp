@@ -13,13 +13,13 @@ public class DeterminerConfiguration : IEntityTypeConfiguration<Determiner>
     {
         builder.ToTable("Determiners", schema: Schemas.Practice);
 
-        builder.HasKey(c => c.Id);
+        builder.HasKey(d => d.Id);
 
-        builder.Property(c => c.Id)
+        builder.Property(d => d.Id)
             .ValueGeneratedNever()
             .HasConversion(id => id.Value, value => DeterminerId.Create(value));
 
-        builder.Property(c => c.Text)
+        builder.Property(d => d.Text)
             .HasMaxLength(100)
             .HasConversion(text => text.Value, value => Text.Create(value).Value);
 

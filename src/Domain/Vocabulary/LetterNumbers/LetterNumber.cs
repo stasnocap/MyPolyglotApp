@@ -17,4 +17,9 @@ public sealed class LetterNumber : BaseWord<LetterNumberId>
     {
         return new LetterNumber(LetterNumberId.CreateUnique(), text, number);
     }
+
+    public static LetterNumber Create(LetterNumberId letterNumberId, Text text, Number number)
+    {
+        return new LetterNumber(letterNumberId, text, number);
+    }
 }

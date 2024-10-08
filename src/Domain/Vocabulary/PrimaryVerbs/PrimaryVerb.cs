@@ -11,7 +11,7 @@ public sealed class PrimaryVerb : BaseWord<PrimaryVerbId>
     private readonly List<FullNegativeForm> _fullNegativeForms = new();
     private readonly List<ShortNegativeForm> _shortNegativeForms = new();
     private readonly List<AdditionalForm> _additionalForms = new();
-    
+
     public PastForm PastForm { get; }
     public PastParticipleForm PastParticipleForm { get; }
     public PresentParticipleForm PresentParticipleForm { get; }
@@ -39,21 +39,21 @@ public sealed class PrimaryVerb : BaseWord<PrimaryVerbId>
         IsIrregularVerb = isIrregularVerb;
     }
 
-    public static PrimaryVerb Create(Text text, 
-        PastForm pastForm, 
-        PastParticipleForm pastParticipleForm, 
-        PresentParticipleForm presentParticipleForm, 
-        ThirdPersonForm thirdPersonForm, 
+    public static PrimaryVerb Create(Text text,
+        PastForm pastForm,
+        PastParticipleForm pastParticipleForm,
+        PresentParticipleForm presentParticipleForm,
+        ThirdPersonForm thirdPersonForm,
         StressOnFinalSyllable stress,
         IsIrregularVerb isIrregularVerb)
     {
-        return new PrimaryVerb(PrimaryVerbId.CreateUnique(), 
-            text, 
-            pastForm, 
-            pastParticipleForm, 
-            presentParticipleForm, 
-            thirdPersonForm, 
-            stress, 
+        return new PrimaryVerb(PrimaryVerbId.CreateUnique(),
+            text,
+            pastForm,
+            pastParticipleForm,
+            presentParticipleForm,
+            thirdPersonForm,
+            stress,
             isIrregularVerb);
     }
 

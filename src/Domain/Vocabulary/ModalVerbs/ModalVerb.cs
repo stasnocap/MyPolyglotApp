@@ -19,4 +19,9 @@ public sealed class ModalVerb : BaseWord<ModalVerbId>
     {
         return new ModalVerb(ModalVerbId.CreateUnique(), text, fullNegativeForm, shortNegativeForm);
     }
+
+    public static ModalVerb Create(ModalVerbId modalVerbId, Text text, FullNegativeForm fullNegativeForm, ShortNegativeForm shortNegativeForm)
+    {
+        return new ModalVerb(modalVerbId, text, fullNegativeForm, shortNegativeForm);
+    }
 }

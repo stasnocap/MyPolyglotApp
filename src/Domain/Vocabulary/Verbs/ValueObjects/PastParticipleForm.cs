@@ -8,14 +8,14 @@ namespace Domain.Vocabulary.Verbs.ValueObjects;
 public sealed class PastParticipleForm : ValueObject
 {
     public string Value { get; }
-    
+
     public static explicit operator string(PastParticipleForm pastParticipleForm) => pastParticipleForm.Value;
 
     private PastParticipleForm(string value)
     {
         Value = value;
     }
-    
+
     public static bool Is(Text text)
     {
         return text.Value.EndsWith("ed");
@@ -30,7 +30,7 @@ public sealed class PastParticipleForm : ValueObject
 
         return new PastParticipleForm(value);
     }
-    
+
     protected override IEnumerable<object> GetEqualityComponents()
     {
         yield return Value;

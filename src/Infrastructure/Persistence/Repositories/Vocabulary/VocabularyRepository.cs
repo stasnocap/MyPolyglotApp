@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Persistence.Repositories.Vocabulary;
 
-public class VocabularyRepository(AppDbContext _dbContext, 
+public class VocabularyRepository(AppDbContext _dbContext,
     IComparisionAdjectiveRepository _comparisionAdjectiveRepository,
     ILetterNumberRepository _letterNumberRepository,
     IModalVerbRepository _modalVerbRepository,

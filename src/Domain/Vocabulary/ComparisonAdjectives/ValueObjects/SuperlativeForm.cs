@@ -9,14 +9,14 @@ namespace Domain.Vocabulary.ComparisonAdjectives.ValueObjects;
 public sealed class SuperlativeForm : ValueObject
 {
     public string Value { get; }
-    
+
     public static explicit operator string(SuperlativeForm superlativeForm) => superlativeForm.Value;
 
     private SuperlativeForm(string value)
     {
         Value = value;
     }
-    
+
     public static bool Is(Text text)
     {
         return text.GetWord().EndsWith("est");
@@ -48,7 +48,7 @@ public sealed class SuperlativeForm : ValueObject
 
         return new SuperlativeForm(value);
     }
-    
+
     private static string GenerateSuperlativeForm(string text, SyllablesCount count)
     {
         return count.Value switch
@@ -64,7 +64,7 @@ public sealed class SuperlativeForm : ValueObject
             _ => "most " + text
         };
     }
-    
+
     protected override IEnumerable<object> GetEqualityComponents()
     {
         yield return Value;

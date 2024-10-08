@@ -13,13 +13,13 @@ public class LanguageConfiguration : IEntityTypeConfiguration<Language>
     {
         builder.ToTable("Languages", schema: Schemas.Practice);
 
-        builder.HasKey(c => c.Id);
+        builder.HasKey(l => l.Id);
 
-        builder.Property(c => c.Id)
+        builder.Property(l => l.Id)
             .ValueGeneratedNever()
             .HasConversion(id => id.Value, value => LanguageId.Create(value));
 
-        builder.Property(c => c.Text)
+        builder.Property(l => l.Text)
             .HasMaxLength(100)
             .HasConversion(text => text.Value, value => Text.Create(value).Value);
 

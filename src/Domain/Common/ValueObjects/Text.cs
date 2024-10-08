@@ -27,7 +27,7 @@ public sealed class Text : ValueObject
 
         return new Text(value);
     }
-    
+
     protected override IEnumerable<object> GetEqualityComponents()
     {
         yield return Value;

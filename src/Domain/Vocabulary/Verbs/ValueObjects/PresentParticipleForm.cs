@@ -9,7 +9,7 @@ namespace Domain.Vocabulary.Verbs.ValueObjects;
 public sealed class PresentParticipleForm : ValueObject
 {
     public string Value { get; }
-    
+
     public static explicit operator string(PresentParticipleForm presentParticipleForm) => presentParticipleForm.Value;
 
     private PresentParticipleForm(string value)
@@ -28,7 +28,7 @@ public sealed class PresentParticipleForm : ValueObject
         {
             return VerbErrors.EmptyPresentParticipleForm;
         }
-        
+
         return new PresentParticipleForm(value);
     }
 
@@ -43,7 +43,7 @@ public sealed class PresentParticipleForm : ValueObject
 
         return new PresentParticipleForm(value);
     }
-    
+
     private static string GeneratePresentParticipleForm(string text, StressOnFinalSyllable stress)
     {
         var lastTwoChars = text[^2..];
@@ -65,7 +65,7 @@ public sealed class PresentParticipleForm : ValueObject
 
         return text + "ing";
     }
-    
+
     protected override IEnumerable<object> GetEqualityComponents()
     {
         yield return Value;

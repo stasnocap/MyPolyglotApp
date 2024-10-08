@@ -43,7 +43,7 @@ public sealed class PastForm : ValueObject
 
         return new PastForm(value);
     }
-    
+
     private static string GeneratePastForm(string text, StressOnFinalSyllable stress)
     {
         switch (text)
@@ -80,7 +80,7 @@ public sealed class PastForm : ValueObject
 
         return text + "ed";
     }
-    
+
     protected override IEnumerable<object> GetEqualityComponents()
     {
         yield return Value;

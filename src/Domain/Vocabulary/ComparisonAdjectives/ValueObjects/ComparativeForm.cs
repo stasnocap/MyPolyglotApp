@@ -9,7 +9,7 @@ namespace Domain.Vocabulary.ComparisonAdjectives.ValueObjects;
 public sealed class ComparativeForm : ValueObject
 {
     public string Value { get; }
-    
+
     public static explicit operator string(ComparativeForm comparativeForm) => comparativeForm.Value;
 
     private ComparativeForm(string value)
@@ -48,7 +48,7 @@ public sealed class ComparativeForm : ValueObject
 
         return new ComparativeForm(value);
     }
-    
+
     private static string GenerateComparativeForm(string text, SyllablesCount count)
     {
         return count.Value switch
@@ -64,9 +64,9 @@ public sealed class ComparativeForm : ValueObject
             _ => "more " + text
         };
     }
-    
+
     protected override IEnumerable<object> GetEqualityComponents()
     {
         yield return Value;
-    } 
+    }
 }

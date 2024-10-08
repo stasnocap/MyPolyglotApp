@@ -11,7 +11,7 @@ public sealed class ThirdPersonForm : ValueObject
     private static readonly IReadOnlyList<string> EsEndings = ["ch", "s", "sh", "x", "z"];
 
     public string Value { get; }
-    
+
     public static explicit operator string(ThirdPersonForm thirdPersonForm) => thirdPersonForm.Value;
 
     public static bool Is(Text text)

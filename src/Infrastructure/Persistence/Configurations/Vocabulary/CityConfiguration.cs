@@ -20,6 +20,7 @@ public class CityConfiguration : IEntityTypeConfiguration<City>
             .HasConversion(id => id.Value, value => CityId.Create(value));
 
         builder.Property(a => a.Text)
+            .HasMaxLength(100)
             .HasConversion(text => text.Value, value => Text.Create(value).Value);
 
         builder.HasData(CitySeed.GetCities());

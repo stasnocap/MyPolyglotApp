@@ -20,6 +20,7 @@ public class AdjectiveConfiguration : IEntityTypeConfiguration<Adjective>
             .HasConversion(id => id.Value, value => AdjectiveId.Create(value));
 
         builder.Property(a => a.Text)
+            .HasMaxLength(100)
             .HasConversion(text => text.Value, value => Text.Create(value).Value);
 
         builder.HasData(AdjectiveSeed.GetAdjectives());

@@ -21,4 +21,9 @@ public sealed class ComparisonAdjective : BaseWord<ComparisonAdjectiveId>
     {
         return new ComparisonAdjective(ComparisonAdjectiveId.CreateUnique(), text, comparativeForm, superlativeForm, syllablesCount);
     }
+
+    public static ComparisonAdjective Create(ComparisonAdjectiveId comparisonAdjectiveId, Text text, ComparativeForm comparativeForm, SuperlativeForm superlativeForm, SyllablesCount syllablesCount)
+    {
+        return new ComparisonAdjective(comparisonAdjectiveId, text, comparativeForm, superlativeForm, syllablesCount);
+    }
 }

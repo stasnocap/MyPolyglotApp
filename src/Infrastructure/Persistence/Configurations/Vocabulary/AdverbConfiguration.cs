@@ -20,6 +20,7 @@ public class AdverbConfiguration : IEntityTypeConfiguration<Adverb>
             .HasConversion(id => id.Value, value => AdverbId.Create(value));
 
         builder.Property(a => a.Text)
+            .HasMaxLength(100)
             .HasConversion(text => text.Value, value => Text.Create(value).Value);
 
         builder.Property(a => a.Type);

@@ -14,4 +14,9 @@ public sealed class Determiner : BaseWord<DeterminerId>
     {
         return new Determiner(DeterminerId.CreateUnique(), text);
     }
+
+    public static Determiner Create(DeterminerId determinerId, Text text)
+    {
+        return new Determiner(determinerId, text);
+    }
 }

@@ -61,7 +61,7 @@ public class GetRandomNounsTests(FunctionalTestWebAppFactory functionalTestWebAp
     }
     
     [Fact]
-    public async Task ShouldGetRandomNounFullNegativeForms_WhenProvidedNounFullNegativeFormWhichIsExistsInDatabase()
+    public async Task ShouldGetRandomNounPluralForms_WhenProvidedNounPluralFormWhichIsExistsInDatabase()
     {
         var repository = Services.GetRequiredService<INounRepository>();
         var word = Word.Create(ExerciseId.CreateUnique(), WordNumber.Create(1).Value, Text.Create("addenda").Value, WordType.Noun);
@@ -84,7 +84,7 @@ public class GetRandomNounsTests(FunctionalTestWebAppFactory functionalTestWebAp
     }
     
     [Fact]
-    public async Task ShouldGetRandomNounFullNegativeForms_WhenProvidedNounFullNegativeFormWhichIsNotExistsInDatabase()
+    public async Task ShouldGetRandomNounPluralForms_WhenProvidedNounPluralFormWhichIsNotExistsInDatabase()
     {
         var repository = Services.GetRequiredService<INounRepository>();
         var word = Word.Create(ExerciseId.CreateUnique(), WordNumber.Create(1).Value, Text.Create("dogs").Value, WordType.Noun);

@@ -11,14 +11,14 @@ public class VerbRepository(AppDbContext _dbContext) : IVerbRepository
 {
     public async Task<IReadOnlyList<string>> GetRandomVerbsAsync(Word word, int count, CancellationToken cancellationToken)
     {
-        var lowerWordText = word.Text.Value.ToLower();
+        var wordText = word.Text.GetWord();
 
         var verb = await _dbContext.Set<Verb>()
-            .FirstOrDefaultAsync(v => lowerWordText.Contains((string)v.Text)
-                                       || lowerWordText.Contains((string)v.PastForm)
-                                       || lowerWordText.Contains((string)v.PastParticipleForm)
-                                       || lowerWordText.Contains((string)v.PresentParticipleForm)
-                                       || lowerWordText.Contains((string)v.ThirdPersonForm)
+            .FirstOrDefaultAsync(v => wordText == v.Text
+                                       || (string)wordText == (string)v.PastForm
+                                       || (string)wordText == (string)v.PastParticipleForm
+                                       || (string)wordText == (string)v.PresentParticipleForm
+                                       || (string)wordText == (string)v.ThirdPersonForm
                 , cancellationToken);
 
         var verbs = await _dbContext
@@ -31,27 +31,27 @@ public class VerbRepository(AppDbContext _dbContext) : IVerbRepository
 
         if (verb is not null)
         {
-            if (lowerWordText.Contains((string)verb.Text))
+            if (wordText == verb.Text)
             {
                 return verbs.Select(v => v.Text.Value).ToList();
             }
 
-            if (lowerWordText.Contains((string)verb.PastForm))
+            if ((string)wordText == (string)verb.PastForm)
             {
                 return verbs.Select(v => v.PastForm.Value).ToList();
             }
 
-            if (lowerWordText.Contains((string)verb.PastParticipleForm))
+            if ((string)wordText == (string)verb.PastParticipleForm)
             {
                 return verbs.Select(v => v.PastParticipleForm.Value).ToList();
             }
 
-            if (lowerWordText.Contains((string)verb.PresentParticipleForm))
+            if ((string)wordText == (string)verb.PresentParticipleForm)
             {
                 return verbs.Select(v => v.PresentParticipleForm.Value).ToList();
             }
 
-            if (lowerWordText.Contains((string)verb.ThirdPersonForm))
+            if ((string)wordText == (string)verb.ThirdPersonForm)
             {
                 return verbs.Select(v => v.ThirdPersonForm.Value).ToList();
             }

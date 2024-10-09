@@ -1,5 +1,4 @@
-﻿using System.Collections.Specialized;
-using Application.Common.Interfaces.Persistence.Vocabulary;
+﻿using Application.Common.Interfaces.Persistence.Vocabulary;
 using Domain.Practice.Exercises.Entities;
 using Domain.Vocabulary.PrimaryVerbs;
 using Infrastructure.Persistence.Extensions;

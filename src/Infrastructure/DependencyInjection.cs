@@ -33,6 +33,7 @@ public static class DependencyInjection
         services.AddScoped<IModalVerbRepository, ModalVerbRepository>();
         services.AddScoped<IAdverbRepository, AdverbRepository>();
         services.AddScoped<ICompoundRepository, CompoundRepository>();
+        services.AddScoped<INumberWithNounRepository, NumberWithNounRepository>();
         
         services.AddScoped<IPasswordHasher<User>, PasswordHasher<User>>();
         services.AddPostgresDatabase(configuration);

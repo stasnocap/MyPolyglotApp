@@ -16,7 +16,8 @@ public class VocabularyRepository(
     IPrimaryVerbRepository _primaryVerbRepository,
     IAdverbRepository _adverbRepository,
     ICompoundRepository _compoundRepository,
-    IVerbRepository _verbRepository) : IVocabularyRepository
+    IVerbRepository _verbRepository,
+    INumberWithNounRepository _numberWithNounRepository) : IVocabularyRepository
 {
     public async Task<IReadOnlyList<string>> GetRandomAsync(Word word, int count, CancellationToken cancellationToken)
     {
@@ -26,7 +27,6 @@ public class VocabularyRepository(
             case WordType.City:
             case WordType.Determiner:
             case WordType.Language:
-            case WordType.NumberWithNoun:
             case WordType.Preposition:
             case WordType.Pronoun:
             case WordType.QuestionWord:
@@ -34,8 +34,8 @@ public class VocabularyRepository(
 
                 var words = await _dbContext.GetAll(wordType)
                     .AsNoTracking()
-                    .Where(x => !word.Text.Value.ToLower().Contains((string)EF.Property<Text>(x, "Text")))
-                    .OrderBy(x => Guid.NewGuid())
+                    .Where(w => word.Text.GetWord() != EF.Property<Text>(w, "Text"))
+                    .OrderBy(w => Guid.NewGuid())
                     .Take(count)
                     .ToListAsync(cancellationToken);
 
@@ -58,6 +58,8 @@ public class VocabularyRepository(
                 return await _primaryVerbRepository.GetRandomPrimaryVerbsAsync(word, count, cancellationToken);
             case WordType.Verb:
                 return await _verbRepository.GetRandomVerbsAsync(word, count, cancellationToken);
+            case WordType.NumberWithNoun:
+                return await _numberWithNounRepository.GetRandomNumberWithNounsAsync(word, count, cancellationToken);
             case WordType.None:
             default:
                 throw new ArgumentOutOfRangeException();

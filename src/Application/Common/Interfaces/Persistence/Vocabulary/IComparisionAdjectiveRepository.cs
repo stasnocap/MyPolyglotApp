@@ -4,5 +4,5 @@ namespace Application.Common.Interfaces.Persistence.Vocabulary;
 
 public interface IComparisionAdjectiveRepository
 {
-    Task<IReadOnlyList<string>> GetRandomComparisonAdjectives(Word word, int count, CancellationToken cancellationToken);
+    Task<IReadOnlyList<string>> GetRandomComparisonAdjectivesAsync(Word word, int count, CancellationToken cancellationToken);
 }

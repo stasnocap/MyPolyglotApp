@@ -7,7 +7,7 @@ namespace Infrastructure.Persistence.Repositories.Vocabulary;
 
 public class LetterNumberRepository(AppDbContext _dbContext) : ILetterNumberRepository
 {
-    public async Task<IReadOnlyList<string>> GetRandomLetterNumbers(Word word, int count, CancellationToken cancellationToken)
+    public async Task<IReadOnlyList<string>> GetRandomLetterNumbersAsync(Word word, int count, CancellationToken cancellationToken)
     {
         var letterNumber = await _dbContext
             .Set<LetterNumber>()

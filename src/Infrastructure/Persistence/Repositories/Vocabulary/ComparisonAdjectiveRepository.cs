@@ -8,7 +8,7 @@ namespace Infrastructure.Persistence.Repositories.Vocabulary;
 
 public class ComparisonAdjectiveRepository(AppDbContext _dbContext) : IComparisionAdjectiveRepository
 {
-    public async Task<IReadOnlyList<string>> GetRandomComparisonAdjectives(Word word, int count, CancellationToken cancellationToken)
+    public async Task<IReadOnlyList<string>> GetRandomComparisonAdjectivesAsync(Word word, int count, CancellationToken cancellationToken)
     {
         var lowerWordText = word.Text.Value.ToLower();
 

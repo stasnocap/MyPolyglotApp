@@ -8,7 +8,7 @@ namespace Infrastructure.Persistence.Repositories.Vocabulary;
 
 public class VerbRepository(AppDbContext _dbContext) : IVerbRepository
 {
-    public async Task<IReadOnlyList<string>> GetRandomVerbs(Word word, int count, CancellationToken cancellationToken)
+    public async Task<IReadOnlyList<string>> GetRandomVerbsAsync(Word word, int count, CancellationToken cancellationToken)
     {
         var lowerWordText = word.Text.Value.ToLower();
 

@@ -36,6 +36,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain.UnitTests", "tests\D
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Web.FunctionalTests", "tests\Web.FunctionalTests\Web.FunctionalTests.csproj", "{04F32264-CF78-4D9C-B5F9-0B844F646781}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure.FunctionalTests", "tests\Infrastructure.FunctionalTests\Infrastructure.FunctionalTests.csproj", "{CF01C7DE-595A-426E-A093-4EDD7D0DC3FE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -86,6 +88,10 @@ Global
 		{04F32264-CF78-4D9C-B5F9-0B844F646781}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{04F32264-CF78-4D9C-B5F9-0B844F646781}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{04F32264-CF78-4D9C-B5F9-0B844F646781}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CF01C7DE-595A-426E-A093-4EDD7D0DC3FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CF01C7DE-595A-426E-A093-4EDD7D0DC3FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CF01C7DE-595A-426E-A093-4EDD7D0DC3FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CF01C7DE-595A-426E-A093-4EDD7D0DC3FE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -105,5 +111,6 @@ Global
 		{1207E9FB-6384-42B5-9BD8-C7C3E14F703F} = {8115C461-97EC-4A8D-B56F-03AE47000D78}
 		{AB094248-575E-442F-8D53-BE37CF5C2E0E} = {FA49454C-2FD9-4AD7-8A40-63A9FAD61257}
 		{04F32264-CF78-4D9C-B5F9-0B844F646781} = {FA49454C-2FD9-4AD7-8A40-63A9FAD61257}
+		{CF01C7DE-595A-426E-A093-4EDD7D0DC3FE} = {FA49454C-2FD9-4AD7-8A40-63A9FAD61257}
 	EndGlobalSection
 EndGlobal

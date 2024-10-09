@@ -15,7 +15,8 @@ public class VocabularyRepository(
     INounRepository _nounRepository,
     IPrimaryVerbRepository _primaryVerbRepository,
     IAdverbRepository _adverbRepository,
-    ICompoundRepository _compoundRepository) : IVocabularyRepository
+    ICompoundRepository _compoundRepository,
+    IVerbRepository _verbRepository) : IVocabularyRepository
 {
     public async Task<IReadOnlyList<string>> GetRandomAsync(Word word, int count, CancellationToken cancellationToken)
     {
@@ -42,21 +43,21 @@ public class VocabularyRepository(
 
                 return words.Select(x => ((Text)textProperty.GetValue(x)!).Value).ToList();
             case WordType.Adverb:
-                return await _adverbRepository.GetRandomAdverbs(word, count, cancellationToken);
+                return await _adverbRepository.GetRandomAdverbsAsync(word, count, cancellationToken);
             case WordType.Compound:
-                return await _compoundRepository.GetRandomCompounds(word, count, cancellationToken);
+                return await _compoundRepository.GetRandomCompoundsAsync(word, count, cancellationToken);
             case WordType.ComparisonAdjective:
-                return await _comparisionAdjectiveRepository.GetRandomComparisonAdjectives(word, count, cancellationToken);
+                return await _comparisionAdjectiveRepository.GetRandomComparisonAdjectivesAsync(word, count, cancellationToken);
             case WordType.LetterNumber:
-                return await _letterNumberRepository.GetRandomLetterNumbers(word, count, cancellationToken);
+                return await _letterNumberRepository.GetRandomLetterNumbersAsync(word, count, cancellationToken);
             case WordType.ModalVerb:
-                return await _modalVerbRepository.GetRandomModalVerbs(word, count, cancellationToken);
+                return await _modalVerbRepository.GetRandomModalVerbsAsync(word, count, cancellationToken);
             case WordType.Noun:
-                return await _nounRepository.GetRandomNouns(word, count, cancellationToken);
+                return await _nounRepository.GetRandomNounsAsync(word, count, cancellationToken);
             case WordType.PrimaryVerb:
-                return await _primaryVerbRepository.GetRandomPrimaryVerbs(word, count, cancellationToken);
+                return await _primaryVerbRepository.GetRandomPrimaryVerbsAsync(word, count, cancellationToken);
             case WordType.Verb:
-                return await _primaryVerbRepository.GetRandomPrimaryVerbs(word, count, cancellationToken);
+                return await _verbRepository.GetRandomVerbsAsync(word, count, cancellationToken);
             case WordType.None:
             default:
                 throw new ArgumentOutOfRangeException();

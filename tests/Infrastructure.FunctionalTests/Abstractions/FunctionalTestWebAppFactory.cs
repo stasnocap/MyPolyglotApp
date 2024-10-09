@@ -1,5 +1,4 @@
-﻿using DotNet.Testcontainers.Builders;
-using Infrastructure.Persistence;
+﻿using Infrastructure.Persistence;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.AspNetCore.TestHost;
@@ -7,8 +6,9 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Testcontainers.PostgreSql;
+using Web;
 
-namespace Web.FunctionalTests.Abstractions;
+namespace Application.FunctionalTests.Abstractions;
 
 public class FunctionalTestWebAppFactory : WebApplicationFactory<Program>, IAsyncLifetime
 {
@@ -19,16 +19,6 @@ public class FunctionalTestWebAppFactory : WebApplicationFactory<Program>, IAsyn
         .WithPassword("postgres")
         .Build();
 
-    protected override void ConfigureWebHost(IWebHostBuilder builder)
-    {
-        builder.ConfigureTestServices(services =>
-        {
-            services.RemoveAll(typeof(DbContextOptions<AppDbContext>));
-
-            services.AddDbContext<AppDbContext>(options => options.UseNpgsql(_dbContainer.GetConnectionString()));
-        });
-    }
-
     public Task InitializeAsync()
     {
         return _dbContainer.StartAsync();
@@ -37,5 +27,15 @@ public class FunctionalTestWebAppFactory : WebApplicationFactory<Program>, IAsyn
     public new Task DisposeAsync()
     {
         return _dbContainer.StopAsync();
+    }
+
+    protected override void ConfigureWebHost(IWebHostBuilder builder)
+    {
+        builder.ConfigureTestServices(services =>
+        {
+            services.RemoveAll(typeof(DbContextOptions<AppDbContext>));
+
+            services.AddDbContext<AppDbContext>(options => options.UseNpgsql(_dbContainer.GetConnectionString()));
+        });
     }
 }

@@ -8,7 +8,7 @@ namespace Infrastructure.Persistence.Repositories.Vocabulary;
 
 public class NounRepository(AppDbContext _dbContext) : INounRepository
 {
-    public async Task<IReadOnlyList<string>> GetRandomNouns(Word word, int count, CancellationToken cancellationToken)
+    public async Task<IReadOnlyList<string>> GetRandomNounsAsync(Word word, int count, CancellationToken cancellationToken)
     {
         var lowerWordText = word.Text.Value.ToLower();
 

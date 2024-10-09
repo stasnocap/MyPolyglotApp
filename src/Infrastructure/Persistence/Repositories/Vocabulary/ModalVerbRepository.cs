@@ -8,7 +8,7 @@ namespace Infrastructure.Persistence.Repositories.Vocabulary;
 
 public class ModalVerbRepository(AppDbContext _dbContext) : IModalVerbRepository
 {
-    public async Task<IReadOnlyList<string>> GetRandomModalVerbs(Word word, int count, CancellationToken cancellationToken)
+    public async Task<IReadOnlyList<string>> GetRandomModalVerbsAsync(Word word, int count, CancellationToken cancellationToken)
     {
         var lowerWordText = word.Text.Value.ToLower();
 

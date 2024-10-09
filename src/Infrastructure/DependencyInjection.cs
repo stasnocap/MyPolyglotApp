@@ -25,7 +25,7 @@ public static class DependencyInjection
         services.AddScoped<IExerciseRepository, ExerciseRepository>();
         services.AddScoped<ILessonRepository, LessonRepository>();
         services.AddScoped<IVocabularyRepository, VocabularyRepository>();
-        services.AddScoped<IComparisionAdjectiveRepository, ComparisonAdjectiveRepository>();
+        services.AddScoped<IComparisonAdjectiveRepository, ComparisonAdjectiveRepository>();
         services.AddScoped<INounRepository, NounRepository>();
         services.AddScoped<IVerbRepository, VerbRepository>();
         services.AddScoped<IPrimaryVerbRepository, PrimaryVerbRepository>();

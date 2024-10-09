@@ -1,6 +1,7 @@
 ﻿using Application.Common.Interfaces.Persistence.Vocabulary;
 using Domain.Practice.Exercises.Entities;
 using Domain.Vocabulary.Compounds;
+using Infrastructure.Persistence.Extensions;
 using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Persistence.Repositories.Vocabulary;
@@ -12,20 +13,28 @@ public class CompoundRepository(AppDbContext _dbContext) : ICompoundRepository
         var compound = await _dbContext
             .Set<Compound>()
             .AsNoTracking()
-            .FirstOrDefaultAsync(cancellationToken);
+            .FirstOrDefaultAsync(c => word.Text.GetWord() == c.Text, cancellationToken);
 
-        var query = _dbContext
+        var compounds = await _dbContext
             .Set<Compound>()
             .AsNoTracking()
+            .WhereIf(compound is not null, c => c.Type == compound!.Type && c.Id != compound.Id)
             .OrderBy(a => Guid.NewGuid())
-            .Take(count);
+            .Take(count)
+            .ToListAsync(cancellationToken);
 
-        if (compound is not null)
+        if (compounds.Count < count)
         {
-            query = query.Where(a => a.Type == compound.Type && a.Id != compound.Id);
+            var retrievedCompoundIds = compounds.Select(c => c.Id).ToList();
+            
+            compounds.AddRange(await _dbContext.Set<Compound>()
+                .AsNoTracking()
+                .Where(c => !retrievedCompoundIds.Contains(c.Id))
+                .WhereIf(compound is not null, c => c.Id != compound!.Id)
+                .OrderBy(a => Guid.NewGuid())
+                .Take(count - compounds.Count)
+                .ToListAsync(cancellationToken));
         }
-
-        var compounds = await query.ToListAsync(cancellationToken);
 
         return compounds.Select(x => x.Text.Value).ToList();
     }

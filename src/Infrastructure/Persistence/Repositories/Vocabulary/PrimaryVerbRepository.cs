@@ -1,6 +1,7 @@
 ﻿using Application.Common.Interfaces.Persistence.Vocabulary;
 using Domain.Practice.Exercises.Entities;
 using Domain.Vocabulary.PrimaryVerbs;
+using Infrastructure.Persistence.Extensions;
 using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Persistence.Repositories.Vocabulary;
@@ -24,15 +25,8 @@ public class PrimaryVerbRepository(AppDbContext _dbContext) : IPrimaryVerbReposi
 
         var primaryVerbs = await _dbContext
             .Set<PrimaryVerb>()
-            .Where(pv => !lowerWordText.Contains((string)pv.Text)
-                         && !lowerWordText.Contains((string)pv.PastForm)
-                         && !lowerWordText.Contains((string)pv.PastParticipleForm)
-                         && !lowerWordText.Contains((string)pv.PresentParticipleForm)
-                         && !lowerWordText.Contains((string)pv.ThirdPersonForm)
-                         && !pv.FullNegativeForms.Any(fnf => lowerWordText.Contains((string)fnf))
-                         && !pv.ShortNegativeForms.Any(snf => lowerWordText.Contains((string)snf))
-                         && !pv.AdditionalForms.Any(af => lowerWordText.Contains((string)af))
-            )
+            .AsNoTracking()
+            .WhereIf(primaryVerb is not null, pv => pv.Id != primaryVerb!.Id)
             .OrderBy(pv => Guid.NewGuid())
             .Take(count)
             .ToListAsync(cancellationToken);

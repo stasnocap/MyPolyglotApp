@@ -2,6 +2,7 @@
 using Domain.Practice.Exercises.Entities;
 using Domain.Vocabulary.ModalVerbs;
 using Domain.Vocabulary.ModalVerbs.ValueObjects;
+using Infrastructure.Persistence.Extensions;
 using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Persistence.Repositories.Vocabulary;
@@ -19,9 +20,7 @@ public class ModalVerbRepository(AppDbContext _dbContext) : IModalVerbRepository
 
         var modalVerbs = await _dbContext
             .Set<ModalVerb>()
-            .Where(mv => !lowerWordText.Contains((string)mv.Text)
-                         && !lowerWordText.Contains((string)mv.FullNegativeForm)
-                         && !lowerWordText.Contains((string)mv.ShortNegativeForm))
+            .WhereIf(modalVerb is not null, mv => mv.Id != modalVerb!.Id)
             .OrderBy(mv => Guid.NewGuid())
             .Take(count)
             .ToListAsync(cancellationToken);

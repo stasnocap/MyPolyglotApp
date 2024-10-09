@@ -9,7 +9,7 @@ namespace Infrastructure.Persistence.Repositories.Vocabulary;
 
 public class VocabularyRepository(
     AppDbContext _dbContext,
-    IComparisionAdjectiveRepository _comparisionAdjectiveRepository,
+    IComparisonAdjectiveRepository comparisonAdjectiveRepository,
     ILetterNumberRepository _letterNumberRepository,
     IModalVerbRepository _modalVerbRepository,
     INounRepository _nounRepository,
@@ -47,7 +47,7 @@ public class VocabularyRepository(
             case WordType.Compound:
                 return await _compoundRepository.GetRandomCompoundsAsync(word, count, cancellationToken);
             case WordType.ComparisonAdjective:
-                return await _comparisionAdjectiveRepository.GetRandomComparisonAdjectivesAsync(word, count, cancellationToken);
+                return await comparisonAdjectiveRepository.GetRandomComparisonAdjectivesAsync(word, count, cancellationToken);
             case WordType.LetterNumber:
                 return await _letterNumberRepository.GetRandomLetterNumbersAsync(word, count, cancellationToken);
             case WordType.ModalVerb:

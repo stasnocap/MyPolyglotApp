@@ -2,6 +2,7 @@
 using Domain.Practice.Exercises.Entities;
 using Domain.Vocabulary.Verbs;
 using Domain.Vocabulary.Verbs.ValueObjects;
+using Infrastructure.Persistence.Extensions;
 using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Persistence.Repositories.Vocabulary;
@@ -22,12 +23,8 @@ public class VerbRepository(AppDbContext _dbContext) : IVerbRepository
 
         var verbs = await _dbContext
             .Set<Verb>()
-            .Where(v => !lowerWordText.Contains((string)v.Text)
-                         && !lowerWordText.Contains((string)v.PastForm)
-                         && !lowerWordText.Contains((string)v.PastParticipleForm)
-                         && !lowerWordText.Contains((string)v.PresentParticipleForm)
-                         && !lowerWordText.Contains((string)v.ThirdPersonForm)
-            )
+            .AsNoTracking()
+            .WhereIf(verb is not null, v => v.Id != verb!.Id)
             .OrderBy(v => Guid.NewGuid())
             .Take(count)
             .ToListAsync(cancellationToken);

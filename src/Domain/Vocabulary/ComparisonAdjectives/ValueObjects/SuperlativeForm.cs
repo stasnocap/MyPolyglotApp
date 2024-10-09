@@ -19,7 +19,7 @@ public sealed class SuperlativeForm : ValueObject
 
     public static bool Is(Text text)
     {
-        return text.GetWord().EndsWith("est");
+        return text.Value.StartsWith("most") || text.Value.EndsWith("est");
     }
 
     public static SuperlativeForm Create(Text text)
@@ -37,9 +37,9 @@ public sealed class SuperlativeForm : ValueObject
         return new SuperlativeForm(value);
     }
 
-    public static ErrorOr<SuperlativeForm> From(string comparisonAdjectiveText, SyllablesCount count)
+    public static ErrorOr<SuperlativeForm> From(Text comparisonAdjectiveText, SyllablesCount count)
     {
-        if (string.IsNullOrWhiteSpace(comparisonAdjectiveText))
+        if (string.IsNullOrWhiteSpace(comparisonAdjectiveText.Value))
         {
             return ComparisonAdjectiveErrors.EmptyComparisionAdjectiveText;
         }
@@ -49,19 +49,20 @@ public sealed class SuperlativeForm : ValueObject
         return new SuperlativeForm(value);
     }
 
-    private static string GenerateSuperlativeForm(string text, SyllablesCount count)
+    private static string GenerateSuperlativeForm(Text text, SyllablesCount count)
     {
+        var textValue = text.Value;
         return count.Value switch
         {
-            1 when text.EndsWith('e') => text + "st",
-            1 when text[^1] != 'w' && Letters.Consonants.Contains(text[^1]) && Letters.Vowels.Contains(text[^2]) && !Letters.Vowels.Contains(text[^3]) => text + text[^1] + "est",
-            1 => text + "est",
-            2 when text == "polite" => "politest",
-            2 when text.EndsWith('y') => text[..^1] + "iest",
-            2 when text.EndsWith("le") => text + "st",
-            2 when text.EndsWith("er") || text.EndsWith("ow") => text + "est",
-            2 => "most " + text,
-            _ => "most " + text
+            1 when textValue.EndsWith('e') => textValue + "st",
+            1 when textValue[^1] != 'w' && Letters.Consonants.Contains(textValue[^1]) && Letters.Vowels.Contains(textValue[^2]) && !Letters.Vowels.Contains(textValue[^3]) => textValue + textValue[^1] + "est",
+            1 => textValue + "est",
+            2 when textValue == "polite" => "politest",
+            2 when textValue.EndsWith('y') => textValue[..^1] + "iest",
+            2 when textValue.EndsWith("le") => textValue + "st",
+            2 when textValue.EndsWith("er") || textValue.EndsWith("ow") => textValue + "est",
+            2 => "most " + textValue,
+            _ => "most " + textValue
         };
     }
 

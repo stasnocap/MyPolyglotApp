@@ -2,55 +2,54 @@
 using Domain.Practice.Exercises.Entities;
 using Domain.Vocabulary.ComparisonAdjectives;
 using Domain.Vocabulary.ComparisonAdjectives.ValueObjects;
+using Infrastructure.Persistence.Extensions;
 using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Persistence.Repositories.Vocabulary;
 
-public class ComparisonAdjectiveRepository(AppDbContext _dbContext) : IComparisionAdjectiveRepository
+public class ComparisonAdjectiveRepository(AppDbContext _dbContext) : IComparisonAdjectiveRepository
 {
     public async Task<IReadOnlyList<string>> GetRandomComparisonAdjectivesAsync(Word word, int count, CancellationToken cancellationToken)
     {
-        var lowerWordText = word.Text.Value.ToLower();
+        var wordText = word.Text.GetWord();
 
         var comparisonAdjective = await _dbContext.Set<ComparisonAdjective>()
-            .FirstOrDefaultAsync(ca => lowerWordText.Contains((string)ca.Text)
-                                       || lowerWordText.Contains((string)ca.ComparativeForm)
-                                       || lowerWordText.Contains((string)ca.SuperlativeForm), cancellationToken);
+            .FirstOrDefaultAsync(ca => wordText == ca.Text
+                                       || (string)wordText == (string)ca.ComparativeForm
+                                       || (string)wordText == (string)ca.SuperlativeForm, cancellationToken);
 
         var comparisonAdjectives = await _dbContext
             .Set<ComparisonAdjective>()
-            .Where(ca => !lowerWordText.Contains((string)ca.Text)
-                         && !lowerWordText.Contains((string)ca.ComparativeForm)
-                         && !lowerWordText.Contains((string)ca.SuperlativeForm))
+            .WhereIf(comparisonAdjective is not null, ca => ca.Id != comparisonAdjective!.Id)
             .OrderBy(ca => Guid.NewGuid())
             .Take(count)
             .ToListAsync(cancellationToken);
 
         if (comparisonAdjective is not null)
         {
-            if (lowerWordText.Contains((string)comparisonAdjective.Text))
+            if (wordText == comparisonAdjective.Text)
             {
                 return comparisonAdjectives.Select(ca => ca.Text.Value).ToList();
             }
 
-            if (lowerWordText.Contains((string)comparisonAdjective.ComparativeForm))
+            if (wordText.Value == comparisonAdjective.ComparativeForm.Value)
             {
                 return comparisonAdjectives.Select(ca => ca.ComparativeForm.Value).ToList();
             }
 
-            if (lowerWordText.Contains((string)comparisonAdjective.SuperlativeForm))
+            if (wordText.Value == comparisonAdjective.SuperlativeForm.Value)
             {
                 return comparisonAdjectives.Select(ca => ca.SuperlativeForm.Value).ToList();
             }
         }
         else
         {
-            if (ComparativeForm.Is(word.Text))
+            if (ComparativeForm.Is(wordText))
             {
                 return comparisonAdjectives.Select(ca => ca.ComparativeForm.Value).ToList();
             }
 
-            if (SuperlativeForm.Is(word.Text))
+            if (SuperlativeForm.Is(wordText))
             {
                 return comparisonAdjectives.Select(ca => ca.SuperlativeForm.Value).ToList();
             }

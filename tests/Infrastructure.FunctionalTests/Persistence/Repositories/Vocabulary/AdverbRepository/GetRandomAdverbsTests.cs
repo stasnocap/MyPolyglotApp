@@ -25,11 +25,11 @@ public class GetRandomAdverbsTests(FunctionalTestWebAppFactory factory) : BaseFu
     [InlineData("almost", AdverbType.TellTheExtentOfTheAction)]
     public async Task ShouldGetRandomAdverbsByType_WhenProvidedAdverbWhichIsExistsInDatabase(string text, AdverbType type)
     {
-        var adverbRepository = Services.GetRequiredService<IAdverbRepository>();
+        var repository = Services.GetRequiredService<IAdverbRepository>();
         var word = Word.Create(ExerciseId.CreateUnique(), WordNumber.Create(1).Value, Text.Create(text).Value, WordType.Adverb);
         const int count = 5;
         
-        var adverbs = await adverbRepository.GetRandomAdverbsAsync(word, count, CancellationToken.None);
+        var adverbs = await repository.GetRandomAdverbsAsync(word, count, CancellationToken.None);
         
         adverbs.Should().NotBeNull();
         adverbs.Count.Should().Be(count);
@@ -48,14 +48,23 @@ public class GetRandomAdverbsTests(FunctionalTestWebAppFactory factory) : BaseFu
     [Fact]
     public async Task ShouldGetRandomAdverbs_WhenProvidedAnyText()
     {
-        var adverbRepository = Services.GetRequiredService<IAdverbRepository>();
+        var repository = Services.GetRequiredService<IAdverbRepository>();
         var word = Word.Create(ExerciseId.CreateUnique(), WordNumber.Create(1).Value, Text.Create("a").Value, WordType.Adverb);
         const int count = 5;
         
-        var adverbs = await adverbRepository.GetRandomAdverbsAsync(word, count, CancellationToken.None);
+        var adverbs = await repository.GetRandomAdverbsAsync(word, count, CancellationToken.None);
         
         adverbs.Should().NotBeNull();
         adverbs.Count.Should().Be(count);
         adverbs.Should().NotContain(word.Text.Value);
+        
+        var appDbContext = Services.GetRequiredService<AppDbContext>();
+        foreach (var adverb in adverbs)
+        {
+            if (!await appDbContext.Set<Adverb>().AnyAsync(a => a.Text == Text.Create(adverb).Value))
+            {
+                Assert.Fail();
+            }
+        }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using Application.Common.Interfaces.Persistence.Vocabulary;
 using Domain.Practice.Exercises.Entities;
 using Domain.Vocabulary.LetterNumbers;
+using Infrastructure.Persistence.Extensions;
 using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Persistence.Repositories.Vocabulary;
@@ -9,27 +10,37 @@ public class LetterNumberRepository(AppDbContext _dbContext) : ILetterNumberRepo
 {
     public async Task<IReadOnlyList<string>> GetRandomLetterNumbersAsync(Word word, int count, CancellationToken cancellationToken)
     {
+        var wordText = word.Text.GetWord();
+
         var letterNumber = await _dbContext
             .Set<LetterNumber>()
             .AsNoTracking()
-            .Where(ln => word.Text.Value.ToLower().Contains((string)ln.Text))
+            .Where(ln => wordText == ln.Text)
             .FirstOrDefaultAsync(cancellationToken);
 
-        var letterNumbers = letterNumber is null
-            ? await _dbContext
-                .Set<LetterNumber>()
-                .OrderByDescending(ln => ln.Number)
-                .AsNoTracking()
-                .Where(ln => word.Text.Value.ToLower().Contains((string)ln.Text))
-                .Take(count)
-                .ToListAsync(cancellationToken)
-            : await _dbContext
+        var halfOfACount = Math.Ceiling(count / 2.0);
+
+        var letterNumbers = await _dbContext
+            .Set<LetterNumber>()
+            .AsNoTracking()
+            .OrderBy(ln => Guid.NewGuid())
+            .WhereIf(letterNumber is not null, ln => ln.Id != letterNumber!.Id
+                                                     && letterNumber.Number.Value - halfOfACount <= (int)ln.Number && (int)ln.Number <= letterNumber.Number.Value + halfOfACount)
+            .Take(count)
+            .ToListAsync(cancellationToken);
+
+        if (letterNumbers.Count < count)
+        {
+            var retrievedLetterNumberIds = letterNumbers.Select(ln => ln.Id).ToList();
+
+            letterNumbers.AddRange(await _dbContext
                 .Set<LetterNumber>()
                 .AsNoTracking()
                 .OrderBy(ln => Guid.NewGuid())
-                .Where(ln => letterNumber.Number.Value >= (int)ln.Number && (int)ln.Number <= letterNumber.Number.Value + 10)
-                .Take(count)
-                .ToListAsync(cancellationToken);
+                .Where(ln => !retrievedLetterNumberIds.Contains(ln.Id))
+                .Take(count - letterNumbers.Count)
+                .ToListAsync(cancellationToken));
+        }
 
         return letterNumbers.Select(ln => ln.Text.Value).ToList();
     }

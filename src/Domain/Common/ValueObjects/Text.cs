@@ -16,7 +16,11 @@ public sealed class Text : ValueObject
         Value = value;
     }
 
-    public string GetWord() => Regex.Match(Value, "\\w+").Value;
+    public Text GetWord()
+    {
+        var word = Regex.Match(Value, @"(more |most |\d )?[a-zA-Z0-9'-]+( not\b)?").Value.ToLower();
+        return Create(word).Value;
+    }
 
     public static ErrorOr<Text> Create(string value)
     {

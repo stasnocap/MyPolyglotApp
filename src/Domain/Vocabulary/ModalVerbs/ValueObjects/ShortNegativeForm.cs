@@ -18,7 +18,7 @@ public class ShortNegativeForm : ValueObject
 
     public static bool Is(Text text)
     {
-        return text.GetWord().EndsWith("n't");
+        return text.Value.EndsWith("n't");
     }
 
     public static ErrorOr<ShortNegativeForm> Create(string value)

@@ -2,6 +2,7 @@
 using Domain.Practice.Exercises.Entities;
 using Domain.Vocabulary.Adverbs;
 using Domain.Vocabulary.Adverbs.ValueObjects;
+using Infrastructure.Persistence.Extensions;
 using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Persistence.Repositories.Vocabulary;
@@ -13,19 +14,12 @@ public class AdverbRepository(AppDbContext _dbContext) : IAdverbRepository
         var adverb = await _dbContext
             .Set<Adverb>()
             .AsNoTracking()
-            .Where(a => word.Text.Value.ToLower().Contains((string)a.Text))
-            .FirstOrDefaultAsync(cancellationToken);
+            .FirstOrDefaultAsync(a => word.Text.GetWord() == a.Text, cancellationToken);
 
-        var query = _dbContext
+        var adverbs = await _dbContext
             .Set<Adverb>()
-            .AsNoTracking();
-        
-        if (adverb is not null)
-        {
-            query = query.Where(a => a.Type == adverb.Type && a.Id != adverb.Id);
-        }
-
-        var adverbs = await query
+            .AsNoTracking()
+            .WhereIf(adverb is not null, a => a.Type == adverb!.Type && a.Id != adverb.Id)
             .OrderBy(a => Guid.NewGuid())
             .Take(count)
             .ToListAsync(cancellationToken);

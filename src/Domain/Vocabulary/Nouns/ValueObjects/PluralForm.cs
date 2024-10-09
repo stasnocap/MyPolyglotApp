@@ -19,7 +19,7 @@ public class PluralForm : ValueObject
 
     public static bool Is(Text singularNoun)
     {
-        return singularNoun.GetWord().EndsWith("s");
+        return singularNoun.Value.EndsWith("s");
     }
 
     public static ErrorOr<PluralForm> Create(string value)

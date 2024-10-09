@@ -19,7 +19,7 @@ public sealed class ComparativeForm : ValueObject
 
     public static bool Is(Text text)
     {
-        return text.GetWord().EndsWith("er");
+        return text.Value.StartsWith("more") || text.Value.EndsWith("er");
     }
 
     public static ComparativeForm Create(Text text)
@@ -37,9 +37,9 @@ public sealed class ComparativeForm : ValueObject
         return new ComparativeForm(value);
     }
 
-    public static ErrorOr<ComparativeForm> From(string comparisonAdjectiveText, SyllablesCount count)
+    public static ErrorOr<ComparativeForm> From(Text comparisonAdjectiveText, SyllablesCount count)
     {
-        if (string.IsNullOrWhiteSpace(comparisonAdjectiveText))
+        if (string.IsNullOrWhiteSpace(comparisonAdjectiveText.Value))
         {
             return ComparisonAdjectiveErrors.EmptyComparisionAdjectiveText;
         }
@@ -49,19 +49,20 @@ public sealed class ComparativeForm : ValueObject
         return new ComparativeForm(value);
     }
 
-    private static string GenerateComparativeForm(string text, SyllablesCount count)
+    private static string GenerateComparativeForm(Text text, SyllablesCount count)
     {
+        var textValue = text.Value;
         return count.Value switch
         {
-            1 when text.EndsWith('e') => text + 'r',
-            1 when text[^1] != 'w' && Letters.Consonants.Contains(text[^1]) && Letters.Vowels.Contains(text[^2]) && !Letters.Vowels.Contains(text[^3]) => text + text[^1] + "er",
-            1 => text + "er",
-            2 when text == "polite" => "politer",
-            2 when text.EndsWith('y') => text[..^1] + "ier",
-            2 when text.EndsWith("le") => text + "r",
-            2 when text.EndsWith("er") || text.EndsWith("ow") => text + "er",
-            2 => "more " + text,
-            _ => "more " + text
+            1 when textValue.EndsWith('e') => textValue + 'r',
+            1 when textValue[^1] != 'w' && Letters.Consonants.Contains(textValue[^1]) && Letters.Vowels.Contains(textValue[^2]) && !Letters.Vowels.Contains(textValue[^3]) => textValue + textValue[^1] + "er",
+            1 => textValue + "er",
+            2 when textValue == "polite" => "politer",
+            2 when textValue.EndsWith('y') => textValue[..^1] + "ier",
+            2 when textValue.EndsWith("le") => textValue + "r",
+            2 when textValue.EndsWith("er") || textValue.EndsWith("ow") => textValue + "er",
+            2 => "more " + textValue,
+            _ => "more " + textValue
         };
     }
 

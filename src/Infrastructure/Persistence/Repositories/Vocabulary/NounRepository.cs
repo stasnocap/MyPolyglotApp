@@ -2,6 +2,7 @@
 using Domain.Practice.Exercises.Entities;
 using Domain.Vocabulary.Nouns;
 using Domain.Vocabulary.Nouns.ValueObjects;
+using Infrastructure.Persistence.Extensions;
 using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Persistence.Repositories.Vocabulary;
@@ -19,8 +20,8 @@ public class NounRepository(AppDbContext _dbContext) : INounRepository
 
         var nouns = await _dbContext
             .Set<Noun>()
-            .Where(n => !lowerWordText.Contains((string)n.Text)
-                         && !lowerWordText.Contains((string)n.PluralForm))
+            .AsNoTracking()
+            .WhereIf(noun is not null, n => n.Id != noun!.Id)
             .OrderBy(n => Guid.NewGuid())
             .Take(count)
             .ToListAsync(cancellationToken);

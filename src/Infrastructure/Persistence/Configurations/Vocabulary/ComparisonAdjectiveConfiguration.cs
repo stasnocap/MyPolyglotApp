@@ -31,9 +31,6 @@ public class ComparisonAdjectiveConfiguration : IEntityTypeConfiguration<Compari
             .HasMaxLength(100)
             .HasConversion(superlativeForm => superlativeForm.Value, value => SuperlativeForm.Create(value).Value);
 
-        builder.Property(ca => ca.SyllablesCount)
-            .HasConversion(sylleblesCount => sylleblesCount.Value, value => SyllablesCount.Create(value).Value);
-
         builder.HasData(ComparisonAdjectiveSeed.GetComparisonAdjectives());
     }
 }

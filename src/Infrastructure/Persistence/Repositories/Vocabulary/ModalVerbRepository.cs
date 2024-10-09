@@ -11,12 +11,12 @@ public class ModalVerbRepository(AppDbContext _dbContext) : IModalVerbRepository
 {
     public async Task<IReadOnlyList<string>> GetRandomModalVerbsAsync(Word word, int count, CancellationToken cancellationToken)
     {
-        var lowerWordText = word.Text.Value.ToLower();
+        var wordText = word.Text.GetWord();
 
         var modalVerb = await _dbContext.Set<ModalVerb>()
-            .FirstOrDefaultAsync(mv => lowerWordText.Contains((string)mv.Text)
-                                       || lowerWordText.Contains((string)mv.FullNegativeForm)
-                                       || lowerWordText.Contains((string)mv.ShortNegativeForm), cancellationToken);
+            .FirstOrDefaultAsync(mv => wordText == mv.Text
+                                       || (string)wordText == (string)mv.FullNegativeForm
+                                       || (string)wordText == (string)mv.ShortNegativeForm, cancellationToken);
 
         var modalVerbs = await _dbContext
             .Set<ModalVerb>()
@@ -27,17 +27,17 @@ public class ModalVerbRepository(AppDbContext _dbContext) : IModalVerbRepository
 
         if (modalVerb is not null)
         {
-            if (lowerWordText.Contains((string)modalVerb.Text))
+            if (wordText == modalVerb.Text)
             {
                 return modalVerbs.Select(mv => mv.Text.Value).ToList();
             }
 
-            if (lowerWordText.Contains((string)modalVerb.FullNegativeForm))
+            if ((string)wordText == (string)modalVerb.FullNegativeForm)
             {
                 return modalVerbs.Select(mv => mv.FullNegativeForm.Value).ToList();
             }
 
-            if (lowerWordText.Contains((string)modalVerb.ShortNegativeForm))
+            if ((string)wordText == (string)modalVerb.ShortNegativeForm)
             {
                 return modalVerbs.Select(mv => mv.ShortNegativeForm.Value).ToList();
             }

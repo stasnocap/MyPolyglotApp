@@ -163,7 +163,7 @@ public static class PrimaryVerbSeed
             {
                 Id = 6,
                 Value = "has not",
-                PrimaryVerbId = PrimaryVerbId1,
+                PrimaryVerbId = PrimaryVerbId2,
             },
 
 

@@ -31,7 +31,7 @@ public class GetRandomLetterNumbersTests(FunctionalTestWebAppFactory factory) : 
         var halfOfACount = Math.Ceiling(count / 2.0);
         foreach (var letterNumberStr in letterNumbers)
         {
-            var letterNumber = await appDbContext.Set<LetterNumber>().FirstOrDefaultAsync(a => a.Text == Text.Create(letterNumberStr).Value);
+            var letterNumber = await appDbContext.Set<LetterNumber>().FirstOrDefaultAsync(ln => ln.Text == Text.Create(letterNumberStr).Value);
             
             letterNumber.Should().NotBeNull();
             (wordNumber - halfOfACount <= letterNumber!.Number.Value && letterNumber.Number.Value <= wordNumber + halfOfACount).Should().BeTrue();
@@ -54,7 +54,7 @@ public class GetRandomLetterNumbersTests(FunctionalTestWebAppFactory factory) : 
         var appDbContext = Services.GetRequiredService<AppDbContext>();
         foreach (var letterNumber in letterNumbers)
         {
-            if (!await appDbContext.Set<LetterNumber>().AnyAsync(a => a.Text == Text.Create(letterNumber).Value))
+            if (!await appDbContext.Set<LetterNumber>().AnyAsync(ln => ln.Text == Text.Create(letterNumber).Value))
             {
                 Assert.Fail();
             }
@@ -77,7 +77,7 @@ public class GetRandomLetterNumbersTests(FunctionalTestWebAppFactory factory) : 
         var appDbContext = Services.GetRequiredService<AppDbContext>();
         foreach (var letterNumber in letterNumbers)
         {
-            if (!await appDbContext.Set<LetterNumber>().AnyAsync(a => a.Text == Text.Create(letterNumber).Value))
+            if (!await appDbContext.Set<LetterNumber>().AnyAsync(ln => ln.Text == Text.Create(letterNumber).Value))
             {
                 Assert.Fail();
             }

@@ -1,4 +1,5 @@
-﻿using Application.Common.Interfaces.Persistence.Vocabulary;
+﻿using System.Collections.Specialized;
+using Application.Common.Interfaces.Persistence.Vocabulary;
 using Domain.Practice.Exercises.Entities;
 using Domain.Vocabulary.PrimaryVerbs;
 using Infrastructure.Persistence.Extensions;
@@ -10,18 +11,18 @@ public class PrimaryVerbRepository(AppDbContext _dbContext) : IPrimaryVerbReposi
 {
     public async Task<IReadOnlyList<string>> GetRandomPrimaryVerbsAsync(Word word, int count, CancellationToken cancellationToken)
     {
-        var lowerWordText = word.Text.Value.ToLower();
+        var wordText = word.Text.GetWord();
 
         var primaryVerb = await _dbContext.Set<PrimaryVerb>()
-            .FirstOrDefaultAsync(pv => lowerWordText.Contains((string)pv.Text)
-                                       || lowerWordText.Contains((string)pv.PastForm)
-                                       || lowerWordText.Contains((string)pv.PastParticipleForm)
-                                       || lowerWordText.Contains((string)pv.PresentParticipleForm)
-                                       || lowerWordText.Contains((string)pv.ThirdPersonForm)
-                                       || pv.FullNegativeForms.Any(fnf => lowerWordText.Contains((string)fnf))
-                                       || pv.ShortNegativeForms.Any(snf => lowerWordText.Contains((string)snf))
-                                       || pv.AdditionalForms.Any(af => lowerWordText.Contains((string)af)
-                                       ), cancellationToken);
+            .FirstOrDefaultAsync(pv => wordText == pv.Text
+                                       || (string)wordText == (string)pv.PastForm
+                                       || (string)wordText == (string)pv.PastParticipleForm
+                                       || (string)wordText == (string)pv.PresentParticipleForm
+                                       || (string)wordText == (string)pv.ThirdPersonForm
+                                       || pv.FullNegativeForms.Any(fnf => fnf.Value == wordText.Value)
+                                       || pv.ShortNegativeForms.Any(snf => snf.Value == wordText.Value)
+                                       || pv.AdditionalForms.Any(af => af.Value == wordText.Value)
+                , cancellationToken);
 
         var primaryVerbs = await _dbContext
             .Set<PrimaryVerb>()
@@ -33,47 +34,122 @@ public class PrimaryVerbRepository(AppDbContext _dbContext) : IPrimaryVerbReposi
 
         if (primaryVerb is not null)
         {
-            if (lowerWordText.Contains((string)primaryVerb.Text))
+            if (wordText == primaryVerb.Text)
             {
-                return primaryVerbs.Select(pv => pv.Text.Value).ToList();
+                return await GetTexts(primaryVerbs, count, cancellationToken);
             }
 
-            if (lowerWordText.Contains((string)primaryVerb.PastForm))
+            if ((string)wordText == (string)primaryVerb.PastForm)
             {
-                return primaryVerbs.Select(pv => pv.PastForm.Value).ToList();
+                var pastForms = primaryVerbs.Select(pv => pv.PastForm.Value).ToList();
+
+                await AddTextsIfNotFilledUp(pastForms, count, cancellationToken);
+                
+                return pastForms;
             }
 
-            if (lowerWordText.Contains((string)primaryVerb.PastParticipleForm))
+            if ((string)wordText == (string)primaryVerb.PastParticipleForm)
             {
-                return primaryVerbs.Select(pv => pv.PastParticipleForm.Value).ToList();
+                var pastParticipleForms = primaryVerbs.Select(pv => pv.PastParticipleForm.Value).ToList();
+
+                await AddTextsIfNotFilledUp(pastParticipleForms, count, cancellationToken);
+                
+                return pastParticipleForms;
             }
 
-            if (lowerWordText.Contains((string)primaryVerb.PresentParticipleForm))
+            if ((string)wordText == (string)primaryVerb.PresentParticipleForm)
             {
-                return primaryVerbs.Select(pv => pv.PastParticipleForm.Value).ToList();
+                var presentParticipleForms = primaryVerbs.Select(pv => pv.PresentParticipleForm.Value).ToList();
+
+                await AddTextsIfNotFilledUp(presentParticipleForms, count, cancellationToken);
+                
+                return presentParticipleForms;
             }
 
-            if (lowerWordText.Contains((string)primaryVerb.ThirdPersonForm))
+            if ((string)wordText == (string)primaryVerb.ThirdPersonForm)
             {
-                return primaryVerbs.Select(pv => pv.ThirdPersonForm.Value).ToList();
+                var thirdPersonForms = primaryVerbs.Select(pv => pv.ThirdPersonForm.Value).ToList();
+
+                await AddTextsIfNotFilledUp(thirdPersonForms, count, cancellationToken);
+                
+                return thirdPersonForms;
             }
 
-            if (primaryVerb.FullNegativeForms.Any(fnf => lowerWordText.Contains((string)fnf)))
+            if (primaryVerb.FullNegativeForms.Any(fnf => (string)wordText == (string)fnf))
             {
-                return primaryVerb.FullNegativeForms.Select(fnf => fnf.Value).ToList();
+                var fullNegativeForms = primaryVerb.FullNegativeForms
+                    .Where(fnf => fnf.Value != wordText.Value)
+                    .Select(fnf => fnf.Value).ToList();
+
+                if (fullNegativeForms.Count < count)
+                {
+                    fullNegativeForms.AddRange(primaryVerbs
+                        .SelectMany(pv => pv.FullNegativeForms.Select(af => af.Value))
+                        .OrderBy(_ => Guid.NewGuid())
+                        .Take(count - fullNegativeForms.Count));
+                }
+                
+                return fullNegativeForms;
             }
 
-            if (primaryVerb.ShortNegativeForms.Any(snf => lowerWordText.Contains((string)snf)))
+            if (primaryVerb.ShortNegativeForms.Any(snf => (string)wordText == (string)snf))
             {
-                return primaryVerb.ShortNegativeForms.Select(snf => snf.Value).ToList();
+                var shortNegativeForms = primaryVerb.ShortNegativeForms
+                    .Where(fnf => fnf.Value != wordText.Value)
+                    .Select(fnf => fnf.Value).ToList();
+
+                if (shortNegativeForms.Count < count)
+                {
+                    shortNegativeForms.AddRange(primaryVerbs
+                        .SelectMany(pv => pv.ShortNegativeForms.Select(af => af.Value))
+                        .OrderBy(_ => Guid.NewGuid())
+                        .Take(count - shortNegativeForms.Count));
+                }
+                
+                return shortNegativeForms;
             }
 
-            if (primaryVerb.AdditionalForms.Any(af => lowerWordText.Contains((string)af)))
-            {
-                return primaryVerb.AdditionalForms.Select(af => af.Value).ToList();
+            if (primaryVerb.AdditionalForms.Any(af => (string)wordText == (string)af))
+            {                
+                var additionalForms = primaryVerb.AdditionalForms
+                    .Where(fnf => fnf.Value != wordText.Value)
+                    .Select(fnf => fnf.Value).ToList();
+
+                await AddTextsIfNotFilledUp(additionalForms, count, cancellationToken);
+                
+                return additionalForms;
             }
         }
 
-        return primaryVerbs.Select(pv => pv.Text.Value).ToList();
+        return await GetTexts(primaryVerbs, count, cancellationToken);
+    }
+
+    private async Task AddTextsIfNotFilledUp(List<string> forms, int count, CancellationToken cancellationToken)
+    {
+        if (forms.Count < count)
+        {
+            forms.AddRange(await _dbContext.Set<PrimaryVerb>()
+                .AsNoTracking()
+                .Select(pv => pv.Text.Value)
+                .OrderBy(pv => Guid.NewGuid())
+                .Take(count - forms.Count)
+                .ToListAsync(cancellationToken));
+        }
+    }
+
+    private async Task<IReadOnlyList<string>> GetTexts(List<PrimaryVerb> primaryVerbs, int count, CancellationToken cancellationToken)
+    {
+        var texts = primaryVerbs.Select(pv => pv.Text.Value).ToList();
+
+        if (texts.Count < count)
+        {
+            texts.AddRange(await _dbContext.Set<PrimaryVerb>()
+                .AsNoTracking()
+                .Select(pv => pv.PastForm.Value)
+                .Take(count - texts.Count)
+                .ToListAsync(cancellationToken));
+        }
+                
+        return texts;
     }
 }

@@ -30,7 +30,7 @@ public class GetRandomComparisonAdjectiveTests(FunctionalTestWebAppFactory funct
         var appDbContext = Services.GetRequiredService<AppDbContext>();
         foreach (var comparisonAdjective in comparisonAdjectives)
         {
-            if (!await appDbContext.Set<ComparisonAdjective>().AnyAsync(a => a.Text == Text.Create(comparisonAdjective).Value))
+            if (!await appDbContext.Set<ComparisonAdjective>().AnyAsync(ca => ca.Text == Text.Create(comparisonAdjective).Value))
             {
                 Assert.Fail();
             }
@@ -53,7 +53,7 @@ public class GetRandomComparisonAdjectiveTests(FunctionalTestWebAppFactory funct
         var appDbContext = Services.GetRequiredService<AppDbContext>();
         foreach (var comparisonAdjective in comparisonAdjectives)
         {
-            if (!await appDbContext.Set<ComparisonAdjective>().AnyAsync(a => a.Text == Text.Create(comparisonAdjective).Value))
+            if (!await appDbContext.Set<ComparisonAdjective>().AnyAsync(ca => ca.Text == Text.Create(comparisonAdjective).Value))
             {
                 Assert.Fail();
             }
@@ -76,7 +76,7 @@ public class GetRandomComparisonAdjectiveTests(FunctionalTestWebAppFactory funct
         var appDbContext = Services.GetRequiredService<AppDbContext>();
         foreach (var comparisonAdjective in comparisonAdjectives)
         {
-            if (!await appDbContext.Set<ComparisonAdjective>().AnyAsync(a => a.ComparativeForm == ComparativeForm.Create(comparisonAdjective).Value))
+            if (!await appDbContext.Set<ComparisonAdjective>().AnyAsync(ca => ca.ComparativeForm == ComparativeForm.Create(comparisonAdjective).Value))
             {
                 Assert.Fail();
             }
@@ -101,7 +101,7 @@ public class GetRandomComparisonAdjectiveTests(FunctionalTestWebAppFactory funct
         var appDbContext = Services.GetRequiredService<AppDbContext>();
         foreach (var comparisonAdjective in comparisonAdjectives)
         {
-            if (!await appDbContext.Set<ComparisonAdjective>().AnyAsync(a => a.ComparativeForm == ComparativeForm.Create(comparisonAdjective).Value))
+            if (!await appDbContext.Set<ComparisonAdjective>().AnyAsync(ca => ca.ComparativeForm == ComparativeForm.Create(comparisonAdjective).Value))
             {
                 Assert.Fail();
             }
@@ -124,7 +124,7 @@ public class GetRandomComparisonAdjectiveTests(FunctionalTestWebAppFactory funct
         var appDbContext = Services.GetRequiredService<AppDbContext>();
         foreach (var comparisonAdjective in comparisonAdjectives)
         {
-            if (!await appDbContext.Set<ComparisonAdjective>().AnyAsync(a => a.SuperlativeForm == SuperlativeForm.Create(comparisonAdjective).Value))
+            if (!await appDbContext.Set<ComparisonAdjective>().AnyAsync(ca => ca.SuperlativeForm == SuperlativeForm.Create(comparisonAdjective).Value))
             {
                 Assert.Fail();
             }
@@ -149,7 +149,7 @@ public class GetRandomComparisonAdjectiveTests(FunctionalTestWebAppFactory funct
         var appDbContext = Services.GetRequiredService<AppDbContext>();
         foreach (var comparisonAdjective in comparisonAdjectives)
         {
-            if (!await appDbContext.Set<ComparisonAdjective>().AnyAsync(a => a.SuperlativeForm == SuperlativeForm.Create(comparisonAdjective).Value))
+            if (!await appDbContext.Set<ComparisonAdjective>().AnyAsync(ca => ca.SuperlativeForm == SuperlativeForm.Create(comparisonAdjective).Value))
             {
                 Assert.Fail();
             }

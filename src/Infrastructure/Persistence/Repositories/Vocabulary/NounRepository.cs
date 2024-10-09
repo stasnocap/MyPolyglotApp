@@ -11,12 +11,11 @@ public class NounRepository(AppDbContext _dbContext) : INounRepository
 {
     public async Task<IReadOnlyList<string>> GetRandomNounsAsync(Word word, int count, CancellationToken cancellationToken)
     {
-        var lowerWordText = word.Text.Value.ToLower();
+        var wordText = word.Text.GetWord();
 
         var noun = await _dbContext.Set<Noun>()
-            .FirstOrDefaultAsync(n => lowerWordText.Contains((string)n.Text)
-                                       || lowerWordText.Contains((string)n.PluralForm)
-                                       , cancellationToken);
+            .FirstOrDefaultAsync(n => wordText == n.Text || (string)wordText == (string)n.PluralForm
+                , cancellationToken);
 
         var nouns = await _dbContext
             .Set<Noun>()
@@ -28,12 +27,12 @@ public class NounRepository(AppDbContext _dbContext) : INounRepository
 
         if (noun is not null)
         {
-            if (lowerWordText.Contains((string)noun.Text))
+            if (wordText == noun.Text)
             {
                 return nouns.Select(n => n.Text.Value).ToList();
             }
 
-            if (lowerWordText.Contains((string)noun.PluralForm))
+            if ((string)wordText == (string)noun.PluralForm)
             {
                 return nouns.Select(n => n.PluralForm.Value).ToList();
             }

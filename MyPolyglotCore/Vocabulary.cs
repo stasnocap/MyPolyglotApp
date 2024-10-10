@@ -90,6 +90,8 @@ namespace MyPolyglotCore
             new Preposition("with"),
             new Preposition("within"),
             new Preposition("without"),
+            new Preposition("and"),
+            new Preposition("together"),
         };
 
         public static readonly IEnumerable<QuestionWord> QuestionWords = new QuestionWord[]

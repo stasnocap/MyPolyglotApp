@@ -4,5 +4,5 @@ namespace Application.Common.Interfaces.Persistence.Vocabulary;
 
 public interface ILetterNumberRepository
 {
-    Task<IReadOnlyList<string>> GetRandomLetterNumbersAsync(Word word, int count, CancellationToken cancellationToken);
+    Task<List<string>> GetRandomLetterNumbersAsync(Word word, int count, CancellationToken cancellationToken);
 }

@@ -8,7 +8,7 @@ namespace Infrastructure.Persistence.Repositories.Vocabulary;
 
 public class LetterNumberRepository(AppDbContext _dbContext) : ILetterNumberRepository
 {
-    public async Task<IReadOnlyList<string>> GetRandomLetterNumbersAsync(Word word, int count, CancellationToken cancellationToken)
+    public async Task<List<string>> GetRandomLetterNumbersAsync(Word word, int count, CancellationToken cancellationToken)
     {
         var wordText = word.Text.GetWord();
 

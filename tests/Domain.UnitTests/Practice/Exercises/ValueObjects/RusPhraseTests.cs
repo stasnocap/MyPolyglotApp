@@ -2,7 +2,7 @@
 using Domain.Practice.Exercises.ValueObjects;
 using FluentAssertions;
 
-namespace Domain.UnitTests.Exercises.ValueObjects;
+namespace Domain.UnitTests.Practice.Exercises.ValueObjects;
 
 public class RusPhraseTests
 {

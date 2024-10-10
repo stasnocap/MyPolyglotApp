@@ -9,7 +9,7 @@ namespace Infrastructure.Persistence.Repositories.Vocabulary;
 
 public class NounRepository(AppDbContext _dbContext) : INounRepository
 {
-    public async Task<IReadOnlyList<string>> GetRandomNounsAsync(Word word, int count, CancellationToken cancellationToken)
+    public async Task<List<string>> GetRandomNounsAsync(Word word, int count, CancellationToken cancellationToken)
     {
         var wordText = word.Text.GetWord();
 

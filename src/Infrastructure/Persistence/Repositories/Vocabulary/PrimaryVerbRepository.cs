@@ -8,7 +8,7 @@ namespace Infrastructure.Persistence.Repositories.Vocabulary;
 
 public class PrimaryVerbRepository(AppDbContext _dbContext) : IPrimaryVerbRepository
 {
-    public async Task<IReadOnlyList<string>> GetRandomPrimaryVerbsAsync(Word word, int count, CancellationToken cancellationToken)
+    public async Task<List<string>> GetRandomPrimaryVerbsAsync(Word word, int count, CancellationToken cancellationToken)
     {
         var wordText = word.Text.GetWord();
 
@@ -136,7 +136,7 @@ public class PrimaryVerbRepository(AppDbContext _dbContext) : IPrimaryVerbReposi
         }
     }
 
-    private async Task<IReadOnlyList<string>> GetTexts(List<PrimaryVerb> primaryVerbs, int count, CancellationToken cancellationToken)
+    private async Task<List<string>> GetTexts(List<PrimaryVerb> primaryVerbs, int count, CancellationToken cancellationToken)
     {
         var texts = primaryVerbs.Select(pv => pv.Text.Value).ToList();
 

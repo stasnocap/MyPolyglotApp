@@ -9,7 +9,7 @@ namespace Infrastructure.Persistence.Repositories.Vocabulary;
 
 public class ComparisonAdjectiveRepository(AppDbContext _dbContext) : IComparisonAdjectiveRepository
 {
-    public async Task<IReadOnlyList<string>> GetRandomComparisonAdjectivesAsync(Word word, int count, CancellationToken cancellationToken)
+    public async Task<List<string>> GetRandomComparisonAdjectivesAsync(Word word, int count, CancellationToken cancellationToken)
     {
         var wordText = word.Text.GetWord();
 

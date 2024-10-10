@@ -19,7 +19,7 @@ public class VocabularyRepository(
     IVerbRepository _verbRepository,
     INumberWithNounRepository _numberWithNounRepository) : IVocabularyRepository
 {
-    public async Task<IReadOnlyList<string>> GetRandomAsync(Word word, int count, CancellationToken cancellationToken)
+    public async Task<List<string>> GetRandomAsync(Word word, int count, CancellationToken cancellationToken)
     {
         switch (word.Type)
         {

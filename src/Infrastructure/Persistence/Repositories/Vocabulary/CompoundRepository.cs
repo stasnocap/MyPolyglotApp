@@ -8,7 +8,7 @@ namespace Infrastructure.Persistence.Repositories.Vocabulary;
 
 public class CompoundRepository(AppDbContext _dbContext) : ICompoundRepository
 {
-    public async Task<IReadOnlyList<string>> GetRandomCompoundsAsync(Word word, int count, CancellationToken cancellationToken)
+    public async Task<List<string>> GetRandomCompoundsAsync(Word word, int count, CancellationToken cancellationToken)
     {
         var compound = await _dbContext
             .Set<Compound>()

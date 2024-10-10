@@ -4,5 +4,5 @@ namespace Application.Common.Interfaces.Persistence.Vocabulary;
 
 public interface IVerbRepository
 {
-    Task<IReadOnlyList<string>> GetRandomVerbsAsync(Word word, int count, CancellationToken cancellationToken);
+    Task<List<string>> GetRandomVerbsAsync(Word word, int count, CancellationToken cancellationToken);
 }

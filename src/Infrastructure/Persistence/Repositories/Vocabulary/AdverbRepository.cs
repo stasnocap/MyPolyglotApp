@@ -9,7 +9,7 @@ namespace Infrastructure.Persistence.Repositories.Vocabulary;
 
 public class AdverbRepository(AppDbContext _dbContext) : IAdverbRepository
 {
-    public async Task<IReadOnlyList<string>> GetRandomAdverbsAsync(Word word, int count, CancellationToken cancellationToken)
+    public async Task<List<string>> GetRandomAdverbsAsync(Word word, int count, CancellationToken cancellationToken)
     {
         var adverb = await _dbContext
             .Set<Adverb>()

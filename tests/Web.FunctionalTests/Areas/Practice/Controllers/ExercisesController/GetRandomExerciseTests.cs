@@ -3,12 +3,11 @@ using System.Net.Http.Json;
 using Contracts.Exercises.Responses;
 using Domain.Practice.Lessons.Errors;
 using FluentAssertions;
-using Infrastructure.Persistence.Seed;
 using Infrastructure.Persistence.Seed.Practice;
 using Microsoft.AspNetCore.Mvc;
 using Web.FunctionalTests.Abstractions;
 
-namespace Web.FunctionalTests.Lessons;
+namespace Web.FunctionalTests.Areas.Practice.Controllers.ExercisesController;
 
 public class GetRandomExerciseTests(FunctionalTestWebAppFactory factory) : BaseFunctionalTest(factory)
 {
@@ -25,8 +24,15 @@ public class GetRandomExerciseTests(FunctionalTestWebAppFactory factory) : BaseF
         
         jsonModel.Should().NotBeNull();
         jsonModel!.ExerciseId.Should().NotBeEmpty();
-        jsonModel.EngPhrase.Should().NotBeNullOrWhiteSpace();
         jsonModel.RusPhrase.Should().NotBeNullOrWhiteSpace();
+        jsonModel.WordGroups.Should().NotBeNull();
+
+        foreach (var wordGroup in jsonModel.WordGroups)
+        {
+            wordGroup.Should().NotBeNull();
+            wordGroup.Words.Count.Should().BeGreaterThan(0);
+            wordGroup.Type.Should().NotBe(ExerciseResponse.WordType.None);
+        }
     }
     
     [Fact]

@@ -1,7 +1,7 @@
-﻿using Application.Practice.Exercises.Queries.GetRandomExercise;
+﻿using Application.Practice.Exercises.Common;
+using Application.Practice.Exercises.Queries.GetRandomExercise;
 using Contracts.Exercises.Requests;
 using Contracts.Exercises.Responses;
-using Domain.Practice.Exercises;
 using Domain.Practice.Lessons.ValueObjects;
 using Mapster;
 
@@ -14,9 +14,8 @@ public class ExerciseMappingConfiguration : IRegister
         config.NewConfig<GetRandomExerciseRequest, GetRandomExerciseQuery>()
             .Map(dest => dest.LessonId, src => LessonId.Create(src.LessonId));
 
-        config.NewConfig<Exercise, ExerciseResponse>()
+        config.NewConfig<ExerciseResult, ExerciseResponse>()
             .Map(dest => dest.RusPhrase, src => src.RusPhrase.Value)
-            .Map(dest => dest.ExerciseId, src => src.Id.Value);
-
+            .Map(dest => dest.ExerciseId, src => src.ExerciseId.Value);
     }
 }

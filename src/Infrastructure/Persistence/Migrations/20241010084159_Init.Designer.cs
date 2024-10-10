@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Infrastructure.Persistence.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20241009073235_UpdateComparisonAdjectives")]
-    partial class UpdateComparisonAdjectives
+    [Migration("20241010084159_Init")]
+    partial class Init
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -137,6 +137,36 @@ namespace Infrastructure.Persistence.Migrations
                             Id = new Guid("69dfc0ba-ac95-44bb-b412-b36b2a45f6bb"),
                             LessonId = new Guid("099df6d4-f116-4b6e-8cae-96dd9f3623dd"),
                             RusPhrase = "Я посмотрю?"
+                        },
+                        new
+                        {
+                            Id = new Guid("8cb2fa8b-6886-4fcd-a596-ecc8f15b406c"),
+                            LessonId = new Guid("8eca71ba-7524-4b77-8dc3-5c3e2b051613"),
+                            RusPhrase = "Мы не оставили его."
+                        },
+                        new
+                        {
+                            Id = new Guid("7f44ae6d-6b28-47aa-9d9b-500a632303ef"),
+                            LessonId = new Guid("8eca71ba-7524-4b77-8dc3-5c3e2b051613"),
+                            RusPhrase = "Он поймёт тебя."
+                        },
+                        new
+                        {
+                            Id = new Guid("05882a8b-9897-4793-8a1e-dd0cf841c95b"),
+                            LessonId = new Guid("8eca71ba-7524-4b77-8dc3-5c3e2b051613"),
+                            RusPhrase = "Ты открываешь ей."
+                        },
+                        new
+                        {
+                            Id = new Guid("7fafec3f-f7fe-46d7-962d-79d62dc13f66"),
+                            LessonId = new Guid("8eca71ba-7524-4b77-8dc3-5c3e2b051613"),
+                            RusPhrase = "Я сломаю?"
+                        },
+                        new
+                        {
+                            Id = new Guid("24de4efb-c76c-4d7c-ab9d-914a272962f7"),
+                            LessonId = new Guid("8eca71ba-7524-4b77-8dc3-5c3e2b051613"),
+                            RusPhrase = "Я показал им?"
                         });
                 });
 
@@ -164,6 +194,186 @@ namespace Infrastructure.Persistence.Migrations
                             Id = new Guid("099df6d4-f116-4b6e-8cae-96dd9f3623dd"),
                             Name = "Базовая форма глагола",
                             Number = 1
+                        },
+                        new
+                        {
+                            Id = new Guid("8eca71ba-7524-4b77-8dc3-5c3e2b051613"),
+                            Name = "Местоимения. Вопросительные слова",
+                            Number = 2
+                        },
+                        new
+                        {
+                            Id = new Guid("19e63968-9aa1-4196-af9b-020bd589103c"),
+                            Name = "Глагол to be. Предлоги места. Like/Want",
+                            Number = 3
+                        },
+                        new
+                        {
+                            Id = new Guid("ef710306-a1b1-4823-93eb-64d8357ed6ea"),
+                            Name = "Притяжательные местоимения",
+                            Number = 4
+                        },
+                        new
+                        {
+                            Id = new Guid("c61b363f-290f-4ff4-8cd3-1845414c680f"),
+                            Name = "Профессии. Этикет",
+                            Number = 5
+                        },
+                        new
+                        {
+                            Id = new Guid("1d883b60-88a9-4186-a003-9939210b3fe2"),
+                            Name = "Степени сравнения прилагательных. Указательные местоимения",
+                            Number = 6
+                        },
+                        new
+                        {
+                            Id = new Guid("d9dadc04-9197-4b7a-aca6-c9ce18c1fef5"),
+                            Name = "Слова-параметры. Употребление muck и many, little и few",
+                            Number = 7
+                        },
+                        new
+                        {
+                            Id = new Guid("18da835a-791c-4dd7-915f-09abf79219d1"),
+                            Name = "Предлоги и параметры времени",
+                            Number = 8
+                        },
+                        new
+                        {
+                            Id = new Guid("946446db-a1da-422e-bad6-ab7972987ae4"),
+                            Name = "There is / There are",
+                            Number = 9
+                        },
+                        new
+                        {
+                            Id = new Guid("49723cf9-e420-4608-a368-f2ffbd006242"),
+                            Name = "Предлоги направления и движения",
+                            Number = 10
+                        },
+                        new
+                        {
+                            Id = new Guid("35c865ea-0c11-4a46-a5f0-d8c168f88907"),
+                            Name = "Модальные глаголы can, must, should",
+                            Number = 11
+                        },
+                        new
+                        {
+                            Id = new Guid("255d72a1-b6e7-4fbb-bc5a-362f2b0c4efe"),
+                            Name = "Continuous",
+                            Number = 12
+                        },
+                        new
+                        {
+                            Id = new Guid("a26e89e2-cafd-4126-bc63-5ba53645ed6d"),
+                            Name = "Описание людей. Погода",
+                            Number = 13
+                        },
+                        new
+                        {
+                            Id = new Guid("302c1e93-e339-4850-9bc9-47dd5e37decb"),
+                            Name = "Повелительное наклонение",
+                            Number = 14
+                        },
+                        new
+                        {
+                            Id = new Guid("06e34fe3-489b-4fce-ba46-f9e30c63146f"),
+                            Name = "Фразовые глаголы",
+                            Number = 15
+                        },
+                        new
+                        {
+                            Id = new Guid("168e4970-41f5-441b-aedb-092556b63775"),
+                            Name = "Present Perfect",
+                            Number = 16
+                        },
+                        new
+                        {
+                            Id = new Guid("7407b5e3-bcc3-4853-ba1c-740985bf7d52"),
+                            Name = "Past Perfect",
+                            Number = 17
+                        },
+                        new
+                        {
+                            Id = new Guid("65f77c8e-3d17-419e-9529-4326811c732c"),
+                            Name = "Future Perfect",
+                            Number = 18
+                        },
+                        new
+                        {
+                            Id = new Guid("a6c000b2-2aa9-4372-8788-aa7b7045b0c2"),
+                            Name = "Perfect Tenses",
+                            Number = 19
+                        },
+                        new
+                        {
+                            Id = new Guid("21b08001-36e3-4770-affa-e4a7e87e4c7e"),
+                            Name = "Present Perfect Continuous",
+                            Number = 20
+                        },
+                        new
+                        {
+                            Id = new Guid("441161d5-3f41-4e50-9655-a62c971b06b6"),
+                            Name = "Past Perfect Continuous",
+                            Number = 21
+                        },
+                        new
+                        {
+                            Id = new Guid("974db683-7a40-4a0a-84a4-afc012855961"),
+                            Name = "Future Perfect Continuous",
+                            Number = 22
+                        },
+                        new
+                        {
+                            Id = new Guid("d7b96b18-f735-43cd-bd5f-0aa0cfeab504"),
+                            Name = "Perfect Continuous Tenses",
+                            Number = 23
+                        },
+                        new
+                        {
+                            Id = new Guid("85f6a657-c644-4ef9-9454-37202576c089"),
+                            Name = "Present Participle Simple",
+                            Number = 24
+                        },
+                        new
+                        {
+                            Id = new Guid("a184277b-edcc-4af1-9c17-a2b11140be2f"),
+                            Name = "Past Participle",
+                            Number = 25
+                        },
+                        new
+                        {
+                            Id = new Guid("614a255e-2239-42ef-95e6-101f95c28499"),
+                            Name = "Present Participle Perfect",
+                            Number = 26
+                        },
+                        new
+                        {
+                            Id = new Guid("60b8431c-0450-4143-9baf-ca627495d7f5"),
+                            Name = "The Participle",
+                            Number = 27
+                        },
+                        new
+                        {
+                            Id = new Guid("28d10443-9ac8-43e7-b176-2e40cb1565df"),
+                            Name = "Simple Passive",
+                            Number = 28
+                        },
+                        new
+                        {
+                            Id = new Guid("7db36b76-017d-484b-b367-d82cea8b5036"),
+                            Name = "Continuous Passive",
+                            Number = 29
+                        },
+                        new
+                        {
+                            Id = new Guid("95079976-cc2e-4d0b-a4c3-42c772ce35b9"),
+                            Name = "Perfect Passive",
+                            Number = 30
+                        },
+                        new
+                        {
+                            Id = new Guid("8fdffe09-48a4-4b02-91ed-f808c121f45e"),
+                            Name = "Passive Voice",
+                            Number = 31
                         });
                 });
 
@@ -5226,6 +5436,9 @@ namespace Infrastructure.Persistence.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
+                    b.Property<int>("Type")
+                        .HasColumnType("integer");
+
                     b.HasKey("Id");
 
                     b.ToTable("Pronouns", "vocabulary");
@@ -5234,37 +5447,206 @@ namespace Infrastructure.Persistence.Migrations
                         new
                         {
                             Id = new Guid("c5e9499f-6682-4de2-bb4c-f6cf2c3e5e7f"),
-                            Text = "i"
+                            Text = "i",
+                            Type = 1
                         },
                         new
                         {
                             Id = new Guid("95280413-d92d-4907-827e-1bd3fadd5f20"),
-                            Text = "you"
+                            Text = "you",
+                            Type = 1
                         },
                         new
                         {
                             Id = new Guid("004a6a6b-bb91-4d03-bec1-ba2529fab0c0"),
-                            Text = "he"
+                            Text = "he",
+                            Type = 1
                         },
                         new
                         {
                             Id = new Guid("1a412290-7271-4385-8fc9-f08be3b0452c"),
-                            Text = "she"
+                            Text = "she",
+                            Type = 1
                         },
                         new
                         {
                             Id = new Guid("575963a0-80f7-4024-9c82-90e52aea846a"),
-                            Text = "it"
+                            Text = "it",
+                            Type = 1
                         },
                         new
                         {
                             Id = new Guid("60a86ad4-6d5f-4874-819a-61f9c200b7b1"),
-                            Text = "we"
+                            Text = "we",
+                            Type = 1
                         },
                         new
                         {
                             Id = new Guid("0bb651d1-cc92-41a5-9b24-2934db01ed07"),
-                            Text = "they"
+                            Text = "they",
+                            Type = 1
+                        },
+                        new
+                        {
+                            Id = new Guid("228e5431-fa5b-474b-bff1-f91431f08ba1"),
+                            Text = "me",
+                            Type = 2
+                        },
+                        new
+                        {
+                            Id = new Guid("4574e7fe-0563-415e-9b18-982918d7e632"),
+                            Text = "him",
+                            Type = 2
+                        },
+                        new
+                        {
+                            Id = new Guid("b0118050-1f65-44f5-99aa-f4af33665c51"),
+                            Text = "us",
+                            Type = 2
+                        },
+                        new
+                        {
+                            Id = new Guid("975f6fa2-8822-433c-a05f-32b97741b648"),
+                            Text = "them",
+                            Type = 2
+                        },
+                        new
+                        {
+                            Id = new Guid("37d4d557-1584-48ce-88e0-700d83e673a9"),
+                            Text = "my",
+                            Type = 3
+                        },
+                        new
+                        {
+                            Id = new Guid("3d4d59db-0f70-4705-adf1-99301046f8f8"),
+                            Text = "your",
+                            Type = 3
+                        },
+                        new
+                        {
+                            Id = new Guid("3d4024e5-6111-4228-a0a1-f5afd3d5c73b"),
+                            Text = "his",
+                            Type = 3
+                        },
+                        new
+                        {
+                            Id = new Guid("bfb1e919-377d-45b8-b9b7-9a3d15dae126"),
+                            Text = "her",
+                            Type = 3
+                        },
+                        new
+                        {
+                            Id = new Guid("a2c14ea9-87a6-4a3d-9f1c-751431e7ef9e"),
+                            Text = "its",
+                            Type = 3
+                        },
+                        new
+                        {
+                            Id = new Guid("03186e19-aab4-4442-8fb3-e178e9fb4677"),
+                            Text = "our",
+                            Type = 3
+                        },
+                        new
+                        {
+                            Id = new Guid("95dd9857-02a2-4549-bfb7-28d7468edc8a"),
+                            Text = "their",
+                            Type = 3
+                        },
+                        new
+                        {
+                            Id = new Guid("d9fd3895-0795-41d4-93c0-9dc36f589a9d"),
+                            Text = "mine",
+                            Type = 4
+                        },
+                        new
+                        {
+                            Id = new Guid("a34ed880-662b-47b2-9688-f21dc2a5fc04"),
+                            Text = "hers",
+                            Type = 4
+                        },
+                        new
+                        {
+                            Id = new Guid("1b868392-10c9-4b9f-92d7-bb085fcd1c6c"),
+                            Text = "ours",
+                            Type = 4
+                        },
+                        new
+                        {
+                            Id = new Guid("0e33bc11-5692-4d61-b989-0b7d143a809d"),
+                            Text = "theirs",
+                            Type = 4
+                        },
+                        new
+                        {
+                            Id = new Guid("3a17671e-a6f1-4370-af2a-ce6f43f5312e"),
+                            Text = "myself",
+                            Type = 5
+                        },
+                        new
+                        {
+                            Id = new Guid("4760d1a2-ed1c-4f5e-94b6-0c71248ebb89"),
+                            Text = "yourself",
+                            Type = 5
+                        },
+                        new
+                        {
+                            Id = new Guid("0d48da8a-6d21-4049-a26b-b4f37f170b4e"),
+                            Text = "himself",
+                            Type = 5
+                        },
+                        new
+                        {
+                            Id = new Guid("788528a7-d7c4-4818-ae8e-8a41cf9f694e"),
+                            Text = "herself",
+                            Type = 5
+                        },
+                        new
+                        {
+                            Id = new Guid("997eb939-e004-4a5b-be05-3cd2a641bd59"),
+                            Text = "itself",
+                            Type = 5
+                        },
+                        new
+                        {
+                            Id = new Guid("de86911d-4934-4415-a3cf-48332c3ef873"),
+                            Text = "ourselves",
+                            Type = 5
+                        },
+                        new
+                        {
+                            Id = new Guid("f9c20a04-e3c2-45a0-b994-245699ca0727"),
+                            Text = "yourselves",
+                            Type = 5
+                        },
+                        new
+                        {
+                            Id = new Guid("dc37db89-eda0-4a30-9284-b3b1712d87c9"),
+                            Text = "themselves",
+                            Type = 5
+                        },
+                        new
+                        {
+                            Id = new Guid("d06a468e-4330-42ac-ab1b-a89b4b89abaa"),
+                            Text = "this",
+                            Type = 6
+                        },
+                        new
+                        {
+                            Id = new Guid("453d730c-7540-4f26-bc99-688ca2317bdd"),
+                            Text = "that",
+                            Type = 6
+                        },
+                        new
+                        {
+                            Id = new Guid("d3a118c2-e428-4fd6-a728-19fd4888f838"),
+                            Text = "these",
+                            Type = 6
+                        },
+                        new
+                        {
+                            Id = new Guid("0bb8b56e-3c71-44e0-bc1b-55ed5d41aeb4"),
+                            Text = "those",
+                            Type = 6
                         });
                 });
 
@@ -7311,6 +7693,150 @@ namespace Infrastructure.Persistence.Migrations
                                     Number = 3,
                                     Text = "look?",
                                     Type = 16
+                                },
+                                new
+                                {
+                                    Id = new Guid("dbb5722c-0428-41b5-8de8-281036a10116"),
+                                    ExerciseId = new Guid("8cb2fa8b-6886-4fcd-a596-ecc8f15b406c"),
+                                    Number = 1,
+                                    Text = "We",
+                                    Type = 14
+                                },
+                                new
+                                {
+                                    Id = new Guid("6ff589b9-3040-4f64-a428-8627bc337907"),
+                                    ExerciseId = new Guid("8cb2fa8b-6886-4fcd-a596-ecc8f15b406c"),
+                                    Number = 2,
+                                    Text = "didn't",
+                                    Type = 13
+                                },
+                                new
+                                {
+                                    Id = new Guid("09eab928-69c6-4ff3-ac10-a26d66bef69a"),
+                                    ExerciseId = new Guid("8cb2fa8b-6886-4fcd-a596-ecc8f15b406c"),
+                                    Number = 3,
+                                    Text = "leave",
+                                    Type = 16
+                                },
+                                new
+                                {
+                                    Id = new Guid("7b4a0424-5599-4ad4-9609-059205257ae7"),
+                                    ExerciseId = new Guid("8cb2fa8b-6886-4fcd-a596-ecc8f15b406c"),
+                                    Number = 4,
+                                    Text = "him.",
+                                    Type = 14
+                                },
+                                new
+                                {
+                                    Id = new Guid("49defb22-e6eb-4690-94e7-f801c8a8d14a"),
+                                    ExerciseId = new Guid("7f44ae6d-6b28-47aa-9d9b-500a632303ef"),
+                                    Number = 1,
+                                    Text = "He",
+                                    Type = 14
+                                },
+                                new
+                                {
+                                    Id = new Guid("d3362e8e-2991-4333-a43b-6872b98f4867"),
+                                    ExerciseId = new Guid("7f44ae6d-6b28-47aa-9d9b-500a632303ef"),
+                                    Number = 2,
+                                    Text = "will",
+                                    Type = 13
+                                },
+                                new
+                                {
+                                    Id = new Guid("e17c03b2-dcb5-4b43-ba00-c4e98b800fc9"),
+                                    ExerciseId = new Guid("7f44ae6d-6b28-47aa-9d9b-500a632303ef"),
+                                    Number = 3,
+                                    Text = "understand",
+                                    Type = 16
+                                },
+                                new
+                                {
+                                    Id = new Guid("0343e0cf-6886-4dff-a5f5-3465c15de0ca"),
+                                    ExerciseId = new Guid("7f44ae6d-6b28-47aa-9d9b-500a632303ef"),
+                                    Number = 4,
+                                    Text = "you.",
+                                    Type = 14
+                                },
+                                new
+                                {
+                                    Id = new Guid("da4ec215-746b-4fe6-9676-4e8070e16097"),
+                                    ExerciseId = new Guid("05882a8b-9897-4793-8a1e-dd0cf841c95b"),
+                                    Number = 1,
+                                    Text = "You",
+                                    Type = 14
+                                },
+                                new
+                                {
+                                    Id = new Guid("90293e3d-2b54-41ce-a778-505d4957e7dc"),
+                                    ExerciseId = new Guid("05882a8b-9897-4793-8a1e-dd0cf841c95b"),
+                                    Number = 2,
+                                    Text = "open",
+                                    Type = 16
+                                },
+                                new
+                                {
+                                    Id = new Guid("c94b4187-1a22-419a-8ba4-4b83f42e133b"),
+                                    ExerciseId = new Guid("05882a8b-9897-4793-8a1e-dd0cf841c95b"),
+                                    Number = 3,
+                                    Text = "her.",
+                                    Type = 14
+                                },
+                                new
+                                {
+                                    Id = new Guid("bc701d83-279f-4912-83ca-d194e0c47c04"),
+                                    ExerciseId = new Guid("7fafec3f-f7fe-46d7-962d-79d62dc13f66"),
+                                    Number = 1,
+                                    Text = "Will",
+                                    Type = 13
+                                },
+                                new
+                                {
+                                    Id = new Guid("9127d763-820f-4a77-8019-2ff8742fa03b"),
+                                    ExerciseId = new Guid("7fafec3f-f7fe-46d7-962d-79d62dc13f66"),
+                                    Number = 2,
+                                    Text = "i",
+                                    Type = 14
+                                },
+                                new
+                                {
+                                    Id = new Guid("7da2bb0a-474c-4631-ab65-16301dff24d1"),
+                                    ExerciseId = new Guid("7fafec3f-f7fe-46d7-962d-79d62dc13f66"),
+                                    Number = 3,
+                                    Text = "break?",
+                                    Type = 16
+                                },
+                                new
+                                {
+                                    Id = new Guid("cad3b0f3-cbe2-4388-8498-1373966c8f80"),
+                                    ExerciseId = new Guid("24de4efb-c76c-4d7c-ab9d-914a272962f7"),
+                                    Number = 1,
+                                    Text = "Did",
+                                    Type = 13
+                                },
+                                new
+                                {
+                                    Id = new Guid("67d10373-c942-46de-87ad-c8c746bd4394"),
+                                    ExerciseId = new Guid("24de4efb-c76c-4d7c-ab9d-914a272962f7"),
+                                    Number = 2,
+                                    Text = "i",
+                                    Type = 14
+                                },
+                                new
+                                {
+                                    Id = new Guid("5554f1d6-d563-42fa-85a0-dda3d3d32e64"),
+                                    ExerciseId = new Guid("24de4efb-c76c-4d7c-ab9d-914a272962f7"),
+                                    Number = 3,
+                                    Text = "show",
+                                    Type = 16
+                                },
+                                new
+                                {
+                                    Id = new Guid("f9f305a2-e2c8-4cca-a69c-1c1a28f92361"),
+                                    ExerciseId = new Guid("24de4efb-c76c-4d7c-ab9d-914a272962f7"),
+                                    Number = 4,
+                                    Text = "them?",
+                                    Type = 14
                                 });
                         });
 
@@ -7467,7 +7993,7 @@ namespace Infrastructure.Persistence.Migrations
                                 new
                                 {
                                     Id = 6,
-                                    PrimaryVerbId = new Guid("928e8efd-1a11-4df9-9703-0631fa073ca3"),
+                                    PrimaryVerbId = new Guid("aedf0d06-70b2-4270-8c69-6a5b7ce26d1c"),
                                     Value = "has not"
                                 },
                                 new

@@ -34,6 +34,7 @@ public static class DependencyInjection
         services.AddScoped<IAdverbRepository, AdverbRepository>();
         services.AddScoped<ICompoundRepository, CompoundRepository>();
         services.AddScoped<INumberWithNounRepository, NumberWithNounRepository>();
+        services.AddScoped<IPronounRepository, PronounRepository>();
         
         services.AddScoped<IPasswordHasher<User>, PasswordHasher<User>>();
         services.AddPostgresDatabase(configuration);

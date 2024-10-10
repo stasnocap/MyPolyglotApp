@@ -6,17 +6,20 @@ namespace Domain.Vocabulary.Pronouns;
 
 public sealed class Pronoun : BaseWord<PronounId>
 {
-    private Pronoun(PronounId id, Text text) : base(id, text)
+    public PronounType Type { get; }
+
+    private Pronoun(PronounId id, Text text, PronounType type) : base(id, text)
     {
+        Type = type;
     }
 
-    public static Pronoun Create(Text text)
+    public static Pronoun Create(Text text, PronounType type)
     {
-        return new Pronoun(PronounId.CreateUnique(), text);
+        return new Pronoun(PronounId.CreateUnique(), text, type);
     }
 
-    public static Pronoun Create(PronounId pronounId, Text text)
+    public static Pronoun Create(PronounId pronounId, Text text, PronounType type)
     {
-        return new Pronoun(pronounId, text);
+        return new Pronoun(pronounId, text, type);
     }
 }

@@ -72,6 +72,6 @@ public class LessonConfiguration : IEntityTypeConfiguration<Lesson>
             .HasMaxLength(255)
             .HasConversion(lessonName => lessonName.Value, value => LessonName.Create(value).Value);
         
-        builder.HasData(LessonSeed.GetLesson1());
+        builder.HasData(LessonSeed.GetLessons());
     }
 }

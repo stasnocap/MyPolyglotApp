@@ -22,6 +22,8 @@ public class PronounConfiguration : IEntityTypeConfiguration<Pronoun>
         builder.Property(p => p.Text)
             .HasConversion(text => text.Value, value => Text.Create(value).Value);
 
+        builder.Property(p => p.Type);
+
         builder.HasData(PronounSeed.GetPronouns());
     }
 }

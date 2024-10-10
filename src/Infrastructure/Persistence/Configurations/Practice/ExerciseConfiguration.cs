@@ -40,7 +40,7 @@ public class ExerciseConfiguration : IEntityTypeConfiguration<Exercise>
 
             wb.Property(w => w.Type);
 
-            wb.HasData(ExerciseSeed.GetWordsForLesson1());
+            wb.HasData(ExerciseSeed.GetWordsForLessons());
         });
 
         builder.Metadata.FindNavigation(nameof(Exercise.Words))!.SetPropertyAccessMode(PropertyAccessMode.Field);
@@ -64,6 +64,6 @@ public class ExerciseConfiguration : IEntityTypeConfiguration<Exercise>
             .HasMaxLength(255)
             .HasConversion(rusPhrase => rusPhrase.Value, value => RusPhrase.Create(value).Value);
 
-        builder.HasData(ExerciseSeed.GetExercisesForLesson1());
+        builder.HasData(ExerciseSeed.GetExercisesForLessons());
     }
 }

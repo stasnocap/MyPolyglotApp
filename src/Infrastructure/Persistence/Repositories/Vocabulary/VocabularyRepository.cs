@@ -17,7 +17,8 @@ public class VocabularyRepository(
     IAdverbRepository _adverbRepository,
     ICompoundRepository _compoundRepository,
     IVerbRepository _verbRepository,
-    INumberWithNounRepository _numberWithNounRepository) : IVocabularyRepository
+    INumberWithNounRepository _numberWithNounRepository,
+    IPronounRepository _pronounRepository) : IVocabularyRepository
 {
     public async Task<List<string>> GetRandomAsync(Word word, int count, CancellationToken cancellationToken)
     {
@@ -28,7 +29,6 @@ public class VocabularyRepository(
             case WordType.Determiner:
             case WordType.Language:
             case WordType.Preposition:
-            case WordType.Pronoun:
             case WordType.QuestionWord:
                 var wordType = WordTypes.GetWordType(word.Type);
 
@@ -60,6 +60,8 @@ public class VocabularyRepository(
                 return await _verbRepository.GetRandomVerbsAsync(word, count, cancellationToken);
             case WordType.NumberWithNoun:
                 return await _numberWithNounRepository.GetRandomNumberWithNounsAsync(word, count, cancellationToken);
+            case WordType.Pronoun:
+                return await _pronounRepository.GetRandomPronounsAsync(word, count, cancellationToken);
             case WordType.None:
             default:
                 throw new ArgumentOutOfRangeException();

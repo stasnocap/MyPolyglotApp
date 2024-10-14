@@ -520,296 +520,277 @@ public static class ExerciseSeed
 
     #endregion
 
-    #region Lesson 31
-
-    public static readonly Guid GuidForExerciseId151 = Guid.Parse("fc9acc6f-8713-4ca3-87a4-311b02ca6f54");
-    public static readonly ExerciseId ExerciseId151 = ExerciseId.Create(GuidForExerciseId151);
-
-    public static readonly Guid GuidForExerciseId152 = Guid.Parse("93220cba-cab5-4431-8514-93c4c834af07");
-    public static readonly ExerciseId ExerciseId152 = ExerciseId.Create(GuidForExerciseId152);
-
-    public static readonly Guid GuidForExerciseId153 = Guid.Parse("7ec29333-ba4e-4638-920f-f90bd4fbcba6");
-    public static readonly ExerciseId ExerciseId153 = ExerciseId.Create(GuidForExerciseId153);
-
-    public static readonly Guid GuidForExerciseId154 = Guid.Parse("5d5aa0b7-ee86-4886-8167-0b4878f58d6d");
-    public static readonly ExerciseId ExerciseId154 = ExerciseId.Create(GuidForExerciseId154);
-
-    public static readonly Guid GuidForExerciseId155 = Guid.Parse("a9b68062-a9e9-4a71-b6e7-014ee35c3e4b");
-    public static readonly ExerciseId ExerciseId155 = ExerciseId.Create(GuidForExerciseId155);
-
-    #endregion
-
     public static IReadOnlyList<Exercise> GetExercisesForLessons()
     {
         return
         [
             #region Lesson 1
 
-            Exercise.Create(ExerciseId1, LessonSeed.LessonId1, RusPhrase.Create("Ты не увидишь.").Value).Value,
-            Exercise.Create(ExerciseId2, LessonSeed.LessonId1, RusPhrase.Create("Мы покажем?").Value).Value,
-            Exercise.Create(ExerciseId3, LessonSeed.LessonId1, RusPhrase.Create("Она работала.").Value).Value,
-            Exercise.Create(ExerciseId4, LessonSeed.LessonId1, RusPhrase.Create("Ты не думал.").Value).Value,
-            Exercise.Create(ExerciseId5, LessonSeed.LessonId1, RusPhrase.Create("Я посмотрю?").Value).Value,
+            Exercise.Create(ExerciseId1, RusPhrase.Create("Ты не увидишь.").Value).Value,
+            Exercise.Create(ExerciseId2, RusPhrase.Create("Мы покажем?").Value).Value,
+            Exercise.Create(ExerciseId3, RusPhrase.Create("Она работала.").Value).Value,
+            Exercise.Create(ExerciseId4, RusPhrase.Create("Ты не думал.").Value).Value,
+            Exercise.Create(ExerciseId5, RusPhrase.Create("Я посмотрю?").Value).Value,
 
             #endregion
 
             #region Lesson 2
 
-            Exercise.Create(ExerciseId6, LessonSeed.LessonId2, RusPhrase.Create("Мы не оставили его.").Value).Value,
-            Exercise.Create(ExerciseId7, LessonSeed.LessonId2, RusPhrase.Create("Он поймёт тебя.").Value).Value,
-            Exercise.Create(ExerciseId8, LessonSeed.LessonId2, RusPhrase.Create("Ты открываешь ей.").Value).Value,
-            Exercise.Create(ExerciseId9, LessonSeed.LessonId2, RusPhrase.Create("Я сломаю?").Value).Value,
-            Exercise.Create(ExerciseId10, LessonSeed.LessonId2, RusPhrase.Create("Я показал им?").Value).Value,
+            Exercise.Create(ExerciseId6, RusPhrase.Create("Мы не оставили его.").Value).Value,
+            Exercise.Create(ExerciseId7, RusPhrase.Create("Он поймёт тебя.").Value).Value,
+            Exercise.Create(ExerciseId8, RusPhrase.Create("Ты открываешь ей.").Value).Value,
+            Exercise.Create(ExerciseId9, RusPhrase.Create("Я сломаю?").Value).Value,
+            Exercise.Create(ExerciseId10, RusPhrase.Create("Я показал им?").Value).Value,
 
             #endregion
 
             #region Lesson 3
 
-            Exercise.Create(ExerciseId11, LessonSeed.LessonId3, RusPhrase.Create("Тебе хочется пить?").Value).Value,
-            Exercise.Create(ExerciseId12, LessonSeed.LessonId3, RusPhrase.Create("Ей хотелось забывать?").Value).Value,
-            Exercise.Create(ExerciseId13, LessonSeed.LessonId3, RusPhrase.Create("Я был в музее.").Value).Value,
-            Exercise.Create(ExerciseId14, LessonSeed.LessonId3, RusPhrase.Create("Ей не нравилось показывать.").Value).Value,
-            Exercise.Create(ExerciseId15, LessonSeed.LessonId3, RusPhrase.Create("Она в лифте?").Value).Value,
+            Exercise.Create(ExerciseId11, RusPhrase.Create("Тебе хочется пить?").Value).Value,
+            Exercise.Create(ExerciseId12, RusPhrase.Create("Ей хотелось забывать?").Value).Value,
+            Exercise.Create(ExerciseId13, RusPhrase.Create("Я был в музее.").Value).Value,
+            Exercise.Create(ExerciseId14, RusPhrase.Create("Ей не нравилось показывать.").Value).Value,
+            Exercise.Create(ExerciseId15, RusPhrase.Create("Она в лифте?").Value).Value,
 
             #endregion
 
             #region Lesson 4
 
-            Exercise.Create(ExerciseId16, LessonSeed.LessonId4, RusPhrase.Create("Он будет их актёром?").Value).Value,
-            Exercise.Create(ExerciseId17, LessonSeed.LessonId4, RusPhrase.Create("Мы не их бухгалтеры.").Value).Value,
-            Exercise.Create(ExerciseId18, LessonSeed.LessonId4, RusPhrase.Create("Мы были его историками.").Value).Value,
-            Exercise.Create(ExerciseId19, LessonSeed.LessonId4, RusPhrase.Create("Он будет её писателем.").Value).Value,
-            Exercise.Create(ExerciseId20, LessonSeed.LessonId4, RusPhrase.Create("Мы не будем их гидами.").Value).Value,
+            Exercise.Create(ExerciseId16, RusPhrase.Create("Он будет их актёром?").Value).Value,
+            Exercise.Create(ExerciseId17, RusPhrase.Create("Мы не их бухгалтеры.").Value).Value,
+            Exercise.Create(ExerciseId18, RusPhrase.Create("Мы были его историками.").Value).Value,
+            Exercise.Create(ExerciseId19, RusPhrase.Create("Он будет её писателем.").Value).Value,
+            Exercise.Create(ExerciseId20, RusPhrase.Create("Мы не будем их гидами.").Value).Value,
 
             #endregion
 
             #region Lesson 5
 
-            Exercise.Create(ExerciseId21, LessonSeed.LessonId5, RusPhrase.Create("Они учатся на гидов?").Value).Value,
-            Exercise.Create(ExerciseId22, LessonSeed.LessonId5, RusPhrase.Create("Я не буду менеджером.").Value).Value,
-            Exercise.Create(ExerciseId23, LessonSeed.LessonId5, RusPhrase.Create("Мы учились на менеджеров.").Value).Value,
-            Exercise.Create(ExerciseId24, LessonSeed.LessonId5, RusPhrase.Create("Они работали в компании дизайнерами?").Value).Value,
-            Exercise.Create(ExerciseId25, LessonSeed.LessonId5, RusPhrase.Create("Ты историк.").Value).Value,
+            Exercise.Create(ExerciseId21, RusPhrase.Create("Они учатся на гидов?").Value).Value,
+            Exercise.Create(ExerciseId22, RusPhrase.Create("Я не буду менеджером.").Value).Value,
+            Exercise.Create(ExerciseId23, RusPhrase.Create("Мы учились на менеджеров.").Value).Value,
+            Exercise.Create(ExerciseId24, RusPhrase.Create("Они работали в компании дизайнерами?").Value).Value,
+            Exercise.Create(ExerciseId25, RusPhrase.Create("Ты историк.").Value).Value,
 
             #endregion
 
             #region Lesson 6
 
-            Exercise.Create(ExerciseId26, LessonSeed.LessonId6, RusPhrase.Create("Эта ручка не больше той.").Value).Value,
-            Exercise.Create(ExerciseId27, LessonSeed.LessonId6, RusPhrase.Create("Этот телевизор не дорогой.").Value).Value,
-            Exercise.Create(ExerciseId28, LessonSeed.LessonId6, RusPhrase.Create("Этот телефон дешевле того?").Value).Value,
-            Exercise.Create(ExerciseId29, LessonSeed.LessonId6, RusPhrase.Create("Эта ручка длиннее той.").Value).Value,
-            Exercise.Create(ExerciseId30, LessonSeed.LessonId6, RusPhrase.Create("Эти апельсины самые маленькие?").Value).Value,
+            Exercise.Create(ExerciseId26, RusPhrase.Create("Эта ручка не больше той.").Value).Value,
+            Exercise.Create(ExerciseId27, RusPhrase.Create("Этот телевизор не дорогой.").Value).Value,
+            Exercise.Create(ExerciseId28, RusPhrase.Create("Этот телефон дешевле того?").Value).Value,
+            Exercise.Create(ExerciseId29, RusPhrase.Create("Эта ручка длиннее той.").Value).Value,
+            Exercise.Create(ExerciseId30, RusPhrase.Create("Эти апельсины самые маленькие?").Value).Value,
 
             #endregion
 
             #region Lesson 7
 
-            Exercise.Create(ExerciseId31, LessonSeed.LessonId7, RusPhrase.Create("Мы будем читать кому-нибудь.").Value).Value,
-            Exercise.Create(ExerciseId32, LessonSeed.LessonId7, RusPhrase.Create("Они чувствуют везде?").Value).Value,
-            Exercise.Create(ExerciseId33, LessonSeed.LessonId7, RusPhrase.Create("Ты встречаешь везде?").Value).Value,
-            Exercise.Create(ExerciseId34, LessonSeed.LessonId7, RusPhrase.Create("Он будет знать всех?").Value).Value,
-            Exercise.Create(ExerciseId35, LessonSeed.LessonId7, RusPhrase.Create("Он никогда не видит.").Value).Value,
+            Exercise.Create(ExerciseId31, RusPhrase.Create("Мы будем читать кому-нибудь.").Value).Value,
+            Exercise.Create(ExerciseId32, RusPhrase.Create("Они чувствуют везде?").Value).Value,
+            Exercise.Create(ExerciseId33, RusPhrase.Create("Ты встречаешь везде?").Value).Value,
+            Exercise.Create(ExerciseId34, RusPhrase.Create("Он будет знать всех?").Value).Value,
+            Exercise.Create(ExerciseId35, RusPhrase.Create("Он никогда не видит.").Value).Value,
 
             #endregion
 
             #region Lesson 8
 
-            Exercise.Create(ExerciseId36, LessonSeed.LessonId8, RusPhrase.Create("Она не повернула нас 6 месяцев назад.").Value).Value,
-            Exercise.Create(ExerciseId37, LessonSeed.LessonId8, RusPhrase.Create("Он будет расти через 2 месяца?").Value).Value,
-            Exercise.Create(ExerciseId38, LessonSeed.LessonId8, RusPhrase.Create("Я расскажу тебе через 6 месяцев.").Value).Value,
-            Exercise.Create(ExerciseId39, LessonSeed.LessonId8, RusPhrase.Create("Ты будешь там через 6 месяцев?").Value).Value,
-            Exercise.Create(ExerciseId40, LessonSeed.LessonId8, RusPhrase.Create("Она любила их в выходные?").Value).Value,
+            Exercise.Create(ExerciseId36, RusPhrase.Create("Она не повернула нас 6 месяцев назад.").Value).Value,
+            Exercise.Create(ExerciseId37, RusPhrase.Create("Он будет расти через 2 месяца?").Value).Value,
+            Exercise.Create(ExerciseId38, RusPhrase.Create("Я расскажу тебе через 6 месяцев.").Value).Value,
+            Exercise.Create(ExerciseId39, RusPhrase.Create("Ты будешь там через 6 месяцев?").Value).Value,
+            Exercise.Create(ExerciseId40, RusPhrase.Create("Она любила их в выходные?").Value).Value,
 
             #endregion
 
             #region Lesson 9
 
-            Exercise.Create(ExerciseId41, LessonSeed.LessonId9, RusPhrase.Create("На полу не было ручек.").Value).Value,
-            Exercise.Create(ExerciseId42, LessonSeed.LessonId9, RusPhrase.Create("Под столом есть ножи.").Value).Value,
-            Exercise.Create(ExerciseId43, LessonSeed.LessonId9, RusPhrase.Create("Под креслом будет мяч.").Value).Value,
-            Exercise.Create(ExerciseId44, LessonSeed.LessonId9, RusPhrase.Create("На столе нет ручки.").Value).Value,
-            Exercise.Create(ExerciseId45, LessonSeed.LessonId9, RusPhrase.Create("Под креслом был стакан?").Value).Value,
+            Exercise.Create(ExerciseId41, RusPhrase.Create("На полу не было ручек.").Value).Value,
+            Exercise.Create(ExerciseId42, RusPhrase.Create("Под столом есть ножи.").Value).Value,
+            Exercise.Create(ExerciseId43, RusPhrase.Create("Под креслом будет мяч.").Value).Value,
+            Exercise.Create(ExerciseId44, RusPhrase.Create("На столе нет ручки.").Value).Value,
+            Exercise.Create(ExerciseId45, RusPhrase.Create("Под креслом был стакан?").Value).Value,
 
             #endregion
 
             #region Lesson 10
 
-            Exercise.Create(ExerciseId46, LessonSeed.LessonId10, RusPhrase.Create("Он идёт на станцию?").Value).Value,
-            Exercise.Create(ExerciseId47, LessonSeed.LessonId10, RusPhrase.Create("Ты не выйдешь из сада.").Value).Value,
-            Exercise.Create(ExerciseId48, LessonSeed.LessonId10, RusPhrase.Create("В комнате не будет шкафов.").Value).Value,
-            Exercise.Create(ExerciseId49, LessonSeed.LessonId10, RusPhrase.Create("На подоконнике будет чашка.").Value).Value,
-            Exercise.Create(ExerciseId50, LessonSeed.LessonId10, RusPhrase.Create("Под столом были стаканы?").Value).Value,
+            Exercise.Create(ExerciseId46, RusPhrase.Create("Он идёт на станцию?").Value).Value,
+            Exercise.Create(ExerciseId47, RusPhrase.Create("Ты не выйдешь из сада.").Value).Value,
+            Exercise.Create(ExerciseId48, RusPhrase.Create("В комнате не будет шкафов.").Value).Value,
+            Exercise.Create(ExerciseId49, RusPhrase.Create("На подоконнике будет чашка.").Value).Value,
+            Exercise.Create(ExerciseId50, RusPhrase.Create("Под столом были стаканы?").Value).Value,
 
             #endregion
 
             #region Lesson 11
 
-            Exercise.Create(ExerciseId51, LessonSeed.LessonId11, RusPhrase.Create("Мы не должны чувствовать.").Value).Value,
-            Exercise.Create(ExerciseId52, LessonSeed.LessonId11, RusPhrase.Create("Нужно мне стоять?").Value).Value,
-            Exercise.Create(ExerciseId53, LessonSeed.LessonId11, RusPhrase.Create("Мы можем закрыть.").Value).Value,
-            Exercise.Create(ExerciseId54, LessonSeed.LessonId11, RusPhrase.Create("Мы не показали.").Value).Value,
-            Exercise.Create(ExerciseId55, LessonSeed.LessonId11, RusPhrase.Create("Она не должна ответить.").Value).Value,
+            Exercise.Create(ExerciseId51, RusPhrase.Create("Мы не должны чувствовать.").Value).Value,
+            Exercise.Create(ExerciseId52, RusPhrase.Create("Нужно мне стоять?").Value).Value,
+            Exercise.Create(ExerciseId53, RusPhrase.Create("Мы можем закрыть.").Value).Value,
+            Exercise.Create(ExerciseId54, RusPhrase.Create("Мы не показали.").Value).Value,
+            Exercise.Create(ExerciseId55, RusPhrase.Create("Она не должна ответить.").Value).Value,
 
             #endregion
 
             #region Lesson 12
 
-            Exercise.Create(ExerciseId56, LessonSeed.LessonId12, RusPhrase.Create("Он читал письмо с 4 до 10 вчера.").Value).Value,
-            Exercise.Create(ExerciseId57, LessonSeed.LessonId12, RusPhrase.Create("Мы отвечали на письмо в 4 вчера.").Value).Value,
-            Exercise.Create(ExerciseId58, LessonSeed.LessonId12, RusPhrase.Create("Ты чувствуешь себя плохо целый день сегодня.").Value).Value,
-            Exercise.Create(ExerciseId59, LessonSeed.LessonId12, RusPhrase.Create("Мы изучали французский целый день вчера.").Value).Value,
-            Exercise.Create(ExerciseId60, LessonSeed.LessonId12, RusPhrase.Create("Ты будешь читать книгу целый день завтра.").Value).Value,
+            Exercise.Create(ExerciseId56, RusPhrase.Create("Он читал письмо с 4 до 10 вчера.").Value).Value,
+            Exercise.Create(ExerciseId57, RusPhrase.Create("Мы отвечали на письмо в 4 вчера.").Value).Value,
+            Exercise.Create(ExerciseId58, RusPhrase.Create("Ты чувствуешь себя плохо целый день сегодня.").Value).Value,
+            Exercise.Create(ExerciseId59, RusPhrase.Create("Мы изучали французский целый день вчера.").Value).Value,
+            Exercise.Create(ExerciseId60, RusPhrase.Create("Ты будешь читать книгу целый день завтра.").Value).Value,
 
             #endregion
 
             #region Lesson 13
 
-            Exercise.Create(ExerciseId61, LessonSeed.LessonId13, RusPhrase.Create("Мне холодно?").Value).Value,
-            Exercise.Create(ExerciseId62, LessonSeed.LessonId13, RusPhrase.Create("У меня не голубые глаза.").Value).Value,
-            Exercise.Create(ExerciseId63, LessonSeed.LessonId13, RusPhrase.Create("Ты здоров.").Value).Value,
-            Exercise.Create(ExerciseId64, LessonSeed.LessonId13, RusPhrase.Create("Вчера было жарко.").Value).Value,
-            Exercise.Create(ExerciseId65, LessonSeed.LessonId13, RusPhrase.Create("Она взрослая.").Value).Value,
+            Exercise.Create(ExerciseId61, RusPhrase.Create("Мне холодно?").Value).Value,
+            Exercise.Create(ExerciseId62, RusPhrase.Create("У меня не голубые глаза.").Value).Value,
+            Exercise.Create(ExerciseId63, RusPhrase.Create("Ты здоров.").Value).Value,
+            Exercise.Create(ExerciseId64, RusPhrase.Create("Вчера было жарко.").Value).Value,
+            Exercise.Create(ExerciseId65, RusPhrase.Create("Она взрослая.").Value).Value,
 
             #endregion
 
             #region Lesson 14
 
-            Exercise.Create(ExerciseId66, LessonSeed.LessonId14, RusPhrase.Create("Беги к ней.").Value).Value,
-            Exercise.Create(ExerciseId67, LessonSeed.LessonId14, RusPhrase.Create("Не поворачивай его тумбочку.").Value).Value,
-            Exercise.Create(ExerciseId68, LessonSeed.LessonId14, RusPhrase.Create("Не бери мой планшет.").Value).Value,
-            Exercise.Create(ExerciseId69, LessonSeed.LessonId14, RusPhrase.Create("Помни про нас.").Value).Value,
-            Exercise.Create(ExerciseId70, LessonSeed.LessonId14, RusPhrase.Create("Пусть он ответит.").Value).Value,
+            Exercise.Create(ExerciseId66, RusPhrase.Create("Беги к ней.").Value).Value,
+            Exercise.Create(ExerciseId67, RusPhrase.Create("Не поворачивай его тумбочку.").Value).Value,
+            Exercise.Create(ExerciseId68, RusPhrase.Create("Не бери мой планшет.").Value).Value,
+            Exercise.Create(ExerciseId69, RusPhrase.Create("Помни про нас.").Value).Value,
+            Exercise.Create(ExerciseId70, RusPhrase.Create("Пусть он ответит.").Value).Value,
 
             #endregion
 
             #region Lesson 15
 
-            Exercise.Create(ExerciseId71, LessonSeed.LessonId15, RusPhrase.Create("Он сбросил вес.").Value).Value,
-            Exercise.Create(ExerciseId72, LessonSeed.LessonId15, RusPhrase.Create("Твой сын просит выключить свет.").Value).Value,
-            Exercise.Create(ExerciseId73, LessonSeed.LessonId15, RusPhrase.Create("Он свалился с пневмонией.").Value).Value,
-            Exercise.Create(ExerciseId74, LessonSeed.LessonId15, RusPhrase.Create("Он взломал дверь.").Value).Value,
-            Exercise.Create(ExerciseId75, LessonSeed.LessonId15, RusPhrase.Create("Цены никогда не падают.").Value).Value,
+            Exercise.Create(ExerciseId71, RusPhrase.Create("Он сбросил вес.").Value).Value,
+            Exercise.Create(ExerciseId72, RusPhrase.Create("Твой сын просит выключить свет.").Value).Value,
+            Exercise.Create(ExerciseId73, RusPhrase.Create("Он свалился с пневмонией.").Value).Value,
+            Exercise.Create(ExerciseId74, RusPhrase.Create("Он взломал дверь.").Value).Value,
+            Exercise.Create(ExerciseId75, RusPhrase.Create("Цены никогда не падают.").Value).Value,
 
             #endregion
 
             #region Lesson 16
 
-            Exercise.Create(ExerciseId76, LessonSeed.LessonId16, RusPhrase.Create("Он только что вышел.").Value).Value,
-            Exercise.Create(ExerciseId77, LessonSeed.LessonId16, RusPhrase.Create("Думаю, что я видел вас где-то.").Value).Value,
-            Exercise.Create(ExerciseId78, LessonSeed.LessonId16, RusPhrase.Create("Я выполнил работу.").Value).Value,
-            Exercise.Create(ExerciseId79, LessonSeed.LessonId16, RusPhrase.Create("Я уже написал письмо своему другу.").Value).Value,
-            Exercise.Create(ExerciseId80, LessonSeed.LessonId16, RusPhrase.Create("Он только что посетил этот супермаркет.").Value).Value,
+            Exercise.Create(ExerciseId76, RusPhrase.Create("Он только что вышел.").Value).Value,
+            Exercise.Create(ExerciseId77, RusPhrase.Create("Думаю, что я видел вас где-то.").Value).Value,
+            Exercise.Create(ExerciseId78, RusPhrase.Create("Я выполнил работу.").Value).Value,
+            Exercise.Create(ExerciseId79, RusPhrase.Create("Я уже написал письмо своему другу.").Value).Value,
+            Exercise.Create(ExerciseId80, RusPhrase.Create("Он только что посетил этот супермаркет.").Value).Value,
 
             #endregion
 
             #region Lesson 17
 
-            Exercise.Create(ExerciseId81, LessonSeed.LessonId17, RusPhrase.Create("Я не успел закончить проект к началу той недели.").Value).Value,
-            Exercise.Create(ExerciseId82, LessonSeed.LessonId17, RusPhrase.Create("Он сделал домашнее задание до того, как его родители вернулись домой?").Value).Value,
-            Exercise.Create(ExerciseId83, LessonSeed.LessonId17, RusPhrase.Create("Он уже написал письмо, когда ты вошел?").Value).Value,
-            Exercise.Create(ExerciseId84, LessonSeed.LessonId17, RusPhrase.Create("Вы вернулись домой до того, как начался дождь.").Value).Value,
-            Exercise.Create(ExerciseId85, LessonSeed.LessonId17, RusPhrase.Create("Когда мы приехали на станцию, поезд уже ушел.").Value).Value,
+            Exercise.Create(ExerciseId81, RusPhrase.Create("Я не успел закончить проект к началу той недели.").Value).Value,
+            Exercise.Create(ExerciseId82, RusPhrase.Create("Он сделал домашнее задание до того, как его родители вернулись домой?").Value).Value,
+            Exercise.Create(ExerciseId83, RusPhrase.Create("Он уже написал письмо, когда ты вошел?").Value).Value,
+            Exercise.Create(ExerciseId84, RusPhrase.Create("Вы вернулись домой до того, как начался дождь.").Value).Value,
+            Exercise.Create(ExerciseId85, RusPhrase.Create("Когда мы приехали на станцию, поезд уже ушел.").Value).Value,
 
             #endregion
 
             #region Lesson 18
 
-            Exercise.Create(ExerciseId86, LessonSeed.LessonId18, RusPhrase.Create("Ученики займут свои места до того, как начнется урок.").Value).Value,
-            Exercise.Create(ExerciseId87, LessonSeed.LessonId18, RusPhrase.Create("Они не успеют выиграть три игры к концу месяца.").Value).Value,
-            Exercise.Create(ExerciseId88, LessonSeed.LessonId18, RusPhrase.Create("Я уже окончу эту работу до того, как вы возвратитесь.").Value).Value,
-            Exercise.Create(ExerciseId89, LessonSeed.LessonId18, RusPhrase.Create("Они еще не отгрузят товар, когда придет ваша телеграмма.").Value).Value,
-            Exercise.Create(ExerciseId90, LessonSeed.LessonId18, RusPhrase.Create("Я не закончу писать доклад к вечеру.").Value).Value,
+            Exercise.Create(ExerciseId86, RusPhrase.Create("Ученики займут свои места до того, как начнется урок.").Value).Value,
+            Exercise.Create(ExerciseId87, RusPhrase.Create("Они не успеют выиграть три игры к концу месяца.").Value).Value,
+            Exercise.Create(ExerciseId88, RusPhrase.Create("Я уже окончу эту работу до того, как вы возвратитесь.").Value).Value,
+            Exercise.Create(ExerciseId89, RusPhrase.Create("Они еще не отгрузят товар, когда придет ваша телеграмма.").Value).Value,
+            Exercise.Create(ExerciseId90, RusPhrase.Create("Я не закончу писать доклад к вечеру.").Value).Value,
 
             #endregion
 
             #region Lesson 20
 
-            Exercise.Create(ExerciseId96, LessonSeed.LessonId20, RusPhrase.Create("Она готовит ужин уже три часа.").Value).Value,
-            Exercise.Create(ExerciseId97, LessonSeed.LessonId20, RusPhrase.Create("Я пекла этот пирог с самого утра.").Value).Value,
-            Exercise.Create(ExerciseId98, LessonSeed.LessonId20, RusPhrase.Create("Рабочие пытаются сдвинуть наш шкаф с места вот уже полчаса.").Value).Value,
-            Exercise.Create(ExerciseId99, LessonSeed.LessonId20, RusPhrase.Create("Я читаю этот журнал с тех пор, как купил его неделю назад.").Value).Value,
-            Exercise.Create(ExerciseId100, LessonSeed.LessonId20, RusPhrase.Create("Я жду свою маму уже давно.").Value).Value,
+            Exercise.Create(ExerciseId96, RusPhrase.Create("Она готовит ужин уже три часа.").Value).Value,
+            Exercise.Create(ExerciseId97, RusPhrase.Create("Я пекла этот пирог с самого утра.").Value).Value,
+            Exercise.Create(ExerciseId98, RusPhrase.Create("Рабочие пытаются сдвинуть наш шкаф с места вот уже полчаса.").Value).Value,
+            Exercise.Create(ExerciseId99, RusPhrase.Create("Я читаю этот журнал с тех пор, как купил его неделю назад.").Value).Value,
+            Exercise.Create(ExerciseId100, RusPhrase.Create("Я жду свою маму уже давно.").Value).Value,
 
             #endregion
 
             #region Lesson 21
 
-            Exercise.Create(ExerciseId101, LessonSeed.LessonId21, RusPhrase.Create("С теп пор показатель быстро рос.").Value).Value,
-            Exercise.Create(ExerciseId102, LessonSeed.LessonId21, RusPhrase.Create("Его руки были грязные, он копал.").Value).Value,
-            Exercise.Create(ExerciseId103, LessonSeed.LessonId21, RusPhrase.Create("Они разговаривали больше часа, до того, как он пришел.").Value).Value,
-            Exercise.Create(ExerciseId104, LessonSeed.LessonId21, RusPhrase.Create("Был час ночи, а соседская собака лаяла уже 2 часа.").Value).Value,
-            Exercise.Create(ExerciseId105, LessonSeed.LessonId21, RusPhrase.Create("Моя собака играла уже полчаса перед тем, как мы пошли гулять.").Value).Value,
+            Exercise.Create(ExerciseId101, RusPhrase.Create("С теп пор показатель быстро рос.").Value).Value,
+            Exercise.Create(ExerciseId102, RusPhrase.Create("Его руки были грязные, он копал.").Value).Value,
+            Exercise.Create(ExerciseId103, RusPhrase.Create("Они разговаривали больше часа, до того, как он пришел.").Value).Value,
+            Exercise.Create(ExerciseId104, RusPhrase.Create("Был час ночи, а соседская собака лаяла уже 2 часа.").Value).Value,
+            Exercise.Create(ExerciseId105, RusPhrase.Create("Моя собака играла уже полчаса перед тем, как мы пошли гулять.").Value).Value,
 
             #endregion
 
             #region Lesson 22
 
-            Exercise.Create(ExerciseId106, LessonSeed.LessonId22, RusPhrase.Create("Они будут разговаривать уже свыше часа, к тому моменту, когда приедет он.").Value).Value,
-            Exercise.Create(ExerciseId107, LessonSeed.LessonId22, RusPhrase.Create("К первому июня он будет работать на этам заводе уже двадцать лет.").Value).Value,
-            Exercise.Create(ExerciseId108, LessonSeed.LessonId22, RusPhrase.Create("К следующему рождеству я уже буду преподавать 10 лет.").Value).Value,
-            Exercise.Create(ExerciseId109, LessonSeed.LessonId22, RusPhrase.Create("Ты будешь ждать свыше двух часов, прежде чем ее самолет, наконец, приземлится?").Value).Value,
-            Exercise.Create(ExerciseId110, LessonSeed.LessonId22, RusPhrase.Create("В следующем месяце мы будем жить вместе уже 15 лет.").Value).Value,
+            Exercise.Create(ExerciseId106, RusPhrase.Create("Они будут разговаривать уже свыше часа, к тому моменту, когда приедет он.").Value).Value,
+            Exercise.Create(ExerciseId107, RusPhrase.Create("К первому июня он будет работать на этом заводе уже двадцать лет.").Value).Value,
+            Exercise.Create(ExerciseId108, RusPhrase.Create("К следующему рождеству я уже буду преподавать 10 лет.").Value).Value,
+            Exercise.Create(ExerciseId109, RusPhrase.Create("Ты будешь ждать свыше двух часов, прежде чем ее самолет, наконец, приземлится?").Value).Value,
+            Exercise.Create(ExerciseId110, RusPhrase.Create("В следующем месяце мы будем жить вместе уже 15 лет.").Value).Value,
 
             #endregion
 
             #region Lesson 24
 
-            Exercise.Create(ExerciseId116, LessonSeed.LessonId24, RusPhrase.Create("Они будут разговаривать уже свыше часа, к тому моменту, когда приедет он.").Value).Value,
-            Exercise.Create(ExerciseId117, LessonSeed.LessonId24, RusPhrase.Create("К первому июня он будет работать на этам заводе уже двадцать лет.").Value).Value,
-            Exercise.Create(ExerciseId118, LessonSeed.LessonId24, RusPhrase.Create("К следующему рождеству я уже буду преподавать 10 лет.").Value).Value,
-            Exercise.Create(ExerciseId119, LessonSeed.LessonId24, RusPhrase.Create("Ты будешь ждать свыше двух часов, прежде чем ее самолет, наконец, приземлится?").Value).Value,
-            Exercise.Create(ExerciseId120, LessonSeed.LessonId24, RusPhrase.Create("В следующем месяце мы будем жить вместе уже 15 лет.").Value).Value,
+            Exercise.Create(ExerciseId116, RusPhrase.Create("Они будут разговаривать уже свыше часа, к тому моменту, когда приедет он.").Value).Value,
+            Exercise.Create(ExerciseId117, RusPhrase.Create("К первому июня он будет работать на этом заводе уже двадцать лет.").Value).Value,
+            Exercise.Create(ExerciseId118, RusPhrase.Create("К следующему рождеству я уже буду преподавать 10 лет.").Value).Value,
+            Exercise.Create(ExerciseId119, RusPhrase.Create("Ты будешь ждать свыше двух часов, прежде чем ее самолет, наконец, приземлится?").Value).Value,
+            Exercise.Create(ExerciseId120, RusPhrase.Create("В следующем месяце мы будем жить вместе уже 15 лет.").Value).Value,
 
             #endregion
 
             #region Lesson 25
 
-            Exercise.Create(ExerciseId121, LessonSeed.LessonId25, RusPhrase.Create("Я был разочарован услышать, что все больше и больше людей теряют свою работу.").Value).Value,
-            Exercise.Create(ExerciseId122, LessonSeed.LessonId25, RusPhrase.Create("Измученный, он провалился в сон.").Value).Value,
-            Exercise.Create(ExerciseId123, LessonSeed.LessonId25, RusPhrase.Create("Прибор, купленный в специализированнмом магазине, имеет гарантию.").Value).Value,
-            Exercise.Create(ExerciseId124, LessonSeed.LessonId25, RusPhrase.Create("Они не смогли оправиться от проигранной войны.").Value).Value,
-            Exercise.Create(ExerciseId125, LessonSeed.LessonId25, RusPhrase.Create("После компьютерного сбоя мы не смогли восстановить потерянные данные.").Value).Value,
+            Exercise.Create(ExerciseId121, RusPhrase.Create("Я был разочарован услышать, что все больше и больше людей теряют свою работу.").Value).Value,
+            Exercise.Create(ExerciseId122, RusPhrase.Create("Измученный, он провалился в сон.").Value).Value,
+            Exercise.Create(ExerciseId123, RusPhrase.Create("Прибор, купленный в специализированном магазине, имеет гарантию.").Value).Value,
+            Exercise.Create(ExerciseId124, RusPhrase.Create("Они не смогли оправиться от проигранной войны.").Value).Value,
+            Exercise.Create(ExerciseId125, RusPhrase.Create("После компьютерного сбоя мы не смогли восстановить потерянные данные.").Value).Value,
 
             #endregion
 
             #region Lesson 26
 
-            Exercise.Create(ExerciseId126, LessonSeed.LessonId26, RusPhrase.Create("Купив немного новой одежды, она почувствовала себя намного лучше.").Value).Value,
-            Exercise.Create(ExerciseId127, LessonSeed.LessonId26, RusPhrase.Create("Посмотрев много журналов и газет, он начал писать свой доклад.").Value).Value,
-            Exercise.Create(ExerciseId128, LessonSeed.LessonId26, RusPhrase.Create("Приняв мой совет, она последовала ему.").Value).Value,
-            Exercise.Create(ExerciseId129, LessonSeed.LessonId26, RusPhrase.Create("Заплатив штраф, он больше не нарушал закон.").Value).Value,
-            Exercise.Create(ExerciseId130, LessonSeed.LessonId26, RusPhrase.Create("Обыскав квартиру, они не не нашли никаих доказательств.").Value).Value,
+            Exercise.Create(ExerciseId126, RusPhrase.Create("Купив немного новой одежды, она почувствовала себя намного лучше.").Value).Value,
+            Exercise.Create(ExerciseId127, RusPhrase.Create("Посмотрев много журналов и газет, он начал писать свой доклад.").Value).Value,
+            Exercise.Create(ExerciseId128, RusPhrase.Create("Приняв мой совет, она последовала ему.").Value).Value,
+            Exercise.Create(ExerciseId129, RusPhrase.Create("Заплатив штраф, он больше не нарушал закон.").Value).Value,
+            Exercise.Create(ExerciseId130, RusPhrase.Create("Обыскав квартиру, они не не нашли никаких доказательств.").Value).Value,
 
             #endregion
 
             #region Lesson 28
 
-            Exercise.Create(ExerciseId136, LessonSeed.LessonId28, RusPhrase.Create("Офис убирают каждый день?").Value).Value,
-            Exercise.Create(ExerciseId137, LessonSeed.LessonId28, RusPhrase.Create("Я приглашён на вечеринку.").Value).Value,
-            Exercise.Create(ExerciseId138, LessonSeed.LessonId28, RusPhrase.Create("Ему предложили хорошую рабту в большой строительность компании.").Value).Value,
-            Exercise.Create(ExerciseId139, LessonSeed.LessonId28, RusPhrase.Create("Ужин подается после семи.").Value).Value,
-            Exercise.Create(ExerciseId140, LessonSeed.LessonId28, RusPhrase.Create("Его преследовала полиция.").Value).Value,
+            Exercise.Create(ExerciseId136, RusPhrase.Create("Офис убирают каждый день?").Value).Value,
+            Exercise.Create(ExerciseId137, RusPhrase.Create("Я приглашён на вечеринку.").Value).Value,
+            Exercise.Create(ExerciseId138, RusPhrase.Create("Ему предложили хорошую работу в большой строительной компании.").Value).Value,
+            Exercise.Create(ExerciseId139, RusPhrase.Create("Ужин подается после семи.").Value).Value,
+            Exercise.Create(ExerciseId140, RusPhrase.Create("Его преследовала полиция.").Value).Value,
 
             #endregion
 
             #region Lesson 29
 
-            Exercise.Create(ExerciseId141, LessonSeed.LessonId29, RusPhrase.Create("Вопрос обсуждался в семь часов?").Value).Value,
-            Exercise.Create(ExerciseId142, LessonSeed.LessonId29, RusPhrase.Create("Комнату в этот момент моют.").Value).Value,
-            Exercise.Create(ExerciseId143, LessonSeed.LessonId29, RusPhrase.Create("Его осматривает доктор в настоящий момент.").Value).Value,
-            Exercise.Create(ExerciseId144, LessonSeed.LessonId29, RusPhrase.Create("Его не преследует полиция в даный момент.").Value).Value,
-            Exercise.Create(ExerciseId145, LessonSeed.LessonId29, RusPhrase.Create("Его дом строится сейчас?").Value).Value,
+            Exercise.Create(ExerciseId141, RusPhrase.Create("Вопрос обсуждался в семь часов?").Value).Value,
+            Exercise.Create(ExerciseId142, RusPhrase.Create("Комнату в этот момент моют.").Value).Value,
+            Exercise.Create(ExerciseId143, RusPhrase.Create("Его осматривает доктор в настоящий момент.").Value).Value,
+            Exercise.Create(ExerciseId144, RusPhrase.Create("Его не преследует полиция в данный момент.").Value).Value,
+            Exercise.Create(ExerciseId145, RusPhrase.Create("Его дом строится сейчас?").Value).Value,
 
             #endregion
 
             #region Lesson 30
 
-            Exercise.Create(ExerciseId146, LessonSeed.LessonId30, RusPhrase.Create("Эта книга уже будет прочитана завтра к 2 часам?").Value).Value,
-            Exercise.Create(ExerciseId147, LessonSeed.LessonId30, RusPhrase.Create("Эта книга уже прочитана.").Value).Value,
-            Exercise.Create(ExerciseId148, LessonSeed.LessonId30, RusPhrase.Create("Сообщение еще не было прочитано к двум часам.").Value).Value,
-            Exercise.Create(ExerciseId149, LessonSeed.LessonId30, RusPhrase.Create("Ее уже пригласили в ресторан.").Value).Value,
-            Exercise.Create(ExerciseId150, LessonSeed.LessonId30, RusPhrase.Create("Книги уже распроданы?").Value).Value,
+            Exercise.Create(ExerciseId146, RusPhrase.Create("Эта книга уже будет прочитана завтра к 2 часам?").Value).Value,
+            Exercise.Create(ExerciseId147, RusPhrase.Create("Эта книга уже прочитана.").Value).Value,
+            Exercise.Create(ExerciseId148, RusPhrase.Create("Сообщение еще не было прочитано к двум часам.").Value).Value,
+            Exercise.Create(ExerciseId149, RusPhrase.Create("Ее уже пригласили в ресторан.").Value).Value,
+            Exercise.Create(ExerciseId150, RusPhrase.Create("Книги уже распроданы?").Value).Value,
 
             #endregion
         ];
@@ -2014,6 +1995,1345 @@ public static class ExerciseSeed
             Word.Create(WordId.Create(Guid.Parse("12a68596-6621-46eb-8d6a-a006a2f5a16f")), ExerciseId150, WordNumber.Create(3).Value, Text.Create("books").Value, WordType.Noun),
             Word.Create(WordId.Create(Guid.Parse("ef696647-88e8-4de3-b883-816513b4474c")), ExerciseId150, WordNumber.Create(4).Value, Text.Create("been").Value, WordType.PrimaryVerb),
             Word.Create(WordId.Create(Guid.Parse("2678982c-4549-4124-85fd-29ef90acdc2d")), ExerciseId150, WordNumber.Create(5).Value, Text.Create("sold?").Value, WordType.Verb),
+
+            #endregion
+        ];
+    }
+
+    public static IReadOnlyList<object> GetLessonIdsForExercises()
+    {
+        return
+        [
+            #region Lesson 1
+
+            new
+            {
+                Id = 1,
+                Value = LessonSeed.GuidForLessonId1,
+                ExerciseId = ExerciseId1,
+            },
+            new
+            {
+                Id = 2,
+                Value = LessonSeed.GuidForLessonId1,
+                ExerciseId = ExerciseId2,
+            },
+            new
+            {
+                Id = 3,
+                Value = LessonSeed.GuidForLessonId1,
+                ExerciseId = ExerciseId3,
+            },
+            new
+            {
+                Id = 4,
+                Value = LessonSeed.GuidForLessonId1,
+                ExerciseId = ExerciseId4,
+            },
+            new
+            {
+                Id = 5,
+                Value = LessonSeed.GuidForLessonId1,
+                ExerciseId = ExerciseId5,
+            },
+
+            #endregion
+
+            #region Lesson 2
+
+            new
+            {
+                Id = 6,
+                Value = LessonSeed.GuidForLessonId2,
+                ExerciseId = ExerciseId6,
+            },
+            new
+            {
+                Id = 7,
+                Value = LessonSeed.GuidForLessonId2,
+                ExerciseId = ExerciseId7,
+            },
+            new
+            {
+                Id = 8,
+                Value = LessonSeed.GuidForLessonId2,
+                ExerciseId = ExerciseId8,
+            },
+            new
+            {
+                Id = 9,
+                Value = LessonSeed.GuidForLessonId2,
+                ExerciseId = ExerciseId9,
+            },
+            new
+            {
+                Id = 10,
+                Value = LessonSeed.GuidForLessonId2,
+                ExerciseId = ExerciseId10,
+            },
+
+            #endregion
+
+            #region Lesson 3
+
+            new
+            {
+                Id = 11,
+                Value = LessonSeed.GuidForLessonId3,
+                ExerciseId = ExerciseId11,
+            },
+            new
+            {
+                Id = 12,
+                Value = LessonSeed.GuidForLessonId3,
+                ExerciseId = ExerciseId12,
+            },
+            new
+            {
+                Id = 13,
+                Value = LessonSeed.GuidForLessonId3,
+                ExerciseId = ExerciseId13,
+            },
+            new
+            {
+                Id = 14,
+                Value = LessonSeed.GuidForLessonId3,
+                ExerciseId = ExerciseId14,
+            },
+            new
+            {
+                Id = 15,
+                Value = LessonSeed.GuidForLessonId3,
+                ExerciseId = ExerciseId15,
+            },
+
+            #endregion
+
+            #region Lesson 4
+
+            new
+            {
+                Id = 16,
+                Value = LessonSeed.GuidForLessonId4,
+                ExerciseId = ExerciseId16,
+            },
+            new
+            {
+                Id = 17,
+                Value = LessonSeed.GuidForLessonId4,
+                ExerciseId = ExerciseId17,
+            },
+            new
+            {
+                Id = 18,
+                Value = LessonSeed.GuidForLessonId4,
+                ExerciseId = ExerciseId18,
+            },
+            new
+            {
+                Id = 19,
+                Value = LessonSeed.GuidForLessonId4,
+                ExerciseId = ExerciseId19,
+            },
+            new
+            {
+                Id = 20,
+                Value = LessonSeed.GuidForLessonId4,
+                ExerciseId = ExerciseId20,
+            },
+
+            #endregion
+
+            #region Lesson 5
+
+            new
+            {
+                Id = 21,
+                Value = LessonSeed.GuidForLessonId5,
+                ExerciseId = ExerciseId21,
+            },
+            new
+            {
+                Id = 22,
+                Value = LessonSeed.GuidForLessonId5,
+                ExerciseId = ExerciseId22,
+            },
+            new
+            {
+                Id = 23,
+                Value = LessonSeed.GuidForLessonId5,
+                ExerciseId = ExerciseId23,
+            },
+            new
+            {
+                Id = 24,
+                Value = LessonSeed.GuidForLessonId5,
+                ExerciseId = ExerciseId24,
+            },
+            new
+            {
+                Id = 25,
+                Value = LessonSeed.GuidForLessonId5,
+                ExerciseId = ExerciseId25,
+            },
+
+            #endregion
+
+            #region Lesson 6
+
+            new
+            {
+                Id = 26,
+                Value = LessonSeed.GuidForLessonId6,
+                ExerciseId = ExerciseId26,
+            },
+            new
+            {
+                Id = 27,
+                Value = LessonSeed.GuidForLessonId6,
+                ExerciseId = ExerciseId27,
+            },
+            new
+            {
+                Id = 28,
+                Value = LessonSeed.GuidForLessonId6,
+                ExerciseId = ExerciseId28,
+            },
+            new
+            {
+                Id = 29,
+                Value = LessonSeed.GuidForLessonId6,
+                ExerciseId = ExerciseId29,
+            },
+            new
+            {
+                Id = 30,
+                Value = LessonSeed.GuidForLessonId6,
+                ExerciseId = ExerciseId30,
+            },
+
+            #endregion
+
+            #region Lesson 7
+
+            new
+            {
+                Id = 31,
+                Value = LessonSeed.GuidForLessonId7,
+                ExerciseId = ExerciseId31,
+            },
+            new
+            {
+                Id = 32,
+                Value = LessonSeed.GuidForLessonId7,
+                ExerciseId = ExerciseId32,
+            },
+            new
+            {
+                Id = 33,
+                Value = LessonSeed.GuidForLessonId7,
+                ExerciseId = ExerciseId33,
+            },
+            new
+            {
+                Id = 34,
+                Value = LessonSeed.GuidForLessonId7,
+                ExerciseId = ExerciseId34,
+            },
+            new
+            {
+                Id = 35,
+                Value = LessonSeed.GuidForLessonId7,
+                ExerciseId = ExerciseId35,
+            },
+
+            #endregion
+
+            #region Lesson 8
+
+            new
+            {
+                Id = 36,
+                Value = LessonSeed.GuidForLessonId8,
+                ExerciseId = ExerciseId36,
+            },
+            new
+            {
+                Id = 37,
+                Value = LessonSeed.GuidForLessonId8,
+                ExerciseId = ExerciseId37,
+            },
+            new
+            {
+                Id = 38,
+                Value = LessonSeed.GuidForLessonId8,
+                ExerciseId = ExerciseId38,
+            },
+            new
+            {
+                Id = 39,
+                Value = LessonSeed.GuidForLessonId8,
+                ExerciseId = ExerciseId39,
+            },
+            new
+            {
+                Id = 40,
+                Value = LessonSeed.GuidForLessonId8,
+                ExerciseId = ExerciseId40,
+            },
+
+            #endregion
+
+            #region Lesson 9
+
+            new
+            {
+                Id = 41,
+                Value = LessonSeed.GuidForLessonId9,
+                ExerciseId = ExerciseId41,
+            },
+            new
+            {
+                Id = 42,
+                Value = LessonSeed.GuidForLessonId9,
+                ExerciseId = ExerciseId42,
+            },
+            new
+            {
+                Id = 43,
+                Value = LessonSeed.GuidForLessonId9,
+                ExerciseId = ExerciseId43,
+            },
+            new
+            {
+                Id = 44,
+                Value = LessonSeed.GuidForLessonId9,
+                ExerciseId = ExerciseId44,
+            },
+            new
+            {
+                Id = 45,
+                Value = LessonSeed.GuidForLessonId9,
+                ExerciseId = ExerciseId45,
+            },
+
+            #endregion
+
+            #region Lesson 10
+
+            new
+            {
+                Id = 46,
+                Value = LessonSeed.GuidForLessonId10,
+                ExerciseId = ExerciseId46,
+            },
+            new
+            {
+                Id = 47,
+                Value = LessonSeed.GuidForLessonId10,
+                ExerciseId = ExerciseId47,
+            },
+            new
+            {
+                Id = 48,
+                Value = LessonSeed.GuidForLessonId10,
+                ExerciseId = ExerciseId48,
+            },
+            new
+            {
+                Id = 49,
+                Value = LessonSeed.GuidForLessonId10,
+                ExerciseId = ExerciseId49,
+            },
+            new
+            {
+                Id = 50,
+                Value = LessonSeed.GuidForLessonId10,
+                ExerciseId = ExerciseId50,
+            },
+
+            #endregion
+
+            #region Lesson 11
+
+            new
+            {
+                Id = 51,
+                Value = LessonSeed.GuidForLessonId11,
+                ExerciseId = ExerciseId51,
+            },
+            new
+            {
+                Id = 52,
+                Value = LessonSeed.GuidForLessonId11,
+                ExerciseId = ExerciseId52,
+            },
+            new
+            {
+                Id = 53,
+                Value = LessonSeed.GuidForLessonId11,
+                ExerciseId = ExerciseId53,
+            },
+            new
+            {
+                Id = 54,
+                Value = LessonSeed.GuidForLessonId11,
+                ExerciseId = ExerciseId54,
+            },
+            new
+            {
+                Id = 55,
+                Value = LessonSeed.GuidForLessonId11,
+                ExerciseId = ExerciseId55,
+            },
+
+            #endregion
+
+            #region Lesson 12
+
+            new
+            {
+                Id = 56,
+                Value = LessonSeed.GuidForLessonId12,
+                ExerciseId = ExerciseId56,
+            },
+            new
+            {
+                Id = 57,
+                Value = LessonSeed.GuidForLessonId12,
+                ExerciseId = ExerciseId57,
+            },
+            new
+            {
+                Id = 58,
+                Value = LessonSeed.GuidForLessonId12,
+                ExerciseId = ExerciseId58,
+            },
+            new
+            {
+                Id = 59,
+                Value = LessonSeed.GuidForLessonId12,
+                ExerciseId = ExerciseId59,
+            },
+            new
+            {
+                Id = 60,
+                Value = LessonSeed.GuidForLessonId12,
+                ExerciseId = ExerciseId60,
+            },
+
+            #endregion
+
+            #region Lesson 13
+
+            new
+            {
+                Id = 61,
+                Value = LessonSeed.GuidForLessonId13,
+                ExerciseId = ExerciseId61,
+            },
+            new
+            {
+                Id = 62,
+                Value = LessonSeed.GuidForLessonId13,
+                ExerciseId = ExerciseId62,
+            },
+            new
+            {
+                Id = 63,
+                Value = LessonSeed.GuidForLessonId13,
+                ExerciseId = ExerciseId63,
+            },
+            new
+            {
+                Id = 64,
+                Value = LessonSeed.GuidForLessonId13,
+                ExerciseId = ExerciseId64,
+            },
+            new
+            {
+                Id = 65,
+                Value = LessonSeed.GuidForLessonId13,
+                ExerciseId = ExerciseId65,
+            },
+
+            #endregion
+
+            #region Lesson 14
+
+            new
+            {
+                Id = 66,
+                Value = LessonSeed.GuidForLessonId14,
+                ExerciseId = ExerciseId66,
+            },
+            new
+            {
+                Id = 67,
+                Value = LessonSeed.GuidForLessonId14,
+                ExerciseId = ExerciseId67,
+            },
+            new
+            {
+                Id = 68,
+                Value = LessonSeed.GuidForLessonId14,
+                ExerciseId = ExerciseId68,
+            },
+            new
+            {
+                Id = 69,
+                Value = LessonSeed.GuidForLessonId14,
+                ExerciseId = ExerciseId69,
+            },
+            new
+            {
+                Id = 70,
+                Value = LessonSeed.GuidForLessonId14,
+                ExerciseId = ExerciseId70,
+            },
+
+            #endregion
+
+            #region Lesson 15
+
+            new
+            {
+                Id = 71,
+                Value = LessonSeed.GuidForLessonId15,
+                ExerciseId = ExerciseId71,
+            },
+            new
+            {
+                Id = 72,
+                Value = LessonSeed.GuidForLessonId15,
+                ExerciseId = ExerciseId72,
+            },
+            new
+            {
+                Id = 73,
+                Value = LessonSeed.GuidForLessonId15,
+                ExerciseId = ExerciseId73,
+            },
+            new
+            {
+                Id = 74,
+                Value = LessonSeed.GuidForLessonId15,
+                ExerciseId = ExerciseId74,
+            },
+            new
+            {
+                Id = 75,
+                Value = LessonSeed.GuidForLessonId15,
+                ExerciseId = ExerciseId75,
+            },
+
+            #endregion
+
+            #region Lesson 16
+
+            new
+            {
+                Id = 76,
+                Value = LessonSeed.GuidForLessonId16,
+                ExerciseId = ExerciseId76,
+            },
+            new
+            {
+                Id = 77,
+                Value = LessonSeed.GuidForLessonId16,
+                ExerciseId = ExerciseId77,
+            },
+            new
+            {
+                Id = 78,
+                Value = LessonSeed.GuidForLessonId16,
+                ExerciseId = ExerciseId78,
+            },
+            new
+            {
+                Id = 79,
+                Value = LessonSeed.GuidForLessonId16,
+                ExerciseId = ExerciseId79,
+            },
+            new
+            {
+                Id = 80,
+                Value = LessonSeed.GuidForLessonId16,
+                ExerciseId = ExerciseId80,
+            },
+
+            #endregion
+
+            #region Lesson 17
+
+            new
+            {
+                Id = 81,
+                Value = LessonSeed.GuidForLessonId17,
+                ExerciseId = ExerciseId81,
+            },
+            new
+            {
+                Id = 82,
+                Value = LessonSeed.GuidForLessonId17,
+                ExerciseId = ExerciseId82,
+            },
+            new
+            {
+                Id = 83,
+                Value = LessonSeed.GuidForLessonId17,
+                ExerciseId = ExerciseId83,
+            },
+            new
+            {
+                Id = 84,
+                Value = LessonSeed.GuidForLessonId17,
+                ExerciseId = ExerciseId84,
+            },
+            new
+            {
+                Id = 85,
+                Value = LessonSeed.GuidForLessonId17,
+                ExerciseId = ExerciseId85,
+            },
+
+            #endregion
+
+            #region Lesson 18
+
+            new
+            {
+                Id = 86,
+                Value = LessonSeed.GuidForLessonId18,
+                ExerciseId = ExerciseId86,
+            },
+            new
+            {
+                Id = 87,
+                Value = LessonSeed.GuidForLessonId18,
+                ExerciseId = ExerciseId87,
+            },
+            new
+            {
+                Id = 88,
+                Value = LessonSeed.GuidForLessonId18,
+                ExerciseId = ExerciseId88,
+            },
+            new
+            {
+                Id = 89,
+                Value = LessonSeed.GuidForLessonId18,
+                ExerciseId = ExerciseId89,
+            },
+            new
+            {
+                Id = 90,
+                Value = LessonSeed.GuidForLessonId18,
+                ExerciseId = ExerciseId90,
+            },
+
+            #endregion
+
+            #region Lesson 20
+
+            new
+            {
+                Id = 96,
+                Value = LessonSeed.GuidForLessonId20,
+                ExerciseId = ExerciseId96,
+            },
+            new
+            {
+                Id = 97,
+                Value = LessonSeed.GuidForLessonId20,
+                ExerciseId = ExerciseId97,
+            },
+            new
+            {
+                Id = 98,
+                Value = LessonSeed.GuidForLessonId20,
+                ExerciseId = ExerciseId98,
+            },
+            new
+            {
+                Id = 99,
+                Value = LessonSeed.GuidForLessonId20,
+                ExerciseId = ExerciseId99,
+            },
+            new
+            {
+                Id = 100,
+                Value = LessonSeed.GuidForLessonId20,
+                ExerciseId = ExerciseId100,
+            },
+
+            #endregion
+
+            #region Lesson 21
+
+            new
+            {
+                Id = 101,
+                Value = LessonSeed.GuidForLessonId21,
+                ExerciseId = ExerciseId101,
+            },
+            new
+            {
+                Id = 102,
+                Value = LessonSeed.GuidForLessonId21,
+                ExerciseId = ExerciseId102,
+            },
+            new
+            {
+                Id = 103,
+                Value = LessonSeed.GuidForLessonId21,
+                ExerciseId = ExerciseId103,
+            },
+            new
+            {
+                Id = 104,
+                Value = LessonSeed.GuidForLessonId21,
+                ExerciseId = ExerciseId104,
+            },
+            new
+            {
+                Id = 105,
+                Value = LessonSeed.GuidForLessonId21,
+                ExerciseId = ExerciseId105,
+            },
+
+            #endregion
+
+            #region Lesson 22
+
+            new
+            {
+                Id = 106,
+                Value = LessonSeed.GuidForLessonId22,
+                ExerciseId = ExerciseId106,
+            },
+            new
+            {
+                Id = 107,
+                Value = LessonSeed.GuidForLessonId22,
+                ExerciseId = ExerciseId107,
+            },
+            new
+            {
+                Id = 108,
+                Value = LessonSeed.GuidForLessonId22,
+                ExerciseId = ExerciseId108,
+            },
+            new
+            {
+                Id = 109,
+                Value = LessonSeed.GuidForLessonId22,
+                ExerciseId = ExerciseId109,
+            },
+            new
+            {
+                Id = 110,
+                Value = LessonSeed.GuidForLessonId22,
+                ExerciseId = ExerciseId110,
+            },
+
+            #endregion
+
+            #region Lesson 24
+
+            new
+            {
+                Id = 116,
+                Value = LessonSeed.GuidForLessonId24,
+                ExerciseId = ExerciseId116,
+            },
+            new
+            {
+                Id = 117,
+                Value = LessonSeed.GuidForLessonId24,
+                ExerciseId = ExerciseId117,
+            },
+            new
+            {
+                Id = 118,
+                Value = LessonSeed.GuidForLessonId24,
+                ExerciseId = ExerciseId118,
+            },
+            new
+            {
+                Id = 119,
+                Value = LessonSeed.GuidForLessonId24,
+                ExerciseId = ExerciseId119,
+            },
+            new
+            {
+                Id = 120,
+                Value = LessonSeed.GuidForLessonId24,
+                ExerciseId = ExerciseId120,
+            },
+
+            #endregion
+
+            #region Lesson 25
+
+            new
+            {
+                Id = 121,
+                Value = LessonSeed.GuidForLessonId25,
+                ExerciseId = ExerciseId121,
+            },
+            new
+            {
+                Id = 122,
+                Value = LessonSeed.GuidForLessonId25,
+                ExerciseId = ExerciseId122,
+            },
+            new
+            {
+                Id = 123,
+                Value = LessonSeed.GuidForLessonId25,
+                ExerciseId = ExerciseId123,
+            },
+            new
+            {
+                Id = 124,
+                Value = LessonSeed.GuidForLessonId25,
+                ExerciseId = ExerciseId124,
+            },
+            new
+            {
+                Id = 125,
+                Value = LessonSeed.GuidForLessonId25,
+                ExerciseId = ExerciseId125,
+            },
+
+            #endregion
+
+            #region Lesson 26
+
+            new
+            {
+                Id = 126,
+                Value = LessonSeed.GuidForLessonId26,
+                ExerciseId = ExerciseId126,
+            },
+            new
+            {
+                Id = 127,
+                Value = LessonSeed.GuidForLessonId26,
+                ExerciseId = ExerciseId127,
+            },
+            new
+            {
+                Id = 128,
+                Value = LessonSeed.GuidForLessonId26,
+                ExerciseId = ExerciseId128,
+            },
+            new
+            {
+                Id = 129,
+                Value = LessonSeed.GuidForLessonId26,
+                ExerciseId = ExerciseId129,
+            },
+            new
+            {
+                Id = 130,
+                Value = LessonSeed.GuidForLessonId26,
+                ExerciseId = ExerciseId130,
+            },
+
+            #endregion
+
+            #region Lesson 28
+
+            new
+            {
+                Id = 136,
+                Value = LessonSeed.GuidForLessonId28,
+                ExerciseId = ExerciseId136,
+            },
+            new
+            {
+                Id = 137,
+                Value = LessonSeed.GuidForLessonId28,
+                ExerciseId = ExerciseId137,
+            },
+            new
+            {
+                Id = 138,
+                Value = LessonSeed.GuidForLessonId28,
+                ExerciseId = ExerciseId138,
+            },
+            new
+            {
+                Id = 139,
+                Value = LessonSeed.GuidForLessonId28,
+                ExerciseId = ExerciseId139,
+            },
+            new
+            {
+                Id = 140,
+                Value = LessonSeed.GuidForLessonId28,
+                ExerciseId = ExerciseId140,
+            },
+
+            #endregion
+
+            #region Lesson 29
+
+            new
+            {
+                Id = 141,
+                Value = LessonSeed.GuidForLessonId29,
+                ExerciseId = ExerciseId141,
+            },
+            new
+            {
+                Id = 142,
+                Value = LessonSeed.GuidForLessonId29,
+                ExerciseId = ExerciseId142,
+            },
+            new
+            {
+                Id = 143,
+                Value = LessonSeed.GuidForLessonId29,
+                ExerciseId = ExerciseId143,
+            },
+            new
+            {
+                Id = 144,
+                Value = LessonSeed.GuidForLessonId29,
+                ExerciseId = ExerciseId144,
+            },
+            new
+            {
+                Id = 145,
+                Value = LessonSeed.GuidForLessonId29,
+                ExerciseId = ExerciseId145,
+            },
+
+            #endregion
+
+            #region Lesson 30
+
+            new
+            {
+                Id = 146,
+                Value = LessonSeed.GuidForLessonId30,
+                ExerciseId = ExerciseId146,
+            },
+            new
+            {
+                Id = 147,
+                Value = LessonSeed.GuidForLessonId30,
+                ExerciseId = ExerciseId147,
+            },
+            new
+            {
+                Id = 148,
+                Value = LessonSeed.GuidForLessonId30,
+                ExerciseId = ExerciseId148,
+            },
+            new
+            {
+                Id = 149,
+                Value = LessonSeed.GuidForLessonId30,
+                ExerciseId = ExerciseId149,
+            },
+            new
+            {
+                Id = 150,
+                Value = LessonSeed.GuidForLessonId30,
+                ExerciseId = ExerciseId150,
+            },
+
+            #endregion
+
+            #region Lesson 19
+
+            new
+            {
+                Id = 156,
+                Value = LessonSeed.GuidForLessonId19,
+                ExerciseId = ExerciseId76,
+            },
+            new
+            {
+                Id = 157,
+                Value = LessonSeed.GuidForLessonId19,
+                ExerciseId = ExerciseId77,
+            },
+            new
+            {
+                Id = 158,
+                Value = LessonSeed.GuidForLessonId19,
+                ExerciseId = ExerciseId78,
+            },
+            new
+            {
+                Id = 159,
+                Value = LessonSeed.GuidForLessonId19,
+                ExerciseId = ExerciseId79,
+            },
+            new
+            {
+                Id = 160,
+                Value = LessonSeed.GuidForLessonId19,
+                ExerciseId = ExerciseId80,
+            },
+
+            new
+            {
+                Id = 161,
+                Value = LessonSeed.GuidForLessonId19,
+                ExerciseId = ExerciseId81,
+            },
+            new
+            {
+                Id = 162,
+                Value = LessonSeed.GuidForLessonId19,
+                ExerciseId = ExerciseId82,
+            },
+            new
+            {
+                Id = 163,
+                Value = LessonSeed.GuidForLessonId19,
+                ExerciseId = ExerciseId83,
+            },
+            new
+            {
+                Id = 164,
+                Value = LessonSeed.GuidForLessonId19,
+                ExerciseId = ExerciseId84,
+            },
+            new
+            {
+                Id = 165,
+                Value = LessonSeed.GuidForLessonId19,
+                ExerciseId = ExerciseId85,
+            },
+
+            new
+            {
+                Id = 166,
+                Value = LessonSeed.GuidForLessonId19,
+                ExerciseId = ExerciseId86,
+            },
+            new
+            {
+                Id = 167,
+                Value = LessonSeed.GuidForLessonId19,
+                ExerciseId = ExerciseId87,
+            },
+            new
+            {
+                Id = 168,
+                Value = LessonSeed.GuidForLessonId19,
+                ExerciseId = ExerciseId88,
+            },
+            new
+            {
+                Id = 169,
+                Value = LessonSeed.GuidForLessonId19,
+                ExerciseId = ExerciseId89,
+            },
+            new
+            {
+                Id = 170,
+                Value = LessonSeed.GuidForLessonId19,
+                ExerciseId = ExerciseId90,
+            },
+
+            #endregion
+
+            #region Lesson 23
+
+            new
+            {
+                Id = 171,
+                Value = LessonSeed.GuidForLessonId23,
+                ExerciseId = ExerciseId96,
+            },
+            new
+            {
+                Id = 172,
+                Value = LessonSeed.GuidForLessonId23,
+                ExerciseId = ExerciseId97,
+            },
+            new
+            {
+                Id = 173,
+                Value = LessonSeed.GuidForLessonId23,
+                ExerciseId = ExerciseId98,
+            },
+            new
+            {
+                Id = 174,
+                Value = LessonSeed.GuidForLessonId23,
+                ExerciseId = ExerciseId99,
+            },
+            new
+            {
+                Id = 175,
+                Value = LessonSeed.GuidForLessonId23,
+                ExerciseId = ExerciseId100,
+            },
+
+            new
+            {
+                Id = 176,
+                Value = LessonSeed.GuidForLessonId23,
+                ExerciseId = ExerciseId101,
+            },
+            new
+            {
+                Id = 177,
+                Value = LessonSeed.GuidForLessonId23,
+                ExerciseId = ExerciseId102,
+            },
+            new
+            {
+                Id = 178,
+                Value = LessonSeed.GuidForLessonId23,
+                ExerciseId = ExerciseId103,
+            },
+            new
+            {
+                Id = 179,
+                Value = LessonSeed.GuidForLessonId23,
+                ExerciseId = ExerciseId104,
+            },
+            new
+            {
+                Id = 180,
+                Value = LessonSeed.GuidForLessonId23,
+                ExerciseId = ExerciseId105,
+            },
+
+            new
+            {
+                Id = 181,
+                Value = LessonSeed.GuidForLessonId23,
+                ExerciseId = ExerciseId106,
+            },
+            new
+            {
+                Id = 182,
+                Value = LessonSeed.GuidForLessonId23,
+                ExerciseId = ExerciseId107,
+            },
+            new
+            {
+                Id = 183,
+                Value = LessonSeed.GuidForLessonId23,
+                ExerciseId = ExerciseId108,
+            },
+            new
+            {
+                Id = 184,
+                Value = LessonSeed.GuidForLessonId23,
+                ExerciseId = ExerciseId109,
+            },
+            new
+            {
+                Id = 185,
+                Value = LessonSeed.GuidForLessonId23,
+                ExerciseId = ExerciseId110,
+            },
+
+            #endregion
+
+            #region Lesson 27
+
+            new
+            {
+                Id = 186,
+                Value = LessonSeed.GuidForLessonId27,
+                ExerciseId = ExerciseId116,
+            },
+            new
+            {
+                Id = 187,
+                Value = LessonSeed.GuidForLessonId27,
+                ExerciseId = ExerciseId117,
+            },
+            new
+            {
+                Id = 188,
+                Value = LessonSeed.GuidForLessonId27,
+                ExerciseId = ExerciseId118,
+            },
+            new
+            {
+                Id = 189,
+                Value = LessonSeed.GuidForLessonId27,
+                ExerciseId = ExerciseId119,
+            },
+            new
+            {
+                Id = 190,
+                Value = LessonSeed.GuidForLessonId27,
+                ExerciseId = ExerciseId120,
+            },
+
+            new
+            {
+                Id = 191,
+                Value = LessonSeed.GuidForLessonId27,
+                ExerciseId = ExerciseId121,
+            },
+            new
+            {
+                Id = 192,
+                Value = LessonSeed.GuidForLessonId27,
+                ExerciseId = ExerciseId122,
+            },
+            new
+            {
+                Id = 193,
+                Value = LessonSeed.GuidForLessonId27,
+                ExerciseId = ExerciseId123,
+            },
+            new
+            {
+                Id = 194,
+                Value = LessonSeed.GuidForLessonId27,
+                ExerciseId = ExerciseId124,
+            },
+            new
+            {
+                Id = 195,
+                Value = LessonSeed.GuidForLessonId27,
+                ExerciseId = ExerciseId125,
+            },
+
+            new
+            {
+                Id = 196,
+                Value = LessonSeed.GuidForLessonId27,
+                ExerciseId = ExerciseId126,
+            },
+            new
+            {
+                Id = 197,
+                Value = LessonSeed.GuidForLessonId27,
+                ExerciseId = ExerciseId127,
+            },
+            new
+            {
+                Id = 198,
+                Value = LessonSeed.GuidForLessonId27,
+                ExerciseId = ExerciseId128,
+            },
+            new
+            {
+                Id = 199,
+                Value = LessonSeed.GuidForLessonId27,
+                ExerciseId = ExerciseId129,
+            },
+            new
+            {
+                Id = 200,
+                Value = LessonSeed.GuidForLessonId27,
+                ExerciseId = ExerciseId130,
+            },
+
+            #endregion
+
+            #region Lesson 31
+
+            new
+            {
+                Id = 201,
+                Value = LessonSeed.GuidForLessonId31,
+                ExerciseId = ExerciseId136,
+            },
+            new
+            {
+                Id = 202,
+                Value = LessonSeed.GuidForLessonId31,
+                ExerciseId = ExerciseId137,
+            },
+            new
+            {
+                Id = 203,
+                Value = LessonSeed.GuidForLessonId31,
+                ExerciseId = ExerciseId138,
+            },
+            new
+            {
+                Id = 204,
+                Value = LessonSeed.GuidForLessonId31,
+                ExerciseId = ExerciseId139,
+            },
+            new
+            {
+                Id = 205,
+                Value = LessonSeed.GuidForLessonId31,
+                ExerciseId = ExerciseId140,
+            },
+
+            new
+            {
+                Id = 206,
+                Value = LessonSeed.GuidForLessonId31,
+                ExerciseId = ExerciseId141,
+            },
+            new
+            {
+                Id = 207,
+                Value = LessonSeed.GuidForLessonId31,
+                ExerciseId = ExerciseId142,
+            },
+            new
+            {
+                Id = 208,
+                Value = LessonSeed.GuidForLessonId31,
+                ExerciseId = ExerciseId143,
+            },
+            new
+            {
+                Id = 209,
+                Value = LessonSeed.GuidForLessonId31,
+                ExerciseId = ExerciseId144,
+            },
+            new
+            {
+                Id = 210,
+                Value = LessonSeed.GuidForLessonId31,
+                ExerciseId = ExerciseId145,
+            },
+
+            new
+            {
+                Id = 211,
+                Value = LessonSeed.GuidForLessonId31,
+                ExerciseId = ExerciseId146,
+            },
+            new
+            {
+                Id = 212,
+                Value = LessonSeed.GuidForLessonId31,
+                ExerciseId = ExerciseId147,
+            },
+            new
+            {
+                Id = 213,
+                Value = LessonSeed.GuidForLessonId31,
+                ExerciseId = ExerciseId148,
+            },
+            new
+            {
+                Id = 214,
+                Value = LessonSeed.GuidForLessonId31,
+                ExerciseId = ExerciseId149,
+            },
+            new
+            {
+                Id = 215,
+                Value = LessonSeed.GuidForLessonId31,
+                ExerciseId = ExerciseId150,
+            },
 
             #endregion
         ];

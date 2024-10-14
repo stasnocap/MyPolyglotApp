@@ -92,9 +92,6 @@ namespace Infrastructure.Persistence.Migrations
                     b.Property<Guid>("Id")
                         .HasColumnType("uuid");
 
-                    b.Property<Guid>("LessonId")
-                        .HasColumnType("uuid");
-
                     b.Property<string>("RusPhrase")
                         .IsRequired()
                         .HasMaxLength(255)
@@ -108,811 +105,676 @@ namespace Infrastructure.Persistence.Migrations
                         new
                         {
                             Id = new Guid("6ed88863-0c5d-45cd-b361-3071bf62a907"),
-                            LessonId = new Guid("099df6d4-f116-4b6e-8cae-96dd9f3623dd"),
                             RusPhrase = "Ты не увидишь."
                         },
                         new
                         {
                             Id = new Guid("ec6ea7e1-3dbb-45a7-801c-3441c6ef962f"),
-                            LessonId = new Guid("099df6d4-f116-4b6e-8cae-96dd9f3623dd"),
                             RusPhrase = "Мы покажем?"
                         },
                         new
                         {
                             Id = new Guid("dacb0b73-7bb2-491f-9bf6-adb1f3e2f50f"),
-                            LessonId = new Guid("099df6d4-f116-4b6e-8cae-96dd9f3623dd"),
                             RusPhrase = "Она работала."
                         },
                         new
                         {
                             Id = new Guid("f8d8fcb2-4df3-4321-9538-fe576ef04c2d"),
-                            LessonId = new Guid("099df6d4-f116-4b6e-8cae-96dd9f3623dd"),
                             RusPhrase = "Ты не думал."
                         },
                         new
                         {
                             Id = new Guid("69dfc0ba-ac95-44bb-b412-b36b2a45f6bb"),
-                            LessonId = new Guid("099df6d4-f116-4b6e-8cae-96dd9f3623dd"),
                             RusPhrase = "Я посмотрю?"
                         },
                         new
                         {
                             Id = new Guid("8cb2fa8b-6886-4fcd-a596-ecc8f15b406c"),
-                            LessonId = new Guid("8eca71ba-7524-4b77-8dc3-5c3e2b051613"),
                             RusPhrase = "Мы не оставили его."
                         },
                         new
                         {
                             Id = new Guid("7f44ae6d-6b28-47aa-9d9b-500a632303ef"),
-                            LessonId = new Guid("8eca71ba-7524-4b77-8dc3-5c3e2b051613"),
                             RusPhrase = "Он поймёт тебя."
                         },
                         new
                         {
                             Id = new Guid("05882a8b-9897-4793-8a1e-dd0cf841c95b"),
-                            LessonId = new Guid("8eca71ba-7524-4b77-8dc3-5c3e2b051613"),
                             RusPhrase = "Ты открываешь ей."
                         },
                         new
                         {
                             Id = new Guid("7fafec3f-f7fe-46d7-962d-79d62dc13f66"),
-                            LessonId = new Guid("8eca71ba-7524-4b77-8dc3-5c3e2b051613"),
                             RusPhrase = "Я сломаю?"
                         },
                         new
                         {
                             Id = new Guid("24de4efb-c76c-4d7c-ab9d-914a272962f7"),
-                            LessonId = new Guid("8eca71ba-7524-4b77-8dc3-5c3e2b051613"),
                             RusPhrase = "Я показал им?"
                         },
                         new
                         {
                             Id = new Guid("cef21bb8-1373-4236-9b2b-703377c974bf"),
-                            LessonId = new Guid("19e63968-9aa1-4196-af9b-020bd589103c"),
                             RusPhrase = "Тебе хочется пить?"
                         },
                         new
                         {
                             Id = new Guid("0fee6686-f59a-4025-9184-858d1c0a3659"),
-                            LessonId = new Guid("19e63968-9aa1-4196-af9b-020bd589103c"),
                             RusPhrase = "Ей хотелось забывать?"
                         },
                         new
                         {
                             Id = new Guid("ad46e855-9605-4d41-9eac-2c8dfa2f7c1f"),
-                            LessonId = new Guid("19e63968-9aa1-4196-af9b-020bd589103c"),
                             RusPhrase = "Я был в музее."
                         },
                         new
                         {
                             Id = new Guid("90a95bc6-f20f-4e55-b3ba-469f4fa589f7"),
-                            LessonId = new Guid("19e63968-9aa1-4196-af9b-020bd589103c"),
                             RusPhrase = "Ей не нравилось показывать."
                         },
                         new
                         {
                             Id = new Guid("1ce82652-e890-4a79-980a-de6a7291c4b6"),
-                            LessonId = new Guid("19e63968-9aa1-4196-af9b-020bd589103c"),
                             RusPhrase = "Она в лифте?"
                         },
                         new
                         {
                             Id = new Guid("865496b8-3788-4cc3-8f6a-09dfebcd2d9b"),
-                            LessonId = new Guid("ef710306-a1b1-4823-93eb-64d8357ed6ea"),
                             RusPhrase = "Он будет их актёром?"
                         },
                         new
                         {
                             Id = new Guid("791f349a-79eb-431e-8c4a-29371d6e0689"),
-                            LessonId = new Guid("ef710306-a1b1-4823-93eb-64d8357ed6ea"),
                             RusPhrase = "Мы не их бухгалтеры."
                         },
                         new
                         {
                             Id = new Guid("1a04722f-1b4d-4730-b1f0-4fa2f8d71bd7"),
-                            LessonId = new Guid("ef710306-a1b1-4823-93eb-64d8357ed6ea"),
                             RusPhrase = "Мы были его историками."
                         },
                         new
                         {
                             Id = new Guid("45425db5-3e53-471c-861b-007a0b2a305b"),
-                            LessonId = new Guid("ef710306-a1b1-4823-93eb-64d8357ed6ea"),
                             RusPhrase = "Он будет её писателем."
                         },
                         new
                         {
                             Id = new Guid("35e343ce-74c5-4413-a75a-48e29d6ee031"),
-                            LessonId = new Guid("ef710306-a1b1-4823-93eb-64d8357ed6ea"),
                             RusPhrase = "Мы не будем их гидами."
                         },
                         new
                         {
                             Id = new Guid("8d53f533-4cdc-4e5a-a963-54f31febf8e5"),
-                            LessonId = new Guid("c61b363f-290f-4ff4-8cd3-1845414c680f"),
                             RusPhrase = "Они учатся на гидов?"
                         },
                         new
                         {
                             Id = new Guid("1bcbf50b-967d-49e2-84b8-aba447ac4954"),
-                            LessonId = new Guid("c61b363f-290f-4ff4-8cd3-1845414c680f"),
                             RusPhrase = "Я не буду менеджером."
                         },
                         new
                         {
                             Id = new Guid("be20ccf4-be83-4bc4-b08f-5c2bd02dda01"),
-                            LessonId = new Guid("c61b363f-290f-4ff4-8cd3-1845414c680f"),
                             RusPhrase = "Мы учились на менеджеров."
                         },
                         new
                         {
                             Id = new Guid("35a00634-becb-46a3-bc3d-a73bb2b46ab1"),
-                            LessonId = new Guid("c61b363f-290f-4ff4-8cd3-1845414c680f"),
                             RusPhrase = "Они работали в компании дизайнерами?"
                         },
                         new
                         {
                             Id = new Guid("ef5c8e17-28a7-4673-97d7-ab3f84d01aa3"),
-                            LessonId = new Guid("c61b363f-290f-4ff4-8cd3-1845414c680f"),
                             RusPhrase = "Ты историк."
                         },
                         new
                         {
                             Id = new Guid("08ed1ce8-96e5-45ff-b10f-8fa49a1af3d4"),
-                            LessonId = new Guid("1d883b60-88a9-4186-a003-9939210b3fe2"),
                             RusPhrase = "Эта ручка не больше той."
                         },
                         new
                         {
                             Id = new Guid("30da8a31-852f-4cfc-89e1-c754bd83ad25"),
-                            LessonId = new Guid("1d883b60-88a9-4186-a003-9939210b3fe2"),
                             RusPhrase = "Этот телевизор не дорогой."
                         },
                         new
                         {
                             Id = new Guid("8296a1d5-c980-4187-8379-29625ee413d6"),
-                            LessonId = new Guid("1d883b60-88a9-4186-a003-9939210b3fe2"),
                             RusPhrase = "Этот телефон дешевле того?"
                         },
                         new
                         {
                             Id = new Guid("765b06a2-50d6-4c56-8845-143e7ee7c733"),
-                            LessonId = new Guid("1d883b60-88a9-4186-a003-9939210b3fe2"),
                             RusPhrase = "Эта ручка длиннее той."
                         },
                         new
                         {
                             Id = new Guid("8f56c4de-e4bf-4354-8279-ea3f6aca18dc"),
-                            LessonId = new Guid("1d883b60-88a9-4186-a003-9939210b3fe2"),
                             RusPhrase = "Эти апельсины самые маленькие?"
                         },
                         new
                         {
                             Id = new Guid("11af84dc-c777-46c9-ba7e-8fc836a804f0"),
-                            LessonId = new Guid("d9dadc04-9197-4b7a-aca6-c9ce18c1fef5"),
                             RusPhrase = "Мы будем читать кому-нибудь."
                         },
                         new
                         {
                             Id = new Guid("36411c85-2a47-415c-a396-ea52bcadd3e9"),
-                            LessonId = new Guid("d9dadc04-9197-4b7a-aca6-c9ce18c1fef5"),
                             RusPhrase = "Они чувствуют везде?"
                         },
                         new
                         {
                             Id = new Guid("7ac50144-ad5f-4702-9d87-ea996e8904aa"),
-                            LessonId = new Guid("d9dadc04-9197-4b7a-aca6-c9ce18c1fef5"),
                             RusPhrase = "Ты встречаешь везде?"
                         },
                         new
                         {
                             Id = new Guid("8650e3d8-d11f-461c-9f8a-b00e6379c348"),
-                            LessonId = new Guid("d9dadc04-9197-4b7a-aca6-c9ce18c1fef5"),
                             RusPhrase = "Он будет знать всех?"
                         },
                         new
                         {
                             Id = new Guid("077d1b35-28e8-411f-956a-4ac8883d27b8"),
-                            LessonId = new Guid("d9dadc04-9197-4b7a-aca6-c9ce18c1fef5"),
                             RusPhrase = "Он никогда не видит."
                         },
                         new
                         {
                             Id = new Guid("6d0cc462-65e5-48a1-beb0-b7cdb1f04045"),
-                            LessonId = new Guid("18da835a-791c-4dd7-915f-09abf79219d1"),
                             RusPhrase = "Она не повернула нас 6 месяцев назад."
                         },
                         new
                         {
                             Id = new Guid("0919cab8-a02f-4da7-9b47-1a58351ea9c3"),
-                            LessonId = new Guid("18da835a-791c-4dd7-915f-09abf79219d1"),
                             RusPhrase = "Он будет расти через 2 месяца?"
                         },
                         new
                         {
                             Id = new Guid("46eac2d6-1f33-4c2a-b420-e914de870deb"),
-                            LessonId = new Guid("18da835a-791c-4dd7-915f-09abf79219d1"),
                             RusPhrase = "Я расскажу тебе через 6 месяцев."
                         },
                         new
                         {
                             Id = new Guid("e89a87ca-93c7-489c-85e6-200a1192d751"),
-                            LessonId = new Guid("18da835a-791c-4dd7-915f-09abf79219d1"),
                             RusPhrase = "Ты будешь там через 6 месяцев?"
                         },
                         new
                         {
                             Id = new Guid("74886f2d-4d3b-40fe-b96a-7524e9fe5b09"),
-                            LessonId = new Guid("18da835a-791c-4dd7-915f-09abf79219d1"),
                             RusPhrase = "Она любила их в выходные?"
                         },
                         new
                         {
                             Id = new Guid("38df6419-b7c7-4f23-ae70-6ddadf05db9f"),
-                            LessonId = new Guid("946446db-a1da-422e-bad6-ab7972987ae4"),
                             RusPhrase = "На полу не было ручек."
                         },
                         new
                         {
                             Id = new Guid("49c84e13-c9a2-4665-b563-7c1f686c8b8d"),
-                            LessonId = new Guid("946446db-a1da-422e-bad6-ab7972987ae4"),
                             RusPhrase = "Под столом есть ножи."
                         },
                         new
                         {
                             Id = new Guid("2958e0a7-9ebc-463a-9f87-5a98ab680449"),
-                            LessonId = new Guid("946446db-a1da-422e-bad6-ab7972987ae4"),
                             RusPhrase = "Под креслом будет мяч."
                         },
                         new
                         {
                             Id = new Guid("e2ec419b-08c9-4295-86e1-e8846488b20c"),
-                            LessonId = new Guid("946446db-a1da-422e-bad6-ab7972987ae4"),
                             RusPhrase = "На столе нет ручки."
                         },
                         new
                         {
                             Id = new Guid("dc63683b-d306-4203-9cce-452d0f828491"),
-                            LessonId = new Guid("946446db-a1da-422e-bad6-ab7972987ae4"),
                             RusPhrase = "Под креслом был стакан?"
                         },
                         new
                         {
                             Id = new Guid("23c9e459-845c-4a74-96fa-5eda6187cb1f"),
-                            LessonId = new Guid("49723cf9-e420-4608-a368-f2ffbd006242"),
                             RusPhrase = "Он идёт на станцию?"
                         },
                         new
                         {
                             Id = new Guid("9e891766-82ec-441e-affe-b3138b7a04db"),
-                            LessonId = new Guid("49723cf9-e420-4608-a368-f2ffbd006242"),
                             RusPhrase = "Ты не выйдешь из сада."
                         },
                         new
                         {
                             Id = new Guid("928acaf1-743e-4c3e-bdfa-e24d0e6ff485"),
-                            LessonId = new Guid("49723cf9-e420-4608-a368-f2ffbd006242"),
                             RusPhrase = "В комнате не будет шкафов."
                         },
                         new
                         {
                             Id = new Guid("4afa32ae-daa4-45ed-92ea-f910b90116c1"),
-                            LessonId = new Guid("49723cf9-e420-4608-a368-f2ffbd006242"),
                             RusPhrase = "На подоконнике будет чашка."
                         },
                         new
                         {
                             Id = new Guid("c5406625-55a2-488f-9050-a5ab649cd3ce"),
-                            LessonId = new Guid("49723cf9-e420-4608-a368-f2ffbd006242"),
                             RusPhrase = "Под столом были стаканы?"
                         },
                         new
                         {
                             Id = new Guid("67f7b904-927c-471f-8dfe-73f54adb9e03"),
-                            LessonId = new Guid("35c865ea-0c11-4a46-a5f0-d8c168f88907"),
                             RusPhrase = "Мы не должны чувствовать."
                         },
                         new
                         {
                             Id = new Guid("9d53c467-f7e8-4433-971c-5e7cb7ce6a71"),
-                            LessonId = new Guid("35c865ea-0c11-4a46-a5f0-d8c168f88907"),
                             RusPhrase = "Нужно мне стоять?"
                         },
                         new
                         {
                             Id = new Guid("c6453de7-f75d-49bf-ac53-4944dac3b288"),
-                            LessonId = new Guid("35c865ea-0c11-4a46-a5f0-d8c168f88907"),
                             RusPhrase = "Мы можем закрыть."
                         },
                         new
                         {
                             Id = new Guid("df7940f8-70aa-4e17-9df0-2bb4a46d6d7d"),
-                            LessonId = new Guid("35c865ea-0c11-4a46-a5f0-d8c168f88907"),
                             RusPhrase = "Мы не показали."
                         },
                         new
                         {
                             Id = new Guid("61a06c06-8603-4dd3-8fe5-92f3364e3814"),
-                            LessonId = new Guid("35c865ea-0c11-4a46-a5f0-d8c168f88907"),
                             RusPhrase = "Она не должна ответить."
                         },
                         new
                         {
                             Id = new Guid("5c96d301-355b-445f-a153-07ef89786909"),
-                            LessonId = new Guid("255d72a1-b6e7-4fbb-bc5a-362f2b0c4efe"),
                             RusPhrase = "Он читал письмо с 4 до 10 вчера."
                         },
                         new
                         {
                             Id = new Guid("ffd37b6b-c0c9-4f04-a7c1-f6dffb9eec21"),
-                            LessonId = new Guid("255d72a1-b6e7-4fbb-bc5a-362f2b0c4efe"),
                             RusPhrase = "Мы отвечали на письмо в 4 вчера."
                         },
                         new
                         {
                             Id = new Guid("84b9001f-564e-42c5-a864-eefa2f289f3b"),
-                            LessonId = new Guid("255d72a1-b6e7-4fbb-bc5a-362f2b0c4efe"),
                             RusPhrase = "Ты чувствуешь себя плохо целый день сегодня."
                         },
                         new
                         {
                             Id = new Guid("00242767-9606-4d08-b96b-7a1498a6d0c9"),
-                            LessonId = new Guid("255d72a1-b6e7-4fbb-bc5a-362f2b0c4efe"),
                             RusPhrase = "Мы изучали французский целый день вчера."
                         },
                         new
                         {
                             Id = new Guid("8de0af24-b98a-4f94-8974-aa3c51220f09"),
-                            LessonId = new Guid("255d72a1-b6e7-4fbb-bc5a-362f2b0c4efe"),
                             RusPhrase = "Ты будешь читать книгу целый день завтра."
                         },
                         new
                         {
                             Id = new Guid("111b3155-8751-456a-8a77-f1c26ced8f18"),
-                            LessonId = new Guid("a26e89e2-cafd-4126-bc63-5ba53645ed6d"),
                             RusPhrase = "Мне холодно?"
                         },
                         new
                         {
                             Id = new Guid("2c900207-3d73-4b27-a482-f16ce64b7729"),
-                            LessonId = new Guid("a26e89e2-cafd-4126-bc63-5ba53645ed6d"),
                             RusPhrase = "У меня не голубые глаза."
                         },
                         new
                         {
                             Id = new Guid("eaacd632-357b-4473-8bc4-e64338f16811"),
-                            LessonId = new Guid("a26e89e2-cafd-4126-bc63-5ba53645ed6d"),
                             RusPhrase = "Ты здоров."
                         },
                         new
                         {
                             Id = new Guid("3953a15c-4d98-4b8d-b5a0-a2bbe4449fe9"),
-                            LessonId = new Guid("a26e89e2-cafd-4126-bc63-5ba53645ed6d"),
                             RusPhrase = "Вчера было жарко."
                         },
                         new
                         {
                             Id = new Guid("fd21cd86-2fdd-49a9-8447-0159f7756337"),
-                            LessonId = new Guid("a26e89e2-cafd-4126-bc63-5ba53645ed6d"),
                             RusPhrase = "Она взрослая."
                         },
                         new
                         {
                             Id = new Guid("817ce59c-2207-420c-9dd7-db822ab79b4b"),
-                            LessonId = new Guid("302c1e93-e339-4850-9bc9-47dd5e37decb"),
                             RusPhrase = "Беги к ней."
                         },
                         new
                         {
                             Id = new Guid("21983f75-6289-4334-9372-c88a81690e96"),
-                            LessonId = new Guid("302c1e93-e339-4850-9bc9-47dd5e37decb"),
                             RusPhrase = "Не поворачивай его тумбочку."
                         },
                         new
                         {
                             Id = new Guid("d2a4e39d-1b0d-4584-bfd2-aa0cfbb070d6"),
-                            LessonId = new Guid("302c1e93-e339-4850-9bc9-47dd5e37decb"),
                             RusPhrase = "Не бери мой планшет."
                         },
                         new
                         {
                             Id = new Guid("bc4032b5-0b91-47da-8e6f-db283a515989"),
-                            LessonId = new Guid("302c1e93-e339-4850-9bc9-47dd5e37decb"),
                             RusPhrase = "Помни про нас."
                         },
                         new
                         {
                             Id = new Guid("2050e871-9095-4f46-8787-8f717f114ea2"),
-                            LessonId = new Guid("302c1e93-e339-4850-9bc9-47dd5e37decb"),
                             RusPhrase = "Пусть он ответит."
                         },
                         new
                         {
                             Id = new Guid("1d31d367-6651-40f8-a82d-b6f033debac9"),
-                            LessonId = new Guid("06e34fe3-489b-4fce-ba46-f9e30c63146f"),
                             RusPhrase = "Он сбросил вес."
                         },
                         new
                         {
                             Id = new Guid("6e183839-2a73-44bf-b4e2-b3ab25613a5a"),
-                            LessonId = new Guid("06e34fe3-489b-4fce-ba46-f9e30c63146f"),
                             RusPhrase = "Твой сын просит выключить свет."
                         },
                         new
                         {
                             Id = new Guid("d54d614b-f911-4fd8-9932-eead5f63eb74"),
-                            LessonId = new Guid("06e34fe3-489b-4fce-ba46-f9e30c63146f"),
                             RusPhrase = "Он свалился с пневмонией."
                         },
                         new
                         {
                             Id = new Guid("e7ac161c-561a-4ffe-81f7-b57b37b19e52"),
-                            LessonId = new Guid("06e34fe3-489b-4fce-ba46-f9e30c63146f"),
                             RusPhrase = "Он взломал дверь."
                         },
                         new
                         {
                             Id = new Guid("43d627bb-e3ed-4a8d-81b9-8e0212a3a8a0"),
-                            LessonId = new Guid("06e34fe3-489b-4fce-ba46-f9e30c63146f"),
                             RusPhrase = "Цены никогда не падают."
                         },
                         new
                         {
                             Id = new Guid("47294d03-3395-42a6-83d8-389d19aec14d"),
-                            LessonId = new Guid("168e4970-41f5-441b-aedb-092556b63775"),
                             RusPhrase = "Он только что вышел."
                         },
                         new
                         {
                             Id = new Guid("bfca2c81-719c-4189-8e2d-027163421517"),
-                            LessonId = new Guid("168e4970-41f5-441b-aedb-092556b63775"),
                             RusPhrase = "Думаю, что я видел вас где-то."
                         },
                         new
                         {
                             Id = new Guid("2233f2a0-b9c6-4072-8ace-ea274ebf6cf4"),
-                            LessonId = new Guid("168e4970-41f5-441b-aedb-092556b63775"),
                             RusPhrase = "Я выполнил работу."
                         },
                         new
                         {
                             Id = new Guid("08681ed3-8ab0-4a1d-967a-2c2806b3a099"),
-                            LessonId = new Guid("168e4970-41f5-441b-aedb-092556b63775"),
                             RusPhrase = "Я уже написал письмо своему другу."
                         },
                         new
                         {
                             Id = new Guid("b8a0d599-6575-4626-b2af-317f9e78efa4"),
-                            LessonId = new Guid("168e4970-41f5-441b-aedb-092556b63775"),
                             RusPhrase = "Он только что посетил этот супермаркет."
                         },
                         new
                         {
                             Id = new Guid("dbdc7990-cb51-4e30-96cd-17e3fa20dafa"),
-                            LessonId = new Guid("7407b5e3-bcc3-4853-ba1c-740985bf7d52"),
                             RusPhrase = "Я не успел закончить проект к началу той недели."
                         },
                         new
                         {
                             Id = new Guid("c4f3b91f-1c7b-44a2-b32e-32ef0b1f0b11"),
-                            LessonId = new Guid("7407b5e3-bcc3-4853-ba1c-740985bf7d52"),
                             RusPhrase = "Он сделал домашнее задание до того, как его родители вернулись домой?"
                         },
                         new
                         {
                             Id = new Guid("d57af893-3fcf-463f-8722-03583c052ffc"),
-                            LessonId = new Guid("7407b5e3-bcc3-4853-ba1c-740985bf7d52"),
                             RusPhrase = "Он уже написал письмо, когда ты вошел?"
                         },
                         new
                         {
                             Id = new Guid("4bfb0f3d-91d4-42c6-ad20-dd66a700d43c"),
-                            LessonId = new Guid("7407b5e3-bcc3-4853-ba1c-740985bf7d52"),
                             RusPhrase = "Вы вернулись домой до того, как начался дождь."
                         },
                         new
                         {
                             Id = new Guid("6b9c1472-a03e-4854-bec8-cfc8bfb8e06c"),
-                            LessonId = new Guid("7407b5e3-bcc3-4853-ba1c-740985bf7d52"),
                             RusPhrase = "Когда мы приехали на станцию, поезд уже ушел."
                         },
                         new
                         {
                             Id = new Guid("7c07747b-ded1-4c2e-9a36-17f95fc059f7"),
-                            LessonId = new Guid("65f77c8e-3d17-419e-9529-4326811c732c"),
                             RusPhrase = "Ученики займут свои места до того, как начнется урок."
                         },
                         new
                         {
                             Id = new Guid("33864b46-810c-4fad-aee0-05e42b413e6a"),
-                            LessonId = new Guid("65f77c8e-3d17-419e-9529-4326811c732c"),
                             RusPhrase = "Они не успеют выиграть три игры к концу месяца."
                         },
                         new
                         {
                             Id = new Guid("768101f9-4a4b-43cd-aa34-faf712bfc940"),
-                            LessonId = new Guid("65f77c8e-3d17-419e-9529-4326811c732c"),
                             RusPhrase = "Я уже окончу эту работу до того, как вы возвратитесь."
                         },
                         new
                         {
                             Id = new Guid("47124eb6-a2d1-4b91-9e5d-5a85169625c8"),
-                            LessonId = new Guid("65f77c8e-3d17-419e-9529-4326811c732c"),
                             RusPhrase = "Они еще не отгрузят товар, когда придет ваша телеграмма."
                         },
                         new
                         {
                             Id = new Guid("aee272ba-c84e-4fe4-a8ea-49386db26adb"),
-                            LessonId = new Guid("65f77c8e-3d17-419e-9529-4326811c732c"),
                             RusPhrase = "Я не закончу писать доклад к вечеру."
                         },
                         new
                         {
                             Id = new Guid("01257b25-0f71-4d69-8dfd-05090ad780cc"),
-                            LessonId = new Guid("21b08001-36e3-4770-affa-e4a7e87e4c7e"),
                             RusPhrase = "Она готовит ужин уже три часа."
                         },
                         new
                         {
                             Id = new Guid("15c3b21e-974c-4b2a-a366-081c042076fe"),
-                            LessonId = new Guid("21b08001-36e3-4770-affa-e4a7e87e4c7e"),
                             RusPhrase = "Я пекла этот пирог с самого утра."
                         },
                         new
                         {
                             Id = new Guid("f562eb05-e5eb-4aa3-a0e7-475643e0098e"),
-                            LessonId = new Guid("21b08001-36e3-4770-affa-e4a7e87e4c7e"),
                             RusPhrase = "Рабочие пытаются сдвинуть наш шкаф с места вот уже полчаса."
                         },
                         new
                         {
                             Id = new Guid("64728c0a-630e-49a2-b929-943eede1a19f"),
-                            LessonId = new Guid("21b08001-36e3-4770-affa-e4a7e87e4c7e"),
                             RusPhrase = "Я читаю этот журнал с тех пор, как купил его неделю назад."
                         },
                         new
                         {
                             Id = new Guid("e634310c-c6f4-40fa-9e79-f010be5b2d01"),
-                            LessonId = new Guid("21b08001-36e3-4770-affa-e4a7e87e4c7e"),
                             RusPhrase = "Я жду свою маму уже давно."
                         },
                         new
                         {
                             Id = new Guid("25db1596-587d-4e70-8aa5-a632820305f5"),
-                            LessonId = new Guid("441161d5-3f41-4e50-9655-a62c971b06b6"),
                             RusPhrase = "С теп пор показатель быстро рос."
                         },
                         new
                         {
                             Id = new Guid("7402f1ec-b698-47d4-8d59-23cb2799d3de"),
-                            LessonId = new Guid("441161d5-3f41-4e50-9655-a62c971b06b6"),
                             RusPhrase = "Его руки были грязные, он копал."
                         },
                         new
                         {
                             Id = new Guid("c43591f9-31a4-4fb3-96ba-98be24894590"),
-                            LessonId = new Guid("441161d5-3f41-4e50-9655-a62c971b06b6"),
                             RusPhrase = "Они разговаривали больше часа, до того, как он пришел."
                         },
                         new
                         {
                             Id = new Guid("f95e222d-5d5d-4cca-bfb9-5ec6e46691b8"),
-                            LessonId = new Guid("441161d5-3f41-4e50-9655-a62c971b06b6"),
                             RusPhrase = "Был час ночи, а соседская собака лаяла уже 2 часа."
                         },
                         new
                         {
                             Id = new Guid("b96741a5-2c09-4ad9-b19e-55d16b8a27db"),
-                            LessonId = new Guid("441161d5-3f41-4e50-9655-a62c971b06b6"),
                             RusPhrase = "Моя собака играла уже полчаса перед тем, как мы пошли гулять."
                         },
                         new
                         {
                             Id = new Guid("803d8512-4613-49d8-b27f-dbd9c7ccafdf"),
-                            LessonId = new Guid("974db683-7a40-4a0a-84a4-afc012855961"),
                             RusPhrase = "Они будут разговаривать уже свыше часа, к тому моменту, когда приедет он."
                         },
                         new
                         {
                             Id = new Guid("07dbad0c-ce70-4c48-bf85-65b15efe6506"),
-                            LessonId = new Guid("974db683-7a40-4a0a-84a4-afc012855961"),
-                            RusPhrase = "К первому июня он будет работать на этам заводе уже двадцать лет."
+                            RusPhrase = "К первому июня он будет работать на этом заводе уже двадцать лет."
                         },
                         new
                         {
                             Id = new Guid("a414365c-4e85-475b-96b8-b97854e0ecb1"),
-                            LessonId = new Guid("974db683-7a40-4a0a-84a4-afc012855961"),
                             RusPhrase = "К следующему рождеству я уже буду преподавать 10 лет."
                         },
                         new
                         {
                             Id = new Guid("74bd1a5c-c068-436b-be42-de5b69294a3a"),
-                            LessonId = new Guid("974db683-7a40-4a0a-84a4-afc012855961"),
                             RusPhrase = "Ты будешь ждать свыше двух часов, прежде чем ее самолет, наконец, приземлится?"
                         },
                         new
                         {
                             Id = new Guid("b2972cad-61ba-405a-bf08-fe89c1ad4299"),
-                            LessonId = new Guid("974db683-7a40-4a0a-84a4-afc012855961"),
                             RusPhrase = "В следующем месяце мы будем жить вместе уже 15 лет."
                         },
                         new
                         {
                             Id = new Guid("e4c3a5b2-277b-47ac-85ab-a74be22dbfa8"),
-                            LessonId = new Guid("85f6a657-c644-4ef9-9454-37202576c089"),
                             RusPhrase = "Они будут разговаривать уже свыше часа, к тому моменту, когда приедет он."
                         },
                         new
                         {
                             Id = new Guid("2196d9d5-72a0-4eab-9cb4-8daad8fb79b1"),
-                            LessonId = new Guid("85f6a657-c644-4ef9-9454-37202576c089"),
-                            RusPhrase = "К первому июня он будет работать на этам заводе уже двадцать лет."
+                            RusPhrase = "К первому июня он будет работать на этом заводе уже двадцать лет."
                         },
                         new
                         {
                             Id = new Guid("7c4a664e-4f32-45fd-8ec1-8a9b10ae0c0a"),
-                            LessonId = new Guid("85f6a657-c644-4ef9-9454-37202576c089"),
                             RusPhrase = "К следующему рождеству я уже буду преподавать 10 лет."
                         },
                         new
                         {
                             Id = new Guid("30dbc5f4-9e76-4673-bed6-593d154ba6e2"),
-                            LessonId = new Guid("85f6a657-c644-4ef9-9454-37202576c089"),
                             RusPhrase = "Ты будешь ждать свыше двух часов, прежде чем ее самолет, наконец, приземлится?"
                         },
                         new
                         {
                             Id = new Guid("b590a52f-6002-45ff-af5d-80e65167f2b2"),
-                            LessonId = new Guid("85f6a657-c644-4ef9-9454-37202576c089"),
                             RusPhrase = "В следующем месяце мы будем жить вместе уже 15 лет."
                         },
                         new
                         {
                             Id = new Guid("81f6577a-ebce-4b30-be76-d20eacba0acd"),
-                            LessonId = new Guid("a184277b-edcc-4af1-9c17-a2b11140be2f"),
                             RusPhrase = "Я был разочарован услышать, что все больше и больше людей теряют свою работу."
                         },
                         new
                         {
                             Id = new Guid("b303e394-cc78-415f-b3d8-ad79ec0817e4"),
-                            LessonId = new Guid("a184277b-edcc-4af1-9c17-a2b11140be2f"),
                             RusPhrase = "Измученный, он провалился в сон."
                         },
                         new
                         {
                             Id = new Guid("e4eb5043-e1b9-4060-b15d-71913eb267d6"),
-                            LessonId = new Guid("a184277b-edcc-4af1-9c17-a2b11140be2f"),
-                            RusPhrase = "Прибор, купленный в специализированнмом магазине, имеет гарантию."
+                            RusPhrase = "Прибор, купленный в специализированном магазине, имеет гарантию."
                         },
                         new
                         {
                             Id = new Guid("87e89338-39fb-4d26-b866-e9dbb7bc74bf"),
-                            LessonId = new Guid("a184277b-edcc-4af1-9c17-a2b11140be2f"),
                             RusPhrase = "Они не смогли оправиться от проигранной войны."
                         },
                         new
                         {
                             Id = new Guid("81b35b80-3e72-4577-9e84-59d995dd7d22"),
-                            LessonId = new Guid("a184277b-edcc-4af1-9c17-a2b11140be2f"),
                             RusPhrase = "После компьютерного сбоя мы не смогли восстановить потерянные данные."
                         },
                         new
                         {
                             Id = new Guid("5bc31dd7-2fef-4e92-b169-1191562d80b7"),
-                            LessonId = new Guid("614a255e-2239-42ef-95e6-101f95c28499"),
                             RusPhrase = "Купив немного новой одежды, она почувствовала себя намного лучше."
                         },
                         new
                         {
                             Id = new Guid("f946095e-1f69-48e2-b289-a818b5776242"),
-                            LessonId = new Guid("614a255e-2239-42ef-95e6-101f95c28499"),
                             RusPhrase = "Посмотрев много журналов и газет, он начал писать свой доклад."
                         },
                         new
                         {
                             Id = new Guid("ae29c207-5f54-4148-9303-eb27058fe19a"),
-                            LessonId = new Guid("614a255e-2239-42ef-95e6-101f95c28499"),
                             RusPhrase = "Приняв мой совет, она последовала ему."
                         },
                         new
                         {
                             Id = new Guid("6d30f362-a2a8-4d1e-9488-c12fbb850bad"),
-                            LessonId = new Guid("614a255e-2239-42ef-95e6-101f95c28499"),
                             RusPhrase = "Заплатив штраф, он больше не нарушал закон."
                         },
                         new
                         {
                             Id = new Guid("d39eb9f3-82a8-405c-9648-9af628fac4e8"),
-                            LessonId = new Guid("614a255e-2239-42ef-95e6-101f95c28499"),
-                            RusPhrase = "Обыскав квартиру, они не не нашли никаих доказательств."
+                            RusPhrase = "Обыскав квартиру, они не не нашли никаких доказательств."
                         },
                         new
                         {
                             Id = new Guid("a4f233d5-6b80-4f78-8138-c7cd9c9afe61"),
-                            LessonId = new Guid("28d10443-9ac8-43e7-b176-2e40cb1565df"),
                             RusPhrase = "Офис убирают каждый день?"
                         },
                         new
                         {
                             Id = new Guid("b99c1112-f602-4ae1-8306-25a883c86d45"),
-                            LessonId = new Guid("28d10443-9ac8-43e7-b176-2e40cb1565df"),
                             RusPhrase = "Я приглашён на вечеринку."
                         },
                         new
                         {
                             Id = new Guid("87a6cc3a-e01f-4f37-8c28-27e0d24b8d31"),
-                            LessonId = new Guid("28d10443-9ac8-43e7-b176-2e40cb1565df"),
-                            RusPhrase = "Ему предложили хорошую рабту в большой строительность компании."
+                            RusPhrase = "Ему предложили хорошую работу в большой строительной компании."
                         },
                         new
                         {
                             Id = new Guid("a6109397-6055-48e8-803d-0f23275be39d"),
-                            LessonId = new Guid("28d10443-9ac8-43e7-b176-2e40cb1565df"),
                             RusPhrase = "Ужин подается после семи."
                         },
                         new
                         {
                             Id = new Guid("33e5cfd4-d696-4861-a396-59c72b1133f4"),
-                            LessonId = new Guid("28d10443-9ac8-43e7-b176-2e40cb1565df"),
                             RusPhrase = "Его преследовала полиция."
                         },
                         new
                         {
                             Id = new Guid("74fd8c58-8910-43ec-bd17-ccbed652c4f0"),
-                            LessonId = new Guid("7db36b76-017d-484b-b367-d82cea8b5036"),
                             RusPhrase = "Вопрос обсуждался в семь часов?"
                         },
                         new
                         {
                             Id = new Guid("b1d1d05c-9bc1-4cb5-8e0b-ca12d7c7a4e4"),
-                            LessonId = new Guid("7db36b76-017d-484b-b367-d82cea8b5036"),
                             RusPhrase = "Комнату в этот момент моют."
                         },
                         new
                         {
                             Id = new Guid("a07b1d30-81c7-4de2-9412-dcf4f0204e3b"),
-                            LessonId = new Guid("7db36b76-017d-484b-b367-d82cea8b5036"),
                             RusPhrase = "Его осматривает доктор в настоящий момент."
                         },
                         new
                         {
                             Id = new Guid("764fc7bc-e1d4-4a31-aeee-b8667e68389d"),
-                            LessonId = new Guid("7db36b76-017d-484b-b367-d82cea8b5036"),
-                            RusPhrase = "Его не преследует полиция в даный момент."
+                            RusPhrase = "Его не преследует полиция в данный момент."
                         },
                         new
                         {
                             Id = new Guid("ba2662a2-ec2e-4f0e-96bb-11e4e0f6e514"),
-                            LessonId = new Guid("7db36b76-017d-484b-b367-d82cea8b5036"),
                             RusPhrase = "Его дом строится сейчас?"
                         },
                         new
                         {
                             Id = new Guid("9325d238-1000-4e8c-ab2b-f563ac0cbeb0"),
-                            LessonId = new Guid("95079976-cc2e-4d0b-a4c3-42c772ce35b9"),
                             RusPhrase = "Эта книга уже будет прочитана завтра к 2 часам?"
                         },
                         new
                         {
                             Id = new Guid("0bbdff59-a524-4354-b723-65cb3bea295d"),
-                            LessonId = new Guid("95079976-cc2e-4d0b-a4c3-42c772ce35b9"),
                             RusPhrase = "Эта книга уже прочитана."
                         },
                         new
                         {
                             Id = new Guid("12c9ca99-9484-4dc4-b174-b00c490c1558"),
-                            LessonId = new Guid("95079976-cc2e-4d0b-a4c3-42c772ce35b9"),
                             RusPhrase = "Сообщение еще не было прочитано к двум часам."
                         },
                         new
                         {
                             Id = new Guid("3de2b59c-b670-4a19-9836-8662a4e84eb2"),
-                            LessonId = new Guid("95079976-cc2e-4d0b-a4c3-42c772ce35b9"),
                             RusPhrase = "Ее уже пригласили в ресторан."
                         },
                         new
                         {
                             Id = new Guid("d8d7789b-c75c-4bf0-88a0-f11bcabdd566"),
-                            LessonId = new Guid("95079976-cc2e-4d0b-a4c3-42c772ce35b9"),
                             RusPhrase = "Книги уже распроданы?"
                         });
                 });
@@ -8270,7 +8132,7 @@ namespace Infrastructure.Persistence.Migrations
 
             modelBuilder.Entity("Domain.Identity.User", b =>
                 {
-                    b.OwnsMany("Domain.Identity.User.ScoreIds#Domain.Practice.Scores.ValueObjects.ScoreId", "ScoreIds", b1 =>
+                    b.OwnsMany("Domain.Practice.Scores.ValueObjects.ScoreId", "ScoreIds", b1 =>
                         {
                             b1.Property<int>("Id")
                                 .ValueGeneratedOnAdd()
@@ -8300,7 +8162,7 @@ namespace Infrastructure.Persistence.Migrations
 
             modelBuilder.Entity("Domain.Practice.Exercises.Exercise", b =>
                 {
-                    b.OwnsMany("Domain.Practice.Exercises.Exercise.Words#Domain.Practice.Exercises.Entities.Word", "Words", b1 =>
+                    b.OwnsMany("Domain.Practice.Exercises.Entities.Word", "Words", b1 =>
                         {
                             b1.Property<Guid>("Id")
                                 .HasColumnType("uuid");
@@ -15971,12 +15833,1211 @@ namespace Infrastructure.Persistence.Migrations
                                 });
                         });
 
+                    b.OwnsMany("Domain.Practice.Lessons.ValueObjects.LessonId", "LessonIds", b1 =>
+                        {
+                            b1.Property<int>("Id")
+                                .ValueGeneratedOnAdd()
+                                .HasColumnType("integer");
+
+                            NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b1.Property<int>("Id"));
+
+                            b1.Property<Guid>("ExerciseId")
+                                .HasColumnType("uuid");
+
+                            b1.Property<Guid>("Value")
+                                .HasColumnType("uuid")
+                                .HasColumnName("LessonId");
+
+                            b1.HasKey("Id");
+
+                            b1.HasIndex("ExerciseId");
+
+                            b1.ToTable("ExerciseLessonIds", "practice");
+
+                            b1.WithOwner()
+                                .HasForeignKey("ExerciseId");
+
+                            b1.HasData(
+                                new
+                                {
+                                    Id = 1,
+                                    ExerciseId = new Guid("6ed88863-0c5d-45cd-b361-3071bf62a907"),
+                                    Value = new Guid("099df6d4-f116-4b6e-8cae-96dd9f3623dd")
+                                },
+                                new
+                                {
+                                    Id = 2,
+                                    ExerciseId = new Guid("ec6ea7e1-3dbb-45a7-801c-3441c6ef962f"),
+                                    Value = new Guid("099df6d4-f116-4b6e-8cae-96dd9f3623dd")
+                                },
+                                new
+                                {
+                                    Id = 3,
+                                    ExerciseId = new Guid("dacb0b73-7bb2-491f-9bf6-adb1f3e2f50f"),
+                                    Value = new Guid("099df6d4-f116-4b6e-8cae-96dd9f3623dd")
+                                },
+                                new
+                                {
+                                    Id = 4,
+                                    ExerciseId = new Guid("f8d8fcb2-4df3-4321-9538-fe576ef04c2d"),
+                                    Value = new Guid("099df6d4-f116-4b6e-8cae-96dd9f3623dd")
+                                },
+                                new
+                                {
+                                    Id = 5,
+                                    ExerciseId = new Guid("69dfc0ba-ac95-44bb-b412-b36b2a45f6bb"),
+                                    Value = new Guid("099df6d4-f116-4b6e-8cae-96dd9f3623dd")
+                                },
+                                new
+                                {
+                                    Id = 6,
+                                    ExerciseId = new Guid("8cb2fa8b-6886-4fcd-a596-ecc8f15b406c"),
+                                    Value = new Guid("8eca71ba-7524-4b77-8dc3-5c3e2b051613")
+                                },
+                                new
+                                {
+                                    Id = 7,
+                                    ExerciseId = new Guid("7f44ae6d-6b28-47aa-9d9b-500a632303ef"),
+                                    Value = new Guid("8eca71ba-7524-4b77-8dc3-5c3e2b051613")
+                                },
+                                new
+                                {
+                                    Id = 8,
+                                    ExerciseId = new Guid("05882a8b-9897-4793-8a1e-dd0cf841c95b"),
+                                    Value = new Guid("8eca71ba-7524-4b77-8dc3-5c3e2b051613")
+                                },
+                                new
+                                {
+                                    Id = 9,
+                                    ExerciseId = new Guid("7fafec3f-f7fe-46d7-962d-79d62dc13f66"),
+                                    Value = new Guid("8eca71ba-7524-4b77-8dc3-5c3e2b051613")
+                                },
+                                new
+                                {
+                                    Id = 10,
+                                    ExerciseId = new Guid("24de4efb-c76c-4d7c-ab9d-914a272962f7"),
+                                    Value = new Guid("8eca71ba-7524-4b77-8dc3-5c3e2b051613")
+                                },
+                                new
+                                {
+                                    Id = 11,
+                                    ExerciseId = new Guid("cef21bb8-1373-4236-9b2b-703377c974bf"),
+                                    Value = new Guid("19e63968-9aa1-4196-af9b-020bd589103c")
+                                },
+                                new
+                                {
+                                    Id = 12,
+                                    ExerciseId = new Guid("0fee6686-f59a-4025-9184-858d1c0a3659"),
+                                    Value = new Guid("19e63968-9aa1-4196-af9b-020bd589103c")
+                                },
+                                new
+                                {
+                                    Id = 13,
+                                    ExerciseId = new Guid("ad46e855-9605-4d41-9eac-2c8dfa2f7c1f"),
+                                    Value = new Guid("19e63968-9aa1-4196-af9b-020bd589103c")
+                                },
+                                new
+                                {
+                                    Id = 14,
+                                    ExerciseId = new Guid("90a95bc6-f20f-4e55-b3ba-469f4fa589f7"),
+                                    Value = new Guid("19e63968-9aa1-4196-af9b-020bd589103c")
+                                },
+                                new
+                                {
+                                    Id = 15,
+                                    ExerciseId = new Guid("1ce82652-e890-4a79-980a-de6a7291c4b6"),
+                                    Value = new Guid("19e63968-9aa1-4196-af9b-020bd589103c")
+                                },
+                                new
+                                {
+                                    Id = 16,
+                                    ExerciseId = new Guid("865496b8-3788-4cc3-8f6a-09dfebcd2d9b"),
+                                    Value = new Guid("ef710306-a1b1-4823-93eb-64d8357ed6ea")
+                                },
+                                new
+                                {
+                                    Id = 17,
+                                    ExerciseId = new Guid("791f349a-79eb-431e-8c4a-29371d6e0689"),
+                                    Value = new Guid("ef710306-a1b1-4823-93eb-64d8357ed6ea")
+                                },
+                                new
+                                {
+                                    Id = 18,
+                                    ExerciseId = new Guid("1a04722f-1b4d-4730-b1f0-4fa2f8d71bd7"),
+                                    Value = new Guid("ef710306-a1b1-4823-93eb-64d8357ed6ea")
+                                },
+                                new
+                                {
+                                    Id = 19,
+                                    ExerciseId = new Guid("45425db5-3e53-471c-861b-007a0b2a305b"),
+                                    Value = new Guid("ef710306-a1b1-4823-93eb-64d8357ed6ea")
+                                },
+                                new
+                                {
+                                    Id = 20,
+                                    ExerciseId = new Guid("35e343ce-74c5-4413-a75a-48e29d6ee031"),
+                                    Value = new Guid("ef710306-a1b1-4823-93eb-64d8357ed6ea")
+                                },
+                                new
+                                {
+                                    Id = 21,
+                                    ExerciseId = new Guid("8d53f533-4cdc-4e5a-a963-54f31febf8e5"),
+                                    Value = new Guid("c61b363f-290f-4ff4-8cd3-1845414c680f")
+                                },
+                                new
+                                {
+                                    Id = 22,
+                                    ExerciseId = new Guid("1bcbf50b-967d-49e2-84b8-aba447ac4954"),
+                                    Value = new Guid("c61b363f-290f-4ff4-8cd3-1845414c680f")
+                                },
+                                new
+                                {
+                                    Id = 23,
+                                    ExerciseId = new Guid("be20ccf4-be83-4bc4-b08f-5c2bd02dda01"),
+                                    Value = new Guid("c61b363f-290f-4ff4-8cd3-1845414c680f")
+                                },
+                                new
+                                {
+                                    Id = 24,
+                                    ExerciseId = new Guid("35a00634-becb-46a3-bc3d-a73bb2b46ab1"),
+                                    Value = new Guid("c61b363f-290f-4ff4-8cd3-1845414c680f")
+                                },
+                                new
+                                {
+                                    Id = 25,
+                                    ExerciseId = new Guid("ef5c8e17-28a7-4673-97d7-ab3f84d01aa3"),
+                                    Value = new Guid("c61b363f-290f-4ff4-8cd3-1845414c680f")
+                                },
+                                new
+                                {
+                                    Id = 26,
+                                    ExerciseId = new Guid("08ed1ce8-96e5-45ff-b10f-8fa49a1af3d4"),
+                                    Value = new Guid("1d883b60-88a9-4186-a003-9939210b3fe2")
+                                },
+                                new
+                                {
+                                    Id = 27,
+                                    ExerciseId = new Guid("30da8a31-852f-4cfc-89e1-c754bd83ad25"),
+                                    Value = new Guid("1d883b60-88a9-4186-a003-9939210b3fe2")
+                                },
+                                new
+                                {
+                                    Id = 28,
+                                    ExerciseId = new Guid("8296a1d5-c980-4187-8379-29625ee413d6"),
+                                    Value = new Guid("1d883b60-88a9-4186-a003-9939210b3fe2")
+                                },
+                                new
+                                {
+                                    Id = 29,
+                                    ExerciseId = new Guid("765b06a2-50d6-4c56-8845-143e7ee7c733"),
+                                    Value = new Guid("1d883b60-88a9-4186-a003-9939210b3fe2")
+                                },
+                                new
+                                {
+                                    Id = 30,
+                                    ExerciseId = new Guid("8f56c4de-e4bf-4354-8279-ea3f6aca18dc"),
+                                    Value = new Guid("1d883b60-88a9-4186-a003-9939210b3fe2")
+                                },
+                                new
+                                {
+                                    Id = 31,
+                                    ExerciseId = new Guid("11af84dc-c777-46c9-ba7e-8fc836a804f0"),
+                                    Value = new Guid("d9dadc04-9197-4b7a-aca6-c9ce18c1fef5")
+                                },
+                                new
+                                {
+                                    Id = 32,
+                                    ExerciseId = new Guid("36411c85-2a47-415c-a396-ea52bcadd3e9"),
+                                    Value = new Guid("d9dadc04-9197-4b7a-aca6-c9ce18c1fef5")
+                                },
+                                new
+                                {
+                                    Id = 33,
+                                    ExerciseId = new Guid("7ac50144-ad5f-4702-9d87-ea996e8904aa"),
+                                    Value = new Guid("d9dadc04-9197-4b7a-aca6-c9ce18c1fef5")
+                                },
+                                new
+                                {
+                                    Id = 34,
+                                    ExerciseId = new Guid("8650e3d8-d11f-461c-9f8a-b00e6379c348"),
+                                    Value = new Guid("d9dadc04-9197-4b7a-aca6-c9ce18c1fef5")
+                                },
+                                new
+                                {
+                                    Id = 35,
+                                    ExerciseId = new Guid("077d1b35-28e8-411f-956a-4ac8883d27b8"),
+                                    Value = new Guid("d9dadc04-9197-4b7a-aca6-c9ce18c1fef5")
+                                },
+                                new
+                                {
+                                    Id = 36,
+                                    ExerciseId = new Guid("6d0cc462-65e5-48a1-beb0-b7cdb1f04045"),
+                                    Value = new Guid("18da835a-791c-4dd7-915f-09abf79219d1")
+                                },
+                                new
+                                {
+                                    Id = 37,
+                                    ExerciseId = new Guid("0919cab8-a02f-4da7-9b47-1a58351ea9c3"),
+                                    Value = new Guid("18da835a-791c-4dd7-915f-09abf79219d1")
+                                },
+                                new
+                                {
+                                    Id = 38,
+                                    ExerciseId = new Guid("46eac2d6-1f33-4c2a-b420-e914de870deb"),
+                                    Value = new Guid("18da835a-791c-4dd7-915f-09abf79219d1")
+                                },
+                                new
+                                {
+                                    Id = 39,
+                                    ExerciseId = new Guid("e89a87ca-93c7-489c-85e6-200a1192d751"),
+                                    Value = new Guid("18da835a-791c-4dd7-915f-09abf79219d1")
+                                },
+                                new
+                                {
+                                    Id = 40,
+                                    ExerciseId = new Guid("74886f2d-4d3b-40fe-b96a-7524e9fe5b09"),
+                                    Value = new Guid("18da835a-791c-4dd7-915f-09abf79219d1")
+                                },
+                                new
+                                {
+                                    Id = 41,
+                                    ExerciseId = new Guid("38df6419-b7c7-4f23-ae70-6ddadf05db9f"),
+                                    Value = new Guid("946446db-a1da-422e-bad6-ab7972987ae4")
+                                },
+                                new
+                                {
+                                    Id = 42,
+                                    ExerciseId = new Guid("49c84e13-c9a2-4665-b563-7c1f686c8b8d"),
+                                    Value = new Guid("946446db-a1da-422e-bad6-ab7972987ae4")
+                                },
+                                new
+                                {
+                                    Id = 43,
+                                    ExerciseId = new Guid("2958e0a7-9ebc-463a-9f87-5a98ab680449"),
+                                    Value = new Guid("946446db-a1da-422e-bad6-ab7972987ae4")
+                                },
+                                new
+                                {
+                                    Id = 44,
+                                    ExerciseId = new Guid("e2ec419b-08c9-4295-86e1-e8846488b20c"),
+                                    Value = new Guid("946446db-a1da-422e-bad6-ab7972987ae4")
+                                },
+                                new
+                                {
+                                    Id = 45,
+                                    ExerciseId = new Guid("dc63683b-d306-4203-9cce-452d0f828491"),
+                                    Value = new Guid("946446db-a1da-422e-bad6-ab7972987ae4")
+                                },
+                                new
+                                {
+                                    Id = 46,
+                                    ExerciseId = new Guid("23c9e459-845c-4a74-96fa-5eda6187cb1f"),
+                                    Value = new Guid("49723cf9-e420-4608-a368-f2ffbd006242")
+                                },
+                                new
+                                {
+                                    Id = 47,
+                                    ExerciseId = new Guid("9e891766-82ec-441e-affe-b3138b7a04db"),
+                                    Value = new Guid("49723cf9-e420-4608-a368-f2ffbd006242")
+                                },
+                                new
+                                {
+                                    Id = 48,
+                                    ExerciseId = new Guid("928acaf1-743e-4c3e-bdfa-e24d0e6ff485"),
+                                    Value = new Guid("49723cf9-e420-4608-a368-f2ffbd006242")
+                                },
+                                new
+                                {
+                                    Id = 49,
+                                    ExerciseId = new Guid("4afa32ae-daa4-45ed-92ea-f910b90116c1"),
+                                    Value = new Guid("49723cf9-e420-4608-a368-f2ffbd006242")
+                                },
+                                new
+                                {
+                                    Id = 50,
+                                    ExerciseId = new Guid("c5406625-55a2-488f-9050-a5ab649cd3ce"),
+                                    Value = new Guid("49723cf9-e420-4608-a368-f2ffbd006242")
+                                },
+                                new
+                                {
+                                    Id = 51,
+                                    ExerciseId = new Guid("67f7b904-927c-471f-8dfe-73f54adb9e03"),
+                                    Value = new Guid("35c865ea-0c11-4a46-a5f0-d8c168f88907")
+                                },
+                                new
+                                {
+                                    Id = 52,
+                                    ExerciseId = new Guid("9d53c467-f7e8-4433-971c-5e7cb7ce6a71"),
+                                    Value = new Guid("35c865ea-0c11-4a46-a5f0-d8c168f88907")
+                                },
+                                new
+                                {
+                                    Id = 53,
+                                    ExerciseId = new Guid("c6453de7-f75d-49bf-ac53-4944dac3b288"),
+                                    Value = new Guid("35c865ea-0c11-4a46-a5f0-d8c168f88907")
+                                },
+                                new
+                                {
+                                    Id = 54,
+                                    ExerciseId = new Guid("df7940f8-70aa-4e17-9df0-2bb4a46d6d7d"),
+                                    Value = new Guid("35c865ea-0c11-4a46-a5f0-d8c168f88907")
+                                },
+                                new
+                                {
+                                    Id = 55,
+                                    ExerciseId = new Guid("61a06c06-8603-4dd3-8fe5-92f3364e3814"),
+                                    Value = new Guid("35c865ea-0c11-4a46-a5f0-d8c168f88907")
+                                },
+                                new
+                                {
+                                    Id = 56,
+                                    ExerciseId = new Guid("5c96d301-355b-445f-a153-07ef89786909"),
+                                    Value = new Guid("255d72a1-b6e7-4fbb-bc5a-362f2b0c4efe")
+                                },
+                                new
+                                {
+                                    Id = 57,
+                                    ExerciseId = new Guid("ffd37b6b-c0c9-4f04-a7c1-f6dffb9eec21"),
+                                    Value = new Guid("255d72a1-b6e7-4fbb-bc5a-362f2b0c4efe")
+                                },
+                                new
+                                {
+                                    Id = 58,
+                                    ExerciseId = new Guid("84b9001f-564e-42c5-a864-eefa2f289f3b"),
+                                    Value = new Guid("255d72a1-b6e7-4fbb-bc5a-362f2b0c4efe")
+                                },
+                                new
+                                {
+                                    Id = 59,
+                                    ExerciseId = new Guid("00242767-9606-4d08-b96b-7a1498a6d0c9"),
+                                    Value = new Guid("255d72a1-b6e7-4fbb-bc5a-362f2b0c4efe")
+                                },
+                                new
+                                {
+                                    Id = 60,
+                                    ExerciseId = new Guid("8de0af24-b98a-4f94-8974-aa3c51220f09"),
+                                    Value = new Guid("255d72a1-b6e7-4fbb-bc5a-362f2b0c4efe")
+                                },
+                                new
+                                {
+                                    Id = 61,
+                                    ExerciseId = new Guid("111b3155-8751-456a-8a77-f1c26ced8f18"),
+                                    Value = new Guid("a26e89e2-cafd-4126-bc63-5ba53645ed6d")
+                                },
+                                new
+                                {
+                                    Id = 62,
+                                    ExerciseId = new Guid("2c900207-3d73-4b27-a482-f16ce64b7729"),
+                                    Value = new Guid("a26e89e2-cafd-4126-bc63-5ba53645ed6d")
+                                },
+                                new
+                                {
+                                    Id = 63,
+                                    ExerciseId = new Guid("eaacd632-357b-4473-8bc4-e64338f16811"),
+                                    Value = new Guid("a26e89e2-cafd-4126-bc63-5ba53645ed6d")
+                                },
+                                new
+                                {
+                                    Id = 64,
+                                    ExerciseId = new Guid("3953a15c-4d98-4b8d-b5a0-a2bbe4449fe9"),
+                                    Value = new Guid("a26e89e2-cafd-4126-bc63-5ba53645ed6d")
+                                },
+                                new
+                                {
+                                    Id = 65,
+                                    ExerciseId = new Guid("fd21cd86-2fdd-49a9-8447-0159f7756337"),
+                                    Value = new Guid("a26e89e2-cafd-4126-bc63-5ba53645ed6d")
+                                },
+                                new
+                                {
+                                    Id = 66,
+                                    ExerciseId = new Guid("817ce59c-2207-420c-9dd7-db822ab79b4b"),
+                                    Value = new Guid("302c1e93-e339-4850-9bc9-47dd5e37decb")
+                                },
+                                new
+                                {
+                                    Id = 67,
+                                    ExerciseId = new Guid("21983f75-6289-4334-9372-c88a81690e96"),
+                                    Value = new Guid("302c1e93-e339-4850-9bc9-47dd5e37decb")
+                                },
+                                new
+                                {
+                                    Id = 68,
+                                    ExerciseId = new Guid("d2a4e39d-1b0d-4584-bfd2-aa0cfbb070d6"),
+                                    Value = new Guid("302c1e93-e339-4850-9bc9-47dd5e37decb")
+                                },
+                                new
+                                {
+                                    Id = 69,
+                                    ExerciseId = new Guid("bc4032b5-0b91-47da-8e6f-db283a515989"),
+                                    Value = new Guid("302c1e93-e339-4850-9bc9-47dd5e37decb")
+                                },
+                                new
+                                {
+                                    Id = 70,
+                                    ExerciseId = new Guid("2050e871-9095-4f46-8787-8f717f114ea2"),
+                                    Value = new Guid("302c1e93-e339-4850-9bc9-47dd5e37decb")
+                                },
+                                new
+                                {
+                                    Id = 71,
+                                    ExerciseId = new Guid("1d31d367-6651-40f8-a82d-b6f033debac9"),
+                                    Value = new Guid("06e34fe3-489b-4fce-ba46-f9e30c63146f")
+                                },
+                                new
+                                {
+                                    Id = 72,
+                                    ExerciseId = new Guid("6e183839-2a73-44bf-b4e2-b3ab25613a5a"),
+                                    Value = new Guid("06e34fe3-489b-4fce-ba46-f9e30c63146f")
+                                },
+                                new
+                                {
+                                    Id = 73,
+                                    ExerciseId = new Guid("d54d614b-f911-4fd8-9932-eead5f63eb74"),
+                                    Value = new Guid("06e34fe3-489b-4fce-ba46-f9e30c63146f")
+                                },
+                                new
+                                {
+                                    Id = 74,
+                                    ExerciseId = new Guid("e7ac161c-561a-4ffe-81f7-b57b37b19e52"),
+                                    Value = new Guid("06e34fe3-489b-4fce-ba46-f9e30c63146f")
+                                },
+                                new
+                                {
+                                    Id = 75,
+                                    ExerciseId = new Guid("43d627bb-e3ed-4a8d-81b9-8e0212a3a8a0"),
+                                    Value = new Guid("06e34fe3-489b-4fce-ba46-f9e30c63146f")
+                                },
+                                new
+                                {
+                                    Id = 76,
+                                    ExerciseId = new Guid("47294d03-3395-42a6-83d8-389d19aec14d"),
+                                    Value = new Guid("168e4970-41f5-441b-aedb-092556b63775")
+                                },
+                                new
+                                {
+                                    Id = 77,
+                                    ExerciseId = new Guid("bfca2c81-719c-4189-8e2d-027163421517"),
+                                    Value = new Guid("168e4970-41f5-441b-aedb-092556b63775")
+                                },
+                                new
+                                {
+                                    Id = 78,
+                                    ExerciseId = new Guid("2233f2a0-b9c6-4072-8ace-ea274ebf6cf4"),
+                                    Value = new Guid("168e4970-41f5-441b-aedb-092556b63775")
+                                },
+                                new
+                                {
+                                    Id = 79,
+                                    ExerciseId = new Guid("08681ed3-8ab0-4a1d-967a-2c2806b3a099"),
+                                    Value = new Guid("168e4970-41f5-441b-aedb-092556b63775")
+                                },
+                                new
+                                {
+                                    Id = 80,
+                                    ExerciseId = new Guid("b8a0d599-6575-4626-b2af-317f9e78efa4"),
+                                    Value = new Guid("168e4970-41f5-441b-aedb-092556b63775")
+                                },
+                                new
+                                {
+                                    Id = 81,
+                                    ExerciseId = new Guid("dbdc7990-cb51-4e30-96cd-17e3fa20dafa"),
+                                    Value = new Guid("7407b5e3-bcc3-4853-ba1c-740985bf7d52")
+                                },
+                                new
+                                {
+                                    Id = 82,
+                                    ExerciseId = new Guid("c4f3b91f-1c7b-44a2-b32e-32ef0b1f0b11"),
+                                    Value = new Guid("7407b5e3-bcc3-4853-ba1c-740985bf7d52")
+                                },
+                                new
+                                {
+                                    Id = 83,
+                                    ExerciseId = new Guid("d57af893-3fcf-463f-8722-03583c052ffc"),
+                                    Value = new Guid("7407b5e3-bcc3-4853-ba1c-740985bf7d52")
+                                },
+                                new
+                                {
+                                    Id = 84,
+                                    ExerciseId = new Guid("4bfb0f3d-91d4-42c6-ad20-dd66a700d43c"),
+                                    Value = new Guid("7407b5e3-bcc3-4853-ba1c-740985bf7d52")
+                                },
+                                new
+                                {
+                                    Id = 85,
+                                    ExerciseId = new Guid("6b9c1472-a03e-4854-bec8-cfc8bfb8e06c"),
+                                    Value = new Guid("7407b5e3-bcc3-4853-ba1c-740985bf7d52")
+                                },
+                                new
+                                {
+                                    Id = 86,
+                                    ExerciseId = new Guid("7c07747b-ded1-4c2e-9a36-17f95fc059f7"),
+                                    Value = new Guid("65f77c8e-3d17-419e-9529-4326811c732c")
+                                },
+                                new
+                                {
+                                    Id = 87,
+                                    ExerciseId = new Guid("33864b46-810c-4fad-aee0-05e42b413e6a"),
+                                    Value = new Guid("65f77c8e-3d17-419e-9529-4326811c732c")
+                                },
+                                new
+                                {
+                                    Id = 88,
+                                    ExerciseId = new Guid("768101f9-4a4b-43cd-aa34-faf712bfc940"),
+                                    Value = new Guid("65f77c8e-3d17-419e-9529-4326811c732c")
+                                },
+                                new
+                                {
+                                    Id = 89,
+                                    ExerciseId = new Guid("47124eb6-a2d1-4b91-9e5d-5a85169625c8"),
+                                    Value = new Guid("65f77c8e-3d17-419e-9529-4326811c732c")
+                                },
+                                new
+                                {
+                                    Id = 90,
+                                    ExerciseId = new Guid("aee272ba-c84e-4fe4-a8ea-49386db26adb"),
+                                    Value = new Guid("65f77c8e-3d17-419e-9529-4326811c732c")
+                                },
+                                new
+                                {
+                                    Id = 96,
+                                    ExerciseId = new Guid("01257b25-0f71-4d69-8dfd-05090ad780cc"),
+                                    Value = new Guid("21b08001-36e3-4770-affa-e4a7e87e4c7e")
+                                },
+                                new
+                                {
+                                    Id = 97,
+                                    ExerciseId = new Guid("15c3b21e-974c-4b2a-a366-081c042076fe"),
+                                    Value = new Guid("21b08001-36e3-4770-affa-e4a7e87e4c7e")
+                                },
+                                new
+                                {
+                                    Id = 98,
+                                    ExerciseId = new Guid("f562eb05-e5eb-4aa3-a0e7-475643e0098e"),
+                                    Value = new Guid("21b08001-36e3-4770-affa-e4a7e87e4c7e")
+                                },
+                                new
+                                {
+                                    Id = 99,
+                                    ExerciseId = new Guid("64728c0a-630e-49a2-b929-943eede1a19f"),
+                                    Value = new Guid("21b08001-36e3-4770-affa-e4a7e87e4c7e")
+                                },
+                                new
+                                {
+                                    Id = 100,
+                                    ExerciseId = new Guid("e634310c-c6f4-40fa-9e79-f010be5b2d01"),
+                                    Value = new Guid("21b08001-36e3-4770-affa-e4a7e87e4c7e")
+                                },
+                                new
+                                {
+                                    Id = 101,
+                                    ExerciseId = new Guid("25db1596-587d-4e70-8aa5-a632820305f5"),
+                                    Value = new Guid("441161d5-3f41-4e50-9655-a62c971b06b6")
+                                },
+                                new
+                                {
+                                    Id = 102,
+                                    ExerciseId = new Guid("7402f1ec-b698-47d4-8d59-23cb2799d3de"),
+                                    Value = new Guid("441161d5-3f41-4e50-9655-a62c971b06b6")
+                                },
+                                new
+                                {
+                                    Id = 103,
+                                    ExerciseId = new Guid("c43591f9-31a4-4fb3-96ba-98be24894590"),
+                                    Value = new Guid("441161d5-3f41-4e50-9655-a62c971b06b6")
+                                },
+                                new
+                                {
+                                    Id = 104,
+                                    ExerciseId = new Guid("f95e222d-5d5d-4cca-bfb9-5ec6e46691b8"),
+                                    Value = new Guid("441161d5-3f41-4e50-9655-a62c971b06b6")
+                                },
+                                new
+                                {
+                                    Id = 105,
+                                    ExerciseId = new Guid("b96741a5-2c09-4ad9-b19e-55d16b8a27db"),
+                                    Value = new Guid("441161d5-3f41-4e50-9655-a62c971b06b6")
+                                },
+                                new
+                                {
+                                    Id = 106,
+                                    ExerciseId = new Guid("803d8512-4613-49d8-b27f-dbd9c7ccafdf"),
+                                    Value = new Guid("974db683-7a40-4a0a-84a4-afc012855961")
+                                },
+                                new
+                                {
+                                    Id = 107,
+                                    ExerciseId = new Guid("07dbad0c-ce70-4c48-bf85-65b15efe6506"),
+                                    Value = new Guid("974db683-7a40-4a0a-84a4-afc012855961")
+                                },
+                                new
+                                {
+                                    Id = 108,
+                                    ExerciseId = new Guid("a414365c-4e85-475b-96b8-b97854e0ecb1"),
+                                    Value = new Guid("974db683-7a40-4a0a-84a4-afc012855961")
+                                },
+                                new
+                                {
+                                    Id = 109,
+                                    ExerciseId = new Guid("74bd1a5c-c068-436b-be42-de5b69294a3a"),
+                                    Value = new Guid("974db683-7a40-4a0a-84a4-afc012855961")
+                                },
+                                new
+                                {
+                                    Id = 110,
+                                    ExerciseId = new Guid("b2972cad-61ba-405a-bf08-fe89c1ad4299"),
+                                    Value = new Guid("974db683-7a40-4a0a-84a4-afc012855961")
+                                },
+                                new
+                                {
+                                    Id = 116,
+                                    ExerciseId = new Guid("e4c3a5b2-277b-47ac-85ab-a74be22dbfa8"),
+                                    Value = new Guid("85f6a657-c644-4ef9-9454-37202576c089")
+                                },
+                                new
+                                {
+                                    Id = 117,
+                                    ExerciseId = new Guid("2196d9d5-72a0-4eab-9cb4-8daad8fb79b1"),
+                                    Value = new Guid("85f6a657-c644-4ef9-9454-37202576c089")
+                                },
+                                new
+                                {
+                                    Id = 118,
+                                    ExerciseId = new Guid("7c4a664e-4f32-45fd-8ec1-8a9b10ae0c0a"),
+                                    Value = new Guid("85f6a657-c644-4ef9-9454-37202576c089")
+                                },
+                                new
+                                {
+                                    Id = 119,
+                                    ExerciseId = new Guid("30dbc5f4-9e76-4673-bed6-593d154ba6e2"),
+                                    Value = new Guid("85f6a657-c644-4ef9-9454-37202576c089")
+                                },
+                                new
+                                {
+                                    Id = 120,
+                                    ExerciseId = new Guid("b590a52f-6002-45ff-af5d-80e65167f2b2"),
+                                    Value = new Guid("85f6a657-c644-4ef9-9454-37202576c089")
+                                },
+                                new
+                                {
+                                    Id = 121,
+                                    ExerciseId = new Guid("81f6577a-ebce-4b30-be76-d20eacba0acd"),
+                                    Value = new Guid("a184277b-edcc-4af1-9c17-a2b11140be2f")
+                                },
+                                new
+                                {
+                                    Id = 122,
+                                    ExerciseId = new Guid("b303e394-cc78-415f-b3d8-ad79ec0817e4"),
+                                    Value = new Guid("a184277b-edcc-4af1-9c17-a2b11140be2f")
+                                },
+                                new
+                                {
+                                    Id = 123,
+                                    ExerciseId = new Guid("e4eb5043-e1b9-4060-b15d-71913eb267d6"),
+                                    Value = new Guid("a184277b-edcc-4af1-9c17-a2b11140be2f")
+                                },
+                                new
+                                {
+                                    Id = 124,
+                                    ExerciseId = new Guid("87e89338-39fb-4d26-b866-e9dbb7bc74bf"),
+                                    Value = new Guid("a184277b-edcc-4af1-9c17-a2b11140be2f")
+                                },
+                                new
+                                {
+                                    Id = 125,
+                                    ExerciseId = new Guid("81b35b80-3e72-4577-9e84-59d995dd7d22"),
+                                    Value = new Guid("a184277b-edcc-4af1-9c17-a2b11140be2f")
+                                },
+                                new
+                                {
+                                    Id = 126,
+                                    ExerciseId = new Guid("5bc31dd7-2fef-4e92-b169-1191562d80b7"),
+                                    Value = new Guid("614a255e-2239-42ef-95e6-101f95c28499")
+                                },
+                                new
+                                {
+                                    Id = 127,
+                                    ExerciseId = new Guid("f946095e-1f69-48e2-b289-a818b5776242"),
+                                    Value = new Guid("614a255e-2239-42ef-95e6-101f95c28499")
+                                },
+                                new
+                                {
+                                    Id = 128,
+                                    ExerciseId = new Guid("ae29c207-5f54-4148-9303-eb27058fe19a"),
+                                    Value = new Guid("614a255e-2239-42ef-95e6-101f95c28499")
+                                },
+                                new
+                                {
+                                    Id = 129,
+                                    ExerciseId = new Guid("6d30f362-a2a8-4d1e-9488-c12fbb850bad"),
+                                    Value = new Guid("614a255e-2239-42ef-95e6-101f95c28499")
+                                },
+                                new
+                                {
+                                    Id = 130,
+                                    ExerciseId = new Guid("d39eb9f3-82a8-405c-9648-9af628fac4e8"),
+                                    Value = new Guid("614a255e-2239-42ef-95e6-101f95c28499")
+                                },
+                                new
+                                {
+                                    Id = 136,
+                                    ExerciseId = new Guid("a4f233d5-6b80-4f78-8138-c7cd9c9afe61"),
+                                    Value = new Guid("28d10443-9ac8-43e7-b176-2e40cb1565df")
+                                },
+                                new
+                                {
+                                    Id = 137,
+                                    ExerciseId = new Guid("b99c1112-f602-4ae1-8306-25a883c86d45"),
+                                    Value = new Guid("28d10443-9ac8-43e7-b176-2e40cb1565df")
+                                },
+                                new
+                                {
+                                    Id = 138,
+                                    ExerciseId = new Guid("87a6cc3a-e01f-4f37-8c28-27e0d24b8d31"),
+                                    Value = new Guid("28d10443-9ac8-43e7-b176-2e40cb1565df")
+                                },
+                                new
+                                {
+                                    Id = 139,
+                                    ExerciseId = new Guid("a6109397-6055-48e8-803d-0f23275be39d"),
+                                    Value = new Guid("28d10443-9ac8-43e7-b176-2e40cb1565df")
+                                },
+                                new
+                                {
+                                    Id = 140,
+                                    ExerciseId = new Guid("33e5cfd4-d696-4861-a396-59c72b1133f4"),
+                                    Value = new Guid("28d10443-9ac8-43e7-b176-2e40cb1565df")
+                                },
+                                new
+                                {
+                                    Id = 141,
+                                    ExerciseId = new Guid("74fd8c58-8910-43ec-bd17-ccbed652c4f0"),
+                                    Value = new Guid("7db36b76-017d-484b-b367-d82cea8b5036")
+                                },
+                                new
+                                {
+                                    Id = 142,
+                                    ExerciseId = new Guid("b1d1d05c-9bc1-4cb5-8e0b-ca12d7c7a4e4"),
+                                    Value = new Guid("7db36b76-017d-484b-b367-d82cea8b5036")
+                                },
+                                new
+                                {
+                                    Id = 143,
+                                    ExerciseId = new Guid("a07b1d30-81c7-4de2-9412-dcf4f0204e3b"),
+                                    Value = new Guid("7db36b76-017d-484b-b367-d82cea8b5036")
+                                },
+                                new
+                                {
+                                    Id = 144,
+                                    ExerciseId = new Guid("764fc7bc-e1d4-4a31-aeee-b8667e68389d"),
+                                    Value = new Guid("7db36b76-017d-484b-b367-d82cea8b5036")
+                                },
+                                new
+                                {
+                                    Id = 145,
+                                    ExerciseId = new Guid("ba2662a2-ec2e-4f0e-96bb-11e4e0f6e514"),
+                                    Value = new Guid("7db36b76-017d-484b-b367-d82cea8b5036")
+                                },
+                                new
+                                {
+                                    Id = 146,
+                                    ExerciseId = new Guid("9325d238-1000-4e8c-ab2b-f563ac0cbeb0"),
+                                    Value = new Guid("95079976-cc2e-4d0b-a4c3-42c772ce35b9")
+                                },
+                                new
+                                {
+                                    Id = 147,
+                                    ExerciseId = new Guid("0bbdff59-a524-4354-b723-65cb3bea295d"),
+                                    Value = new Guid("95079976-cc2e-4d0b-a4c3-42c772ce35b9")
+                                },
+                                new
+                                {
+                                    Id = 148,
+                                    ExerciseId = new Guid("12c9ca99-9484-4dc4-b174-b00c490c1558"),
+                                    Value = new Guid("95079976-cc2e-4d0b-a4c3-42c772ce35b9")
+                                },
+                                new
+                                {
+                                    Id = 149,
+                                    ExerciseId = new Guid("3de2b59c-b670-4a19-9836-8662a4e84eb2"),
+                                    Value = new Guid("95079976-cc2e-4d0b-a4c3-42c772ce35b9")
+                                },
+                                new
+                                {
+                                    Id = 150,
+                                    ExerciseId = new Guid("d8d7789b-c75c-4bf0-88a0-f11bcabdd566"),
+                                    Value = new Guid("95079976-cc2e-4d0b-a4c3-42c772ce35b9")
+                                },
+                                new
+                                {
+                                    Id = 156,
+                                    ExerciseId = new Guid("47294d03-3395-42a6-83d8-389d19aec14d"),
+                                    Value = new Guid("a6c000b2-2aa9-4372-8788-aa7b7045b0c2")
+                                },
+                                new
+                                {
+                                    Id = 157,
+                                    ExerciseId = new Guid("bfca2c81-719c-4189-8e2d-027163421517"),
+                                    Value = new Guid("a6c000b2-2aa9-4372-8788-aa7b7045b0c2")
+                                },
+                                new
+                                {
+                                    Id = 158,
+                                    ExerciseId = new Guid("2233f2a0-b9c6-4072-8ace-ea274ebf6cf4"),
+                                    Value = new Guid("a6c000b2-2aa9-4372-8788-aa7b7045b0c2")
+                                },
+                                new
+                                {
+                                    Id = 159,
+                                    ExerciseId = new Guid("08681ed3-8ab0-4a1d-967a-2c2806b3a099"),
+                                    Value = new Guid("a6c000b2-2aa9-4372-8788-aa7b7045b0c2")
+                                },
+                                new
+                                {
+                                    Id = 160,
+                                    ExerciseId = new Guid("b8a0d599-6575-4626-b2af-317f9e78efa4"),
+                                    Value = new Guid("a6c000b2-2aa9-4372-8788-aa7b7045b0c2")
+                                },
+                                new
+                                {
+                                    Id = 161,
+                                    ExerciseId = new Guid("dbdc7990-cb51-4e30-96cd-17e3fa20dafa"),
+                                    Value = new Guid("a6c000b2-2aa9-4372-8788-aa7b7045b0c2")
+                                },
+                                new
+                                {
+                                    Id = 162,
+                                    ExerciseId = new Guid("c4f3b91f-1c7b-44a2-b32e-32ef0b1f0b11"),
+                                    Value = new Guid("a6c000b2-2aa9-4372-8788-aa7b7045b0c2")
+                                },
+                                new
+                                {
+                                    Id = 163,
+                                    ExerciseId = new Guid("d57af893-3fcf-463f-8722-03583c052ffc"),
+                                    Value = new Guid("a6c000b2-2aa9-4372-8788-aa7b7045b0c2")
+                                },
+                                new
+                                {
+                                    Id = 164,
+                                    ExerciseId = new Guid("4bfb0f3d-91d4-42c6-ad20-dd66a700d43c"),
+                                    Value = new Guid("a6c000b2-2aa9-4372-8788-aa7b7045b0c2")
+                                },
+                                new
+                                {
+                                    Id = 165,
+                                    ExerciseId = new Guid("6b9c1472-a03e-4854-bec8-cfc8bfb8e06c"),
+                                    Value = new Guid("a6c000b2-2aa9-4372-8788-aa7b7045b0c2")
+                                },
+                                new
+                                {
+                                    Id = 166,
+                                    ExerciseId = new Guid("7c07747b-ded1-4c2e-9a36-17f95fc059f7"),
+                                    Value = new Guid("a6c000b2-2aa9-4372-8788-aa7b7045b0c2")
+                                },
+                                new
+                                {
+                                    Id = 167,
+                                    ExerciseId = new Guid("33864b46-810c-4fad-aee0-05e42b413e6a"),
+                                    Value = new Guid("a6c000b2-2aa9-4372-8788-aa7b7045b0c2")
+                                },
+                                new
+                                {
+                                    Id = 168,
+                                    ExerciseId = new Guid("768101f9-4a4b-43cd-aa34-faf712bfc940"),
+                                    Value = new Guid("a6c000b2-2aa9-4372-8788-aa7b7045b0c2")
+                                },
+                                new
+                                {
+                                    Id = 169,
+                                    ExerciseId = new Guid("47124eb6-a2d1-4b91-9e5d-5a85169625c8"),
+                                    Value = new Guid("a6c000b2-2aa9-4372-8788-aa7b7045b0c2")
+                                },
+                                new
+                                {
+                                    Id = 170,
+                                    ExerciseId = new Guid("aee272ba-c84e-4fe4-a8ea-49386db26adb"),
+                                    Value = new Guid("a6c000b2-2aa9-4372-8788-aa7b7045b0c2")
+                                },
+                                new
+                                {
+                                    Id = 171,
+                                    ExerciseId = new Guid("01257b25-0f71-4d69-8dfd-05090ad780cc"),
+                                    Value = new Guid("d7b96b18-f735-43cd-bd5f-0aa0cfeab504")
+                                },
+                                new
+                                {
+                                    Id = 172,
+                                    ExerciseId = new Guid("15c3b21e-974c-4b2a-a366-081c042076fe"),
+                                    Value = new Guid("d7b96b18-f735-43cd-bd5f-0aa0cfeab504")
+                                },
+                                new
+                                {
+                                    Id = 173,
+                                    ExerciseId = new Guid("f562eb05-e5eb-4aa3-a0e7-475643e0098e"),
+                                    Value = new Guid("d7b96b18-f735-43cd-bd5f-0aa0cfeab504")
+                                },
+                                new
+                                {
+                                    Id = 174,
+                                    ExerciseId = new Guid("64728c0a-630e-49a2-b929-943eede1a19f"),
+                                    Value = new Guid("d7b96b18-f735-43cd-bd5f-0aa0cfeab504")
+                                },
+                                new
+                                {
+                                    Id = 175,
+                                    ExerciseId = new Guid("e634310c-c6f4-40fa-9e79-f010be5b2d01"),
+                                    Value = new Guid("d7b96b18-f735-43cd-bd5f-0aa0cfeab504")
+                                },
+                                new
+                                {
+                                    Id = 176,
+                                    ExerciseId = new Guid("25db1596-587d-4e70-8aa5-a632820305f5"),
+                                    Value = new Guid("d7b96b18-f735-43cd-bd5f-0aa0cfeab504")
+                                },
+                                new
+                                {
+                                    Id = 177,
+                                    ExerciseId = new Guid("7402f1ec-b698-47d4-8d59-23cb2799d3de"),
+                                    Value = new Guid("d7b96b18-f735-43cd-bd5f-0aa0cfeab504")
+                                },
+                                new
+                                {
+                                    Id = 178,
+                                    ExerciseId = new Guid("c43591f9-31a4-4fb3-96ba-98be24894590"),
+                                    Value = new Guid("d7b96b18-f735-43cd-bd5f-0aa0cfeab504")
+                                },
+                                new
+                                {
+                                    Id = 179,
+                                    ExerciseId = new Guid("f95e222d-5d5d-4cca-bfb9-5ec6e46691b8"),
+                                    Value = new Guid("d7b96b18-f735-43cd-bd5f-0aa0cfeab504")
+                                },
+                                new
+                                {
+                                    Id = 180,
+                                    ExerciseId = new Guid("b96741a5-2c09-4ad9-b19e-55d16b8a27db"),
+                                    Value = new Guid("d7b96b18-f735-43cd-bd5f-0aa0cfeab504")
+                                },
+                                new
+                                {
+                                    Id = 181,
+                                    ExerciseId = new Guid("803d8512-4613-49d8-b27f-dbd9c7ccafdf"),
+                                    Value = new Guid("d7b96b18-f735-43cd-bd5f-0aa0cfeab504")
+                                },
+                                new
+                                {
+                                    Id = 182,
+                                    ExerciseId = new Guid("07dbad0c-ce70-4c48-bf85-65b15efe6506"),
+                                    Value = new Guid("d7b96b18-f735-43cd-bd5f-0aa0cfeab504")
+                                },
+                                new
+                                {
+                                    Id = 183,
+                                    ExerciseId = new Guid("a414365c-4e85-475b-96b8-b97854e0ecb1"),
+                                    Value = new Guid("d7b96b18-f735-43cd-bd5f-0aa0cfeab504")
+                                },
+                                new
+                                {
+                                    Id = 184,
+                                    ExerciseId = new Guid("74bd1a5c-c068-436b-be42-de5b69294a3a"),
+                                    Value = new Guid("d7b96b18-f735-43cd-bd5f-0aa0cfeab504")
+                                },
+                                new
+                                {
+                                    Id = 185,
+                                    ExerciseId = new Guid("b2972cad-61ba-405a-bf08-fe89c1ad4299"),
+                                    Value = new Guid("d7b96b18-f735-43cd-bd5f-0aa0cfeab504")
+                                },
+                                new
+                                {
+                                    Id = 186,
+                                    ExerciseId = new Guid("e4c3a5b2-277b-47ac-85ab-a74be22dbfa8"),
+                                    Value = new Guid("60b8431c-0450-4143-9baf-ca627495d7f5")
+                                },
+                                new
+                                {
+                                    Id = 187,
+                                    ExerciseId = new Guid("2196d9d5-72a0-4eab-9cb4-8daad8fb79b1"),
+                                    Value = new Guid("60b8431c-0450-4143-9baf-ca627495d7f5")
+                                },
+                                new
+                                {
+                                    Id = 188,
+                                    ExerciseId = new Guid("7c4a664e-4f32-45fd-8ec1-8a9b10ae0c0a"),
+                                    Value = new Guid("60b8431c-0450-4143-9baf-ca627495d7f5")
+                                },
+                                new
+                                {
+                                    Id = 189,
+                                    ExerciseId = new Guid("30dbc5f4-9e76-4673-bed6-593d154ba6e2"),
+                                    Value = new Guid("60b8431c-0450-4143-9baf-ca627495d7f5")
+                                },
+                                new
+                                {
+                                    Id = 190,
+                                    ExerciseId = new Guid("b590a52f-6002-45ff-af5d-80e65167f2b2"),
+                                    Value = new Guid("60b8431c-0450-4143-9baf-ca627495d7f5")
+                                },
+                                new
+                                {
+                                    Id = 191,
+                                    ExerciseId = new Guid("81f6577a-ebce-4b30-be76-d20eacba0acd"),
+                                    Value = new Guid("60b8431c-0450-4143-9baf-ca627495d7f5")
+                                },
+                                new
+                                {
+                                    Id = 192,
+                                    ExerciseId = new Guid("b303e394-cc78-415f-b3d8-ad79ec0817e4"),
+                                    Value = new Guid("60b8431c-0450-4143-9baf-ca627495d7f5")
+                                },
+                                new
+                                {
+                                    Id = 193,
+                                    ExerciseId = new Guid("e4eb5043-e1b9-4060-b15d-71913eb267d6"),
+                                    Value = new Guid("60b8431c-0450-4143-9baf-ca627495d7f5")
+                                },
+                                new
+                                {
+                                    Id = 194,
+                                    ExerciseId = new Guid("87e89338-39fb-4d26-b866-e9dbb7bc74bf"),
+                                    Value = new Guid("60b8431c-0450-4143-9baf-ca627495d7f5")
+                                },
+                                new
+                                {
+                                    Id = 195,
+                                    ExerciseId = new Guid("81b35b80-3e72-4577-9e84-59d995dd7d22"),
+                                    Value = new Guid("60b8431c-0450-4143-9baf-ca627495d7f5")
+                                },
+                                new
+                                {
+                                    Id = 196,
+                                    ExerciseId = new Guid("5bc31dd7-2fef-4e92-b169-1191562d80b7"),
+                                    Value = new Guid("60b8431c-0450-4143-9baf-ca627495d7f5")
+                                },
+                                new
+                                {
+                                    Id = 197,
+                                    ExerciseId = new Guid("f946095e-1f69-48e2-b289-a818b5776242"),
+                                    Value = new Guid("60b8431c-0450-4143-9baf-ca627495d7f5")
+                                },
+                                new
+                                {
+                                    Id = 198,
+                                    ExerciseId = new Guid("ae29c207-5f54-4148-9303-eb27058fe19a"),
+                                    Value = new Guid("60b8431c-0450-4143-9baf-ca627495d7f5")
+                                },
+                                new
+                                {
+                                    Id = 199,
+                                    ExerciseId = new Guid("6d30f362-a2a8-4d1e-9488-c12fbb850bad"),
+                                    Value = new Guid("60b8431c-0450-4143-9baf-ca627495d7f5")
+                                },
+                                new
+                                {
+                                    Id = 200,
+                                    ExerciseId = new Guid("d39eb9f3-82a8-405c-9648-9af628fac4e8"),
+                                    Value = new Guid("60b8431c-0450-4143-9baf-ca627495d7f5")
+                                },
+                                new
+                                {
+                                    Id = 201,
+                                    ExerciseId = new Guid("a4f233d5-6b80-4f78-8138-c7cd9c9afe61"),
+                                    Value = new Guid("8fdffe09-48a4-4b02-91ed-f808c121f45e")
+                                },
+                                new
+                                {
+                                    Id = 202,
+                                    ExerciseId = new Guid("b99c1112-f602-4ae1-8306-25a883c86d45"),
+                                    Value = new Guid("8fdffe09-48a4-4b02-91ed-f808c121f45e")
+                                },
+                                new
+                                {
+                                    Id = 203,
+                                    ExerciseId = new Guid("87a6cc3a-e01f-4f37-8c28-27e0d24b8d31"),
+                                    Value = new Guid("8fdffe09-48a4-4b02-91ed-f808c121f45e")
+                                },
+                                new
+                                {
+                                    Id = 204,
+                                    ExerciseId = new Guid("a6109397-6055-48e8-803d-0f23275be39d"),
+                                    Value = new Guid("8fdffe09-48a4-4b02-91ed-f808c121f45e")
+                                },
+                                new
+                                {
+                                    Id = 205,
+                                    ExerciseId = new Guid("33e5cfd4-d696-4861-a396-59c72b1133f4"),
+                                    Value = new Guid("8fdffe09-48a4-4b02-91ed-f808c121f45e")
+                                },
+                                new
+                                {
+                                    Id = 206,
+                                    ExerciseId = new Guid("74fd8c58-8910-43ec-bd17-ccbed652c4f0"),
+                                    Value = new Guid("8fdffe09-48a4-4b02-91ed-f808c121f45e")
+                                },
+                                new
+                                {
+                                    Id = 207,
+                                    ExerciseId = new Guid("b1d1d05c-9bc1-4cb5-8e0b-ca12d7c7a4e4"),
+                                    Value = new Guid("8fdffe09-48a4-4b02-91ed-f808c121f45e")
+                                },
+                                new
+                                {
+                                    Id = 208,
+                                    ExerciseId = new Guid("a07b1d30-81c7-4de2-9412-dcf4f0204e3b"),
+                                    Value = new Guid("8fdffe09-48a4-4b02-91ed-f808c121f45e")
+                                },
+                                new
+                                {
+                                    Id = 209,
+                                    ExerciseId = new Guid("764fc7bc-e1d4-4a31-aeee-b8667e68389d"),
+                                    Value = new Guid("8fdffe09-48a4-4b02-91ed-f808c121f45e")
+                                },
+                                new
+                                {
+                                    Id = 210,
+                                    ExerciseId = new Guid("ba2662a2-ec2e-4f0e-96bb-11e4e0f6e514"),
+                                    Value = new Guid("8fdffe09-48a4-4b02-91ed-f808c121f45e")
+                                },
+                                new
+                                {
+                                    Id = 211,
+                                    ExerciseId = new Guid("9325d238-1000-4e8c-ab2b-f563ac0cbeb0"),
+                                    Value = new Guid("8fdffe09-48a4-4b02-91ed-f808c121f45e")
+                                },
+                                new
+                                {
+                                    Id = 212,
+                                    ExerciseId = new Guid("0bbdff59-a524-4354-b723-65cb3bea295d"),
+                                    Value = new Guid("8fdffe09-48a4-4b02-91ed-f808c121f45e")
+                                },
+                                new
+                                {
+                                    Id = 213,
+                                    ExerciseId = new Guid("12c9ca99-9484-4dc4-b174-b00c490c1558"),
+                                    Value = new Guid("8fdffe09-48a4-4b02-91ed-f808c121f45e")
+                                },
+                                new
+                                {
+                                    Id = 214,
+                                    ExerciseId = new Guid("3de2b59c-b670-4a19-9836-8662a4e84eb2"),
+                                    Value = new Guid("8fdffe09-48a4-4b02-91ed-f808c121f45e")
+                                },
+                                new
+                                {
+                                    Id = 215,
+                                    ExerciseId = new Guid("d8d7789b-c75c-4bf0-88a0-f11bcabdd566"),
+                                    Value = new Guid("8fdffe09-48a4-4b02-91ed-f808c121f45e")
+                                });
+                        });
+
+                    b.Navigation("LessonIds");
+
                     b.Navigation("Words");
                 });
 
             modelBuilder.Entity("Domain.Practice.Lessons.Lesson", b =>
                 {
-                    b.OwnsMany("Domain.Practice.Lessons.Lesson.ExerciseIds#Domain.Practice.Exercises.ValueObjects.ExerciseId", "ExerciseIds", b1 =>
+                    b.OwnsMany("Domain.Practice.Exercises.ValueObjects.ExerciseId", "ExerciseIds", b1 =>
                         {
                             b1.Property<int>("Id")
                                 .ValueGeneratedOnAdd()
@@ -16030,10 +17091,1150 @@ namespace Infrastructure.Persistence.Migrations
                                     Id = 5,
                                     LessonId = new Guid("099df6d4-f116-4b6e-8cae-96dd9f3623dd"),
                                     Value = new Guid("69dfc0ba-ac95-44bb-b412-b36b2a45f6bb")
+                                },
+                                new
+                                {
+                                    Id = 6,
+                                    LessonId = new Guid("8eca71ba-7524-4b77-8dc3-5c3e2b051613"),
+                                    Value = new Guid("8cb2fa8b-6886-4fcd-a596-ecc8f15b406c")
+                                },
+                                new
+                                {
+                                    Id = 7,
+                                    LessonId = new Guid("8eca71ba-7524-4b77-8dc3-5c3e2b051613"),
+                                    Value = new Guid("7f44ae6d-6b28-47aa-9d9b-500a632303ef")
+                                },
+                                new
+                                {
+                                    Id = 8,
+                                    LessonId = new Guid("8eca71ba-7524-4b77-8dc3-5c3e2b051613"),
+                                    Value = new Guid("05882a8b-9897-4793-8a1e-dd0cf841c95b")
+                                },
+                                new
+                                {
+                                    Id = 9,
+                                    LessonId = new Guid("8eca71ba-7524-4b77-8dc3-5c3e2b051613"),
+                                    Value = new Guid("7fafec3f-f7fe-46d7-962d-79d62dc13f66")
+                                },
+                                new
+                                {
+                                    Id = 10,
+                                    LessonId = new Guid("8eca71ba-7524-4b77-8dc3-5c3e2b051613"),
+                                    Value = new Guid("24de4efb-c76c-4d7c-ab9d-914a272962f7")
+                                },
+                                new
+                                {
+                                    Id = 11,
+                                    LessonId = new Guid("19e63968-9aa1-4196-af9b-020bd589103c"),
+                                    Value = new Guid("cef21bb8-1373-4236-9b2b-703377c974bf")
+                                },
+                                new
+                                {
+                                    Id = 12,
+                                    LessonId = new Guid("19e63968-9aa1-4196-af9b-020bd589103c"),
+                                    Value = new Guid("0fee6686-f59a-4025-9184-858d1c0a3659")
+                                },
+                                new
+                                {
+                                    Id = 13,
+                                    LessonId = new Guid("19e63968-9aa1-4196-af9b-020bd589103c"),
+                                    Value = new Guid("ad46e855-9605-4d41-9eac-2c8dfa2f7c1f")
+                                },
+                                new
+                                {
+                                    Id = 14,
+                                    LessonId = new Guid("19e63968-9aa1-4196-af9b-020bd589103c"),
+                                    Value = new Guid("90a95bc6-f20f-4e55-b3ba-469f4fa589f7")
+                                },
+                                new
+                                {
+                                    Id = 15,
+                                    LessonId = new Guid("19e63968-9aa1-4196-af9b-020bd589103c"),
+                                    Value = new Guid("1ce82652-e890-4a79-980a-de6a7291c4b6")
+                                },
+                                new
+                                {
+                                    Id = 16,
+                                    LessonId = new Guid("ef710306-a1b1-4823-93eb-64d8357ed6ea"),
+                                    Value = new Guid("865496b8-3788-4cc3-8f6a-09dfebcd2d9b")
+                                },
+                                new
+                                {
+                                    Id = 17,
+                                    LessonId = new Guid("ef710306-a1b1-4823-93eb-64d8357ed6ea"),
+                                    Value = new Guid("791f349a-79eb-431e-8c4a-29371d6e0689")
+                                },
+                                new
+                                {
+                                    Id = 18,
+                                    LessonId = new Guid("ef710306-a1b1-4823-93eb-64d8357ed6ea"),
+                                    Value = new Guid("1a04722f-1b4d-4730-b1f0-4fa2f8d71bd7")
+                                },
+                                new
+                                {
+                                    Id = 19,
+                                    LessonId = new Guid("ef710306-a1b1-4823-93eb-64d8357ed6ea"),
+                                    Value = new Guid("45425db5-3e53-471c-861b-007a0b2a305b")
+                                },
+                                new
+                                {
+                                    Id = 20,
+                                    LessonId = new Guid("ef710306-a1b1-4823-93eb-64d8357ed6ea"),
+                                    Value = new Guid("35e343ce-74c5-4413-a75a-48e29d6ee031")
+                                },
+                                new
+                                {
+                                    Id = 21,
+                                    LessonId = new Guid("c61b363f-290f-4ff4-8cd3-1845414c680f"),
+                                    Value = new Guid("8d53f533-4cdc-4e5a-a963-54f31febf8e5")
+                                },
+                                new
+                                {
+                                    Id = 22,
+                                    LessonId = new Guid("c61b363f-290f-4ff4-8cd3-1845414c680f"),
+                                    Value = new Guid("1bcbf50b-967d-49e2-84b8-aba447ac4954")
+                                },
+                                new
+                                {
+                                    Id = 23,
+                                    LessonId = new Guid("c61b363f-290f-4ff4-8cd3-1845414c680f"),
+                                    Value = new Guid("be20ccf4-be83-4bc4-b08f-5c2bd02dda01")
+                                },
+                                new
+                                {
+                                    Id = 24,
+                                    LessonId = new Guid("c61b363f-290f-4ff4-8cd3-1845414c680f"),
+                                    Value = new Guid("35a00634-becb-46a3-bc3d-a73bb2b46ab1")
+                                },
+                                new
+                                {
+                                    Id = 25,
+                                    LessonId = new Guid("c61b363f-290f-4ff4-8cd3-1845414c680f"),
+                                    Value = new Guid("ef5c8e17-28a7-4673-97d7-ab3f84d01aa3")
+                                },
+                                new
+                                {
+                                    Id = 26,
+                                    LessonId = new Guid("1d883b60-88a9-4186-a003-9939210b3fe2"),
+                                    Value = new Guid("08ed1ce8-96e5-45ff-b10f-8fa49a1af3d4")
+                                },
+                                new
+                                {
+                                    Id = 27,
+                                    LessonId = new Guid("1d883b60-88a9-4186-a003-9939210b3fe2"),
+                                    Value = new Guid("30da8a31-852f-4cfc-89e1-c754bd83ad25")
+                                },
+                                new
+                                {
+                                    Id = 28,
+                                    LessonId = new Guid("1d883b60-88a9-4186-a003-9939210b3fe2"),
+                                    Value = new Guid("8296a1d5-c980-4187-8379-29625ee413d6")
+                                },
+                                new
+                                {
+                                    Id = 29,
+                                    LessonId = new Guid("1d883b60-88a9-4186-a003-9939210b3fe2"),
+                                    Value = new Guid("765b06a2-50d6-4c56-8845-143e7ee7c733")
+                                },
+                                new
+                                {
+                                    Id = 30,
+                                    LessonId = new Guid("1d883b60-88a9-4186-a003-9939210b3fe2"),
+                                    Value = new Guid("8f56c4de-e4bf-4354-8279-ea3f6aca18dc")
+                                },
+                                new
+                                {
+                                    Id = 31,
+                                    LessonId = new Guid("d9dadc04-9197-4b7a-aca6-c9ce18c1fef5"),
+                                    Value = new Guid("11af84dc-c777-46c9-ba7e-8fc836a804f0")
+                                },
+                                new
+                                {
+                                    Id = 32,
+                                    LessonId = new Guid("d9dadc04-9197-4b7a-aca6-c9ce18c1fef5"),
+                                    Value = new Guid("36411c85-2a47-415c-a396-ea52bcadd3e9")
+                                },
+                                new
+                                {
+                                    Id = 33,
+                                    LessonId = new Guid("d9dadc04-9197-4b7a-aca6-c9ce18c1fef5"),
+                                    Value = new Guid("7ac50144-ad5f-4702-9d87-ea996e8904aa")
+                                },
+                                new
+                                {
+                                    Id = 34,
+                                    LessonId = new Guid("d9dadc04-9197-4b7a-aca6-c9ce18c1fef5"),
+                                    Value = new Guid("8650e3d8-d11f-461c-9f8a-b00e6379c348")
+                                },
+                                new
+                                {
+                                    Id = 35,
+                                    LessonId = new Guid("d9dadc04-9197-4b7a-aca6-c9ce18c1fef5"),
+                                    Value = new Guid("077d1b35-28e8-411f-956a-4ac8883d27b8")
+                                },
+                                new
+                                {
+                                    Id = 36,
+                                    LessonId = new Guid("18da835a-791c-4dd7-915f-09abf79219d1"),
+                                    Value = new Guid("6d0cc462-65e5-48a1-beb0-b7cdb1f04045")
+                                },
+                                new
+                                {
+                                    Id = 37,
+                                    LessonId = new Guid("18da835a-791c-4dd7-915f-09abf79219d1"),
+                                    Value = new Guid("0919cab8-a02f-4da7-9b47-1a58351ea9c3")
+                                },
+                                new
+                                {
+                                    Id = 38,
+                                    LessonId = new Guid("18da835a-791c-4dd7-915f-09abf79219d1"),
+                                    Value = new Guid("46eac2d6-1f33-4c2a-b420-e914de870deb")
+                                },
+                                new
+                                {
+                                    Id = 39,
+                                    LessonId = new Guid("18da835a-791c-4dd7-915f-09abf79219d1"),
+                                    Value = new Guid("e89a87ca-93c7-489c-85e6-200a1192d751")
+                                },
+                                new
+                                {
+                                    Id = 40,
+                                    LessonId = new Guid("18da835a-791c-4dd7-915f-09abf79219d1"),
+                                    Value = new Guid("74886f2d-4d3b-40fe-b96a-7524e9fe5b09")
+                                },
+                                new
+                                {
+                                    Id = 41,
+                                    LessonId = new Guid("946446db-a1da-422e-bad6-ab7972987ae4"),
+                                    Value = new Guid("38df6419-b7c7-4f23-ae70-6ddadf05db9f")
+                                },
+                                new
+                                {
+                                    Id = 42,
+                                    LessonId = new Guid("946446db-a1da-422e-bad6-ab7972987ae4"),
+                                    Value = new Guid("49c84e13-c9a2-4665-b563-7c1f686c8b8d")
+                                },
+                                new
+                                {
+                                    Id = 43,
+                                    LessonId = new Guid("946446db-a1da-422e-bad6-ab7972987ae4"),
+                                    Value = new Guid("2958e0a7-9ebc-463a-9f87-5a98ab680449")
+                                },
+                                new
+                                {
+                                    Id = 44,
+                                    LessonId = new Guid("946446db-a1da-422e-bad6-ab7972987ae4"),
+                                    Value = new Guid("e2ec419b-08c9-4295-86e1-e8846488b20c")
+                                },
+                                new
+                                {
+                                    Id = 45,
+                                    LessonId = new Guid("946446db-a1da-422e-bad6-ab7972987ae4"),
+                                    Value = new Guid("dc63683b-d306-4203-9cce-452d0f828491")
+                                },
+                                new
+                                {
+                                    Id = 46,
+                                    LessonId = new Guid("49723cf9-e420-4608-a368-f2ffbd006242"),
+                                    Value = new Guid("23c9e459-845c-4a74-96fa-5eda6187cb1f")
+                                },
+                                new
+                                {
+                                    Id = 47,
+                                    LessonId = new Guid("49723cf9-e420-4608-a368-f2ffbd006242"),
+                                    Value = new Guid("9e891766-82ec-441e-affe-b3138b7a04db")
+                                },
+                                new
+                                {
+                                    Id = 48,
+                                    LessonId = new Guid("49723cf9-e420-4608-a368-f2ffbd006242"),
+                                    Value = new Guid("928acaf1-743e-4c3e-bdfa-e24d0e6ff485")
+                                },
+                                new
+                                {
+                                    Id = 49,
+                                    LessonId = new Guid("49723cf9-e420-4608-a368-f2ffbd006242"),
+                                    Value = new Guid("4afa32ae-daa4-45ed-92ea-f910b90116c1")
+                                },
+                                new
+                                {
+                                    Id = 50,
+                                    LessonId = new Guid("49723cf9-e420-4608-a368-f2ffbd006242"),
+                                    Value = new Guid("c5406625-55a2-488f-9050-a5ab649cd3ce")
+                                },
+                                new
+                                {
+                                    Id = 51,
+                                    LessonId = new Guid("35c865ea-0c11-4a46-a5f0-d8c168f88907"),
+                                    Value = new Guid("67f7b904-927c-471f-8dfe-73f54adb9e03")
+                                },
+                                new
+                                {
+                                    Id = 52,
+                                    LessonId = new Guid("35c865ea-0c11-4a46-a5f0-d8c168f88907"),
+                                    Value = new Guid("9d53c467-f7e8-4433-971c-5e7cb7ce6a71")
+                                },
+                                new
+                                {
+                                    Id = 53,
+                                    LessonId = new Guid("35c865ea-0c11-4a46-a5f0-d8c168f88907"),
+                                    Value = new Guid("c6453de7-f75d-49bf-ac53-4944dac3b288")
+                                },
+                                new
+                                {
+                                    Id = 54,
+                                    LessonId = new Guid("35c865ea-0c11-4a46-a5f0-d8c168f88907"),
+                                    Value = new Guid("df7940f8-70aa-4e17-9df0-2bb4a46d6d7d")
+                                },
+                                new
+                                {
+                                    Id = 55,
+                                    LessonId = new Guid("35c865ea-0c11-4a46-a5f0-d8c168f88907"),
+                                    Value = new Guid("61a06c06-8603-4dd3-8fe5-92f3364e3814")
+                                },
+                                new
+                                {
+                                    Id = 56,
+                                    LessonId = new Guid("255d72a1-b6e7-4fbb-bc5a-362f2b0c4efe"),
+                                    Value = new Guid("5c96d301-355b-445f-a153-07ef89786909")
+                                },
+                                new
+                                {
+                                    Id = 57,
+                                    LessonId = new Guid("255d72a1-b6e7-4fbb-bc5a-362f2b0c4efe"),
+                                    Value = new Guid("ffd37b6b-c0c9-4f04-a7c1-f6dffb9eec21")
+                                },
+                                new
+                                {
+                                    Id = 58,
+                                    LessonId = new Guid("255d72a1-b6e7-4fbb-bc5a-362f2b0c4efe"),
+                                    Value = new Guid("84b9001f-564e-42c5-a864-eefa2f289f3b")
+                                },
+                                new
+                                {
+                                    Id = 59,
+                                    LessonId = new Guid("255d72a1-b6e7-4fbb-bc5a-362f2b0c4efe"),
+                                    Value = new Guid("00242767-9606-4d08-b96b-7a1498a6d0c9")
+                                },
+                                new
+                                {
+                                    Id = 60,
+                                    LessonId = new Guid("255d72a1-b6e7-4fbb-bc5a-362f2b0c4efe"),
+                                    Value = new Guid("8de0af24-b98a-4f94-8974-aa3c51220f09")
+                                },
+                                new
+                                {
+                                    Id = 61,
+                                    LessonId = new Guid("a26e89e2-cafd-4126-bc63-5ba53645ed6d"),
+                                    Value = new Guid("111b3155-8751-456a-8a77-f1c26ced8f18")
+                                },
+                                new
+                                {
+                                    Id = 62,
+                                    LessonId = new Guid("a26e89e2-cafd-4126-bc63-5ba53645ed6d"),
+                                    Value = new Guid("2c900207-3d73-4b27-a482-f16ce64b7729")
+                                },
+                                new
+                                {
+                                    Id = 63,
+                                    LessonId = new Guid("a26e89e2-cafd-4126-bc63-5ba53645ed6d"),
+                                    Value = new Guid("eaacd632-357b-4473-8bc4-e64338f16811")
+                                },
+                                new
+                                {
+                                    Id = 64,
+                                    LessonId = new Guid("a26e89e2-cafd-4126-bc63-5ba53645ed6d"),
+                                    Value = new Guid("3953a15c-4d98-4b8d-b5a0-a2bbe4449fe9")
+                                },
+                                new
+                                {
+                                    Id = 65,
+                                    LessonId = new Guid("a26e89e2-cafd-4126-bc63-5ba53645ed6d"),
+                                    Value = new Guid("fd21cd86-2fdd-49a9-8447-0159f7756337")
+                                },
+                                new
+                                {
+                                    Id = 66,
+                                    LessonId = new Guid("302c1e93-e339-4850-9bc9-47dd5e37decb"),
+                                    Value = new Guid("817ce59c-2207-420c-9dd7-db822ab79b4b")
+                                },
+                                new
+                                {
+                                    Id = 67,
+                                    LessonId = new Guid("302c1e93-e339-4850-9bc9-47dd5e37decb"),
+                                    Value = new Guid("21983f75-6289-4334-9372-c88a81690e96")
+                                },
+                                new
+                                {
+                                    Id = 68,
+                                    LessonId = new Guid("302c1e93-e339-4850-9bc9-47dd5e37decb"),
+                                    Value = new Guid("d2a4e39d-1b0d-4584-bfd2-aa0cfbb070d6")
+                                },
+                                new
+                                {
+                                    Id = 69,
+                                    LessonId = new Guid("302c1e93-e339-4850-9bc9-47dd5e37decb"),
+                                    Value = new Guid("bc4032b5-0b91-47da-8e6f-db283a515989")
+                                },
+                                new
+                                {
+                                    Id = 70,
+                                    LessonId = new Guid("302c1e93-e339-4850-9bc9-47dd5e37decb"),
+                                    Value = new Guid("2050e871-9095-4f46-8787-8f717f114ea2")
+                                },
+                                new
+                                {
+                                    Id = 71,
+                                    LessonId = new Guid("06e34fe3-489b-4fce-ba46-f9e30c63146f"),
+                                    Value = new Guid("1d31d367-6651-40f8-a82d-b6f033debac9")
+                                },
+                                new
+                                {
+                                    Id = 72,
+                                    LessonId = new Guid("06e34fe3-489b-4fce-ba46-f9e30c63146f"),
+                                    Value = new Guid("6e183839-2a73-44bf-b4e2-b3ab25613a5a")
+                                },
+                                new
+                                {
+                                    Id = 73,
+                                    LessonId = new Guid("06e34fe3-489b-4fce-ba46-f9e30c63146f"),
+                                    Value = new Guid("d54d614b-f911-4fd8-9932-eead5f63eb74")
+                                },
+                                new
+                                {
+                                    Id = 74,
+                                    LessonId = new Guid("06e34fe3-489b-4fce-ba46-f9e30c63146f"),
+                                    Value = new Guid("e7ac161c-561a-4ffe-81f7-b57b37b19e52")
+                                },
+                                new
+                                {
+                                    Id = 75,
+                                    LessonId = new Guid("06e34fe3-489b-4fce-ba46-f9e30c63146f"),
+                                    Value = new Guid("43d627bb-e3ed-4a8d-81b9-8e0212a3a8a0")
+                                },
+                                new
+                                {
+                                    Id = 76,
+                                    LessonId = new Guid("168e4970-41f5-441b-aedb-092556b63775"),
+                                    Value = new Guid("47294d03-3395-42a6-83d8-389d19aec14d")
+                                },
+                                new
+                                {
+                                    Id = 77,
+                                    LessonId = new Guid("168e4970-41f5-441b-aedb-092556b63775"),
+                                    Value = new Guid("bfca2c81-719c-4189-8e2d-027163421517")
+                                },
+                                new
+                                {
+                                    Id = 78,
+                                    LessonId = new Guid("168e4970-41f5-441b-aedb-092556b63775"),
+                                    Value = new Guid("2233f2a0-b9c6-4072-8ace-ea274ebf6cf4")
+                                },
+                                new
+                                {
+                                    Id = 79,
+                                    LessonId = new Guid("168e4970-41f5-441b-aedb-092556b63775"),
+                                    Value = new Guid("08681ed3-8ab0-4a1d-967a-2c2806b3a099")
+                                },
+                                new
+                                {
+                                    Id = 80,
+                                    LessonId = new Guid("168e4970-41f5-441b-aedb-092556b63775"),
+                                    Value = new Guid("b8a0d599-6575-4626-b2af-317f9e78efa4")
+                                },
+                                new
+                                {
+                                    Id = 81,
+                                    LessonId = new Guid("7407b5e3-bcc3-4853-ba1c-740985bf7d52"),
+                                    Value = new Guid("dbdc7990-cb51-4e30-96cd-17e3fa20dafa")
+                                },
+                                new
+                                {
+                                    Id = 82,
+                                    LessonId = new Guid("7407b5e3-bcc3-4853-ba1c-740985bf7d52"),
+                                    Value = new Guid("c4f3b91f-1c7b-44a2-b32e-32ef0b1f0b11")
+                                },
+                                new
+                                {
+                                    Id = 83,
+                                    LessonId = new Guid("7407b5e3-bcc3-4853-ba1c-740985bf7d52"),
+                                    Value = new Guid("d57af893-3fcf-463f-8722-03583c052ffc")
+                                },
+                                new
+                                {
+                                    Id = 84,
+                                    LessonId = new Guid("7407b5e3-bcc3-4853-ba1c-740985bf7d52"),
+                                    Value = new Guid("4bfb0f3d-91d4-42c6-ad20-dd66a700d43c")
+                                },
+                                new
+                                {
+                                    Id = 85,
+                                    LessonId = new Guid("7407b5e3-bcc3-4853-ba1c-740985bf7d52"),
+                                    Value = new Guid("6b9c1472-a03e-4854-bec8-cfc8bfb8e06c")
+                                },
+                                new
+                                {
+                                    Id = 86,
+                                    LessonId = new Guid("65f77c8e-3d17-419e-9529-4326811c732c"),
+                                    Value = new Guid("7c07747b-ded1-4c2e-9a36-17f95fc059f7")
+                                },
+                                new
+                                {
+                                    Id = 87,
+                                    LessonId = new Guid("65f77c8e-3d17-419e-9529-4326811c732c"),
+                                    Value = new Guid("33864b46-810c-4fad-aee0-05e42b413e6a")
+                                },
+                                new
+                                {
+                                    Id = 88,
+                                    LessonId = new Guid("65f77c8e-3d17-419e-9529-4326811c732c"),
+                                    Value = new Guid("768101f9-4a4b-43cd-aa34-faf712bfc940")
+                                },
+                                new
+                                {
+                                    Id = 89,
+                                    LessonId = new Guid("65f77c8e-3d17-419e-9529-4326811c732c"),
+                                    Value = new Guid("47124eb6-a2d1-4b91-9e5d-5a85169625c8")
+                                },
+                                new
+                                {
+                                    Id = 90,
+                                    LessonId = new Guid("65f77c8e-3d17-419e-9529-4326811c732c"),
+                                    Value = new Guid("aee272ba-c84e-4fe4-a8ea-49386db26adb")
+                                },
+                                new
+                                {
+                                    Id = 96,
+                                    LessonId = new Guid("21b08001-36e3-4770-affa-e4a7e87e4c7e"),
+                                    Value = new Guid("01257b25-0f71-4d69-8dfd-05090ad780cc")
+                                },
+                                new
+                                {
+                                    Id = 97,
+                                    LessonId = new Guid("21b08001-36e3-4770-affa-e4a7e87e4c7e"),
+                                    Value = new Guid("15c3b21e-974c-4b2a-a366-081c042076fe")
+                                },
+                                new
+                                {
+                                    Id = 98,
+                                    LessonId = new Guid("21b08001-36e3-4770-affa-e4a7e87e4c7e"),
+                                    Value = new Guid("f562eb05-e5eb-4aa3-a0e7-475643e0098e")
+                                },
+                                new
+                                {
+                                    Id = 99,
+                                    LessonId = new Guid("21b08001-36e3-4770-affa-e4a7e87e4c7e"),
+                                    Value = new Guid("64728c0a-630e-49a2-b929-943eede1a19f")
+                                },
+                                new
+                                {
+                                    Id = 100,
+                                    LessonId = new Guid("21b08001-36e3-4770-affa-e4a7e87e4c7e"),
+                                    Value = new Guid("e634310c-c6f4-40fa-9e79-f010be5b2d01")
+                                },
+                                new
+                                {
+                                    Id = 101,
+                                    LessonId = new Guid("441161d5-3f41-4e50-9655-a62c971b06b6"),
+                                    Value = new Guid("25db1596-587d-4e70-8aa5-a632820305f5")
+                                },
+                                new
+                                {
+                                    Id = 102,
+                                    LessonId = new Guid("441161d5-3f41-4e50-9655-a62c971b06b6"),
+                                    Value = new Guid("7402f1ec-b698-47d4-8d59-23cb2799d3de")
+                                },
+                                new
+                                {
+                                    Id = 103,
+                                    LessonId = new Guid("441161d5-3f41-4e50-9655-a62c971b06b6"),
+                                    Value = new Guid("c43591f9-31a4-4fb3-96ba-98be24894590")
+                                },
+                                new
+                                {
+                                    Id = 104,
+                                    LessonId = new Guid("441161d5-3f41-4e50-9655-a62c971b06b6"),
+                                    Value = new Guid("f95e222d-5d5d-4cca-bfb9-5ec6e46691b8")
+                                },
+                                new
+                                {
+                                    Id = 105,
+                                    LessonId = new Guid("441161d5-3f41-4e50-9655-a62c971b06b6"),
+                                    Value = new Guid("b96741a5-2c09-4ad9-b19e-55d16b8a27db")
+                                },
+                                new
+                                {
+                                    Id = 106,
+                                    LessonId = new Guid("974db683-7a40-4a0a-84a4-afc012855961"),
+                                    Value = new Guid("803d8512-4613-49d8-b27f-dbd9c7ccafdf")
+                                },
+                                new
+                                {
+                                    Id = 107,
+                                    LessonId = new Guid("974db683-7a40-4a0a-84a4-afc012855961"),
+                                    Value = new Guid("07dbad0c-ce70-4c48-bf85-65b15efe6506")
+                                },
+                                new
+                                {
+                                    Id = 108,
+                                    LessonId = new Guid("974db683-7a40-4a0a-84a4-afc012855961"),
+                                    Value = new Guid("a414365c-4e85-475b-96b8-b97854e0ecb1")
+                                },
+                                new
+                                {
+                                    Id = 109,
+                                    LessonId = new Guid("974db683-7a40-4a0a-84a4-afc012855961"),
+                                    Value = new Guid("74bd1a5c-c068-436b-be42-de5b69294a3a")
+                                },
+                                new
+                                {
+                                    Id = 110,
+                                    LessonId = new Guid("974db683-7a40-4a0a-84a4-afc012855961"),
+                                    Value = new Guid("b2972cad-61ba-405a-bf08-fe89c1ad4299")
+                                },
+                                new
+                                {
+                                    Id = 116,
+                                    LessonId = new Guid("85f6a657-c644-4ef9-9454-37202576c089"),
+                                    Value = new Guid("e4c3a5b2-277b-47ac-85ab-a74be22dbfa8")
+                                },
+                                new
+                                {
+                                    Id = 117,
+                                    LessonId = new Guid("85f6a657-c644-4ef9-9454-37202576c089"),
+                                    Value = new Guid("2196d9d5-72a0-4eab-9cb4-8daad8fb79b1")
+                                },
+                                new
+                                {
+                                    Id = 118,
+                                    LessonId = new Guid("85f6a657-c644-4ef9-9454-37202576c089"),
+                                    Value = new Guid("7c4a664e-4f32-45fd-8ec1-8a9b10ae0c0a")
+                                },
+                                new
+                                {
+                                    Id = 119,
+                                    LessonId = new Guid("85f6a657-c644-4ef9-9454-37202576c089"),
+                                    Value = new Guid("30dbc5f4-9e76-4673-bed6-593d154ba6e2")
+                                },
+                                new
+                                {
+                                    Id = 120,
+                                    LessonId = new Guid("85f6a657-c644-4ef9-9454-37202576c089"),
+                                    Value = new Guid("b590a52f-6002-45ff-af5d-80e65167f2b2")
+                                },
+                                new
+                                {
+                                    Id = 121,
+                                    LessonId = new Guid("a184277b-edcc-4af1-9c17-a2b11140be2f"),
+                                    Value = new Guid("81f6577a-ebce-4b30-be76-d20eacba0acd")
+                                },
+                                new
+                                {
+                                    Id = 122,
+                                    LessonId = new Guid("a184277b-edcc-4af1-9c17-a2b11140be2f"),
+                                    Value = new Guid("b303e394-cc78-415f-b3d8-ad79ec0817e4")
+                                },
+                                new
+                                {
+                                    Id = 123,
+                                    LessonId = new Guid("a184277b-edcc-4af1-9c17-a2b11140be2f"),
+                                    Value = new Guid("e4eb5043-e1b9-4060-b15d-71913eb267d6")
+                                },
+                                new
+                                {
+                                    Id = 124,
+                                    LessonId = new Guid("a184277b-edcc-4af1-9c17-a2b11140be2f"),
+                                    Value = new Guid("87e89338-39fb-4d26-b866-e9dbb7bc74bf")
+                                },
+                                new
+                                {
+                                    Id = 125,
+                                    LessonId = new Guid("a184277b-edcc-4af1-9c17-a2b11140be2f"),
+                                    Value = new Guid("81b35b80-3e72-4577-9e84-59d995dd7d22")
+                                },
+                                new
+                                {
+                                    Id = 126,
+                                    LessonId = new Guid("614a255e-2239-42ef-95e6-101f95c28499"),
+                                    Value = new Guid("5bc31dd7-2fef-4e92-b169-1191562d80b7")
+                                },
+                                new
+                                {
+                                    Id = 127,
+                                    LessonId = new Guid("614a255e-2239-42ef-95e6-101f95c28499"),
+                                    Value = new Guid("f946095e-1f69-48e2-b289-a818b5776242")
+                                },
+                                new
+                                {
+                                    Id = 128,
+                                    LessonId = new Guid("614a255e-2239-42ef-95e6-101f95c28499"),
+                                    Value = new Guid("ae29c207-5f54-4148-9303-eb27058fe19a")
+                                },
+                                new
+                                {
+                                    Id = 129,
+                                    LessonId = new Guid("614a255e-2239-42ef-95e6-101f95c28499"),
+                                    Value = new Guid("6d30f362-a2a8-4d1e-9488-c12fbb850bad")
+                                },
+                                new
+                                {
+                                    Id = 130,
+                                    LessonId = new Guid("614a255e-2239-42ef-95e6-101f95c28499"),
+                                    Value = new Guid("d39eb9f3-82a8-405c-9648-9af628fac4e8")
+                                },
+                                new
+                                {
+                                    Id = 136,
+                                    LessonId = new Guid("28d10443-9ac8-43e7-b176-2e40cb1565df"),
+                                    Value = new Guid("a4f233d5-6b80-4f78-8138-c7cd9c9afe61")
+                                },
+                                new
+                                {
+                                    Id = 137,
+                                    LessonId = new Guid("28d10443-9ac8-43e7-b176-2e40cb1565df"),
+                                    Value = new Guid("b99c1112-f602-4ae1-8306-25a883c86d45")
+                                },
+                                new
+                                {
+                                    Id = 138,
+                                    LessonId = new Guid("28d10443-9ac8-43e7-b176-2e40cb1565df"),
+                                    Value = new Guid("87a6cc3a-e01f-4f37-8c28-27e0d24b8d31")
+                                },
+                                new
+                                {
+                                    Id = 139,
+                                    LessonId = new Guid("28d10443-9ac8-43e7-b176-2e40cb1565df"),
+                                    Value = new Guid("a6109397-6055-48e8-803d-0f23275be39d")
+                                },
+                                new
+                                {
+                                    Id = 140,
+                                    LessonId = new Guid("28d10443-9ac8-43e7-b176-2e40cb1565df"),
+                                    Value = new Guid("33e5cfd4-d696-4861-a396-59c72b1133f4")
+                                },
+                                new
+                                {
+                                    Id = 141,
+                                    LessonId = new Guid("7db36b76-017d-484b-b367-d82cea8b5036"),
+                                    Value = new Guid("74fd8c58-8910-43ec-bd17-ccbed652c4f0")
+                                },
+                                new
+                                {
+                                    Id = 142,
+                                    LessonId = new Guid("7db36b76-017d-484b-b367-d82cea8b5036"),
+                                    Value = new Guid("b1d1d05c-9bc1-4cb5-8e0b-ca12d7c7a4e4")
+                                },
+                                new
+                                {
+                                    Id = 143,
+                                    LessonId = new Guid("7db36b76-017d-484b-b367-d82cea8b5036"),
+                                    Value = new Guid("a07b1d30-81c7-4de2-9412-dcf4f0204e3b")
+                                },
+                                new
+                                {
+                                    Id = 144,
+                                    LessonId = new Guid("7db36b76-017d-484b-b367-d82cea8b5036"),
+                                    Value = new Guid("764fc7bc-e1d4-4a31-aeee-b8667e68389d")
+                                },
+                                new
+                                {
+                                    Id = 145,
+                                    LessonId = new Guid("7db36b76-017d-484b-b367-d82cea8b5036"),
+                                    Value = new Guid("ba2662a2-ec2e-4f0e-96bb-11e4e0f6e514")
+                                },
+                                new
+                                {
+                                    Id = 146,
+                                    LessonId = new Guid("95079976-cc2e-4d0b-a4c3-42c772ce35b9"),
+                                    Value = new Guid("9325d238-1000-4e8c-ab2b-f563ac0cbeb0")
+                                },
+                                new
+                                {
+                                    Id = 147,
+                                    LessonId = new Guid("95079976-cc2e-4d0b-a4c3-42c772ce35b9"),
+                                    Value = new Guid("0bbdff59-a524-4354-b723-65cb3bea295d")
+                                },
+                                new
+                                {
+                                    Id = 148,
+                                    LessonId = new Guid("95079976-cc2e-4d0b-a4c3-42c772ce35b9"),
+                                    Value = new Guid("12c9ca99-9484-4dc4-b174-b00c490c1558")
+                                },
+                                new
+                                {
+                                    Id = 149,
+                                    LessonId = new Guid("95079976-cc2e-4d0b-a4c3-42c772ce35b9"),
+                                    Value = new Guid("3de2b59c-b670-4a19-9836-8662a4e84eb2")
+                                },
+                                new
+                                {
+                                    Id = 150,
+                                    LessonId = new Guid("95079976-cc2e-4d0b-a4c3-42c772ce35b9"),
+                                    Value = new Guid("d8d7789b-c75c-4bf0-88a0-f11bcabdd566")
+                                },
+                                new
+                                {
+                                    Id = 156,
+                                    LessonId = new Guid("a6c000b2-2aa9-4372-8788-aa7b7045b0c2"),
+                                    Value = new Guid("47294d03-3395-42a6-83d8-389d19aec14d")
+                                },
+                                new
+                                {
+                                    Id = 157,
+                                    LessonId = new Guid("a6c000b2-2aa9-4372-8788-aa7b7045b0c2"),
+                                    Value = new Guid("bfca2c81-719c-4189-8e2d-027163421517")
+                                },
+                                new
+                                {
+                                    Id = 158,
+                                    LessonId = new Guid("a6c000b2-2aa9-4372-8788-aa7b7045b0c2"),
+                                    Value = new Guid("2233f2a0-b9c6-4072-8ace-ea274ebf6cf4")
+                                },
+                                new
+                                {
+                                    Id = 159,
+                                    LessonId = new Guid("a6c000b2-2aa9-4372-8788-aa7b7045b0c2"),
+                                    Value = new Guid("08681ed3-8ab0-4a1d-967a-2c2806b3a099")
+                                },
+                                new
+                                {
+                                    Id = 160,
+                                    LessonId = new Guid("a6c000b2-2aa9-4372-8788-aa7b7045b0c2"),
+                                    Value = new Guid("b8a0d599-6575-4626-b2af-317f9e78efa4")
+                                },
+                                new
+                                {
+                                    Id = 161,
+                                    LessonId = new Guid("a6c000b2-2aa9-4372-8788-aa7b7045b0c2"),
+                                    Value = new Guid("dbdc7990-cb51-4e30-96cd-17e3fa20dafa")
+                                },
+                                new
+                                {
+                                    Id = 162,
+                                    LessonId = new Guid("a6c000b2-2aa9-4372-8788-aa7b7045b0c2"),
+                                    Value = new Guid("c4f3b91f-1c7b-44a2-b32e-32ef0b1f0b11")
+                                },
+                                new
+                                {
+                                    Id = 163,
+                                    LessonId = new Guid("a6c000b2-2aa9-4372-8788-aa7b7045b0c2"),
+                                    Value = new Guid("d57af893-3fcf-463f-8722-03583c052ffc")
+                                },
+                                new
+                                {
+                                    Id = 164,
+                                    LessonId = new Guid("a6c000b2-2aa9-4372-8788-aa7b7045b0c2"),
+                                    Value = new Guid("4bfb0f3d-91d4-42c6-ad20-dd66a700d43c")
+                                },
+                                new
+                                {
+                                    Id = 165,
+                                    LessonId = new Guid("a6c000b2-2aa9-4372-8788-aa7b7045b0c2"),
+                                    Value = new Guid("6b9c1472-a03e-4854-bec8-cfc8bfb8e06c")
+                                },
+                                new
+                                {
+                                    Id = 166,
+                                    LessonId = new Guid("a6c000b2-2aa9-4372-8788-aa7b7045b0c2"),
+                                    Value = new Guid("7c07747b-ded1-4c2e-9a36-17f95fc059f7")
+                                },
+                                new
+                                {
+                                    Id = 167,
+                                    LessonId = new Guid("a6c000b2-2aa9-4372-8788-aa7b7045b0c2"),
+                                    Value = new Guid("33864b46-810c-4fad-aee0-05e42b413e6a")
+                                },
+                                new
+                                {
+                                    Id = 168,
+                                    LessonId = new Guid("a6c000b2-2aa9-4372-8788-aa7b7045b0c2"),
+                                    Value = new Guid("768101f9-4a4b-43cd-aa34-faf712bfc940")
+                                },
+                                new
+                                {
+                                    Id = 169,
+                                    LessonId = new Guid("a6c000b2-2aa9-4372-8788-aa7b7045b0c2"),
+                                    Value = new Guid("47124eb6-a2d1-4b91-9e5d-5a85169625c8")
+                                },
+                                new
+                                {
+                                    Id = 170,
+                                    LessonId = new Guid("a6c000b2-2aa9-4372-8788-aa7b7045b0c2"),
+                                    Value = new Guid("aee272ba-c84e-4fe4-a8ea-49386db26adb")
+                                },
+                                new
+                                {
+                                    Id = 171,
+                                    LessonId = new Guid("d7b96b18-f735-43cd-bd5f-0aa0cfeab504"),
+                                    Value = new Guid("01257b25-0f71-4d69-8dfd-05090ad780cc")
+                                },
+                                new
+                                {
+                                    Id = 172,
+                                    LessonId = new Guid("d7b96b18-f735-43cd-bd5f-0aa0cfeab504"),
+                                    Value = new Guid("15c3b21e-974c-4b2a-a366-081c042076fe")
+                                },
+                                new
+                                {
+                                    Id = 173,
+                                    LessonId = new Guid("d7b96b18-f735-43cd-bd5f-0aa0cfeab504"),
+                                    Value = new Guid("f562eb05-e5eb-4aa3-a0e7-475643e0098e")
+                                },
+                                new
+                                {
+                                    Id = 174,
+                                    LessonId = new Guid("d7b96b18-f735-43cd-bd5f-0aa0cfeab504"),
+                                    Value = new Guid("64728c0a-630e-49a2-b929-943eede1a19f")
+                                },
+                                new
+                                {
+                                    Id = 175,
+                                    LessonId = new Guid("d7b96b18-f735-43cd-bd5f-0aa0cfeab504"),
+                                    Value = new Guid("e634310c-c6f4-40fa-9e79-f010be5b2d01")
+                                },
+                                new
+                                {
+                                    Id = 176,
+                                    LessonId = new Guid("d7b96b18-f735-43cd-bd5f-0aa0cfeab504"),
+                                    Value = new Guid("25db1596-587d-4e70-8aa5-a632820305f5")
+                                },
+                                new
+                                {
+                                    Id = 177,
+                                    LessonId = new Guid("d7b96b18-f735-43cd-bd5f-0aa0cfeab504"),
+                                    Value = new Guid("7402f1ec-b698-47d4-8d59-23cb2799d3de")
+                                },
+                                new
+                                {
+                                    Id = 178,
+                                    LessonId = new Guid("d7b96b18-f735-43cd-bd5f-0aa0cfeab504"),
+                                    Value = new Guid("c43591f9-31a4-4fb3-96ba-98be24894590")
+                                },
+                                new
+                                {
+                                    Id = 179,
+                                    LessonId = new Guid("d7b96b18-f735-43cd-bd5f-0aa0cfeab504"),
+                                    Value = new Guid("f95e222d-5d5d-4cca-bfb9-5ec6e46691b8")
+                                },
+                                new
+                                {
+                                    Id = 180,
+                                    LessonId = new Guid("d7b96b18-f735-43cd-bd5f-0aa0cfeab504"),
+                                    Value = new Guid("b96741a5-2c09-4ad9-b19e-55d16b8a27db")
+                                },
+                                new
+                                {
+                                    Id = 181,
+                                    LessonId = new Guid("d7b96b18-f735-43cd-bd5f-0aa0cfeab504"),
+                                    Value = new Guid("803d8512-4613-49d8-b27f-dbd9c7ccafdf")
+                                },
+                                new
+                                {
+                                    Id = 182,
+                                    LessonId = new Guid("d7b96b18-f735-43cd-bd5f-0aa0cfeab504"),
+                                    Value = new Guid("07dbad0c-ce70-4c48-bf85-65b15efe6506")
+                                },
+                                new
+                                {
+                                    Id = 183,
+                                    LessonId = new Guid("d7b96b18-f735-43cd-bd5f-0aa0cfeab504"),
+                                    Value = new Guid("a414365c-4e85-475b-96b8-b97854e0ecb1")
+                                },
+                                new
+                                {
+                                    Id = 184,
+                                    LessonId = new Guid("d7b96b18-f735-43cd-bd5f-0aa0cfeab504"),
+                                    Value = new Guid("74bd1a5c-c068-436b-be42-de5b69294a3a")
+                                },
+                                new
+                                {
+                                    Id = 185,
+                                    LessonId = new Guid("d7b96b18-f735-43cd-bd5f-0aa0cfeab504"),
+                                    Value = new Guid("b2972cad-61ba-405a-bf08-fe89c1ad4299")
+                                },
+                                new
+                                {
+                                    Id = 186,
+                                    LessonId = new Guid("60b8431c-0450-4143-9baf-ca627495d7f5"),
+                                    Value = new Guid("e4c3a5b2-277b-47ac-85ab-a74be22dbfa8")
+                                },
+                                new
+                                {
+                                    Id = 187,
+                                    LessonId = new Guid("60b8431c-0450-4143-9baf-ca627495d7f5"),
+                                    Value = new Guid("2196d9d5-72a0-4eab-9cb4-8daad8fb79b1")
+                                },
+                                new
+                                {
+                                    Id = 188,
+                                    LessonId = new Guid("60b8431c-0450-4143-9baf-ca627495d7f5"),
+                                    Value = new Guid("7c4a664e-4f32-45fd-8ec1-8a9b10ae0c0a")
+                                },
+                                new
+                                {
+                                    Id = 189,
+                                    LessonId = new Guid("60b8431c-0450-4143-9baf-ca627495d7f5"),
+                                    Value = new Guid("30dbc5f4-9e76-4673-bed6-593d154ba6e2")
+                                },
+                                new
+                                {
+                                    Id = 190,
+                                    LessonId = new Guid("60b8431c-0450-4143-9baf-ca627495d7f5"),
+                                    Value = new Guid("b590a52f-6002-45ff-af5d-80e65167f2b2")
+                                },
+                                new
+                                {
+                                    Id = 191,
+                                    LessonId = new Guid("60b8431c-0450-4143-9baf-ca627495d7f5"),
+                                    Value = new Guid("81f6577a-ebce-4b30-be76-d20eacba0acd")
+                                },
+                                new
+                                {
+                                    Id = 192,
+                                    LessonId = new Guid("60b8431c-0450-4143-9baf-ca627495d7f5"),
+                                    Value = new Guid("b303e394-cc78-415f-b3d8-ad79ec0817e4")
+                                },
+                                new
+                                {
+                                    Id = 193,
+                                    LessonId = new Guid("60b8431c-0450-4143-9baf-ca627495d7f5"),
+                                    Value = new Guid("e4eb5043-e1b9-4060-b15d-71913eb267d6")
+                                },
+                                new
+                                {
+                                    Id = 194,
+                                    LessonId = new Guid("60b8431c-0450-4143-9baf-ca627495d7f5"),
+                                    Value = new Guid("87e89338-39fb-4d26-b866-e9dbb7bc74bf")
+                                },
+                                new
+                                {
+                                    Id = 195,
+                                    LessonId = new Guid("60b8431c-0450-4143-9baf-ca627495d7f5"),
+                                    Value = new Guid("81b35b80-3e72-4577-9e84-59d995dd7d22")
+                                },
+                                new
+                                {
+                                    Id = 196,
+                                    LessonId = new Guid("60b8431c-0450-4143-9baf-ca627495d7f5"),
+                                    Value = new Guid("5bc31dd7-2fef-4e92-b169-1191562d80b7")
+                                },
+                                new
+                                {
+                                    Id = 197,
+                                    LessonId = new Guid("60b8431c-0450-4143-9baf-ca627495d7f5"),
+                                    Value = new Guid("f946095e-1f69-48e2-b289-a818b5776242")
+                                },
+                                new
+                                {
+                                    Id = 198,
+                                    LessonId = new Guid("60b8431c-0450-4143-9baf-ca627495d7f5"),
+                                    Value = new Guid("ae29c207-5f54-4148-9303-eb27058fe19a")
+                                },
+                                new
+                                {
+                                    Id = 199,
+                                    LessonId = new Guid("60b8431c-0450-4143-9baf-ca627495d7f5"),
+                                    Value = new Guid("6d30f362-a2a8-4d1e-9488-c12fbb850bad")
+                                },
+                                new
+                                {
+                                    Id = 200,
+                                    LessonId = new Guid("60b8431c-0450-4143-9baf-ca627495d7f5"),
+                                    Value = new Guid("d39eb9f3-82a8-405c-9648-9af628fac4e8")
+                                },
+                                new
+                                {
+                                    Id = 201,
+                                    LessonId = new Guid("8fdffe09-48a4-4b02-91ed-f808c121f45e"),
+                                    Value = new Guid("a4f233d5-6b80-4f78-8138-c7cd9c9afe61")
+                                },
+                                new
+                                {
+                                    Id = 202,
+                                    LessonId = new Guid("8fdffe09-48a4-4b02-91ed-f808c121f45e"),
+                                    Value = new Guid("b99c1112-f602-4ae1-8306-25a883c86d45")
+                                },
+                                new
+                                {
+                                    Id = 203,
+                                    LessonId = new Guid("8fdffe09-48a4-4b02-91ed-f808c121f45e"),
+                                    Value = new Guid("87a6cc3a-e01f-4f37-8c28-27e0d24b8d31")
+                                },
+                                new
+                                {
+                                    Id = 204,
+                                    LessonId = new Guid("8fdffe09-48a4-4b02-91ed-f808c121f45e"),
+                                    Value = new Guid("a6109397-6055-48e8-803d-0f23275be39d")
+                                },
+                                new
+                                {
+                                    Id = 205,
+                                    LessonId = new Guid("8fdffe09-48a4-4b02-91ed-f808c121f45e"),
+                                    Value = new Guid("33e5cfd4-d696-4861-a396-59c72b1133f4")
+                                },
+                                new
+                                {
+                                    Id = 206,
+                                    LessonId = new Guid("8fdffe09-48a4-4b02-91ed-f808c121f45e"),
+                                    Value = new Guid("74fd8c58-8910-43ec-bd17-ccbed652c4f0")
+                                },
+                                new
+                                {
+                                    Id = 207,
+                                    LessonId = new Guid("8fdffe09-48a4-4b02-91ed-f808c121f45e"),
+                                    Value = new Guid("b1d1d05c-9bc1-4cb5-8e0b-ca12d7c7a4e4")
+                                },
+                                new
+                                {
+                                    Id = 208,
+                                    LessonId = new Guid("8fdffe09-48a4-4b02-91ed-f808c121f45e"),
+                                    Value = new Guid("a07b1d30-81c7-4de2-9412-dcf4f0204e3b")
+                                },
+                                new
+                                {
+                                    Id = 209,
+                                    LessonId = new Guid("8fdffe09-48a4-4b02-91ed-f808c121f45e"),
+                                    Value = new Guid("764fc7bc-e1d4-4a31-aeee-b8667e68389d")
+                                },
+                                new
+                                {
+                                    Id = 210,
+                                    LessonId = new Guid("8fdffe09-48a4-4b02-91ed-f808c121f45e"),
+                                    Value = new Guid("ba2662a2-ec2e-4f0e-96bb-11e4e0f6e514")
+                                },
+                                new
+                                {
+                                    Id = 211,
+                                    LessonId = new Guid("8fdffe09-48a4-4b02-91ed-f808c121f45e"),
+                                    Value = new Guid("9325d238-1000-4e8c-ab2b-f563ac0cbeb0")
+                                },
+                                new
+                                {
+                                    Id = 212,
+                                    LessonId = new Guid("8fdffe09-48a4-4b02-91ed-f808c121f45e"),
+                                    Value = new Guid("0bbdff59-a524-4354-b723-65cb3bea295d")
+                                },
+                                new
+                                {
+                                    Id = 213,
+                                    LessonId = new Guid("8fdffe09-48a4-4b02-91ed-f808c121f45e"),
+                                    Value = new Guid("12c9ca99-9484-4dc4-b174-b00c490c1558")
+                                },
+                                new
+                                {
+                                    Id = 214,
+                                    LessonId = new Guid("8fdffe09-48a4-4b02-91ed-f808c121f45e"),
+                                    Value = new Guid("3de2b59c-b670-4a19-9836-8662a4e84eb2")
+                                },
+                                new
+                                {
+                                    Id = 215,
+                                    LessonId = new Guid("8fdffe09-48a4-4b02-91ed-f808c121f45e"),
+                                    Value = new Guid("d8d7789b-c75c-4bf0-88a0-f11bcabdd566")
                                 });
                         });
 
-                    b.OwnsMany("Domain.Practice.Lessons.Lesson.ScoreIds#Domain.Practice.Scores.ValueObjects.ScoreId", "ScoreIds", b1 =>
+                    b.OwnsMany("Domain.Practice.Scores.ValueObjects.ScoreId", "ScoreIds", b1 =>
                         {
                             b1.Property<int>("Id")
                                 .ValueGeneratedOnAdd()
@@ -16065,53 +18266,7 @@ namespace Infrastructure.Persistence.Migrations
 
             modelBuilder.Entity("Domain.Vocabulary.PrimaryVerbs.PrimaryVerb", b =>
                 {
-                    b.OwnsMany("Domain.Vocabulary.PrimaryVerbs.PrimaryVerb.AdditionalForms#Domain.Vocabulary.PrimaryVerbs.ValueObjects.AdditionalForm", "AdditionalForms", b1 =>
-                        {
-                            b1.Property<int>("Id")
-                                .ValueGeneratedOnAdd()
-                                .HasColumnType("integer");
-
-                            NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b1.Property<int>("Id"));
-
-                            b1.Property<Guid>("PrimaryVerbId")
-                                .HasColumnType("uuid");
-
-                            b1.Property<string>("Value")
-                                .IsRequired()
-                                .HasColumnType("text")
-                                .HasColumnName("Text");
-
-                            b1.HasKey("Id");
-
-                            b1.HasIndex("PrimaryVerbId");
-
-                            b1.ToTable("AdditionalForms", "vocabulary");
-
-                            b1.WithOwner()
-                                .HasForeignKey("PrimaryVerbId");
-
-                            b1.HasData(
-                                new
-                                {
-                                    Id = 1,
-                                    PrimaryVerbId = new Guid("f286ad7c-e394-42b6-ad07-4be4a8bb137c"),
-                                    Value = "were"
-                                },
-                                new
-                                {
-                                    Id = 2,
-                                    PrimaryVerbId = new Guid("f286ad7c-e394-42b6-ad07-4be4a8bb137c"),
-                                    Value = "am"
-                                },
-                                new
-                                {
-                                    Id = 3,
-                                    PrimaryVerbId = new Guid("f286ad7c-e394-42b6-ad07-4be4a8bb137c"),
-                                    Value = "are"
-                                });
-                        });
-
-                    b.OwnsMany("Domain.Vocabulary.PrimaryVerbs.PrimaryVerb.FullNegativeForms#Domain.Vocabulary.ModalVerbs.ValueObjects.FullNegativeForm", "FullNegativeForms", b1 =>
+                    b.OwnsMany("Domain.Vocabulary.ModalVerbs.ValueObjects.FullNegativeForm", "FullNegativeForms", b1 =>
                         {
                             b1.Property<int>("Id")
                                 .ValueGeneratedOnAdd()
@@ -16205,7 +18360,7 @@ namespace Infrastructure.Persistence.Migrations
                                 });
                         });
 
-                    b.OwnsMany("Domain.Vocabulary.PrimaryVerbs.PrimaryVerb.ShortNegativeForms#Domain.Vocabulary.ModalVerbs.ValueObjects.ShortNegativeForm", "ShortNegativeForms", b1 =>
+                    b.OwnsMany("Domain.Vocabulary.ModalVerbs.ValueObjects.ShortNegativeForm", "ShortNegativeForms", b1 =>
                         {
                             b1.Property<int>("Id")
                                 .ValueGeneratedOnAdd()
@@ -16296,6 +18451,52 @@ namespace Infrastructure.Persistence.Migrations
                                     Id = 11,
                                     PrimaryVerbId = new Guid("f286ad7c-e394-42b6-ad07-4be4a8bb137c"),
                                     Value = "aren't"
+                                });
+                        });
+
+                    b.OwnsMany("Domain.Vocabulary.PrimaryVerbs.ValueObjects.AdditionalForm", "AdditionalForms", b1 =>
+                        {
+                            b1.Property<int>("Id")
+                                .ValueGeneratedOnAdd()
+                                .HasColumnType("integer");
+
+                            NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b1.Property<int>("Id"));
+
+                            b1.Property<Guid>("PrimaryVerbId")
+                                .HasColumnType("uuid");
+
+                            b1.Property<string>("Value")
+                                .IsRequired()
+                                .HasColumnType("text")
+                                .HasColumnName("Text");
+
+                            b1.HasKey("Id");
+
+                            b1.HasIndex("PrimaryVerbId");
+
+                            b1.ToTable("AdditionalForms", "vocabulary");
+
+                            b1.WithOwner()
+                                .HasForeignKey("PrimaryVerbId");
+
+                            b1.HasData(
+                                new
+                                {
+                                    Id = 1,
+                                    PrimaryVerbId = new Guid("f286ad7c-e394-42b6-ad07-4be4a8bb137c"),
+                                    Value = "were"
+                                },
+                                new
+                                {
+                                    Id = 2,
+                                    PrimaryVerbId = new Guid("f286ad7c-e394-42b6-ad07-4be4a8bb137c"),
+                                    Value = "am"
+                                },
+                                new
+                                {
+                                    Id = 3,
+                                    PrimaryVerbId = new Guid("f286ad7c-e394-42b6-ad07-4be4a8bb137c"),
+                                    Value = "are"
                                 });
                         });
 

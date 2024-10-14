@@ -1,8 +1,6 @@
 ﻿using Domain.Common.ValueObjects;
 using Domain.Practice.Exercises;
 using Domain.Practice.Exercises.ValueObjects;
-using Domain.Practice.Lessons.ValueObjects;
-using Infrastructure.Persistence.Seed;
 using Infrastructure.Persistence.Seed.Practice;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
@@ -15,6 +13,27 @@ public class ExerciseConfiguration : IEntityTypeConfiguration<Exercise>
     {
         ConfigureExercises(builder);
         ConfigureWords(builder);
+        ConfigureLessonIds(builder);
+    }
+    
+    private void ConfigureLessonIds(EntityTypeBuilder<Exercise> builder)
+    {
+        builder.OwnsMany(u => u.LessonIds, lessonIds =>
+        {
+            lessonIds.ToTable("ExerciseLessonIds");
+
+            lessonIds.WithOwner().HasForeignKey("ExerciseId");
+
+            lessonIds.HasKey("Id");
+
+            lessonIds.Property(s => s.Value)
+                .HasColumnName("LessonId")
+                .ValueGeneratedNever();
+
+            lessonIds.HasData(ExerciseSeed.GetLessonIdsForExercises());
+        });
+
+        builder.Metadata.FindNavigation(nameof(Exercise.LessonIds))!.SetPropertyAccessMode(PropertyAccessMode.Field);
     }
 
     private void ConfigureWords(EntityTypeBuilder<Exercise> builder)
@@ -57,13 +76,10 @@ public class ExerciseConfiguration : IEntityTypeConfiguration<Exercise>
             .ValueGeneratedNever()
             .HasConversion(id => id.Value, value => ExerciseId.Create(value));
 
-        builder.Property(e => e.LessonId)
-            .HasConversion(id => id.Value, value => LessonId.Create(value));
-
         builder.Property(e => e.RusPhrase)
             .HasMaxLength(255)
             .HasConversion(rusPhrase => rusPhrase.Value, value => RusPhrase.Create(value).Value);
-
+        
         builder.HasData(ExerciseSeed.GetExercisesForLessons());
     }
 }

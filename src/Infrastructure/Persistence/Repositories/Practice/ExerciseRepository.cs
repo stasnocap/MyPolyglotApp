@@ -12,7 +12,7 @@ public class ExerciseRepository(AppDbContext _dbContext) : IExerciseRepository
         return _dbContext
             .Set<Exercise>()
             .AsNoTracking()
-            .Where(x => x.LessonId == lessonId)
+            .Where(e =>  e.LessonIds.Select(lId => lId.Value).Contains(lessonId.Value))
             .OrderBy(x => Guid.NewGuid())
             .FirstAsync(cancellationToken);
     }

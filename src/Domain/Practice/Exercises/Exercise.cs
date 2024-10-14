@@ -9,14 +9,14 @@ namespace Domain.Practice.Exercises;
 public sealed class Exercise : AggregateRoot<ExerciseId>
 {
     private readonly List<Word> _words = [];
+    private readonly List<LessonId> _lessonIds = [];
     
-    public LessonId LessonId { get; }
     public RusPhrase RusPhrase { get; }
     public IReadOnlyList<Word> Words => _words.AsReadOnly();
+    public IReadOnlyList<LessonId> LessonIds => _lessonIds.AsReadOnly();
     
-    private Exercise(ExerciseId id, LessonId lessonId, RusPhrase rusPhrase) : base(id)
+    private Exercise(ExerciseId id, RusPhrase rusPhrase) : base(id)
     {
-        LessonId = lessonId;
         RusPhrase = rusPhrase;
     }
     
@@ -25,14 +25,14 @@ public sealed class Exercise : AggregateRoot<ExerciseId>
     {
     }
 
-    public static ErrorOr<Exercise> Create(LessonId lessonId, RusPhrase rusPhrase)
+    public static ErrorOr<Exercise> Create(RusPhrase rusPhrase)
     {
-        return new Exercise(ExerciseId.CreateUnique(), lessonId, rusPhrase);
+        return new Exercise(ExerciseId.CreateUnique(), rusPhrase);
     }
 
-    public static ErrorOr<Exercise> Create(ExerciseId exerciseId, LessonId lessonId, RusPhrase rusPhrase)
+    public static ErrorOr<Exercise> Create(ExerciseId exerciseId, RusPhrase rusPhrase)
     {
-        return new Exercise(exerciseId, lessonId, rusPhrase);
+        return new Exercise(exerciseId, rusPhrase);
     }
 
     public void AddWord(Word word)

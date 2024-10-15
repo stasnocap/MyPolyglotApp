@@ -4,11 +4,18 @@ namespace Web;
 
 public static class DependencyInjection
 {
-    public static IServiceCollection AddPresentation(this IServiceCollection services)
+    public static IServiceCollection AddPresentation(this IServiceCollection services, IWebHostEnvironment environment)
     {
         services.AddControllers();
         services.AddMappings();
-        services.AddRazorPages();
+        
+        var mvcBuilder = services.AddRazorPages();
+
+        if (environment.IsDevelopment())
+        {
+            mvcBuilder.AddRazorRuntimeCompilation();
+        }
+
         return services;
     }
 }

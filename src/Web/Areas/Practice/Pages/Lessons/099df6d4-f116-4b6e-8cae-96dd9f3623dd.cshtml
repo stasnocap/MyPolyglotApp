@@ -1,0 +1,505 @@
+﻿@page
+@model Web.Areas.Practice.Pages.Lessons.Lesson1
+
+@{
+    ViewData["Title"] = "Урок 1";
+}
+
+<article>
+<hgroup>
+    <h1>
+        Урок 1
+    </h1>
+
+    <p>
+        На первом уроке мы научимся спрягать английские глаголы в трех простых временах: <span class="fw-bold">настоящее, будущее, прошедшее.</span>
+    </p>
+
+    <p>
+        В каждом из времен, разберемся как построить утвердительное, вопросительное или отрицательное предложение.
+    </p>
+</hgroup>
+<section>
+    <h2>
+        Настоящее время.
+    </h2>
+
+    <p>
+        <span class="fw-bold">Утвердительные предложения</span> образуются также как и в русском языке. Сначала идет местоимение, затем глагол.
+    </p>
+
+    <p>
+        Если используются местоимения <span class="fw-bold">he</span> <span class="text-secondary">(он)</span>, <span class="fw-bold">she</span> <span class="text-secondary">(она)</span> или <span class="fw-bold">it</span> <span class="text-secondary">(это)</span> то к глаголу добавляется окончание <span class="fw-bold">-s</span>.
+    </p>
+
+    <div class="ms-5 me-5">
+        <table class="table table-borderless align-middle text-center table-light border">
+            <tr>
+                <td rowspan="4">Do</td>
+                <td>I</td>
+                <td rowspan="6" class="border border-start-0 border-top-0 border-bottom-0">love</td>
+                <td class="table-success">I</td>
+                <td rowspan="4" class="border border-start-0 border-top-0 border-bottom-0 table-success">love</td>
+                <td>I</td>
+                <td rowspan="4" class="border border-start-0 border-top-0 border-bottom-0">don't love</td>
+            </tr>
+            <tr>
+                <td>you</td>
+                <td class="table-success">you</td>
+                <td>you</td>
+            </tr>
+            <tr>
+                <td>we</td>
+                <td class="table-success">we</td>
+                <td>we</td>
+            </tr>
+            <tr>
+                <td>they</td>
+                <td class="table-success">they</td>
+                <td>they</td>
+            </tr>
+            <tr>
+                <td rowspan="2">Does</td>
+                <td>he</td>
+                <td class="table-success">he</td>
+                <td rowspan="2" class="border border-start-0 border-top-0 border-bottom-0 table-success">love<span class="text-danger fw-bold">s</span></td>
+                <td>he</td>
+                <td rowspan="2" class="border border-start-0 border-top-0 border-bottom-0">doesn't love</td>
+            </tr>
+            <tr>
+                <td>she</td>
+                <td class="table-success">she</td>
+                <td>she</td>
+            </tr>
+        </table>
+    </div>
+
+    <p>
+        <span class="fw-bold">Отрицательные предложения</span> образуются при помощи вспомогательного глагола <span class="fw-bold">do</span> + частица <span class="fw-bold">not</span>
+    </p>
+
+    <p>
+        Если используются местоимения <span class="fw-bold">he</span> <span class="text-secondary">(он)</span>, <span class="fw-bold">she</span> <span class="text-secondary">(она)</span> или <span class="fw-bold">it</span> <span class="text-secondary">(это)</span> то вместо <span class="fw-bold">do</span> используется его другая форма <span class="fw-bold">does</span>.
+    </p>
+
+    <p>
+        Часто используются сокращения: <span class="fw-bold">do not = don't</span> и <span class="fw-bold">does not = doesn't</span>
+    </p>
+
+    <div class="ms-5 me-5">
+        <table class="table table-borderless align-middle text-center table-light border">
+            <tr>
+                <td rowspan="4">Do</td>
+                <td>I</td>
+                <td rowspan="6" class="border border-start-0 border-top-0 border-bottom-0">love</td>
+                <td>I</td>
+                <td rowspan="4" class="border border-start-0 border-top-0 border-bottom-0">love</td>
+                <td class="table-success">I</td>
+                <td rowspan="4" class="border border-start-0 border-top-0 border-bottom-0 table-success"><span class="text-danger fw-bold">don't</span> love</td>
+            </tr>
+            <tr>
+                <td>you</td>
+                <td>you</td>
+                <td class="table-success">you</td>
+            </tr>
+            <tr>
+                <td>we</td>
+                <td>we</td>
+                <td class="table-success">we</td>
+            </tr>
+            <tr>
+                <td>they</td>
+                <td>they</td>
+                <td class="table-success">they</td>
+            </tr>
+            <tr>
+                <td rowspan="2">Does</td>
+                <td>he</td>
+                <td>he</td>
+                <td rowspan="2" class="border border-start-0 border-top-0 border-bottom-0">loves</td>
+                <td class="table-success">he</td>
+                <td rowspan="2" class="border border-start-0 border-top-0 border-bottom-0 table-success"><span class="text-danger fw-bold">doesn't</span> love</td>
+            </tr>
+            <tr>
+                <td>she</td>
+                <td>she</td>
+                <td class="table-success">she</td>
+            </tr>
+        </table>
+    </div>
+
+    <p>
+        <span class="fw-bold">Вопросительные предложения</span> также образуются при помощи вспомогательного глагола <span class="fw-bold">do (does).</span>
+    </p>
+
+    <p>
+        Для образования вопроса этот глагол ставится в начале предложения.
+    </p>
+
+    <div class="ms-5 me-5">
+        <table class="table table-borderless align-middle text-center table-light border">
+            <tr>
+                <td rowspan="4" class="text-danger fw-bold table-success">Do</td>
+                <td class="table-success">I</td>
+                <td rowspan="6" class="border border-start-0 border-top-0 border-bottom-0 table-success">love</td>
+                <td>I</td>
+                <td rowspan="4" class="border border-start-0 border-top-0 border-bottom-0">love</td>
+                <td>I</td>
+                <td rowspan="4" class="border border-start-0 border-top-0 border-bottom-0">don't love</td>
+            </tr>
+            <tr>
+                <td class="table-success">you</td>
+                <td>you</td>
+                <td>you</td>
+            </tr>
+            <tr>
+                <td class="table-success">we</td>
+                <td>we</td>
+                <td>we</td>
+            </tr>
+            <tr>
+                <td class="table-success">they</td>
+                <td>they</td>
+                <td>they</td>
+            </tr>
+            <tr>
+                <td rowspan="2" class="text-danger fw-bold table-success">Does</td>
+                <td class="table-success">he</td>
+                <td>he</td>
+                <td rowspan="2" class="border border-start-0 border-top-0 border-bottom-0">loves</td>
+                <td>he</td>
+                <td rowspan="2" class="border border-start-0 border-top-0 border-bottom-0">doesn't love</td>
+            </tr>
+            <tr>
+                <td class="table-success">she</td>
+                <td>she</td>
+                <td>she</td>
+            </tr>
+        </table>
+    </div>
+</section>
+<section>
+
+    <h2>
+        Прошедшее время.
+    </h2>
+
+    <p>
+        <span class="fw-bold">Утвердительные предложения</span> образуются также как и в настоящем времени, только используется вторая форма глагола.
+    </p>
+
+    <p>
+        Это означает, что для правильных глаголов прибавляется окончание <span class="fw-bold">-ed.</span>
+    </p>
+
+    <div class="ms-5 me-5">
+        <table class="table table-borderless align-middle text-center table-light border">
+            <tr>
+                <td rowspan="6">
+                    Did
+                </td>
+                <td>I</td>
+                <td rowspan="6" class="border border-start-0 border-top-0 border-bottom-0">love</td>
+                <td class="table-success">I</td>
+                <td rowspan="6" class="border border-start-0 border-top-0 border-bottom-0 table-success">lov<span class="text-danger fw-bold">ed</span></td>
+                <td>I</td>
+                <td rowspan="6">
+                    did not love
+                </td>
+            </tr>
+            <tr>
+                <td>you</td>
+                <td class="table-success">you</td>
+                <td>you</td>
+            </tr>
+            <tr>
+                <td>we</td>
+                <td class="table-success">we</td>
+                <td>we</td>
+            </tr>
+            <tr>
+                <td>they</td>
+                <td class="table-success">they</td>
+                <td>they</td>
+            </tr>
+            <tr>
+                <td>he</td>
+                <td class="table-success">he</td>
+                <td>he</td>
+            </tr>
+            <tr>
+                <td>she</td>
+                <td class="table-success">she</td>
+                <td>she</td>
+            </tr>
+        </table>
+    </div>
+
+    <p>
+        <span class="fw-bold">Отрицательные предложения</span> образуются при помощи глагола <span class="fw-bold">did</span> с частицей <span class="fw-bold">not</span> (didn't)
+    </p>
+
+    <div class="ms-5 me-5">
+        <table class="table table-borderless align-middle text-center table-light border">
+            <tr>
+                <td rowspan="6">
+                    Did
+                </td>
+                <td>I</td>
+                <td rowspan="6" class="border border-start-0 border-top-0 border-bottom-0">love</td>
+                <td>I</td>
+                <td rowspan="6" class="border border-start-0 border-top-0 border-bottom-0">loved</td>
+                <td class="table-success">I</td>
+                <td rowspan="6" class="table-success">
+                    <span class="text-danger fw-bold">did not</span> love
+                </td>
+            </tr>
+            <tr>
+                <td>you</td>
+                <td>you</td>
+                <td class="table-success">you</td>
+            </tr>
+            <tr>
+                <td>we</td>
+                <td>we</td>
+                <td class="table-success">we</td>
+            </tr>
+            <tr>
+                <td>they</td>
+                <td>they</td>
+                <td class="table-success">they</td>
+            </tr>
+            <tr>
+                <td>he</td>
+                <td>he</td>
+                <td class="table-success">he</td>
+            </tr>
+            <tr>
+                <td>she</td>
+                <td>she</td>
+                <td class="table-success">she</td>
+            </tr>
+        </table>
+    </div>
+
+    <p>
+        <span class="fw-bold">Вопросительные предложения</span> также образуются при помощи глагола <span class="fw-bold">did</span>, который ставится в начале предложения.
+    </p>
+
+    <div class="ms-5 me-5">
+        <table class="table table-borderless align-middle text-center table-light border">
+            <tr>
+                <td rowspan="6" class="text-danger fw-bold table-success">
+                    Did
+                </td>
+                <td class="table-success">I</td>
+                <td rowspan="6" class="border border-start-0 border-top-0 border-bottom-0 table-success">love</td>
+                <td>I</td>
+                <td rowspan="6" class="border border-start-0 border-top-0 border-bottom-0">loved</td>
+                <td>I</td>
+                <td rowspan="6">
+                    did not love
+                </td>
+            </tr>
+            <tr>
+                <td class="table-success">you</td>
+                <td>you</td>
+                <td>you</td>
+            </tr>
+            <tr>
+                <td class="table-success">we</td>
+                <td>we</td>
+                <td>we</td>
+            </tr>
+            <tr>
+                <td class="table-success">they</td>
+                <td>they</td>
+                <td>they</td>
+            </tr>
+            <tr>
+                <td class="table-success">he</td>
+                <td>he</td>
+                <td>he</td>
+            </tr>
+            <tr>
+                <td class="table-success">she</td>
+                <td>she</td>
+                <td>she</td>
+            </tr>
+        </table>
+    </div>
+</section>
+<section>
+    <h2>
+        Будущее время.
+    </h2>
+
+    <p>
+        <span class="fw-bold">Утвердительные предложения</span> образуются при помощи глагола <span class="fw-bold">will.</span>
+    </p>
+
+    <div class="ms-5 me-5">
+        <table class="table table-borderless align-middle text-center table-light border">
+            <tr>
+                <td rowspan="6">
+                    Will
+                </td>
+                <td>I</td>
+                <td rowspan="6" class="border border-start-0 border-top-0 border-bottom-0">love</td>
+                <td class="table-success">I</td>
+                <td rowspan="6" class="border border-start-0 border-top-0 border-bottom-0 table-success">
+                    <span class="text-danger fw-bold">
+                        will
+                    </span>
+                    love
+                </td>
+                <td>I</td>
+                <td rowspan="6">
+                    will not love
+                </td>
+            </tr>
+            <tr>
+                <td>you</td>
+                <td class="table-success">you</td>
+                <td>you</td>
+            </tr>
+            <tr>
+                <td>we</td>
+                <td class="table-success">we</td>
+                <td>we</td>
+            </tr>
+            <tr>
+                <td>they</td>
+                <td class="table-success">they</td>
+                <td>they</td>
+            </tr>
+            <tr>
+                <td>he</td>
+                <td class="table-success">he</td>
+                <td>he</td>
+            </tr>
+            <tr>
+                <td>she</td>
+                <td class="table-success">she</td>
+                <td>she</td>
+            </tr>
+        </table>
+    </div>
+
+    <p>
+        <span class="fw-bold">Отрицательные предложения</span> образуются при помощи глагола <span class="fw-bold">will</span> с частицей <span class="fw-bold">not</span> (won't)
+    </p>
+
+    <div class="ms-5 me-5">
+        <table class="table table-borderless align-middle text-center table-light border">
+            <tr>
+                <td rowspan="6">
+                    Will
+                </td>
+                <td>I</td>
+                <td rowspan="6" class="border border-start-0 border-top-0 border-bottom-0">love</td>
+                <td>I</td>
+                <td rowspan="6" class="border border-start-0 border-top-0 border-bottom-0">
+                    will love
+                </td>
+                <td class="table-success">I</td>
+                <td rowspan="6" class="table-success">
+                    <span class="text-danger fw-bold">will not</span> love
+                </td>
+            </tr>
+            <tr>
+                <td>you</td>
+                <td>you</td>
+                <td class="table-success">you</td>
+            </tr>
+            <tr>
+                <td>we</td>
+                <td>we</td>
+                <td class="table-success">we</td>
+            </tr>
+            <tr>
+                <td>they</td>
+                <td>they</td>
+                <td class="table-success">they</td>
+            </tr>
+            <tr>
+                <td>he</td>
+                <td>he</td>
+                <td class="table-success">he</td>
+            </tr>
+            <tr>
+                <td>she</td>
+                <td>she</td>
+                <td class="table-success">she</td>
+            </tr>
+        </table>
+    </div>
+
+    <p>
+        <span class="fw-bold">Вопросительные предложения</span> также образуются при помощи глагола <span class="fw-bold">will</span>, который ставится в начале предложения.
+    </p>
+
+    <div class="ms-5 me-5">
+        <table class="table table-borderless align-middle text-center table-light border">
+            <tr>
+                <td rowspan="6" class="text-danger fw-bold table-success">
+                    Will
+                </td>
+                <td class="table-success">I</td>
+                <td rowspan="6" class="border border-start-0 border-top-0 border-bottom-0 table-success">love</td>
+                <td>I</td>
+                <td rowspan="6" class="border border-start-0 border-top-0 border-bottom-0">
+                    will love
+                </td>
+                <td>I</td>
+                <td rowspan="6">
+                    will not love
+                </td>
+            </tr>
+            <tr>
+                <td class="table-success">you</td>
+                <td>you</td>
+                <td>you</td>
+            </tr>
+            <tr>
+                <td class="table-success">we</td>
+                <td>we</td>
+                <td>we</td>
+            </tr>
+            <tr>
+                <td class="table-success">they</td>
+                <td>they</td>
+                <td>they</td>
+            </tr>
+            <tr>
+                <td class="table-success">he</td>
+                <td>he</td>
+                <td>he</td>
+            </tr>
+            <tr>
+                <td class="table-success">she</td>
+                <td>she</td>
+                <td>she</td>
+            </tr>
+        </table>
+    </div>
+</section>
+
+<section>
+    <h2>
+        Таблица времен simple.
+    </h2>
+
+    <p>
+        Для того, чтобы это было легче запомнить, нарисуем таблицу:
+    </p>
+
+    <partial name="Shared/Hints/_099df6d4-f116-4b6e-8cae-96dd9f3623dd"/>
+
+    <p>
+        Эту таблицу вы всегда можете подсмотреть при прохождении урока, нажав кнопку "Подсказка".
+    </p>
+</section>
+
+<partial name="Shared/_lessonAdvices"/>
+</article>

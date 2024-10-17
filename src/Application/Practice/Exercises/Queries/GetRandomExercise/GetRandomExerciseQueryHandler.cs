@@ -19,7 +19,9 @@ public class GetRandomExerciseQueryHandler(
     
     public async Task<ErrorOr<ExerciseResult>> Handle(GetRandomExerciseQuery request, CancellationToken cancellationToken)
     {
-        if (!await _lessonRepository.ExistsAsync(request.LessonId, cancellationToken))
+        var lessonNumber = await _lessonRepository.GetLessonNumberAsync(request.LessonId, cancellationToken);
+        
+        if (lessonNumber is null)
         {
             return LessonErrors.NotFound;
         }
@@ -39,6 +41,6 @@ public class GetRandomExerciseQueryHandler(
             wordGroups.Add(new ExerciseResult.WordGroup(words, word.Type));
         }
 
-        return new ExerciseResult(exercise.Id, exercise.RusPhrase, wordGroups);
+        return new ExerciseResult(exercise.Id, lessonNumber, exercise.RusPhrase, wordGroups);
     }
 }

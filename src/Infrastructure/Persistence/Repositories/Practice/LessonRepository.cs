@@ -13,4 +13,13 @@ public class LessonRepository(AppDbContext _dbContext) : ILessonRepository
             .Set<Lesson>()
             .AnyAsync(l => l.Id == lessonId, cancellationToken);
     }
+    
+    public Task<LessonNumber?> GetLessonNumberAsync(LessonId lessonId, CancellationToken cancellationToken)
+    {
+        return _dbContext
+            .Set<Lesson>()
+            .Where(l => l.Id == lessonId)
+            .Select(l => l.Number)
+            .FirstOrDefaultAsync(cancellationToken);
+    }
 }

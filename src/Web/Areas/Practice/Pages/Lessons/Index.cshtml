@@ -1,0 +1,49 @@
+﻿@page "{lessonId}"
+@model Web.Areas.Practice.Pages.Lessons.Index
+
+@{
+    ViewData["Title"] = "Урок";
+    var exercise = Model.ErrorOrExerciseResult.Value;
+}
+
+@section Scripts
+{
+    <script>
+        let groups = @Html.Raw(Json.Serialize(exercise.WordGroups));
+    </script>
+    <script src="~/js/lesson.js"></script>
+}
+
+@if (Model.ErrorOrExerciseResult.IsError)
+{
+    <div>
+        Error
+    </div>
+}
+else
+{
+    <section>
+        <h1 class="mb-4">
+            Урок @exercise.LessonNumber.Value
+        </h1>
+        <p class="fs-3 text-secondary">
+            @exercise.RusPhrase.Value
+        </p>
+        <div class="d-flex justify-content-between">
+            <p class="fs-3 text-primary js-answer">
+            </p>
+            <div>
+                <button type="button" class="btn btn-outline-secondary js-backspace">
+                    <i class="bi bi-backspace"></i>
+                    BACKSPACE
+                </button>
+            </div>
+        </div>
+        <div class="row row-cols-2 text-center bg-light fs-5 border rounded-3 js-groups-container justify-content-center">
+            <div class="row row-cols-2 js-group" data-group-container-index="0">
+            </div>
+            <div class="row row-cols-2 js-group" data-group-container-index="1">
+            </div>
+        </div>
+    </section>
+}

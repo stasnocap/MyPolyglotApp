@@ -528,7 +528,7 @@ public static class ExerciseSeed
 
             Exercise.Create(ExerciseId1, RusPhrase.Create("Ты не увидишь.").Value).Value,
             Exercise.Create(ExerciseId2, RusPhrase.Create("Мы покажем?").Value).Value,
-            Exercise.Create(ExerciseId3, RusPhrase.Create("Она работала.").Value).Value,
+            Exercise.Create(ExerciseId3, RusPhrase.Create("Она работала?").Value).Value,
             Exercise.Create(ExerciseId4, RusPhrase.Create("Ты не думал.").Value).Value,
             Exercise.Create(ExerciseId5, RusPhrase.Create("Я посмотрю?").Value).Value,
 

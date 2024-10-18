@@ -2,8 +2,8 @@
 using System.Reflection;
 using Domain.Common.Models;
 using Domain.Identity;
-using Domain.Vocabulary.Pronouns;
 using Infrastructure.Persistence.Configurations;
+using Infrastructure.Persistence.Configurations.Interceptors;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
@@ -11,13 +11,15 @@ using Microsoft.EntityFrameworkCore.Internal;
 
 namespace Infrastructure.Persistence;
 
-public class AppDbContext(DbContextOptions options) : IdentityDbContext<User, IdentityRole<Guid>, Guid>(options)
+public class AppDbContext(DbContextOptions options, PublishDomainEventsInterceptor _publishDomainEventsInterceptor) : IdentityDbContext<User, IdentityRole<Guid>, Guid>(options)
 {
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
         
-        modelBuilder.ApplyConfigurationsFromAssembly(typeof(AppDbContext).Assembly);
+        modelBuilder
+            .Ignore<List<IDomainEvent>>()
+            .ApplyConfigurationsFromAssembly(typeof(AppDbContext).Assembly);
                 
         SetIdentitySchema(modelBuilder);
     }
@@ -41,5 +43,11 @@ public class AppDbContext(DbContextOptions options) : IdentityDbContext<User, Id
         MethodInfo setSource = GetType() .GetMethod("Microsoft.EntityFrameworkCore.Internal.IDbContextDependencies.get_SetSource", BindingFlags.NonPublic | BindingFlags.Instance)!;
 
         return (IQueryable<object>)((IDbSetCache)this).GetOrAddSet((IDbSetSource)setSource.Invoke(this, null!)!, type);
+    }
+
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    {
+        optionsBuilder.AddInterceptors(_publishDomainEventsInterceptor);
+        base.OnConfiguring(optionsBuilder);
     }
 }

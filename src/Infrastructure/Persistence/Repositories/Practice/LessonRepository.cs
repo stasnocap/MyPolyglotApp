@@ -22,4 +22,11 @@ public class LessonRepository(AppDbContext _dbContext) : ILessonRepository
             .Select(l => l.Number)
             .FirstOrDefaultAsync(cancellationToken);
     }
+
+    public Task<Lesson?> GetAsync(LessonId lessonId, CancellationToken cancellationToken)
+    {
+        return _dbContext
+            .Set<Lesson>()
+            .FirstOrDefaultAsync(l => l.Id == lessonId, cancellationToken);
+    }
 }

@@ -12,7 +12,7 @@ public static class WordDecorator
             UpperCaseFirstLetter(words);
         }
 
-        var match = Regex.Match(word.Text.Value, @"\w+(\W)");
+        var match = Regex.Match(word.Text.Value, @"^\w+(\W)$");
         if (match.Success)
         {
             AppendSymbol(words, match.Groups[1].Value);

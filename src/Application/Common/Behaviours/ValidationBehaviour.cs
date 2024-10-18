@@ -4,8 +4,7 @@ using MediatR;
 
 namespace Application.Common.Behaviours;
 
-public class ValidationBehaviour<TRequest, TResponse>(IValidator<TRequest>? validator)
-    : IPipelineBehavior<TRequest, TResponse> 
+public class ValidationBehaviour<TRequest, TResponse>(IValidator<TRequest>? validator) : IPipelineBehavior<TRequest, TResponse> 
         where TRequest : IRequest<TResponse>
         where TResponse : IErrorOr
 {

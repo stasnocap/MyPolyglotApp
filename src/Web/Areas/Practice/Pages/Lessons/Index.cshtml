@@ -1,17 +1,32 @@
 ﻿@page "{lessonId}"
+@using Application.Practice.Exercises.Commands.CompleteExercise
+@using Microsoft.AspNetCore.Mvc.TagHelpers
 @model Web.Areas.Practice.Pages.Lessons.Index
 
 @{
-    ViewData["Title"] = "Урок";
-    var exercise = Model.ErrorOrExerciseResult.Value;
+    var exercise = Model.ErrorOrExerciseResult.IsError
+        ? null!
+        : Model.ErrorOrExerciseResult.Value;
+
+    CompleteExerciseResult? completeExerciseResult = null;
+    if (Model.ErrorOrCompleteExerciseResult is { IsError: false })
+    {
+        completeExerciseResult = Model.ErrorOrCompleteExerciseResult.Value.Value;
+    }
+
+    ViewData["Title"] = $"Урок {exercise.LessonNumber.Value}";
 }
 
 @section Scripts
 {
     <script>
-        let groups = @Html.Raw(Json.Serialize(exercise.WordGroups));
+        const groups = @Html.Raw(Json.Serialize(exercise.WordGroups));
+        const exerciseCompletedSuccessfully = @Html.Raw(Json.Serialize(completeExerciseResult?.Success));
     </script>
     <script src="~/js/lesson.js"></script>
+    <script>
+        init();
+    </script>
 }
 
 @if (Model.ErrorOrExerciseResult.IsError)
@@ -22,6 +37,10 @@
 }
 else
 {
+    <form class="js-exercise-form" method="post">
+        <input class="js-exercise-form-answer" type="hidden" name="Answer">
+        <input class="js-exercise-form-exercise-id" type="hidden" name="ExerciseId" value="@Model.ErrorOrExerciseResult.Value.ExerciseId.Value">
+    </form>
     <section>
         <h1 class="mb-4">
             Урок @exercise.LessonNumber.Value
@@ -30,19 +49,33 @@ else
             @exercise.RusPhrase.Value
         </p>
         <div class="d-flex justify-content-between">
-            <p class="fs-3 text-primary js-answer">
-            </p>
+            @if (completeExerciseResult is { Success: false })
+            {
+                <p class="fs-3 text-primary text-danger js-answer">
+                    @completeExerciseResult!.CorrectAnswer
+                </p>
+            }
+            else
+            {
+                <p class="fs-3 text-primary js-answer">
+                </p>
+            }
             <div>
-                <button type="button" class="btn btn-outline-secondary js-backspace">
+                <button type="button" class="btn btn-outline-secondary js-backspace" disabled>
                     <i class="bi bi-backspace"></i>
                     BACKSPACE
                 </button>
             </div>
         </div>
-        <div class="row row-cols-2 text-center bg-light fs-5 border rounded-3 js-groups-container justify-content-center">
-            <div class="row row-cols-2 js-group" data-group-container-index="0">
+        <div class="position-relative">
+            <div class="alert alert-success h-100 fs-1 row justify-content-center align-items-center position-absolute @(Model.ErrorOrCompleteExerciseResult?.Value is { Success: true } ? string.Empty : "d-none") js-correct-answer" role="alert" style="width: 102%">
+                Молодец!
             </div>
-            <div class="row row-cols-2 js-group" data-group-container-index="1">
+            <div class="row row-cols-2 text-center bg-light fs-5 border rounded-3 justify-content-center js-groups-container">
+                <div class="row row-cols-2 js-group" data-group-container-index="0">
+                </div>
+                <div class="row row-cols-2 js-group" data-group-container-index="1">
+                </div>
             </div>
         </div>
     </section>

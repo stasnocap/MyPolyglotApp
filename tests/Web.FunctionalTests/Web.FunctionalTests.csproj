@@ -29,6 +29,7 @@
 
     <ItemGroup>
       <Folder Include="Areas\Practice\Controllers\" />
+      <Folder Include="Areas\Practice\Controllers\ExercisesController\" />
     </ItemGroup>
 
 </Project>

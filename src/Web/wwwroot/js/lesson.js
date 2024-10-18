@@ -1,9 +1,16 @@
-﻿const answer = [];
+﻿const words = [];
 const emptyAnswerPlaceholder = 'Переведите предложение';
 
-renderAnswer();
+if (exerciseCompletedSuccessfully === null || exerciseCompletedSuccessfully) {
+  renderAnswer();
+}
 renderGroup(0, 0);
 renderGroup(1, 1);
+
+function init() {
+  $('.js-correct-answer:not(.d-none)').fadeOut('slow');
+  // setTimeout(() => $('.js-correct-answer:not(.d-none)').addClass('d-none'), 500);
+}
 
 function getWordGroupHtml(group) {
   let html = '';
@@ -16,7 +23,12 @@ function getWordGroupHtml(group) {
 }
 
 $('.js-backspace').click(function() {
-  const removedWord = answer.pop();
+  const removedWord = words.pop();
+  
+  if (!removedWord) {
+    return;
+  }
+  
   renderAnswer();
   
   renderGroup(removedWord.groupContainerIndex, removedWord.groupIndex);
@@ -24,13 +36,21 @@ $('.js-backspace').click(function() {
 
 function renderAnswer() {
   const answerContainer = $('.js-answer');
+  const backspaceButton = $('.js-backspace');
 
-  if (!answer.length) {
+  if (!words.length) {
     answerContainer.text(emptyAnswerPlaceholder);
+    backspaceButton.prop('disabled', true);
     return;
   }
 
-  const result = answer.map(a => a.wordText).join(' ');
+  backspaceButton.prop('disabled', false);
+
+  if (answerContainer.hasClass('text-danger')) {
+    answerContainer.removeClass('text-danger');
+  }
+
+  const result = words.map(a => a.wordText).join(' ');
 
   answerContainer.text(result);
 }
@@ -43,9 +63,13 @@ $(document).on('click', '.js-word-button', function () {
 
   const nextGroupIndex = getNextGroupIndex();
   
-  answer.push({wordText, groupContainerIndex, groupIndex});
+  words.push({wordText, groupContainerIndex, groupIndex});
   renderAnswer();
   renderGroup(groupContainerIndex, nextGroupIndex);
+  
+  if (words.length === groups.length) {
+    completeExercise();
+  }
 
   function getNextGroupIndex() {
     const groupIndexes = $('.js-group').map(function() {
@@ -73,4 +97,11 @@ function renderGroup(groupContainerIndex, groupIndex) {
   } else {
     groupContainer.empty();
   }
+}
+
+function completeExercise() {
+  const answer = words.map(w => w.wordText).join(' ');
+  console.log(answer);
+  $('.js-exercise-form-answer').val(answer);
+  $('.js-exercise-form').submit();
 }

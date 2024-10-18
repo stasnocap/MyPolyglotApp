@@ -8,6 +8,8 @@ public sealed class WordNumber : ValueObject
 {
     public int Value { get; }
 
+    public static explicit operator int(WordNumber wordNumber) => wordNumber.Value;
+
     private WordNumber(int value)
     {
         Value = value;

@@ -11,11 +11,8 @@ namespace Application.Practice.Exercises.Queries.GetRandomExercise;
 public class GetRandomExerciseQueryHandler(
     IExerciseRepository _exerciseRepository, 
     ILessonRepository _lessonRepository,
-    IVocabularyRepository _vocabularyRepository) : IRequestHandler<GetRandomExerciseQuery, ErrorOr<ExerciseResult>>
+    ExerciseConverter _exerciseConverter) : IRequestHandler<GetRandomExerciseQuery, ErrorOr<ExerciseResult>>
 {
-    private const int WordGroupSize = 6;
-    private const int RightAnswerCount = 1;
-    private const int RandomWordsCount = WordGroupSize - RightAnswerCount;
     
     public async Task<ErrorOr<ExerciseResult>> Handle(GetRandomExerciseQuery request, CancellationToken cancellationToken)
     {
@@ -26,21 +23,10 @@ public class GetRandomExerciseQueryHandler(
             return LessonErrors.NotFound;
         }
 
-        var exercise = await _exerciseRepository.GetRandomExerciseAsync(request.LessonId, cancellationToken);
+        var exercise = await _exerciseRepository.GetRandomAsync(request.LessonId, cancellationToken);
 
-        List<ExerciseResult.WordGroup> wordGroups = [];
+        var exerciseResult = await _exerciseConverter.ConvertAsync(exercise, lessonNumber, cancellationToken);
 
-        foreach (var word in exercise.Words.OrderBy(x => x.Number.Value))
-        {
-            var words = await _vocabularyRepository.GetRandomAsync(word, RandomWordsCount, cancellationToken);
-
-            WordDecorator.Decorate(word, words);
-            
-            words.Insert(Random.Shared.Next(RandomWordsCount), word.Text.Value);
-
-            wordGroups.Add(new ExerciseResult.WordGroup(words, word.Type));
-        }
-
-        return new ExerciseResult(exercise.Id, lessonNumber, exercise.RusPhrase, wordGroups);
+        return exerciseResult;
     }
 }

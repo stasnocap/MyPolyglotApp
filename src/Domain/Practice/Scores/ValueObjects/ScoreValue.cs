@@ -11,9 +11,9 @@ public sealed class ScoreValue : ValueObject
         Value = value;
     }
 
-    public static ScoreValue Create()
+    public static ScoreValue Create(int value = 0)
     {
-        return new ScoreValue(0);
+        return new ScoreValue(value);
     }
 
     public void Increase()

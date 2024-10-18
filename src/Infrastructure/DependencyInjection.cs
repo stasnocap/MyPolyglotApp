@@ -1,8 +1,12 @@
-﻿using Application.Common.Interfaces.Persistence.Practice;
+﻿using Application.Common.Interfaces.Persistence;
+using Application.Common.Interfaces.Persistence.Identity;
+using Application.Common.Interfaces.Persistence.Practice;
 using Application.Common.Interfaces.Persistence.Vocabulary;
 using Application.Common.Interfaces.Services;
 using Domain.Identity;
 using Infrastructure.Persistence;
+using Infrastructure.Persistence.Configurations.Interceptors;
+using Infrastructure.Persistence.Repositories.Identity;
 using Infrastructure.Persistence.Repositories.Practice;
 using Infrastructure.Persistence.Repositories.Vocabulary;
 using Infrastructure.Services;
@@ -22,6 +26,8 @@ public static class DependencyInjection
         services.AddSingleton<IDateTimeProvider, DateTimeProvider>();
         services.AddHttpContextAccessor();
         
+        services.AddScoped<IUnitOfWork, UnitOfWork>();
+        
         services.AddScoped<IExerciseRepository, ExerciseRepository>();
         services.AddScoped<ILessonRepository, LessonRepository>();
         services.AddScoped<IVocabularyRepository, VocabularyRepository>();
@@ -35,8 +41,10 @@ public static class DependencyInjection
         services.AddScoped<ICompoundRepository, CompoundRepository>();
         services.AddScoped<INumberWithNounRepository, NumberWithNounRepository>();
         services.AddScoped<IPronounRepository, PronounRepository>();
+        services.AddScoped<IScoreRepository, ScoreRepository>();
+        services.AddScoped<IUserRepository, UserRepository>();
         
-        services.AddScoped<IPasswordHasher<User>, PasswordHasher<User>>();
+        services.AddScoped<IUserContext, UserContext>();
         services.AddPostgresDatabase(configuration);
         return services;
     }
@@ -48,7 +56,8 @@ public static class DependencyInjection
         {
             throw new ArgumentNullException(nameof(connectionString), "Database connection string can't be empty.");
         }
-        
+
+        services.AddScoped<PublishDomainEventsInterceptor>();
         services.AddDbContext<AppDbContext>(options => options.UseNpgsql(connectionString));
     }
 

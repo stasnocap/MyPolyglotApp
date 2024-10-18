@@ -45,4 +45,27 @@ public class WordDecoratorTests
             (w[^1] == '.').Should().BeTrue();
         }
     }
+    
+    [Fact]
+    public void ShouldDoNothing_IfWordHasNonWordSymbolInTheMiddle()
+    {
+        var word = Word.Create(ExerciseId.CreateUnique(), WordNumber.Create(1).Value, Text.Create("didn't").Value, WordType.Adjective);
+        var source = new List<string>()
+        {
+            "old",
+            "new",
+            "granny",
+        };
+        
+        var decorated = new List<string>()
+        {
+            "old",
+            "new",
+            "granny",
+        };
+        
+        WordDecorator.Decorate(word, decorated);
+
+        source.SequenceEqual(decorated).Should().BeTrue();
+    }
 }

@@ -1,5 +1,4 @@
-﻿using System.Text;
-using Domain.Practice.Exercises.ValueObjects;
+﻿using Domain.Practice.Exercises.ValueObjects;
 using Domain.Practice.Lessons.ValueObjects;
 
 namespace Application.Practice.Exercises.Common;

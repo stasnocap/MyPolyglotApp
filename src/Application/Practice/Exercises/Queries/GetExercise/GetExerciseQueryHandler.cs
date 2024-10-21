@@ -23,9 +23,9 @@ public class GetExerciseQueryHandler(
             errors.Add(ExerciseErrors.NotFound);
         }
 
-        var lessonNumber = await _lessonRepository.GetLessonNumberAsync(request.LessonId, cancellationToken);
+        var lesson = await _lessonRepository.GetAsync(request.LessonId, cancellationToken);
         
-        if (lessonNumber is null)
+        if (lesson is null)
         {
             errors.Add(LessonErrors.NotFound);
         }
@@ -35,7 +35,7 @@ public class GetExerciseQueryHandler(
             return errors;
         }
 
-        var exerciseResult = await _exerciseConverter.ConvertAsync(exercise!, lessonNumber!, cancellationToken);
+        var exerciseResult = await _exerciseConverter.ConvertAsync(exercise!, lesson!, cancellationToken);
 
         return exerciseResult;
     }

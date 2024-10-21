@@ -16,16 +16,6 @@ public sealed class ScoreValue : ValueObject
         return new ScoreValue(value);
     }
 
-    public void Increase()
-    {
-        Value++;
-    }
-
-    public void Decrease()
-    {
-        Value--;
-    }
-    
     protected override IEnumerable<object> GetEqualityComponents()
     {
         yield return Value;

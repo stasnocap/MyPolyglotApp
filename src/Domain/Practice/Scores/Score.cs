@@ -1,30 +1,33 @@
 ﻿using Domain.Common.Models;
-using Domain.Practice.Exercises.ValueObjects;
 using Domain.Practice.Lessons.ValueObjects;
 using Domain.Practice.Scores.Events;
 using Domain.Practice.Scores.ValueObjects;
 
 namespace Domain.Practice.Scores;
 
-public sealed class Score : AggregateRoot<ScoreId>, IHasDomainEvents
+public sealed class Score : AggregateRoot<ScoreId>
 {
-    public ScoreValue ScoreValue { get; }
+    public Rating Rating { get; }
     public Guid UserId { get; }
     public LessonId LessonId { get; }
 
-    private Score(ScoreId id, ScoreValue scoreValue, Guid userId, LessonId lessonId) : base(id)
+    private Score(ScoreId id, Rating rating, Guid userId, LessonId lessonId) : base(id)
     {
-        ScoreValue = scoreValue;
+        Rating = rating;
         UserId = userId;
         LessonId = lessonId;
     }
 
-    public static Score Create(Guid userId, LessonId lessonId)
+    private Score()
     {
-        var score = new Score(ScoreId.CreateUnique(), ScoreValue.Create(), userId, lessonId);
-        
+    }
+
+    public static Score Create(Guid userId, Rating rating, LessonId lessonId)
+    {
+        var score = new Score(ScoreId.CreateUnique(), rating, userId, lessonId);
+
         score.AddDomainEvent(new ScoreCreatedDomainEvent(score));
-        
+
         return score;
     }
 }

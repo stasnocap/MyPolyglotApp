@@ -1,3 +1,5 @@
-﻿namespace Application.Practice.Exercises.Commands.CompleteExercise;
+﻿using Domain.Practice.Exercises.ValueObjects;
 
-public record CompleteExerciseResult(bool Success, string CorrectAnswer);
+namespace Application.Practice.Exercises.Commands.CompleteExercise;
+
+public record CompleteExerciseResult(bool Success, string CorrectAnswer, ExerciseId ExerciseId);

@@ -1,58 +1,66 @@
 ﻿@page "{lessonId}"
-@using Application.Practice.Exercises.Commands.CompleteExercise
+@using System.Globalization
 @using Microsoft.AspNetCore.Mvc.TagHelpers
 @model Web.Areas.Practice.Pages.Lessons.Index
 
-@{
-    var exercise = Model.ErrorOrExerciseResult.IsError
-        ? null!
-        : Model.ErrorOrExerciseResult.Value;
-
-    CompleteExerciseResult? completeExerciseResult = null;
-    if (Model.ErrorOrCompleteExerciseResult is { IsError: false })
-    {
-        completeExerciseResult = Model.ErrorOrCompleteExerciseResult.Value.Value;
-    }
-
-    ViewData["Title"] = $"Урок {exercise.LessonNumber.Value}";
-}
-
-@section Scripts
-{
-    <script>
-        const groups = @Html.Raw(Json.Serialize(exercise.WordGroups));
-        const exerciseCompletedSuccessfully = @Html.Raw(Json.Serialize(completeExerciseResult?.Success));
-    </script>
-    <script src="~/js/lesson.js"></script>
-    <script>
-        init();
-    </script>
-}
-
-@if (Model.ErrorOrExerciseResult.IsError)
+@if (Model.HasErrors)
 {
     <div>
-        Error
+        Oops! Something went wrong
     </div>
 }
 else
 {
+    var exercise = Model.ExerciseResponse;
+    var completeExercise = Model.CompleteExerciseResponse;
+    ViewData["Title"] = $"Урок {exercise.LessonNumber}";
+
+    @section Scripts
+    {
+        <script>
+            const groups = @Html.Raw(Json.Serialize(exercise.WordGroups));
+            const exerciseCompletedSuccessfully = @Html.Raw(Json.Serialize(completeExercise?.Success));
+        </script>
+        <script src="~/js/lesson.js"></script>
+        <script>
+            init();
+        </script>
+    }
+
     <form class="js-exercise-form" method="post">
+        @Html.AntiForgeryToken()
         <input class="js-exercise-form-answer" type="hidden" name="Answer">
-        <input class="js-exercise-form-exercise-id" type="hidden" name="ExerciseId" value="@Model.ErrorOrExerciseResult.Value.ExerciseId.Value">
+        <input class="js-exercise-form-exercise-id" type="hidden" name="ExerciseId" value="@Model.ExerciseResponse.ExerciseId">
     </form>
-    <section>
+    <section class="position-relative">
+        @if (exercise.ScoreRating is not null)
+        {
+            <div class="position-absolute end-0 fs-4 d-flex">
+                <div class="text-secondary me-2">
+                    <i class="bi bi-star"></i>
+                    @exercise.ScoreRating.Rate.ToString("F1", CultureInfo.InvariantCulture)
+                </div>
+                <div class="text-success me-2">
+                    <i class="bi bi-check-circle"></i>
+                    @exercise.ScoreRating.CorrectNumber
+                </div>
+                <div class="text-danger">
+                    <i class="bi bi-x-circle"></i>
+                    @exercise.ScoreRating.WrongNumber
+                </div>
+            </div>
+        }
         <h1 class="mb-4">
-            Урок @exercise.LessonNumber.Value
+            Урок @exercise.LessonNumber
         </h1>
         <p class="fs-3 text-secondary">
-            @exercise.RusPhrase.Value
+            @exercise.RusPhrase
         </p>
         <div class="d-flex justify-content-between">
-            @if (completeExerciseResult is { Success: false })
+            @if (completeExercise is { Success: false })
             {
                 <p class="fs-3 text-primary text-danger js-answer">
-                    @completeExerciseResult!.CorrectAnswer
+                    @completeExercise!.CorrectAnswer
                 </p>
             }
             else
@@ -68,7 +76,7 @@ else
             </div>
         </div>
         <div class="position-relative">
-            <div class="alert alert-success h-100 fs-1 row justify-content-center align-items-center position-absolute @(Model.ErrorOrCompleteExerciseResult?.Value is { Success: true } ? string.Empty : "d-none") js-correct-answer" role="alert" style="width: 102%">
+            <div class="alert alert-success h-100 fs-1 row justify-content-center align-items-center position-absolute @(Model.CompleteExerciseResponse is { Success: true } ? string.Empty : "d-none") js-correct-answer" role="alert" style="width: 102%">
                 Молодец!
             </div>
             <div class="row row-cols-2 text-center bg-light fs-5 border rounded-3 justify-content-center js-groups-container">

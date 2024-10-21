@@ -1,8 +1,10 @@
 ﻿namespace Contracts.Exercises.Responses;
 
-public record ExerciseResponse(Guid ExerciseId, string RusPhrase, IReadOnlyList<ExerciseResponse.WordGroup> WordGroups)
+public record ExerciseResponse(Guid ExerciseId, int LessonNumber, string RusPhrase, IReadOnlyList<ExerciseResponse.WordGroup> WordGroups, ExerciseResponse.Rating? ScoreRating)
 {
     public record WordGroup(IReadOnlyList<string> Words, WordType Type);
+
+    public record Rating(int CorrectNumber, int WrongNumber, float Rate);
     
     public enum WordType
     {

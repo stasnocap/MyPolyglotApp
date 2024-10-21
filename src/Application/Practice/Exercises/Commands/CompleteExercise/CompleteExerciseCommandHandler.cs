@@ -2,6 +2,7 @@
 using Application.Common.Interfaces.Services;
 using Domain.Practice.Exercises.Errors;
 using Domain.Practice.Scores;
+using Domain.Practice.Scores.ValueObjects;
 using MediatR;
 using ErrorOr;
 
@@ -27,26 +28,26 @@ public class CompleteExerciseCommandHandler(
         
         if (currentUserId is null)
         {
-            return new CompleteExerciseResult(Success: correctAnswer, answer);
+            return new CompleteExerciseResult(Success: correctAnswer, answer, request.ExerciseId);
         }
 
         var score = await _scoreRepository.GetAsync(request.LessonId, currentUserId.Value, cancellationToken);
 
         if (score is null)
         {
-            score = Score.Create(currentUserId.Value, request.LessonId);
+            score = Score.Create(currentUserId.Value, Rating.Create(), request.LessonId);
             _scoreRepository.Add(score);
         }
 
         if (correctAnswer)
         {
-            score.ScoreValue.Increase();
+            score.Rating.Increase();
         }
         else
         {
-            score.ScoreValue.Decrease();
+            score.Rating.Decrease();
         }
 
-        return new CompleteExerciseResult(Success: correctAnswer, answer);
+        return new CompleteExerciseResult(Success: correctAnswer, answer, request.ExerciseId);
     }
 }

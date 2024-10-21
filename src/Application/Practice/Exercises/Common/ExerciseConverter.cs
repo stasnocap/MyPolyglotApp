@@ -1,17 +1,22 @@
-﻿using Application.Common.Interfaces.Persistence.Vocabulary;
+﻿using Application.Common.Interfaces.Persistence.Practice;
+using Application.Common.Interfaces.Persistence.Vocabulary;
+using Application.Common.Interfaces.Services;
 using Domain.Practice.Exercises;
 using Domain.Practice.Exercises.Services;
-using Domain.Practice.Lessons.ValueObjects;
+using Domain.Practice.Lessons;
+using Domain.Practice.Scores;
 
 namespace Application.Practice.Exercises.Common;
 
-public class ExerciseConverter(IVocabularyRepository _vocabularyRepository)
+public class ExerciseConverter(IVocabularyRepository _vocabularyRepository,
+    IScoreRepository _scoreRepository,
+    IUserContext _userContext)
 {
     private const int WordGroupSize = 6;
     private const int RightAnswerCount = 1;
     private const int RandomWordsCount = WordGroupSize - RightAnswerCount;
 
-    public async Task<ExerciseResult> ConvertAsync(Exercise exercise, LessonNumber lessonNumber, CancellationToken cancellationToken)
+    public async Task<ExerciseResult> ConvertAsync(Exercise exercise, Lesson lesson, CancellationToken cancellationToken)
     {
         List<ExerciseResult.WordGroup> wordGroups = [];
 
@@ -20,12 +25,20 @@ public class ExerciseConverter(IVocabularyRepository _vocabularyRepository)
             var words = await _vocabularyRepository.GetRandomAsync(word, RandomWordsCount, cancellationToken);
 
             WordDecorator.Decorate(word, words);
-            
+
             words.Insert(Random.Shared.Next(RandomWordsCount), word.Text.Value);
 
             wordGroups.Add(new ExerciseResult.WordGroup(words, word.Type));
         }
 
-        return new ExerciseResult(exercise.Id, lessonNumber, exercise.RusPhrase, wordGroups);
+        var currentUserId = _userContext.GetCurrentUserId();
+        
+        Score? score = null;
+        if (currentUserId is not null)
+        {
+            score = await _scoreRepository.GetAsync(lesson.Id, currentUserId.Value, cancellationToken);
+        }
+
+        return new ExerciseResult(exercise, lesson, score, wordGroups);
     }
 }

@@ -13,19 +13,18 @@ public class GetRandomExerciseQueryHandler(
     ILessonRepository _lessonRepository,
     ExerciseConverter _exerciseConverter) : IRequestHandler<GetRandomExerciseQuery, ErrorOr<ExerciseResult>>
 {
-    
     public async Task<ErrorOr<ExerciseResult>> Handle(GetRandomExerciseQuery request, CancellationToken cancellationToken)
     {
-        var lessonNumber = await _lessonRepository.GetLessonNumberAsync(request.LessonId, cancellationToken);
-        
-        if (lessonNumber is null)
+        var lesson = await _lessonRepository.GetAsync(request.LessonId, cancellationToken);
+
+        if (lesson is null)
         {
             return LessonErrors.NotFound;
         }
 
         var exercise = await _exerciseRepository.GetRandomAsync(request.LessonId, cancellationToken);
 
-        var exerciseResult = await _exerciseConverter.ConvertAsync(exercise, lessonNumber, cancellationToken);
+        var exerciseResult = await _exerciseConverter.ConvertAsync(exercise, lesson, cancellationToken);
 
         return exerciseResult;
     }

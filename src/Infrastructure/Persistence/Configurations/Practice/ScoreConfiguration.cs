@@ -23,8 +23,7 @@ public class ScoreConfiguration : IEntityTypeConfiguration<Score>
             .HasConversion(id => id.Value, value => LessonId.Create(value));
 
         builder.Property(s => s.UserId);
-        
-        builder.Property(s => s.ScoreValue)
-            .HasConversion(sv => sv.Value, value => ScoreValue.Create(value));
+
+        builder.OwnsOne(s => s.Rating);
     }
 }

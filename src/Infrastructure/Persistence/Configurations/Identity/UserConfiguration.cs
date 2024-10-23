@@ -10,7 +10,7 @@ public class UserConfiguration() : IEntityTypeConfiguration<User>
 {
     public void Configure(EntityTypeBuilder<User> builder)
     {
-        builder.HasData(UserSeed.GetUsers(new PasswordHasher<User>()));
+        builder.HasData(UserSeed.GetUsers());
         ConfigureScoreIds(builder);
     }
     

@@ -1,8 +1,10 @@
 ﻿using Application.Practice.Lessons.Common;
 using Application.Practice.Lessons.Queries.GetLessons;
 using Contracts.Practice.Lessons;
+using Infrastructure.Persistence.Seed.Identity;
 using MapsterMapper;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace Web.Areas.Practice.Pages;

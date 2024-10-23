@@ -1,4 +1,5 @@
-﻿@using Microsoft.AspNetCore.Mvc.TagHelpers
+﻿@using Infrastructure.Persistence.Seed.Identity
+@using Microsoft.AspNetCore.Mvc.TagHelpers
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,11 +28,25 @@
                     <li class="nav-item">
                         <a class="nav-link text-dark" asp-area="Practice" asp-page="/Index">Practice</a>
                     </li>
+                    @if (User.IsInRole(IdentityRoleSeed.AdminRole))
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="Vocabulary" asp-page="/Index">Vocabulary</a>
+                        </li>
+                    }
                     <li class="nav-item">
                         <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacy</a>
                     </li>
                 </ul>
-                <partial name="_LoginPartial"/>
+                <div class="d-flex">
+                    @if (ViewContext.HttpContext.Request.Path is { Value: "/Practice" } or { Value: "Practice/Index" })
+                    {
+                        <form method="get" class="me-2">
+                            <input name="searchTerm" type="search" class="form-control" placeholder="Поиск..." aria-label="Search" value="@(ViewContext.HttpContext.Request.Query.TryGetValue("searchTerm", out var searchTerm) ? searchTerm : string.Empty)">
+                        </form>
+                    }
+                    <partial name="_LoginPartial"/>
+                </div>
             </div>
         </div>
     </nav>

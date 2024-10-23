@@ -13,9 +13,9 @@ public class Index(ISender _sender, IMapper _mapper) : PageModel
 {
     public IReadOnlyList<LessonResponse> Lessons { get; private set; } = null!;
     
-    public async Task OnGet()
+    public async Task OnGet(string? searchTerm)
     {
-        var query = new GetLessonsQuery();
+        var query = new GetLessonsQuery(searchTerm);
         
         var result = await _sender.Send(query, HttpContext.RequestAborted);
 

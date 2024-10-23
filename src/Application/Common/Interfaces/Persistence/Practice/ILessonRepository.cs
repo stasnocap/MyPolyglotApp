@@ -9,5 +9,5 @@ public interface ILessonRepository
     Task<bool> ExistsAsync(LessonId lessonId, CancellationToken cancellationToken);
     Task<LessonNumber?> GetLessonNumberAsync(LessonId lessonId, CancellationToken cancellationToken);
     Task<Lesson?> GetAsync(LessonId lessonId, CancellationToken cancellationToken);
-    Task<List<LessonResult>> GetRangeAsync(Guid? userId, CancellationToken cancellationToken);
+    Task<List<LessonResult>> GetRangeAsync(Guid? userId, string? searchTerm, CancellationToken cancellationToken);
 }

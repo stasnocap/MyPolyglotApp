@@ -8,6 +8,8 @@ public sealed class LessonName : ValueObject
 {
     public string Value { get; }
 
+    public static explicit operator string(LessonName lessonName) => lessonName.Value;
+
     private LessonName(string value)
     {
         Value = value;

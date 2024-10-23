@@ -4,4 +4,4 @@ using MediatR;
 
 namespace Application.Practice.Lessons.Queries.GetLessons;
 
-public record GetLessonsQuery() : IRequest<IReadOnlyList<LessonResult>>;
+public record GetLessonsQuery(string? SearchTerm) : IRequest<IReadOnlyList<LessonResult>>;

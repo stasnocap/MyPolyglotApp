@@ -11,7 +11,7 @@ public class GetLessonsQueryHandler(ILessonRepository _lessonRepository, IUserCo
     {
         var currentUserId = _userContext.GetCurrentUserId();
 
-        var lessons = await _lessonRepository.GetRangeAsync(currentUserId, cancellationToken);
+        var lessons = await _lessonRepository.GetRangeAsync(currentUserId, request.SearchTerm, cancellationToken);
 
         return lessons;
     }

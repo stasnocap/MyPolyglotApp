@@ -65,6 +65,7 @@ public static class DependencyInjection
     {
         services
             .AddDefaultIdentity<User>(options => options.SignIn.RequireConfirmedAccount = true)
+            .AddRoles<IdentityRole<Guid>>()
             .AddEntityFrameworkStores<AppDbContext>();
 
         return services;

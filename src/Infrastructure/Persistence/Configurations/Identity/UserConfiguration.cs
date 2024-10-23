@@ -1,13 +1,16 @@
 ﻿using Domain.Identity;
+using Infrastructure.Persistence.Seed.Identity;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Infrastructure.Persistence.Configurations.Identity;
 
-public class UserConfiguration : IEntityTypeConfiguration<User>
+public class UserConfiguration() : IEntityTypeConfiguration<User>
 {
     public void Configure(EntityTypeBuilder<User> builder)
     {
+        builder.HasData(UserSeed.GetUsers(new PasswordHasher<User>()));
         ConfigureScoreIds(builder);
     }
     

@@ -16,7 +16,7 @@ public sealed class Lesson : AggregateRoot<LessonId>
     public IReadOnlyList<ExerciseId> ExerciseIds => _exerciseIds.AsReadOnly();
     public IReadOnlyList<ScoreId> ScoreIds => _scoreIds.AsReadOnly();
 
-    protected Lesson(LessonId id, LessonNumber number, LessonName name) : base(id)
+    private Lesson(LessonId id, LessonNumber number, LessonName name) : base(id)
     {
         Number = number;
         Name = name;

@@ -1,6 +1,8 @@
 ﻿using Application.Common.Interfaces.Persistence.Practice;
+using Application.Practice.Lessons.Common;
 using Domain.Practice.Lessons;
 using Domain.Practice.Lessons.ValueObjects;
+using Domain.Practice.Scores;
 using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Persistence.Repositories.Practice;
@@ -28,5 +30,17 @@ public class LessonRepository(AppDbContext _dbContext) : ILessonRepository
         return _dbContext
             .Set<Lesson>()
             .FirstOrDefaultAsync(l => l.Id == lessonId, cancellationToken);
+    }
+
+    public Task<List<LessonResult>> GetRangeAsync(Guid? userId, CancellationToken cancellationToken)
+    {
+        return _dbContext
+            .Set<Lesson>()
+            .OrderBy(l => l.Number)
+            .Select(l => new LessonResult(l.Id, l.Number, l.Name, 
+                userId != null 
+                ? _dbContext.Set<Score>().First(s => s.LessonId == l.Id && s.UserId == userId).Rating.Rate
+                : null))
+            .ToListAsync(cancellationToken);
     }
 }

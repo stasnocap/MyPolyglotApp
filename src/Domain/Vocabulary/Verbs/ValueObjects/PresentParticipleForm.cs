@@ -65,7 +65,7 @@ public sealed class PresentParticipleForm : ValueObject
             return textValue[..^1] + "ing";
         }
 
-        return text + "ing";
+        return textValue + "ing";
     }
 
     protected override IEnumerable<object> GetEqualityComponents()

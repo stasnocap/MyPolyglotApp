@@ -26,7 +26,7 @@ public class ExerciseConverter(IVocabularyRepository _vocabularyRepository,
 
             WordDecorator.Decorate(word, words);
 
-            words.Insert(Random.Shared.Next(RandomWordsCount), word.Text.Value);
+            words.Insert(Random.Shared.Next(words.Count), word.Text.Value);
 
             wordGroups.Add(new ExerciseResult.WordGroup(words, word.Type));
         }

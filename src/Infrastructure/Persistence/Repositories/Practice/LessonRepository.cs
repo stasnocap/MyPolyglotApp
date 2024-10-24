@@ -3,7 +3,7 @@ using Application.Practice.Lessons.Common;
 using Domain.Practice.Lessons;
 using Domain.Practice.Lessons.ValueObjects;
 using Domain.Practice.Scores;
-using Infrastructure.Persistence.Extensions;
+using Infrastructure.Persistence.Extensions.Queryable;
 using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Persistence.Repositories.Practice;

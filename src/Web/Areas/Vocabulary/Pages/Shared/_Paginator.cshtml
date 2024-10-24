@@ -1,0 +1,58 @@
+@model Contracts.Common.Paged
+
+@{
+    var activePage = ViewData["ActivePage"];
+
+    var totalPages = (int)Math.Ceiling((double)Model.TotalCount / Model.PageSize);
+    var center = new List<int?> { Model.Page - 2, Model.Page - 1, Model.Page, Model.Page + 1, Model.Page + 2 };
+    var filteredCenter = center.Where(p => p > 1 && p < totalPages).ToList();
+    var includeThreeLeft = Model.Page == 5;
+    var includeThreeRight = Model.Page == totalPages - 4;
+    var includeLeftDots = Model.Page > 5;
+    var includeRightDots = Model.Page < totalPages - 4;
+
+    if (includeThreeLeft) filteredCenter.Insert(0, 2);
+    if (includeThreeRight) filteredCenter.Add(totalPages - 1);
+
+    if (includeLeftDots) filteredCenter.Insert(0, null);
+    if (includeRightDots) filteredCenter.Add(null);
+
+    var result = new List<int?> { 1 };
+    result.AddRange(filteredCenter);
+
+    if (totalPages != 1)
+    {
+        result.Add(totalPages);
+    }
+}
+
+<nav aria-label="Page navigation example" class="d-flex justify-content-center">
+    <ul class="pagination m-0">
+
+        <li class="page-item user-select-none @(Model.HasPreviousPage ? string.Empty : "disabled")">
+            <a class="page-link" aria-label="Previous" asp-page="./@activePage" asp-route-pageNumber="@(Model.Page - 1)" asp-route-pageSize="@Model.PageSize" asp-route-sortColumn="@Model.SortColumn" asp-rout-sortOrder="@Model.SortOrder">
+                <span aria-hidden="true">&laquo;</span>
+            </a>
+        </li>
+        @foreach (var number in result)
+        {
+            if (number is null)
+            {
+                <li class="page-item disabled">
+                    <a href="#" class="page-link">...</a>
+                </li>
+            }
+            else
+            {
+                <li class="page-item @(Model.Page == number ? "active" : string.Empty)">
+                    <a class="page-link" asp-page="./@activePage" asp-route-pageNumber="@number" asp-route-pageSize="@Model.PageSize" asp-route-sortColumn="@Model.SortColumn" asp-rout-sortOrder="@Model.SortOrder">@number</a>
+                </li>
+            }
+        }
+        <li class="page-item user-select-none @(Model.HasNextPage ? string.Empty : "disabled")">
+            <a class="page-link" aria-label="Next" asp-page="./@activePage" asp-route-pageNumber="@(Model.Page + 1)" asp-route-pageSize="@Model.PageSize" asp-route-sortColumn="@Model.SortColumn" asp-rout-sortOrder="@Model.SortOrder">
+                <span aria-hidden="true">&raquo;</span>
+            </a>
+        </li>
+    </ul>
+</nav>

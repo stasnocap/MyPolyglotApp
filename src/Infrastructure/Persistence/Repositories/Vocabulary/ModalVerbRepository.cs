@@ -3,6 +3,7 @@ using Domain.Practice.Exercises.Entities;
 using Domain.Vocabulary.ModalVerbs;
 using Domain.Vocabulary.ModalVerbs.ValueObjects;
 using Infrastructure.Persistence.Extensions;
+using Infrastructure.Persistence.Extensions.Queryable;
 using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Persistence.Repositories.Vocabulary;

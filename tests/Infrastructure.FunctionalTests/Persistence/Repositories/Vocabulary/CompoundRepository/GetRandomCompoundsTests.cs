@@ -7,7 +7,7 @@ using Domain.Vocabulary.Compounds;
 using Domain.Vocabulary.Compounds.ValueObjects;
 using FluentAssertions;
 using Infrastructure.Persistence;
-using Infrastructure.Persistence.Extensions;
+using Infrastructure.Persistence.Extensions.Queryable;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 

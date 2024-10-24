@@ -1,0 +1,66 @@
+﻿@page
+@using Web.Areas.Vocabulary.Pages.Shared
+@model Web.Areas.Vocabulary.Pages.Adjectives
+
+@{
+    ViewData["ActivePage"] = VocabularyNavPages.Adjectives;
+    int[] pageSizes = { 15, 30, 50 };
+}
+
+@section Scripts
+{
+    <script>
+        $('.js-page-size').change(function () {
+           const pageSize = $(this).val();
+           let newSearch = location.search.replace(/pageSize=\d+/, `pageSize=${pageSize}`);
+           newSearch = newSearch.replace(/pageNumber=\d+/, 'pageNumber=1')
+           location.search = newSearch;
+        });
+    </script>
+}
+
+<section>
+    <div>
+        <table class="table table-striped table-hover table-sm">
+            <thead>
+            <tr>
+                <th style="width: 2em">#</th>
+                <th>Прилагательное</th>
+            </tr>
+            </thead>
+            <tbody>
+            @for (var i = 0; i < Model.AdjectivesPagedList.Items.Count; i++)
+            {
+                var adjective = Model.AdjectivesPagedList.Items[i];
+                var number = Model.AdjectivesPagedList.Page > 1
+                    ? i + 1 + Model.AdjectivesPagedList.PageSize * (Model.AdjectivesPagedList.Page - 1)
+                    : i + 1;
+                <tr data-id="@adjective.Id">
+                    <th>@(number)</th>
+                    <td>@adjective.Text</td>
+                </tr>
+            }
+            </tbody>
+            <tfoot>
+            <tr>
+                <td>
+                    @Model.AdjectivesPagedList.TotalCount
+                </td>
+                <td>
+                    <div class="d-flex justify-content-between">
+                        <div>
+                        </div>
+                        <partial name="Shared/_Paginator.cshtml" model="Model.AdjectivesPagedList"/>
+                        <select class="form-select js-page-size" style="width: 4.2em">
+                            @foreach (var pageSize in pageSizes)
+                            {
+                            <option value="@pageSize" selected="@(pageSize == Model.AdjectivesPagedList.PageSize)">@pageSize</option>
+                            }
+                        </select>
+                    </div>
+                </td>
+            </tr>
+            </tfoot>
+        </table>
+    </div>
+</section>

@@ -6,6 +6,7 @@ using Application.Common.Interfaces.Services;
 using Domain.Identity;
 using Infrastructure.Persistence;
 using Infrastructure.Persistence.Configurations.Interceptors;
+using Infrastructure.Persistence.Repositories;
 using Infrastructure.Persistence.Repositories.Identity;
 using Infrastructure.Persistence.Repositories.Practice;
 using Infrastructure.Persistence.Repositories.Vocabulary;
@@ -28,6 +29,7 @@ public static class DependencyInjection
         
         services.AddScoped<IUnitOfWork, UnitOfWork>();
         
+        services.AddScoped(typeof(IRepository<,>), typeof(Repository<,>));
         services.AddScoped<IExerciseRepository, ExerciseRepository>();
         services.AddScoped<ILessonRepository, LessonRepository>();
         services.AddScoped<IVocabularyRepository, VocabularyRepository>();

@@ -31,7 +31,7 @@
                     @if (User.IsInRole(IdentityRoleSeed.AdminRole))
                     {
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="Vocabulary" asp-page="/Index">Vocabulary</a>
+                            <a class="nav-link text-dark" asp-area="Vocabulary" asp-page="/Adjectives" asp-route-pageNumber="1" asp-route-pageSize="15" asp-route-sortColumn="Text">Vocabulary</a>
                         </li>
                     }
                     <li class="nav-item">
